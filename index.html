@@ -206,6 +206,11 @@
 
   <!-- ===== OVERVIEW ===== -->
   <div class="tab-panel active" id="tab-overview">
+<div id="narrative-tab-overview" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+  <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-overview-text"></div>
+</div>
+
     <div class="kpi-grid" id="kpi-grid"></div>
     <div class="sub-kpi-grid" id="sub-kpi-grid"></div>
     <div class="chart-grid">
@@ -253,6 +258,11 @@
 
   <!-- ===== STOCK INTELLIGENCE ===== -->
   <div class="tab-panel" id="tab-stock">
+<div id="narrative-tab-stock" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+  <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-stock-text"></div>
+</div>
+
     <div class="panel-grid" id="panel-grid">
       <!-- Panel 1: Stockout Risk -->
       <div class="panel">
@@ -343,6 +353,11 @@
 
   <!-- ===== SUPPLIERS ===== -->
   <div class="tab-panel" id="tab-suppliers">
+<div id="narrative-tab-suppliers" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+  <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-suppliers-text"></div>
+</div>
+
     <div class="kpi-grid" id="sup-kpi-grid"></div>
     <div class="chart-grid">
       <div class="chart-card chart-wide">
@@ -410,6 +425,11 @@
 
   <!-- ===== ONLINE ===== -->
   <div class="tab-panel" id="tab-online">
+<div id="narrative-tab-online" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+  <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-online-text"></div>
+</div>
+
     <div class="kpi-grid" id="online-kpi-grid"></div>
     <div class="chart-grid">
       <div class="chart-card chart-wide">
@@ -438,6 +458,11 @@
 
   <!-- ===== SIGNALS ===== -->
   <div class="tab-panel" id="tab-signals">
+<div id="narrative-tab-signals" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+  <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-signals-text"></div>
+</div>
+
     <!-- Section A -->
     <div class="signal-section">
       <div class="signal-section-title"><span>🔴</span> Act Today</div>
@@ -86453,9 +86478,26 @@ const DASHBOARD_DATA = {
   }
 };
 
+const NARRATIVES = {
+  "generated_at": "2026-03-31",
+  "overview": "The business generated **R2,118,822 excl VAT** over the last 30 days across 3 stores and Shopify.\n\n**Centurion dominates at 65% of store revenue** (R1,337,591), with 2,236 transactions at an average basket of R598. This is your engine — it's running well.\n\n**Edenvale (19%, R382,354)** is your second store but has the lowest average basket at R410 vs Centurion's R598. There's a R188 basket gap between your strongest and weakest store — that's a ranging and upsell problem, not a footfall problem.\n\n**Glen Village (16%, R336,834)** is the smallest but has a R461 avg basket — stronger than Edenvale per transaction. Fewer customers, but they're spending more per visit.\n\n**Online is 2.9% of combined revenue** — R62,043 from 92 orders at R674 AOV. The channel is small but the AOV is strong. Discount rate at 16.3% is elevated and needs watching.",
+  "stock": "You have **R3,318,456 locked in stock at cost** — that money is either working for you or sitting idle.\n\n**The dead weight:** R142,746 is tied up in 50 products that keep getting reordered despite not moving. The worst offenders — MAG 7/87 60'S (10x orders, 86 units), 1L GUT RAWBIOTICS (4x, 55 units), FLORISH SPORE PROBIOTIC 60C (5x, 23 units) — are a PAR level problem. Someone is reordering on autopilot. Stop these until stock clears.\n\n**The opportunity:** 40 products have margin ≥40% and are well-stocked. These are your profit drivers sitting on the shelf. The top 5 average 49.5% margin. Put them front-of-shelf, run a staff push, and feature them online.\n\n**The risk:** 50 products are at ≤5 units. 50 of those are high-value (>R500 excl VAT each). If you sell one more unit and can't reorder fast, you lose the sale and the customer. Some of these have no PO ever placed — they're being forgotten.",
+  "suppliers": "You placed **748 orders worth R4,016,315 excl VAT** since January. Overall fill rate is **92.0%** — meaning R319,332 in ordered stock has not arrived.\n\n**20 suppliers are below 80% fill rate** and together represent significant outstanding value. Your top 3 suppliers by spend are DS INTERNATIONAL (NOW) (R451,204, 69.2% fill), NATROCEUTICS SA (PTY) LTD (R333,568, 73.7% fill), and LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS (R242,098, 92.5% fill).\n\n**DSI at 69% fill on R451,204 ordered** is the biggest concern — that's your largest supplier and they're leaving R139,873 undelivered. Either they're backordering, shipping partial, or there's an admin issue on invoice matching.\n\n**40 suppliers are over-delivering** vs PO value — you're receiving more than you ordered. This is where surprise overstock comes from. Review GRV sign-off process.",
+  "online": "92 orders, R62,043 excl VAT, R674 AOV over 30 days. The channel is small relative to stores but the basket is strong.\n\n**Your top online product** is DELFRAN - Pcositol - 30 Sachets at R3,224 — 6 units. The top 5 collectively account for R12,013 or 19% of online revenue. That's heavy concentration — healthy if those products are well-stocked, risky if they're not.\n\n**Discount rate at 16.3%** means roughly 1 in 6 orders uses a discount code. That's not catastrophic but it's trending in the wrong direction. It suggests either price sensitivity or promotion dependence. Watch this weekly.\n\n**The gap:** Online is 3% of combined revenue. For a health supplement business this should be 15-20%+ with the right merchandising, SEO, and email strategy. There's significant headroom.",
+  "signals": "Three things need your attention today.\n\n**1. Reorder FIRE BOWL 200MM** — 50 high-value products are at ≤5 units with no or stale POs. Each one is a missed sale at full margin.\n\n**2. Stop reordering MAG 7/87 60'S** — you've ordered it 10 times this year and have 86 units on the shelf. Whoever controls the PAR levels needs to see this data.\n\n**3. DSI** — your largest supplier at R451,204 ordered is only delivering at 69.2%. Get on a call with them this week. Either the relationship needs managing or the ordering process needs fixing."
+};
+
 // ============================================================
 // UTILITIES
 // ============================================================
+function renderMd(text) {
+  if (!text) return '';
+  // Replace **bold** with <strong>bold</strong>
+  let out = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  // Replace double newlines with paragraph breaks
+  out = out.replace(/\n\n/g, '</p><p>');
+  return '<p>' + out + '</p>';
+}
 function fmtR(n, decimals=0) {
   if (n == null || isNaN(n)) return '—';
   return 'R' + Number(n).toLocaleString('en-ZA', {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
@@ -87399,6 +87441,24 @@ document.addEventListener('DOMContentLoaded', () => {
   initOnline();
   initSignals();
 });
+
+// ============================================================
+// POPULATE NARRATIVES
+// ============================================================
+(function() {
+  var tabNarratives = {
+    'narrative-tab-overview-text': NARRATIVES.overview,
+    'narrative-tab-stock-text': NARRATIVES.stock,
+    'narrative-tab-suppliers-text': NARRATIVES.suppliers,
+    'narrative-tab-online-text': NARRATIVES.online,
+    'narrative-tab-signals-text': NARRATIVES.signals
+  };
+  Object.entries(tabNarratives).forEach(function([id, text]) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = renderMd(text);
+  });
+})();
+
 </script>
 </body>
 </html>
