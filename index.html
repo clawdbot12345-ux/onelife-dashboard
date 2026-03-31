@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onelife Health | Retail Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --bg: #0f1117;
+  --card-bg: #1a1d2e;
+  --card-bg2: #20243a;
+  --accent: #6c63ff;
+  --accent-dim: rgba(108,99,255,0.15);
+  --positive: #22c55e;
+  --positive-dim: rgba(34,197,94,0.12);
+  --warning: #f59e0b;
+  --warning-dim: rgba(245,158,11,0.12);
+  --danger: #ef4444;
+  --danger-dim: rgba(239,68,68,0.12);
+  --text: #e2e8f0;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --border: rgba(255,255,255,0.07);
+  --border-strong: rgba(255,255,255,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+.num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+/* ─── HEADER ─── */
+.header {
+  background: rgba(26,29,46,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 56px; max-width: 1600px; margin: 0 auto;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-icon {
+  width: 32px; height: 32px; background: var(--accent);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.brand-name { font-weight: 700; font-size: 15px; letter-spacing: -0.3px; }
+.brand-sub { font-size: 11px; color: var(--text-muted); font-weight: 500;
+  background: var(--accent-dim); color: var(--accent);
+  padding: 2px 8px; border-radius: 999px; border: 1px solid rgba(108,99,255,0.3); }
+.header-meta { font-size: 12px; color: var(--text-muted); }
+.header-meta span { color: var(--text-subtle); font-weight: 500; }
+
+/* ─── TABS NAV ─── */
+.tabs-nav {
+  display: flex; align-items: center; gap: 2px;
+  padding: 0 24px; max-width: 1600px; margin: 0 auto;
+  overflow-x: auto; scrollbar-width: none;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 10px 16px; font-size: 13px; font-weight: 500;
+  color: var(--text-muted); background: none; border: none;
+  cursor: pointer; border-bottom: 2px solid transparent;
+  white-space: nowrap; transition: all 0.15s; font-family: inherit;
+  display: flex; align-items: center; gap: 6px;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-btn .badge-count {
+  background: var(--danger); color: white; font-size: 10px; font-weight: 700;
+  padding: 1px 5px; border-radius: 999px; line-height: 1.4;
+}
+.tab-btn .signal-dot {
+  width: 6px; height: 6px; background: var(--warning); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ─── LAYOUT ─── */
+.main { max-width: 1600px; margin: 0 auto; padding: 24px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ─── KPI CARDS ─── */
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 1200px) { .kpi-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .kpi-grid { grid-template-columns: 1fr; } }
+
+.kpi-card {
+  background: var(--card-bg); border-radius: var(--radius);
+  border: 1px solid var(--border); padding: 20px;
+  position: relative; overflow: hidden;
+}
+.kpi-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent-color, var(--accent)); border-radius: var(--radius) var(--radius) 0 0;
+}
+.kpi-label { font-size: 11px; font-weight: 600; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+.kpi-value { font-size: 22px; font-weight: 700; color: var(--text);
+  letter-spacing: -0.5px; margin-bottom: 4px; }
+.kpi-sub { font-size: 11px; color: var(--text-muted); }
+.kpi-card.positive { --accent-color: var(--positive); }
+.kpi-card.warning { --accent-color: var(--warning); }
+.kpi-card.danger { --accent-color: var(--danger); }
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--card-bg); border-radius: var(--radius);
+  border: 1px solid var(--border); padding: 24px; margin-bottom: 24px;
+}
+.card-title {
+  font-size: 13px; font-weight: 600; color: var(--text);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+}
+.card-title-icon { opacity: 0.6; }
+
+/* ─── CHARTS ─── */
+.charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
+@media (max-width: 900px) { .charts-row { grid-template-columns: 1fr; } }
+.chart-wrap { position: relative; height: 280px; }
+.chart-wrap.tall { height: 360px; }
+
+/* ─── TABLES ─── */
+.table-wrap { overflow-x: auto; border-radius: var(--radius-sm); }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+thead tr { border-bottom: 1px solid var(--border-strong); }
+th {
+  padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px;
+  white-space: nowrap; cursor: pointer; user-select: none;
+}
+th:hover { color: var(--text); }
+th .sort-icon { opacity: 0.4; margin-left: 4px; }
+th.sorted-asc .sort-icon::after { content: '↑'; }
+th.sorted-desc .sort-icon::after { content: '↓'; }
+th:not(.sorted-asc):not(.sorted-desc) .sort-icon::after { content: '↕'; }
+td {
+  padding: 10px 14px; color: var(--text); border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: rgba(255,255,255,0.03); }
+td.muted { color: var(--text-muted); }
+td.name-cell { max-width: 280px; white-space: normal; line-height: 1.4; font-weight: 500; }
+
+/* ─── CHIPS / BADGES ─── */
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; padding: 3px 8px;
+  border-radius: 999px; white-space: nowrap;
+}
+.chip-red { background: var(--danger-dim); color: var(--danger); }
+.chip-green { background: var(--positive-dim); color: var(--positive); }
+.chip-amber { background: var(--warning-dim); color: var(--warning); }
+.chip-accent { background: var(--accent-dim); color: var(--accent); }
+.chip-push { background: var(--positive-dim); color: var(--positive); border: 1px solid rgba(34,197,94,0.3); }
+.chip-nogo { background: var(--warning-dim); color: var(--warning); border: 1px solid rgba(245,158,11,0.3); }
+.chip-clear { background: rgba(99,179,237,0.1); color: #63b3ed; border: 1px solid rgba(99,179,237,0.3); }
+
+/* ─── SEARCH BAR ─── */
+.search-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.search-input {
+  flex: 1; min-width: 200px; max-width: 400px;
+  background: var(--card-bg2); border: 1px solid var(--border-strong);
+  color: var(--text); font-size: 13px; padding: 8px 14px;
+  border-radius: var(--radius-sm); font-family: inherit; outline: none;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-input::placeholder { color: var(--text-muted); }
+.count-label { font-size: 12px; color: var(--text-muted); margin-left: auto; }
+.count-label strong { color: var(--text); font-variant-numeric: tabular-nums; }
+
+/* ─── STOCK INTEL GRID ─── */
+.intel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 900px) { .intel-grid { grid-template-columns: 1fr; } }
+
+.intel-card {
+  background: var(--card-bg); border-radius: var(--radius);
+  border: 1px solid var(--border); overflow: hidden;
+}
+.intel-header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.intel-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.intel-desc { font-size: 11px; color: var(--text-muted); font-style: italic; }
+.intel-meta { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+.intel-meta strong { font-variant-numeric: tabular-nums; }
+.intel-body { padding: 0; max-height: 340px; overflow-y: auto; }
+.intel-body::-webkit-scrollbar { width: 4px; }
+.intel-body::-webkit-scrollbar-track { background: transparent; }
+.intel-body::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+.intel-card .intel-header.red { border-left: 4px solid var(--danger); }
+.intel-card .intel-header.green { border-left: 4px solid var(--positive); }
+.intel-card .intel-header.amber { border-left: 4px solid var(--warning); }
+.intel-card .intel-header.blue { border-left: 4px solid #63b3ed; }
+
+/* ─── SIGNALS PAGE ─── */
+.signal-section { margin-bottom: 28px; }
+.signal-section-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.signal-section-title { font-size: 15px; font-weight: 700; }
+.signal-section-sub { font-size: 12px; color: var(--text-muted); margin-left: auto; font-style: italic; }
+
+.today-alert {
+  background: var(--danger-dim); border: 1px solid rgba(239,68,68,0.25);
+  border-radius: var(--radius); padding: 12px 16px; margin-bottom: 8px;
+  font-size: 13px; display: flex; align-items: center; gap: 10px;
+}
+.today-alert.ok {
+  background: var(--positive-dim); border-color: rgba(34,197,94,0.25); color: var(--positive);
+}
+.today-alert .alert-icon { font-size: 16px; flex-shrink: 0; }
+
+.online-gap-note {
+  background: var(--accent-dim); border: 1px solid rgba(108,99,255,0.25);
+  border-radius: var(--radius-sm); padding: 10px 14px; font-size: 12px; color: var(--accent);
+  margin-top: 12px;
+}
+
+/* ─── STORE CARDS ─── */
+.store-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+@media (max-width: 900px) { .store-cards { grid-template-columns: 1fr; } }
+.store-card {
+  background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border);
+  padding: 20px; position: relative;
+}
+.store-card-name { font-size: 13px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.store-card-name .dot { width: 8px; height: 8px; border-radius: 50%; }
+.store-stat { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.store-stat-label { font-size: 11px; color: var(--text-muted); }
+.store-stat-value { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.store-bar { height: 4px; background: var(--border); border-radius: 2px; margin-top: 12px; overflow: hidden; }
+.store-bar-fill { height: 100%; border-radius: 2px; transition: width 0.8s ease; }
+
+/* ─── EMPTY STATE ─── */
+.empty { text-align: center; padding: 48px 24px; color: var(--text-muted); }
+.empty-icon { font-size: 32px; margin-bottom: 12px; opacity: 0.5; }
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .main { padding: 16px; }
+  .kpi-value { font-size: 18px; }
+  .header-inner { padding: 0 16px; }
+  .tabs-nav { padding: 0 16px; }
+}
+
+/* ─── CATEGORY TABLE ─── */
+.cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 900px) { .cat-grid { grid-template-columns: 1fr; } }
+.margin-bar { display: flex; align-items: center; gap: 8px; }
+.margin-bar-track { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.margin-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s; }
+
+/* ─── ONLINE KPI ROW ─── */
+.online-kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+@media (max-width: 900px) { .online-kpi-row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .online-kpi-row { grid-template-columns: 1fr; } }
+
+/* ─── TODAY SECTION GRID ─── */
+.today-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+@media (max-width: 768px) { .today-grid { grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-icon">🌿</div>
+      <span class="brand-name">Onelife Health</span>
+      <span class="brand-sub">Intelligence</span>
+    </div>
+    <div class="header-meta">
+      Period: <span>Mar 1 – 31, 2026</span> &nbsp;·&nbsp; Generated: <span id="gen-time">—</span>
+    </div>
+  </div>
+  <div class="tabs-nav">
+    <button class="tab-btn active" data-tab="overview">📊 Overview</button>
+    <button class="tab-btn" data-tab="products">📦 Products</button>
+    <button class="tab-btn" data-tab="stock">🔍 Stock Intelligence</button>
+    <button class="tab-btn" data-tab="categories">🏷️ Categories</button>
+    <button class="tab-btn" data-tab="online">🛒 Online</button>
+    <button class="tab-btn" data-tab="signals">
+      <span class="signal-dot"></span> Signals
+    </button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ═══════════════════════════════════════════════
+       TAB 1: OVERVIEW
+       ═══════════════════════════════════════════════ -->
+  <section class="tab-panel active" id="tab-overview">
+    <div class="kpi-grid" id="overview-kpis"></div>
+
+    <div class="store-cards" id="store-cards"></div>
+
+    <div class="charts-row">
+      <div class="card" style="margin-bottom:0">
+        <div class="card-title">📈 Revenue Trend — 30 Days</div>
+        <div class="chart-wrap"><canvas id="chart-trend"></canvas></div>
+      </div>
+      <div class="card" style="margin-bottom:0">
+        <div class="card-title">🏬 Store Comparison — Revenue</div>
+        <div class="chart-wrap"><canvas id="chart-stores"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TAB 2: PRODUCTS
+       ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-products">
+    <div class="card">
+      <div class="search-row">
+        <input class="search-input" id="prod-search" placeholder="Search products by name or category…" oninput="filterProducts()">
+        <div class="count-label">Showing <strong id="prod-count">0</strong> products</div>
+      </div>
+      <div class="table-wrap">
+        <table id="prod-table">
+          <thead>
+            <tr>
+              <th onclick="sortProducts('name')">Product <span class="sort-icon"></span></th>
+              <th onclick="sortProducts('category')">Category <span class="sort-icon"></span></th>
+              <th onclick="sortProducts('available')">Available <span class="sort-icon"></span></th>
+              <th onclick="sortProducts('sell_price_incl')">Sell Price <span class="sort-icon"></span></th>
+              <th onclick="sortProducts('cost_price')">Cost <span class="sort-icon"></span></th>
+              <th onclick="sortProducts('margin_pct')">Margin % <span class="sort-icon"></span></th>
+              <th onclick="sortProducts('stock_value_cost')">Stock @ Cost <span class="sort-icon"></span></th>
+              <th onclick="sortProducts('stock_value_sell')">Stock @ Sell <span class="sort-icon"></span></th>
+            </tr>
+          </thead>
+          <tbody id="prod-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TAB 3: STOCK INTELLIGENCE
+       ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-stock">
+    <div class="intel-grid" id="intel-grid"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TAB 4: CATEGORIES
+       ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-categories">
+    <div class="cat-grid">
+      <div class="card" style="margin-bottom:0">
+        <div class="card-title">📊 Top 10 Categories by Stock Value @ Cost</div>
+        <div class="chart-wrap tall"><canvas id="chart-cats"></canvas></div>
+      </div>
+      <div class="card" style="margin-bottom:0">
+        <div class="card-title">🏷️ Category Breakdown</div>
+        <div class="table-wrap">
+          <table id="cat-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>SKUs</th>
+                <th>Available</th>
+                <th>@ Cost</th>
+                <th>@ Sell</th>
+                <th>Avg Margin</th>
+              </tr>
+            </thead>
+            <tbody id="cat-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TAB 5: ONLINE
+       ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-online">
+    <div class="online-kpi-row" id="online-kpis"></div>
+    <div class="card">
+      <div class="card-title">📈 Daily Online Revenue — March 2026</div>
+      <div class="chart-wrap"><canvas id="chart-online"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🏆 Top Products (Shopify)</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Units Sold</th>
+              <th>Revenue</th>
+              <th>Avg Unit Value</th>
+            </tr>
+          </thead>
+          <tbody id="online-prod-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TAB 6: SIGNALS
+       ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-signals">
+    <div style="margin-bottom:24px">
+      <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">⚡ OPERATOR INTELLIGENCE — ACT ON THIS TODAY</div>
+      <div style="font-size:13px;color:var(--text-muted)">Curated signals from your inventory and sales data. No fluff.</div>
+    </div>
+
+    <!-- WHAT TO DO TODAY -->
+    <div class="signal-section">
+      <div class="signal-section-header">
+        <span style="font-size:18px">🚨</span>
+        <div>
+          <div class="signal-section-title">What to Do TODAY</div>
+          <div style="font-size:11px;color:var(--text-muted)">Urgent restocks + store health check</div>
+        </div>
+      </div>
+      <div id="signals-today"></div>
+    </div>
+
+    <!-- PUSH NOW -->
+    <div class="signal-section">
+      <div class="signal-section-header">
+        <span style="font-size:18px">🟢</span>
+        <div>
+          <div class="signal-section-title">Push Now — High Margin, Good Stock</div>
+          <div style="font-size:11px;color:var(--text-muted)">Margin ≥ 40% &amp; Available ≥ 20 — safe to promote</div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Available</th>
+                <th>Margin %</th>
+                <th>Stock @ Sell</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="signals-push"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- DON'T DISCOUNT -->
+    <div class="signal-section">
+      <div class="signal-section-header">
+        <span style="font-size:18px">⚠️</span>
+        <div>
+          <div class="signal-section-title">Don't Discount — Low Margin</div>
+          <div style="font-size:11px;color:var(--text-muted)">Margin &lt; 20% — discounting these destroys the business</div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Margin %</th>
+                <th>Sell Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="signals-nodiscount"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAPITAL TRAPPED -->
+    <div class="signal-section">
+      <div class="signal-section-header">
+        <span style="font-size:18px">💰</span>
+        <div>
+          <div class="signal-section-title">Capital Trapped — Dead Stock</div>
+          <div style="font-size:11px;color:var(--text-muted)">Top 10 dead stock items by cost value — move these</div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Available</th>
+                <th>Cost Value</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="signals-capital"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONLINE VS STORE GAP -->
+    <div class="signal-section">
+      <div class="signal-section-header">
+        <span style="font-size:18px">🌐</span>
+        <div>
+          <div class="signal-section-title">Online vs Store Gap</div>
+          <div style="font-size:11px;color:var(--text-muted)">Top online products — verify store stock availability</div>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Online Revenue</th>
+                <th>Online Units</th>
+              </tr>
+            </thead>
+            <tbody id="signals-online"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="online-gap-note">
+        💡 Cross-reference these with store stock to ensure availability. High online demand with low store stock creates fulfilment risk.
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.main -->
+
+<script>
+// ═══════════════════════════════════════════════════
+// EMBEDDED DATA
+// ═══════════════════════════════════════════════════
+const DASHBOARD_DATA = {"generated_at":"2026-03-31T14:58:43.131660","period":{"start":"2026-03-01","end":"2026-03-31","days":30},"kpis":{"store_sales_30d":2344586.16,"online_sales_30d":71349.53,"combined_revenue_30d":2415935.69,"online_orders_30d":92,"online_aov":775.54,"online_discount_rate_pct":16.3,"total_skus_in_stock":5686,"total_stock_value_cost":3318456.4,"total_stock_value_sell":6013479.91,"avg_gross_margin_pct":35.5,"stockout_risk_count":4059},"stores":{"centurion":{"total_sales":1523553.54,"total_returns":6399.07,"net_sales":1517154.47,"transaction_count":2216,"avg_basket":687.52,"daily_sales":{"2026-03-02":57620.89,"2026-03-03":72036.94,"2026-03-04":77205.2,"2026-03-05":31487.09,"2026-03-06":42525.41,"2026-03-07":97848.49,"2026-03-09":56947.24,"2026-03-10":52484.82,"2026-03-11":74386.35,"2026-03-12":57254.57,"2026-03-13":57416.35,"2026-03-14":71046.73,"2026-03-16":44119.74,"2026-03-17":46324.64,"2026-03-18":50442.34,"2026-03-19":64197.18,"2026-03-20":41710.22,"2026-03-21":40432.48,"2026-03-23":43039.79,"2026-03-24":60027.14,"2026-03-25":52666.03,"2026-03-26":70304.32,"2026-03-27":60859.19,"2026-03-28":74684.44,"2026-03-30":66576.13,"2026-03-31":59909.82}},"glen_village":{"total_sales":382474.66,"total_returns":534.9,"net_sales":381939.76,"transaction_count":721,"avg_basket":530.48,"daily_sales":{"2026-03-01":9897.42,"2026-03-02":7163.27,"2026-03-03":16040.21,"2026-03-04":24227.05,"2026-03-05":12179.41,"2026-03-06":14987.2,"2026-03-07":9334.91,"2026-03-08":8048.24,"2026-03-09":12651.99,"2026-03-10":11800.24,"2026-03-11":17504.14,"2026-03-12":14622.61,"2026-03-13":16729.01,"2026-03-14":10938.15,"2026-03-15":4974.83,"2026-03-16":11854.88,"2026-03-17":15889.97,"2026-03-18":19050.27,"2026-03-19":8244.45,"2026-03-20":12564.95,"2026-03-21":8413.93,"2026-03-22":3276.25,"2026-03-23":11281.23,"2026-03-24":15610.47,"2026-03-25":19375.38,"2026-03-26":13437.19,"2026-03-27":10480.27,"2026-03-28":10450.49,"2026-03-29":7598.01,"2026-03-30":14793.27,"2026-03-31":9054.97}},"edenvale":{"total_sales":438557.96,"total_returns":3082.35,"net_sales":435475.61,"transaction_count":929,"avg_basket":472.08,"daily_sales":{"2026-03-01":14763.17,"2026-03-02":14836.06,"2026-03-03":15698.11,"2026-03-04":12365.25,"2026-03-05":15803.54,"2026-03-06":8114.37,"2026-03-07":16502.31,"2026-03-08":17653.42,"2026-03-09":13241.85,"2026-03-10":17833.47,"2026-03-11":20315.26,"2026-03-12":9535.41,"2026-03-13":13905.16,"2026-03-14":16638.45,"2026-03-15":14034.03,"2026-03-16":16516.77,"2026-03-17":12327.66,"2026-03-18":13984.53,"2026-03-19":13067.86,"2026-03-20":10576.06,"2026-03-21":12706.34,"2026-03-22":13022.42,"2026-03-23":14069.12,"2026-03-24":10462.3,"2026-03-25":13063.63,"2026-03-26":9828.4,"2026-03-27":18047.27,"2026-03-28":22922.93,"2026-03-29":16617.81,"2026-03-30":9801.45,"2026-03-31":10303.55}}},"shopify":{"total_orders":92,"total_revenue":71349.53,"aov":775.54,"discount_rate_pct":16.3,"daily":{"2026-03-01":{"orders":1,"revenue":352.7},"2026-03-02":{"orders":6,"revenue":4855.3},"2026-03-03":{"orders":5,"revenue":5077.55},"2026-03-04":{"orders":4,"revenue":5002.24},"2026-03-05":{"orders":2,"revenue":1635.25},"2026-03-06":{"orders":2,"revenue":2644.28},"2026-03-07":{"orders":2,"revenue":1678.64},"2026-03-08":{"orders":4,"revenue":5250.65},"2026-03-09":{"orders":1,"revenue":426.0},"2026-03-10":{"orders":2,"revenue":1353.44},"2026-03-11":{"orders":1,"revenue":727.73},"2026-03-12":{"orders":4,"revenue":2067.89},"2026-03-13":{"orders":3,"revenue":2915.16},"2026-03-16":{"orders":4,"revenue":1895.21},"2026-03-18":{"orders":3,"revenue":3142.01},"2026-03-20":{"orders":3,"revenue":2121.41},"2026-03-21":{"orders":2,"revenue":752.98},"2026-03-22":{"orders":5,"revenue":3298.7},"2026-03-23":{"orders":4,"revenue":2277.97},"2026-03-24":{"orders":2,"revenue":2519.92},"2026-03-25":{"orders":4,"revenue":2084.11},"2026-03-26":{"orders":6,"revenue":5459.55},"2026-03-27":{"orders":4,"revenue":2675.77},"2026-03-28":{"orders":2,"revenue":986.88},"2026-03-29":{"orders":8,"revenue":4934.88},"2026-03-30":{"orders":8,"revenue":5213.31}},"top_products":[{"title":"DELFRAN - Pcositol - 30 Sachets","qty":6,"revenue":3707.34},{"title":"DELFRAN - Naleo Spectrum - 30 x 5g Scoops","qty":5,"revenue":2925.0},{"title":"STEPHANIE FILTERS - Ceramic Gravity Filter 4L","qty":1,"revenue":2784.86},{"title":"NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules","qty":3,"revenue":2629.56},{"title":"HEEL - Lymphomyosot N Oral Drops - 30ml","qty":6,"revenue":1767.9},{"title":"EARTH HARMONY - Methylene Blue - 59.2ml","qty":1,"revenue":1498.49},{"title":"NATURE'S NUTRITION - Active Greens+  - 420g (30\u00c3\u201414g Sachets)","qty":2,"revenue":1478.52},{"title":"PMR NUTRITION - 5 HTP Plus - 60 Capsules","qty":4,"revenue":1398.8},{"title":"BARE - Level Up Watermelon Candy - 200g","qty":4,"revenue":1340.48},{"title":"DELFRAN - Pcositol Orange & Lime - 30 Sachets","qty":2,"revenue":1235.78},{"title":"ALTWELL - C19 Plus Immune Booster - 360g","qty":2,"revenue":1198.0},{"title":"TIBB HEALTH - Septogard - 500 Tablets","qty":1,"revenue":1084.22},{"title":"DELFRAN - Family Starter Pack","qty":1,"revenue":995.0},{"title":"FUTUREHEALTH - Cholesterol Assist \u2013 60 Capsules","qty":2,"revenue":903.9},{"title":"GOOD LIFE WELLNES - Glycine - 250G","qty":6,"revenue":873.72},{"title":"FORTIFOOD - Magnesium Orotate - 120 Capsules","qty":3,"revenue":863.25},{"title":"THERON'S COMFREY - Theron\u00e2\u20ac\u2122s Comfrey Wonder Tea - 30 Teabags","qty":8,"revenue":859.04},{"title":"BIODOSA - Coloperm Powder - 400g","qty":2,"revenue":840.0},{"title":"SILVER GENESIS - Super Hydro Gel - 200ml","qty":5,"revenue":805.0},{"title":"NATTREND - Ceylon Cinnamon 200g","qty":4,"revenue":773.96}]},"categories":[{"name":"Vitamins & Minerals","skus":3282,"available":16909.0,"stock_value_cost":2436965.95,"stock_value_sell":4461361.78,"avg_margin_pct":37.1},{"name":"Food & Snacks","skus":1197,"available":7241.0,"stock_value_cost":387808.06,"stock_value_sell":654791.35,"avg_margin_pct":30.7},{"name":"Body Care","skus":929,"available":2990.0,"stock_value_cost":338254.27,"stock_value_sell":626037.62,"avg_margin_pct":36.9},{"name":"Additional Choices","skus":56,"available":465.0,"stock_value_cost":53103.79,"stock_value_sell":95003.41,"avg_margin_pct":31.7},{"name":"Accessories","skus":83,"available":377.0,"stock_value_cost":41566.63,"stock_value_sell":71098.85,"avg_margin_pct":32.4},{"name":"Sport Products","skus":56,"available":221.0,"stock_value_cost":34335.19,"stock_value_sell":60043.79,"avg_margin_pct":32.3},{"name":"Other","skus":29,"available":177.0,"stock_value_cost":10019.66,"stock_value_sell":17476.98,"avg_margin_pct":36.7},{"name":"Hydration Station","skus":39,"available":253.0,"stock_value_cost":9974.1,"stock_value_sell":17080.33,"avg_margin_pct":32.8},{"name":"Tramazinni and Toasted Sandw","skus":7,"available":29.0,"stock_value_cost":4302.94,"stock_value_sell":7630.56,"avg_margin_pct":34.8},{"name":"Gifts","skus":4,"available":7.0,"stock_value_cost":1017.88,"stock_value_sell":1400.0,"avg_margin_pct":12.1},{"name":"Books","skus":3,"available":4.0,"stock_value_cost":871.93,"stock_value_sell":1161.72,"avg_margin_pct":25.3},{"name":"Take Away","skus":1,"available":2.0,"stock_value_cost":236.0,"stock_value_sell":393.52,"avg_margin_pct":31.0}],"products":{"top_50_by_cost_value":[{"sku":"9345616000893","name":"BLK SEED OIL120C","category":"Vitamins & Minerals","group":"Health Shop","available":77.0,"cost_price":289.13,"sell_price_excl":433.91,"sell_price_incl":499.0,"margin_pct":33.4,"stock_value_cost":22263.01,"stock_value_sell":38423.0,"reorder_qty":0.0},{"sku":"6005904132783","name":"DNA 3HP SPR BLENDER","category":"Additional Choices","group":"Health Shop","available":6.0,"cost_price":2950.0,"sell_price_excl":4260.86,"sell_price_incl":4899.99,"margin_pct":30.8,"stock_value_cost":17700.0,"stock_value_sell":29399.94,"reorder_qty":0.0},{"sku":"6005904433613","name":"DNA COLD FLOW JUICER","category":"Additional Choices","group":"Health Shop","available":4.0,"cost_price":3050.0,"sell_price_excl":4346.96,"sell_price_incl":4999.0,"margin_pct":29.8,"stock_value_cost":12200.0,"stock_value_sell":19996.0,"reorder_qty":0.0},{"sku":"6000001213541","name":"QASSAY PRO DUEL RAPID TEST READER","category":"Body Care","group":"Health Shop","available":5.0,"cost_price":2250.0,"sell_price_excl":3912.17,"sell_price_incl":4499.0,"margin_pct":42.5,"stock_value_cost":11250.0,"stock_value_sell":22495.0,"reorder_qty":0.0},{"sku":"658325088694","name":"MAG 7/87 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":86.0,"cost_price":119.35,"sell_price_excl":190.96,"sell_price_incl":219.6,"margin_pct":37.5,"stock_value_cost":10264.1,"stock_value_sell":18885.6,"reorder_qty":0.0},{"sku":"6009801022543","name":"PCOSITOL 8g ORANGE 30 SACH","category":"Vitamins & Minerals","group":"Health Shop","available":30.0,"cost_price":339.66,"sell_price_excl":560.87,"sell_price_incl":645.0,"margin_pct":39.4,"stock_value_cost":10189.8,"stock_value_sell":19350.0,"reorder_qty":0.0},{"sku":"6009800716023","name":"1L GUT RAWBIOTICS","category":"Vitamins & Minerals","group":"Health Shop","available":55.0,"cost_price":184.28,"sell_price_excl":329.57,"sell_price_incl":379.0,"margin_pct":44.1,"stock_value_cost":10135.4,"stock_value_sell":20845.0,"reorder_qty":0.0},{"sku":"748927022803","name":"GLUTAMINE POWDER 500G","category":"Vitamins & Minerals","group":"Health Shop","available":36.0,"cost_price":200.0,"sell_price_excl":300.0,"sell_price_incl":345.0,"margin_pct":33.3,"stock_value_cost":7200.0,"stock_value_sell":12420.0,"reorder_qty":0.0},{"sku":"755571928993","name":"PHYTOMULTI + IRON 60T","category":"Vitamins & Minerals","group":"Health Shop","available":14.0,"cost_price":495.44,"sell_price_excl":778.26,"sell_price_incl":895.0,"margin_pct":36.3,"stock_value_cost":6936.16,"stock_value_sell":12530.0,"reorder_qty":0.0},{"sku":"6009880267651","name":"LIONS MANE EXT 180'S","category":"Vitamins & Minerals","group":"Health Shop","available":19.0,"cost_price":357.07,"sell_price_excl":685.57,"sell_price_incl":788.4,"margin_pct":47.9,"stock_value_cost":6784.33,"stock_value_sell":14979.6,"reorder_qty":0.0},{"sku":"737186435622","name":"ARTHRITIS ADV FRML 360G","category":"Vitamins & Minerals","group":"Health Shop","available":9.0,"cost_price":699.0,"sell_price_excl":999.13,"sell_price_incl":1149.0,"margin_pct":30.0,"stock_value_cost":6291.0,"stock_value_sell":10341.0,"reorder_qty":0.0},{"sku":"600000000019","name":"FLORISH SPORE PROBIOTIC 60C","category":"Vitamins & Minerals","group":"Health Shop","available":23.0,"cost_price":263.9,"sell_price_excl":382.66,"sell_price_incl":440.06,"margin_pct":31.0,"stock_value_cost":6069.7,"stock_value_sell":10121.38,"reorder_qty":20.0},{"sku":"6009544604914","name":"NERVE REGENERERATOR 100C","category":"Vitamins & Minerals","group":"Health Shop","available":21.0,"cost_price":286.96,"sell_price_excl":516.52,"sell_price_incl":594.0,"margin_pct":44.4,"stock_value_cost":6026.16,"stock_value_sell":12474.0,"reorder_qty":0.0},{"sku":"6009823060677","name":"NEBULISING LIQ & COLLOIS S 50ML","category":"Vitamins & Minerals","group":"Health Shop","available":8.0,"cost_price":737.92,"sell_price_excl":111.3,"sell_price_incl":127.99,"margin_pct":-563.0,"stock_value_cost":5903.36,"stock_value_sell":1023.92,"reorder_qty":0.0},{"sku":"755571929037","name":"PHYTOMULTI 60T","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":453.69,"sell_price_excl":778.26,"sell_price_incl":895.0,"margin_pct":41.7,"stock_value_cost":5897.97,"stock_value_sell":11635.0,"reorder_qty":0.0},{"sku":"0737186435646","name":"ARTHRITIS ADV FRML 180G","category":"Vitamins & Minerals","group":"Health Shop","available":16.0,"cost_price":363.0,"sell_price_excl":520.87,"sell_price_incl":599.0,"margin_pct":30.3,"stock_value_cost":5808.0,"stock_value_sell":9584.0,"reorder_qty":0.0},{"sku":"6009702596006","name":"GLW GOOD GUT 210G","category":"Vitamins & Minerals","group":"None","available":26.0,"cost_price":222.71,"sell_price_excl":334.06,"sell_price_incl":384.17,"margin_pct":33.3,"stock_value_cost":5790.46,"stock_value_sell":9988.42,"reorder_qty":0.0},{"sku":"6000000698836","name":"COENZYME Q10 60'S","category":"Food & Snacks","group":"Health Shop","available":30.0,"cost_price":190.0,"sell_price_excl":304.0,"sell_price_incl":349.6,"margin_pct":37.5,"stock_value_cost":5700.0,"stock_value_sell":10488.0,"reorder_qty":0.0},{"sku":"6009700920025","name":"HORMONE ASSIST 60's","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":418.0,"sell_price_excl":627.0,"sell_price_incl":721.05,"margin_pct":33.3,"stock_value_cost":5434.0,"stock_value_sell":9373.65,"reorder_qty":0.0},{"sku":"6000012357498","name":"30C PEARL POWDER","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":266.0,"sell_price_excl":359.1,"sell_price_incl":412.97,"margin_pct":25.9,"stock_value_cost":5320.0,"stock_value_sell":8259.4,"reorder_qty":0.0},{"sku":"6001390060883","name":"LENNON PEPPERMINT DROPS","category":"Vitamins & Minerals","group":"Health Shop","available":200.0,"cost_price":26.41,"sell_price_excl":36.96,"sell_price_incl":42.5,"margin_pct":28.5,"stock_value_cost":5282.0,"stock_value_sell":8500.0,"reorder_qty":0.0},{"sku":"6009888578100","name":"SAFFRON 30\"S","category":"Vitamins & Minerals","group":"Health Shop","available":31.0,"cost_price":169.0,"sell_price_excl":251.3,"sell_price_incl":289.0,"margin_pct":32.7,"stock_value_cost":5239.0,"stock_value_sell":8959.0,"reorder_qty":0.0},{"sku":"6009653890109","name":"HEART HEALTH 60 CAPS","category":"Vitamins & Minerals","group":"Health Shop","available":28.0,"cost_price":185.4,"sell_price_excl":329.57,"sell_price_incl":379.0,"margin_pct":43.7,"stock_value_cost":5191.2,"stock_value_sell":10612.0,"reorder_qty":0.0},{"sku":"659525818104","name":"COLLAGEN 400G BARE","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":395.04,"sell_price_excl":592.56,"sell_price_incl":681.44,"margin_pct":33.3,"stock_value_cost":5135.52,"stock_value_sell":8858.72,"reorder_qty":0.0},{"sku":"781159888663","name":"NA NEURO NIGHT 60s","category":"Vitamins & Minerals","group":"Health Shop","available":33.0,"cost_price":152.1,"sell_price_excl":260.0,"sell_price_incl":299.0,"margin_pct":41.5,"stock_value_cost":5019.3,"stock_value_sell":9867.0,"reorder_qty":0.0},{"sku":"6007930001088","name":"CRITICAL CARE 500ML","category":"Vitamins & Minerals","group":"Health Shop","available":12.0,"cost_price":414.0,"sell_price_excl":621.0,"sell_price_incl":714.15,"margin_pct":33.3,"stock_value_cost":4968.0,"stock_value_sell":8569.8,"reorder_qty":0.0},{"sku":"600000003391","name":"REFLEX BOARD","category":"Body Care","group":"Health Shop","available":16.0,"cost_price":300.0,"sell_price_excl":435.0,"sell_price_incl":500.25,"margin_pct":31.0,"stock_value_cost":4800.0,"stock_value_sell":8004.0,"reorder_qty":4.0},{"sku":"606110048286","name":"450G MOBILITY COLL","category":"Vitamins & Minerals","group":"Health Shop","available":17.0,"cost_price":278.58,"sell_price_excl":500.0,"sell_price_incl":575.0,"margin_pct":44.3,"stock_value_cost":4735.86,"stock_value_sell":9775.0,"reorder_qty":0.0},{"sku":"759649737197","name":"GUT CARE & REPAIR BARE 200G","category":"Vitamins & Minerals","group":"Health Shop","available":14.0,"cost_price":337.62,"sell_price_excl":520.87,"sell_price_incl":599.0,"margin_pct":35.2,"stock_value_cost":4726.68,"stock_value_sell":8386.0,"reorder_qty":0.0},{"sku":"6006882008237","name":"PRESSURE EEZE FORTE 60S","category":"Vitamins & Minerals","group":"Health Shop","available":28.0,"cost_price":167.35,"sell_price_excl":260.0,"sell_price_incl":299.0,"margin_pct":35.6,"stock_value_cost":4685.8,"stock_value_sell":8372.0,"reorder_qty":0.0},{"sku":"658325499643","name":"GUT SHIELD 650G","category":"Vitamins & Minerals","group":"Health Shop","available":8.0,"cost_price":576.49,"sell_price_excl":825.22,"sell_price_incl":949.0,"margin_pct":30.1,"stock_value_cost":4611.92,"stock_value_sell":7592.0,"reorder_qty":2.0},{"sku":"781159888670","name":"soon dc NA NEURO DAY PLUS 60s","category":"Vitamins & Minerals","group":"Health Shop","available":9.0,"cost_price":508.13,"sell_price_excl":762.19,"sell_price_incl":876.52,"margin_pct":33.3,"stock_value_cost":4573.17,"stock_value_sell":7888.68,"reorder_qty":0.0},{"sku":"6009687953511","name":"PRO PROBIOTIC 30 CAPS","category":"Vitamins & Minerals","group":"None","available":24.0,"cost_price":190.0,"sell_price_excl":283.1,"sell_price_incl":325.57,"margin_pct":32.9,"stock_value_cost":4560.0,"stock_value_sell":7813.68,"reorder_qty":4.0},{"sku":"700371611514","name":"B12 ENERGY PATCH","category":"Vitamins & Minerals","group":"Health Shop","available":35.0,"cost_price":128.71,"sell_price_excl":199.13,"sell_price_incl":229.0,"margin_pct":35.4,"stock_value_cost":4504.85,"stock_value_sell":8015.0,"reorder_qty":0.0},{"sku":"600000003399","name":"PRIME 1 900ML","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":225.0,"sell_price_excl":362.5,"sell_price_incl":416.88,"margin_pct":37.9,"stock_value_cost":4500.0,"stock_value_sell":8337.6,"reorder_qty":0.0},{"sku":"745853671266","name":"STRESS SHIELD 250G","category":"Vitamins & Minerals","group":"Health Shop","available":10.0,"cost_price":446.65,"sell_price_excl":651.3,"sell_price_incl":749.0,"margin_pct":31.4,"stock_value_cost":4466.5,"stock_value_sell":7490.0,"reorder_qty":0.0},{"sku":"726436704212","name":"NEURO BLUE 30C (METHYLENE BLUE)","category":"Vitamins & Minerals","group":"Health Shop","available":9.0,"cost_price":486.96,"sell_price_excl":730.44,"sell_price_incl":840.01,"margin_pct":33.3,"stock_value_cost":4382.64,"stock_value_sell":7560.09,"reorder_qty":0.0},{"sku":"737186082635","name":"NMN & TRANS RESVERATROL 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":4.0,"cost_price":1094.5,"sell_price_excl":1781.3,"sell_price_incl":2048.5,"margin_pct":38.6,"stock_value_cost":4378.0,"stock_value_sell":8194.0,"reorder_qty":1.0},{"sku":"6009677971334","name":"AKKERMANSIA 30T","category":"Vitamins & Minerals","group":"Health Shop","available":7.0,"cost_price":621.29,"sell_price_excl":1126.09,"sell_price_incl":1295.0,"margin_pct":44.8,"stock_value_cost":4349.03,"stock_value_sell":9065.0,"reorder_qty":0.0},{"sku":"850022113161","name":"METHYLENE BLUE 59.2ml","category":"Vitamins & Minerals","group":"Health Shop","available":5.0,"cost_price":868.7,"sell_price_excl":1303.05,"sell_price_incl":1498.51,"margin_pct":33.3,"stock_value_cost":4343.5,"stock_value_sell":7492.55,"reorder_qty":0.0},{"sku":"6009677971174","name":"OMEGA EPA DHA 720 120S","category":"Vitamins & Minerals","group":"Health Shop","available":8.0,"cost_price":542.5,"sell_price_excl":852.17,"sell_price_incl":980.0,"margin_pct":36.3,"stock_value_cost":4340.0,"stock_value_sell":7840.0,"reorder_qty":4.0},{"sku":"6009675201020","name":"GLUCO SCRIPT 90s","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":332.58,"sell_price_excl":500.0,"sell_price_incl":575.0,"margin_pct":33.5,"stock_value_cost":4323.54,"stock_value_sell":7475.0,"reorder_qty":0.0},{"sku":"755571953032","name":"OMEGA NEURO 1000 60SG","category":"Vitamins & Minerals","group":"Health Shop","available":6.0,"cost_price":716.64,"sell_price_excl":1039.13,"sell_price_incl":1195.0,"margin_pct":31.0,"stock_value_cost":4299.84,"stock_value_sell":7170.0,"reorder_qty":0.0},{"sku":"6009544622482","name":"OX BILE 130MG 60C","category":"Vitamins & Minerals","group":"Health Shop","available":17.0,"cost_price":251.3,"sell_price_excl":377.39,"sell_price_incl":434.0,"margin_pct":33.4,"stock_value_cost":4272.1,"stock_value_sell":7378.0,"reorder_qty":0.0},{"sku":"5070000619330","name":"NAD+500 30S","category":"Vitamins & Minerals","group":"Health Shop","available":7.0,"cost_price":608.69,"sell_price_excl":913.04,"sell_price_incl":1050.0,"margin_pct":33.3,"stock_value_cost":4260.83,"stock_value_sell":7350.0,"reorder_qty":0.0},{"sku":"781159984723","name":"NAKED PLUS COLL 338G","category":"Vitamins & Minerals","group":"Health Shop","available":18.0,"cost_price":235.72,"sell_price_excl":390.43,"sell_price_incl":449.0,"margin_pct":39.6,"stock_value_cost":4242.96,"stock_value_sell":8082.0,"reorder_qty":0.0},{"sku":"737186915353","name":"MARINE COLLAGEN+R 240G","category":"Vitamins & Minerals","group":"Health Shop","available":12.0,"cost_price":350.0,"sell_price_excl":520.87,"sell_price_incl":599.0,"margin_pct":32.8,"stock_value_cost":4200.0,"stock_value_sell":7188.0,"reorder_qty":0.0},{"sku":"6009888578117","name":"OMEGA 3 60\"S","category":"Vitamins & Minerals","group":"Health Shop","available":19.0,"cost_price":220.0,"sell_price_excl":327.83,"sell_price_incl":377.0,"margin_pct":32.9,"stock_value_cost":4180.0,"stock_value_sell":7163.0,"reorder_qty":0.0},{"sku":"6009888578315","name":"CREATINE 240G","category":"Vitamins & Minerals","group":"Health Shop","available":18.0,"cost_price":232.0,"sell_price_excl":346.96,"sell_price_incl":399.0,"margin_pct":33.1,"stock_value_cost":4176.0,"stock_value_sell":7182.0,"reorder_qty":0.0},{"sku":"6009803428176","name":"CALM FLOW 45S","category":"Vitamins & Minerals","group":"None","available":13.0,"cost_price":320.0,"sell_price_excl":513.04,"sell_price_incl":590.0,"margin_pct":37.6,"stock_value_cost":4160.0,"stock_value_sell":7670.0,"reorder_qty":0.0}],"stockout_risk":[{"sku":"6009679911727","name":"FIRE BOWL 200MM","category":"Additional Choices","group":"Health Shop","available":1.0,"cost_price":430.0,"sell_price_excl":5805.0,"sell_price_incl":6675.75,"margin_pct":92.6,"stock_value_cost":430.0,"stock_value_sell":6675.75,"reorder_qty":0.0},{"sku":"6005904433613","name":"DNA COLD FLOW JUICER","category":"Additional Choices","group":"Health Shop","available":4.0,"cost_price":3050.0,"sell_price_excl":4346.96,"sell_price_incl":4999.0,"margin_pct":29.8,"stock_value_cost":12200.0,"stock_value_sell":19996.0,"reorder_qty":0.0},{"sku":"6005904432630","name":"SLOW JUICER DNA","category":"Additional Choices","group":"Health Shop","available":1.0,"cost_price":2700.0,"sell_price_excl":3913.05,"sell_price_incl":4500.01,"margin_pct":31.0,"stock_value_cost":2700.0,"stock_value_sell":4500.01,"reorder_qty":0.0},{"sku":"6000001213541","name":"QASSAY PRO DUEL RAPID TEST READER","category":"Body Care","group":"Health Shop","available":5.0,"cost_price":2250.0,"sell_price_excl":3912.17,"sell_price_incl":4499.0,"margin_pct":42.5,"stock_value_cost":11250.0,"stock_value_sell":22495.0,"reorder_qty":0.0},{"sku":"737186082635","name":"NMN & TRANS RESVERATROL 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":4.0,"cost_price":1094.5,"sell_price_excl":1781.3,"sell_price_incl":2048.5,"margin_pct":38.6,"stock_value_cost":4378.0,"stock_value_sell":8194.0,"reorder_qty":1.0},{"sku":"659525836085","name":"LIFESPAN 60C","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":1045.0,"sell_price_excl":1643.48,"sell_price_incl":1890.0,"margin_pct":36.4,"stock_value_cost":2090.0,"stock_value_sell":3780.0,"reorder_qty":0.0},{"sku":"850061389091","name":"AKKERMANSIA 60C","category":"Vitamins & Minerals","group":"Health Shop","available":3.0,"cost_price":1042.6,"sell_price_excl":1564.34,"sell_price_incl":1798.99,"margin_pct":33.4,"stock_value_cost":3127.8,"stock_value_sell":5396.97,"reorder_qty":1.0},{"sku":"8851524902583","name":"NUVO C/TOP","category":"Accessories","group":"Health Shop","available":2.0,"cost_price":1035.0,"sell_price_excl":1502.59,"sell_price_incl":1727.98,"margin_pct":31.1,"stock_value_cost":2070.0,"stock_value_sell":3455.96,"reorder_qty":0.0},{"sku":"8851524905720","name":"DOUBLE C/TOP PURIFIER","category":"Accessories","group":"Health Shop","available":3.0,"cost_price":1035.0,"sell_price_excl":1502.57,"sell_price_incl":1727.96,"margin_pct":31.1,"stock_value_cost":3105.0,"stock_value_sell":5183.88,"reorder_qty":0.0},{"sku":"737186650315","name":"ETERNA VIT E 120's","category":"Vitamins & Minerals","group":"Health Shop","available":4.0,"cost_price":1036.25,"sell_price_excl":1502.57,"sell_price_incl":1727.95,"margin_pct":31.0,"stock_value_cost":4145.0,"stock_value_sell":6911.8,"reorder_qty":0.0},{"sku":"5070000619392","name":"UROLITHIN A 30S","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":913.04,"sell_price_excl":1368.64,"sell_price_incl":1573.94,"margin_pct":33.3,"stock_value_cost":1826.08,"stock_value_sell":3147.88,"reorder_qty":3.0},{"sku":"8851524805341","name":"PURE NUVO WATER FILTER MODEL","category":"Accessories","group":"Health Shop","available":1.0,"cost_price":931.5,"sell_price_excl":1350.68,"sell_price_incl":1553.28,"margin_pct":31.0,"stock_value_cost":931.5,"stock_value_sell":1553.28,"reorder_qty":0.0},{"sku":"6009702595528","name":"KA PERFOR MOCHA CARAML1KG","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":898.9,"sell_price_excl":1339.37,"sell_price_incl":1540.27,"margin_pct":32.9,"stock_value_cost":898.9,"stock_value_sell":1540.27,"reorder_qty":2.0},{"sku":"6009702595481","name":"KA PERFOR SLT CARAML11G/PS 1KG","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":898.8,"sell_price_excl":1339.21,"sell_price_incl":1540.09,"margin_pct":32.9,"stock_value_cost":898.8,"stock_value_sell":1540.09,"reorder_qty":2.0},{"sku":"6009554900594","name":"TRIAL SENSITIVE 30DAY","category":"Body Care","group":"Health Shop","available":1.0,"cost_price":743.96,"sell_price_excl":1339.13,"sell_price_incl":1540.0,"margin_pct":44.4,"stock_value_cost":743.96,"stock_value_sell":1540.0,"reorder_qty":0.0},{"sku":"850022113161","name":"METHYLENE BLUE 59.2ml","category":"Vitamins & Minerals","group":"Health Shop","available":5.0,"cost_price":868.7,"sell_price_excl":1303.05,"sell_price_incl":1498.51,"margin_pct":33.3,"stock_value_cost":4343.5,"stock_value_sell":7492.55,"reorder_qty":0.0},{"sku":"737186095864","name":"NA GROUNDING SLEEP MAT","category":"Accessories","group":"Health Shop","available":1.0,"cost_price":847.26,"sell_price_excl":1270.89,"sell_price_incl":1461.52,"margin_pct":33.3,"stock_value_cost":847.26,"stock_value_sell":1461.52,"reorder_qty":0.0},{"sku":"5070000619309","name":"NMN+1200 60S","category":"Vitamins & Minerals","group":"Health Shop","available":4.0,"cost_price":821.73,"sell_price_excl":1232.59,"sell_price_incl":1417.48,"margin_pct":33.3,"stock_value_cost":3286.92,"stock_value_sell":5669.92,"reorder_qty":2.0},{"sku":"5065013092126","name":"NMN+ ACT 500MG 60S","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":821.73,"sell_price_excl":1232.59,"sell_price_incl":1417.48,"margin_pct":33.3,"stock_value_cost":821.73,"stock_value_sell":1417.48,"reorder_qty":4.0},{"sku":"5070000619323","name":"NMN 1000mg 60VC","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":575.21,"sell_price_excl":1231.09,"sell_price_incl":1415.75,"margin_pct":53.3,"stock_value_cost":1150.42,"stock_value_sell":2831.5,"reorder_qty":2.0},{"sku":"6009704872580","name":"1KG UNR COC BTR","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":614.0,"sell_price_excl":1184.08,"sell_price_incl":1361.69,"margin_pct":48.1,"stock_value_cost":614.0,"stock_value_sell":1361.69,"reorder_qty":0.0},{"sku":"700083694096","name":"60C GLUTATHIONE 500","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":702.08,"sell_price_excl":1147.83,"sell_price_incl":1320.0,"margin_pct":38.8,"stock_value_cost":1404.16,"stock_value_sell":2640.0,"reorder_qty":0.0},{"sku":"745853295783","name":"ETERNITY EXTRA STR VP","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":788.26,"sell_price_excl":1142.97,"sell_price_incl":1314.42,"margin_pct":31.0,"stock_value_cost":788.26,"stock_value_sell":1314.42,"reorder_qty":0.0},{"sku":"659525320201","name":"NMN FISETIN 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":5.0,"cost_price":748.42,"sell_price_excl":1129.57,"sell_price_incl":1299.0,"margin_pct":33.7,"stock_value_cost":3742.1,"stock_value_sell":6495.0,"reorder_qty":0.0},{"sku":"4715139000215","name":"NEBULISER NA100","category":"Additional Choices","group":"Health Shop","available":1.0,"cost_price":748.99,"sell_price_excl":1124.8,"sell_price_incl":1293.52,"margin_pct":33.4,"stock_value_cost":748.99,"stock_value_sell":1293.52,"reorder_qty":0.0},{"sku":"8851524905713","name":"SINGLE C/TOP PURIFIER (3IN1)","category":"Accessories","group":"Health Shop","available":3.0,"cost_price":795.0,"sell_price_excl":1119.61,"sell_price_incl":1287.55,"margin_pct":29.0,"stock_value_cost":2385.0,"stock_value_sell":3862.65,"reorder_qty":0.0},{"sku":"733739023902","name":"MAGTEIN 90C","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":630.43,"sell_price_excl":1112.17,"sell_price_incl":1279.0,"margin_pct":43.3,"stock_value_cost":1260.86,"stock_value_sell":2558.0,"reorder_qty":0.0},{"sku":"6001651146882","name":"H/NUT RESTORE  1KG","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":693.0,"sell_price_excl":1108.8,"sell_price_incl":1275.12,"margin_pct":37.5,"stock_value_cost":1386.0,"stock_value_sell":2550.24,"reorder_qty":0.0},{"sku":"033984004399","name":"VM 2000 TABS 180","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":663.5,"sell_price_excl":1106.35,"sell_price_incl":1272.3,"margin_pct":40.0,"stock_value_cost":1327.0,"stock_value_sell":2544.6,"reorder_qty":0.0},{"sku":"6000000001254","name":"dc SAME PLUS 60C","category":"Vitamins & Minerals","group":"Health Shop","available":5.0,"cost_price":712.18,"sell_price_excl":1103.88,"sell_price_incl":1269.46,"margin_pct":35.5,"stock_value_cost":3560.9,"stock_value_sell":6347.3,"reorder_qty":1.0},{"sku":"6000000800154","name":"BONE SUPREME 500'S","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":680.0,"sell_price_excl":1088.0,"sell_price_incl":1251.2,"margin_pct":37.5,"stock_value_cost":1360.0,"stock_value_sell":2502.4,"reorder_qty":2.0},{"sku":"6009703197981","name":"RESURRECT  SERUM 30ML","category":"Body Care","group":"Health Shop","available":3.0,"cost_price":603.86,"sell_price_excl":1086.96,"sell_price_incl":1250.0,"margin_pct":44.4,"stock_value_cost":1811.58,"stock_value_sell":3750.0,"reorder_qty":0.0},{"sku":"6009544615996","name":"WHEATGRASS BARLEY GRASS 300G","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":724.35,"sell_price_excl":1086.96,"sell_price_incl":1250.0,"margin_pct":33.4,"stock_value_cost":724.35,"stock_value_sell":1250.0,"reorder_qty":0.0},{"sku":"6001651246650","name":"SPREZZ WEIGHTLOSS 120C","category":"Vitamins & Minerals","group":"Health Shop","available":4.0,"cost_price":700.7,"sell_price_excl":1086.09,"sell_price_incl":1249.0,"margin_pct":35.5,"stock_value_cost":2802.8,"stock_value_sell":4996.0,"reorder_qty":0.0},{"sku":"707273523488","name":"LUCENT 90C","category":"Body Care","group":"Health Shop","available":3.0,"cost_price":379.13,"sell_price_excl":1083.48,"sell_price_incl":1246.0,"margin_pct":65.0,"stock_value_cost":1137.39,"stock_value_sell":3738.0,"reorder_qty":0.0},{"sku":"6000000674885","name":"Vax fix 4","category":"Food & Snacks","group":"Health Shop","available":2.0,"cost_price":691.3,"sell_price_excl":1071.51,"sell_price_incl":1232.24,"margin_pct":35.5,"stock_value_cost":1382.6,"stock_value_sell":2464.48,"reorder_qty":0.0},{"sku":"755571935588","name":"OMEGA MEGA 10 60S","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":734.63,"sell_price_excl":1065.22,"sell_price_incl":1225.0,"margin_pct":31.0,"stock_value_cost":734.63,"stock_value_sell":1225.0,"reorder_qty":0.0},{"sku":"6009544609247","name":"CDP CHOLINE 60C","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":606.09,"sell_price_excl":1049.57,"sell_price_incl":1207.0,"margin_pct":42.3,"stock_value_cost":606.09,"stock_value_sell":1207.0,"reorder_qty":0.0},{"sku":"600000002004","name":"200ML BIO IONIC MINERAL CONC 200ML","category":"Vitamins & Minerals","group":"Health Shop","available":1.0,"cost_price":654.13,"sell_price_excl":1039.13,"sell_price_incl":1195.0,"margin_pct":37.1,"stock_value_cost":654.13,"stock_value_sell":1195.0,"reorder_qty":0.0}],"dead_stock":[{"sku":"9345616000893","name":"BLK SEED OIL120C","category":"Vitamins & Minerals","group":"Health Shop","available":77.0,"cost_price":289.13,"sell_price_excl":433.91,"sell_price_incl":499.0,"margin_pct":33.4,"stock_value_cost":22263.01,"stock_value_sell":38423.0,"reorder_qty":0.0},{"sku":"658325088694","name":"MAG 7/87 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":86.0,"cost_price":119.35,"sell_price_excl":190.96,"sell_price_incl":219.6,"margin_pct":37.5,"stock_value_cost":10264.1,"stock_value_sell":18885.6,"reorder_qty":0.0},{"sku":"6009801022543","name":"PCOSITOL 8g ORANGE 30 SACH","category":"Vitamins & Minerals","group":"Health Shop","available":30.0,"cost_price":339.66,"sell_price_excl":560.87,"sell_price_incl":645.0,"margin_pct":39.4,"stock_value_cost":10189.8,"stock_value_sell":19350.0,"reorder_qty":0.0},{"sku":"6009800716023","name":"1L GUT RAWBIOTICS","category":"Vitamins & Minerals","group":"Health Shop","available":55.0,"cost_price":184.28,"sell_price_excl":329.57,"sell_price_incl":379.0,"margin_pct":44.1,"stock_value_cost":10135.4,"stock_value_sell":20845.0,"reorder_qty":0.0},{"sku":"748927022803","name":"GLUTAMINE POWDER 500G","category":"Vitamins & Minerals","group":"Health Shop","available":36.0,"cost_price":200.0,"sell_price_excl":300.0,"sell_price_incl":345.0,"margin_pct":33.3,"stock_value_cost":7200.0,"stock_value_sell":12420.0,"reorder_qty":0.0},{"sku":"600000000019","name":"FLORISH SPORE PROBIOTIC 60C","category":"Vitamins & Minerals","group":"Health Shop","available":23.0,"cost_price":263.9,"sell_price_excl":382.66,"sell_price_incl":440.06,"margin_pct":31.0,"stock_value_cost":6069.7,"stock_value_sell":10121.38,"reorder_qty":20.0},{"sku":"6009544604914","name":"NERVE REGENERERATOR 100C","category":"Vitamins & Minerals","group":"Health Shop","available":21.0,"cost_price":286.96,"sell_price_excl":516.52,"sell_price_incl":594.0,"margin_pct":44.4,"stock_value_cost":6026.16,"stock_value_sell":12474.0,"reorder_qty":0.0},{"sku":"6009702596006","name":"GLW GOOD GUT 210G","category":"Vitamins & Minerals","group":"None","available":26.0,"cost_price":222.71,"sell_price_excl":334.06,"sell_price_incl":384.17,"margin_pct":33.3,"stock_value_cost":5790.46,"stock_value_sell":9988.42,"reorder_qty":0.0},{"sku":"6000000698836","name":"COENZYME Q10 60'S","category":"Food & Snacks","group":"Health Shop","available":30.0,"cost_price":190.0,"sell_price_excl":304.0,"sell_price_incl":349.6,"margin_pct":37.5,"stock_value_cost":5700.0,"stock_value_sell":10488.0,"reorder_qty":0.0},{"sku":"6000012357498","name":"30C PEARL POWDER","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":266.0,"sell_price_excl":359.1,"sell_price_incl":412.97,"margin_pct":25.9,"stock_value_cost":5320.0,"stock_value_sell":8259.4,"reorder_qty":0.0},{"sku":"6001390060883","name":"LENNON PEPPERMINT DROPS","category":"Vitamins & Minerals","group":"Health Shop","available":200.0,"cost_price":26.41,"sell_price_excl":36.96,"sell_price_incl":42.5,"margin_pct":28.5,"stock_value_cost":5282.0,"stock_value_sell":8500.0,"reorder_qty":0.0},{"sku":"6009888578100","name":"SAFFRON 30\"S","category":"Vitamins & Minerals","group":"Health Shop","available":31.0,"cost_price":169.0,"sell_price_excl":251.3,"sell_price_incl":289.0,"margin_pct":32.7,"stock_value_cost":5239.0,"stock_value_sell":8959.0,"reorder_qty":0.0},{"sku":"6009653890109","name":"HEART HEALTH 60 CAPS","category":"Vitamins & Minerals","group":"Health Shop","available":28.0,"cost_price":185.4,"sell_price_excl":329.57,"sell_price_incl":379.0,"margin_pct":43.7,"stock_value_cost":5191.2,"stock_value_sell":10612.0,"reorder_qty":0.0},{"sku":"781159888663","name":"NA NEURO NIGHT 60s","category":"Vitamins & Minerals","group":"Health Shop","available":33.0,"cost_price":152.1,"sell_price_excl":260.0,"sell_price_incl":299.0,"margin_pct":41.5,"stock_value_cost":5019.3,"stock_value_sell":9867.0,"reorder_qty":0.0},{"sku":"6006882008237","name":"PRESSURE EEZE FORTE 60S","category":"Vitamins & Minerals","group":"Health Shop","available":28.0,"cost_price":167.35,"sell_price_excl":260.0,"sell_price_incl":299.0,"margin_pct":35.6,"stock_value_cost":4685.8,"stock_value_sell":8372.0,"reorder_qty":0.0},{"sku":"6009687953511","name":"PRO PROBIOTIC 30 CAPS","category":"Vitamins & Minerals","group":"None","available":24.0,"cost_price":190.0,"sell_price_excl":283.1,"sell_price_incl":325.57,"margin_pct":32.9,"stock_value_cost":4560.0,"stock_value_sell":7813.68,"reorder_qty":4.0},{"sku":"700371611514","name":"B12 ENERGY PATCH","category":"Vitamins & Minerals","group":"Health Shop","available":35.0,"cost_price":128.71,"sell_price_excl":199.13,"sell_price_incl":229.0,"margin_pct":35.4,"stock_value_cost":4504.85,"stock_value_sell":8015.0,"reorder_qty":0.0},{"sku":"600000003399","name":"PRIME 1 900ML","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":225.0,"sell_price_excl":362.5,"sell_price_incl":416.88,"margin_pct":37.9,"stock_value_cost":4500.0,"stock_value_sell":8337.6,"reorder_qty":0.0},{"sku":"6009888578117","name":"OMEGA 3 60\"S","category":"Vitamins & Minerals","group":"Health Shop","available":19.0,"cost_price":220.0,"sell_price_excl":327.83,"sell_price_incl":377.0,"margin_pct":32.9,"stock_value_cost":4180.0,"stock_value_sell":7163.0,"reorder_qty":0.0},{"sku":"6009888578315","name":"CREATINE 240G","category":"Vitamins & Minerals","group":"Health Shop","available":18.0,"cost_price":232.0,"sell_price_excl":346.96,"sell_price_incl":399.0,"margin_pct":33.1,"stock_value_cost":4176.0,"stock_value_sell":7182.0,"reorder_qty":0.0},{"sku":"6001390060883","name":"LENNON PEPPERMINT DROPS","category":"Vitamins & Minerals","group":"Health Shop","available":200.0,"cost_price":26.41,"sell_price_excl":36.96,"sell_price_incl":42.5,"margin_pct":28.5,"stock_value_cost":5282.0,"stock_value_sell":8500.0,"reorder_qty":0.0},{"sku":"658325088687","name":"SOFT IRON 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":32.0,"cost_price":127.53,"sell_price_excl":204.05,"sell_price_incl":234.66,"margin_pct":37.5,"stock_value_cost":4080.96,"stock_value_sell":7509.12,"reorder_qty":0.0},{"sku":"745853295745","name":"ELECTROCHARGE BOX 25 SACHS","category":"Vitamins & Minerals","group":"Health Shop","available":22.0,"cost_price":172.39,"sell_price_excl":265.22,"sell_price_incl":305.0,"margin_pct":35.0,"stock_value_cost":3792.58,"stock_value_sell":6710.0,"reorder_qty":0.0},{"sku":"6000000644116","name":"SG SUPER HYDRO GEL 200ML","category":"Vitamins & Minerals","group":"Health Shop","available":43.0,"cost_price":87.5,"sell_price_excl":140.0,"sell_price_incl":161.0,"margin_pct":37.5,"stock_value_cost":3762.5,"stock_value_sell":6923.0,"reorder_qty":0.0},{"sku":"6009687953498","name":"MEGA OMEGA SUPREME CAPS 60S","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":180.0,"sell_price_excl":270.01,"sell_price_incl":310.51,"margin_pct":33.3,"stock_value_cost":3600.0,"stock_value_sell":6210.2,"reorder_qty":0.0},{"sku":"6009691544842","name":"MAGN GLYC 120C","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":179.13,"sell_price_excl":313.91,"sell_price_incl":361.0,"margin_pct":42.9,"stock_value_cost":3582.6,"stock_value_sell":7220.0,"reorder_qty":0.0},{"sku":"6009689721224","name":"QUERCETIN COMPLEX 60S","category":"Vitamins & Minerals","group":"Health Shop","available":22.0,"cost_price":155.0,"sell_price_excl":248.0,"sell_price_incl":285.2,"margin_pct":37.5,"stock_value_cost":3410.0,"stock_value_sell":6274.4,"reorder_qty":0.0},{"sku":"6000000820381","name":"D RIBOSE 150G","category":"Sport Products","group":"Health Shop","available":21.0,"cost_price":162.0,"sell_price_excl":267.3,"sell_price_incl":307.4,"margin_pct":39.4,"stock_value_cost":3402.0,"stock_value_sell":6455.4,"reorder_qty":0.0},{"sku":"6009800366464","name":"KILL A GERM 60s","category":"Vitamins & Minerals","group":"Health Shop","available":27.0,"cost_price":123.92,"sell_price_excl":198.26,"sell_price_incl":228.0,"margin_pct":37.5,"stock_value_cost":3345.84,"stock_value_sell":6156.0,"reorder_qty":0.0},{"sku":"6000000824709","name":"IMMUNE PLUS 120'S","category":"Vitamins & Minerals","group":"Health Shop","available":25.0,"cost_price":122.74,"sell_price_excl":195.65,"sell_price_incl":225.0,"margin_pct":37.3,"stock_value_cost":3068.5,"stock_value_sell":5625.0,"reorder_qty":0.0},{"sku":"6009880267385","name":"LIONS MANE EXT 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":152.53,"sell_price_excl":292.86,"sell_price_incl":336.79,"margin_pct":47.9,"stock_value_cost":3050.6,"stock_value_sell":6735.8,"reorder_qty":25.0},{"sku":"6000000024444","name":"G PLUS CAPSULES","category":"Vitamins & Minerals","group":"None","available":28.0,"cost_price":95.0,"sell_price_excl":147.19,"sell_price_incl":169.27,"margin_pct":35.5,"stock_value_cost":2660.0,"stock_value_sell":4739.56,"reorder_qty":0.0},{"sku":"6000000661106","name":"JOINT RELIEF 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":34.0,"cost_price":78.0,"sell_price_excl":124.8,"sell_price_incl":143.52,"margin_pct":37.5,"stock_value_cost":2652.0,"stock_value_sell":4879.68,"reorder_qty":0.0},{"sku":"600000072546","name":"L LYSINE 150G","category":"Vitamins & Minerals","group":"Health Shop","available":31.0,"cost_price":85.0,"sell_price_excl":136.0,"sell_price_incl":156.4,"margin_pct":37.5,"stock_value_cost":2635.0,"stock_value_sell":4848.4,"reorder_qty":0.0},{"sku":"6009692950161","name":"AFRI CRANBERRY C 500ML","category":"Vitamins & Minerals","group":"Health Shop","available":29.0,"cost_price":90.0,"sell_price_excl":135.85,"sell_price_incl":156.23,"margin_pct":33.8,"stock_value_cost":2610.0,"stock_value_sell":4530.67,"reorder_qty":0.0},{"sku":"6000000002800","name":"ASTRAGALUS 60s","category":"Vitamins & Minerals","group":"Health Shop","available":32.0,"cost_price":80.0,"sell_price_excl":142.61,"sell_price_incl":164.0,"margin_pct":43.9,"stock_value_cost":2560.0,"stock_value_sell":5248.0,"reorder_qty":0.0},{"sku":"6000000698928","name":"2 EARCANDLES + 1 EARPIECE","category":"Accessories","group":"None","available":111.0,"cost_price":23.0,"sell_price_excl":42.56,"sell_price_incl":48.94,"margin_pct":46.0,"stock_value_cost":2553.0,"stock_value_sell":5432.34,"reorder_qty":0.0},{"sku":"6186000497263","name":"CACAO 200G","category":"Food & Snacks","group":"Health Shop","available":25.0,"cost_price":100.0,"sell_price_excl":140.0,"sell_price_incl":161.0,"margin_pct":28.6,"stock_value_cost":2500.0,"stock_value_sell":4025.0,"reorder_qty":15.0},{"sku":"08904184504564","name":"WELTEK NURO 3\u00d710C","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":125.0,"sell_price_excl":208.69,"sell_price_incl":239.99,"margin_pct":40.1,"stock_value_cost":2500.0,"stock_value_sell":4799.8,"reorder_qty":0.0},{"sku":"6999000456730","name":"WORMWOOD 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":36.0,"cost_price":69.0,"sell_price_excl":115.65,"sell_price_incl":133.0,"margin_pct":40.3,"stock_value_cost":2484.0,"stock_value_sell":4788.0,"reorder_qty":0.0},{"sku":"6009880634040","name":"BLACK CUMIN OIL 250ML","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":114.8,"sell_price_excl":166.45,"sell_price_incl":191.42,"margin_pct":31.0,"stock_value_cost":2296.0,"stock_value_sell":3828.4,"reorder_qty":0.0},{"sku":"6009900534060","name":"FULVICACT UTC FIZZY","category":"Vitamins & Minerals","group":"Health Shop","available":26.0,"cost_price":88.0,"sell_price_excl":136.4,"sell_price_incl":156.86,"margin_pct":35.5,"stock_value_cost":2288.0,"stock_value_sell":4078.36,"reorder_qty":0.0},{"sku":"600000002981","name":"BRD BANTING","category":"Food & Snacks","group":"Health Shop","available":36.0,"cost_price":63.0,"sell_price_excl":85.05,"sell_price_incl":97.81,"margin_pct":25.9,"stock_value_cost":2268.0,"stock_value_sell":3521.16,"reorder_qty":5.0},{"sku":"6009660077326","name":"RAW HONEY 500G","category":"Food & Snacks","group":"Health Shop","available":35.0,"cost_price":60.0,"sell_price_excl":81.1,"sell_price_incl":93.27,"margin_pct":26.0,"stock_value_cost":2100.0,"stock_value_sell":3264.45,"reorder_qty":0.0},{"sku":"0781718528801","name":"PLUSH HAND SANITIZER 100ML","category":"Vitamins & Minerals","group":"Health Shop","available":30.0,"cost_price":70.0,"sell_price_excl":105.0,"sell_price_incl":120.75,"margin_pct":33.3,"stock_value_cost":2100.0,"stock_value_sell":3622.5,"reorder_qty":0.0},{"sku":"658325088670","name":"UTI ADVANCED 30'S","category":"Vitamins & Minerals","group":"Health Shop","available":21.0,"cost_price":99.36,"sell_price_excl":158.97,"sell_price_incl":182.82,"margin_pct":37.5,"stock_value_cost":2086.56,"stock_value_sell":3839.22,"reorder_qty":0.0},{"sku":"6000000769536","name":"BACOPA 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":32.0,"cost_price":65.0,"sell_price_excl":115.65,"sell_price_incl":133.0,"margin_pct":43.8,"stock_value_cost":2080.0,"stock_value_sell":4256.0,"reorder_qty":0.0},{"sku":"6000000696498","name":"ANGUS CASTUS 60s","category":"Vitamins & Minerals","group":"Health Shop","available":22.0,"cost_price":92.0,"sell_price_excl":156.52,"sell_price_incl":180.0,"margin_pct":41.2,"stock_value_cost":2024.0,"stock_value_sell":3960.0,"reorder_qty":0.0},{"sku":"600000014181","name":"BRD WHITE RICE","category":"Food & Snacks","group":"Health Shop","available":35.0,"cost_price":57.0,"sell_price_excl":71.35,"sell_price_incl":82.05,"margin_pct":20.1,"stock_value_cost":1995.0,"stock_value_sell":2871.75,"reorder_qty":151.0},{"sku":"8901138506513","name":"MENOSAN 2x30s","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":99.53,"sell_price_excl":149.3,"sell_price_incl":171.69,"margin_pct":33.3,"stock_value_cost":1990.6,"stock_value_sell":3433.8,"reorder_qty":0.0},{"sku":"6009709090231","name":"BLUEBERRY 1KG","category":"Food & Snacks","group":"Health Shop","available":33.0,"cost_price":60.0,"sell_price_excl":81.6,"sell_price_incl":93.84,"margin_pct":26.5,"stock_value_cost":1980.0,"stock_value_sell":3096.72,"reorder_qty":0.0},{"sku":"6009801457741","name":"NATRITIOUS DRINK 300G","category":"Vitamins & Minerals","group":"Health Shop","available":22.0,"cost_price":88.7,"sell_price_excl":133.04,"sell_price_incl":153.0,"margin_pct":33.3,"stock_value_cost":1951.4,"stock_value_sell":3366.0,"reorder_qty":0.0}],"high_margin_in_stock":[{"sku":"6009800716023","name":"1L GUT RAWBIOTICS","category":"Vitamins & Minerals","group":"Health Shop","available":55.0,"cost_price":184.28,"sell_price_excl":329.57,"sell_price_incl":379.0,"margin_pct":44.1,"stock_value_cost":10135.4,"stock_value_sell":20845.0,"reorder_qty":0.0},{"sku":"6009880267651","name":"LIONS MANE EXT 180'S","category":"Vitamins & Minerals","group":"Health Shop","available":19.0,"cost_price":357.07,"sell_price_excl":685.57,"sell_price_incl":788.4,"margin_pct":47.9,"stock_value_cost":6784.33,"stock_value_sell":14979.6,"reorder_qty":0.0},{"sku":"6009544604914","name":"NERVE REGENERERATOR 100C","category":"Vitamins & Minerals","group":"Health Shop","available":21.0,"cost_price":286.96,"sell_price_excl":516.52,"sell_price_incl":594.0,"margin_pct":44.4,"stock_value_cost":6026.16,"stock_value_sell":12474.0,"reorder_qty":0.0},{"sku":"755571929037","name":"PHYTOMULTI 60T","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":453.69,"sell_price_excl":778.26,"sell_price_incl":895.0,"margin_pct":41.7,"stock_value_cost":5897.97,"stock_value_sell":11635.0,"reorder_qty":0.0},{"sku":"6009653890109","name":"HEART HEALTH 60 CAPS","category":"Vitamins & Minerals","group":"Health Shop","available":28.0,"cost_price":185.4,"sell_price_excl":329.57,"sell_price_incl":379.0,"margin_pct":43.7,"stock_value_cost":5191.2,"stock_value_sell":10612.0,"reorder_qty":0.0},{"sku":"781159888663","name":"NA NEURO NIGHT 60s","category":"Vitamins & Minerals","group":"Health Shop","available":33.0,"cost_price":152.1,"sell_price_excl":260.0,"sell_price_incl":299.0,"margin_pct":41.5,"stock_value_cost":5019.3,"stock_value_sell":9867.0,"reorder_qty":0.0},{"sku":"606110048286","name":"450G MOBILITY COLL","category":"Vitamins & Minerals","group":"Health Shop","available":17.0,"cost_price":278.58,"sell_price_excl":500.0,"sell_price_incl":575.0,"margin_pct":44.3,"stock_value_cost":4735.86,"stock_value_sell":9775.0,"reorder_qty":0.0},{"sku":"737186435653","name":"MENOSUPPORT 180G","category":"Vitamins & Minerals","group":"Health Shop","available":19.0,"cost_price":210.46,"sell_price_excl":373.04,"sell_price_incl":429.0,"margin_pct":43.6,"stock_value_cost":3998.74,"stock_value_sell":8151.0,"reorder_qty":1.0},{"sku":"6009801022673","name":"NALEO SPECTRUM ORANGE","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":318.22,"sell_price_excl":530.43,"sell_price_incl":610.0,"margin_pct":40.0,"stock_value_cost":4136.86,"stock_value_sell":7930.0,"reorder_qty":0.0},{"sku":"659525835897","name":"60C NEOMAG","category":"Vitamins & Minerals","group":"Health Shop","available":16.0,"cost_price":236.36,"sell_price_excl":427.83,"sell_price_incl":492.0,"margin_pct":44.8,"stock_value_cost":3781.76,"stock_value_sell":7872.0,"reorder_qty":0.0},{"sku":"659525320119","name":"BETTERGUT 30 VEG CAPS","category":"Vitamins & Minerals","group":"Health Shop","available":18.0,"cost_price":210.91,"sell_price_excl":378.26,"sell_price_incl":435.0,"margin_pct":44.2,"stock_value_cost":3796.38,"stock_value_sell":7830.0,"reorder_qty":0.0},{"sku":"6009691544842","name":"MAGN GLYC 120C","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":179.13,"sell_price_excl":313.91,"sell_price_incl":361.0,"margin_pct":42.9,"stock_value_cost":3582.6,"stock_value_sell":7220.0,"reorder_qty":0.0},{"sku":"6009880073306","name":"LIP VIT C 60C","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":264.31,"sell_price_excl":475.65,"sell_price_incl":547.0,"margin_pct":44.4,"stock_value_cost":3436.03,"stock_value_sell":7111.0,"reorder_qty":0.0},{"sku":"6009880073320","name":"ADV BERBERINE 60C","category":"Vitamins & Minerals","group":"Health Shop","available":12.0,"cost_price":290.72,"sell_price_excl":508.7,"sell_price_incl":585.0,"margin_pct":42.9,"stock_value_cost":3488.64,"stock_value_sell":7020.0,"reorder_qty":0.0},{"sku":"602697376422","name":"30C SHILAJIT","category":"Vitamins & Minerals","group":"Health Shop","available":14.0,"cost_price":228.18,"sell_price_excl":421.74,"sell_price_incl":485.0,"margin_pct":45.9,"stock_value_cost":3194.52,"stock_value_sell":6790.0,"reorder_qty":0.0},{"sku":"6009880267385","name":"LIONS MANE EXT 60'S","category":"Vitamins & Minerals","group":"Health Shop","available":20.0,"cost_price":152.53,"sell_price_excl":292.86,"sell_price_incl":336.79,"margin_pct":47.9,"stock_value_cost":3050.6,"stock_value_sell":6735.8,"reorder_qty":25.0},{"sku":"6009544604280","name":"MACULAR SUPPORT 60C","category":"Vitamins & Minerals","group":"Health Shop","available":12.0,"cost_price":255.65,"sell_price_excl":483.48,"sell_price_incl":556.0,"margin_pct":47.1,"stock_value_cost":3067.8,"stock_value_sell":6672.0,"reorder_qty":0.0},{"sku":"6009803428053","name":"3PHASE LIVER 60S","category":"Vitamins & Minerals","group":"None","available":14.0,"cost_price":216.0,"sell_price_excl":388.8,"sell_price_incl":447.12,"margin_pct":44.4,"stock_value_cost":3024.0,"stock_value_sell":6259.68,"reorder_qty":0.0},{"sku":"659525998660","name":"KETO CREAMER SATCHETS 30'S","category":"Vitamins & Minerals","group":"Health Shop","available":14.0,"cost_price":228.4,"sell_price_excl":380.67,"sell_price_incl":437.77,"margin_pct":40.0,"stock_value_cost":3197.6,"stock_value_sell":6128.78,"reorder_qty":0.0},{"sku":"737186497002","name":"30C NEO MIND","category":"Vitamins & Minerals","group":"Health Shop","available":10.0,"cost_price":295.36,"sell_price_excl":520.87,"sell_price_incl":599.0,"margin_pct":43.3,"stock_value_cost":2953.6,"stock_value_sell":5990.0,"reorder_qty":0.0},{"sku":"762083213806","name":"SPIKE PROT CLEANSE 60VC","category":"Vitamins & Minerals","group":"Health Shop","available":15.0,"cost_price":201.43,"sell_price_excl":343.48,"sell_price_incl":395.0,"margin_pct":41.4,"stock_value_cost":3021.45,"stock_value_sell":5925.0,"reorder_qty":0.0},{"sku":"746747206960","name":"SHROOM ELIXER 30 SACH","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":228.4,"sell_price_excl":390.43,"sell_price_incl":449.0,"margin_pct":41.5,"stock_value_cost":2969.2,"stock_value_sell":5837.0,"reorder_qty":0.0},{"sku":"737186497156","name":"SEA MOSS 60C","category":"Vitamins & Minerals","group":"Health Shop","available":18.0,"cost_price":155.0,"sell_price_excl":268.7,"sell_price_incl":309.0,"margin_pct":42.3,"stock_value_cost":2790.0,"stock_value_sell":5562.0,"reorder_qty":0.0},{"sku":"737186096175","name":"MAGNESIUM COMPLEX 60VC","category":"Vitamins & Minerals","group":"Health Shop","available":11.0,"cost_price":253.84,"sell_price_excl":434.78,"sell_price_incl":500.0,"margin_pct":41.6,"stock_value_cost":2792.24,"stock_value_sell":5500.0,"reorder_qty":0.0},{"sku":"6000000033699","name":"CAYENNE 300'S","category":"Food & Snacks","group":"Health Shop","available":16.0,"cost_price":165.0,"sell_price_excl":297.39,"sell_price_incl":342.0,"margin_pct":44.5,"stock_value_cost":2640.0,"stock_value_sell":5472.0,"reorder_qty":0.0},{"sku":"606110048323","name":"360G CIRCULATION  SUPERB","category":"Vitamins & Minerals","group":"Health Shop","available":14.0,"cost_price":192.86,"sell_price_excl":339.13,"sell_price_incl":390.0,"margin_pct":43.1,"stock_value_cost":2700.04,"stock_value_sell":5460.0,"reorder_qty":0.0},{"sku":"6000000698928","name":"2 EARCANDLES + 1 EARPIECE","category":"Accessories","group":"None","available":111.0,"cost_price":23.0,"sell_price_excl":42.56,"sell_price_incl":48.94,"margin_pct":46.0,"stock_value_cost":2553.0,"stock_value_sell":5432.34,"reorder_qty":0.0},{"sku":"600000082009","name":"BUFFERED C 300'S","category":"Vitamins & Minerals","group":"Health Shop","available":11.0,"cost_price":207.0,"sell_price_excl":425.0,"sell_price_incl":488.75,"margin_pct":51.3,"stock_value_cost":2277.0,"stock_value_sell":5376.25,"reorder_qty":0.0},{"sku":"6000000002800","name":"ASTRAGALUS 60s","category":"Vitamins & Minerals","group":"Health Shop","available":32.0,"cost_price":80.0,"sell_price_excl":142.61,"sell_price_incl":164.0,"margin_pct":43.9,"stock_value_cost":2560.0,"stock_value_sell":5248.0,"reorder_qty":0.0},{"sku":"746747103719","name":"SHILAJIT 60VC","category":"Vitamins & Minerals","group":"Health Shop","available":13.0,"cost_price":202.97,"sell_price_excl":346.95,"sell_price_incl":398.99,"margin_pct":41.5,"stock_value_cost":2638.61,"stock_value_sell":5186.87,"reorder_qty":1.0}],"low_margin_warning":[{"sku":"7811593257862","name":"HT MULTI COLL POWDER 450G","category":"Vitamins & Minerals","group":"Health Shop","available":2.0,"cost_price":497.68,"sell_price_excl":621.25,"sell_price_incl":714.44,"margin_pct":19.9,"stock_value_cost":995.36,"stock_value_sell":1428.88,"reorder_qty":0.0},{"sku":"6009522201692","name":"STRESS AWAY 20'S","category":"Vitamins & Minerals","group":"Health Shop","available":12.0,"cost_price":79.45,"sell_price_excl":79.69,"sell_price_incl":91.64,"margin_pct":0.3,"stock_value_cost":953.4,"stock_value_sell":1099.68,"reorder_qty":0.0},{"sku":"9781570670268","name":"BPC NATURAL LUNCHBOX","category":"Books","group":"Health Shop","available":1.0,"cost_price":194.73,"sell_price_excl":235.63,"sell_price_incl":270.97,"margin_pct":17.4,"stock_value_cost":194.73,"stock_value_sell":270.97,"reorder_qty":0.0},{"sku":"746851514258","name":"Miracle","category":"Gifts","group":"None","available":1.0,"cost_price":169.53,"sell_price_excl":173.91,"sell_price_incl":200.0,"margin_pct":2.5,"stock_value_cost":169.53,"stock_value_sell":200.0,"reorder_qty":0.0},{"sku":"808412120510","name":"Mother","category":"Gifts","group":"None","available":1.0,"cost_price":169.53,"sell_price_excl":173.91,"sell_price_incl":200.0,"margin_pct":2.5,"stock_value_cost":169.53,"stock_value_sell":200.0,"reorder_qty":0.0},{"sku":"6009702590493","name":"ORG MAJORAM 16G","category":"Food & Snacks","group":"Health Shop","available":1.0,"cost_price":16.0,"sell_price_excl":17.78,"sell_price_incl":20.45,"margin_pct":10.0,"stock_value_cost":16.0,"stock_value_sell":20.45,"reorder_qty":1.0},{"sku":"6009823060677","name":"NEBULISING LIQ & COLLOIS S 50ML","category":"Vitamins & Minerals","group":"Health Shop","available":8.0,"cost_price":737.92,"sell_price_excl":111.3,"sell_price_incl":127.99,"margin_pct":-563.0,"stock_value_cost":5903.36,"stock_value_sell":1023.92,"reorder_qty":0.0}]},"online_top_products":[{"title":"DELFRAN - Pcositol - 30 Sachets","qty":6,"revenue":3707.34},{"title":"DELFRAN - Naleo Spectrum - 30 x 5g Scoops","qty":5,"revenue":2925.0},{"title":"STEPHANIE FILTERS - Ceramic Gravity Filter 4L","qty":1,"revenue":2784.86},{"title":"NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules","qty":3,"revenue":2629.56},{"title":"HEEL - Lymphomyosot N Oral Drops - 30ml","qty":6,"revenue":1767.9},{"title":"EARTH HARMONY - Methylene Blue - 59.2ml","qty":1,"revenue":1498.49},{"title":"NATURE'S NUTRITION - Active Greens+  - 420g (30\u00c3\u201414g Sachets)","qty":2,"revenue":1478.52},{"title":"PMR NUTRITION - 5 HTP Plus - 60 Capsules","qty":4,"revenue":1398.8},{"title":"BARE - Level Up Watermelon Candy - 200g","qty":4,"revenue":1340.48},{"title":"DELFRAN - Pcositol Orange & Lime - 30 Sachets","qty":2,"revenue":1235.78},{"title":"ALTWELL - C19 Plus Immune Booster - 360g","qty":2,"revenue":1198.0},{"title":"TIBB HEALTH - Septogard - 500 Tablets","qty":1,"revenue":1084.22},{"title":"DELFRAN - Family Starter Pack","qty":1,"revenue":995.0},{"title":"FUTUREHEALTH - Cholesterol Assist \u2013 60 Capsules","qty":2,"revenue":903.9},{"title":"GOOD LIFE WELLNES - Glycine - 250G","qty":6,"revenue":873.72},{"title":"FORTIFOOD - Magnesium Orotate - 120 Capsules","qty":3,"revenue":863.25},{"title":"THERON'S COMFREY - Theron\u00e2\u20ac\u2122s Comfrey Wonder Tea - 30 Teabags","qty":8,"revenue":859.04},{"title":"BIODOSA - Coloperm Powder - 400g","qty":2,"revenue":840.0},{"title":"SILVER GENESIS - Super Hydro Gel - 200ml","qty":5,"revenue":805.0},{"title":"NATTREND - Ceylon Cinnamon 200g","qty":4,"revenue":773.96}]};
+
+// ═══════════════════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════════════════
+const R = (n, dec=0) => {
+  if (n === null || n === undefined || isNaN(n)) return '—';
+  return 'R' + Number(n).toLocaleString('en-ZA', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+};
+const pct = (n, dec=1) => {
+  if (n === null || n === undefined || isNaN(n)) return '—';
+  return Number(n).toFixed(dec) + '%';
+};
+const num = (n) => Number(n).toLocaleString('en-ZA');
+
+function marginChip(m) {
+  if (m < 20) return `<span class="chip chip-red">▼ ${pct(m)}</span>`;
+  if (m <= 35) return `<span class="chip chip-amber">● ${pct(m)}</span>`;
+  return `<span class="chip chip-green">▲ ${pct(m)}</span>`;
+}
+function availChip(a) {
+  if (a <= 5) return `<span class="chip chip-red">⚠ ${num(a)}</span>`;
+  if (a <= 20) return `<span class="chip chip-amber">● ${num(a)}</span>`;
+  return `<span class="chip chip-green">✓ ${num(a)}</span>`;
+}
+
+// ═══════════════════════════════════════════════════
+// DATA PREP
+// ═══════════════════════════════════════════════════
+const D = DASHBOARD_DATA;
+const kpis = D.kpis;
+const stores = D.stores;
+const shopify = D.shopify;
+const categories = D.categories;
+const products = D.products;
+
+// Build 31-day date array
+function buildDates() {
+  const dates = [];
+  for (let d = 1; d <= 31; d++) {
+    dates.push(`2026-03-${String(d).padStart(2,'0')}`);
+  }
+  return dates;
+}
+const DATES = buildDates();
+const STORE_KEYS = ['centurion','glen_village','edenvale'];
+const STORE_LABELS = ['Centurion','Glen Village','Edenvale'];
+const STORE_COLORS = ['#6c63ff','#22c55e','#f59e0b'];
+
+// Calc avg basket across all stores
+const totalTxns = STORE_KEYS.reduce((s,k) => s + stores[k].transaction_count, 0);
+const avgBasket = kpis.store_sales_30d / totalTxns;
+
+// Combined product list (dedup by sku)
+function buildAllProducts() {
+  const map = new Map();
+  const lists = [
+    products.top_50_by_cost_value,
+    products.stockout_risk,
+    products.dead_stock,
+    products.high_margin_in_stock,
+    products.low_margin_warning
+  ];
+  for (const list of lists) {
+    for (const p of list) {
+      if (!map.has(p.sku)) map.set(p.sku, p);
+    }
+  }
+  return Array.from(map.values());
+}
+const allProducts = buildAllProducts();
+
+// ═══════════════════════════════════════════════════
+// TAB SWITCHING
+// ═══════════════════════════════════════════════════
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+    if (tab === 'overview' && !window._chartsTrend) renderCharts();
+    if (tab === 'categories' && !window._chartCats) renderCategoryChart();
+    if (tab === 'online' && !window._chartOnline) renderOnlineChart();
+  });
+});
+
+// ═══════════════════════════════════════════════════
+// OVERVIEW — KPI CARDS
+// ═══════════════════════════════════════════════════
+function renderOverviewKPIs() {
+  const el = document.getElementById('overview-kpis');
+  const kpiData = [
+    { label:'Store Revenue (30d)', value: R(kpis.store_sales_30d), sub: `${num(totalTxns)} transactions`, cls:'', color:'var(--accent)' },
+    { label:'Online Revenue (30d)', value: R(kpis.online_sales_30d), sub: `${kpis.online_orders_30d} orders`, cls:'positive', color:'var(--positive)' },
+    { label:'Combined Revenue', value: R(kpis.combined_revenue_30d), sub: 'Stores + Shopify', cls:'', color:'var(--accent)' },
+    { label:'Avg Basket (Stores)', value: R(avgBasket, 2), sub: `Centurion R${stores.centurion.avg_basket} · Glen R${stores.glen_village.avg_basket}`, cls:'positive', color:'var(--positive)' },
+    { label:'Avg Gross Margin', value: pct(kpis.avg_gross_margin_pct), sub: 'Blended across all SKUs', cls: kpis.avg_gross_margin_pct >= 30 ? 'positive' : 'warning', color: kpis.avg_gross_margin_pct >= 30 ? 'var(--positive)' : 'var(--warning)' },
+    { label:'Stock Value @ Cost', value: R(kpis.total_stock_value_cost), sub: `Sell value: ${R(kpis.total_stock_value_sell)}`, cls:'warning', color:'var(--warning)' },
+  ];
+  el.innerHTML = kpiData.map(k => `
+    <div class="kpi-card ${k.cls}" style="--accent-color:${k.color}">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value num">${k.value}</div>
+      <div class="kpi-sub">${k.sub}</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════
+// OVERVIEW — STORE CARDS
+// ═══════════════════════════════════════════════════
+function renderStoreCards() {
+  const maxSales = Math.max(...STORE_KEYS.map(k => stores[k].total_sales));
+  const el = document.getElementById('store-cards');
+  el.innerHTML = STORE_KEYS.map((key, i) => {
+    const s = stores[key];
+    const pct_share = (s.total_sales / kpis.store_sales_30d * 100).toFixed(1);
+    const bar_w = (s.total_sales / maxSales * 100).toFixed(1);
+    return `
+      <div class="store-card">
+        <div class="store-card-name">
+          <span class="dot" style="background:${STORE_COLORS[i]}"></span>
+          ${STORE_LABELS[i]}
+          <span style="margin-left:auto;font-size:11px;color:var(--text-muted);font-weight:400">${pct_share}% of store rev</span>
+        </div>
+        <div class="store-stat">
+          <span class="store-stat-label">Total Revenue</span>
+          <span class="store-stat-value num">${R(s.total_sales)}</span>
+        </div>
+        <div class="store-stat">
+          <span class="store-stat-label">Net Sales</span>
+          <span class="store-stat-value num">${R(s.net_sales)}</span>
+        </div>
+        <div class="store-stat">
+          <span class="store-stat-label">Transactions</span>
+          <span class="store-stat-value num">${num(s.transaction_count)}</span>
+        </div>
+        <div class="store-stat">
+          <span class="store-stat-label">Avg Basket</span>
+          <span class="store-stat-value num">${R(s.avg_basket, 2)}</span>
+        </div>
+        <div class="store-stat">
+          <span class="store-stat-label">Returns</span>
+          <span class="store-stat-value num" style="color:var(--danger)">${R(s.total_returns)}</span>
+        </div>
+        <div class="store-bar">
+          <div class="store-bar-fill" style="width:${bar_w}%;background:${STORE_COLORS[i]}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════
+// CHARTS
+// ═══════════════════════════════════════════════════
+Chart.defaults.color = '#64748b';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+Chart.defaults.font.family = "'Inter', sans-serif";
+
+function renderCharts() {
+  // Revenue Trend
+  const storeTotals = DATES.map(d =>
+    STORE_KEYS.reduce((s, k) => s + (stores[k].daily_sales[d] || 0), 0)
+  );
+  const onlineTotals = DATES.map(d => shopify.daily[d] ? shopify.daily[d].revenue : 0);
+  const dateLabels = DATES.map(d => d.slice(5).replace('-', '/'));
+
+  window._chartsTrend = new Chart(document.getElementById('chart-trend'), {
+    type: 'line',
+    data: {
+      labels: dateLabels,
+      datasets: [
+        {
+          label: 'Store Sales',
+          data: storeTotals,
+          borderColor: '#6c63ff',
+          backgroundColor: 'rgba(108,99,255,0.08)',
+          borderWidth: 2,
+          pointRadius: 3,
+          pointHoverRadius: 5,
+          fill: true,
+          tension: 0.3,
+        },
+        {
+          label: 'Online (Shopify)',
+          data: onlineTotals,
+          borderColor: '#22c55e',
+          backgroundColor: 'rgba(34,197,94,0.08)',
+          borderWidth: 2,
+          pointRadius: 3,
+          pointHoverRadius: 5,
+          fill: true,
+          tension: 0.3,
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.dataset.label}: R${Number(ctx.raw).toLocaleString('en-ZA', {minimumFractionDigits:0})}`
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { maxTicksLimit: 10, font: { size: 11 } } },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: {
+            callback: v => 'R' + (v >= 1000 ? (v/1000).toFixed(0)+'k' : v),
+            font: { size: 11 }
+          }
+        }
+      }
+    }
+  });
+
+  // Store Comparison
+  window._chartsStores = new Chart(document.getElementById('chart-stores'), {
+    type: 'bar',
+    data: {
+      labels: STORE_LABELS,
+      datasets: [
+        {
+          label: 'Total Revenue',
+          data: STORE_KEYS.map(k => stores[k].total_sales),
+          backgroundColor: STORE_COLORS.map(c => c + 'cc'),
+          borderColor: STORE_COLORS,
+          borderWidth: 1, borderRadius: 6,
+          yAxisID: 'yRev',
+        },
+        {
+          label: 'Avg Basket',
+          data: STORE_KEYS.map(k => stores[k].avg_basket),
+          backgroundColor: 'rgba(255,255,255,0.07)',
+          borderColor: 'rgba(255,255,255,0.3)',
+          borderWidth: 1, borderRadius: 4,
+          type: 'line',
+          yAxisID: 'yBasket',
+          pointRadius: 6, pointHoverRadius: 8,
+          tension: 0,
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              if (ctx.dataset.label === 'Avg Basket') return ` Avg Basket: R${ctx.raw}`;
+              return ` Revenue: R${Number(ctx.raw).toLocaleString('en-ZA')}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false } },
+        yRev: {
+          type: 'linear', position: 'left',
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { callback: v => 'R' + (v/1000).toFixed(0)+'k', font: { size: 11 } }
+        },
+        yBasket: {
+          type: 'linear', position: 'right',
+          grid: { drawOnChartArea: false },
+          ticks: { callback: v => 'R'+v, font: { size: 11 } }
+        }
+      }
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════
+// PRODUCTS TABLE
+// ═══════════════════════════════════════════════════
+let prodSortKey = 'stock_value_cost';
+let prodSortDir = -1;
+let prodQuery = '';
+
+function filterProducts() {
+  prodQuery = document.getElementById('prod-search').value.toLowerCase();
+  renderProductsTable();
+}
+
+function sortProducts(key) {
+  if (prodSortKey === key) { prodSortDir *= -1; }
+  else { prodSortKey = key; prodSortDir = key === 'name' || key === 'category' ? 1 : -1; }
+  document.querySelectorAll('#prod-table th').forEach(th => {
+    th.classList.remove('sorted-asc','sorted-desc');
+  });
+  const thIdx = ['name','category','available','sell_price_incl','cost_price','margin_pct','stock_value_cost','stock_value_sell'].indexOf(key);
+  if (thIdx >= 0) {
+    const ths = document.querySelectorAll('#prod-table th');
+    ths[thIdx].classList.add(prodSortDir > 0 ? 'sorted-asc' : 'sorted-desc');
+  }
+  renderProductsTable();
+}
+
+function renderProductsTable() {
+  let data = allProducts.filter(p => {
+    if (!prodQuery) return true;
+    return p.name.toLowerCase().includes(prodQuery) || p.category.toLowerCase().includes(prodQuery);
+  });
+  data.sort((a, b) => {
+    const av = a[prodSortKey] ?? '';
+    const bv = b[prodSortKey] ?? '';
+    if (typeof av === 'string') return av.localeCompare(bv) * prodSortDir;
+    return (av - bv) * prodSortDir;
+  });
+  document.getElementById('prod-count').textContent = data.length;
+  document.getElementById('prod-tbody').innerHTML = data.map(p => `
+    <tr>
+      <td class="name-cell">${p.name}</td>
+      <td class="muted">${p.category}</td>
+      <td>${availChip(p.available)}</td>
+      <td class="num">${R(p.sell_price_incl, 2)}</td>
+      <td class="num muted">${R(p.cost_price, 2)}</td>
+      <td>${marginChip(p.margin_pct)}</td>
+      <td class="num">${R(p.stock_value_cost)}</td>
+      <td class="num">${R(p.stock_value_sell)}</td>
+    </tr>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════
+// STOCK INTELLIGENCE
+// ═══════════════════════════════════════════════════
+function renderStockIntel() {
+  const deadStockTotal = products.dead_stock.reduce((s, p) => s + p.stock_value_cost, 0);
+
+  const panels = [
+    {
+      title: '🔴 Stockout Risk',
+      desc: 'Products with available ≤ 5 — sorted by sell price',
+      headerCls: 'red',
+      meta: `<strong>${products.stockout_risk.length}</strong> SKUs at risk`,
+      badge: (p) => `<span class="chip chip-red">RISK</span>`,
+      cols: ['Name','Available','Sell Price','Margin %'],
+      rows: products.stockout_risk.sort((a,b) => b.sell_price_incl - a.sell_price_incl),
+      rowFn: p => [p.name, availChip(p.available), `<span class="num">${R(p.sell_price_incl,2)}</span>`, marginChip(p.margin_pct)],
+    },
+    {
+      title: '🔵 Dead Stock',
+      desc: 'Available ≥ 20 — capital tied up, sorted by cost value',
+      headerCls: 'blue',
+      meta: `Capital trapped: <strong>${R(deadStockTotal)}</strong>`,
+      badge: (p) => `<span class="chip chip-clear">STUCK</span>`,
+      cols: ['Name','Available','Cost Value','Margin %'],
+      rows: products.dead_stock.sort((a,b) => b.stock_value_cost - a.stock_value_cost),
+      rowFn: p => [p.name, `<span class="num">${num(p.available)}</span>`, `<span class="num">${R(p.stock_value_cost)}</span>`, marginChip(p.margin_pct)],
+    },
+    {
+      title: '🟢 High Margin Winners',
+      desc: 'Margin ≥ 40%, available ≥ 10 — worth pushing',
+      headerCls: 'green',
+      meta: `<strong>${products.high_margin_in_stock.length}</strong> products · These are worth pushing`,
+      badge: (p) => `<span class="chip chip-green">PUSH</span>`,
+      cols: ['Name','Available','Margin %','Stock @ Sell'],
+      rows: products.high_margin_in_stock.sort((a,b) => b.stock_value_sell - a.stock_value_sell),
+      rowFn: p => [p.name, `<span class="num">${num(p.available)}</span>`, marginChip(p.margin_pct), `<span class="num">${R(p.stock_value_sell)}</span>`],
+    },
+    {
+      title: '🟡 Margin Warning',
+      desc: 'Margin < 20% — discounting these destroys the business',
+      headerCls: 'amber',
+      meta: `<strong>${products.low_margin_warning.length}</strong> products in danger zone`,
+      badge: (p) => `<span class="chip chip-amber">LOW</span>`,
+      cols: ['Name','Available','Margin %','Sell Price'],
+      rows: products.low_margin_warning,
+      rowFn: p => [p.name, availChip(p.available), marginChip(p.margin_pct), `<span class="num">${R(p.sell_price_incl,2)}</span>`],
+    },
+  ];
+
+  document.getElementById('intel-grid').innerHTML = panels.map(panel => `
+    <div class="intel-card">
+      <div class="intel-header ${panel.headerCls}">
+        <div class="intel-title">${panel.title}</div>
+        <div class="intel-desc">${panel.desc}</div>
+        <div class="intel-meta">${panel.meta}</div>
+      </div>
+      <div class="intel-body">
+        <table style="font-size:12px">
+          <thead>
+            <tr>${panel.cols.map(c => `<th style="font-size:10px">${c}</th>`).join('')}<th></th></tr>
+          </thead>
+          <tbody>
+            ${panel.rows.map(p => `
+              <tr>
+                ${panel.rowFn(p).map(cell => `<td>${cell}</td>`).join('')}
+                <td>${panel.badge(p)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════
+// CATEGORIES
+// ═══════════════════════════════════════════════════
+function renderCategories() {
+  const sorted = [...categories].sort((a,b) => b.stock_value_cost - a.stock_value_cost);
+
+  // Table
+  document.getElementById('cat-tbody').innerHTML = sorted.map(c => {
+    const marginColor = c.avg_margin_pct < 20 ? 'var(--danger)' : c.avg_margin_pct <= 35 ? 'var(--warning)' : 'var(--positive)';
+    return `
+      <tr>
+        <td style="font-weight:600">${c.name}</td>
+        <td class="num muted">${num(c.skus)}</td>
+        <td class="num muted">${num(c.available)}</td>
+        <td class="num">${R(c.stock_value_cost)}</td>
+        <td class="num muted">${R(c.stock_value_sell)}</td>
+        <td>
+          <div class="margin-bar">
+            <span class="num" style="color:${marginColor};font-weight:600;font-size:12px">${pct(c.avg_margin_pct)}</span>
+            <div class="margin-bar-track" style="min-width:60px">
+              <div class="margin-bar-fill" style="width:${Math.min(100,Math.max(0,c.avg_margin_pct))}%;background:${marginColor}"></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function renderCategoryChart() {
+  const sorted = [...categories].sort((a,b) => b.stock_value_cost - a.stock_value_cost).slice(0, 10);
+  window._chartCats = new Chart(document.getElementById('chart-cats'), {
+    type: 'bar',
+    data: {
+      labels: sorted.map(c => c.name.length > 20 ? c.name.slice(0,20)+'…' : c.name),
+      datasets: [{
+        label: 'Stock Value @ Cost',
+        data: sorted.map(c => c.stock_value_cost),
+        backgroundColor: sorted.map((_, i) => `hsl(${245 + i*15},60%,${55 - i*2}%)`),
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: { label: ctx => ` R${Number(ctx.raw).toLocaleString('en-ZA')}` }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { callback: v => 'R'+(v/1000).toFixed(0)+'k', font: { size: 11 } }
+        },
+        y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════
+// ONLINE
+// ═══════════════════════════════════════════════════
+function renderOnlineKPIs() {
+  const el = document.getElementById('online-kpis');
+  el.innerHTML = [
+    { label:'Total Orders', value: num(shopify.total_orders), sub:'30 days', color:'var(--accent)' },
+    { label:'Total Revenue', value: R(shopify.total_revenue), sub:'Shopify', color:'var(--positive)' },
+    { label:'Avg Order Value', value: R(shopify.aov, 2), sub:'Per order', color:'var(--positive)' },
+    { label:'Discount Rate', value: pct(shopify.discount_rate_pct), sub:'Orders with discounts', color:'var(--warning)' },
+  ].map(k => `
+    <div class="kpi-card" style="--accent-color:${k.color}">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value num">${k.value}</div>
+      <div class="kpi-sub">${k.sub}</div>
+    </div>
+  `).join('');
+}
+
+function renderOnlineChart() {
+  const dateData = DATES.map(d => ({
+    label: d.slice(5).replace('-','/'),
+    revenue: shopify.daily[d] ? shopify.daily[d].revenue : 0,
+    orders: shopify.daily[d] ? shopify.daily[d].orders : 0,
+  }));
+  window._chartOnline = new Chart(document.getElementById('chart-online'), {
+    type: 'line',
+    data: {
+      labels: dateData.map(d => d.label),
+      datasets: [
+        {
+          label: 'Daily Revenue',
+          data: dateData.map(d => d.revenue),
+          borderColor: '#22c55e',
+          backgroundColor: 'rgba(34,197,94,0.1)',
+          borderWidth: 2, fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 6,
+          yAxisID: 'yRev',
+        },
+        {
+          label: 'Orders',
+          data: dateData.map(d => d.orders),
+          borderColor: '#6c63ff',
+          backgroundColor: 'rgba(108,99,255,0.08)',
+          borderWidth: 2, fill: false, tension: 0, pointRadius: 4, pointHoverRadius: 6,
+          yAxisID: 'yOrders',
+          borderDash: [4,4],
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              if (ctx.dataset.label === 'Orders') return ` Orders: ${ctx.raw}`;
+              return ` Revenue: R${Number(ctx.raw).toLocaleString('en-ZA', {minimumFractionDigits:2})}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { maxTicksLimit: 12, font: { size: 11 } } },
+        yRev: {
+          type: 'linear', position: 'left',
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { callback: v => 'R'+(v/1000).toFixed(0)+'k', font: { size: 11 } }
+        },
+        yOrders: {
+          type: 'linear', position: 'right',
+          grid: { drawOnChartArea: false },
+          ticks: { stepSize: 2, font: { size: 11 } },
+          min: 0,
+        }
+      }
+    }
+  });
+}
+
+function renderOnlineProducts() {
+  document.getElementById('online-prod-tbody').innerHTML = shopify.top_products.map((p, i) => {
+    const aov = p.revenue / p.qty;
+    return `
+      <tr>
+        <td class="num muted">${i+1}</td>
+        <td class="name-cell">${p.title}</td>
+        <td class="num">${num(p.qty)}</td>
+        <td class="num"><strong>${R(p.revenue)}</strong></td>
+        <td class="num muted">${R(aov, 2)}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════
+// SIGNALS
+// ═══════════════════════════════════════════════════
+function renderSignals() {
+  // What to do TODAY
+  const lastDate = '2026-03-31';
+  let todayHtml = '';
+
+  // Stockout risk items with sell price > R200
+  const urgentRestock = products.stockout_risk
+    .filter(p => p.sell_price_incl > 200)
+    .sort((a,b) => b.sell_price_incl - a.sell_price_incl)
+    .slice(0, 10);
+
+  if (urgentRestock.length > 0) {
+    todayHtml += `
+      <div style="margin-bottom:12px">
+        <div style="font-size:12px;font-weight:600;color:var(--danger);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">
+          🚨 Restock Immediately — High Value Items Running Out
+        </div>
+        <div class="card" style="padding:0;overflow:hidden;margin-bottom:0">
+          <table style="font-size:12px">
+            <thead><tr><th>Product</th><th>Available</th><th>Sell Price</th><th>Margin %</th><th>Status</th></tr></thead>
+            <tbody>
+              ${urgentRestock.map(p => `
+                <tr>
+                  <td class="name-cell" style="color:var(--text)">${p.name}</td>
+                  <td>${availChip(p.available)}</td>
+                  <td class="num"><strong>${R(p.sell_price_incl,2)}</strong></td>
+                  <td>${marginChip(p.margin_pct)}</td>
+                  <td><span class="chip chip-red">🔴 ORDER NOW</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  // Store zero-sales check
+  STORE_KEYS.forEach((key, i) => {
+    const todaySales = stores[key].daily_sales[lastDate];
+    if (!todaySales || todaySales === 0) {
+      todayHtml += `<div class="today-alert"><span class="alert-icon">🔴</span> <strong>${STORE_LABELS[i]}</strong> has ZERO sales recorded for ${lastDate}. Investigate immediately.</div>`;
+    } else {
+      todayHtml += `<div class="today-alert ok"><span class="alert-icon">✅</span> <strong>${STORE_LABELS[i]}</strong>: ${R(todaySales)} in sales on ${lastDate}</div>`;
+    }
+  });
+
+  document.getElementById('signals-today').innerHTML = todayHtml;
+
+  // Push Now: margin >= 40%, available >= 20 — top 10 by stock_value_sell
+  const pushNow = products.high_margin_in_stock
+    .filter(p => p.available >= 20 && p.margin_pct >= 40)
+    .sort((a,b) => b.stock_value_sell - a.stock_value_sell)
+    .slice(0, 10);
+
+  document.getElementById('signals-push').innerHTML = pushNow.map(p => `
+    <tr>
+      <td class="name-cell">${p.name}</td>
+      <td class="num">${num(p.available)}</td>
+      <td>${marginChip(p.margin_pct)}</td>
+      <td class="num"><strong>${R(p.stock_value_sell)}</strong></td>
+      <td><span class="chip chip-push">🟢 PUSH</span></td>
+    </tr>
+  `).join('');
+
+  // Don't Discount
+  document.getElementById('signals-nodiscount').innerHTML = products.low_margin_warning.map(p => `
+    <tr>
+      <td class="name-cell">${p.name}</td>
+      <td>${marginChip(p.margin_pct)}</td>
+      <td class="num">${R(p.sell_price_incl, 2)}</td>
+      <td><span class="chip chip-nogo">⚠ NO-GO</span></td>
+    </tr>
+  `).join('');
+
+  // Capital Trapped: top 10 dead stock by cost value
+  const trapped = products.dead_stock
+    .sort((a,b) => b.stock_value_cost - a.stock_value_cost)
+    .slice(0, 10);
+
+  document.getElementById('signals-capital').innerHTML = trapped.map(p => `
+    <tr>
+      <td class="name-cell">${p.name}</td>
+      <td class="num">${num(p.available)}</td>
+      <td class="num"><strong>${R(p.stock_value_cost)}</strong></td>
+      <td><span class="chip chip-clear">🔵 CLEAR</span></td>
+    </tr>
+  `).join('');
+
+  // Online vs Store gap: top 5 online products
+  document.getElementById('signals-online').innerHTML = shopify.top_products.slice(0,5).map((p,i) => `
+    <tr>
+      <td class="num muted">${i+1}</td>
+      <td class="name-cell">${p.title}</td>
+      <td class="num"><strong>${R(p.revenue)}</strong></td>
+      <td class="num">${num(p.qty)} units</td>
+    </tr>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════
+function init() {
+  // Header meta
+  const genAt = new Date(D.generated_at);
+  document.getElementById('gen-time').textContent = genAt.toLocaleDateString('en-ZA', {day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+
+  renderOverviewKPIs();
+  renderStoreCards();
+  renderCharts();
+  renderProductsTable();
+  renderStockIntel();
+  renderCategories();
+  renderOnlineKPIs();
+  renderOnlineProducts();
+  renderSignals();
+
+  // Lazy load charts when tab becomes active
+  document.querySelector('[data-tab="categories"]').addEventListener('click', () => {
+    setTimeout(() => { if (!window._chartCats) renderCategoryChart(); }, 50);
+  });
+  document.querySelector('[data-tab="online"]').addEventListener('click', () => {
+    setTimeout(() => { if (!window._chartOnline) renderOnlineChart(); }, 50);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
