@@ -6,13 +6,7 @@
       "env": {}
     },
     "klaviyo": {
-      "command": "uvx",
-      "args": ["klaviyo-mcp-server@latest"],
-      "env": {
-        "PRIVATE_API_KEY": "pk_0a94117f962b3af9b4368121a12afbbbb1",
-        "READ_ONLY": "false",
-        "ALLOW_USER_GENERATED_CONTENT": "true"
-      }
+      "url": "https://mcp.klaviyo.com/mcp"
     }
   }
 }
