@@ -1,0 +1,67 @@
+name: Weekly Blog Publish
+
+# Runs every Monday at 05:00 UTC (07:00 SAST) — picks the next unpublished
+# blog from content/blogs/ and publishes it to Shopify + Klaviyo.
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      blog_file:
+        description: 'Specific blog file to publish (e.g. 2026-04-berberine-natures-ozempic.md). Leave blank to auto-pick next unpublished.'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Pick blog to publish
+        id: pick
+        run: |
+          if [ -n "${{ github.event.inputs.blog_file }}" ]; then
+            BLOG="content/blogs/${{ github.event.inputs.blog_file }}"
+          else
+            # Find next blog that hasn't been marked as .published
+            BLOG=$(ls content/blogs/*.md 2>/dev/null | grep -v published | head -1)
+          fi
+          if [ -z "$BLOG" ] || [ ! -f "$BLOG" ]; then
+            echo "No blog file to publish — exiting cleanly"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "Publishing: $BLOG"
+            echo "blog=$BLOG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Publish blog + email
+        if: steps.pick.outputs.skip != 'true'
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE || 'onelifehealth.myshopify.com' }}
+        run: |
+          python scripts/publish_blog.py "${{ steps.pick.outputs.blog }}" > publish_result.json
+          cat publish_result.json
+
+      - name: Mark blog as published
+        if: steps.pick.outputs.skip != 'true'
+        run: |
+          BLOG="${{ steps.pick.outputs.blog }}"
+          mv "$BLOG" "${BLOG%.md}.published.md"
+          git config user.name "onelife-publish-bot"
+          git config user.email "bot@onelife.co.za"
+          git add "${BLOG%.md}.published.md"
+          git commit -m "chore: mark $(basename "$BLOG") as published"
+          git push

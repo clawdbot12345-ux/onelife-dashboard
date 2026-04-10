@@ -1,0 +1,39 @@
+name: Weekly Performance Report
+
+# Every Monday at 06:30 UTC (08:30 SAST) — after the blog publish workflow.
+# Pulls last 7 days of Klaviyo campaign performance and writes a markdown report.
+on:
+  schedule:
+    - cron: '30 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate weekly report
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+        run: python scripts/weekly_report.py
+
+      - name: Commit report
+        run: |
+          git config user.name "onelife-report-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/
+          if git diff --staged --quiet; then
+            echo "No report to commit"
+          else
+            git commit -m "chore: weekly performance report $(date +%Y-%m-%d)"
+            git push
+          fi
