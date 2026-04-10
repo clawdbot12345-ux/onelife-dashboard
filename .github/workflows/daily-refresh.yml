@@ -1,0 +1,51 @@
+name: Daily Dashboard Refresh
+
+# Runs once per day at 06:00 UTC (08:00 SAST — before the store opens)
+# and pulls the latest Klaviyo + Shopify integration data into the dashboard.
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # allow manual trigger from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch live data and update dashboard
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+        run: python scripts/refresh_dashboard.py
+
+      - name: Set up Node (for PDF generation)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install puppeteer
+        run: npm install puppeteer@24
+
+      - name: Regenerate dashboard PDF
+        run: node scripts/generate_pdf.js
+
+      - name: Commit changes
+        run: |
+          git config user.name "onelife-dashboard-bot"
+          git config user.email "bot@onelife.co.za"
+          git add index.html onelife-dashboard.pdf
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: daily data refresh $(date +%Y-%m-%d)"
+            git push
+          fi
