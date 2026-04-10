@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "shopify-dev-mcp": {
+      "command": "npx",
+      "args": ["-y", "@shopify/dev-mcp@latest"],
+      "env": {}
+    },
+    "klaviyo": {
+      "url": "https://mcp.klaviyo.com/mcp"
+    }
+  }
+}
