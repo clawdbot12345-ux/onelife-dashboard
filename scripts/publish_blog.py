@@ -245,81 +245,66 @@ def klaviyo_post(path, body):
         return None
 
 def render_email_html(fm, blog_url, campaign_slug):
-    """Build the email HTML with UTM-tagged links and product modules."""
+    """Build email HTML matching Onelife's actual brand voice (NAD+ template style).
+
+    Style reference: the winning NAD+ campaign (R1,770 revenue) uses:
+    - Dark green #1B5E20 header with Onelife logo
+    - White content card
+    - Short H1 in dark green
+    - 2 short paragraphs of intro
+    - Green CTA button "Read the full guide →"
+    - Simple product list (no badges, no prices — just bold name + description)
+    - "Shop [category]" catch-all link
+    - Green footer with stores + delivery info
+    """
     products = fm.get("products", []) or []
     products_html = ""
     for i, p in enumerate(products):
         prod_url = utm_url(p.get("url", "#"), campaign_slug, f"product-{i+1}")
-        products_html += f"""
-        <tr><td style="padding:0 32px 16px 32px;">
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#f9fafb;border-radius:6px;">
-          <tr><td style="padding:16px 20px;">
-            <p style="margin:0 0 4px 0;font-size:11px;font-weight:600;color:#7ea93e;text-transform:uppercase;letter-spacing:0.5px;">{p.get('badge','')}</p>
-            <p style="margin:0 0 4px 0;font-size:15px;font-weight:700;color:#111827;">{p.get('name','')}</p>
-            <p style="margin:0 0 8px 0;font-size:13px;color:#6b7280;">{p.get('blurb','')}</p>
-            <p style="margin:0 0 12px 0;font-size:16px;font-weight:700;color:#111827;">{p.get('price','')}</p>
-            <a href="{prod_url}" style="display:inline-block;padding:9px 20px;font-size:13px;font-weight:600;color:#ffffff;background-color:#1f2937;border-radius:4px;text-decoration:none;">View product →</a>
-          </td></tr>
-          </table>
-        </td></tr>"""
+        is_last = i == len(products) - 1
+        border = "" if is_last else "border-bottom:1px solid #e5e7eb;"
+        products_html += f'''
+<tr><td style="padding:14px 0;{border}"><a href="{prod_url}" style="color:#1B5E20;text-decoration:none;font-weight:700;">{p.get('name','')}</a><br/><span style="color:#4b5563;">{p.get('blurb','')}</span></td></tr>'''
 
     blog_cta = utm_url(blog_url, campaign_slug, "blog-cta")
-    store_url = utm_url("https://onelife.co.za/pages/store-locator", campaign_slug, "store-locator")
+    shop_collection_url = fm.get("shop_collection_url", "https://onelife.co.za/collections/all")
+    shop_cta = utm_url(shop_collection_url, campaign_slug, "shop-collection")
+    shop_label = fm.get("shop_label", "Shop all supplements")
+    category_heading = fm.get("category_heading", "Top picks")
+    intro_p1 = fm.get("intro_p1", fm.get("excerpt", ""))
+    intro_p2 = fm.get("intro_p2", "")
 
-    return f"""<!DOCTYPE html><html><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{fm.get('title','')}</title></head>
-<body style="margin:0;padding:0;background-color:#f5f3ee;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1f2937;">
-<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#f5f3ee;">
-<tr><td align="center" style="padding:20px 0;">
-<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:8px;overflow:hidden;">
-
-<tr><td style="padding:24px 32px;background-color:#7ea93e;text-align:center;">
-  <h1 style="margin:0;font-size:18px;font-weight:600;color:#ffffff;letter-spacing:0.5px;">ONELIFE HEALTH</h1>
-  <p style="margin:4px 0 0 0;font-size:12px;color:#e8f3d4;">Evidence-based wellness · Pretoria &amp; Edenvale</p>
+    return f'''<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/></head>
+<body style="margin:0;padding:0;background:#f3f7f3;font-family:Arial,sans-serif;color:#1f2937;">
+<table cellpadding="0" cellspacing="0" role="presentation" style="background:#f3f7f3;padding:24px 0;" width="100%">
+<tr><td align="center">
+<table cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;background:#ffffff;border-radius:8px;overflow:hidden;" width="600">
+<tr><td style="background:#1B5E20;padding:18px 24px;text-align:center;">
+  <img alt="Onelife Health" src="https://onelife.co.za/cdn/shop/files/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png?v=1671450106" style="display:inline-block;max-width:180px;height:auto;" width="180"/>
 </td></tr>
-
-<tr><td style="padding:40px 32px 24px 32px;">
-  <p style="margin:0 0 8px 0;font-size:12px;font-weight:600;letter-spacing:1px;color:#7ea93e;text-transform:uppercase;">THIS WEEK IN WELLNESS</p>
-  <h2 style="margin:0 0 16px 0;font-size:28px;line-height:1.25;font-weight:700;color:#111827;">{fm.get('title','')}</h2>
-  <p style="margin:0;font-size:16px;line-height:1.6;color:#4b5563;">{fm.get('excerpt','')}</p>
+<tr><td style="padding:24px;">
+<p style="margin:0 0 10px;color:#4b5563;font-size:14px;">Preview text: {fm.get('preview','')}</p>
+<h1 style="margin:0 0 12px;font-size:25px;color:#1B5E20;">{fm.get('title','')}</h1>
+<p style="margin:0 0 12px;line-height:1.7;">{intro_p1}</p>
+{f'<p style="margin:0 0 18px;line-height:1.7;">{intro_p2}</p>' if intro_p2 else ''}
+<a href="{blog_cta}" style="display:inline-block;background:#1B5E20;color:#fff;text-decoration:none;padding:12px 20px;border-radius:6px;font-weight:700;">Read the full guide →</a>
+<h2 style="margin:28px 0 12px;font-size:20px;color:#1B5E20;">{category_heading}</h2>
+<table cellpadding="0" cellspacing="0" role="presentation" style="border-top:1px solid #e5e7eb;" width="100%">{products_html}
+</table>
+<p style="margin:18px 0 0;"><a href="{shop_cta}" style="color:#1B5E20;font-weight:700;text-decoration:none;">{shop_label}</a></p>
 </td></tr>
-
-<tr><td style="padding:8px 32px 32px 32px;text-align:center;">
-  <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:0 auto;">
-  <tr><td style="background-color:#7ea93e;border-radius:6px;">
-    <a href="{blog_cta}" style="display:inline-block;padding:14px 36px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:0.3px;">Read the full article →</a>
-  </td></tr>
-  </table>
+<tr><td style="padding:18px 24px;background:#f9fafb;color:#6b7280;font-size:12px;line-height:1.6;">
+Onelife Health stores: Centurion | Glen Village, Faerie Glen | Edenvale<br/>
+Free delivery over R900 (Gauteng) | R1,400 (nationwide)<br/>
+<a href="{{{{ unsubscribe }}}}" style="color:#6b7280;">Unsubscribe</a>
 </td></tr>
-
-<tr><td style="padding:0 32px;"><div style="height:1px;background-color:#e5e7eb;"></div></td></tr>
-
-<tr><td style="padding:32px 32px 16px 32px;">
-  <h3 style="margin:0 0 20px 0;font-size:18px;font-weight:700;color:#111827;">Featured in this article</h3>
+</table>
 </td></tr>
-
-{products_html}
-
-<tr><td style="padding:0 32px 32px 32px;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#fffbea;border-left:3px solid #f59e0b;">
-  <tr><td style="padding:16px 20px;">
-    <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#111827;">Not sure which one's right for you?</p>
-    <p style="margin:0 0 12px 0;font-size:14px;line-height:1.5;color:#4b5563;">Book a free 15-minute chat with one of our in-store functional health coaches at Centurion, Glen Village, or Edenvale.</p>
-    <a href="{store_url}" style="display:inline-block;font-size:14px;font-weight:600;color:#7ea93e;text-decoration:none;">Find your nearest store →</a>
-  </td></tr>
-  </table>
-</td></tr>
-
-<tr><td style="padding:24px 32px;background-color:#f9fafb;text-align:center;border-top:1px solid #e5e7eb;">
-  <p style="margin:0 0 8px 0;font-size:12px;color:#6b7280;">Onelife Health · Centurion · Glen Village · Edenvale</p>
-  <p style="margin:0 0 8px 0;font-size:12px;color:#6b7280;">onelife.co.za · info@onelife.co.za</p>
-  <p style="margin:12px 0 0 0;font-size:11px;color:#9ca3af;">
-    <a href="{{{{ unsubscribe_link }}}}" style="color:#9ca3af;text-decoration:underline;">Unsubscribe</a>
-  </p>
-</td></tr>
-
-</table></td></tr></table></body></html>"""
+</table>
+</body>
+</html>'''
 
 def render_email_text(fm, blog_url, campaign_slug):
     products = fm.get("products", []) or []
