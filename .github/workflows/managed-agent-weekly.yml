@@ -1,0 +1,53 @@
+name: Managed Agent Weekly Cycle
+
+# Every Monday at 05:00 UTC (07:00 SAST) — triggers a Claude Managed Agent
+# session to run the full content → email → analytics weekly cycle.
+# The agent has access to persistent memory, so it remembers what it did
+# last week and builds on it.
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check that agent IDs exist (first-run warning)
+        id: check_ids
+        run: |
+          if [ ! -f scripts/managed_agent/.agent-ids.json ]; then
+            echo "⚠ .agent-ids.json not found. Run setup_agent.py locally first."
+            echo "first_run=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run weekly session
+        if: steps.check_ids.outputs.first_run != 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+        run: python scripts/managed_agent/run_weekly_session.py
+
+      - name: Commit any changes the agent made
+        if: steps.check_ids.outputs.first_run != 'true'
+        run: |
+          git config user.name "onelife-agent-bot"
+          git config user.email "bot@onelife.co.za"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes committed by agent this week"
+          else
+            git commit -m "chore: weekly agent cycle $(date +%Y-%m-%d)"
+            git push
+          fi
