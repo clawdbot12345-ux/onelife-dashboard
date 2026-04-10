@@ -15,7 +15,7 @@ A self-contained retail intelligence dashboard for **Onelife Health**, a South A
 
 - `DASHBOARD_DATA` — embedded JSON object containing all store, product, supplier, and Shopify data
 - `NARRATIVES` — pre-written business intelligence summaries per tab
-- Tab-based navigation with 7 views: Overview, Products, Stock Intelligence, Suppliers, Categories, Online, Signals
+- Tab-based navigation with 8 views: Overview, Products, Stock Intelligence, Suppliers, Categories, Online, Email Marketing, Signals
 - All rendering happens client-side via `initXXX()` functions on `DOMContentLoaded`
 
 ## Shopify Integration
@@ -33,6 +33,27 @@ This project is configured with the **Shopify Dev MCP Server** (see `.mcp.json`)
 - Access to Shopify documentation and API schemas
 - Real-time code validation against Shopify's schemas
 - Store management capabilities via CLI
+
+## Klaviyo Email Marketing Integration
+
+The dashboard includes a dedicated Email Marketing tab powered by Klaviyo data:
+- Subscriber metrics, open/click rates, email-attributed revenue
+- Automated flow performance (Welcome, Abandoned Cart, Post-Purchase, Winback)
+- Campaign history with open rate, click rate, revenue attribution
+- Customer segment analysis (VIP, Supplement Subscribers, Lapsed, etc.)
+- AI-suggested campaigns based on product data and segment insights
+
+The **Klaviyo MCP Server** is configured in `.mcp.json` (requires `PRIVATE_API_KEY`).
+Once activated, Claude can:
+- Create and schedule email campaigns directly in Klaviyo
+- Design on-brand email templates
+- Analyze campaign and flow performance with live data
+- Manage subscriber segments and profiles
+
+### Klaviyo API Key Setup
+1. Go to Klaviyo > Settings > API Keys
+2. Create a Private API key with scopes: Campaigns (Full), Templates (Full), Profiles (Full), Segments (Full), Lists (Read), Metrics (Read), Events (Full), Images (Full)
+3. Add the key to `.mcp.json` under `klaviyo.env.PRIVATE_API_KEY`
 
 ## Key Patterns
 

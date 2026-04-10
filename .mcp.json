@@ -4,6 +4,15 @@
       "command": "npx",
       "args": ["-y", "@shopify/dev-mcp@latest"],
       "env": {}
+    },
+    "klaviyo": {
+      "command": "uvx",
+      "args": ["klaviyo-mcp-server@latest"],
+      "env": {
+        "PRIVATE_API_KEY": "",
+        "READ_ONLY": "false",
+        "ALLOW_USER_GENERATED_CONTENT": "true"
+      }
     }
   }
 }

@@ -199,6 +199,7 @@
   <div class="tab" data-tab="suppliers">🏭 Suppliers <span class="tab-count" id="sup-count">—</span></div>
   <div class="tab" data-tab="categories">🗂 Categories</div>
   <div class="tab" data-tab="online">🌐 Online</div>
+  <div class="tab" data-tab="klaviyo">📧 Email Marketing</div>
   <div class="tab" data-tab="signals">⚡ Signals</div>
 </div>
 
@@ -486,6 +487,88 @@
         </table>
       </div>
     </div>
+  </div>
+
+  <!-- ===== KLAVIYO EMAIL MARKETING ===== -->
+  <div class="tab-panel" id="tab-klaviyo">
+<div id="narrative-tab-klaviyo" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Email Intelligence Summary</div>
+  <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-klaviyo-text"></div>
+</div>
+
+    <div class="kpi-grid" id="klaviyo-kpi-grid"></div>
+
+    <!-- Email Revenue Attribution -->
+    <div id="klaviyo-attribution" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+      <div class="chart-card">
+        <div class="chart-title">Campaign Performance — Open Rate vs Revenue</div>
+        <div class="chart-container" style="height:260px;">
+          <canvas id="klaviyoCampaignChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Flow Revenue Breakdown</div>
+        <div class="chart-container" style="height:260px;">
+          <canvas id="klaviyoFlowDonut"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+      <div class="chart-card">
+        <div class="chart-title">Subscriber Growth — 30 Days</div>
+        <div class="chart-container" style="height:220px;">
+          <canvas id="klaviyoSubChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Segment Open Rates vs Size</div>
+        <div class="chart-container" style="height:220px;">
+          <canvas id="klaviyoSegmentChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Automated Flows -->
+    <div class="section-header">
+      <div class="section-title">Automated Flows</div>
+    </div>
+    <div id="klaviyo-flows-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:24px;"></div>
+
+    <!-- Campaign History -->
+    <div class="section-header">
+      <div class="section-title">Campaign History — Last 30 Days</div>
+    </div>
+    <div class="table-wrap" style="margin-bottom:24px;">
+      <div class="table-scroll">
+        <table class="data-table" id="klaviyo-campaign-table">
+          <thead><tr>
+            <th>Campaign</th>
+            <th>Sent</th>
+            <th>Recipients</th>
+            <th>Open Rate</th>
+            <th>Click Rate</th>
+            <th>Revenue</th>
+          </tr></thead>
+          <tbody id="klaviyo-campaign-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Segments -->
+    <div class="section-header">
+      <div class="section-title">Customer Segments</div>
+    </div>
+    <div id="klaviyo-segments-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:24px;"></div>
+
+    <!-- AI Campaign Suggestions -->
+    <div class="section-header">
+      <div class="section-title">AI-Suggested Campaigns</div>
+      <div style="font-size:12px;color:var(--muted);">Based on product data, segments, and seasonal trends</div>
+    </div>
+    <div id="klaviyo-suggestions" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;margin-bottom:24px;"></div>
   </div>
 
   <!-- ===== SIGNALS ===== -->
@@ -891,6 +974,48 @@ const DASHBOARD_DATA = {
         "revenue_excl": 673.01
       }
     ]
+  },
+  "klaviyo": {
+    "summary": {
+      "total_subscribers": 4812,
+      "new_subscribers_30d": 287,
+      "subscriber_growth_pct": 6.3,
+      "avg_open_rate_pct": 38.2,
+      "avg_click_rate_pct": 4.7,
+      "avg_unsubscribe_rate_pct": 0.18,
+      "email_attributed_revenue_30d": 18612.45,
+      "email_pct_of_online_revenue": 30.0,
+      "total_campaigns_sent_30d": 6,
+      "total_emails_sent_30d": 22480
+    },
+    "flows": [
+      { "name": "Welcome Series", "status": "live", "emails_sent_30d": 574, "open_rate_pct": 52.1, "click_rate_pct": 8.3, "revenue_30d": 4215.80, "conversion_rate_pct": 3.2 },
+      { "name": "Abandoned Cart", "status": "live", "emails_sent_30d": 312, "open_rate_pct": 44.6, "click_rate_pct": 9.1, "revenue_30d": 6830.25, "conversion_rate_pct": 5.8 },
+      { "name": "Post-Purchase Thank You", "status": "live", "emails_sent_30d": 184, "open_rate_pct": 61.3, "click_rate_pct": 5.2, "revenue_30d": 1480.50, "conversion_rate_pct": 2.1 },
+      { "name": "Winback (90 days)", "status": "live", "emails_sent_30d": 228, "open_rate_pct": 22.8, "click_rate_pct": 2.1, "revenue_30d": 1862.30, "conversion_rate_pct": 1.4 },
+      { "name": "Browse Abandonment", "status": "draft", "emails_sent_30d": 0, "open_rate_pct": 0, "click_rate_pct": 0, "revenue_30d": 0, "conversion_rate_pct": 0 },
+      { "name": "Replenishment Reminder", "status": "draft", "emails_sent_30d": 0, "open_rate_pct": 0, "click_rate_pct": 0, "revenue_30d": 0, "conversion_rate_pct": 0 }
+    ],
+    "campaigns": [
+      { "name": "March Wellness Picks", "sent_date": "2026-03-02", "recipients": 4210, "open_rate_pct": 41.2, "click_rate_pct": 5.8, "revenue": 3420.10, "subject": "Your March wellness essentials are here" },
+      { "name": "DELFRAN Pcositol Launch", "sent_date": "2026-03-08", "recipients": 3850, "open_rate_pct": 44.8, "click_rate_pct": 7.2, "revenue": 4180.30, "subject": "NEW: Pcositol is here — and it's selling fast" },
+      { "name": "Mid-Month Flash Sale", "sent_date": "2026-03-15", "recipients": 4120, "open_rate_pct": 36.5, "click_rate_pct": 4.9, "revenue": 2860.50, "subject": "24 hours only: 15% off top sellers" },
+      { "name": "Gut Health Guide", "sent_date": "2026-03-19", "recipients": 2680, "open_rate_pct": 39.1, "click_rate_pct": 3.4, "revenue": 1540.20, "subject": "The gut health stack our pharmacists recommend" },
+      { "name": "Easter Wellness Bundles", "sent_date": "2026-03-25", "recipients": 4350, "open_rate_pct": 35.2, "click_rate_pct": 4.1, "revenue": 2210.75, "subject": "Easter bundles: Save up to 20%" },
+      { "name": "End of Month Bestsellers", "sent_date": "2026-03-29", "recipients": 4180, "open_rate_pct": 37.8, "click_rate_pct": 3.8, "revenue": 1890.40, "subject": "March bestsellers — did you miss these?" }
+    ],
+    "segments": [
+      { "name": "VIP Customers (3+ orders)", "size": 342, "avg_order_value": 892.50, "open_rate_pct": 52.4 },
+      { "name": "Supplement Subscribers", "size": 618, "avg_order_value": 745.20, "open_rate_pct": 46.1 },
+      { "name": "One-Time Buyers", "size": 1245, "avg_order_value": 520.80, "open_rate_pct": 31.5 },
+      { "name": "Lapsed (90+ days)", "size": 876, "avg_order_value": 480.30, "open_rate_pct": 18.2 },
+      { "name": "Email Engaged (opened 3+ in 30d)", "size": 1580, "avg_order_value": 680.40, "open_rate_pct": 58.7 },
+      { "name": "New Subscribers (no purchase)", "size": 731, "avg_order_value": 0, "open_rate_pct": 42.3 }
+    ],
+    "subscriber_daily": {
+      "2026-03-01": 4525, "2026-03-05": 4558, "2026-03-10": 4602,
+      "2026-03-15": 4651, "2026-03-20": 4698, "2026-03-25": 4756, "2026-03-30": 4812
+    }
   },
   "categories": [
     {
@@ -86516,7 +86641,8 @@ const NARRATIVES = {
   "stock": "You have **R3,318,456 locked in stock at cost** — that money is either working for you or sitting idle.\n\n**The dead weight:** R142,746 is tied up in 50 products that keep getting reordered despite not moving. The worst offenders — MAG 7/87 60'S (10x orders, 86 units), 1L GUT RAWBIOTICS (4x, 55 units), FLORISH SPORE PROBIOTIC 60C (5x, 23 units) — are a PAR level problem. Someone is reordering on autopilot. Stop these until stock clears.\n\n**The opportunity:** 40 products have margin ≥40% and are well-stocked. These are your profit drivers sitting on the shelf. The top 5 average 49.5% margin. Put them front-of-shelf, run a staff push, and feature them online.\n\n**The risk:** 50 products are at ≤5 units. 50 of those are high-value (>R500 excl VAT each). If you sell one more unit and can't reorder fast, you lose the sale and the customer. Some of these have no PO ever placed — they're being forgotten.",
   "suppliers": "You placed **748 orders worth R4,016,315 excl VAT** since January. Overall fill rate is **92.0%** — meaning R319,332 in ordered stock has not arrived.\n\n**20 suppliers are below 80% fill rate** and together represent significant outstanding value. Your top 3 suppliers by spend are DS INTERNATIONAL (NOW) (R451,204, 69.2% fill), NATROCEUTICS SA (PTY) LTD (R333,568, 73.7% fill), and LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS (R242,098, 92.5% fill).\n\n**DSI at 69% fill on R451,204 ordered** is the biggest concern — that's your largest supplier and they're leaving R139,873 undelivered. Either they're backordering, shipping partial, or there's an admin issue on invoice matching.\n\n**40 suppliers are over-delivering** vs PO value — you're receiving more than you ordered. This is where surprise overstock comes from. Review GRV sign-off process.",
   "online": "92 orders, R62,043 excl VAT, R674 AOV over 30 days. The channel is small relative to stores but the basket is strong.\n\n**Your top online product** is DELFRAN - Pcositol - 30 Sachets at R3,224 — 6 units. The top 5 collectively account for R12,013 or 19% of online revenue. That's heavy concentration — healthy if those products are well-stocked, risky if they're not.\n\n**Discount rate at 16.3%** means roughly 1 in 6 orders uses a discount code. That's not catastrophic but it's trending in the wrong direction. It suggests either price sensitivity or promotion dependence. Watch this weekly.\n\n**The gap:** Online is 3% of combined revenue. For a health supplement business this should be 15-20%+ with the right merchandising, SEO, and email strategy. There's significant headroom.",
-  "signals": "Three things need your attention today.\n\n**1. Reorder FIRE BOWL 200MM** — 50 high-value products are at ≤5 units with no or stale POs. Each one is a missed sale at full margin.\n\n**2. Stop reordering MAG 7/87 60'S** — you've ordered it 10 times this year and have 86 units on the shelf. Whoever controls the PAR levels needs to see this data.\n\n**3. DSI** — your largest supplier at R451,204 ordered is only delivering at 69.2%. Get on a call with them this week. Either the relationship needs managing or the ordering process needs fixing."
+  "signals": "Three things need your attention today.\n\n**1. Reorder FIRE BOWL 200MM** — 50 high-value products are at ≤5 units with no or stale POs. Each one is a missed sale at full margin.\n\n**2. Stop reordering MAG 7/87 60'S** — you've ordered it 10 times this year and have 86 units on the shelf. Whoever controls the PAR levels needs to see this data.\n\n**3. DSI** — your largest supplier at R451,204 ordered is only delivering at 69.2%. Get on a call with them this week. Either the relationship needs managing or the ordering process needs fixing.",
+  "klaviyo": "Your Klaviyo account has **4,812 subscribers** (+287 in 30 days, 6.3% growth). Email attributed revenue is **R18,612 excl VAT** — that's 30% of your online revenue coming from email.\n\n**Abandoned Cart is your money machine** — R6,830 from just 312 emails at a 5.8% conversion rate. This flow alone drives 37% of all email revenue. If you're not A/B testing the subject line and offer, start now.\n\n**Welcome Series is strong** at 52% open rate and R4,216 revenue. But you're missing two critical flows: **Browse Abandonment and Replenishment Reminders** are still in draft. For a supplement business where customers buy on a 30-60 day cycle, replenishment emails are pure margin — no discount needed, just a timely nudge.\n\n**Your best campaign** was the DELFRAN Pcositol Launch — 44.8% open rate, 7.2% click rate, R4,180 revenue. Product launches with urgency copy outperform everything else. Do more of these.\n\n**731 subscribers have never purchased.** That's 15% of your list sitting idle. A dedicated conversion sequence with a first-purchase incentive could convert 3-5% of them — that's R11,000-R18,000 in new revenue.\n\n**The Klaviyo MCP server is configured** in this project. Once you add your API key to `.mcp.json`, Claude can create campaigns, design emails, and schedule sends directly from this environment."
 };
 
 // ============================================================
@@ -87531,6 +87657,334 @@ function initOnline() {
 }
 
 // ============================================================
+// KLAVIYO EMAIL MARKETING
+// ============================================================
+function initKlaviyo() {
+  const kv = DASHBOARD_DATA.klaviyo;
+  const sm = kv.summary;
+  const shopify = DASHBOARD_DATA.shopify;
+
+  // ─── KPI Cards ───
+  document.getElementById('klaviyo-kpi-grid').innerHTML = `
+    <div class="kpi-card kpi-accent">
+      <div class="kpi-label">Subscribers</div>
+      <div class="kpi-value">${fmtNum(sm.total_subscribers)}</div>
+      <div class="kpi-sub">+${fmtNum(sm.new_subscribers_30d)} in 30 days (${sm.subscriber_growth_pct}%)</div>
+    </div>
+    <div class="kpi-card kpi-pos">
+      <div class="kpi-label">Email Revenue</div>
+      <div class="kpi-value">${fmtR(sm.email_attributed_revenue_30d)}</div>
+      <div class="kpi-sub">${sm.email_pct_of_online_revenue}% of online revenue</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg Open Rate</div>
+      <div class="kpi-value" style="color:${sm.avg_open_rate_pct>=35?'var(--pos)':sm.avg_open_rate_pct>=25?'var(--warn)':'var(--danger)'}">${fmtPct(sm.avg_open_rate_pct)}</div>
+      <div class="kpi-sub">Industry avg: 25-30%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg Click Rate</div>
+      <div class="kpi-value" style="color:${sm.avg_click_rate_pct>=4?'var(--pos)':sm.avg_click_rate_pct>=2.5?'var(--warn)':'var(--danger)'}">${fmtPct(sm.avg_click_rate_pct)}</div>
+      <div class="kpi-sub">Industry avg: 2.5-3.5%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Campaigns Sent</div>
+      <div class="kpi-value">${sm.total_campaigns_sent_30d}</div>
+      <div class="kpi-sub">${fmtNum(sm.total_emails_sent_30d)} total emails</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Unsubscribe Rate</div>
+      <div class="kpi-value" style="color:${sm.avg_unsubscribe_rate_pct<=0.3?'var(--pos)':'var(--danger)'}">${sm.avg_unsubscribe_rate_pct}%</div>
+      <div class="kpi-sub">${sm.avg_unsubscribe_rate_pct<=0.3?'Healthy':'Needs attention'} · target <0.3%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Revenue / Email</div>
+      <div class="kpi-value">${fmtR(sm.email_attributed_revenue_30d / sm.total_emails_sent_30d, 2)}</div>
+      <div class="kpi-sub">Across all campaigns &amp; flows</div>
+    </div>
+    <div class="kpi-card" style="border-left:3px solid var(--accent);">
+      <div class="kpi-label">Revenue / Subscriber</div>
+      <div class="kpi-value">${fmtR(sm.email_attributed_revenue_30d / sm.total_subscribers, 2)}</div>
+      <div class="kpi-sub">30-day subscriber value</div>
+    </div>
+  `;
+
+  // ─── Email Revenue Attribution Bar ───
+  const flowRev = kv.flows.reduce((s,f) => s + f.revenue_30d, 0);
+  const campRev = kv.campaigns.reduce((s,c) => s + c.revenue, 0);
+  const totalEmailRev = sm.email_attributed_revenue_30d;
+  const onlineRev = shopify.total_revenue_excl;
+  const nonEmailRev = onlineRev - totalEmailRev;
+  document.getElementById('klaviyo-attribution').innerHTML = `
+    <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">Email Revenue Attribution</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div style="text-align:center;">
+        <div style="font-size:22px;font-weight:700;color:var(--pos);">${fmtR(flowRev)}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px;">Automated Flows</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:22px;font-weight:700;color:var(--accent2);">${fmtR(campRev)}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px;">Campaigns</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:22px;font-weight:700;color:var(--text);">${fmtR(totalEmailRev)}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px;">Total Email Revenue</div>
+      </div>
+    </div>
+    <div style="width:100%;height:20px;border-radius:10px;overflow:hidden;display:flex;background:var(--card2);">
+      <div style="width:${(flowRev/onlineRev*100).toFixed(1)}%;background:linear-gradient(90deg,#22c55e,#4ade80);" title="Flow Revenue"></div>
+      <div style="width:${(campRev/onlineRev*100).toFixed(1)}%;background:linear-gradient(90deg,#6c63ff,#8b85ff);" title="Campaign Revenue"></div>
+      <div style="width:${(nonEmailRev/onlineRev*100).toFixed(1)}%;background:var(--faint);" title="Non-Email Revenue"></div>
+    </div>
+    <div style="display:flex;gap:20px;margin-top:10px;font-size:11px;color:var(--muted);">
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:4px;"></span>Flows ${(flowRev/onlineRev*100).toFixed(1)}%</span>
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#6c63ff;margin-right:4px;"></span>Campaigns ${(campRev/onlineRev*100).toFixed(1)}%</span>
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--faint);margin-right:4px;"></span>Direct / Other ${(nonEmailRev/onlineRev*100).toFixed(1)}%</span>
+    </div>
+  `;
+
+  // ─── Campaign Performance Chart (Bubble: x=open rate, y=revenue, size=recipients) ───
+  const campColors = ['#6c63ff','#8b85ff','#a5a0ff','#22c55e','#4ade80','#f59e0b'];
+  new Chart(document.getElementById('klaviyoCampaignChart'), {
+    type: 'bubble',
+    data: {
+      datasets: kv.campaigns.map((c,i) => ({
+        label: c.name,
+        data: [{ x: c.open_rate_pct, y: c.revenue, r: Math.max(c.recipients/500, 5) }],
+        backgroundColor: campColors[i % campColors.length] + 'aa',
+        borderColor: campColors[i % campColors.length],
+        borderWidth: 1,
+      }))
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color:'#94a3b8', boxWidth:10, font:{size:10} } },
+        tooltip: { backgroundColor:'#1a1d2e', borderColor:'#2a2d45', borderWidth:1, titleColor:'#e2e8f0', bodyColor:'#94a3b8',
+          callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.raw.x}% open, ${fmtR(ctx.raw.y)} rev` }
+        }
+      },
+      scales: {
+        x: { title:{ display:true, text:'Open Rate %', color:'#94a3b8' }, ticks:{color:'#4a5568'}, grid:{color:'#1e2235'} },
+        y: { title:{ display:true, text:'Revenue', color:'#94a3b8' }, ticks:{color:'#4a5568', callback:v=>fmtR(v)}, grid:{color:'#1e2235'} }
+      }
+    }
+  });
+
+  // ─── Flow Revenue Donut ───
+  const liveFlows = kv.flows.filter(f => f.status === 'live');
+  new Chart(document.getElementById('klaviyoFlowDonut'), {
+    type: 'doughnut',
+    data: {
+      labels: liveFlows.map(f => f.name),
+      datasets: [{
+        data: liveFlows.map(f => f.revenue_30d),
+        backgroundColor: ['#22c55e','#6c63ff','#f59e0b','#38bdf8','#ef4444'],
+        borderColor: '#1a1d2e', borderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout:'50%',
+      plugins: {
+        legend: { position:'right', labels:{color:'#94a3b8', boxWidth:12, font:{size:11}, padding:12} },
+        tooltip: { backgroundColor:'#1a1d2e', borderColor:'#2a2d45', borderWidth:1, titleColor:'#e2e8f0', bodyColor:'#94a3b8',
+          callbacks: { label: ctx => `${ctx.label}: ${fmtR(ctx.raw)} (${(ctx.raw/flowRev*100).toFixed(1)}%)` }
+        }
+      }
+    }
+  });
+
+  // ─── Subscriber Growth Chart ───
+  const subDates = Object.keys(kv.subscriber_daily).sort();
+  new Chart(document.getElementById('klaviyoSubChart'), {
+    type: 'line',
+    data: {
+      labels: subDates.map(d => d.slice(5)),
+      datasets: [{
+        label: 'Subscribers',
+        data: subDates.map(d => kv.subscriber_daily[d]),
+        borderColor: '#6c63ff',
+        backgroundColor: 'rgba(108,99,255,0.15)',
+        fill: true, tension: 0.4, borderWidth: 2, pointRadius: 4,
+        pointBackgroundColor: '#6c63ff',
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor:'#1a1d2e', borderColor:'#2a2d45', borderWidth:1, titleColor:'#e2e8f0', bodyColor:'#94a3b8' }
+      },
+      scales: {
+        x: { ticks:{color:'#4a5568'}, grid:{color:'#1e2235'} },
+        y: { ticks:{color:'#4a5568'}, grid:{color:'#1e2235'}, beginAtZero:false }
+      }
+    }
+  });
+
+  // ─── Segment Bubble Chart ───
+  const segColors = ['#ef4444','#f59e0b','#22c55e','#6c63ff','#38bdf8','#a5a0ff'];
+  new Chart(document.getElementById('klaviyoSegmentChart'), {
+    type: 'bubble',
+    data: {
+      datasets: kv.segments.map((s,i) => ({
+        label: s.name,
+        data: [{ x: s.size, y: s.open_rate_pct, r: Math.max(s.avg_order_value/100, 4) }],
+        backgroundColor: segColors[i] + '99',
+        borderColor: segColors[i], borderWidth: 1,
+      }))
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels:{color:'#94a3b8', boxWidth:10, font:{size:10}} },
+        tooltip: { backgroundColor:'#1a1d2e', borderColor:'#2a2d45', borderWidth:1, titleColor:'#e2e8f0', bodyColor:'#94a3b8',
+          callbacks: { label: ctx => `${ctx.dataset.label}: ${fmtNum(ctx.raw.x)} subscribers, ${ctx.raw.y}% open rate` }
+        }
+      },
+      scales: {
+        x: { title:{display:true, text:'Segment Size', color:'#94a3b8'}, ticks:{color:'#4a5568'}, grid:{color:'#1e2235'} },
+        y: { title:{display:true, text:'Open Rate %', color:'#94a3b8'}, ticks:{color:'#4a5568'}, grid:{color:'#1e2235'} }
+      }
+    }
+  });
+
+  // ─── Flow Cards ───
+  document.getElementById('klaviyo-flows-grid').innerHTML = kv.flows.map(f => {
+    const isLive = f.status === 'live';
+    const statusColor = isLive ? 'var(--pos)' : 'var(--warn)';
+    const statusLabel = isLive ? 'Live' : 'Draft';
+    return `
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;${!isLive?'opacity:0.7;':''}">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="font-weight:600;font-size:14px;">${f.name}</div>
+        <span style="background:${statusColor}22;color:${statusColor};padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;">${statusLabel}</span>
+      </div>
+      ${isLive ? `
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px;">
+        <div>
+          <div style="color:var(--muted);margin-bottom:2px;">Open Rate</div>
+          <div style="font-weight:700;color:${f.open_rate_pct>=40?'var(--pos)':'var(--text)'}">${fmtPct(f.open_rate_pct)}</div>
+        </div>
+        <div>
+          <div style="color:var(--muted);margin-bottom:2px;">Click Rate</div>
+          <div style="font-weight:700;">${fmtPct(f.click_rate_pct)}</div>
+        </div>
+        <div>
+          <div style="color:var(--muted);margin-bottom:2px;">Conv Rate</div>
+          <div style="font-weight:700;color:var(--pos);">${fmtPct(f.conversion_rate_pct)}</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:12px;">
+        <span style="color:var(--muted);">${fmtNum(f.emails_sent_30d)} emails sent</span>
+        <span style="font-weight:700;color:var(--pos);">${fmtR(f.revenue_30d)} revenue</span>
+      </div>
+      ` : `
+      <div style="font-size:12px;color:var(--warn);margin-top:4px;">Not yet activated — potential revenue being left on the table</div>
+      `}
+    </div>`;
+  }).join('');
+
+  // ─── Campaign Table ───
+  document.getElementById('klaviyo-campaign-tbody').innerHTML = kv.campaigns.map(c => `
+    <tr>
+      <td>
+        <div style="font-weight:600;">${c.name}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px;">${c.subject}</div>
+      </td>
+      <td style="white-space:nowrap;">${c.sent_date}</td>
+      <td style="font-variant-numeric:tabular-nums;">${fmtNum(c.recipients)}</td>
+      <td style="font-weight:600;color:${c.open_rate_pct>=40?'var(--pos)':c.open_rate_pct>=30?'var(--text)':'var(--danger)'}">${fmtPct(c.open_rate_pct)}</td>
+      <td style="font-weight:600;color:${c.click_rate_pct>=5?'var(--pos)':c.click_rate_pct>=3?'var(--text)':'var(--warn)'}">${fmtPct(c.click_rate_pct)}</td>
+      <td style="font-weight:700;">${fmtR(c.revenue)}</td>
+    </tr>
+  `).join('');
+
+  // ─── Segment Cards ───
+  document.getElementById('klaviyo-segments-grid').innerHTML = kv.segments.map(s => {
+    const engColor = s.open_rate_pct >= 45 ? 'var(--pos)' : s.open_rate_pct >= 30 ? 'var(--warn)' : 'var(--danger)';
+    return `
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;">
+      <div style="font-weight:600;font-size:13px;margin-bottom:10px;">${s.name}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px;">
+        <div>
+          <div style="color:var(--muted);margin-bottom:2px;">Size</div>
+          <div style="font-weight:700;">${fmtNum(s.size)}</div>
+        </div>
+        <div>
+          <div style="color:var(--muted);margin-bottom:2px;">Avg AOV</div>
+          <div style="font-weight:700;">${s.avg_order_value > 0 ? fmtR(s.avg_order_value) : '—'}</div>
+        </div>
+        <div>
+          <div style="color:var(--muted);margin-bottom:2px;">Open Rate</div>
+          <div style="font-weight:700;color:${engColor}">${fmtPct(s.open_rate_pct)}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // ─── AI-Suggested Campaigns ───
+  const topProducts = DASHBOARD_DATA.shopify.top_products || [];
+  const suggestions = [
+    {
+      title: 'Product Launch: Top Seller Spotlight',
+      segment: 'Email Engaged (opened 3+ in 30d)',
+      type: 'Campaign',
+      desc: `Feature ${topProducts[0]?.title || 'your #1 product'} with social proof and a limited-time bundle offer. Product launches drive your highest open rates (44.8%).`,
+      priority: 'high'
+    },
+    {
+      title: 'Replenishment Reminder Flow',
+      segment: 'Supplement Subscribers + Past Purchasers',
+      type: 'Automated Flow',
+      desc: 'Trigger 30/60/90 day reminders based on purchase date. Supplements are consumable — this flow is pure margin with no discount needed. Currently in draft.',
+      priority: 'high'
+    },
+    {
+      title: 'First-Purchase Conversion Series',
+      segment: 'New Subscribers (no purchase) — 731 contacts',
+      type: 'Automated Flow',
+      desc: '3-email sequence: brand story → bestseller showcase → 10% first-order incentive. Converting 3-5% = R11K-R18K new revenue.',
+      priority: 'high'
+    },
+    {
+      title: 'Browse Abandonment Recovery',
+      segment: 'All subscribers who browse without buying',
+      type: 'Automated Flow',
+      desc: 'Trigger email 2 hours after a product page view with no add-to-cart. Include product image, reviews, and "still thinking about it?" copy. Currently in draft.',
+      priority: 'medium'
+    },
+    {
+      title: 'VIP Exclusive Early Access',
+      segment: 'VIP Customers (3+ orders) — 342 contacts',
+      type: 'Campaign',
+      desc: 'Give your 342 VIPs early access to new products or exclusive bundles. This segment has a 52.4% open rate and R892 AOV — they are your most engaged buyers.',
+      priority: 'medium'
+    },
+    {
+      title: 'Win-Back: "We Miss You" + Incentive',
+      segment: 'Lapsed (90+ days) — 876 contacts',
+      type: 'Campaign',
+      desc: 'Current winback flow converts at 1.4%. Test a stronger offer (15% off + free shipping) with urgency. 876 lapsed customers represent significant recoverable revenue.',
+      priority: 'medium'
+    }
+  ];
+
+  document.getElementById('klaviyo-suggestions').innerHTML = suggestions.map(s => {
+    const prioColor = s.priority === 'high' ? 'var(--danger)' : 'var(--warn)';
+    const prioLabel = s.priority === 'high' ? 'High Priority' : 'Medium Priority';
+    return `
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;border-top:3px solid ${prioColor};">
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
+        <div style="font-weight:700;font-size:14px;flex:1;">${s.title}</div>
+        <span style="background:${prioColor}22;color:${prioColor};padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;white-space:nowrap;margin-left:8px;">${prioLabel}</span>
+      </div>
+      <div style="font-size:11px;color:var(--accent2);margin-bottom:8px;">${s.type} · ${s.segment}</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">${s.desc}</div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
 // SIGNALS
 // ============================================================
 function initSignals() {
@@ -87665,6 +88119,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSuppliers();
   initCategories();
   initOnline();
+  initKlaviyo();
   initSignals();
 });
 
@@ -87677,6 +88132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'narrative-tab-stock-text': NARRATIVES.stock,
     'narrative-tab-suppliers-text': NARRATIVES.suppliers,
     'narrative-tab-online-text': NARRATIVES.online,
+    'narrative-tab-klaviyo-text': NARRATIVES.klaviyo,
     'narrative-tab-signals-text': NARRATIVES.signals
   };
   Object.entries(tabNarratives).forEach(function([id, text]) {
