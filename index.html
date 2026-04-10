@@ -431,14 +431,45 @@
 </div>
 
     <div class="kpi-grid" id="online-kpi-grid"></div>
-    <div class="chart-grid">
-      <div class="chart-card chart-wide">
+
+    <!-- Channel Mix Banner -->
+    <div id="online-channel-mix" style="display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:20px;"></div>
+
+    <div class="chart-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+      <div class="chart-card chart-wide" style="grid-column:1/-1;">
         <div class="chart-title">Daily Online Revenue + Orders — 30 Days excl VAT</div>
         <div class="chart-container" style="height:260px;">
           <canvas id="onlineChart"></canvas>
         </div>
       </div>
+      <div class="chart-card">
+        <div class="chart-title">Revenue by Day of Week</div>
+        <div class="chart-container" style="height:240px;">
+          <canvas id="onlineDowChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Top 10 Products — Revenue Share</div>
+        <div class="chart-container" style="height:240px;">
+          <canvas id="onlineDonutChart"></canvas>
+        </div>
+      </div>
     </div>
+
+    <!-- Weekly Performance -->
+    <div class="section-header">
+      <div class="section-title">Weekly Performance</div>
+    </div>
+    <div id="online-weekly-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:24px;"></div>
+
+    <!-- Top Products Bar Chart -->
+    <div class="chart-card" style="margin-bottom:20px;">
+      <div class="chart-title">Top 10 Products by Revenue excl VAT</div>
+      <div class="chart-container" style="height:300px;">
+        <canvas id="onlineTopBarChart"></canvas>
+      </div>
+    </div>
+
     <div class="section-header">
       <div class="section-title">Top 20 Online Products</div>
     </div>
@@ -449,6 +480,7 @@
             <th data-col="title">Product <span class="sort-icon"></span></th>
             <th data-col="qty">Units Sold <span class="sort-icon"></span></th>
             <th data-col="revenue_excl">Revenue excl VAT <span class="sort-icon"></span></th>
+            <th data-col="share">% of Online <span class="sort-icon"></span></th>
           </tr></thead>
           <tbody id="online-prod-tbody"></tbody>
         </table>
@@ -87197,16 +87229,32 @@ function initCategories() {
 // ============================================================
 function initOnline() {
   const shopify = DASHBOARD_DATA.shopify;
-  
+  const kpis = DASHBOARD_DATA.kpis;
+  const daily = shopify.daily;
+  const dates = Object.keys(daily).sort();
+  const revData = dates.map(d => daily[d].revenue_excl);
+  const ordData = dates.map(d => daily[d].orders);
+
+  // Derived metrics
+  const totalRev = shopify.total_revenue_excl;
+  const activeDays = dates.length;
+  const revPerDay = totalRev / activeDays;
+  const peakDay = dates.reduce((best,d) => daily[d].revenue_excl > daily[best].revenue_excl ? d : best, dates[0]);
+  const peakRev = daily[peakDay].revenue_excl;
+  const onlineShare = (totalRev / kpis.combined_revenue_30d_excl * 100);
+  const unitsTotal = (shopify.top_products||[]).reduce((s,p)=>s+p.qty,0);
+  const revPerUnit = totalRev / (unitsTotal || 1);
+
+  // ─── KPI Cards (expanded) ───
   document.getElementById('online-kpi-grid').innerHTML = `
     <div class="kpi-card kpi-accent">
       <div class="kpi-label">Total Orders</div>
       <div class="kpi-value">${fmtNum(shopify.total_orders)}</div>
-      <div class="kpi-sub">30 days</div>
+      <div class="kpi-sub">30 days · ${(shopify.total_orders/activeDays).toFixed(1)}/day</div>
     </div>
     <div class="kpi-card kpi-pos">
       <div class="kpi-label">Revenue excl VAT</div>
-      <div class="kpi-value">${fmtR(shopify.total_revenue_excl)}</div>
+      <div class="kpi-value">${fmtR(totalRev)}</div>
       <div class="kpi-sub">Shopify · 30 days</div>
     </div>
     <div class="kpi-card kpi-accent">
@@ -87219,13 +87267,55 @@ function initOnline() {
       <div class="kpi-value color-warn">${fmtPct(shopify.discount_rate_pct)}</div>
       <div class="kpi-sub">Of revenue discounted</div>
     </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Revenue / Day</div>
+      <div class="kpi-value">${fmtR(revPerDay)}</div>
+      <div class="kpi-sub">${activeDays} active selling days</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Peak Day</div>
+      <div class="kpi-value">${fmtR(peakRev)}</div>
+      <div class="kpi-sub">${peakDay} · ${daily[peakDay].orders} orders</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Units Sold</div>
+      <div class="kpi-value">${fmtNum(unitsTotal)}</div>
+      <div class="kpi-sub">${fmtR(revPerUnit)} rev per unit</div>
+    </div>
+    <div class="kpi-card" style="border-left:3px solid ${onlineShare<5?'var(--danger)':onlineShare<15?'var(--warn)':'var(--pos)'};">
+      <div class="kpi-label">Online Share</div>
+      <div class="kpi-value" style="color:${onlineShare<5?'var(--danger)':onlineShare<15?'var(--warn)':'var(--pos)'}">${onlineShare.toFixed(1)}%</div>
+      <div class="kpi-sub">Of combined revenue</div>
+    </div>
   `;
-  
-  const daily = shopify.daily;
-  const dates = Object.keys(daily).sort();
-  const revData = dates.map(d => daily[d].revenue_excl);
-  const ordData = dates.map(d => daily[d].orders);
-  
+
+  // ─── Channel Mix Banner ───
+  const storeRev = kpis.store_sales_30d_excl;
+  const combinedRev = kpis.combined_revenue_30d_excl;
+  document.getElementById('online-channel-mix').innerHTML = `
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Channel Split</div>
+      <div style="width:100%;height:24px;border-radius:12px;overflow:hidden;background:var(--card2);display:flex;">
+        <div style="width:${(storeRev/combinedRev*100).toFixed(1)}%;background:linear-gradient(90deg,#6c63ff,#8b85ff);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">${(storeRev/combinedRev*100).toFixed(1)}% Stores</div>
+        <div style="width:${(totalRev/combinedRev*100).toFixed(1)}%;background:linear-gradient(90deg,#22c55e,#4ade80);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">${(totalRev/combinedRev*100).toFixed(1)}%</div>
+      </div>
+      <div style="display:flex;gap:20px;margin-top:12px;font-size:12px;color:var(--muted);">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#6c63ff;margin-right:4px;"></span>Stores ${fmtR(storeRev)}</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:4px;"></span>Online ${fmtR(totalRev)}</span>
+      </div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Online Growth Opportunity</div>
+      <div style="font-size:14px;color:var(--text);line-height:1.7;">
+        Online contributes <strong style="color:${onlineShare<5?'var(--danger)':'var(--warn)'}">${onlineShare.toFixed(1)}%</strong> of combined revenue.
+        For a health supplement business, the benchmark is <strong style="color:var(--pos);">15–20%</strong>.
+        Closing the gap to 15% would mean an additional <strong style="color:var(--pos);">${fmtR(combinedRev*0.15 - totalRev)}</strong> in monthly online revenue.
+        Key levers: SEO, email marketing, subscription bundles, and improving the product page conversion rate.
+      </div>
+    </div>
+  `;
+
+  // ─── Daily Revenue + Orders Chart ───
   new Chart(document.getElementById('onlineChart'), {
     type: 'line',
     data: {
@@ -87265,13 +87355,144 @@ function initOnline() {
       }
     }
   });
-  
-  // Top products table
+
+  // ─── Day-of-Week Chart ───
+  const dowNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const dowRev = [0,0,0,0,0,0,0];
+  const dowOrd = [0,0,0,0,0,0,0];
+  const dowCount = [0,0,0,0,0,0,0];
+  dates.forEach(d => {
+    const dow = new Date(d+'T00:00:00').getDay();
+    dowRev[dow] += daily[d].revenue_excl;
+    dowOrd[dow] += daily[d].orders;
+    dowCount[dow]++;
+  });
+  const dowAvgRev = dowRev.map((r,i) => dowCount[i] ? r/dowCount[i] : 0);
+  const bestDow = dowNames[dowAvgRev.indexOf(Math.max(...dowAvgRev))];
+
+  new Chart(document.getElementById('onlineDowChart'), {
+    type: 'bar',
+    data: {
+      labels: dowNames,
+      datasets: [{
+        label: 'Avg Revenue',
+        data: dowAvgRev,
+        backgroundColor: dowAvgRev.map(v => v === Math.max(...dowAvgRev) ? '#22c55e' : 'rgba(108,99,255,0.6)'),
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor:'#1a1d2e', borderColor:'#2a2d45', borderWidth:1, titleColor:'#e2e8f0', bodyColor:'#94a3b8',
+          callbacks: { label: ctx => fmtR(ctx.raw) + ' avg' }
+        }
+      },
+      scales: {
+        x: { ticks: { color:'#94a3b8' }, grid:{ display:false } },
+        y: { ticks: { color:'#4a5568', callback: v=>fmtR(v) }, grid:{ color:'#1e2235' } }
+      }
+    }
+  });
+
+  // ─── Revenue Concentration Donut ───
+  const top10 = (shopify.top_products||[]).slice(0,10);
+  const top10Rev = top10.reduce((s,p)=>s+p.revenue_excl,0);
+  const restRev = totalRev - top10Rev;
+  const donutLabels = top10.map(p => p.title.length>30 ? p.title.slice(0,28)+'...' : p.title);
+  donutLabels.push('All Other Products');
+  const donutData = top10.map(p=>p.revenue_excl);
+  donutData.push(restRev);
+  const donutColors = ['#6c63ff','#8b85ff','#a5a0ff','#22c55e','#4ade80','#f59e0b','#fbbf24','#ef4444','#f87171','#38bdf8','#475569'];
+
+  new Chart(document.getElementById('onlineDonutChart'), {
+    type: 'doughnut',
+    data: {
+      labels: donutLabels,
+      datasets: [{ data: donutData, backgroundColor: donutColors, borderColor: '#1a1d2e', borderWidth: 2 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '55%',
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor:'#1a1d2e', borderColor:'#2a2d45', borderWidth:1, titleColor:'#e2e8f0', bodyColor:'#94a3b8',
+          callbacks: { label: ctx => `${ctx.label}: ${fmtR(ctx.raw)} (${(ctx.raw/totalRev*100).toFixed(1)}%)` }
+        }
+      }
+    }
+  });
+
+  // ─── Weekly Performance Cards ───
+  const weeks = {};
+  dates.forEach(d => {
+    const dt = new Date(d+'T00:00:00');
+    const weekStart = new Date(dt);
+    weekStart.setDate(dt.getDate() - dt.getDay());
+    const wk = weekStart.toISOString().slice(0,10);
+    if(!weeks[wk]) weeks[wk] = { rev: 0, orders: 0, days: 0 };
+    weeks[wk].rev += daily[d].revenue_excl;
+    weeks[wk].orders += daily[d].orders;
+    weeks[wk].days++;
+  });
+  const weekKeys = Object.keys(weeks).sort();
+  let weekHtml = '';
+  weekKeys.forEach((wk,i) => {
+    const w = weeks[wk];
+    const prev = i > 0 ? weeks[weekKeys[i-1]] : null;
+    const growth = prev ? ((w.rev - prev.rev) / prev.rev * 100) : null;
+    const growthStr = growth !== null
+      ? `<span style="color:${growth>=0?'var(--pos)':'var(--danger)'};">${growth>=0?'+':''}${growth.toFixed(1)}%</span>`
+      : '<span style="color:var(--muted);">—</span>';
+    weekHtml += `
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">Week of ${wk.slice(5)}</div>
+        <div style="font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;">${fmtR(w.rev)}</div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--muted);">
+          <span>${w.orders} orders</span>
+          <span>WoW ${growthStr}</span>
+        </div>
+      </div>`;
+  });
+  document.getElementById('online-weekly-grid').innerHTML = weekHtml;
+
+  // ─── Top Products Horizontal Bar ───
+  new Chart(document.getElementById('onlineTopBarChart'), {
+    type: 'bar',
+    data: {
+      labels: top10.map(p => p.title.length>35 ? p.title.slice(0,33)+'...' : p.title),
+      datasets: [{
+        label: 'Revenue excl VAT',
+        data: top10.map(p => p.revenue_excl),
+        backgroundColor: 'rgba(108,99,255,0.7)',
+        borderRadius: 4,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { backgroundColor:'#1a1d2e', borderColor:'#2a2d45', borderWidth:1, titleColor:'#e2e8f0', bodyColor:'#94a3b8',
+          callbacks: { label: ctx => fmtR(ctx.raw) }
+        }
+      },
+      scales: {
+        x: { ticks: { color:'#4a5568', callback: v=>fmtR(v) }, grid:{ color:'#1e2235' } },
+        y: { ticks: { color:'#94a3b8', font:{ size:11 } }, grid:{ display:false } }
+      }
+    }
+  });
+
+  // ─── Top Products Table (enhanced with % share) ───
   const top20 = (shopify.top_products||[]).slice(0,20);
+  top20.forEach(p => { p.share = p.revenue_excl / totalRev * 100; });
   const tbody = document.getElementById('online-prod-tbody');
   const ths = document.querySelectorAll('#online-prod-table thead th');
   let sortCol='revenue_excl', sortDir='desc';
-  
+
   function renderOnlineProds() {
     let sorted=[...top20];
     sorted.sort((a,b)=>{
@@ -87283,11 +87504,16 @@ function initOnline() {
       if(av>bv) return sortDir==='asc'?1:-1;
       return 0;
     });
-    tbody.innerHTML = sorted.map((p,i) => `<tr>
+    let cumShare = 0;
+    tbody.innerHTML = sorted.map((p,i) => {
+      cumShare += p.share;
+      return `<tr>
       <td>${p.title}</td>
       <td style="font-variant-numeric:tabular-nums;font-weight:600;">${fmtNum(p.qty)}</td>
       <td style="font-weight:600;">${fmtR(p.revenue_excl,2)}</td>
-    </tr>`).join('');
+      <td><span style="font-weight:600;">${p.share.toFixed(1)}%</span> <span style="color:var(--muted);font-size:11px;">(cum ${cumShare.toFixed(0)}%)</span></td>
+    </tr>`;
+    }).join('');
   }
   ths.forEach(th=>{
     th.addEventListener('click',()=>{
