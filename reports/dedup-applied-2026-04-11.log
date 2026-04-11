@@ -380,3 +380,30 @@
 {"phase": 2, "action": "archived", "product_id": 10655577899318, "handle": "9351383017514", "canonical_id": 8951049257270, "ts": "2026-04-11T12:10:10.351772+00:00"}
 {"phase": 2, "action": "archived", "product_id": 10655577866550, "handle": "9351383017545", "canonical_id": 8951055647030, "ts": "2026-04-11T12:10:11.490689+00:00"}
 {"phase": 2, "action": "archived", "product_id": 10655577112886, "handle": "9351383034474", "canonical_id": 8951499391286, "ts": "2026-04-11T12:10:12.502385+00:00"}
+{"phase": 0, "action": "run_start", "plan": "/home/user/onelife-dashboard/reports/dedup-breakdown-2026-04-11.json", "location_id": 73396420918, "total_groups": 2820, "total_archive": 2841, "limit": null, "skip_redirects": false, "ts": "2026-04-11T13:37:49.591244+00:00"}
+{"phase": 1, "action": "transfer_skipped_src_empty", "transfer": {"from_product_id": 8875800133942, "from_variant_id": 47350353396022, "from_variant_title": "Default Title", "to_variant_id": 45764244668726, "to_variant_title": "Default Title", "variant_key": "__default__", "qty": 15}, "src_qty": 0, "ts": "2026-04-11T13:37:51.462036+00:00"}
+{"phase": 1, "action": "transfer_skipped_src_empty", "transfer": {"from_product_id": 10094766194998, "from_variant_id": 51588417782070, "from_variant_title": "Default Title", "to_variant_id": 45791727616310, "to_variant_title": "Default Title", "variant_key": "__default__", "qty": 3}, "src_qty": 0, "ts": "2026-04-11T13:37:52.886802+00:00"}
+{"phase": 1, "action": "transfer_skipped_src_empty", "transfer": {"from_product_id": 8874167402806, "from_variant_id": 47346595529014, "from_variant_title": "Default Title", "to_variant_id": 45722627342646, "to_variant_title": "Default Title", "variant_key": "__default__", "qty": 2}, "src_qty": 0, "ts": "2026-04-11T13:37:54.516121+00:00"}
+{"phase": 1, "action": "transfer_skipped_src_empty", "transfer": {"from_product_id": 9131058266422, "from_variant_id": 48236014403894, "from_variant_title": "Default Title", "to_variant_id": 48236002017590, "to_variant_title": "Default Title", "variant_key": "__default__", "qty": 2}, "src_qty": 0, "ts": "2026-04-11T13:37:55.993542+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655575998774, "handle": "9351383009038", "canonical_id": 8956807184694, "ts": "2026-04-11T13:37:56.857495+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655577047350, "handle": "9351383086220", "canonical_id": 8951528784182, "ts": "2026-04-11T13:37:58.001720+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655577080118, "handle": "9340447025992", "canonical_id": 8951520231734, "ts": "2026-04-11T13:37:58.973020+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655577014582, "handle": "9351383086565", "canonical_id": 8951532159286, "ts": "2026-04-11T13:38:00.211095+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655578063158, "handle": "9351383086732", "canonical_id": 8950883090742, "ts": "2026-04-11T13:38:01.229467+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655578030390, "handle": "9340447026500", "canonical_id": 8950895935798, "ts": "2026-04-11T13:38:02.682932+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655577997622, "handle": "9340447026494", "canonical_id": 8950918938934, "ts": "2026-04-11T13:38:03.719772+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655577178422, "handle": "9351383034375", "canonical_id": 8951489233206, "ts": "2026-04-11T13:38:04.784319+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655576195382, "handle": "9351383086800", "canonical_id": 8956776907062, "ts": "2026-04-11T13:38:05.809878+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655576260918, "handle": "9351383071165", "canonical_id": 8956769206582, "ts": "2026-04-11T13:38:06.955146+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655576162614, "handle": "9340447026029", "canonical_id": 8956781363510, "ts": "2026-04-11T13:38:07.946094+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655576129846, "handle": "9340447026548", "canonical_id": 8956788769078, "ts": "2026-04-11T13:38:08.977267+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655576031542, "handle": "9340447048830", "canonical_id": 8956792406326, "ts": "2026-04-11T13:38:10.241796+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655574458678, "handle": "9340447048663", "canonical_id": 8958809047350, "ts": "2026-04-11T13:38:11.257526+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655655821622, "handle": "0658325146400", "canonical_id": 8436195688758, "ts": "2026-04-11T13:38:12.560735+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655655264566, "handle": "606110804585", "canonical_id": 8442442449206, "ts": "2026-04-11T13:38:13.640911+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655655231798, "handle": "606110804578", "canonical_id": 8442454343990, "ts": "2026-04-11T13:38:14.656559+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655655788854, "handle": "0658325146424", "canonical_id": 8436197196086, "ts": "2026-04-11T13:38:15.753035+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655655330102, "handle": "658325682991", "canonical_id": 8442262487350, "ts": "2026-04-11T13:38:16.847337+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655655297334, "handle": "614143114366", "canonical_id": 8442399195446, "ts": "2026-04-11T13:38:17.911466+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655655854390, "handle": "6061108046394", "canonical_id": 8436193722678, "ts": "2026-04-11T13:38:18.961164+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655655362870, "handle": "0658325146387", "canonical_id": 8442251936054, "ts": "2026-04-11T13:38:20.027826+00:00"}
