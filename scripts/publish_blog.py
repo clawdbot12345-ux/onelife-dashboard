@@ -49,13 +49,53 @@ from pathlib import Path
 
 # ─── Config ───
 KLAVIYO_KEY = os.environ.get("KLAVIYO_API_KEY")
-SHOPIFY_TOKEN = os.environ.get("SHOPIFY_ADMIN_TOKEN")
-SHOPIFY_STORE = os.environ.get("SHOPIFY_STORE", "onelifehealth.myshopify.com")
+
+# Shopify auth — Dev Dashboard apps use OAuth client credentials grant
+# (since Jan 2026, legacy shpat_ tokens are no longer created for new custom apps).
+# You can either pass:
+#   1. SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET (preferred, new apps)
+#   2. SHOPIFY_ADMIN_TOKEN (legacy shpat_ token, if still valid)
+SHOPIFY_CLIENT_ID = os.environ.get("SHOPIFY_CLIENT_ID")
+SHOPIFY_CLIENT_SECRET = os.environ.get("SHOPIFY_CLIENT_SECRET")
+SHOPIFY_TOKEN_OVERRIDE = os.environ.get("SHOPIFY_ADMIN_TOKEN")  # optional legacy token
+SHOPIFY_STORE_RAW = os.environ.get("SHOPIFY_STORE", "onelifehealth.myshopify.com")
+# Normalize: strip .myshopify.com if present, we'll add it in URL formatting
+SHOPIFY_STORE_HANDLE = SHOPIFY_STORE_RAW.replace(".myshopify.com", "")
+SHOPIFY_STORE = f"{SHOPIFY_STORE_HANDLE}.myshopify.com"
 SHOPIFY_API_VERSION = "2025-01"
 
 if not KLAVIYO_KEY:
     print("ERROR: KLAVIYO_API_KEY not set", file=sys.stderr)
     sys.exit(1)
+
+def get_shopify_token():
+    """Get a Shopify Admin API access token.
+
+    If SHOPIFY_ADMIN_TOKEN is set (legacy shpat_ token), use it directly.
+    Otherwise, exchange SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET for a
+    24-hour token via the OAuth client credentials grant.
+    """
+    if SHOPIFY_TOKEN_OVERRIDE:
+        return SHOPIFY_TOKEN_OVERRIDE
+    if not (SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET):
+        return None
+    url = f"https://{SHOPIFY_STORE}/admin/oauth/access_token"
+    body = urllib.parse.urlencode({
+        "grant_type": "client_credentials",
+        "client_id": SHOPIFY_CLIENT_ID,
+        "client_secret": SHOPIFY_CLIENT_SECRET,
+    }).encode()
+    req = urllib.request.Request(url, data=body,
+        headers={"Content-Type": "application/x-www-form-urlencoded"}, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read())
+            return data.get("access_token")
+    except urllib.error.HTTPError as e:
+        print(f"  ✗ Shopify OAuth failed: {e.code} {e.read().decode()[:200]}", file=sys.stderr)
+        return None
+
+SHOPIFY_TOKEN = get_shopify_token()
 
 # ─── Parse markdown frontmatter ───
 def parse_frontmatter(md_content):
@@ -192,7 +232,8 @@ def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
     article_body = {
         "article": {
             "title": fm.get("title"),
-            "author": fm.get("author", "Onelife Health"),
+            # Default matches the existing Onelife blog convention
+            "author": fm.get("author", "Your Health Store Companion"),
             "body_html": md_to_html(body_md),
             "handle": fm.get("slug"),
             "summary_html": fm.get("excerpt", ""),
