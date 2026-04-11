@@ -86,47 +86,85 @@ print(f"  ✓ Session: {session_id}", file=sys.stderr)
 # ─── Weekly task prompt ───
 weekly_task = """Run the weekly content & email marketing cycle for Onelife Health.
 
-Steps:
-1. Check memory for context from previous sessions. Pay attention to:
-   - Last week's published blog and its performance (if known)
-   - Any updated product catalog info
-   - User preference notes
+## Memory is in git, not in a memory store
+Your persistent memory lives at `scripts/managed_agent/memory/` in the repo.
+Read/write it as normal files using your bash and file tools. Everything you
+write there gets committed to git at the end of the session, so next week's
+you will see it.
 
-2. Read content/blogs/ and find the next unpublished blog
-   (filename doesn't end in .published.md). If there are no unpublished
-   blogs left, propose 3 new topics based on:
-   - Gaps in their existing blog archive
-   - Current search trends (use web_search)
-   - Products in their catalog that need more visibility
-   And write the new blogs to content/blogs/ with proper YAML frontmatter.
+## Steps
 
-3. Publish the next blog by running:
-     python scripts/publish_blog.py content/blogs/<filename>.md
-   This creates the Shopify article (draft) and Klaviyo campaign (draft).
+1. **Check memory** before starting anything:
+   - Read `scripts/managed_agent/memory/README.md` for the layout
+   - Read `scripts/managed_agent/memory/playbook.md` for the weekly rules
+   - Read `scripts/managed_agent/memory/brand_voice.md` for template style
+   - Read `scripts/managed_agent/memory/product_catalog.md` for known products
+   - Read the most recent 2-3 files in `scripts/managed_agent/memory/insights/`
+   - Read last week's `scripts/managed_agent/memory/campaign_performance/` file
+   - Read any `scripts/managed_agent/memory/human_notes/` files (human instructions)
 
-4. Pull the last 7 days of campaign performance from the Klaviyo API
-   and run:
-     python scripts/weekly_report.py
-   Read the resulting reports/weekly-YYYY-MM-DD.md and extract key insights.
+2. **Pick the next blog** from `content/blogs/`:
+   - Find the oldest file not ending in `.published.md`
+   - If there are no unpublished blogs left, STOP and write a note in
+     `memory/insights/<week>.md` saying the queue is empty and propose
+     3 new topics based on gaps and trends. Then finish the session.
 
-5. Compare this week's performance to last week's (from memory).
-   Identify what's working, what's regressing, and what the single
-   most important thing to do next is.
+3. **Publish the blog**:
+   ```
+   export KLAVIYO_API_KEY=<from env>
+   export SHOPIFY_ADMIN_TOKEN=<from env>
+   python scripts/publish_blog.py content/blogs/<filename>.md
+   ```
+   Capture the output (template_id, campaign_id, blog_url).
 
-6. Write learnings to memory:
-   - /blog_history/<week>.md — what was published, what worked
-   - /campaign_performance/<week>.md — the weekly metrics
-   - /insights/<week>.md — 1-3 key insights for future sessions
+4. **Mark as published** by renaming:
+   ```
+   git mv content/blogs/<file>.md content/blogs/<file>.published.md
+   ```
 
-7. Commit all changes to git with a descriptive message.
+5. **Pull this week's performance** and run the weekly report:
+   ```
+   python scripts/weekly_report.py
+   ```
+   Read `reports/weekly-YYYY-MM-DD.md`.
 
-8. Return a concise summary of what you did and what needs human
-   attention (e.g., campaigns to review, underperformers to fix).
+6. **Compare vs last week** (from memory). Write 1-3 insights to
+   `scripts/managed_agent/memory/insights/<ISO-week>.md` in this format:
+   ```markdown
+   # Week <W>, <year>
+   ## What happened
+   - Published: <blog title>
+   - Top campaign: <name> — R<revenue>
+   - Bottom campaign: <name> — R<revenue>
+   ## What I learned
+   - <insight 1>
+   - <insight 2>
+   ## What to do next week
+   - <action>
+   ```
 
-Safety rules:
-- Never send campaigns without human approval — always leave as Draft
-- Never publish the Shopify article as "published" — always leave as draft
-- Never modify existing live flows
+7. **Update product catalog** if you noticed any 404s on product links.
+   Write to `scripts/managed_agent/memory/product_changes/<date>.md`.
+
+8. **Commit everything to git** with a descriptive message:
+   ```
+   git add -A
+   git commit -m "chore: weekly agent cycle <week> - <summary>"
+   ```
+
+9. **Return a concise summary** (under 200 words) of what you did and
+   what needs human attention.
+
+## Safety rules — NEVER violate these
+- Never send campaigns. Always leave as Draft.
+- Never publish Shopify articles as "published". Always draft.
+- Never modify existing live flows.
+- Never use fabricated product data. Always verify links return HTTP 200.
+- Never duplicate topics already in the blog archive or scheduled Klaviyo
+  campaigns. Check `memory/blog_history/` before picking a topic.
+- If anything is ambiguous, write your question to
+  `memory/human_notes/pending-questions.md` and wait for the next week.
+"""
 - If you're unsure about something, write it to memory and wait for human input next week
 """
 
