@@ -1,0 +1,48 @@
+name: Generate Blog Images (Nano Banana Pro)
+
+# Triggered manually. Generates hero images via Google Gemini 3 Pro Image
+# (Nano Banana Pro) for blog posts and uploads them to Shopify.
+#
+# Runs on a GitHub Actions runner (Azure IPs) because Google blocks the
+# Anthropic/sandbox IPs for Gemini API calls.
+#
+# Required secrets:
+#   GEMINI_API_KEY         — Google AI Studio API key
+#   SHOPIFY_CLIENT_ID      — Shopify Dev Dashboard app client ID
+#   SHOPIFY_CLIENT_SECRET  — Shopify Dev Dashboard app client secret
+
+on:
+  workflow_dispatch:
+    inputs:
+      article_ids:
+        description: 'Comma-separated article IDs to regenerate (leave blank for 3 new blogs)'
+        required: false
+        default: ''
+      model:
+        description: 'Gemini model ID'
+        required: false
+        default: 'gemini-3-pro-image-preview'
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate and upload images
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ github.event.inputs.model || 'gemini-3-pro-image-preview' }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          ARTICLE_IDS: ${{ github.event.inputs.article_ids }}
+        run: python scripts/generate_blog_images_gemini.py
