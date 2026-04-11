@@ -1,12 +1,16 @@
 name: Managed Agent Weekly Cycle
 
-# Every Monday at 05:00 UTC (07:00 SAST) — triggers a Claude Managed Agent
+# Every Monday at 06:00 UTC (08:00 SAST) — triggers a Claude Managed Agent
 # session to run the full content → email → analytics weekly cycle.
 # The agent has access to persistent memory, so it remembers what it did
 # last week and builds on it.
+#
+# Timing: runs BEFORE weekly-blog-publish (07:00 UTC) so the agent has
+# time to write new blogs if the content queue is empty. The publisher
+# then picks up the new blog and ships it.
 on:
   schedule:
-    - cron: '0 5 * * 1'
+    - cron: '0 6 * * 1'
   workflow_dispatch:
 
 permissions:

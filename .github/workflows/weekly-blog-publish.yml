@@ -1,14 +1,20 @@
 name: Weekly Blog Publish
 
-# Runs every Monday at 05:00 UTC (07:00 SAST) — picks the next unpublished
-# blog from content/blogs/ and publishes it to Shopify + Klaviyo.
+# Runs every Monday at 07:00 UTC (09:00 SAST) — picks the next unpublished
+# blog from content/blogs/ and publishes it end-to-end:
+#   1. Shopify (as published, with Nano Banana Pro hero image)
+#   2. Klaviyo (creates + auto-schedules campaign with UTM-tagged links)
+#   3. Commits source file as .published.md
+#
+# Scheduling: runs AFTER managed-agent-weekly.yml (which runs at 06:00 UTC)
+# so the agent has a chance to write new blogs if the queue is empty.
 on:
   schedule:
-    - cron: '0 5 * * 1'
+    - cron: '0 7 * * 1'
   workflow_dispatch:
     inputs:
       blog_file:
-        description: 'Specific blog file to publish (e.g. 2026-04-berberine-natures-ozempic.md). Leave blank to auto-pick next unpublished.'
+        description: 'Specific blog file to publish (leave blank to auto-pick next unpublished)'
         required: false
 
 permissions:
@@ -19,13 +25,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Pull latest main so agent-committed blogs are visible
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install PyYAML
+      - name: Install dependencies
         run: pip install pyyaml
 
       - name: Pick blog to publish
@@ -34,8 +43,8 @@ jobs:
           if [ -n "${{ github.event.inputs.blog_file }}" ]; then
             BLOG="content/blogs/${{ github.event.inputs.blog_file }}"
           else
-            # Find next blog that hasn't been marked as .published
-            BLOG=$(ls content/blogs/*.md 2>/dev/null | grep -v published | head -1)
+            # Oldest unpublished blog (alphabetical order)
+            BLOG=$(ls content/blogs/*.md 2>/dev/null | grep -v '\.published\.md' | head -1)
           fi
           if [ -z "$BLOG" ] || [ ! -f "$BLOG" ]; then
             echo "No blog file to publish — exiting cleanly"
@@ -43,17 +52,137 @@ jobs:
           else
             echo "Publishing: $BLOG"
             echo "blog=$BLOG" >> $GITHUB_OUTPUT
+            # Extract article_id is not possible before publish; we'll capture from JSON output
           fi
 
-      - name: Publish blog + email
+      - name: Publish blog to Shopify + create Klaviyo campaign
         if: steps.pick.outputs.skip != 'true'
+        id: publish
         env:
           KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
-          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
-          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE || 'onelifehealth.myshopify.com' }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          # Auto-schedule the Klaviyo campaign (moves Draft → Scheduled)
+          AUTO_SCHEDULE_CAMPAIGNS: 'true'
         run: |
           python scripts/publish_blog.py "${{ steps.pick.outputs.blog }}" > publish_result.json
           cat publish_result.json
+          # Extract the blog URL so we can derive article_id for image generation
+          python3 -c "
+          import json, sys, re, os
+          with open('publish_result.json') as f:
+              r = json.load(f)
+          blog_url = r.get('blog_url','')
+          # Extract Shopify article ID by calling Shopify API with the handle
+          handle = blog_url.rstrip('/').split('/')[-1] if blog_url else ''
+          print(f'blog_handle={handle}')
+          " >> $GITHUB_OUTPUT
+
+      - name: Generate Nano Banana Pro hero image for the new blog
+        if: steps.pick.outputs.skip != 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3-pro-image-preview
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          PUBLISHED_BLOG_FILE: ${{ steps.pick.outputs.blog }}
+        run: |
+          # Generate an image for the most recent article by looking it up via the handle
+          python3 -c "
+          import os, json, urllib.request, urllib.parse, base64, sys, time
+
+          # Get Shopify token
+          body = urllib.parse.urlencode({
+              'grant_type': 'client_credentials',
+              'client_id': os.environ['SHOPIFY_CLIENT_ID'],
+              'client_secret': os.environ['SHOPIFY_CLIENT_SECRET'],
+          }).encode()
+          req = urllib.request.Request(
+              f'https://{os.environ[\"SHOPIFY_STORE\"]}.myshopify.com/admin/oauth/access_token',
+              data=body,
+              headers={'Content-Type':'application/x-www-form-urlencoded'},
+              method='POST'
+          )
+          token = json.loads(urllib.request.urlopen(req, timeout=30).read())['access_token']
+
+          # Find the most recently created article (should be the one we just published)
+          req = urllib.request.Request(
+              f'https://{os.environ[\"SHOPIFY_STORE\"]}.myshopify.com/admin/api/2025-01/blogs/120011424054/articles.json?limit=5&order=created_at%20desc',
+              headers={'X-Shopify-Access-Token': token, 'Accept': 'application/json'}
+          )
+          articles = json.loads(urllib.request.urlopen(req, timeout=30).read())['articles']
+          if not articles:
+              print('No articles found')
+              sys.exit(1)
+          article = articles[0]
+          article_id = article['id']
+          title = article['title']
+          print(f'Most recent article: [{article_id}] {title}')
+
+          # Skip if it already has an image
+          if article.get('image'):
+              print('Article already has an image, skipping')
+              sys.exit(0)
+
+          # Use the blog title + tags as the image prompt seed
+          tags = article.get('tags','')
+          prompt = f'Professional editorial product photography hero image for a premium South African health supplement blog post titled: \"{title}\". '
+          prompt += f'Key topics: {tags}. '
+          prompt += 'Clean flat-lay composition from above, soft natural morning light, shallow depth of field, muted earthy palette (cream, sage green, warm wood tones), generous negative space, premium wellness brand aesthetic reminiscent of Ritual or Seed Health. Real natural ingredients and supplement bottles relevant to the topic. 16:9 landscape aspect ratio, photorealistic, ultra-high quality.'
+
+          # Call Gemini
+          gemini_url = f'https://generativelanguage.googleapis.com/v1beta/models/{os.environ[\"GEMINI_MODEL\"]}:generateContent?key={os.environ[\"GEMINI_API_KEY\"]}'
+          gemini_body = {
+              'contents': [{'role':'user','parts':[{'text': prompt}]}],
+              'generationConfig': {
+                  'responseModalities': ['IMAGE'],
+                  'imageConfig': {'aspectRatio': '16:9'}
+              }
+          }
+          req = urllib.request.Request(gemini_url,
+              data=json.dumps(gemini_body).encode(),
+              headers={'Content-Type':'application/json'},
+              method='POST')
+          data = json.loads(urllib.request.urlopen(req, timeout=180).read())
+          parts = data.get('candidates',[{}])[0].get('content',{}).get('parts',[])
+          img_bytes = None
+          for part in parts:
+              if 'inlineData' in part:
+                  img_bytes = base64.b64decode(part['inlineData']['data'])
+                  break
+          if not img_bytes:
+              print('No image in Gemini response')
+              sys.exit(1)
+          print(f'Generated {len(img_bytes):,} bytes')
+
+          # Upload to Shopify
+          b64 = base64.b64encode(img_bytes).decode('ascii')
+          upload_body = {
+              'article': {
+                  'id': article_id,
+                  'image': {
+                      'attachment': b64,
+                      'filename': 'hero.png',
+                      'alt': title[:140],
+                  }
+              }
+          }
+          req = urllib.request.Request(
+              f'https://{os.environ[\"SHOPIFY_STORE\"]}.myshopify.com/admin/api/2025-01/blogs/120011424054/articles/{article_id}.json',
+              data=json.dumps(upload_body).encode(),
+              headers={
+                  'X-Shopify-Access-Token': token,
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+              },
+              method='PUT'
+          )
+          result = json.loads(urllib.request.urlopen(req, timeout=120).read())
+          cdn_url = result['article']['image']['src']
+          print(f'✓ Image uploaded: {cdn_url}')
+          "
 
       - name: Mark blog as published
         if: steps.pick.outputs.skip != 'true'
@@ -62,6 +191,6 @@ jobs:
           mv "$BLOG" "${BLOG%.md}.published.md"
           git config user.name "onelife-publish-bot"
           git config user.email "bot@onelife.co.za"
-          git add "${BLOG%.md}.published.md"
-          git commit -m "chore: mark $(basename "$BLOG") as published"
+          git add "${BLOG%.md}.published.md" "$BLOG" || true
+          git commit -m "chore: publish $(basename "$BLOG") — $(date +%Y-%m-%d)"
           git push

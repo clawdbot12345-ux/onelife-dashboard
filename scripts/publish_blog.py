@@ -464,6 +464,21 @@ def publish_to_klaviyo(fm, blog_url):
     if result:
         print(f"  ✓ Template assigned to campaign message", file=sys.stderr)
 
+    # ─── Auto-schedule the campaign (move Draft → Scheduled) ───
+    # Respects AUTO_SCHEDULE_CAMPAIGNS env var — defaults to "true" for autonomous pipeline.
+    # Set to "false" if you want all future campaigns to require manual Klaviyo UI approval.
+    auto_schedule = os.environ.get("AUTO_SCHEDULE_CAMPAIGNS", "true").lower() == "true"
+    if auto_schedule:
+        schedule_result = klaviyo_post("/campaign-send-jobs/", {
+            "data": {"type": "campaign-send-job", "id": campaign_id}
+        })
+        if schedule_result:
+            print(f"  ✓ Campaign scheduled (status: Scheduled)", file=sys.stderr)
+        else:
+            print(f"  ⚠ Auto-schedule failed — campaign will stay as Draft", file=sys.stderr)
+    else:
+        print(f"  → Campaign left as Draft (AUTO_SCHEDULE_CAMPAIGNS=false)", file=sys.stderr)
+
     return template_id, campaign_id
 
 # ─── Main ───
