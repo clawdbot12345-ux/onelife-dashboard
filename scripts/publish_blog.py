@@ -389,8 +389,93 @@ def render_email_text(fm, blog_url, campaign_slug):
     ]
     return "\n".join(lines)
 
+def filter_products_by_stock(products, min_stock=3):
+    """Check each product's inventory via Shopify and filter out low-stock items.
+
+    Args:
+        products: list of product dicts with 'url' field (Shopify product URL)
+        min_stock: minimum required stock quantity to keep the product
+
+    Returns:
+        (kept_products, removed_products) — tuple of lists. Removed items get
+        a 'reason' field explaining why.
+    """
+    if not SHOPIFY_TOKEN:
+        print(f"  ⚠ No Shopify token — skipping stock check", file=sys.stderr)
+        return products, []
+
+    kept = []
+    removed = []
+
+    for p in products:
+        url = p.get("url", "")
+        # Extract handle from URL like https://onelife.co.za/collections/.../products/xyz-abc
+        m = re.search(r"/products/([^/?#]+)", url)
+        if not m:
+            removed.append({**p, "reason": "no handle in URL"})
+            continue
+        handle = m.group(1)
+
+        # Query Shopify for the product
+        api_url = f"https://{SHOPIFY_STORE}/admin/api/{SHOPIFY_API_VERSION}/products.json?handle={handle}&fields=id,title,variants,status"
+        req = urllib.request.Request(api_url, headers={
+            "X-Shopify-Access-Token": SHOPIFY_TOKEN,
+            "Accept": "application/json",
+        })
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                result = json.loads(resp.read())
+            found = result.get("products", [])
+        except urllib.error.HTTPError as e:
+            removed.append({**p, "reason": f"shopify {e.code}"})
+            continue
+
+        if not found:
+            removed.append({**p, "reason": "not found on Shopify"})
+            continue
+
+        prod = found[0]
+        if prod.get("status") != "active":
+            removed.append({**p, "reason": f"status: {prod.get('status')}"})
+            continue
+
+        variants = prod.get("variants", [])
+        total_qty = sum((v.get("inventory_quantity", 0) or 0) for v in variants)
+
+        if total_qty < min_stock:
+            removed.append({**p, "reason": f"only {total_qty} in stock (need ≥{min_stock})"})
+            continue
+
+        # Enrich the product with the verified title (in case YAML is stale)
+        p["_verified_title"] = prod.get("title")
+        p["_verified_qty"] = total_qty
+        kept.append(p)
+
+    return kept, removed
+
+
 def publish_to_klaviyo(fm, blog_url):
     campaign_slug = fm.get("slug", "blog-campaign")
+
+    # ─── Stock verification ───
+    # Filter out any products that are out of stock or below the minimum threshold.
+    # MIN_STOCK_THRESHOLD env var (default 3) protects against promoting products
+    # that might sell out between the email build and the actual send (typically 48h).
+    min_stock = int(os.environ.get("MIN_STOCK_THRESHOLD", "3"))
+    raw_products = fm.get("products", []) or []
+    if raw_products:
+        print(f"  → Stock check (min_stock={min_stock})...", file=sys.stderr)
+        kept, removed = filter_products_by_stock(raw_products, min_stock=min_stock)
+        for r in removed:
+            print(f"  ⚠ REMOVED: {r.get('name','?')} — {r.get('reason','?')}", file=sys.stderr)
+        for k in kept:
+            qty = k.get("_verified_qty", "?")
+            print(f"  ✓ KEPT: {k.get('name','?')} ({qty} in stock)", file=sys.stderr)
+        fm["products"] = kept
+        # Abort if no products survive
+        if not kept:
+            print(f"  ✗ No products in stock — aborting Klaviyo publish", file=sys.stderr)
+            return None, None
 
     # Create template
     template_body = {
