@@ -129,12 +129,13 @@ def fetch_klaviyo_top_products(metric_id="TqJLxm"):
     }
 
 
+MIN_STOCK_THRESHOLD = int(os.environ.get("MIN_STOCK_THRESHOLD", "3"))
+
+
 def product_has_stock(product):
-    """Check if any variant has inventory_quantity > 0."""
-    for variant in product.get("variants", []):
-        if variant.get("inventory_quantity", 0) > 0:
-            return True
-    return False
+    """Return True if total stock across variants is >= MIN_STOCK_THRESHOLD."""
+    total = sum((v.get("inventory_quantity", 0) or 0) for v in product.get("variants", []))
+    return total >= MIN_STOCK_THRESHOLD
 
 
 def get_variant_price(product):
