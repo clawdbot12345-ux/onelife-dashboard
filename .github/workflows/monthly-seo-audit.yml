@@ -1,0 +1,50 @@
+name: Monthly SEO Audit
+
+# Runs on the 1st of every month at 04:00 UTC (06:00 SAST).
+# Crawls every product, collection, blog article, and page in Onelife's
+# Shopify store and generates a rule-based SEO audit report.
+#
+# Can also be triggered manually from the Actions tab.
+on:
+  schedule:
+    - cron: '0 4 1 * *'
+  workflow_dispatch:
+    inputs:
+      sample_size:
+        description: 'Sample size (0 = full catalog, >0 = first N products for testing)'
+        required: false
+        default: '0'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run SEO audit
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          AUDIT_SAMPLE_SIZE: ${{ github.event.inputs.sample_size || '0' }}
+        run: python scripts/seo_audit.py
+
+      - name: Commit report
+        run: |
+          git config user.name "onelife-seo-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/seo-audit-*.md reports/seo-audit-*.json
+          if git diff --staged --quiet; then
+            echo "No new audit report to commit"
+          else
+            git commit -m "chore: monthly SEO audit $(date +%Y-%m-%d)"
+            git push
+          fi

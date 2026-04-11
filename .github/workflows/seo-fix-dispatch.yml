@@ -1,0 +1,59 @@
+name: SEO Fix Agent
+
+# Manual-dispatch only. Generates Claude-written replacement content for
+# products that failed the SEO audit's rule-based checks.
+#
+# Defaults to DRY RUN (writes fixes to reports/seo-fixes-YYYY-MM-DD.jsonl
+# without touching Shopify). Set apply=true and confirm to push live.
+on:
+  workflow_dispatch:
+    inputs:
+      sample_size:
+        description: 'How many products to fix (0 = all fixable, recommended: 20 for first run)'
+        required: false
+        default: '20'
+      apply:
+        description: 'Actually push fixes to Shopify? (true/false)'
+        required: false
+        default: 'false'
+      model:
+        description: 'Claude model to use'
+        required: false
+        default: 'claude-haiku-4-5-20251001'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run SEO fix agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          FIX_SAMPLE_SIZE: ${{ github.event.inputs.sample_size }}
+          APPLY_FIXES: ${{ github.event.inputs.apply }}
+          FIX_MODEL: ${{ github.event.inputs.model }}
+        run: python scripts/seo_fix_agent.py
+
+      - name: Commit fix ledger
+        run: |
+          git config user.name "onelife-seo-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/seo-fixes-*.jsonl
+          if git diff --staged --quiet; then
+            echo "No fixes ledger to commit"
+          else
+            git commit -m "chore: SEO fix run $(date +%Y-%m-%d) — ${{ github.event.inputs.sample_size }} products, apply=${{ github.event.inputs.apply }}"
+            git push
+          fi
