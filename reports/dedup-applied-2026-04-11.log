@@ -1,0 +1,54 @@
+{"phase": 0, "action": "run_start", "plan": "/home/user/onelife-dashboard/reports/dedup-breakdown-2026-04-11.json", "location_id": 73396420918, "total_groups": 2820, "total_archive": 2841, "limit": null, "skip_redirects": false, "ts": "2026-04-11T12:03:13.554837+00:00"}
+{"phase": 1, "action": "transfer_ok", "from_variant": 47350353396022, "to_variant": 45764244668726, "src_item": 49367863886134, "dst_item": 47792016949558, "qty_moved": 15, "canonical_new_qty": 19, "ts": "2026-04-11T12:03:16.777932+00:00"}
+{"phase": 1, "action": "transfer_ok", "from_variant": 51588417782070, "to_variant": 45791727616310, "src_item": 53481069248822, "dst_item": 47819549475126, "qty_moved": 3, "canonical_new_qty": 5, "ts": "2026-04-11T12:03:20.128472+00:00"}
+{"phase": 1, "action": "transfer_ok", "from_variant": 47346595529014, "to_variant": 45722627342646, "src_item": 49364106215734, "dst_item": 47750410600758, "qty_moved": 2, "canonical_new_qty": 2, "ts": "2026-04-11T12:03:23.302708+00:00"}
+{"phase": 1, "action": "transfer_ok", "from_variant": 48236014403894, "to_variant": 48236002017590, "src_item": 50251921817910, "dst_item": 50251909431606, "qty_moved": 2, "canonical_new_qty": 4, "ts": "2026-04-11T12:03:26.179724+00:00"}
+{"phase": 2, "action": "archived", "product_id": 9325173047606, "handle": "boody-ladies-black-classic-bikini-s-v2", "canonical_id": 8950634938678, "ts": "2026-04-11T12:03:27.278914+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655555223862, "handle": "9340447025213", "canonical_id": 8950634938678, "ts": "2026-04-11T12:03:28.344484+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655578456374, "handle": "9351383070038", "canonical_id": 8950634938678, "ts": "2026-04-11T12:03:29.435161+00:00"}
+{"phase": 2, "action": "archived", "product_id": 8956791226678, "handle": "boody-men-light-grey-original-briefs-s-v2", "canonical_id": 8956790374710, "ts": "2026-04-11T12:03:30.847604+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655576064310, "handle": "9340447026524", "canonical_id": 8956790374710, "ts": "2026-04-11T12:03:31.934265+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655576097078, "handle": "9340447026531", "canonical_id": 8956790374710, "ts": "2026-04-11T12:03:33.029397+00:00"}
+{"phase": 2, "action": "archived", "product_id": 8492888916278, "handle": "escentia-caraway-essential-oil-10ml-v2", "canonical_id": 8492883935542, "ts": "2026-04-11T12:03:34.328569+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655639830838, "handle": "6009704870302", "canonical_id": 8492883935542, "ts": "2026-04-11T12:03:35.387541+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655639863606, "handle": "6009704870289", "canonical_id": 8492883935542, "ts": "2026-04-11T12:03:36.440603+00:00"}
+{"phase": 2, "action": "archived", "product_id": 8499088490806, "handle": "escentia-cedarwood-essential-oil-10ml-v2", "canonical_id": 8492937707830, "ts": "2026-04-11T12:03:37.808342+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655636357430, "handle": "6009704870395", "canonical_id": 8492937707830, "ts": "2026-04-11T12:03:38.839546+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655639699766, "handle": "6009704870388", "canonical_id": 8492937707830, "ts": "2026-04-11T12:03:39.876740+00:00"}
+{"phase": 2, "action": "archived", "product_id": 8875800133942, "handle": "escentia-frankincense-serrata-essential-oil-10ml-v2", "canonical_id": 8493025886518, "ts": "2026-04-11T12:03:41.167177+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655592218934, "handle": "6009704873761", "canonical_id": 8493025886518, "ts": "2026-04-11T12:03:42.226151+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655639011638, "handle": "6009704870753", "canonical_id": 8493025886518, "ts": "2026-04-11T12:03:43.286967+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10094766194998, "handle": "escentia-frankincense-serrata-essential-oil-20ml-v2", "canonical_id": 8499124306230, "ts": "2026-04-11T12:03:44.636247+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655545819446, "handle": "6009704873778", "canonical_id": 8499124306230, "ts": "2026-04-11T12:03:45.814349+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655635931446, "handle": "6009704870760", "canonical_id": 8499124306230, "ts": "2026-04-11T12:03:46.868704+00:00"}
+{"phase": 2, "action": "archived", "product_id": 8874167402806, "handle": "neogenesis-health-nightcaps-30-capsules", "canonical_id": 8481796718902, "ts": "2026-04-11T12:03:48.183393+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655592513846, "handle": "700371686093", "canonical_id": 8481796718902, "ts": "2026-04-11T12:03:49.306681+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655644483894, "handle": "700371686086", "canonical_id": 8481796718902, "ts": "2026-04-11T12:03:50.377860+00:00"}
+{"phase": 2, "action": "archived", "product_id": 9131058266422, "handle": "real-good-sunflower-seeds-400g-v2", "canonical_id": 9131055874358, "ts": "2026-04-11T12:03:51.646085+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655561253174, "handle": "6009702593807", "canonical_id": 9131055874358, "ts": "2026-04-11T12:03:52.744008+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655561318710, "handle": "6009702593838", "canonical_id": 9131055874358, "ts": "2026-04-11T12:03:53.829384+00:00"}
+{"phase": 2, "action": "archived", "product_id": 8446238327094, "handle": "thursday-plantation-tea-tree-oil-25ml-v2", "canonical_id": 8446234001718, "ts": "2026-04-11T12:03:55.217795+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655654347062, "handle": "931214600129", "canonical_id": 8446234001718, "ts": "2026-04-11T12:03:56.301662+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655654379830, "handle": "9312146001300", "canonical_id": 8446234001718, "ts": "2026-04-11T12:03:57.425507+00:00"}
+{"phase": 2, "action": "archived", "product_id": 8473495666998, "handle": "viridian-l-lysine-500mg-30-veg-capsules-v2", "canonical_id": 8473494520118, "ts": "2026-04-11T12:03:58.765771+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655646187830, "handle": "5060003590323", "canonical_id": 8473494520118, "ts": "2026-04-11T12:03:59.833955+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655646220598, "handle": "5060003590309", "canonical_id": 8473494520118, "ts": "2026-04-11T12:04:01.031100+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655559975222, "handle": "8938507849179", "canonical_id": 9132995674422, "ts": "2026-04-11T12:04:02.093838+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655586353462, "handle": "8997212611013", "canonical_id": 9132995674422, "ts": "2026-04-11T12:04:03.512622+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655550800182, "handle": "726872005850", "canonical_id": 9557244346678, "ts": "2026-04-11T12:04:04.628819+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655571968310, "handle": "6009609796226", "canonical_id": 9031361823030, "ts": "2026-04-11T12:04:05.723939+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655569641782, "handle": "6009609794949", "canonical_id": 9035167465782, "ts": "2026-04-11T12:04:06.919921+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655569740086, "handle": "6009609790170", "canonical_id": 9035159404854, "ts": "2026-04-11T12:04:07.975944+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655569609014, "handle": "6009609791122", "canonical_id": 9035168809270, "ts": "2026-04-11T12:04:09.016042+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655569412406, "handle": "6009609797544", "canonical_id": 9035196662070, "ts": "2026-04-11T12:04:10.041082+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655569445174, "handle": "6009609790422", "canonical_id": 9035187061046, "ts": "2026-04-11T12:04:11.124038+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655571902774, "handle": "6009609798824", "canonical_id": 9031391641910, "ts": "2026-04-11T12:04:12.183429+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655571935542, "handle": "6009609791740", "canonical_id": 9031391445302, "ts": "2026-04-11T12:04:13.323866+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655571870006, "handle": "6009609797636", "canonical_id": 9031391707446, "ts": "2026-04-11T12:04:14.375297+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655571837238, "handle": "6009609796233", "canonical_id": 9031393182006, "ts": "2026-04-11T12:04:15.417741+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655569576246, "handle": "6009699711796", "canonical_id": 9035171889462, "ts": "2026-04-11T12:04:16.394220+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655570329910, "handle": "6009609797049", "canonical_id": 9031430144310, "ts": "2026-04-11T12:04:17.721904+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655570395446, "handle": "6009609799555", "canonical_id": 9031428604214, "ts": "2026-04-11T12:04:18.682646+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655570362678, "handle": "6009609799562", "canonical_id": 9031429194038, "ts": "2026-04-11T12:04:19.693620+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655570460982, "handle": "6009818830599", "canonical_id": 9031428276534, "ts": "2026-04-11T12:04:20.801945+00:00"}
+{"phase": 2, "action": "archived", "product_id": 10655570428214, "handle": "6009609791108", "canonical_id": 9031428440374, "ts": "2026-04-11T12:04:21.872007+00:00"}
