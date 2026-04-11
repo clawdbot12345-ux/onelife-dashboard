@@ -1,0 +1,39 @@
+name: Friday Product Campaign
+
+# Every Wednesday at 07:00 UTC (09:00 SAST) — picks a product (new launch
+# first, then fallback) and creates a Klaviyo campaign that auto-schedules
+# for Friday 09:00 SAST (~48h later).
+#
+# Why Wednesday creation for Friday send? Matches the blog cadence pattern
+# (Monday create → Wed send). Also gives a 48h review window to cancel
+# if you don't like what was picked.
+on:
+  schedule:
+    - cron: '0 7 * * 3'  # Wednesday 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build + schedule Friday product campaign
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3-pro-image-preview
+          SEND_OFFSET_DAYS: '2'
+          AUTO_SCHEDULE: 'true'
+        run: python scripts/friday_product_campaign.py

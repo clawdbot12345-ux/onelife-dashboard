@@ -103,26 +103,74 @@ you will see it.
    - Read last week's `scripts/managed_agent/memory/campaign_performance/` file
    - Read any `scripts/managed_agent/memory/human_notes/` files (human instructions)
 
-2. **Pick the next blog** from `content/blogs/`:
-   - Find the oldest file not ending in `.published.md`
-   - If there are no unpublished blogs left, STOP and write a note in
-     `memory/insights/<week>.md` saying the queue is empty and propose
-     3 new topics based on gaps and trends. Then finish the session.
+2. **Check the content queue**: `ls content/blogs/*.md | grep -v published`
+   - If there's an unpublished blog, skip to step 4 (the blog is already written)
+   - If the queue is EMPTY, go to step 3 to research + write a new blog
 
-3. **Publish the blog**:
+3. **RESEARCH + WRITE A NEW BLOG** (when queue is empty):
+
+   ### 3a. Audit what already exists to avoid duplicates
+   - Fetch the full Onelife blog archive:
+     `curl -sL https://onelife.co.za/blogs/health-wellness-hub.atom`
+   - Extract titles and URLs from the Atom feed
+   - Check the last 30 days of Klaviyo campaigns to see what topics were already
+     covered: use the Klaviyo campaigns endpoint with the last 30 days filter
+   - Build a list of topics to AVOID
+
+   ### 3b. Research what's trending
+   - Use `web_search` for:
+     * Current SA health trends this season (autumn/winter if March-August)
+     * Trending supplements on reddit.com/r/Supplements and r/PCOS and r/nootropics
+     * "south africa health supplement trends 2026"
+     * Seasonal conditions (e.g., hay fever, winter immunity, summer hydration)
+   - Note 3-5 topic candidates that aren't already in the archive
+
+   ### 3c. Query product intelligence (CRITICAL for revenue)
+   - **New launches**: fetch Shopify products published in the last 30 days:
+     ```
+     curl -sS "https://onelifehealth.myshopify.com/admin/api/2025-01/products.json?published_at_min=$(date -u -d '30 days ago' +%Y-%m-%dT%H:%M:%S%z)&limit=50" \\
+       -H "X-Shopify-Access-Token: $SHOPIFY_TOKEN"
+     ```
+     (First exchange SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET for a token
+     via POST /admin/oauth/access_token with grant_type=client_credentials)
+   - **Top sellers (last 30 days)** via Klaviyo `Ordered Product` metric:
+     POST to /api/metric-aggregates/ with metric_id=TqJLxm, interval=month,
+     measurements=["count","sum_value"]
+   - **In-stock check**: ensure any product you recommend has inventory_quantity > 0
+
+   ### 3d. Pick ONE topic
+   Score each candidate on:
+   - (a) Gap in the archive (high score = not covered)
+   - (b) Matches a trending topic (high score = more readers)
+   - (c) Has 2-3 in-stock products we can feature (high score = more revenue)
+   - (d) Seasonal relevance right now
+   Pick the highest-scoring topic.
+
+   ### 3e. Write the blog
+   - Use the NAD+ winning template structure as reference (see memory/brand_voice.md)
+   - 3-5 H2 sections, 800-1500 words total
+   - Match the voice: evidence-first, not hype, honest caveats
+   - YAML frontmatter at the top with: title, slug, handle (health-wellness-hub),
+     author ("Your Health Store Companion"), excerpt, preview (email preview text),
+     subject (email subject), tags, campaign_segment (Xrk5jD), send_offset_days (2),
+     category_heading, shop_collection_url, shop_label, intro_p1, intro_p2, and
+     products list with name/url/blurb for each of 2-3 products
+   - Save to `content/blogs/YYYY-MM-DD-<slug>.md`
+
+4. **Publish the blog** (only once the file exists):
    ```
-   export KLAVIYO_API_KEY=<from env>
-   export SHOPIFY_ADMIN_TOKEN=<from env>
    python scripts/publish_blog.py content/blogs/<filename>.md
    ```
-   Capture the output (template_id, campaign_id, blog_url).
+   This creates the Shopify article as published, creates the Klaviyo
+   campaign, generates a Nano Banana Pro hero image (in the next GHA step),
+   and auto-schedules the send.
 
-4. **Mark as published** by renaming:
+5. **Mark the blog as published** by renaming:
    ```
    git mv content/blogs/<file>.md content/blogs/<file>.published.md
    ```
 
-5. **Pull this week's performance** and run the weekly report:
+6. **Pull this week's performance** and run the weekly report:
    ```
    python scripts/weekly_report.py
    ```
