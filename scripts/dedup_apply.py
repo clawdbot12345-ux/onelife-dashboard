@@ -56,7 +56,7 @@ from pathlib import Path
 
 STORE = os.environ.get("SHOPIFY_STORE", "onelifehealth").replace(".myshopify.com", "")
 API_VERSION = "2025-01"
-SLEEP_BETWEEN_CALLS = 0.5  # seconds; 2 req/sec under Shopify REST leak rate
+SLEEP_BETWEEN_CALLS = 0.35  # seconds; slightly above Shopify leak rate, 429s retried
 
 HEADERS = {}  # populated in main()
 
