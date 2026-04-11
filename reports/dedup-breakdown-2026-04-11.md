@@ -1,618 +1,326 @@
 # Onelife Shopify — Exact Duplicate Dedup Breakdown
 
-**Generated:** 2026-04-11 11:07 UTC
+**Generated:** 2026-04-11 11:52 UTC
 **Scope:** Live catalog only (`status=active` + `published_status=published`)
-**Rule:** Keep the one with images → fall back to highest inventory → fall back to oldest
+**Canonical rule:** images -> oldest -> highest stock -> lowest id
+**Stock rule:** variant-level merge onto canonical by title key; unmatched stock flagged for manual review
 
 ## Summary
 
-| Metric | Count |
+| Metric | Value |
 |---|---:|
-| Live products before dedup | 7,585 |
-| Unique titles | 4,702 |
-| Duplicate groups | 2,862 |
-| **Products to archive** | **2,883** |
-| **Products after dedup** | **4,702** |
+| Live products before dedup | 7,542 |
+| Unique titles | 4,701 |
+| Duplicate groups | 2,820 |
+| **Products to archive** | **2,841** |
+| **Products after dedup** | **4,701** |
+| Stock units to transfer onto canonicals | 22 |
+| Stock units flagged for manual review | 0 |
+| Groups needing manual review | 0 |
+| No-image edge-case groups | 24 |
 
 ### Duplicate group size distribution
 
 | Group size | # groups | Products in these groups |
 |---:|---:|---:|
-| 4× | 10 | 40 |
-| 3× | 1 | 3 |
-| 2× | 2,851 | 5,702 |
+| 4x | 10 | 40 |
+| 3x | 1 | 3 |
+| 2x | 2,809 | 5,618 |
 
 ### Canonical quality check
 
-- ✓ Groups where the kept (canonical) product HAS images: **2,838**
-- ⚠ Groups where NO member has an image (canonical chosen by inventory/age): **24**
+- Groups where the kept canonical HAS images: **2,796**
+- Groups where NO member has an image (canonical chosen by stock/age): **24**
 
-## Sample of 30 duplicate groups (showing decision for each)
+## Stock preservation plan
 
-### 1. BOODY - Ladies Black Classic Bikini - S
-_4 duplicate listings in live catalog_
+Before archiving, the apply script will transfer **22 units** of stock from soon-to-be-archived duplicates onto their canonical counterparts, variant-by-variant, matched on normalized variant title key.
 
-**✅ KEEP** (canonical)
-- id: `8950634938678`
-- handle: `boody-ladies-black-classic-bikini-s-v1`
-- 🖼 has images (3 img, 1 variants, 0 units in stock)
-- created: 2023-12-07T09:02:08+02:00
+**0 units** across **0 groups** could not be matched cleanly (variant title on the duplicate does not exist on the canonical). These are listed under 'Groups needing manual review' below and will NOT be auto-merged.
 
-**📦 ARCHIVE**
-- id: `9325173047606`
-- handle: `boody-ladies-black-classic-bikini-s-v2`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2024-04-23T17:38:07+02:00
+Variants with `inventory_quantity <= 0` are skipped entirely (no sellable stock to preserve).
 
-**📦 ARCHIVE**
-- id: `10655555223862`
-- handle: `9340447025213`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:02:28+02:00
+## No-image edge-case groups
 
-**📦 ARCHIVE**
-- id: `10655578456374`
-- handle: `9351383070038`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:10:16+02:00
+These 24 groups have **no images on any member**. The canonical was picked by stock then age. Review each one to decide whether to upload an image or kill the listing outright.
 
-### 2. BOODY - Men Light Grey Original Briefs - S
-_4 duplicate listings in live catalog_
+**1. KARA - Coconut Water - 1L** (3 listings)
+- KEEP: `9132995674422` / `kara-coconut-water-1l` (1 variants, -1 units)
+- ARCHIVE: `10655559975222` / `8938507849179` (1 variants, 0 units)
+- ARCHIVE: `10655586353462` / `8997212611013` (1 variants, 0 units)
 
-**✅ KEEP** (canonical)
-- id: `8956790374710`
-- handle: `boody-men-light-grey-original-briefs-s-v1`
-- 🖼 has images (3 img, 1 variants, 0 units in stock)
-- created: 2023-12-11T09:34:31+02:00
+**2. ESCENTIA - Neem Oil - Cold Pressed - 1 Litre** (2 listings)
+- KEEP: `8522463609142` / `escentia-neem-oil-cold-pressed-1-litre` (1 variants, 0 units)
+- ARCHIVE: `10655629082934` / `600000019448` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `8956791226678`
-- handle: `boody-men-light-grey-original-briefs-s-v2`
-- 🖼 3 images, 1 variants, 0 units
-- created: 2023-12-11T09:35:16+02:00
+**3. ESCENTIA - Sea Buckthorn Fruit Essential Oil - 20ml** (2 listings)
+- KEEP: `8499133677878` / `escentia-sea-buckthorn-fruit-essential-oil-20ml` (1 variants, 0 units)
+- ARCHIVE: `10655635702070` / `6007930001965` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655576064310`
-- handle: `9340447026524`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:09:30+02:00
+**4. ESCENTIA - Soybean Cold Pressed Carrier Oil - 1 Litre** (2 listings)
+- KEEP: `8522496770358` / `escentia-soybean-cold-pressed-carrier-oil-1-litre` (1 variants, 0 units)
+- ARCHIVE: `10655628886326` / `600000076861` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655576097078`
-- handle: `9340447026531`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:09:31+02:00
+**5. ESCENTIA - Vitamin E Oil - 20ml** (2 listings)
+- KEEP: `8499138068790` / `escentia-vitamin-e-oil-20ml` (1 variants, 2 units)
+- ARCHIVE: `10655635570998` / `600000080123` (1 variants, 0 units)
 
-### 3. ESCENTIA - Caraway Essential Oil - 10ml
-_4 duplicate listings in live catalog_
+**6. ESCENTIA - Wintergreen Essential Oil - 100ml** (2 listings)
+- KEEP: `8518364660022` / `escentia-wintergreen-essential-oil-100ml` (1 variants, 0 units)
+- ARCHIVE: `10655630655798` / `6000000170004` (1 variants, 0 units)
 
-**✅ KEEP** (canonical)
-- id: `8492883935542`
-- handle: `escentia-caraway-essential-oil-10ml-v1`
-- 🖼 has images (1 img, 1 variants, 0 units in stock)
-- created: 2023-07-12T10:46:10+02:00
+**7. GREEN PHARM - Artichoke No178 - 50ml** (2 listings)
+- KEEP: `8378512081206` / `green-pharm-artichoke-no178-50ml` (1 variants, 2 units)
+- ARCHIVE: `10655657722166` / `6000000013813` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `8492888916278`
-- handle: `escentia-caraway-essential-oil-10ml-v2`
-- 🖼 1 images, 1 variants, 0 units
-- created: 2023-07-12T10:49:03+02:00
+**8. GREEN PHARM - Black Walnut No82 - 50ml** (2 listings)
+- KEEP: `8361125478710` / `green-pharm-black-walnut-no82-50ml` (1 variants, 2 units)
+- ARCHIVE: `10655661654326` / `600000080441` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655639830838`
-- handle: `6009704870302`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:31:35+02:00
+**9. GREEN PHARM - Bugleweed No182 - 50ml** (2 listings)
+- KEEP: `8378524205366` / `green-pharm-bugleweed-no182-50ml` (1 variants, 2 units)
+- ARCHIVE: `10655657492790` / `737186120726` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655639863606`
-- handle: `6009704870289`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:31:36+02:00
+**10. GREEN PHARM - Cilantro No181 - 50ml** (2 listings)
+- KEEP: `8378522239286` / `green-pharm-cilantro-no181-50ml` (1 variants, 3 units)
+- ARCHIVE: `10655657558326` / `600000000645` (1 variants, 0 units)
 
-### 4. ESCENTIA - Cedarwood Essential Oil - 10ml
-_4 duplicate listings in live catalog_
+**11. GREEN PHARM - Comfrey No174 - 50ml** (2 listings)
+- KEEP: `8378503627062` / `green-pharm-comfrey-no174-50ml` (1 variants, 0 units)
+- ARCHIVE: `10655657853238` / `600000013803` (1 variants, 0 units)
 
-**✅ KEEP** (canonical)
-- id: `8492937707830`
-- handle: `escentia-cedarwood-essential-oil-10ml-v1`
-- 🖼 has images (1 img, 1 variants, 2 units in stock)
-- created: 2023-07-12T11:12:12+02:00
+**12. GREEN PHARM - Horny Goats Weed No174 - 50ml** (2 listings)
+- KEEP: `8378505101622` / `green-pharm-horny-goats-weed-no174-50ml` (1 variants, 1 units)
+- ARCHIVE: `10655657820470` / `600000080443` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `8499088490806`
-- handle: `escentia-cedarwood-essential-oil-10ml-v2`
-- 🖼 1 images, 1 variants, 0 units
-- created: 2023-07-14T09:49:03+02:00
+**13. GREEN PHARM - Horseradish No173 - 50ml** (2 listings)
+- KEEP: `8378501890358` / `green-pharm-horseradish-no173-50ml` (1 variants, 1 units)
+- ARCHIVE: `10655657886006` / `600000002989` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655636357430`
-- handle: `6009704870395`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:30:15+02:00
+**14. GREEN PHARM - Mugwort No176 - 50ml** (2 listings)
+- KEEP: `8378506805558` / `green-pharm-mugwort-no176-50ml` (1 variants, 2 units)
+- ARCHIVE: `10655657787702` / `6000000584733` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655639699766`
-- handle: `6009704870388`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:31:32+02:00
+**15. GREEN PHARM - Pricklypear No177 - 50ml** (2 listings)
+- KEEP: `8378508837174` / `green-pharm-pricklypear-no177-50ml` (1 variants, 2 units)
+- ARCHIVE: `10655657754934` / `6000000826970` (1 variants, 0 units)
 
-### 5. ESCENTIA - Frankincense Serrata Essential Oil - 10ml
-_4 duplicate listings in live catalog_
+**16. GREEN PHARM - Rosehip No179 - 100ml** (2 listings)
+- KEEP: `8378515685686` / `green-pharm-rosehip-no179-100ml` (1 variants, 1 units)
+- ARCHIVE: `10655657656630` / `600000070048` (1 variants, 0 units)
 
-**✅ KEEP** (canonical)
-- id: `8875800133942`
-- handle: `escentia-frankincense-serrata-essential-oil-10ml-v2`
-- 🖼 has images (1 img, 1 variants, 15 units in stock)
-- created: 2023-10-27T11:32:54+02:00
+**17. GREEN PHARM - Rosehip No179 - 50ml** (2 listings)
+- KEEP: `8378513948982` / `green-pharm-rosehip-no179-50ml` (1 variants, 2 units)
+- ARCHIVE: `10655657689398` / `600000000043` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `8493025886518`
-- handle: `escentia-frankincense-serrata-essential-oil-10ml-v1`
-- 🖼 1 images, 1 variants, 4 units
-- created: 2023-07-12T11:55:54+02:00
+**18. GREEN PHARM - Vitamin C No180 - 100ml** (2 listings)
+- KEEP: `8378521059638` / `green-pharm-vitamin-c-no180-100ml` (1 variants, 0 units)
+- ARCHIVE: `10655657591094` / `600000082476` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655592218934`
-- handle: `6009704873761`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:15:10+02:00
+**19. GREEN PHARM - Vitamin C No180 - 50ml** (2 listings)
+- KEEP: `8378519748918` / `green-pharm-vitamin-c-no180-50ml` (1 variants, 1 units)
+- ARCHIVE: `10655657623862` / `6000000006488` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655639011638`
-- handle: `6009704870753`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:31:15+02:00
+**20. GREEN PHARM - Vitamin D No172 - 50ml** (2 listings)
+- KEEP: `8378498351414` / `green-pharm-vitamin-d-no172-50ml` (1 variants, 1 units)
+- ARCHIVE: `10655657918774` / `600000002404` (1 variants, 0 units)
 
-### 6. ESCENTIA - Frankincense Serrata Essential Oil - 20ml
-_4 duplicate listings in live catalog_
+**21. HAPPY EARTH PEOPLE - Dark Choc Chip Cookies - 180g** (2 listings)
+- KEEP: `10655616500022` / `6001651103243` (1 variants, 0 units)
+- ARCHIVE: `10655616532790` / `6001651102703` (1 variants, 0 units)
 
-**✅ KEEP** (canonical)
-- id: `10094766194998`
-- handle: `escentia-frankincense-serrata-essential-oil-20ml-v2`
-- 🖼 has images (1 img, 1 variants, 3 units in stock)
-- created: 2025-02-13T11:10:25+02:00
+**22. HEEL - Traumeel S Gel - 50g** (2 listings)
+- KEEP: `8476718596406` / `heel-traumeel-s-gel-50g` (1 variants, 0 units)
+- ARCHIVE: `10655644811574` / `600966589204` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `8499124306230`
-- handle: `escentia-frankincense-serrata-essential-oil-20ml-v1`
-- 🖼 1 images, 1 variants, 2 units
-- created: 2023-07-14T10:22:40+02:00
+**23. OILGROW - African Immortelle Essential Oil Blend - 10ml** (2 listings)
+- KEEP: `8487734575414` / `oilgrow-african-immortelle-essential-oil-blend-10ml` (1 variants, 0 units)
+- ARCHIVE: `10655642288438` / `600000017254` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655545819446`
-- handle: `6009704873778`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T09:58:50+02:00
+**24. VIRIDIAN - Rhodiola Rosea - 30 Veg Capsules** (2 listings)
+- KEEP: `10655645794614` / `5060003598473` (1 variants, 0 units)
+- ARCHIVE: `10655645827382` / `5060003598459` (1 variants, 0 units)
 
-**📦 ARCHIVE**
-- id: `10655635931446`
-- handle: `6009704870760`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:30:06+02:00
+## Groups needing manual review (0 total — showing top 50 by unmatched qty)
 
-### 7. NEOGENESIS HEALTH - Nightcaps - 30 Capsules
-_4 duplicate listings in live catalog_
+_None — every duplicate variant matched a canonical variant cleanly._
 
-**✅ KEEP** (canonical)
-- id: `8874167402806`
-- handle: `neogenesis-health-nightcaps-30-capsules`
-- 🖼 has images (1 img, 1 variants, 2 units in stock)
-- created: 2023-10-26T16:47:24+02:00
+## Sample of clean merges (top 20 by group size)
 
-**📦 ARCHIVE**
-- id: `8481796718902`
-- handle: `neogenesis-health-nightcaps-30-capsules-1`
-- 🖼 1 images, 1 variants, 0 units
-- created: 2023-07-08T10:30:50+02:00
+### 1. ESCENTIA - Frankincense Serrata Essential Oil - 10ml
+_4 duplicate listings_
 
-**📦 ARCHIVE**
-- id: `10655592513846`
-- handle: `700371686093`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:15:16+02:00
+**KEEP** `8493025886518` `escentia-frankincense-serrata-essential-oil-10ml-v1` (has images, 1 img, 1 variants, 4 units) created 2023-07-12T11:55:54+02:00
+**ARCHIVE** `8875800133942` `escentia-frankincense-serrata-essential-oil-10ml-v2` (img, 1 variants, 15 units)
+**ARCHIVE** `10655592218934` `6009704873761` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655639011638` `6009704870753` (no img, 1 variants, 0 units)
+- Stock transfer: 15 units across 1 variant(s)
 
-**📦 ARCHIVE**
-- id: `10655644483894`
-- handle: `700371686086`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:33:20+02:00
+### 2. ESCENTIA - Frankincense Serrata Essential Oil - 20ml
+_4 duplicate listings_
 
-### 8. REAL GOOD - Sunflower Seeds - 400g
-_4 duplicate listings in live catalog_
+**KEEP** `8499124306230` `escentia-frankincense-serrata-essential-oil-20ml-v1` (has images, 1 img, 1 variants, 2 units) created 2023-07-14T10:22:40+02:00
+**ARCHIVE** `10094766194998` `escentia-frankincense-serrata-essential-oil-20ml-v2` (img, 1 variants, 3 units)
+**ARCHIVE** `10655545819446` `6009704873778` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655635931446` `6009704870760` (no img, 1 variants, 0 units)
+- Stock transfer: 3 units across 1 variant(s)
 
-**✅ KEEP** (canonical)
-- id: `9131055874358`
-- handle: `real-good-sunflower-seeds-400g-v1`
-- 🖼 has images (2 img, 1 variants, 2 units in stock)
-- created: 2024-02-27T18:16:43+02:00
+### 3. NEOGENESIS HEALTH - Nightcaps - 30 Capsules
+_4 duplicate listings_
 
-**📦 ARCHIVE**
-- id: `9131058266422`
-- handle: `real-good-sunflower-seeds-400g-v2`
-- 🖼 2 images, 1 variants, 2 units
-- created: 2024-02-27T18:18:43+02:00
+**KEEP** `8481796718902` `neogenesis-health-nightcaps-30-capsules-1` (has images, 1 img, 1 variants, 0 units) created 2023-07-08T10:30:50+02:00
+**ARCHIVE** `8874167402806` `neogenesis-health-nightcaps-30-capsules` (img, 1 variants, 2 units)
+**ARCHIVE** `10655592513846` `700371686093` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655644483894` `700371686086` (no img, 1 variants, 0 units)
+- Stock transfer: 2 units across 1 variant(s)
 
-**📦 ARCHIVE**
-- id: `10655561253174`
-- handle: `6009702593807`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:04:29+02:00
+### 4. REAL GOOD - Sunflower Seeds - 400g
+_4 duplicate listings_
 
-**📦 ARCHIVE**
-- id: `10655561318710`
-- handle: `6009702593838`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:04:30+02:00
+**KEEP** `9131055874358` `real-good-sunflower-seeds-400g-v1` (has images, 2 img, 1 variants, 2 units) created 2024-02-27T18:16:43+02:00
+**ARCHIVE** `9131058266422` `real-good-sunflower-seeds-400g-v2` (img, 1 variants, 2 units)
+**ARCHIVE** `10655561253174` `6009702593807` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655561318710` `6009702593838` (no img, 1 variants, 0 units)
+- Stock transfer: 2 units across 1 variant(s)
+
+### 5. BOODY - Ladies Black Classic Bikini - S
+_4 duplicate listings_
+
+**KEEP** `8950634938678` `boody-ladies-black-classic-bikini-s-v1` (has images, 3 img, 1 variants, 0 units) created 2023-12-07T09:02:08+02:00
+**ARCHIVE** `9325173047606` `boody-ladies-black-classic-bikini-s-v2` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655555223862` `9340447025213` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655578456374` `9351383070038` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
+
+### 6. BOODY - Men Light Grey Original Briefs - S
+_4 duplicate listings_
+
+**KEEP** `8956790374710` `boody-men-light-grey-original-briefs-s-v1` (has images, 3 img, 1 variants, 0 units) created 2023-12-11T09:34:31+02:00
+**ARCHIVE** `8956791226678` `boody-men-light-grey-original-briefs-s-v2` (img, 1 variants, 0 units)
+**ARCHIVE** `10655576064310` `9340447026524` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655576097078` `9340447026531` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
+
+### 7. ESCENTIA - Caraway Essential Oil - 10ml
+_4 duplicate listings_
+
+**KEEP** `8492883935542` `escentia-caraway-essential-oil-10ml-v1` (has images, 1 img, 1 variants, 0 units) created 2023-07-12T10:46:10+02:00
+**ARCHIVE** `8492888916278` `escentia-caraway-essential-oil-10ml-v2` (img, 1 variants, 0 units)
+**ARCHIVE** `10655639830838` `6009704870302` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655639863606` `6009704870289` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
+
+### 8. ESCENTIA - Cedarwood Essential Oil - 10ml
+_4 duplicate listings_
+
+**KEEP** `8492937707830` `escentia-cedarwood-essential-oil-10ml-v1` (has images, 1 img, 1 variants, 2 units) created 2023-07-12T11:12:12+02:00
+**ARCHIVE** `8499088490806` `escentia-cedarwood-essential-oil-10ml-v2` (img, 1 variants, 0 units)
+**ARCHIVE** `10655636357430` `6009704870395` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655639699766` `6009704870388` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
 ### 9. THURSDAY PLANTATION - Tea Tree Oil - 25ml
-_4 duplicate listings in live catalog_
+_4 duplicate listings_
 
-**✅ KEEP** (canonical)
-- id: `8446234001718`
-- handle: `thursday-plantation-tea-tree-oil-25ml-v1`
-- 🖼 has images (1 img, 1 variants, 8 units in stock)
-- created: 2023-06-23T15:36:35+02:00
-
-**📦 ARCHIVE**
-- id: `8446238327094`
-- handle: `thursday-plantation-tea-tree-oil-25ml-v2`
-- 🖼 1 images, 1 variants, 0 units
-- created: 2023-06-23T15:39:29+02:00
-
-**📦 ARCHIVE**
-- id: `10655654347062`
-- handle: `931214600129`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:06+02:00
-
-**📦 ARCHIVE**
-- id: `10655654379830`
-- handle: `9312146001300`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:07+02:00
+**KEEP** `8446234001718` `thursday-plantation-tea-tree-oil-25ml-v1` (has images, 1 img, 1 variants, 8 units) created 2023-06-23T15:36:35+02:00
+**ARCHIVE** `8446238327094` `thursday-plantation-tea-tree-oil-25ml-v2` (img, 1 variants, 0 units)
+**ARCHIVE** `10655654347062` `931214600129` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655654379830` `9312146001300` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
 ### 10. VIRIDIAN - L-Lysine 500mg - 30 Veg Capsules
-_4 duplicate listings in live catalog_
+_4 duplicate listings_
 
-**✅ KEEP** (canonical)
-- id: `8473494520118`
-- handle: `viridian-l-lysine-500mg-30-veg-capsules-v1`
-- 🖼 has images (1 img, 1 variants, 0 units in stock)
-- created: 2023-07-06T11:42:44+02:00
-
-**📦 ARCHIVE**
-- id: `8473495666998`
-- handle: `viridian-l-lysine-500mg-30-veg-capsules-v2`
-- 🖼 1 images, 1 variants, 0 units
-- created: 2023-07-06T11:44:10+02:00
-
-**📦 ARCHIVE**
-- id: `10655646187830`
-- handle: `5060003590323`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:33:51+02:00
-
-**📦 ARCHIVE**
-- id: `10655646220598`
-- handle: `5060003590309`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:33:52+02:00
+**KEEP** `8473494520118` `viridian-l-lysine-500mg-30-veg-capsules-v1` (has images, 1 img, 1 variants, 0 units) created 2023-07-06T11:42:44+02:00
+**ARCHIVE** `8473495666998` `viridian-l-lysine-500mg-30-veg-capsules-v2` (img, 1 variants, 0 units)
+**ARCHIVE** `10655646187830` `5060003590323` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655646220598` `5060003590309` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
 ### 11. KARA - Coconut Water - 1L
-_3 duplicate listings in live catalog_
+_3 duplicate listings_
 
-**✅ KEEP** (canonical)
-- id: `10655559975222`
-- handle: `8938507849179`
-- ⚠ no image (0 img, 1 variants, 0 units in stock)
-- created: 2026-04-07T10:04:04+02:00
+**KEEP** `9132995674422` `kara-coconut-water-1l` (NO IMAGE, 0 img, 1 variants, -1 units) created 2024-02-28T17:11:00+02:00
+**ARCHIVE** `10655559975222` `8938507849179` (no img, 1 variants, 0 units)
+**ARCHIVE** `10655586353462` `8997212611013` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-**📦 ARCHIVE**
-- id: `9132995674422`
-- handle: `kara-coconut-water-1l`
-- ❌ 0 images, 1 variants, -1 units
-- created: 2024-02-28T17:11:00+02:00
+### 12. ALIVE LIFESTYLES - Alive Essential Aminos+ - 220g
+_2 duplicate listings_
 
-**📦 ARCHIVE**
-- id: `10655586353462`
-- handle: `8997212611013`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:13:06+02:00
+**KEEP** `9557244346678` `alive-lifestyles-alive-essential-aminos-220g` (has images, 16 img, 1 variants, 3 units) created 2024-08-07T12:49:21+02:00
+**ARCHIVE** `10655550800182` `726872005850` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-### 12. A.VOGEL - Echinaforce® Echinacea Tablets - 120 Tablets
-_2 duplicate listings in live catalog_
+### 13. ALMANS - Almond Bar - 50g
+_2 duplicate listings_
 
-**✅ KEEP** (canonical)
-- id: `8387632300342`
-- handle: `avogel-echinaforce-echinacea-tablets-120-tablets`
-- 🖼 has images (1 img, 1 variants, 3 units in stock)
-- created: 2023-05-29T13:45:19+02:00
+**KEEP** `9031361823030` `almans-almond-bar-50g` (has images, 1 img, 1 variants, 15 units) created 2024-01-04T12:01:48+02:00
+**ARCHIVE** `10655571968310` `6009609796226` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-**📦 ARCHIVE**
-- id: `10655656509750`
-- handle: `6007650000675`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:54+02:00
+### 14. ALMANS - Almonds Pink & White - 500g
+_2 duplicate listings_
 
-### 13. A.VOGEL - Echinaforce® Echinacea Tablets - 60 Tablets
-_2 duplicate listings in live catalog_
+**KEEP** `9035167465782` `almans-almonds-pink-white-500g` (has images, 1 img, 1 variants, 0 units) created 2024-01-08T11:38:21+02:00
+**ARCHIVE** `10655569641782` `6009609794949` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-**✅ KEEP** (canonical)
-- id: `8387628564790`
-- handle: `avogel-echinaforce-echinacea-tablets-60-tablets`
-- 🖼 has images (1 img, 1 variants, 11 units in stock)
-- created: 2023-05-29T13:41:49+02:00
+### 15. ALMANS - Almonds Raw - 100g
+_2 duplicate listings_
 
-**📦 ARCHIVE**
-- id: `10655656542518`
-- handle: `6007650000552`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:55+02:00
+**KEEP** `9035159404854` `almans-almonds-raw-100g` (has images, 1 img, 1 variants, 12 units) created 2024-01-08T11:33:48+02:00
+**ARCHIVE** `10655569740086` `6009609790170` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-### 14. A.VOGEL - Echinaforce® Forte Echinacea - 30 Tablets
-_2 duplicate listings in live catalog_
+### 16. ALMANS - Almonds Raw - 1kg
+_2 duplicate listings_
 
-**✅ KEEP** (canonical)
-- id: `8387655008566`
-- handle: `avogel-echinaforce-forte-echinacea-30-tablets`
-- 🖼 has images (1 img, 1 variants, 13 units in stock)
-- created: 2023-05-29T14:01:58+02:00
+**KEEP** `9035168809270` `almans-almonds-raw-1kg` (has images, 1 img, 1 variants, 1 units) created 2024-01-08T11:39:54+02:00
+**ARCHIVE** `10655569609014` `6009609791122` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-**📦 ARCHIVE**
-- id: `10655656476982`
-- handle: `6007650001030`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:54+02:00
+### 17. ALMANS - Almonds Raw - 500g
+_2 duplicate listings_
 
-### 15. A.VOGEL - Echinaforce® Junior Tablets - 120 Chewable Tablets
-_2 duplicate listings in live catalog_
+**KEEP** `9035196662070` `almans-almonds-raw-500g` (has images, 1 img, 1 variants, 10 units) created 2024-01-08T12:07:16+02:00
+**ARCHIVE** `10655569412406` `6009609797544` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-**✅ KEEP** (canonical)
-- id: `8387532390710`
-- handle: `avogel-echinaforce-junior-tablets-120-chewable-tablets`
-- 🖼 has images (2 img, 1 variants, 12 units in stock)
-- created: 2023-05-29T12:48:36+02:00
+### 18. ALMANS - Banana Chips - 150g
+_2 duplicate listings_
 
-**📦 ARCHIVE**
-- id: `10655656575286`
-- handle: `6007650000798`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:56+02:00
+**KEEP** `9035187061046` `almans-banana-chips-150g` (has images, 1 img, 1 variants, 7 units) created 2024-01-08T11:57:32+02:00
+**ARCHIVE** `10655569445174` `6009609790422` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-### 16. A.VOGEL - Ginkgoforce Drops - 30ml
-_2 duplicate listings in live catalog_
+### 19. ALMANS - Brazil Nuts - 100g
+_2 duplicate listings_
 
-**✅ KEEP** (canonical)
-- id: `8409953567030`
-- handle: `avogel-ginkgoforce-drops-30ml`
-- 🖼 has images (1 img, 1 variants, 0 units in stock)
-- created: 2023-06-07T14:53:38+02:00
+**KEEP** `9031391641910` `almans-brazil-nuts-100g` (has images, 1 img, 1 variants, 13 units) created 2024-01-04T12:52:45+02:00
+**ARCHIVE** `10655571902774` `6009609798824` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
-**📦 ARCHIVE**
-- id: `10655656313142`
-- handle: `6007650000354`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:50+02:00
+### 20. ALMANS - Brazil Nuts - 1kg
+_2 duplicate listings_
 
-### 17. A.VOGEL - Haemorrhoid Formula - 30 ml
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8409970114870`
-- handle: `avogel-haemorrhoid-formula-30-ml`
-- 🖼 has images (2 img, 1 variants, 2 units in stock)
-- created: 2023-06-07T14:56:42+02:00
-
-**📦 ARCHIVE**
-- id: `10655656280374`
-- handle: `6007650001252`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:49+02:00
-
-### 18. A.VOGEL - Herbamare Spicy - 125g
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8447004705078`
-- handle: `avogel-herbamare-spicy-125g`
-- 🖼 has images (1 img, 1 variants, 4 units in stock)
-- created: 2023-06-24T09:31:51+02:00
-
-**📦 ARCHIVE**
-- id: `10655653986614`
-- handle: `7610313424825`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:36:58+02:00
-
-### 19. A.VOGEL - Herbamare® Original - 125g
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8436622262582`
-- handle: `avogel-herbamare-original-125g`
-- 🖼 has images (1 img, 1 variants, 3 units in stock)
-- created: 2023-06-19T16:36:28+02:00
-
-**📦 ARCHIVE**
-- id: `10655655526710`
-- handle: `7610313426706`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:32+02:00
-
-### 20. A.VOGEL - Herbamare® Original - 250g
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8436616266038`
-- handle: `avogel-herbamare-original-250g`
-- 🖼 has images (1 img, 1 variants, 13 units in stock)
-- created: 2023-06-19T16:33:30+02:00
-
-**📦 ARCHIVE**
-- id: `10655655559478`
-- handle: `7610313424795`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:33+02:00
-
-### 21. A.VOGEL - Herbamare® Original - 500g
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8439528784182`
-- handle: `avogel-herbamare-original-500g`
-- 🖼 has images (1 img, 1 variants, 11 units in stock)
-- created: 2023-06-20T08:03:37+02:00
-
-**📦 ARCHIVE**
-- id: `10655655493942`
-- handle: `7610313424771`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:31+02:00
-
-### 22. A.VOGEL - Indigestion Formula - 30ml
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8410004422966`
-- handle: `avogel-indigestion-formula-30ml`
-- 🖼 has images (1 img, 1 variants, 3 units in stock)
-- created: 2023-06-07T15:03:31+02:00
-
-**📦 ARCHIVE**
-- id: `10655656247606`
-- handle: `6007650000941`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:49+02:00
-
-### 23. A.VOGEL - Influaforce - 30ml
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8446267490614`
-- handle: `avogel-influaforce-30ml`
-- 🖼 has images (1 img, 1 variants, 0 units in stock)
-- created: 2023-06-23T16:09:15+02:00
-
-**📦 ARCHIVE**
-- id: `10655654281526`
-- handle: `6007650001283`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:04+02:00
-
-### 24. A.VOGEL - Kelpamare
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8447002378550`
-- handle: `avogel-kelpamare`
-- 🖼 has images (1 img, 1 variants, 0 units in stock)
-- created: 2023-06-24T09:28:58+02:00
-
-**📦 ARCHIVE**
-- id: `10655654019382`
-- handle: `7610313412433`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:36:58+02:00
-
-### 25. A.VOGEL - Liver and Gall Bladder Formula - 30ml
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8411709636918`
-- handle: `avogel-liver-and-gall-bladder-formula-30ml`
-- 🖼 has images (1 img, 1 variants, 2 units in stock)
-- created: 2023-06-08T07:31:39+02:00
-
-**📦 ARCHIVE**
-- id: `10655656214838`
-- handle: `6007650001269`
-- ❌ 0 images, 1 variants, -1 units
-- created: 2026-04-07T10:37:48+02:00
-
-### 26. A.VOGEL - Menoforce - 30 Tablets (Previously named Hot Flush & Night S
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8411716223286`
-- handle: `avogel-menoforce-30-tablets-previously-named-hot-flush-night-sweats`
-- 🖼 has images (1 img, 1 variants, 8 units in stock)
-- created: 2023-06-08T07:35:01+02:00
-
-**📦 ARCHIVE**
-- id: `10655656182070`
-- handle: `6007650001368`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:47+02:00
-
-### 27. A.VOGEL - Menopause Formula - 30ml
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8411730084150`
-- handle: `avogel-menopause-formula-30ml`
-- 🖼 has images (1 img, 1 variants, 0 units in stock)
-- created: 2023-06-08T07:42:45+02:00
-
-**📦 ARCHIVE**
-- id: `10655656149302`
-- handle: `6007650001290`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:46+02:00
-
-### 28. A.VOGEL - Menstruation Formula - 30ml
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8411736670518`
-- handle: `avogel-menstruation-formula-30ml`
-- 🖼 has images (1 img, 1 variants, 1 units in stock)
-- created: 2023-06-08T07:47:27+02:00
-
-**📦 ARCHIVE**
-- id: `10655656116534`
-- handle: `6007650001306`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:46+02:00
-
-### 29. A.VOGEL - Migraine Formula - 30ml
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8411742601526`
-- handle: `avogel-migraine-formula-30ml`
-- 🖼 has images (1 img, 1 variants, 0 units in stock)
-- created: 2023-06-08T07:51:40+02:00
-
-**📦 ARCHIVE**
-- id: `10655656083766`
-- handle: `6007650000910`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:45+02:00
-
-### 30. A.VOGEL - Molkosan® Original - 200ml
-_2 duplicate listings in live catalog_
-
-**✅ KEEP** (canonical)
-- id: `8428658229558`
-- handle: `avogel-molkosan-original-200ml`
-- 🖼 has images (1 img, 1 variants, 7 units in stock)
-- created: 2023-06-15T11:47:49+02:00
-
-**📦 ARCHIVE**
-- id: `10655656018230`
-- handle: `7610313411597`
-- ❌ 0 images, 1 variants, 0 units
-- created: 2026-04-07T10:37:44+02:00
-
-*(...2,832 more groups in the JSON file)*
+**KEEP** `9031391445302` `almans-brazil-nuts-1kg` (has images, 1 img, 1 variants, 2 units) created 2024-01-04T12:52:07+02:00
+**ARCHIVE** `10655571935542` `6009609791740` (no img, 1 variants, 0 units)
+- Stock transfer: 0 units (all duplicates were already empty)
 
 ## Next step
 
 This is a **DRY RUN** — nothing has been changed in Shopify yet.
 
-To execute: run `scripts/dedup_apply.py` (requires explicit `APPLY=true`), which will:
-1. For each group, set the 'archive' products to `status=archived` via PUT /products/:id
-2. Create 301 redirects from the archived product URLs to the canonical URL
-3. Log every action to `reports/dedup-applied-YYYY-MM-DD.log`
-4. All changes are reversible by setting `status=active` again on the archived products
+The planned apply script (`scripts/dedup_apply.py`, requires explicit `APPLY=true`) will:
+
+1. For each group, execute every queued variant transfer
+   (POST `/inventory_levels/adjust.json` on the online location) BEFORE archiving.
+2. Set every non-canonical product to `status=archived` via PUT `/products/:id`.
+3. Create 301 redirects from archived handles to the canonical handle.
+4. Log every action to `reports/dedup-applied-YYYY-MM-DD.log`.
+5. Skip groups flagged as `needs_review` for unmatched variants, or (if the
+   operator chooses) transfer the matched variants only and leave the rest.
+
+All archiving is reversible: setting `status=active` restores the listing.
+Inventory transfers are NOT reversible automatically — they are real Shopify writes.

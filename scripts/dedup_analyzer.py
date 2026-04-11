@@ -8,8 +8,9 @@ merge plan so that archiving a duplicate never strands sellable stock.
 
 Canonical selection (applied in order):
   1. Has product images                  (len(images) > 0)
-  2. Higher total inventory               (tiebreaker)
-  3. Oldest created_at                    (tiebreaker)
+  2. Oldest created_at                    (SEO / reviews / backlinks)
+  3. Higher total inventory               (tiebreaker -- less critical
+                                           now that stock is merged)
   4. Lowest product id                    (deterministic final tiebreaker)
 
 Inventory merge plan (per duplicate group):
@@ -174,14 +175,17 @@ def normalize_variant_key(v):
 def pick_canonical(group):
     """Pick the canonical (surviving) product from a duplicate group.
 
-    Implementation note: we use `sorted(... key=...)[0]` and encode every
-    rule so that "better" sorts smaller. This is the fix for the previous
-    `-ord(created[0])` bug that made "oldest wins" a no-op.
+    Because the merge planner transfers stock onto the canonical before
+    archiving, the "most stock" tiebreaker no longer has to be high
+    priority -- total stock ends up on the canonical either way. So we
+    favour the OLDEST listing over the highest-stock one: older products
+    have longer SEO history, more backlinks, more likely to carry
+    customer reviews, and are more likely to be the original listing.
 
     Rules (smaller sorts first = better):
       1. has_images_rank: 0 if images present, else 1
-      2. -total_stock:    more stock -> more negative -> sorts earlier
-      3. created:         older ISO date -> lexicographically smaller
+      2. created:         older ISO date -> lexicographically smaller
+      3. -total_stock:    more stock -> more negative -> sorts earlier
       4. pid:             lower id as final deterministic tiebreaker
     """
     def sort_key(p):
@@ -191,7 +195,7 @@ def pick_canonical(group):
         total_stock = sum((v.get("inventory_quantity") or 0) for v in variants)
         created = p.get("created_at") or "9999-12-31T00:00:00Z"
         pid = int(p.get("id") or 0)
-        return (has_images_rank, -total_stock, created, pid)
+        return (has_images_rank, created, -total_stock, pid)
 
     return sorted(group, key=sort_key)[0]
 
@@ -340,7 +344,7 @@ def build_markdown(analysis):
         "",
         f"**Generated:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}",
         "**Scope:** Live catalog only (`status=active` + `published_status=published`)",
-        "**Canonical rule:** images -> highest stock -> oldest -> lowest id",
+        "**Canonical rule:** images -> oldest -> highest stock -> lowest id",
         "**Stock rule:** variant-level merge onto canonical by title key; unmatched stock flagged for manual review",
         "",
         "## Summary",
