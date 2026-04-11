@@ -1,0 +1,90 @@
+name: SEO Fix Agent
+
+# Manual trigger only. Runs scripts/seo_fix_agent.py end-to-end against the
+# live Shopify catalog using Claude Opus 4.6 to generate missing product
+# descriptions, alt text, product types, tags, SEO titles, and meta
+# descriptions. Also handles blog articles and collections.
+#
+# All writes are gated by APPLY_FIXES=true (configurable via workflow input).
+# Every action is logged to reports/seo-fixes-applied-YYYY-MM-DD.log (JSONL).
+# Log + generated-content files are committed back to the branch on completion.
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Actually push fixes to Shopify (true) or dry-run only (false)'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      scope:
+        description: 'What to fix'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - 'all'
+          - 'products'
+          - 'articles'
+          - 'collections'
+      limit:
+        description: 'Max items per category (0 = no limit)'
+        required: false
+        default: '0'
+      model:
+        description: 'Claude model to use'
+        required: false
+        default: 'claude-opus-4-6'
+
+permissions:
+  contents: write
+
+jobs:
+  seo-fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350  # ~5.8h, well under GitHub's 6h hard limit
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: claude/deduplicate-shopify-products-tAKJ9
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Re-run SEO audit (fresh input for the fix agent)
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+        run: python scripts/seo_audit.py
+
+      - name: Run SEO fix agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          APPLY_FIXES: ${{ github.event.inputs.apply }}
+          FIX_SCOPE: ${{ github.event.inputs.scope }}
+          FIX_LIMIT: ${{ github.event.inputs.limit }}
+          FIX_MODEL: ${{ github.event.inputs.model }}
+          FIX_CONCURRENCY: '5'
+        run: python scripts/seo_fix_agent.py
+
+      - name: Commit action log + reports
+        if: always()
+        run: |
+          git config user.name "onelife-seo-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/seo-audit-*.json reports/seo-audit-*.md reports/seo-fixes-*.jsonl reports/seo-fixes-applied-*.log 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: SEO fix agent run $(date +%Y-%m-%d) (apply=${{ github.event.inputs.apply }}, scope=${{ github.event.inputs.scope }})"
+            git push
+          fi
