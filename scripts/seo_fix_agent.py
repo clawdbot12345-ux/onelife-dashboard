@@ -44,6 +44,7 @@ import json
 import os
 import re
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -57,7 +58,7 @@ CLIENT_ID = os.environ.get("SHOPIFY_CLIENT_ID")
 CLIENT_SECRET = os.environ.get("SHOPIFY_CLIENT_SECRET")
 STORE = os.environ.get("SHOPIFY_STORE", "onelifehealth").replace(".myshopify.com", "")
 MODEL = os.environ.get("FIX_MODEL", "claude-opus-4-6")
-CONCURRENCY = int(os.environ.get("FIX_CONCURRENCY", "5"))
+CONCURRENCY = int(os.environ.get("FIX_CONCURRENCY", "4"))
 LIMIT = int(os.environ.get("FIX_LIMIT", "0"))
 SCOPE = os.environ.get("FIX_SCOPE", "all").lower()
 APPLY = os.environ.get("APPLY_FIXES", "false").lower() == "true"
@@ -98,35 +99,58 @@ def get_shopify_token():
 SHOPIFY_TOKEN = None
 SHOPIFY_HEADERS = {}
 
+# Global Shopify throttle: ensures total request rate across all worker threads
+# stays at <= 1 / SHOPIFY_SLEEP per second. Prevents the rate-limit storm we
+# saw in the first run where 5 workers all hit 429 simultaneously.
+_shopify_gate_lock = threading.Lock()
+_shopify_last_call = [0.0]
+
+
+def _shopify_throttle():
+    with _shopify_gate_lock:
+        now = time.time()
+        delta = now - _shopify_last_call[0]
+        if delta < SHOPIFY_SLEEP:
+            time.sleep(SHOPIFY_SLEEP - delta)
+        _shopify_last_call[0] = time.time()
+
 
 def shopify(method, path, body=None):
-    """Shopify REST request. Returns (status, parsed_json_or_error_dict)."""
+    """Shopify REST request with global throttle, exponential 429 backoff, and
+    safe Retry-After parsing (handles decimal values like '2.0')."""
     url = f"https://{STORE}.myshopify.com/admin/api/{API_VERSION}{path}"
     data = None
     headers = dict(SHOPIFY_HEADERS)
     if body is not None:
         data = json.dumps(body).encode()
         headers["Content-Type"] = "application/json"
-    for attempt in range(5):
+    backoff = [2, 4, 8, 16, 32]  # exponential, capped
+    for attempt in range(len(backoff)):
+        _shopify_throttle()
         req = urllib.request.Request(url, data=data, headers=headers, method=method)
         try:
             with urllib.request.urlopen(req, timeout=45) as resp:
                 raw = resp.read()
                 out = json.loads(raw) if raw else {}
-                time.sleep(SHOPIFY_SLEEP)
                 return resp.status, out
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                retry = int(e.headers.get("Retry-After", "2"))
-                time.sleep(max(retry, 2))
+                # Shopify returns Retry-After as either int or float. Parse
+                # safely as float and floor to avoid the int('2.0') crash.
+                try:
+                    raw_retry = e.headers.get("Retry-After", "")
+                    retry_secs = float(raw_retry) if raw_retry else 0.0
+                except (TypeError, ValueError):
+                    retry_secs = 0.0
+                wait = max(retry_secs, backoff[attempt])
+                time.sleep(wait)
                 continue
             err = e.read().decode(errors="replace") if e.fp else ""
-            time.sleep(SHOPIFY_SLEEP)
             return e.code, {"__error__": err}
         except (urllib.error.URLError, TimeoutError):
-            time.sleep(2 ** attempt)
+            time.sleep(backoff[attempt])
             continue
-    return -1, {"__error__": "max retries"}
+    return -1, {"__error__": "max retries exceeded"}
 
 
 # ============================================================================
@@ -251,6 +275,62 @@ Return ONLY a JSON object with EXACTLY these keys:
   "seo_title": "50-65 char SEO title",
   "meta_description": "150-160 char meta description"
 }}"""
+
+
+# ============================================================================
+# Progress tracker + heartbeat (so a hung run is visible in the log)
+# ============================================================================
+
+class Progress:
+    """Thread-safe progress counter shared between workers and the heartbeat."""
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.label = ""
+        self.total = 0
+        self.ok = 0
+        self.fail = 0
+        self.last_change = time.time()
+
+    def set_phase(self, label, total):
+        with self.lock:
+            self.label = label
+            self.total = total
+            self.ok = 0
+            self.fail = 0
+            self.last_change = time.time()
+
+    def inc_ok(self):
+        with self.lock:
+            self.ok += 1
+            self.last_change = time.time()
+
+    def inc_fail(self):
+        with self.lock:
+            self.fail += 1
+            self.last_change = time.time()
+
+    def snapshot(self):
+        with self.lock:
+            return (self.label, self.ok, self.fail, self.total,
+                    time.time() - self.last_change)
+
+
+PROGRESS = Progress()
+
+
+def heartbeat_loop(stop_event):
+    """Background daemon: prints a status line every 60s so we always know
+    the script is alive. If no progress for 5+ minutes the heartbeat starts
+    flagging it as STALLED so the GitHub Actions log makes it obvious."""
+    while not stop_event.wait(60):
+        label, ok, fail, total, idle = PROGRESS.snapshot()
+        flag = ""
+        if total and idle > 300:
+            flag = f"  ⚠ STALLED ({int(idle)}s with no progress)"
+        elif total and idle > 120:
+            flag = f"  · idle {int(idle)}s"
+        print(f"  ♥ heartbeat [{label or 'init'}] {ok + fail}/{total} ok={ok} fail={fail}{flag}",
+              flush=True)
 
 
 # ============================================================================
@@ -472,42 +552,54 @@ def run_products(audit, log):
         targets = targets[:LIMIT]
     print(f"\n[PRODUCTS] {total_all} fixable, {len(log.done_products)} already done, {len(targets)} to process", flush=True)
 
-    done_ok = 0
-    done_fail = 0
+    PROGRESS.set_phase("PRODUCTS", len(targets))
 
     def worker(p):
+        """End-to-end per-product work (fetch + Claude + Shopify writes).
+        Doing apply inside the worker means we never spend Claude credits on
+        items that don't get applied — every gen call corresponds 1:1 with
+        an apply attempt."""
         pid = p["id"]
-        current = fetch_product_with_metafields(pid)
-        if current is None:
-            return pid, None, None, "fetch_failed"
-        title = current.get("title") or p.get("title") or ""
-        vendor = current.get("vendor") or p.get("vendor") or ""
-        current_desc = current.get("body_html") or ""
-        fix = claude_generate(product_prompt(title, vendor, current_desc), max_tokens=1800)
-        if not fix:
-            return pid, current, None, "claude_failed"
-        return pid, current, fix, None
+        try:
+            current = fetch_product_with_metafields(pid)
+            if current is None:
+                log.write(action="product_fetch_failed", id=pid)
+                PROGRESS.inc_fail()
+                return
+            title = current.get("title") or p.get("title") or ""
+            vendor = current.get("vendor") or p.get("vendor") or ""
+            current_desc = current.get("body_html") or ""
+            fix = claude_generate(product_prompt(title, vendor, current_desc), max_tokens=1800)
+            if not fix:
+                log.write(action="product_gen_failed", id=pid)
+                PROGRESS.inc_fail()
+                return
+            if not APPLY:
+                log.write(action="product_dryrun", id=pid,
+                          preview=(fix.get("description_html") or "")[:80])
+                PROGRESS.inc_ok()
+                return
+            if apply_product_fix(pid, current, fix, log):
+                PROGRESS.inc_ok()
+            else:
+                PROGRESS.inc_fail()
+        except Exception as e:
+            log.write(action="product_worker_exception", id=pid, err=repr(e)[:300])
+            PROGRESS.inc_fail()
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
-        futures = {ex.submit(worker, p): p for p in targets}
+        futures = [ex.submit(worker, p) for p in targets]
         for i, fut in enumerate(as_completed(futures), 1):
-            pid, current, fix, err = fut.result()
-            if err:
-                done_fail += 1
-                log.write(action="product_gen_failed", id=pid, err=err)
-            else:
-                if not APPLY:
-                    done_ok += 1
-                    log.write(action="product_dryrun", id=pid, preview=(fix.get("description_html") or "")[:80])
-                else:
-                    if apply_product_fix(pid, current, fix, log):
-                        done_ok += 1
-                    else:
-                        done_fail += 1
+            try:
+                fut.result()  # workers swallow exceptions; this is just a barrier
+            except Exception as e:
+                print(f"  worker leaked exception: {e!r}", flush=True)
             if i % 25 == 0 or i == len(targets):
-                print(f"  [{i}/{len(targets)}] ok={done_ok} fail={done_fail}", flush=True)
+                _, ok, fail, _, _ = PROGRESS.snapshot()
+                print(f"  [{i}/{len(targets)}] ok={ok} fail={fail}", flush=True)
 
-    print(f"[PRODUCTS] done: ok={done_ok} fail={done_fail}", flush=True)
+    _, ok, fail, _, _ = PROGRESS.snapshot()
+    print(f"[PRODUCTS] done: ok={ok} fail={fail}", flush=True)
 
 
 def run_articles(audit, log):
@@ -534,46 +626,55 @@ def run_articles(audit, log):
         for a in data.get("articles", []):
             art_blog_map[a["id"]] = bid
 
-    done_ok = 0
-    done_fail = 0
+    PROGRESS.set_phase("ARTICLES", len(targets))
 
     def worker(a):
         aid = a["id"]
-        bid = art_blog_map.get(aid)
-        if bid is None:
-            return aid, None, None, None, "no_blog_id"
-        status, data = shopify("GET", f"/blogs/{bid}/articles/{aid}.json")
-        if status != 200:
-            return aid, bid, None, None, "fetch_failed"
-        art = data.get("article") or {}
-        title = art.get("title") or ""
-        author = art.get("author") or ""
-        body_snip = _strip_html(art.get("body_html") or "")[:500]
-        fix = claude_generate(article_prompt(title, author, body_snip), max_tokens=1000)
-        if not fix:
-            return aid, bid, art, None, "claude_failed"
-        return aid, bid, art, fix, None
+        try:
+            bid = art_blog_map.get(aid)
+            if bid is None:
+                log.write(action="article_no_blog_id", id=aid)
+                PROGRESS.inc_fail()
+                return
+            status, data = shopify("GET", f"/blogs/{bid}/articles/{aid}.json")
+            if status != 200:
+                log.write(action="article_fetch_failed", id=aid, status=status)
+                PROGRESS.inc_fail()
+                return
+            art = data.get("article") or {}
+            title = art.get("title") or ""
+            author = art.get("author") or ""
+            body_snip = _strip_html(art.get("body_html") or "")[:500]
+            fix = claude_generate(article_prompt(title, author, body_snip), max_tokens=1000)
+            if not fix:
+                log.write(action="article_gen_failed", id=aid)
+                PROGRESS.inc_fail()
+                return
+            if not APPLY:
+                log.write(action="article_dryrun", id=aid)
+                PROGRESS.inc_ok()
+                return
+            if apply_article_fix(bid, aid, art, fix, log):
+                PROGRESS.inc_ok()
+            else:
+                PROGRESS.inc_fail()
+        except Exception as e:
+            log.write(action="article_worker_exception", id=aid, err=repr(e)[:300])
+            PROGRESS.inc_fail()
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
-        futures = {ex.submit(worker, a): a for a in targets}
+        futures = [ex.submit(worker, a) for a in targets]
         for i, fut in enumerate(as_completed(futures), 1):
-            aid, bid, art, fix, err = fut.result()
-            if err:
-                done_fail += 1
-                log.write(action="article_gen_failed", id=aid, err=err)
-            else:
-                if not APPLY:
-                    done_ok += 1
-                    log.write(action="article_dryrun", id=aid)
-                else:
-                    if apply_article_fix(bid, aid, art, fix, log):
-                        done_ok += 1
-                    else:
-                        done_fail += 1
+            try:
+                fut.result()
+            except Exception as e:
+                print(f"  worker leaked exception: {e!r}", flush=True)
             if i % 10 == 0 or i == len(targets):
-                print(f"  [{i}/{len(targets)}] ok={done_ok} fail={done_fail}", flush=True)
+                _, ok, fail, _, _ = PROGRESS.snapshot()
+                print(f"  [{i}/{len(targets)}] ok={ok} fail={fail}", flush=True)
 
-    print(f"[ARTICLES] done: ok={done_ok} fail={done_fail}", flush=True)
+    _, ok, fail, _, _ = PROGRESS.snapshot()
+    print(f"[ARTICLES] done: ok={ok} fail={fail}", flush=True)
 
 
 def run_collections(audit, log):
@@ -586,8 +687,7 @@ def run_collections(audit, log):
         targets = targets[:LIMIT]
     print(f"\n[COLLECTIONS] {total_all} fixable, {len(log.done_collections)} already done, {len(targets)} to process", flush=True)
 
-    done_ok = 0
-    done_fail = 0
+    PROGRESS.set_phase("COLLECTIONS", len(targets))
 
     def fetch_collection(cid):
         for endpoint in ("custom_collections", "smart_collections"):
@@ -600,36 +700,44 @@ def run_collections(audit, log):
 
     def worker(c):
         cid = c["id"]
-        col = fetch_collection(cid)
-        if col is None:
-            return cid, None, None, "fetch_failed"
-        title = col.get("title") or ""
-        cur_desc = col.get("body_html") or ""
-        fix = claude_generate(collection_prompt(title, cur_desc), max_tokens=1200)
-        if not fix:
-            return cid, col, None, "claude_failed"
-        return cid, col, fix, None
+        try:
+            col = fetch_collection(cid)
+            if col is None:
+                log.write(action="collection_fetch_failed", id=cid)
+                PROGRESS.inc_fail()
+                return
+            title = col.get("title") or ""
+            cur_desc = col.get("body_html") or ""
+            fix = claude_generate(collection_prompt(title, cur_desc), max_tokens=1200)
+            if not fix:
+                log.write(action="collection_gen_failed", id=cid)
+                PROGRESS.inc_fail()
+                return
+            if not APPLY:
+                log.write(action="collection_dryrun", id=cid)
+                PROGRESS.inc_ok()
+                return
+            if apply_collection_fix(col, fix, log):
+                PROGRESS.inc_ok()
+            else:
+                PROGRESS.inc_fail()
+        except Exception as e:
+            log.write(action="collection_worker_exception", id=cid, err=repr(e)[:300])
+            PROGRESS.inc_fail()
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
-        futures = {ex.submit(worker, c): c for c in targets}
+        futures = [ex.submit(worker, c) for c in targets]
         for i, fut in enumerate(as_completed(futures), 1):
-            cid, col, fix, err = fut.result()
-            if err:
-                done_fail += 1
-                log.write(action="collection_gen_failed", id=cid, err=err)
-            else:
-                if not APPLY:
-                    done_ok += 1
-                    log.write(action="collection_dryrun", id=cid)
-                else:
-                    if apply_collection_fix(col, fix, log):
-                        done_ok += 1
-                    else:
-                        done_fail += 1
+            try:
+                fut.result()
+            except Exception as e:
+                print(f"  worker leaked exception: {e!r}", flush=True)
             if i % 10 == 0 or i == len(targets):
-                print(f"  [{i}/{len(targets)}] ok={done_ok} fail={done_fail}", flush=True)
+                _, ok, fail, _, _ = PROGRESS.snapshot()
+                print(f"  [{i}/{len(targets)}] ok={ok} fail={fail}", flush=True)
 
-    print(f"[COLLECTIONS] done: ok={done_ok} fail={done_fail}", flush=True)
+    _, ok, fail, _, _ = PROGRESS.snapshot()
+    print(f"[COLLECTIONS] done: ok={ok} fail={fail}", flush=True)
 
 
 # ============================================================================
@@ -672,6 +780,12 @@ def main():
     log.open()
     log.write(action="run_start", model=MODEL, scope=SCOPE, apply=APPLY, limit=LIMIT, concurrency=CONCURRENCY)
 
+    # Heartbeat: prints a status line every 60s so a hung run is visible in
+    # the GitHub Actions log instead of leaving us guessing for 96 minutes.
+    stop_hb = threading.Event()
+    hb_thread = threading.Thread(target=heartbeat_loop, args=(stop_hb,), daemon=True)
+    hb_thread.start()
+
     try:
         if SCOPE in ("all", "products"):
             run_products(audit, log)
@@ -680,6 +794,7 @@ def main():
         if SCOPE in ("all", "collections"):
             run_collections(audit, log)
     finally:
+        stop_hb.set()
         log.write(action="run_end")
         log.close()
     print("\n=== SEO FIX AGENT DONE ===", flush=True)
