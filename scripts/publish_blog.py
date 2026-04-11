@@ -260,6 +260,22 @@ def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
             article_url = f"https://onelife.co.za/blogs/{blog_handle}/{article['handle']}"
             print(f"  ✓ Shopify article created (draft): {article_id}", file=sys.stderr)
             print(f"    URL: {article_url}", file=sys.stderr)
+
+            # Auto-fetch and attach a hero image via Openverse
+            image_query = fm.get("image_query") or fm.get("tags", "").replace(",", " ") or fm.get("title", "")
+            try:
+                from fetch_blog_image import fetch_and_attach
+                print(f"  → fetching image for query: {image_query[:60]}", file=sys.stderr)
+                ok, result = fetch_and_attach(article_id, image_query, alt_text=fm.get("title", ""))
+                if ok:
+                    print(f"  ✓ Image attached: {result}", file=sys.stderr)
+                else:
+                    print(f"  ⚠ Image skipped: {result}", file=sys.stderr)
+            except ImportError:
+                print(f"  ⚠ fetch_blog_image module not found — skipping image", file=sys.stderr)
+            except Exception as e:
+                print(f"  ⚠ Image fetch failed: {e} — skipping", file=sys.stderr)
+
             return article_url
     except urllib.error.HTTPError as e:
         print(f"  ✗ Shopify article create failed {e.code}: {e.read().decode()[:500]}", file=sys.stderr)
