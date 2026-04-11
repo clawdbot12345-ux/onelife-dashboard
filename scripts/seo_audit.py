@@ -383,7 +383,16 @@ def main():
 
     # 1. Fetch everything
     print("\n[1/5] Fetching products...", file=sys.stderr)
-    products = paginate_all("/products.json", {"fields": "id,title,handle,body_html,vendor,product_type,tags,status,published_at,images,variants,options"})
+    # Only audit products that are actually live on the storefront.
+    # status=active + published_status=published = what Google can actually index.
+    # Set AUDIT_INCLUDE_DRAFTS=true to also audit drafts/archived.
+    include_drafts = os.environ.get("AUDIT_INCLUDE_DRAFTS", "false").lower() == "true"
+    product_filter = {"fields": "id,title,handle,body_html,vendor,product_type,tags,status,published_at,images,variants,options"}
+    if not include_drafts:
+        product_filter["status"] = "active"
+        product_filter["published_status"] = "published"
+        print("  (filtering to active + published only — set AUDIT_INCLUDE_DRAFTS=true to audit all)", file=sys.stderr)
+    products = paginate_all("/products.json", product_filter)
     print(f"  Total products fetched: {len(products)}", file=sys.stderr)
 
     print("\n[2/5] Fetching collections...", file=sys.stderr)
