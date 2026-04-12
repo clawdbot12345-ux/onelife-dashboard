@@ -222,27 +222,30 @@ def generate_image(prompt, aspect_ratio="1:1"):
 # ============================================================================
 
 CATEGORY_STYLES = {
-    "tincture": "a dark amber dropper bottle with a black dropper top",
-    "oil": "a small amber glass bottle with a dropper",
-    "capsules": "a white plastic or amber glass supplement bottle with a screw cap",
-    "tablets": "a white plastic or amber glass supplement bottle with a screw cap",
-    "powder": "a matte white plastic tub with a screw lid",
-    "cream": "a small frosted glass or matte white jar with a screw lid",
-    "lotion": "a squeeze-pump plastic bottle with a clean minimalist label",
-    "spray": "a clear glass spray bottle with a black trigger",
-    "serum": "a small amber glass dropper bottle",
-    "extract": "a dark amber dropper bottle",
-    "tea": "a tin box or kraft pouch containing loose leaf tea",
-    "bar": "a wrapped nutrition bar in minimal cream packaging",
-    "gel": "a small squeeze tube in clean wellness branding",
-    "oleo resin": "a small amber glass bottle with black cap",
-    "syrup": "a clear glass bottle with a clean label",
-    "herbs": "a kraft paper bag of dried herbs with minimal label",
-    "flowers": "a kraft paper bag of dried herbal flowers",
-    "seeds": "a kraft paper bag of seeds",
+    "tincture": "a clean amber glass dropper bottle with a black dropper top, no paper label, bare glass",
+    "oil": "a clean amber glass bottle with a black dropper top, no paper label, bare glass",
+    "capsules": "a clean matte white plastic supplement bottle with a screw cap, no paper label, unbranded",
+    "tablets": "a clean matte white plastic supplement bottle with a screw cap, no paper label, unbranded",
+    "powder": "a clean matte white plastic tub with a screw lid, no paper label, unbranded",
+    "cream": "a clean small matte white frosted glass jar with a screw lid, no paper label, unbranded",
+    "lotion": "a clean matte white squeeze-pump plastic bottle, no paper label, unbranded",
+    "spray": "a clear glass spray bottle with a black trigger, no paper label, bare glass",
+    "serum": "a small amber glass dropper bottle, no paper label, bare glass",
+    "extract": "a clean amber glass dropper bottle with a black dropper top, no paper label, bare glass",
+    "tea": "a clean matte cream tin box with a flat lid, no paper label, unbranded",
+    "bar": "a wrapped nutrition bar in plain cream kraft paper, no writing, unbranded",
+    "gel": "a clean matte white squeeze tube, no paper label, unbranded",
+    "oleo resin": "a clean amber glass bottle with a black screw cap, no paper label, bare glass",
+    "syrup": "a clear glass bottle with a black screw cap, no paper label, bare glass",
+    "herbs": "a plain kraft paper stand-up pouch with no writing, unbranded",
+    "flowers": "a plain kraft paper stand-up pouch with no writing, unbranded",
+    "seeds": "a plain kraft paper stand-up pouch with no writing, unbranded",
 }
 
-DEFAULT_STYLE = "a premium wellness product bottle or container in clean minimalist packaging"
+DEFAULT_STYLE = (
+    "a clean unbranded matte white plastic or amber glass container "
+    "with no paper label, no writing, unbranded"
+)
 
 
 def derive_category(title: str) -> str:
@@ -254,23 +257,34 @@ def derive_category(title: str) -> str:
 
 
 def build_prompt(title: str, vendor: str) -> str:
-    """Build a product photography prompt from title + vendor."""
+    """Build a product photography prompt with NO brand/text.
+
+    Lessons from canary run #1 (20 images, all labeled 'onelifehealth'):
+    - Gemini ignores negative instructions like 'no text overlays'
+    - It invents a label and puts whatever brand name is most prominent
+      in the prompt on it, which defaulted to the store name
+    - Fix: give Gemini a POSITIVE target (no label, bare glass/plastic),
+      do not mention any brand or product name in the prompt at all, and
+      explicitly forbid 'OneLife Health' / 'onelifehealth' at the end.
+    """
     category_style = derive_category(title)
-    # Clean the product name — remove the leading "VENDOR - " prefix if present
-    clean_name = re.sub(r"^[A-Z][A-Z0-9 &'']+\s*-\s*", "", title).strip()
-    brand = vendor or "a premium wellness brand"
     return (
-        "Professional product photography for a premium South African health and wellness brand. "
-        f"A single {category_style} containing '{clean_name}' from {brand}. "
-        "The product is centered, photographed from a slightly elevated 3/4 angle, "
-        "sitting on a soft cream linen surface. "
-        "Clean minimalist studio composition, lots of negative space. "
-        "Natural soft daylight from the upper left creating gentle shadows. "
-        "Sharp focus on the product, shallow depth of field, subtle reflections. "
+        "Professional product photography for an unbranded health "
+        "and wellness catalog. A single " + category_style + ". "
+        "The container is completely plain: NO paper label, NO printed "
+        "text, NO letters, NO numbers, NO brand name, NO logo, NO sticker. "
+        "Just clean unmarked amber glass or matte unmarked plastic. "
+        "Photographed from a slightly elevated three-quarter angle, "
+        "centered, sitting on a soft cream linen surface. Clean minimalist "
+        "studio composition with generous negative space. Natural soft "
+        "daylight from the upper left, gentle shadows, subtle reflections. "
         "Muted earthy palette: warm cream, natural stone, soft sage. "
-        "Premium e-commerce catalog photography. Ultra high resolution, "
-        "photorealistic. 1:1 square format. No text overlays, no human hands, "
-        "no distracting backgrounds, no additional props, no decorative elements."
+        "Photorealistic, ultra high resolution, 1:1 square format, "
+        "premium e-commerce catalog photography. "
+        "IMPORTANT: The product must be completely unbranded. Never write "
+        "'One Life Health', 'onelifehealth', 'OneLife', or any store name, "
+        "brand name, product name, or any text whatsoever anywhere in the "
+        "image. No writing of any kind on the container."
     )
 
 
