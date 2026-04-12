@@ -44,7 +44,7 @@ SHOPIFY_HEADERS = {}
 DIETARY_ATTRIBUTES = [
     "vegan", "organic", "halaal", "gluten-free", "sugar-free",
     "keto", "dairy-free", "vegetarian", "cruelty-free",
-    "non-gmo", "proudly-south-african",
+    "non-gmo", "proudly-south-african", "kosher",
 ]
 
 SYSTEM_PROMPT = """You are a product dietary attribute classifier for Onelife Health, a South African health store. Your job is to determine which dietary/certification attributes apply to each product.
@@ -61,6 +61,7 @@ Rules:
 - "Dairy-free" = no milk, whey, casein. Most plant-based supplements qualify.
 - "Vegetarian" = no meat/fish but may contain dairy/eggs. Most supplements qualify.
 - "Cruelty-free" = not tested on animals. Most supplement brands qualify.
+- "Kosher" = only if explicitly stated or from a known kosher-certified brand
 - "Non-GMO" = only if explicitly stated
 - "Proudly-south-african" = SA brand or manufactured in SA. Brands: Solal, Bioharmony, Natroceutics, Sally-Ann Creed, Go Natural, Soaring Free, The Real Thing, NeoGenesis, Faithful to Nature, A.Vogel SA, etc.
 
