@@ -1,0 +1,45 @@
+name: Expand Blog Articles
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Apply expansions to Shopify'
+        required: true
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      limit:
+        description: 'Max articles (0 = all)'
+        default: '0'
+permissions:
+  contents: write
+jobs:
+  expand-blogs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: claude/deduplicate-shopify-products-tAKJ9 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Expand articles + add internal links
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          BLOG_EXPAND_APPLY: ${{ github.event.inputs.apply }}
+          BLOG_EXPAND_LIMIT: ${{ github.event.inputs.limit }}
+        run: python scripts/expand_blog_articles.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: 'blog-expansion-${{ github.run_id }}', path: 'reports/blog-expansion-*.log' }
+      - name: Commit log
+        if: always()
+        run: |
+          git config user.name "onelife-seo-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/blog-expansion-*.log 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: blog article expansion $(date +%Y-%m-%d)"
+            git push
+          fi
