@@ -1,0 +1,53 @@
+name: Product Categorization Agent
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Apply tags to Shopify (true/false)'
+        required: true
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      limit:
+        description: 'Max products (0 = all)'
+        required: false
+        default: '0'
+permissions:
+  contents: write
+jobs:
+  categorize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/deduplicate-shopify-products-tAKJ9
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run categorization agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          CAT_APPLY: ${{ github.event.inputs.apply }}
+          CAT_LIMIT: ${{ github.event.inputs.limit }}
+          CAT_MODEL: claude-opus-4-6
+          CAT_BATCH_SIZE: '25'
+        run: python scripts/categorize_products.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: categorization-${{ github.run_id }}
+          path: reports/categorization-*.log
+      - name: Commit log
+        if: always()
+        run: |
+          git config user.name "onelife-seo-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/categorization-*.log 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: product categorization $(date +%Y-%m-%d)"
+            git push
+          fi
