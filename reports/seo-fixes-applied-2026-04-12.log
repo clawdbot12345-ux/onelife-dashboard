@@ -1,0 +1,641 @@
+{"action": "run_start", "model": "claude-opus-4-6", "scope": "all", "apply": true, "limit": 0, "concurrency": 5, "ts": "2026-04-12T00:10:47.008248+00:00"}
+{"action": "product_applied", "id": 8457441345846, "fields": [], "ts": "2026-04-12T00:10:59.882308+00:00"}
+{"action": "product_applied", "id": 8538086506806, "fields": [], "ts": "2026-04-12T00:11:00.363104+00:00"}
+{"action": "product_applied", "id": 8538050986294, "fields": [], "ts": "2026-04-12T00:11:00.722035+00:00"}
+{"action": "product_applied", "id": 8492620316982, "fields": [], "ts": "2026-04-12T00:11:00.976572+00:00"}
+{"action": "product_applied", "id": 8538060980534, "fields": [], "ts": "2026-04-12T00:11:01.991422+00:00"}
+{"action": "product_applied", "id": 9124233150774, "fields": [], "ts": "2026-04-12T00:11:10.153224+00:00"}
+{"action": "product_applied", "id": 8464042524982, "fields": [], "ts": "2026-04-12T00:11:12.731107+00:00"}
+{"action": "product_applied", "id": 8464024666422, "fields": [], "ts": "2026-04-12T00:11:13.335061+00:00"}
+{"action": "product_applied", "id": 8229455331638, "fields": [], "ts": "2026-04-12T00:11:13.445373+00:00"}
+{"action": "product_applied", "id": 8464048128310, "fields": [], "ts": "2026-04-12T00:11:13.993352+00:00"}
+{"action": "product_applied", "id": 8464090267958, "fields": [], "ts": "2026-04-12T00:11:22.074301+00:00"}
+{"action": "product_applied", "id": 8464148889910, "fields": [], "ts": "2026-04-12T00:11:23.404582+00:00"}
+{"action": "product_applied", "id": 8464165306678, "fields": [], "ts": "2026-04-12T00:11:24.570466+00:00"}
+{"action": "product_applied", "id": 8464215736630, "fields": [], "ts": "2026-04-12T00:11:25.959531+00:00"}
+{"action": "product_applied", "id": 8467335774518, "fields": [], "ts": "2026-04-12T00:11:27.543756+00:00"}
+{"action": "product_applied", "id": 8467297009974, "fields": [], "ts": "2026-04-12T00:11:33.151287+00:00"}
+{"action": "product_applied", "id": 8467316900150, "fields": [], "ts": "2026-04-12T00:11:34.848519+00:00"}
+{"action": "product_applied", "id": 8467357860150, "fields": [], "ts": "2026-04-12T00:11:36.737462+00:00"}
+{"action": "product_applied", "id": 8467369492790, "fields": [], "ts": "2026-04-12T00:11:37.037841+00:00"}
+{"action": "product_applied", "id": 8467417071926, "fields": [], "ts": "2026-04-12T00:11:39.629192+00:00"}
+{"action": "product_applied", "id": 8467507773750, "fields": [], "ts": "2026-04-12T00:11:43.987476+00:00"}
+{"action": "product_applied", "id": 8467540574518, "fields": [], "ts": "2026-04-12T00:11:46.073322+00:00"}
+{"action": "product_applied", "id": 8468015022390, "fields": [], "ts": "2026-04-12T00:11:48.157024+00:00"}
+{"action": "product_applied", "id": 8467814449462, "fields": [], "ts": "2026-04-12T00:11:48.406806+00:00"}
+{"action": "product_applied", "id": 8467985498422, "fields": [], "ts": "2026-04-12T00:11:51.651780+00:00"}
+{"action": "product_applied", "id": 8467939361078, "fields": [], "ts": "2026-04-12T00:11:56.184512+00:00"}
+{"action": "product_applied", "id": 8467969278262, "fields": [], "ts": "2026-04-12T00:11:56.656053+00:00"}
+{"action": "product_applied", "id": 8468079149366, "fields": [], "ts": "2026-04-12T00:11:58.877351+00:00"}
+{"action": "product_applied", "id": 8468086456630, "fields": [], "ts": "2026-04-12T00:11:59.633205+00:00"}
+{"action": "product_applied", "id": 8468120240438, "fields": [], "ts": "2026-04-12T00:12:03.804747+00:00"}
+{"action": "product_applied", "id": 8469578318134, "fields": [], "ts": "2026-04-12T00:12:08.176764+00:00"}
+{"action": "product_applied", "id": 8469594505526, "fields": [], "ts": "2026-04-12T00:12:08.251999+00:00"}
+{"action": "product_applied", "id": 8469610758454, "fields": [], "ts": "2026-04-12T00:12:10.937307+00:00"}
+{"action": "product_applied", "id": 8469616460086, "fields": [], "ts": "2026-04-12T00:12:11.851843+00:00"}
+{"action": "product_applied", "id": 8469628059958, "fields": [], "ts": "2026-04-12T00:12:15.808541+00:00"}
+{"action": "product_applied", "id": 8469683175734, "fields": [], "ts": "2026-04-12T00:12:19.696269+00:00"}
+{"action": "product_applied", "id": 8469646934326, "fields": [], "ts": "2026-04-12T00:12:21.548042+00:00"}
+{"action": "product_applied", "id": 8053055095094, "fields": [], "ts": "2026-04-12T00:12:22.371187+00:00"}
+{"action": "product_applied", "id": 8053052801334, "fields": [], "ts": "2026-04-12T00:12:22.460122+00:00"}
+{"action": "product_applied", "id": 9044546715958, "fields": [], "ts": "2026-04-12T00:12:26.314371+00:00"}
+{"action": "product_applied", "id": 9131172299062, "fields": [], "ts": "2026-04-12T00:12:30.978226+00:00"}
+{"action": "product_applied", "id": 8538101776694, "fields": [], "ts": "2026-04-12T00:12:32.833256+00:00"}
+{"action": "product_applied", "id": 8538123010358, "fields": [], "ts": "2026-04-12T00:12:34.510044+00:00"}
+{"action": "product_applied", "id": 9129117090102, "fields": [], "ts": "2026-04-12T00:12:36.183665+00:00"}
+{"action": "product_applied", "id": 8538111246646, "fields": [], "ts": "2026-04-12T00:12:37.639836+00:00"}
+{"action": "product_applied", "id": 8544230703414, "fields": [], "ts": "2026-04-12T00:12:42.757841+00:00"}
+{"action": "product_applied", "id": 8538117996854, "fields": [], "ts": "2026-04-12T00:12:44.105983+00:00"}
+{"action": "product_applied", "id": 8544176275766, "fields": [], "ts": "2026-04-12T00:12:46.766415+00:00"}
+{"action": "product_applied", "id": 8538102858038, "fields": [], "ts": "2026-04-12T00:12:47.894171+00:00"}
+{"action": "product_applied", "id": 8538138181942, "fields": [], "ts": "2026-04-12T00:12:49.414435+00:00"}
+{"action": "product_applied", "id": 8538145980726, "fields": [], "ts": "2026-04-12T00:12:53.498494+00:00"}
+{"action": "product_applied", "id": 9131200282934, "fields": [], "ts": "2026-04-12T00:12:55.958509+00:00"}
+{"action": "product_applied", "id": 9131185733942, "fields": [], "ts": "2026-04-12T00:12:57.365456+00:00"}
+{"action": "product_applied", "id": 9067540382006, "fields": [], "ts": "2026-04-12T00:12:58.762076+00:00"}
+{"action": "product_applied", "id": 9067541168438, "fields": [], "ts": "2026-04-12T00:13:01.635032+00:00"}
+{"action": "product_applied", "id": 9067549753654, "fields": [], "ts": "2026-04-12T00:13:04.183163+00:00"}
+{"action": "product_applied", "id": 8470291251510, "fields": [], "ts": "2026-04-12T00:13:09.022224+00:00"}
+{"action": "product_applied", "id": 8473544884534, "fields": [], "ts": "2026-04-12T00:13:09.735540+00:00"}
+{"action": "product_applied", "id": 8929364803894, "fields": [], "ts": "2026-04-12T00:13:10.901958+00:00"}
+{"action": "product_applied", "id": 8839071564086, "fields": [], "ts": "2026-04-12T00:13:16.030548+00:00"}
+{"action": "product_applied", "id": 8929357594934, "fields": [], "ts": "2026-04-12T00:13:16.271218+00:00"}
+{"action": "product_applied", "id": 8836748312886, "fields": [], "ts": "2026-04-12T00:13:19.120133+00:00"}
+{"action": "product_applied", "id": 8836748345654, "fields": [], "ts": "2026-04-12T00:13:21.835394+00:00"}
+{"action": "product_applied", "id": 8838912049462, "fields": [], "ts": "2026-04-12T00:13:22.383822+00:00"}
+{"action": "product_applied", "id": 8836745756982, "fields": [], "ts": "2026-04-12T00:13:27.740091+00:00"}
+{"action": "product_applied", "id": 8836744675638, "fields": [], "ts": "2026-04-12T00:13:29.009034+00:00"}
+{"action": "product_applied", "id": 8839037780278, "fields": [], "ts": "2026-04-12T00:13:31.938234+00:00"}
+{"action": "product_applied", "id": 8836801069366, "fields": [], "ts": "2026-04-12T00:13:33.124912+00:00"}
+{"action": "product_applied", "id": 8836771512630, "fields": [], "ts": "2026-04-12T00:13:34.814388+00:00"}
+{"action": "product_applied", "id": 8836828332342, "fields": [], "ts": "2026-04-12T00:13:39.367747+00:00"}
+{"action": "product_applied", "id": 8839059505462, "fields": [], "ts": "2026-04-12T00:13:39.396998+00:00"}
+{"action": "product_applied", "id": 8838879904054, "fields": [], "ts": "2026-04-12T00:13:44.846318+00:00"}
+{"action": "product_applied", "id": 8839093453110, "fields": [], "ts": "2026-04-12T00:13:45.148588+00:00"}
+{"action": "product_applied", "id": 8838988759350, "fields": [], "ts": "2026-04-12T00:13:46.658360+00:00"}
+{"action": "product_applied", "id": 8838953566518, "fields": [], "ts": "2026-04-12T00:13:51.360841+00:00"}
+{"action": "product_applied", "id": 8839139230006, "fields": [], "ts": "2026-04-12T00:13:51.936709+00:00"}
+{"action": "product_applied", "id": 8836776853814, "fields": [], "ts": "2026-04-12T00:13:56.818671+00:00"}
+{"action": "product_put_ok", "id": 8482310750518, "fields": ["product_type"], "ts": "2026-04-12T00:13:58.160990+00:00"}
+{"action": "metafield_title_ok", "id": 8482310750518, "ts": "2026-04-12T00:13:58.352353+00:00"}
+{"action": "metafield_desc_ok", "id": 8482310750518, "ts": "2026-04-12T00:13:58.651311+00:00"}
+{"action": "product_applied", "id": 8482310750518, "fields": ["product_type"], "ts": "2026-04-12T00:13:58.651354+00:00"}
+{"action": "product_applied", "id": 8929469563190, "fields": [], "ts": "2026-04-12T00:13:59.954436+00:00"}
+{"action": "product_applied", "id": 8234741563702, "fields": [], "ts": "2026-04-12T00:14:02.776393+00:00"}
+{"action": "product_applied", "id": 8243441205558, "fields": [], "ts": "2026-04-12T00:14:04.261010+00:00"}
+{"action": "product_applied", "id": 8243465453878, "fields": [], "ts": "2026-04-12T00:14:07.336463+00:00"}
+{"action": "product_applied", "id": 8243471057206, "fields": [], "ts": "2026-04-12T00:14:10.736346+00:00"}
+{"action": "product_applied", "id": 8243478528310, "fields": [], "ts": "2026-04-12T00:14:11.218942+00:00"}
+{"action": "product_applied", "id": 8243493077302, "fields": [], "ts": "2026-04-12T00:14:14.336142+00:00"}
+{"action": "product_applied", "id": 8243492028726, "fields": [], "ts": "2026-04-12T00:14:15.661456+00:00"}
+{"action": "product_applied", "id": 8243495305526, "fields": [], "ts": "2026-04-12T00:14:18.819775+00:00"}
+{"action": "product_applied", "id": 8243499172150, "fields": [], "ts": "2026-04-12T00:14:22.114509+00:00"}
+{"action": "product_applied", "id": 8243500482870, "fields": [], "ts": "2026-04-12T00:14:22.631812+00:00"}
+{"action": "product_applied", "id": 8303693758774, "fields": [], "ts": "2026-04-12T00:14:26.693522+00:00"}
+{"action": "product_applied", "id": 8243502154038, "fields": [], "ts": "2026-04-12T00:14:27.462254+00:00"}
+{"action": "product_applied", "id": 9127376159030, "fields": [], "ts": "2026-04-12T00:14:31.874886+00:00"}
+{"action": "product_applied", "id": 9127376781622, "fields": [], "ts": "2026-04-12T00:14:34.689049+00:00"}
+{"action": "product_applied", "id": 9127375896886, "fields": [], "ts": "2026-04-12T00:14:35.927618+00:00"}
+{"action": "product_applied", "id": 8226480095542, "fields": [], "ts": "2026-04-12T00:14:36.968125+00:00"}
+{"action": "product_applied", "id": 8890037829942, "fields": [], "ts": "2026-04-12T00:14:37.974389+00:00"}
+{"action": "product_applied", "id": 8189927358774, "fields": [], "ts": "2026-04-12T00:14:42.928182+00:00"}
+{"action": "product_applied", "id": 8917562458422, "fields": [], "ts": "2026-04-12T00:14:45.742820+00:00"}
+{"action": "product_applied", "id": 8917553873206, "fields": [], "ts": "2026-04-12T00:14:47.954588+00:00"}
+{"action": "product_applied", "id": 9124212080950, "fields": [], "ts": "2026-04-12T00:14:48.341983+00:00"}
+{"action": "product_applied", "id": 8917555839286, "fields": [], "ts": "2026-04-12T00:14:51.383759+00:00"}
+{"action": "product_put_ok", "id": 10655645794614, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:14:53.593382+00:00"}
+{"action": "metafield_title_ok", "id": 10655645794614, "ts": "2026-04-12T00:14:53.742510+00:00"}
+{"action": "metafield_desc_ok", "id": 10655645794614, "ts": "2026-04-12T00:14:54.090093+00:00"}
+{"action": "product_applied", "id": 10655645794614, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:14:54.090141+00:00"}
+{"action": "product_put_ok", "id": 8473867944246, "fields": ["product_type"], "ts": "2026-04-12T00:14:57.366097+00:00"}
+{"action": "metafield_title_ok", "id": 8473867944246, "ts": "2026-04-12T00:14:57.533190+00:00"}
+{"action": "metafield_desc_ok", "id": 8473867944246, "ts": "2026-04-12T00:14:57.863377+00:00"}
+{"action": "product_applied", "id": 8473867944246, "fields": ["product_type"], "ts": "2026-04-12T00:14:57.863429+00:00"}
+{"action": "product_put_ok", "id": 10655645729078, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:14:59.275786+00:00"}
+{"action": "metafield_title_ok", "id": 10655645729078, "ts": "2026-04-12T00:14:59.761576+00:00"}
+{"action": "product_put_ok", "id": 8473976308022, "fields": ["product_type"], "ts": "2026-04-12T00:14:59.827358+00:00"}
+{"action": "metafield_desc_ok", "id": 10655645729078, "ts": "2026-04-12T00:15:00.088112+00:00"}
+{"action": "product_applied", "id": 10655645729078, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:15:00.088177+00:00"}
+{"action": "metafield_title_ok", "id": 8473976308022, "ts": "2026-04-12T00:15:00.459886+00:00"}
+{"action": "metafield_desc_ok", "id": 8473976308022, "ts": "2026-04-12T00:15:01.139529+00:00"}
+{"action": "product_applied", "id": 8473976308022, "fields": ["product_type"], "ts": "2026-04-12T00:15:01.139585+00:00"}
+{"action": "product_put_ok", "id": 10655645663542, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:15:02.528214+00:00"}
+{"action": "metafield_title_ok", "id": 10655645663542, "ts": "2026-04-12T00:15:02.893311+00:00"}
+{"action": "metafield_desc_ok", "id": 10655645663542, "ts": "2026-04-12T00:15:03.231593+00:00"}
+{"action": "product_applied", "id": 10655645663542, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:15:03.231691+00:00"}
+{"action": "product_put_ok", "id": 8473979715894, "fields": ["product_type"], "ts": "2026-04-12T00:15:05.406872+00:00"}
+{"action": "metafield_title_ok", "id": 8473979715894, "ts": "2026-04-12T00:15:05.558231+00:00"}
+{"action": "metafield_desc_ok", "id": 8473979715894, "ts": "2026-04-12T00:15:05.912510+00:00"}
+{"action": "product_applied", "id": 8473979715894, "fields": ["product_type"], "ts": "2026-04-12T00:15:05.912557+00:00"}
+{"action": "product_put_ok", "id": 8473997672758, "fields": ["product_type"], "ts": "2026-04-12T00:15:11.011059+00:00"}
+{"action": "metafield_title_ok", "id": 8473997672758, "ts": "2026-04-12T00:15:11.160007+00:00"}
+{"action": "metafield_desc_ok", "id": 8473997672758, "ts": "2026-04-12T00:15:11.520812+00:00"}
+{"action": "product_applied", "id": 8473997672758, "fields": ["product_type"], "ts": "2026-04-12T00:15:11.520852+00:00"}
+{"action": "product_put_ok", "id": 8474000949558, "fields": ["product_type"], "ts": "2026-04-12T00:15:12.324551+00:00"}
+{"action": "metafield_title_ok", "id": 8474000949558, "ts": "2026-04-12T00:15:12.945741+00:00"}
+{"action": "metafield_desc_ok", "id": 8474000949558, "ts": "2026-04-12T00:15:13.283155+00:00"}
+{"action": "product_applied", "id": 8474000949558, "fields": ["product_type"], "ts": "2026-04-12T00:15:13.283202+00:00"}
+{"action": "product_put_ok", "id": 8474014679350, "fields": ["product_type"], "ts": "2026-04-12T00:15:14.814175+00:00"}
+{"action": "metafield_title_ok", "id": 8474014679350, "ts": "2026-04-12T00:15:15.024321+00:00"}
+{"action": "product_put_ok", "id": 8474006323510, "fields": ["product_type"], "ts": "2026-04-12T00:15:15.095189+00:00"}
+{"action": "metafield_desc_ok", "id": 8474014679350, "ts": "2026-04-12T00:15:15.363296+00:00"}
+{"action": "product_applied", "id": 8474014679350, "fields": ["product_type"], "ts": "2026-04-12T00:15:15.363368+00:00"}
+{"action": "metafield_title_ok", "id": 8474006323510, "ts": "2026-04-12T00:15:15.724109+00:00"}
+{"action": "metafield_desc_ok", "id": 8474006323510, "ts": "2026-04-12T00:15:16.406847+00:00"}
+{"action": "product_applied", "id": 8474006323510, "fields": ["product_type"], "ts": "2026-04-12T00:15:16.406891+00:00"}
+{"action": "product_put_ok", "id": 10655645368630, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:15:17.448594+00:00"}
+{"action": "metafield_title_ok", "id": 10655645368630, "ts": "2026-04-12T00:15:18.187098+00:00"}
+{"action": "metafield_desc_ok", "id": 10655645368630, "ts": "2026-04-12T00:15:18.519835+00:00"}
+{"action": "product_applied", "id": 10655645368630, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:15:18.519884+00:00"}
+{"action": "product_put_ok", "id": 8473485705526, "fields": ["product_type"], "ts": "2026-04-12T00:15:25.534108+00:00"}
+{"action": "metafield_title_ok", "id": 8473485705526, "ts": "2026-04-12T00:15:25.683495+00:00"}
+{"action": "metafield_desc_ok", "id": 8473485705526, "ts": "2026-04-12T00:15:26.383754+00:00"}
+{"action": "product_applied", "id": 8473485705526, "fields": ["product_type"], "ts": "2026-04-12T00:15:26.383810+00:00"}
+{"action": "product_put_ok", "id": 8473393201462, "fields": ["product_type"], "ts": "2026-04-12T00:15:26.456733+00:00"}
+{"action": "product_put_ok", "id": 8473487638838, "fields": ["product_type"], "ts": "2026-04-12T00:15:27.867435+00:00"}
+{"action": "metafield_title_ok", "id": 8473487638838, "ts": "2026-04-12T00:15:28.154001+00:00"}
+{"action": "product_put_ok", "id": 8473488851254, "fields": ["product_type"], "ts": "2026-04-12T00:15:28.923842+00:00"}
+{"action": "metafield_title_ok", "id": 8473488851254, "ts": "2026-04-12T00:15:29.207684+00:00"}
+{"action": "metafield_title_ok", "id": 8473393201462, "ts": "2026-04-12T00:15:29.549412+00:00"}
+{"action": "metafield_desc_ok", "id": 8473488851254, "ts": "2026-04-12T00:15:29.897691+00:00"}
+{"action": "product_applied", "id": 8473488851254, "fields": ["product_type"], "ts": "2026-04-12T00:15:29.897739+00:00"}
+{"action": "product_put_ok", "id": 8473404637494, "fields": ["product_type"], "ts": "2026-04-12T00:15:32.439979+00:00"}
+{"action": "metafield_title_ok", "id": 8473404637494, "ts": "2026-04-12T00:15:34.792338+00:00"}
+{"action": "metafield_desc_ok", "id": 8473404637494, "ts": "2026-04-12T00:15:35.130008+00:00"}
+{"action": "product_applied", "id": 8473404637494, "fields": ["product_type"], "ts": "2026-04-12T00:15:35.130050+00:00"}
+{"action": "metafield_desc_ok", "id": 8473393201462, "ts": "2026-04-12T00:15:36.513477+00:00"}
+{"action": "product_applied", "id": 8473393201462, "fields": ["product_type"], "ts": "2026-04-12T00:15:36.513527+00:00"}
+{"action": "product_put_ok", "id": 8473407422774, "fields": ["product_type"], "ts": "2026-04-12T00:15:41.337248+00:00"}
+{"action": "metafield_title_ok", "id": 8473407422774, "ts": "2026-04-12T00:15:41.470877+00:00"}
+{"action": "metafield_desc_ok", "id": 8473407422774, "ts": "2026-04-12T00:15:41.851657+00:00"}
+{"action": "product_applied", "id": 8473407422774, "fields": ["product_type"], "ts": "2026-04-12T00:15:41.851695+00:00"}
+{"action": "metafield_desc_ok", "id": 8473487638838, "ts": "2026-04-12T00:15:43.916053+00:00"}
+{"action": "product_applied", "id": 8473487638838, "fields": ["product_type"], "ts": "2026-04-12T00:15:43.916112+00:00"}
+{"action": "metafield_title_ok", "id": 10641724735798, "ts": "2026-04-12T00:15:44.975543+00:00"}
+{"action": "metafield_desc_ok", "id": 10641724735798, "ts": "2026-04-12T00:15:47.400176+00:00"}
+{"action": "product_applied", "id": 10641724735798, "fields": [], "ts": "2026-04-12T00:15:47.400232+00:00"}
+{"action": "product_put_ok", "id": 8155085930806, "fields": ["product_type"], "ts": "2026-04-12T00:15:48.288046+00:00"}
+{"action": "product_put_ok", "id": 8155077181750, "fields": ["product_type"], "ts": "2026-04-12T00:15:50.820479+00:00"}
+{"action": "metafield_title_ok", "id": 8155085930806, "ts": "2026-04-12T00:15:50.913076+00:00"}
+{"action": "metafield_title_ok", "id": 8155077181750, "ts": "2026-04-12T00:15:51.274039+00:00"}
+{"action": "metafield_desc_ok", "id": 8155085930806, "ts": "2026-04-12T00:15:51.603904+00:00"}
+{"action": "product_applied", "id": 8155085930806, "fields": ["product_type"], "ts": "2026-04-12T00:15:51.603949+00:00"}
+{"action": "metafield_desc_ok", "id": 8155077181750, "ts": "2026-04-12T00:15:51.973696+00:00"}
+{"action": "product_applied", "id": 8155077181750, "fields": ["product_type"], "ts": "2026-04-12T00:15:51.973742+00:00"}
+{"action": "product_put_ok", "id": 8155078263094, "fields": ["product_type"], "ts": "2026-04-12T00:15:55.201144+00:00"}
+{"action": "product_put_ok", "id": 8447014961462, "fields": ["product_type"], "ts": "2026-04-12T00:15:55.855429+00:00"}
+{"action": "metafield_title_ok", "id": 8155078263094, "ts": "2026-04-12T00:15:57.947885+00:00"}
+{"action": "metafield_desc_ok", "id": 8155078263094, "ts": "2026-04-12T00:15:58.288436+00:00"}
+{"action": "product_applied", "id": 8155078263094, "fields": ["product_type"], "ts": "2026-04-12T00:15:58.288484+00:00"}
+{"action": "product_put_ok", "id": 8155079246134, "fields": ["product_type"], "ts": "2026-04-12T00:16:02.325981+00:00"}
+{"action": "metafield_title_ok", "id": 8155079246134, "ts": "2026-04-12T00:16:02.497767+00:00"}
+{"action": "metafield_title_ok", "id": 8447014961462, "ts": "2026-04-12T00:16:03.185203+00:00"}
+{"action": "product_put_ok", "id": 10655640486198, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:16:03.824282+00:00"}
+{"action": "metafield_desc_ok", "id": 8447014961462, "ts": "2026-04-12T00:16:03.895944+00:00"}
+{"action": "product_applied", "id": 8447014961462, "fields": ["product_type"], "ts": "2026-04-12T00:16:03.895972+00:00"}
+{"action": "metafield_title_ok", "id": 10655640486198, "ts": "2026-04-12T00:16:06.328716+00:00"}
+{"action": "metafield_desc_ok", "id": 10655640486198, "ts": "2026-04-12T00:16:06.712962+00:00"}
+{"action": "product_applied", "id": 10655640486198, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:16:06.713010+00:00"}
+{"action": "product_put_ok", "id": 8492621922614, "fields": ["product_type"], "ts": "2026-04-12T00:16:07.492831+00:00"}
+{"action": "metafield_title_ok", "id": 8492621922614, "ts": "2026-04-12T00:16:08.085227+00:00"}
+{"action": "metafield_desc_ok", "id": 8492621922614, "ts": "2026-04-12T00:16:08.451400+00:00"}
+{"action": "product_applied", "id": 8492621922614, "fields": ["product_type"], "ts": "2026-04-12T00:16:08.451457+00:00"}
+{"action": "metafield_desc_ok", "id": 8155079246134, "ts": "2026-04-12T00:16:09.416105+00:00"}
+{"action": "product_applied", "id": 8155079246134, "fields": ["product_type"], "ts": "2026-04-12T00:16:09.416161+00:00"}
+{"action": "product_put_ok", "id": 8155076722998, "fields": ["product_type"], "ts": "2026-04-12T00:16:14.141343+00:00"}
+{"action": "metafield_title_ok", "id": 8155076722998, "ts": "2026-04-12T00:16:14.288264+00:00"}
+{"action": "metafield_desc_ok", "id": 8155076722998, "ts": "2026-04-12T00:16:14.645917+00:00"}
+{"action": "product_applied", "id": 8155076722998, "fields": ["product_type"], "ts": "2026-04-12T00:16:14.645972+00:00"}
+{"action": "product_put_ok", "id": 8155076952374, "fields": ["product_type"], "ts": "2026-04-12T00:16:16.292112+00:00"}
+{"action": "metafield_title_ok", "id": 8155076952374, "ts": "2026-04-12T00:16:16.458447+00:00"}
+{"action": "metafield_desc_ok", "id": 8155076952374, "ts": "2026-04-12T00:16:18.878726+00:00"}
+{"action": "product_applied", "id": 8155076952374, "fields": ["product_type"], "ts": "2026-04-12T00:16:18.878792+00:00"}
+{"action": "product_put_ok", "id": 8155077673270, "fields": ["product_type"], "ts": "2026-04-12T00:16:21.252082+00:00"}
+{"action": "metafield_title_ok", "id": 8155077673270, "ts": "2026-04-12T00:16:21.425332+00:00"}
+{"action": "metafield_desc_ok", "id": 8155077673270, "ts": "2026-04-12T00:16:21.769155+00:00"}
+{"action": "product_applied", "id": 8155077673270, "fields": ["product_type"], "ts": "2026-04-12T00:16:21.769204+00:00"}
+{"action": "product_put_ok", "id": 8155077312822, "fields": ["product_type"], "ts": "2026-04-12T00:16:22.907464+00:00"}
+{"action": "metafield_title_ok", "id": 8155077312822, "ts": "2026-04-12T00:16:23.134459+00:00"}
+{"action": "metafield_desc_ok", "id": 8155077312822, "ts": "2026-04-12T00:16:23.513342+00:00"}
+{"action": "product_applied", "id": 8155077312822, "fields": ["product_type"], "ts": "2026-04-12T00:16:23.513391+00:00"}
+{"action": "product_put_ok", "id": 8447026856246, "fields": ["product_type"], "ts": "2026-04-12T00:16:25.338564+00:00"}
+{"action": "product_put_ok", "id": 8155082293558, "fields": ["product_type"], "ts": "2026-04-12T00:16:25.875754+00:00"}
+{"action": "metafield_title_ok", "id": 8155082293558, "ts": "2026-04-12T00:16:26.546160+00:00"}
+{"action": "metafield_title_ok", "id": 8447026856246, "ts": "2026-04-12T00:16:27.921367+00:00"}
+{"action": "metafield_desc_ok", "id": 8155082293558, "ts": "2026-04-12T00:16:29.338531+00:00"}
+{"action": "product_applied", "id": 8155082293558, "fields": ["product_type"], "ts": "2026-04-12T00:16:29.338589+00:00"}
+{"action": "metafield_desc_ok", "id": 8447026856246, "ts": "2026-04-12T00:16:30.388180+00:00"}
+{"action": "product_applied", "id": 8447026856246, "fields": ["product_type"], "ts": "2026-04-12T00:16:30.388248+00:00"}
+{"action": "product_put_ok", "id": 8155082785078, "fields": ["product_type"], "ts": "2026-04-12T00:16:30.436690+00:00"}
+{"action": "metafield_title_ok", "id": 8155082785078, "ts": "2026-04-12T00:16:31.121823+00:00"}
+{"action": "metafield_desc_ok", "id": 8155082785078, "ts": "2026-04-12T00:16:31.464753+00:00"}
+{"action": "product_applied", "id": 8155082785078, "fields": ["product_type"], "ts": "2026-04-12T00:16:31.464793+00:00"}
+{"action": "product_put_ok", "id": 8294184288566, "fields": ["product_type"], "ts": "2026-04-12T00:16:36.150009+00:00"}
+{"action": "metafield_title_ok", "id": 8294184288566, "ts": "2026-04-12T00:16:36.321321+00:00"}
+{"action": "metafield_desc_ok", "id": 8294184288566, "ts": "2026-04-12T00:16:36.645699+00:00"}
+{"action": "product_applied", "id": 8294184288566, "fields": ["product_type"], "ts": "2026-04-12T00:16:36.645760+00:00"}
+{"action": "product_put_ok", "id": 8155084226870, "fields": ["product_type"], "ts": "2026-04-12T00:16:38.408423+00:00"}
+{"action": "metafield_title_ok", "id": 8155084226870, "ts": "2026-04-12T00:16:38.563432+00:00"}
+{"action": "metafield_desc_ok", "id": 8155084226870, "ts": "2026-04-12T00:16:38.916149+00:00"}
+{"action": "product_applied", "id": 8155084226870, "fields": ["product_type"], "ts": "2026-04-12T00:16:38.916201+00:00"}
+{"action": "product_put_ok", "id": 8155084521782, "fields": ["product_type"], "ts": "2026-04-12T00:16:43.948935+00:00"}
+{"action": "metafield_title_ok", "id": 8155084521782, "ts": "2026-04-12T00:16:44.121493+00:00"}
+{"action": "metafield_desc_ok", "id": 8155084521782, "ts": "2026-04-12T00:16:44.446990+00:00"}
+{"action": "product_applied", "id": 8155084521782, "fields": ["product_type"], "ts": "2026-04-12T00:16:44.447029+00:00"}
+{"action": "product_put_ok", "id": 10655606538550, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:16:47.324155+00:00"}
+{"action": "metafield_title_ok", "id": 10655606538550, "ts": "2026-04-12T00:16:47.479381+00:00"}
+{"action": "metafield_desc_ok", "id": 10655606538550, "ts": "2026-04-12T00:16:50.602396+00:00"}
+{"action": "product_applied", "id": 10655606538550, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:16:50.602444+00:00"}
+{"action": "product_put_ok", "id": 8155077083446, "fields": ["product_type"], "ts": "2026-04-12T00:16:50.755971+00:00"}
+{"action": "metafield_title_ok", "id": 8155077083446, "ts": "2026-04-12T00:16:53.368996+00:00"}
+{"action": "metafield_desc_ok", "id": 8155077083446, "ts": "2026-04-12T00:16:53.709994+00:00"}
+{"action": "product_applied", "id": 8155077083446, "fields": ["product_type"], "ts": "2026-04-12T00:16:53.710052+00:00"}
+{"action": "product_put_ok", "id": 8155077116214, "fields": ["product_type"], "ts": "2026-04-12T00:16:54.486856+00:00"}
+{"action": "metafield_title_ok", "id": 8155077116214, "ts": "2026-04-12T00:16:55.113972+00:00"}
+{"action": "metafield_desc_ok", "id": 8155077116214, "ts": "2026-04-12T00:16:57.920997+00:00"}
+{"action": "product_applied", "id": 8155077116214, "fields": ["product_type"], "ts": "2026-04-12T00:16:57.921057+00:00"}
+{"action": "product_put_ok", "id": 8155079901494, "fields": ["product_type"], "ts": "2026-04-12T00:17:03.734790+00:00"}
+{"action": "metafield_title_ok", "id": 8155079901494, "ts": "2026-04-12T00:17:04.075688+00:00"}
+{"action": "product_put_ok", "id": 8155079737654, "fields": ["product_type"], "ts": "2026-04-12T00:17:04.186933+00:00"}
+{"action": "metafield_desc_ok", "id": 8155079901494, "ts": "2026-04-12T00:17:04.429231+00:00"}
+{"action": "product_applied", "id": 8155079901494, "fields": ["product_type"], "ts": "2026-04-12T00:17:04.429272+00:00"}
+{"action": "product_put_ok", "id": 8155080851766, "fields": ["product_type"], "ts": "2026-04-12T00:17:06.271818+00:00"}
+{"action": "metafield_title_ok", "id": 8155080851766, "ts": "2026-04-12T00:17:06.411304+00:00"}
+{"action": "metafield_title_ok", "id": 8155079737654, "ts": "2026-04-12T00:17:07.117446+00:00"}
+{"action": "metafield_desc_ok", "id": 8155080851766, "ts": "2026-04-12T00:17:08.847123+00:00"}
+{"action": "product_applied", "id": 8155080851766, "fields": ["product_type"], "ts": "2026-04-12T00:17:08.847178+00:00"}
+{"action": "product_put_ok", "id": 8155081310518, "fields": ["product_type"], "ts": "2026-04-12T00:17:10.378051+00:00"}
+{"action": "metafield_title_ok", "id": 8155081310518, "ts": "2026-04-12T00:17:10.617358+00:00"}
+{"action": "metafield_desc_ok", "id": 8155081310518, "ts": "2026-04-12T00:17:10.985354+00:00"}
+{"action": "product_applied", "id": 8155081310518, "fields": ["product_type"], "ts": "2026-04-12T00:17:10.985403+00:00"}
+{"action": "product_put_ok", "id": 8155084423478, "fields": ["product_type"], "ts": "2026-04-12T00:17:13.160487+00:00"}
+{"action": "metafield_title_ok", "id": 8155084423478, "ts": "2026-04-12T00:17:13.324369+00:00"}
+{"action": "metafield_desc_ok", "id": 8155084423478, "ts": "2026-04-12T00:17:14.009356+00:00"}
+{"action": "product_applied", "id": 8155084423478, "fields": ["product_type"], "ts": "2026-04-12T00:17:14.009402+00:00"}
+{"action": "metafield_desc_ok", "id": 8155079737654, "ts": "2026-04-12T00:17:15.065773+00:00"}
+{"action": "product_applied", "id": 8155079737654, "fields": ["product_type"], "ts": "2026-04-12T00:17:15.065830+00:00"}
+{"action": "product_put_ok", "id": 8155082621238, "fields": ["product_type"], "ts": "2026-04-12T00:17:19.503953+00:00"}
+{"action": "metafield_title_ok", "id": 8155082621238, "ts": "2026-04-12T00:17:21.788023+00:00"}
+{"action": "metafield_desc_ok", "id": 8155082621238, "ts": "2026-04-12T00:17:22.086193+00:00"}
+{"action": "product_applied", "id": 8155082621238, "fields": ["product_type"], "ts": "2026-04-12T00:17:22.086246+00:00"}
+{"action": "product_put_ok", "id": 8155084259638, "fields": ["product_type"], "ts": "2026-04-12T00:17:25.166813+00:00"}
+{"action": "metafield_title_ok", "id": 8155084259638, "ts": "2026-04-12T00:17:25.338018+00:00"}
+{"action": "metafield_desc_ok", "id": 8155084259638, "ts": "2026-04-12T00:17:25.651172+00:00"}
+{"action": "product_applied", "id": 8155084259638, "fields": ["product_type"], "ts": "2026-04-12T00:17:25.651220+00:00"}
+{"action": "product_put_ok", "id": 8155085340982, "fields": ["product_type"], "ts": "2026-04-12T00:17:28.182507+00:00"}
+{"action": "metafield_title_ok", "id": 8155085340982, "ts": "2026-04-12T00:17:28.544579+00:00"}
+{"action": "product_put_ok", "id": 8155077214518, "fields": ["product_type"], "ts": "2026-04-12T00:17:28.603499+00:00"}
+{"action": "metafield_desc_ok", "id": 8155085340982, "ts": "2026-04-12T00:17:29.266669+00:00"}
+{"action": "product_applied", "id": 8155085340982, "fields": ["product_type"], "ts": "2026-04-12T00:17:29.266725+00:00"}
+{"action": "metafield_title_ok", "id": 8155077214518, "ts": "2026-04-12T00:17:29.609083+00:00"}
+{"action": "metafield_desc_ok", "id": 8155077214518, "ts": "2026-04-12T00:17:32.397262+00:00"}
+{"action": "product_applied", "id": 8155077214518, "fields": ["product_type"], "ts": "2026-04-12T00:17:32.397316+00:00"}
+{"action": "product_put_ok", "id": 8155077247286, "fields": ["product_type"], "ts": "2026-04-12T00:17:32.443900+00:00"}
+{"action": "product_put_ok", "id": 8155078394166, "fields": ["product_type"], "ts": "2026-04-12T00:17:33.914828+00:00"}
+{"action": "metafield_title_ok", "id": 8155077247286, "ts": "2026-04-12T00:17:35.224547+00:00"}
+{"action": "metafield_desc_ok", "id": 8155077247286, "ts": "2026-04-12T00:17:37.639602+00:00"}
+{"action": "product_applied", "id": 8155077247286, "fields": ["product_type"], "ts": "2026-04-12T00:17:37.639680+00:00"}
+{"action": "product_put_ok", "id": 8155078623542, "fields": ["product_type"], "ts": "2026-04-12T00:17:40.068324+00:00"}
+{"action": "metafield_title_ok", "id": 8155078623542, "ts": "2026-04-12T00:17:40.216013+00:00"}
+{"action": "metafield_title_ok", "id": 8155078394166, "ts": "2026-04-12T00:17:40.578536+00:00"}
+{"action": "metafield_desc_ok", "id": 8155078623542, "ts": "2026-04-12T00:17:40.927253+00:00"}
+{"action": "product_applied", "id": 8155078623542, "fields": ["product_type"], "ts": "2026-04-12T00:17:40.927314+00:00"}
+{"action": "product_put_ok", "id": 8155080524086, "fields": ["product_type"], "ts": "2026-04-12T00:17:42.488041+00:00"}
+{"action": "metafield_title_ok", "id": 8155080524086, "ts": "2026-04-12T00:17:42.669282+00:00"}
+{"action": "metafield_desc_ok", "id": 8155080524086, "ts": "2026-04-12T00:17:43.016239+00:00"}
+{"action": "product_applied", "id": 8155080524086, "fields": ["product_type"], "ts": "2026-04-12T00:17:43.016294+00:00"}
+{"action": "metafield_desc_ok", "id": 8155078394166, "ts": "2026-04-12T00:17:43.734059+00:00"}
+{"action": "product_applied", "id": 8155078394166, "fields": ["product_type"], "ts": "2026-04-12T00:17:43.734103+00:00"}
+{"action": "product_put_ok", "id": 8155080687926, "fields": ["product_type"], "ts": "2026-04-12T00:17:46.823025+00:00"}
+{"action": "metafield_title_ok", "id": 8155080687926, "ts": "2026-04-12T00:17:46.973675+00:00"}
+{"action": "product_put_ok", "id": 8155081015606, "fields": ["product_type"], "ts": "2026-04-12T00:17:49.150755+00:00"}
+{"action": "metafield_title_ok", "id": 8155081015606, "ts": "2026-04-12T00:17:49.548234+00:00"}
+{"action": "metafield_desc_ok", "id": 8155081015606, "ts": "2026-04-12T00:17:50.212234+00:00"}
+{"action": "product_applied", "id": 8155081015606, "fields": ["product_type"], "ts": "2026-04-12T00:17:50.212281+00:00"}
+{"action": "metafield_desc_ok", "id": 8155080687926, "ts": "2026-04-12T00:17:53.937594+00:00"}
+{"action": "product_applied", "id": 8155080687926, "fields": ["product_type"], "ts": "2026-04-12T00:17:53.937701+00:00"}
+{"action": "product_put_ok", "id": 8155083931958, "fields": ["product_type"], "ts": "2026-04-12T00:17:56.138432+00:00"}
+{"action": "product_put_ok", "id": 8155083768118, "fields": ["product_type"], "ts": "2026-04-12T00:17:57.767698+00:00"}
+{"action": "metafield_title_ok", "id": 8155083768118, "ts": "2026-04-12T00:17:57.910710+00:00"}
+{"action": "metafield_desc_ok", "id": 8155083768118, "ts": "2026-04-12T00:18:00.369258+00:00"}
+{"action": "product_applied", "id": 8155083768118, "fields": ["product_type"], "ts": "2026-04-12T00:18:00.369307+00:00"}
+{"action": "product_put_ok", "id": 8155084095798, "fields": ["product_type"], "ts": "2026-04-12T00:18:01.147598+00:00"}
+{"action": "metafield_title_ok", "id": 8155084095798, "ts": "2026-04-12T00:18:01.403051+00:00"}
+{"action": "metafield_title_ok", "id": 8155083931958, "ts": "2026-04-12T00:18:02.741856+00:00"}
+{"action": "metafield_desc_ok", "id": 8155083931958, "ts": "2026-04-12T00:18:03.119576+00:00"}
+{"action": "product_applied", "id": 8155083931958, "fields": ["product_type"], "ts": "2026-04-12T00:18:03.119668+00:00"}
+{"action": "metafield_desc_ok", "id": 8155084095798, "ts": "2026-04-12T00:18:04.481921+00:00"}
+{"action": "product_applied", "id": 8155084095798, "fields": ["product_type"], "ts": "2026-04-12T00:18:04.481967+00:00"}
+{"action": "product_put_ok", "id": 8155076854070, "fields": ["product_type"], "ts": "2026-04-12T00:18:06.388218+00:00"}
+{"action": "metafield_title_ok", "id": 8155076854070, "ts": "2026-04-12T00:18:06.551900+00:00"}
+{"action": "metafield_desc_ok", "id": 8155076854070, "ts": "2026-04-12T00:18:06.893417+00:00"}
+{"action": "product_applied", "id": 8155076854070, "fields": ["product_type"], "ts": "2026-04-12T00:18:06.893459+00:00"}
+{"action": "product_put_ok", "id": 8155083571510, "fields": ["product_type"], "ts": "2026-04-12T00:18:09.400249+00:00"}
+{"action": "metafield_title_ok", "id": 8155083571510, "ts": "2026-04-12T00:18:11.765995+00:00"}
+{"action": "metafield_desc_ok", "id": 8155083571510, "ts": "2026-04-12T00:18:12.121210+00:00"}
+{"action": "product_applied", "id": 8155083571510, "fields": ["product_type"], "ts": "2026-04-12T00:18:12.121263+00:00"}
+{"action": "product_put_ok", "id": 8155078000950, "fields": ["product_type"], "ts": "2026-04-12T00:18:15.664946+00:00"}
+{"action": "product_put_ok", "id": 8155078132022, "fields": ["product_type"], "ts": "2026-04-12T00:18:16.900386+00:00"}
+{"action": "metafield_title_ok", "id": 8155078132022, "ts": "2026-04-12T00:18:17.069912+00:00"}
+{"action": "metafield_desc_ok", "id": 8155078132022, "ts": "2026-04-12T00:18:17.408037+00:00"}
+{"action": "product_applied", "id": 8155078132022, "fields": ["product_type"], "ts": "2026-04-12T00:18:17.408108+00:00"}
+{"action": "metafield_title_ok", "id": 8155078000950, "ts": "2026-04-12T00:18:18.108437+00:00"}
+{"action": "metafield_desc_ok", "id": 8155078000950, "ts": "2026-04-12T00:18:18.441140+00:00"}
+{"action": "product_applied", "id": 8155078000950, "fields": ["product_type"], "ts": "2026-04-12T00:18:18.441185+00:00"}
+{"action": "product_put_ok", "id": 8155077837110, "fields": ["product_type"], "ts": "2026-04-12T00:18:22.062012+00:00"}
+{"action": "image_alt_ok", "product_id": 8155077837110, "image_id": 57652620755254, "ts": "2026-04-12T00:18:22.340557+00:00"}
+{"action": "image_alt_ok", "product_id": 8155077837110, "image_id": 57652620722486, "ts": "2026-04-12T00:18:22.634039+00:00"}
+{"action": "metafield_title_ok", "id": 8155077837110, "ts": "2026-04-12T00:18:22.903541+00:00"}
+{"action": "metafield_desc_ok", "id": 8155077837110, "ts": "2026-04-12T00:18:25.352392+00:00"}
+{"action": "product_applied", "id": 8155077837110, "fields": ["product_type"], "ts": "2026-04-12T00:18:25.352445+00:00"}
+{"action": "product_put_ok", "id": 8155080163638, "fields": ["product_type"], "ts": "2026-04-12T00:18:26.504753+00:00"}
+{"action": "metafield_title_ok", "id": 8155080163638, "ts": "2026-04-12T00:18:26.743374+00:00"}
+{"action": "product_put_ok", "id": 8155081769270, "fields": ["product_type"], "ts": "2026-04-12T00:18:27.826158+00:00"}
+{"action": "metafield_title_ok", "id": 8155081769270, "ts": "2026-04-12T00:18:27.978059+00:00"}
+{"action": "metafield_desc_ok", "id": 8155080163638, "ts": "2026-04-12T00:18:29.236072+00:00"}
+{"action": "product_applied", "id": 8155080163638, "fields": ["product_type"], "ts": "2026-04-12T00:18:29.236129+00:00"}
+{"action": "metafield_desc_ok", "id": 8155081769270, "ts": "2026-04-12T00:18:30.406245+00:00"}
+{"action": "product_applied", "id": 8155081769270, "fields": ["product_type"], "ts": "2026-04-12T00:18:30.406301+00:00"}
+{"action": "product_put_ok", "id": 8155081474358, "fields": ["product_type"], "ts": "2026-04-12T00:18:32.475481+00:00"}
+{"action": "metafield_title_ok", "id": 8155081474358, "ts": "2026-04-12T00:18:32.646810+00:00"}
+{"action": "metafield_desc_ok", "id": 8155081474358, "ts": "2026-04-12T00:18:32.968101+00:00"}
+{"action": "product_applied", "id": 8155081474358, "fields": ["product_type"], "ts": "2026-04-12T00:18:32.968156+00:00"}
+{"action": "product_put_ok", "id": 8155083309366, "fields": ["product_type"], "ts": "2026-04-12T00:18:36.763127+00:00"}
+{"action": "metafield_title_ok", "id": 8155083309366, "ts": "2026-04-12T00:18:36.909741+00:00"}
+{"action": "metafield_desc_ok", "id": 8155083309366, "ts": "2026-04-12T00:18:37.278552+00:00"}
+{"action": "product_applied", "id": 8155083309366, "fields": ["product_type"], "ts": "2026-04-12T00:18:37.278602+00:00"}
+{"action": "product_put_ok", "id": 8155085046070, "fields": ["product_type"], "ts": "2026-04-12T00:18:39.461345+00:00"}
+{"action": "metafield_title_ok", "id": 8155085046070, "ts": "2026-04-12T00:18:39.647327+00:00"}
+{"action": "metafield_desc_ok", "id": 8155085046070, "ts": "2026-04-12T00:18:39.968863+00:00"}
+{"action": "product_applied", "id": 8155085046070, "fields": ["product_type"], "ts": "2026-04-12T00:18:39.968916+00:00"}
+{"action": "product_put_ok", "id": 8155085668662, "fields": ["product_type"], "ts": "2026-04-12T00:18:42.460606+00:00"}
+{"action": "metafield_title_ok", "id": 8155085668662, "ts": "2026-04-12T00:18:43.098190+00:00"}
+{"action": "metafield_desc_ok", "id": 8155085668662, "ts": "2026-04-12T00:18:43.517456+00:00"}
+{"action": "product_applied", "id": 8155085668662, "fields": ["product_type"], "ts": "2026-04-12T00:18:43.517516+00:00"}
+{"action": "product_put_ok", "id": 8155082981686, "fields": ["product_type"], "ts": "2026-04-12T00:18:45.496332+00:00"}
+{"action": "metafield_title_ok", "id": 8155082981686, "ts": "2026-04-12T00:18:45.680910+00:00"}
+{"action": "metafield_desc_ok", "id": 8155082981686, "ts": "2026-04-12T00:18:46.006839+00:00"}
+{"action": "product_applied", "id": 8155082981686, "fields": ["product_type"], "ts": "2026-04-12T00:18:46.006890+00:00"}
+{"action": "product_put_ok", "id": 8155084685622, "fields": ["product_type"], "ts": "2026-04-12T00:18:49.167290+00:00"}
+{"action": "metafield_title_ok", "id": 8155084685622, "ts": "2026-04-12T00:18:49.347316+00:00"}
+{"action": "metafield_desc_ok", "id": 8155084685622, "ts": "2026-04-12T00:18:49.658753+00:00"}
+{"action": "product_applied", "id": 8155084685622, "fields": ["product_type"], "ts": "2026-04-12T00:18:49.658791+00:00"}
+{"action": "product_put_ok", "id": 8155076755766, "fields": ["product_type"], "ts": "2026-04-12T00:18:52.417384+00:00"}
+{"action": "metafield_title_ok", "id": 8155076755766, "ts": "2026-04-12T00:18:52.570180+00:00"}
+{"action": "metafield_desc_ok", "id": 8155076755766, "ts": "2026-04-12T00:18:52.908482+00:00"}
+{"action": "product_applied", "id": 8155076755766, "fields": ["product_type"], "ts": "2026-04-12T00:18:52.908536+00:00"}
+{"action": "product_applied", "id": 8901280301366, "fields": [], "ts": "2026-04-12T00:18:54.048732+00:00"}
+{"action": "product_applied", "id": 8901288689974, "fields": [], "ts": "2026-04-12T00:18:57.700744+00:00"}
+{"action": "product_applied", "id": 8901295767862, "fields": [], "ts": "2026-04-12T00:18:58.870269+00:00"}
+{"action": "product_put_ok", "id": 10655566659894, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:19:02.312514+00:00"}
+{"action": "metafield_title_ok", "id": 10655566659894, "ts": "2026-04-12T00:19:02.456076+00:00"}
+{"action": "metafield_desc_ok", "id": 10655566659894, "ts": "2026-04-12T00:19:02.812091+00:00"}
+{"action": "product_applied", "id": 10655566659894, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:19:02.812143+00:00"}
+{"action": "product_put_ok", "id": 10655566594358, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:19:04.233558+00:00"}
+{"action": "metafield_title_ok", "id": 10655566594358, "ts": "2026-04-12T00:19:04.385256+00:00"}
+{"action": "metafield_desc_ok", "id": 10655566594358, "ts": "2026-04-12T00:19:04.729203+00:00"}
+{"action": "product_applied", "id": 10655566594358, "fields": ["body_html", "product_type", "tags"], "ts": "2026-04-12T00:19:04.729251+00:00"}
+{"action": "product_put_ok", "id": 8187025228086, "fields": ["product_type"], "ts": "2026-04-12T00:19:05.882827+00:00"}
+{"action": "metafield_title_ok", "id": 8187025228086, "ts": "2026-04-12T00:19:06.148217+00:00"}
+{"action": "metafield_desc_ok", "id": 8187025228086, "ts": "2026-04-12T00:19:06.478460+00:00"}
+{"action": "product_applied", "id": 8187025228086, "fields": ["product_type"], "ts": "2026-04-12T00:19:06.478512+00:00"}
+{"action": "product_put_ok", "id": 8209083662646, "fields": ["product_type"], "ts": "2026-04-12T00:19:07.998393+00:00"}
+{"action": "metafield_title_ok", "id": 8209083662646, "ts": "2026-04-12T00:19:08.143487+00:00"}
+{"action": "metafield_desc_ok", "id": 8209083662646, "ts": "2026-04-12T00:19:08.510326+00:00"}
+{"action": "product_applied", "id": 8209083662646, "fields": ["product_type"], "ts": "2026-04-12T00:19:08.510379+00:00"}
+{"action": "product_put_ok", "id": 8187018936630, "fields": ["product_type"], "ts": "2026-04-12T00:19:10.059310+00:00"}
+{"action": "metafield_title_ok", "id": 8187018936630, "ts": "2026-04-12T00:19:10.203221+00:00"}
+{"action": "metafield_desc_ok", "id": 8187018936630, "ts": "2026-04-12T00:19:10.577017+00:00"}
+{"action": "product_applied", "id": 8187018936630, "fields": ["product_type"], "ts": "2026-04-12T00:19:10.577065+00:00"}
+{"action": "product_put_ok", "id": 8187018576182, "fields": ["product_type"], "ts": "2026-04-12T00:19:15.805453+00:00"}
+{"action": "metafield_title_ok", "id": 8187018576182, "ts": "2026-04-12T00:19:15.968974+00:00"}
+{"action": "metafield_desc_ok", "id": 8187018576182, "ts": "2026-04-12T00:19:16.647569+00:00"}
+{"action": "product_applied", "id": 8187018576182, "fields": ["product_type"], "ts": "2026-04-12T00:19:16.647671+00:00"}
+{"action": "product_put_ok", "id": 8187019985206, "fields": ["product_type"], "ts": "2026-04-12T00:19:16.709022+00:00"}
+{"action": "product_put_ok", "id": 8187019297078, "fields": ["product_type"], "ts": "2026-04-12T00:19:17.409579+00:00"}
+{"action": "metafield_title_ok", "id": 8187019985206, "ts": "2026-04-12T00:19:17.727461+00:00"}
+{"action": "metafield_title_ok", "id": 8187019297078, "ts": "2026-04-12T00:19:18.425667+00:00"}
+{"action": "metafield_desc_ok", "id": 8187019985206, "ts": "2026-04-12T00:19:18.779927+00:00"}
+{"action": "product_applied", "id": 8187019985206, "fields": ["product_type"], "ts": "2026-04-12T00:19:18.779989+00:00"}
+{"action": "metafield_desc_ok", "id": 8187019297078, "ts": "2026-04-12T00:19:19.116760+00:00"}
+{"action": "product_applied", "id": 8187019297078, "fields": ["product_type"], "ts": "2026-04-12T00:19:19.116820+00:00"}
+{"action": "product_put_ok", "id": 8187021164854, "fields": ["product_type"], "ts": "2026-04-12T00:19:21.528138+00:00"}
+{"action": "metafield_title_ok", "id": 8187021164854, "ts": "2026-04-12T00:19:21.677451+00:00"}
+{"action": "metafield_desc_ok", "id": 8187021164854, "ts": "2026-04-12T00:19:22.043228+00:00"}
+{"action": "product_applied", "id": 8187021164854, "fields": ["product_type"], "ts": "2026-04-12T00:19:22.043274+00:00"}
+{"action": "product_put_ok", "id": 8187021689142, "fields": ["product_type"], "ts": "2026-04-12T00:19:23.142236+00:00"}
+{"action": "metafield_title_ok", "id": 8187021689142, "ts": "2026-04-12T00:19:23.432055+00:00"}
+{"action": "metafield_desc_ok", "id": 8187021689142, "ts": "2026-04-12T00:19:23.774704+00:00"}
+{"action": "product_applied", "id": 8187021689142, "fields": ["product_type"], "ts": "2026-04-12T00:19:23.774760+00:00"}
+{"action": "product_put_ok", "id": 8187021951286, "fields": ["product_type"], "ts": "2026-04-12T00:19:28.648056+00:00"}
+{"action": "metafield_title_ok", "id": 8187021951286, "ts": "2026-04-12T00:19:28.805469+00:00"}
+{"action": "metafield_desc_ok", "id": 8187021951286, "ts": "2026-04-12T00:19:29.145456+00:00"}
+{"action": "product_applied", "id": 8187021951286, "fields": ["product_type"], "ts": "2026-04-12T00:19:29.145518+00:00"}
+{"action": "product_put_ok", "id": 8187022278966, "fields": ["product_type"], "ts": "2026-04-12T00:19:31.475828+00:00"}
+{"action": "metafield_title_ok", "id": 8187022278966, "ts": "2026-04-12T00:19:31.672879+00:00"}
+{"action": "metafield_desc_ok", "id": 8187022278966, "ts": "2026-04-12T00:19:32.008448+00:00"}
+{"action": "product_applied", "id": 8187022278966, "fields": ["product_type"], "ts": "2026-04-12T00:19:32.008494+00:00"}
+{"action": "product_put_ok", "id": 8187022573878, "fields": ["product_type"], "ts": "2026-04-12T00:19:32.143707+00:00"}
+{"action": "metafield_title_ok", "id": 8187022573878, "ts": "2026-04-12T00:19:32.703560+00:00"}
+{"action": "metafield_desc_ok", "id": 8187022573878, "ts": "2026-04-12T00:19:33.420094+00:00"}
+{"action": "product_applied", "id": 8187022573878, "fields": ["product_type"], "ts": "2026-04-12T00:19:33.420151+00:00"}
+{"action": "product_put_ok", "id": 8187023229238, "fields": ["product_type"], "ts": "2026-04-12T00:19:35.520328+00:00"}
+{"action": "metafield_title_ok", "id": 8187023229238, "ts": "2026-04-12T00:19:35.661401+00:00"}
+{"action": "metafield_desc_ok", "id": 8187023229238, "ts": "2026-04-12T00:19:36.058367+00:00"}
+{"action": "product_applied", "id": 8187023229238, "fields": ["product_type"], "ts": "2026-04-12T00:19:36.058429+00:00"}
+{"action": "product_put_ok", "id": 8187023720758, "fields": ["product_type"], "ts": "2026-04-12T00:19:37.586720+00:00"}
+{"action": "metafield_title_ok", "id": 8187023720758, "ts": "2026-04-12T00:19:37.724013+00:00"}
+{"action": "metafield_desc_ok", "id": 8187023720758, "ts": "2026-04-12T00:19:38.104687+00:00"}
+{"action": "product_applied", "id": 8187023720758, "fields": ["product_type"], "ts": "2026-04-12T00:19:38.104739+00:00"}
+{"action": "product_put_ok", "id": 8187027456310, "fields": ["product_type"], "ts": "2026-04-12T00:19:40.670086+00:00"}
+{"action": "metafield_title_ok", "id": 8187027456310, "ts": "2026-04-12T00:19:40.836458+00:00"}
+{"action": "metafield_desc_ok", "id": 8187027456310, "ts": "2026-04-12T00:19:41.159605+00:00"}
+{"action": "product_applied", "id": 8187027456310, "fields": ["product_type"], "ts": "2026-04-12T00:19:41.159720+00:00"}
+{"action": "product_put_ok", "id": 8187032437046, "fields": ["product_type"], "ts": "2026-04-12T00:19:43.486024+00:00"}
+{"action": "metafield_title_ok", "id": 8187032437046, "ts": "2026-04-12T00:19:43.666921+00:00"}
+{"action": "metafield_desc_ok", "id": 8187032437046, "ts": "2026-04-12T00:19:43.990796+00:00"}
+{"action": "product_applied", "id": 8187032437046, "fields": ["product_type"], "ts": "2026-04-12T00:19:43.990851+00:00"}
+{"action": "product_put_ok", "id": 8187035386166, "fields": ["product_type"], "ts": "2026-04-12T00:19:46.589326+00:00"}
+{"action": "metafield_title_ok", "id": 8187035386166, "ts": "2026-04-12T00:19:46.751553+00:00"}
+{"action": "metafield_desc_ok", "id": 8187035386166, "ts": "2026-04-12T00:19:47.112541+00:00"}
+{"action": "product_applied", "id": 8187035386166, "fields": ["product_type"], "ts": "2026-04-12T00:19:47.112597+00:00"}
+{"action": "product_put_ok", "id": 8187042201910, "fields": ["product_type"], "ts": "2026-04-12T00:19:49.290496+00:00"}
+{"action": "metafield_title_ok", "id": 8187042201910, "ts": "2026-04-12T00:19:49.643948+00:00"}
+{"action": "product_put_ok", "id": 8187040629046, "fields": ["product_type"], "ts": "2026-04-12T00:19:49.704071+00:00"}
+{"action": "metafield_desc_ok", "id": 8187042201910, "ts": "2026-04-12T00:19:49.995239+00:00"}
+{"action": "product_applied", "id": 8187042201910, "fields": ["product_type"], "ts": "2026-04-12T00:19:49.995291+00:00"}
+{"action": "metafield_title_ok", "id": 8187040629046, "ts": "2026-04-12T00:19:50.385211+00:00"}
+{"action": "metafield_desc_ok", "id": 8187040629046, "ts": "2026-04-12T00:19:51.043951+00:00"}
+{"action": "product_applied", "id": 8187040629046, "fields": ["product_type"], "ts": "2026-04-12T00:19:51.043998+00:00"}
+{"action": "product_put_ok", "id": 8187044561206, "fields": ["product_type"], "ts": "2026-04-12T00:19:55.156440+00:00"}
+{"action": "metafield_title_ok", "id": 8187044561206, "ts": "2026-04-12T00:19:55.424491+00:00"}
+{"action": "product_put_ok", "id": 8187047575862, "fields": ["product_type"], "ts": "2026-04-12T00:19:55.512941+00:00"}
+{"action": "metafield_desc_ok", "id": 8187044561206, "ts": "2026-04-12T00:19:55.790433+00:00"}
+{"action": "product_applied", "id": 8187044561206, "fields": ["product_type"], "ts": "2026-04-12T00:19:55.790486+00:00"}
+{"action": "metafield_title_ok", "id": 8187047575862, "ts": "2026-04-12T00:19:56.133251+00:00"}
+{"action": "metafield_desc_ok", "id": 8187047575862, "ts": "2026-04-12T00:19:56.821403+00:00"}
+{"action": "product_applied", "id": 8187047575862, "fields": ["product_type"], "ts": "2026-04-12T00:19:56.821465+00:00"}
+{"action": "product_put_ok", "id": 8187050197302, "fields": ["product_type"], "ts": "2026-04-12T00:19:59.297425+00:00"}
+{"action": "metafield_title_ok", "id": 8187050197302, "ts": "2026-04-12T00:19:59.496360+00:00"}
+{"action": "metafield_desc_ok", "id": 8187050197302, "ts": "2026-04-12T00:19:59.794490+00:00"}
+{"action": "product_applied", "id": 8187050197302, "fields": ["product_type"], "ts": "2026-04-12T00:19:59.794540+00:00"}
+{"action": "product_put_ok", "id": 8189874176310, "fields": ["product_type"], "ts": "2026-04-12T00:20:04.358076+00:00"}
+{"action": "metafield_title_ok", "id": 8189874176310, "ts": "2026-04-12T00:20:04.577078+00:00"}
+{"action": "product_put_ok", "id": 8189880271158, "fields": ["product_type"], "ts": "2026-04-12T00:20:04.606075+00:00"}
+{"action": "metafield_desc_ok", "id": 8189874176310, "ts": "2026-04-12T00:20:04.909568+00:00"}
+{"action": "product_applied", "id": 8189874176310, "fields": ["product_type"], "ts": "2026-04-12T00:20:04.909664+00:00"}
+{"action": "metafield_title_ok", "id": 8189880271158, "ts": "2026-04-12T00:20:05.280941+00:00"}
+{"action": "metafield_desc_ok", "id": 8189880271158, "ts": "2026-04-12T00:20:05.960896+00:00"}
+{"action": "product_applied", "id": 8189880271158, "fields": ["product_type"], "ts": "2026-04-12T00:20:05.960951+00:00"}
+{"action": "product_put_ok", "id": 8189936894262, "fields": ["product_type"], "ts": "2026-04-12T00:20:07.776098+00:00"}
+{"action": "metafield_title_ok", "id": 8189936894262, "ts": "2026-04-12T00:20:07.926453+00:00"}
+{"action": "metafield_desc_ok", "id": 8189936894262, "ts": "2026-04-12T00:20:08.290030+00:00"}
+{"action": "product_applied", "id": 8189936894262, "fields": ["product_type"], "ts": "2026-04-12T00:20:08.290077+00:00"}
+{"action": "product_applied", "id": 8446994514230, "fields": [], "ts": "2026-04-12T00:20:09.700306+00:00"}
+{"action": "product_applied", "id": 8382239605046, "fields": [], "ts": "2026-04-12T00:20:12.417787+00:00"}
+{"action": "product_applied", "id": 8446995333430, "fields": [], "ts": "2026-04-12T00:20:18.658117+00:00"}
+{"action": "product_applied", "id": 8446990778678, "fields": [], "ts": "2026-04-12T00:20:20.299890+00:00"}
+{"action": "product_applied", "id": 10359796072758, "fields": [], "ts": "2026-04-12T00:20:22.010021+00:00"}
+{"action": "product_applied", "id": 8446991630646, "fields": [], "ts": "2026-04-12T00:20:22.038161+00:00"}
+{"action": "article_applied", "id": 613049270582, "fields": [], "ts": "2026-04-12T00:20:29.098709+00:00"}
+{"action": "article_applied", "id": 613049237814, "fields": [], "ts": "2026-04-12T00:20:29.319910+00:00"}
+{"action": "article_applied", "id": 612937597238, "fields": [], "ts": "2026-04-12T00:20:30.065230+00:00"}
+{"action": "article_applied", "id": 612937564470, "fields": [], "ts": "2026-04-12T00:20:30.144249+00:00"}
+{"action": "article_applied", "id": 612923113782, "fields": [], "ts": "2026-04-12T00:20:31.220053+00:00"}
+{"action": "article_applied", "id": 612859216182, "fields": [], "ts": "2026-04-12T00:20:34.991943+00:00"}
+{"action": "article_applied", "id": 612859248950, "fields": [], "ts": "2026-04-12T00:20:35.083609+00:00"}
+{"action": "article_applied", "id": 612859150646, "fields": [], "ts": "2026-04-12T00:20:35.378419+00:00"}
+{"action": "article_applied", "id": 612859183414, "fields": [], "ts": "2026-04-12T00:20:37.455798+00:00"}
+{"action": "article_applied", "id": 612796367158, "fields": [], "ts": "2026-04-12T00:20:37.641190+00:00"}
+{"action": "article_applied", "id": 612746723638, "fields": [], "ts": "2026-04-12T00:20:41.445934+00:00"}
+{"action": "article_applied", "id": 612746887478, "fields": [], "ts": "2026-04-12T00:20:41.488687+00:00"}
+{"action": "article_applied", "id": 612746592566, "fields": [], "ts": "2026-04-12T00:20:42.481846+00:00"}
+{"action": "article_applied", "id": 612746494262, "fields": [], "ts": "2026-04-12T00:20:44.112559+00:00"}
+{"action": "article_applied", "id": 612746527030, "fields": [], "ts": "2026-04-12T00:20:44.816059+00:00"}
+{"action": "article_applied", "id": 612746199350, "fields": [], "ts": "2026-04-12T00:20:48.051111+00:00"}
+{"action": "article_applied", "id": 612745937206, "fields": [], "ts": "2026-04-12T00:20:48.188699+00:00"}
+{"action": "article_applied", "id": 612746297654, "fields": [], "ts": "2026-04-12T00:20:48.417042+00:00"}
+{"action": "article_applied", "id": 612745904438, "fields": [], "ts": "2026-04-12T00:20:50.274166+00:00"}
+{"action": "article_applied", "id": 612745838902, "fields": [], "ts": "2026-04-12T00:20:51.836918+00:00"}
+{"action": "article_applied", "id": 612745609526, "fields": [], "ts": "2026-04-12T00:20:53.887562+00:00"}
+{"action": "article_applied", "id": 612745576758, "fields": [], "ts": "2026-04-12T00:20:54.532137+00:00"}
+{"action": "article_applied", "id": 612745478454, "fields": [], "ts": "2026-04-12T00:20:54.755253+00:00"}
+{"action": "article_applied", "id": 612745445686, "fields": [], "ts": "2026-04-12T00:20:56.207477+00:00"}
+{"action": "article_applied", "id": 612745314614, "fields": [], "ts": "2026-04-12T00:20:59.009681+00:00"}
+{"action": "article_applied", "id": 612744823094, "fields": [], "ts": "2026-04-12T00:21:00.189097+00:00"}
+{"action": "article_applied", "id": 612745118006, "fields": [], "ts": "2026-04-12T00:21:00.560979+00:00"}
+{"action": "collection_applied", "id": 439897948470, "fields": [], "ts": "2026-04-12T00:21:09.494044+00:00"}
+{"action": "collection_applied", "id": 439898145078, "fields": [], "ts": "2026-04-12T00:21:09.691230+00:00"}
+{"action": "collection_applied", "id": 533117731126, "fields": [], "ts": "2026-04-12T00:21:09.927930+00:00"}
+{"action": "collection_applied", "id": 439898079542, "fields": [], "ts": "2026-04-12T00:21:10.157106+00:00"}
+{"action": "collection_applied", "id": 439897850166, "fields": [], "ts": "2026-04-12T00:21:10.776593+00:00"}
+{"action": "collection_applied", "id": 439898177846, "fields": [], "ts": "2026-04-12T00:21:17.125321+00:00"}
+{"action": "collection_applied", "id": 439898014006, "fields": [], "ts": "2026-04-12T00:21:18.052172+00:00"}
+{"action": "collection_applied", "id": 439897882934, "fields": [], "ts": "2026-04-12T00:21:19.106767+00:00"}
+{"action": "collection_applied", "id": 439898210614, "fields": [], "ts": "2026-04-12T00:21:20.007613+00:00"}
+{"action": "collection_applied", "id": 439897817398, "fields": [], "ts": "2026-04-12T00:21:20.125677+00:00"}
+{"action": "collection_applied", "id": 439898243382, "fields": [], "ts": "2026-04-12T00:21:26.145993+00:00"}
+{"action": "collection_applied", "id": 532110541110, "fields": [], "ts": "2026-04-12T00:21:26.445226+00:00"}
+{"action": "collection_applied", "id": 502182740278, "fields": [], "ts": "2026-04-12T00:21:27.702023+00:00"}
+{"action": "collection_applied", "id": 502186246454, "fields": [], "ts": "2026-04-12T00:21:29.283508+00:00"}
+{"action": "collection_applied", "id": 502186279222, "fields": [], "ts": "2026-04-12T00:21:29.454349+00:00"}
+{"action": "collection_applied", "id": 502186311990, "fields": [], "ts": "2026-04-12T00:21:34.832389+00:00"}
+{"action": "collection_applied", "id": 502186344758, "fields": [], "ts": "2026-04-12T00:21:35.097151+00:00"}
+{"action": "collection_applied", "id": 502186377526, "fields": [], "ts": "2026-04-12T00:21:35.409129+00:00"}
+{"action": "collection_applied", "id": 502186541366, "fields": [], "ts": "2026-04-12T00:21:38.354673+00:00"}
+{"action": "collection_applied", "id": 502186410294, "fields": [], "ts": "2026-04-12T00:21:38.729950+00:00"}
+{"action": "collection_applied", "id": 502186574134, "fields": [], "ts": "2026-04-12T00:21:42.919415+00:00"}
+{"action": "collection_applied", "id": 502188146998, "fields": [], "ts": "2026-04-12T00:21:44.107398+00:00"}
+{"action": "collection_applied", "id": 502188081462, "fields": [], "ts": "2026-04-12T00:21:45.714499+00:00"}
+{"action": "collection_applied", "id": 502188278070, "fields": [], "ts": "2026-04-12T00:21:46.828302+00:00"}
+{"action": "collection_applied", "id": 502188802358, "fields": [], "ts": "2026-04-12T00:21:48.247724+00:00"}
+{"action": "collection_applied", "id": 502190080310, "fields": [], "ts": "2026-04-12T00:21:52.436815+00:00"}
+{"action": "collection_applied", "id": 502189687094, "fields": [], "ts": "2026-04-12T00:21:52.852021+00:00"}
+{"action": "collection_applied", "id": 502190145846, "fields": [], "ts": "2026-04-12T00:21:55.147296+00:00"}
+{"action": "collection_applied", "id": 502190113078, "fields": [], "ts": "2026-04-12T00:21:55.261675+00:00"}
+{"action": "collection_applied", "id": 509475717430, "fields": [], "ts": "2026-04-12T00:21:57.031210+00:00"}
+{"action": "collection_applied", "id": 502190342454, "fields": [], "ts": "2026-04-12T00:22:01.469998+00:00"}
+{"action": "collection_applied", "id": 502190276918, "fields": [], "ts": "2026-04-12T00:22:02.652160+00:00"}
+{"action": "collection_applied", "id": 502190407990, "fields": [], "ts": "2026-04-12T00:22:04.132675+00:00"}
+{"action": "collection_applied", "id": 502190473526, "fields": [], "ts": "2026-04-12T00:22:04.578893+00:00"}
+{"action": "collection_applied", "id": 509478764854, "fields": [], "ts": "2026-04-12T00:22:05.646369+00:00"}
+{"action": "collection_applied", "id": 502190506294, "fields": [], "ts": "2026-04-12T00:22:10.189470+00:00"}
+{"action": "collection_applied", "id": 502190539062, "fields": [], "ts": "2026-04-12T00:22:11.009691+00:00"}
+{"action": "collection_applied", "id": 502190604598, "fields": [], "ts": "2026-04-12T00:22:13.115792+00:00"}
+{"action": "collection_applied", "id": 502190571830, "fields": [], "ts": "2026-04-12T00:22:13.342418+00:00"}
+{"action": "collection_applied", "id": 502190637366, "fields": [], "ts": "2026-04-12T00:22:13.781087+00:00"}
+{"action": "collection_applied", "id": 509483417910, "fields": [], "ts": "2026-04-12T00:22:18.891153+00:00"}
+{"action": "collection_applied", "id": 502190670134, "fields": [], "ts": "2026-04-12T00:22:19.441543+00:00"}
+{"action": "collection_applied", "id": 502190702902, "fields": [], "ts": "2026-04-12T00:22:21.561812+00:00"}
+{"action": "collection_applied", "id": 509451338038, "fields": [], "ts": "2026-04-12T00:22:22.646321+00:00"}
+{"action": "collection_applied", "id": 509471031606, "fields": [], "ts": "2026-04-12T00:22:22.694325+00:00"}
+{"action": "collection_applied", "id": 509451436342, "fields": [], "ts": "2026-04-12T00:22:27.812376+00:00"}
+{"action": "collection_applied", "id": 509451469110, "fields": [], "ts": "2026-04-12T00:22:28.315004+00:00"}
+{"action": "collection_applied", "id": 509451501878, "fields": [], "ts": "2026-04-12T00:22:29.816319+00:00"}
+{"action": "collection_applied", "id": 509451632950, "fields": [], "ts": "2026-04-12T00:22:31.606686+00:00"}
+{"action": "collection_applied", "id": 509451534646, "fields": [], "ts": "2026-04-12T00:22:33.375578+00:00"}
+{"action": "collection_applied", "id": 509456286006, "fields": [], "ts": "2026-04-12T00:22:36.962876+00:00"}
+{"action": "collection_applied", "id": 509457891638, "fields": [], "ts": "2026-04-12T00:22:37.027695+00:00"}
+{"action": "collection_applied", "id": 509460676918, "fields": [], "ts": "2026-04-12T00:22:37.659513+00:00"}
+{"action": "collection_applied", "id": 509462348086, "fields": [], "ts": "2026-04-12T00:22:39.496470+00:00"}
+{"action": "collection_applied", "id": 509464543542, "fields": [], "ts": "2026-04-12T00:22:41.558544+00:00"}
+{"action": "collection_applied", "id": 509465624886, "fields": [], "ts": "2026-04-12T00:22:45.913433+00:00"}
+{"action": "collection_applied", "id": 509469163830, "fields": [], "ts": "2026-04-12T00:22:46.305169+00:00"}
+{"action": "collection_applied", "id": 509470048566, "fields": [], "ts": "2026-04-12T00:22:47.197552+00:00"}
+{"action": "collection_applied", "id": 509474079030, "fields": [], "ts": "2026-04-12T00:22:47.436463+00:00"}
+{"action": "collection_applied", "id": 509476831542, "fields": [], "ts": "2026-04-12T00:22:51.488699+00:00"}
+{"action": "collection_applied", "id": 509477945654, "fields": [], "ts": "2026-04-12T00:22:52.999816+00:00"}
+{"action": "collection_applied", "id": 509484597558, "fields": [], "ts": "2026-04-12T00:22:54.096935+00:00"}
+{"action": "collection_applied", "id": 509486334262, "fields": [], "ts": "2026-04-12T00:22:54.996032+00:00"}
+{"action": "collection_applied", "id": 509490921782, "fields": [], "ts": "2026-04-12T00:22:57.416530+00:00"}
+{"action": "collection_applied", "id": 509491806518, "fields": [], "ts": "2026-04-12T00:23:00.408836+00:00"}
+{"action": "collection_applied", "id": 509492822326, "fields": [], "ts": "2026-04-12T00:23:01.694061+00:00"}
+{"action": "collection_applied", "id": 509493346614, "fields": [], "ts": "2026-04-12T00:23:02.163683+00:00"}
+{"action": "collection_applied", "id": 502188245302, "fields": [], "ts": "2026-04-12T00:23:03.589040+00:00"}
+{"action": "collection_applied", "id": 509451141430, "fields": [], "ts": "2026-04-12T00:23:06.630937+00:00"}
+{"action": "collection_applied", "id": 509451239734, "fields": [], "ts": "2026-04-12T00:23:08.399216+00:00"}
+{"action": "collection_applied", "id": 509472506166, "fields": [], "ts": "2026-04-12T00:23:09.974209+00:00"}
+{"action": "collection_applied", "id": 509500916022, "fields": [], "ts": "2026-04-12T00:23:11.141945+00:00"}
+{"action": "collection_applied", "id": 509502521654, "fields": [], "ts": "2026-04-12T00:23:12.710405+00:00"}
+{"action": "collection_applied", "id": 509503144246, "fields": [], "ts": "2026-04-12T00:23:14.644584+00:00"}
+{"action": "collection_applied", "id": 509503799606, "fields": [], "ts": "2026-04-12T00:23:17.098860+00:00"}
+{"action": "collection_applied", "id": 509504454966, "fields": [], "ts": "2026-04-12T00:23:19.155794+00:00"}
+{"action": "collection_applied", "id": 509508321590, "fields": [], "ts": "2026-04-12T00:23:19.666166+00:00"}
+{"action": "collection_applied", "id": 509508026678, "fields": [], "ts": "2026-04-12T00:23:21.528077+00:00"}
+{"action": "collection_applied", "id": 509509206326, "fields": [], "ts": "2026-04-12T00:23:23.350107+00:00"}
+{"action": "collection_applied", "id": 509538631990, "fields": [], "ts": "2026-04-12T00:23:26.469185+00:00"}
+{"action": "collection_applied", "id": 509523722550, "fields": [], "ts": "2026-04-12T00:23:27.384165+00:00"}
+{"action": "collection_applied", "id": 509511827766, "fields": [], "ts": "2026-04-12T00:23:27.739865+00:00"}
+{"action": "collection_applied", "id": 509513662774, "fields": [], "ts": "2026-04-12T00:23:30.042156+00:00"}
+{"action": "collection_applied", "id": 502188933430, "fields": [], "ts": "2026-04-12T00:23:31.837342+00:00"}
+{"action": "collection_applied", "id": 509514613046, "fields": [], "ts": "2026-04-12T00:23:35.232359+00:00"}
+{"action": "collection_applied", "id": 509515694390, "fields": [], "ts": "2026-04-12T00:23:36.250546+00:00"}
+{"action": "collection_applied", "id": 509528965430, "fields": [], "ts": "2026-04-12T00:23:37.121048+00:00"}
+{"action": "collection_applied", "id": 509516415286, "fields": [], "ts": "2026-04-12T00:23:38.751750+00:00"}
+{"action": "collection_applied", "id": 509517168950, "fields": [], "ts": "2026-04-12T00:23:39.780964+00:00"}
+{"action": "collection_applied", "id": 509517791542, "fields": [], "ts": "2026-04-12T00:23:43.483289+00:00"}
+{"action": "collection_applied", "id": 509452091702, "fields": [], "ts": "2026-04-12T00:23:44.659504+00:00"}
+{"action": "collection_applied", "id": 509519298870, "fields": [], "ts": "2026-04-12T00:23:45.871032+00:00"}
+{"action": "collection_applied", "id": 509520904502, "fields": [], "ts": "2026-04-12T00:23:47.534103+00:00"}
+{"action": "collection_applied", "id": 509524934966, "fields": [], "ts": "2026-04-12T00:23:48.351320+00:00"}
+{"action": "collection_applied", "id": 509526049078, "fields": [], "ts": "2026-04-12T00:23:52.475236+00:00"}
+{"action": "collection_applied", "id": 509529719094, "fields": [], "ts": "2026-04-12T00:23:53.075139+00:00"}
+{"action": "collection_applied", "id": 509451075894, "fields": [], "ts": "2026-04-12T00:23:54.985073+00:00"}
+{"action": "collection_applied", "id": 509531521334, "fields": [], "ts": "2026-04-12T00:23:56.193375+00:00"}
+{"action": "collection_applied", "id": 509532864822, "fields": [], "ts": "2026-04-12T00:23:57.715015+00:00"}
+{"action": "collection_applied", "id": 509534896438, "fields": [], "ts": "2026-04-12T00:24:00.896772+00:00"}
+{"action": "collection_applied", "id": 509536403766, "fields": [], "ts": "2026-04-12T00:24:02.260673+00:00"}
+{"action": "collection_applied", "id": 509540794678, "fields": [], "ts": "2026-04-12T00:24:03.710200+00:00"}
+{"action": "collection_applied", "id": 509537190198, "fields": [], "ts": "2026-04-12T00:24:04.141463+00:00"}
+{"action": "collection_applied", "id": 509542269238, "fields": [], "ts": "2026-04-12T00:24:06.964703+00:00"}
+{"action": "collection_applied", "id": 509482467638, "fields": [], "ts": "2026-04-12T00:24:09.039369+00:00"}
+{"action": "collection_applied", "id": 509543317814, "fields": [], "ts": "2026-04-12T00:24:10.960100+00:00"}
+{"action": "collection_applied", "id": 502188310838, "fields": [], "ts": "2026-04-12T00:24:11.079827+00:00"}
+{"action": "collection_applied", "id": 509544792374, "fields": [], "ts": "2026-04-12T00:24:12.976017+00:00"}
+{"action": "collection_applied", "id": 509545840950, "fields": [], "ts": "2026-04-12T00:24:15.148165+00:00"}
+{"action": "collection_applied", "id": 509547217206, "fields": [], "ts": "2026-04-12T00:24:18.008793+00:00"}
+{"action": "collection_applied", "id": 532110508342, "fields": [], "ts": "2026-04-12T00:24:20.404712+00:00"}
+{"action": "collection_applied", "id": 502186737974, "fields": [], "ts": "2026-04-12T00:24:20.427978+00:00"}
+{"action": "collection_applied", "id": 532110606646, "fields": [], "ts": "2026-04-12T00:24:22.099915+00:00"}
+{"action": "collection_applied", "id": 532110573878, "fields": [], "ts": "2026-04-12T00:24:23.333113+00:00"}
+{"action": "run_end", "ts": "2026-04-12T00:24:23.333841+00:00"}
