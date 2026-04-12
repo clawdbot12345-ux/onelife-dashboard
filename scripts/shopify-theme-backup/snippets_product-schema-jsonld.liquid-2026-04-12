@@ -1,0 +1,44 @@
+{%- if template contains 'product' and product -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": "{{ shop.url }}{{ product.url }}",
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | json }}
+  },
+  {%- if product.featured_image -%}
+  "image": {{ product.featured_image | img_url: '1024x1024' | prepend: 'https:' | json }},
+  {%- endif -%}
+  {%- if product.description != blank -%}
+  "description": {{ product.description | strip_html | truncate: 5000 | json }},
+  {%- endif -%}
+  {%- if current_variant.sku != blank -%}
+  "sku": {{ current_variant.sku | json }},
+  {%- endif -%}
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ shop.url }}{{ product.url }}",
+    "priceCurrency": "ZAR",
+    "price": "{{ current_variant.price | divided_by: 100.0 }}",
+    "availability": {% if current_variant.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
+    "seller": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }}
+    }
+  }
+  {%- assign jm_rating = product.metafields.judgeme.rating.value -%}
+  {%- assign jm_count = product.metafields.judgeme.reviews_count.value -%}
+  {%- if jm_rating != blank and jm_count != blank and jm_count != '0' -%}
+  ,"aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ jm_rating }}",
+    "reviewCount": "{{ jm_count }}"
+  }
+  {%- endif -%}
+}
+</script>
+{%- endif -%}
