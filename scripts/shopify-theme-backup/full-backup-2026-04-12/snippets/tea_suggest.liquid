@@ -1,0 +1,37 @@
+{%- assign template_id = template | split: '.' | first -%}
+{%- assign st = 'display_' | append: template_id -%}
+{%- assign collection_opj = collections[settings.collection_suggest] -%}
+{%- if settings[st] and collection_opj != blank -%}
+   {%- assign colections = collection_opj.products -%}
+   {%- if collection_opj.all_products_count > 0 -%}
+      <div class="nt-products-suggest animated style_{{settings.sales_popup_Layout}} color-scheme-{{settings.sales_popup_color}} {%- if settings.show_suggest_mobile == false %} hide_mobile{%- endif -%}" style="display:none">
+        <div class="product-suggest nt-grid-item" id="nt__suggest" data-url="/collections/{{settings.collection_suggest}}/products/">
+          {%- assign pr_url = '/products/' -%}
+          {%- if settings.show_close_suggest -%}<a class="suggest-close pa cusor_pointer"><span class="tooltip_bottom_left"><i class="fa fa-window-close"></i></span></a>{%- endif -%}
+          {%- if settings.show_qv_suggest and none -%}<a class="suggest-qv pa cusor_pointer open-quick-view tc" data-ajax=""><span class="tooltip_top_left" aria-label="{{ 'products.grid_items.quick_view' | t }}"><i class="fa fa-eye fwb"></i></span></a>{%- endif -%}
+          <div class="table_suggest flex">
+            <a class="table-cell-top img flex center-xs middle-xs" href="{{ pr_url | within: collection_opj }}">
+              <img alt="Sales Popup" class="w__100 img_suggest" src="" srcset="">
+             </a>
+            <div class="table-cell-top infors">
+              <span class="dib mb__5">{{'general.suggest.title' | t}}</span>
+              <a href="{{ pr_url | within: collection_opj }}" class="product-title mb__5"></a>
+              {%- if settings.use_suggest -%}
+              <div class="minutes-ago mb__5"><span class="minute-number"></span> <span>{{'general.suggest.minutes_ago' | t}}</span></div>
+              {%- endif -%}
+              {%- if settings.use_fake_location and settings.fake_location != blank -%}
+              <div class="from-ago">{{'general.suggest.from' | t}} <span class="from"></span></div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+      var NTsuggest = {start_time:{{settings.start_time}},stay_time:{{settings.stay_time}},start_time_unit:{{settings.start_time_unit}},stay_time_unit:{{settings.stay_time_unit}},range_from:1,range_to:2,type:{{settings.sales_popup_type}},onMobile:{{settings.show_suggest_mobile | json}},ClassUp:{{settings.sales_popup_ani | json}}};
+      var NtHandleArr = {{ colections | map:'handle' | json }},
+          NtTitleArr = {{ colections | map:'title' | json }},
+          NtimgArr = {{ colections | map:'featured_image' | json }},
+          NtLoctionArr = {{ settings.fake_location | replace: ' | ', '|' | replace: ' |', '|' | replace: '| ', '|' | split: '|' | json }};
+     </script>
+   {%- endif -%}
+{%- endif -%}

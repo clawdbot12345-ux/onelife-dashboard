@@ -1,0 +1,11 @@
+{%- assign section_settings_countdown = settings.recently_sale_countdown -%}
+{%- assign loop_countdown = settings.loop_recently_countdown -%}
+{%- assign recently_number = settings.recently_silder_per_view | plus: 0 -%}
+{%- assign settings_pr_img_size = settings.use_recently_eq_height -%}
+<section class="widget_recently_viewed_products products" id="recently-viewed-products" style="display:none">
+	<h3 class="title slider-title">{{settings.title_pr_recently}}</h3>
+      <div id="carousel-{{product.id}}" class="gl_carousel_container">
+        <div id="recently_wrap"	class="product-items owl-carousel{%- if settings_pr_img_size %} equal-nt{%- endif %} {{settings.recently_image_size}} {{settings.recently_img_ratio}} position_{{settings.recently_img_position}}" data-time='{{ settings.recently_silder_speed | plus: 0 }}' data-nav='{%- if settings.recently_hide_button -%}false{%- else -%}true{%- endif -%}' data-items='{{ recently_number }}' data-dots='{%- if settings.recently_hide_pagination -%}false{%- else -%}true{%- endif -%}' data-autoplay='{%- if settings.recently_autoplay -%}true{%- else -%}false{%- endif -%}' data-loop='{%- if settings.recently_slider_loop -%}true{%- else -%}false{%- endif -%}' data-medium='{%- if recently_number > 2 -%}{{ recently_number | minus: 1 }}{%- else -%}2{%- endif -%}'>
+        </div><!-- end product-items -->
+      </div><!-- end #carousel-{{product.id}} -->
+</section>

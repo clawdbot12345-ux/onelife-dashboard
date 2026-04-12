@@ -1,0 +1,110 @@
+{%- layout none -%}
+{%- capture min_html -%}
+  <h3 class="cart__popup-title center-xs">{{ 'cart.cart_popup.title' | t }}</h3>
+  <!--   cart item  -->
+  <div class="cart__popup_content pr shopify form_jas_agree{%- if settings.use_agree_checkbox_page %} form_nt_agree nt_checkout pe_none{%- endif -%}">
+    {%- if cart.item_count > 0 -%}
+      <div class="gecko-scroll">
+        <div class="gecko-scroll-content">
+            <div class="cart_items" id="push_cart_items">
+              {%- for item in cart.items -%}
+              <div id="{{item.id}}" class="cart__popup-item flex middle-xs">
+              <div class="cart__popup-thumb">
+                <img width="80" height="102" src="{{ item.image | img_url: '100x' }}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="{{ item.image.alt | escape }}">
+              </div>
+              <div class="cart__popup-title grow"><a href="{{ item.url | within: item.product.collections.last }}">{{item.title}}</a></div>
+              <div class="cart__popup-price"><span class="shopify-Price-amount amount">{{ item.price | money }}</span></div>
+              <div class="cart__popup-quantity">
+                <div class="quantity pr flex qty_upsell">
+                  <a class="cart__popup-qty cart__popup-qty--minus text-center minus" href="javascript:void(0);">-</a>
+                  <input data-price="{{item.price}}" data-format='{{shop.money_format}}' data-vid="{{item.id}}"  type="number" data-id ="{{item.id}}" class="qty cart__popup-qty--input text-center" max="{%- if item.variant.inventory_management == blank or item.variant.inventory_policy == 'continue' -%}999{%- else -%}{{ item.variant.inventory_quantity }}{%- endif -%}" min="0" step="1" name="updates[]" value="{{ item.quantity }}" id="updates_{{ item.key }}" >
+                  <a class="xcp-plus cart__popup-qty cart__popup-qty--plus text-center plus" href="javascript:void(0);">+</a>
+                </div>
+              </div>
+              <div class="cart__popup-total fwsb cb"><span class="shopify-Price-amount amount" data-price='{{ item.price }}'>{{ item.line_price | money }}</span></div>
+              <div class="cart__popup-remove"><a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" aria-label="Remove this item" data-product_id="{{ item.id }}" data-product_sku="{{ item.sku }}"><i class="fa fa-trash"></i></a></div>
+            </div>
+              {%- endfor -%}
+            </div>
+         </div>
+      </div>
+      <div class="flex center-xs middle-xs cb fs__20 mt__20">
+          <span class="mr__10">{{ 'cart.general.subtotal' | t }} </span>
+          <span class="cart__popup-stotal fwb ml__10">
+            <span class="shopify-Price-amount amount" id="cart__popup_total">{{cart.total_price | money }}</span>
+          </span>
+      </div>
+      {%- if settings.use_threshold -%}<div class="ship_nt_wrap" id="threshold_bar_popup">{%- assign settings_free_shipping_above = settings.free_shipping_above -%}{%- include 'shipping-threshold',settings_free_shipping_above:settings_free_shipping_above -%}</div>{%- endif -%}
+      {%- if settings.cart_notes_enable_widget -%}
+        <div class="cart_totals note cb fs__20 mt__20">
+          <h3 class="cart__popup-title center-xs">{{ 'cart.general.note' | t }}</h3>
+          <textarea name="note" class="CartSpecialInstructions cart-note__input db" id="SecialInstructions" colspan="6">{{ cart.note }}</textarea>
+        </div>
+      {%- endif -%}
+      {%- if settings.use_agree_checkbox_page -%}
+           {%- assign page_url = pages[settings.link_conditions].url -%}
+           <p class="agree_checkbox content_threshold">
+               <label class="label-for-checkbox">
+               <input type="checkbox" class="input-checkbox nt_agree">
+               {%- if settings.link_conditions != blank -%}{{ 'cart.general.link_conditions_html' | t:link: page_url }}{%- else -%}{{ 'cart.general.link_conditions_emty' | t }}{%- endif -%}
+               </label>
+            </p>
+      {%- endif -%}
+      <div class="flex between-xs tc cart__popup-action">
+        <a href="/collections/all" class="button mt__20">{{ 'cart.general.continue_shopping' | t }}</a>
+        <a href="/checkout" class="class_none_bundle checkout-button button mt__20" name="checkout">{{ 'cart.general.proceed_checkout' | t }}</a>
+        {% if settings.use_additional_checkout_buttons and additional_checkout_buttons %}
+        <form action="/cart" method="post" novalidate >
+          <div class="additional-checkout-buttons{%- if settings.use_agree_checkbox_pop_up %} jas_checkout{%- endif -%}">{{ content_for_additional_checkout_buttons }}</div>
+        </form>                     
+         {% endif %}
+      </div>  
+      {%- if settings.show_trust_seal_widget and settings.cart_img_trust_seal_widget != blank -%}
+        {%- assign image = settings.cart_img_trust_seal_widget -%}
+        <div class="product_img_trust_seal clearfix tc"><img alt="{{image.alt}}" src="{{ image | img_url: '500x' }}"></div>
+     {%- endif -%}
+    {%- else -%}
+    <p class="cart-empty">{{ 'cart.general.empty' | t }}</p>
+    {%- endif -%}
+  </div>
+  {%- if settings.show_related_pop_up -%}
+  <!--   You might also like -->
+  <h3 class="cart__popup-related-title center-xs nt_hidden">{{ 'cart.cart_popup.related_title' | t }}</h3>
+  <div class="row" id="upsell_nt_wrap">
+  {%- if settings.upsell_collection_cart == blank -%}
+    {%- assign collection = collections["all"] -%}
+  {%- else -%}
+     {%- assign collection = collections[settings.upsell_collection_cart] -%}
+  {%- endif -%}
+    {%- assign pr_cart = cart.items | map:'product_id' -%}
+    {%- assign index = 0 -%}
+    {%- for product in collection.products -%}
+     {%- assign pr_id = product.id  -%}
+      {%- unless pr_cart contains pr_id -%}
+      <div class="col-xs-6 col-md-3">
+        <div class="popup__cart-product center-xs">
+          <img width="270" height="344" src="{{ product.featured_image | img_url: '270x' }}" class="sp-post-image" alt="{{product.title}}" title="{{product.title}}">
+          <h4 class="ls__0"><a href="{{product.url | within: collection}}">{{product.title}}</a></h4>
+          <span class="price">{{ product.price | money }}</span>
+          {%- assign check = product.metafields.external | first | last  -%}
+          {%- if linklists[product.handle].links.size > 0 -%}
+             <a class="button modal_btn_add_to_cart ls__0" href="{{product.url | within: collection}}">{{ 'products.product.view' | t }}</a>
+          {%- elsif product.available == false -%}
+             <a class="button modal_btn_add_to_cart ls__0" href="{{product.url | within: collection}}">{{ 'products.product.read_more' | t }}</a>
+          {%- elsif check contains 'https:' or check  contains 'http:' -%}
+             <a class="button modal_btn_add_to_cart ls__0" href="{{ check }}">{{ product.metafields.external | first | first }}</a>
+          {%- elsif product.has_only_default_variant -%}
+             <a class="button modal_btn_add_to_cart ajax_modal_add ajax_add_to_cart ls__0" data-ntid="{{product.id}}" href="{{product.url | within: collection}}" data-pid="{{ product.variants.first.id}}">{{ 'products.product.add_to_cart' | t }}</a>
+          {%- else -%}
+             <a class="button modal_btn_add_to_cart ls__0" href="{{product.url | within: collection}}">{{ 'products.product.select_option' | t }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+       {%- assign index = index | plus:1 -%}
+       {%- if index == 4 -%}{%- break-%}{%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+  {%- endif -%}
+{%- endcapture -%}
+{{min_html | strip_newlines | remove: "  "}} 

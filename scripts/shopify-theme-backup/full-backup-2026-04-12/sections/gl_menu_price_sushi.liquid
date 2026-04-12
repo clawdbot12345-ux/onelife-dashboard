@@ -1,0 +1,483 @@
+{%- if section.settings.section_margin_top != blank or section.settings.section_margin_bottom != blank or section.settings.section_border != blank -%}
+{%- assign s_margin_top = section.settings.section_margin_top | remove: ' ' | join: ' ' -%}
+{%- assign s_margin_bottom = section.settings.section_margin_bottom | remove: ' ' | join: ' ' -%}
+{%- assign s_border = section.settings.section_border | remove: ' ' | split: '-' | join: ' ' -%}
+{%- endif -%}
+{%- unless image_size != blank -%}
+  {%- assign image_size = '70x' -%}
+{%- endunless -%}
+{%- assign number = section.settings.silder_per_view | plus: 0 -%}
+{%- if section.settings.conditions_setting == '1' -%}
+   {%- assign num_limit = section.settings.number | plus: 0 -%}
+{%- else -%}
+   {%- assign num_limit = section.blocks.size | plus: 0 -%}
+{%- endif -%}
+{%- assign collection = collections[section.settings.id_collection] -%}
+{%- if section.settings.conditions_setting == '1' -%}
+   {%- if collection.products_count > num_limit -%}
+      {%- assign limit = num_limit | divided_by: 2 -%}
+      {%- assign times_limit = limit | times: 2 -%}
+      {%- assign minus_limit = num_limit | minus: times_limit -%}
+      {%- assign limit = limit | plus: minus_limit -%}
+      {%- assign re_limit = limit | plus: 1 -%} 
+   {%- else -%}
+      {%- assign limit = collection.products_count | divided_by: 2 -%}
+      {%- assign times_limit = limit | times: 2 -%}
+      {%- assign minus_limit = collection.products_count | minus: times_limit -%}
+      {%- assign limit = limit | plus: minus_limit -%}
+      {%- assign re_limit = limit | plus: 1 -%}   
+   {%- endif -%}
+{%- else -%}
+   {%- assign limit = num_limit | divided_by: 2 -%}
+   {%- assign times_limit = limit | times: 2 -%}
+   {%- assign minus_limit = num_limit | minus: times_limit -%}
+   {%- assign limit = limit | plus: minus_limit -%}
+   {%- assign re_limit = limit | plus: 1 -%} 
+{%- endif -%}
+{%- capture style_block_section -%}
+   {%- if section.settings.section_margin_top != blank or section.settings.section_margin_bottom != blank or section.settings.section_padding_top != blank or section.settings.section_padding_right != blank or section.settings.section_padding_left != blank or section.settings.section_padding_bottom != blank or section.settings.section_bg_color != blank or section.settings.section_bg_image != blank or section.settings.section_border != blank -%}
+   <style type="text/css">.gl_custom_{{section.id}}{ {%- if section.settings.section_margin_top != blank -%} margin-top: {{s_margin_top}} !important;{%- endif -%}{%- if section.settings.section_margin_bottom != blank -%} margin-bottom: {{s_margin_bottom}} !important;{%- endif -%}{%- if section.settings.section_padding_top != blank -%}padding-top: {{section.settings.section_padding_top}} !important;{%- endif-%}{%- if section.settings.section_padding_right != blank -%}padding-right: {{section.settings.section_padding_right}} !important;{%- endif-%}{%- if section.settings.section_padding_bottom != blank -%}padding-bottom: {{section.settings.section_padding_bottom}} !important;{%- endif-%}{%- if section.settings.section_padding_left != blank -%}padding-left: {{section.settings.section_padding_left}} !important; {%- endif -%}{%- if section.settings.section_bg_color != blank -%}background-color: {{ section.settings.section_bg_color }} !important;{%- endif -%}{%- if section.settings.section_bg_image != blank -%}{%- assign image = section.settings.section_bg_image -%}background-position: center !important; background-repeat: no-repeat !important; background-size: cover !important;{%- endif -%}{%- if section.settings.section_border != blank and section.settings.section_border_color != blank -%}border-width: {{ s_border }} !important; border-color: {{section.settings.section_border_color}} !important; border-style: {{section.settings.section_border_style}} !important{%- endif -%} }</style>
+   {%- endif -%}
+{%- endcapture -%}
+{%- capture data_section -%}
+  {%- if section.settings.row_stretch == 'stretch_row' -%}
+   {%- assign class_has_fill = 'gl_row-has-fill' -%}
+   data-gl='has_section_gl_js' data-gl-full-width='true' data-gl-full-width-init='true'
+  {%- elsif section.settings.row_stretch == 'stretch_row_content' or section.settings.row_stretch == 'stretch_row_content_no_spaces' -%}
+   {%- assign class_has_fill = 'gl_row-has-fill' -%}
+   data-gl='has_section_gl_js' data-gl-full-width='true' data-gl-full-width-init='true' data-gl-stretch-content='true'
+  {%- else -%}
+  {%- assign class_has_fill = '' -%}
+  {%- endif -%}
+{%- endcapture -%}
+{{style_block_section}}
+<div {{ data_section }} class="gl_custom_{{section.id}} {% if section.settings.row_stretch == 'stretch_row_content_no_spaces' %}gl_row-no-padding{%- endif %} gl_row spb_row gl_row-fluid {{class_has_fill}} {%- if section.settings.use_video and section.settings.video_url != blank %} opacity-video-bg gl_video-bg-container gl_has_youtube{%- endif %}{%- if section.settings.full_height %} gl_row-o-full-height gl_row-o-columns-{{section.settings.columns_position}}{%- endif %}{%- if section.settings.equal_height %} gl_row-o-equal-height{%- endif %}{%- unless section.settings.content_position == 'default' %} gl_row-o-content-{{section.settings.content_position}}{%- endunless %}{%- if section.settings.equal_height or section.settings.full_height or section.settings.content_position != 'default' %} gl_row-flex{%- endif %}{%- if section.settings.use_parallax %} basel-parallax{%- endif %}{%- if section.settings.section_bg_image != blank %} lazy_bg lazyload{%- endif %}"{%- if section.settings.section_bg_image != blank %} data-bgset="{%- include 'bgset', image: section.settings.section_bg_image -%}" data-sizes="auto" data-parent-fit="cover" style="background-image: url('{{ section.settings.section_bg_image | img_url: '50x50' }}')"{%- endif -%}>
+  <div class="spb_column gl_column_container gl_col-sm-12 color-scheme-light">
+    <div class="gl_column-inner gl_pt_0">
+      <div class="spb_wrapper">
+        <div class="gl_row spb_row gl_inner gl_row-fluid gl_pt_0 gl_row-o-content-top gl_row-flex">
+          <div class="spb_column gl_column_container gl_col-sm-6 gl_col-sm-offset-3">
+            <div class="gl_column-inner gl_pt_0">
+               <div class="spb_wrapper">
+                 <h2 style="font-size: 70px;color: rgba(255,255,255,0.2);line-height: 1;text-align: center" class="gl_custom_heading gl_mb_m35">食物</h2> 
+                 <div class="title-wrapper  basel-title-color-white basel-title-style-simple basel-title-size-extra-large text-center ">
+                    <div class="liner-continer">
+                       <span class="left-line"></span> 
+                       <h4 class="title">SPECIAL MENU<span class="title-separator"><span></span></span></h4>
+                       <span class="right-line"></span> 
+                    </div>
+                    <span class="title-after_title">Per tortor sociosqu dolor justo odio adipiscing a tortor maecenas massa dui dolor elementum suspendisse risus risus a maecenas taciti consectetur id.</span>
+                 </div>
+              </div>
+            </div>
+          </div>
+          {%- assign check =  true -%}
+           {%- assign check_numr =  0 -%}
+           {%- if section.settings.conditions_setting == '1' -%}
+           {%- assign index = 0 -%}
+              {%- for product in collection.products limit: num_limit -%}
+                 {%- if check -%}
+                    {%- assign index = index | plus:1 -%}
+                    {%- assign img = 'image_' | append:index -%}
+                    {%- assign title = 'title_' | append:index -%}
+                    <div class="spb_column gl_column_container gl_col-sm-12 gl_col-md-6 gl_col-xs-12 gl_col-has-fill">
+                       <div class="gl_column-inner gl_custom_sushi_1494249094915">
+                          <div class="spb_wrapper">
+                            {%- if section.settings[img] != blank -%}
+                            <div class="spb_single_image spb_content_element gl_align_center gl_mb_m75">
+                                 <figure class="spb_wrapper gl_figure">
+                                    <div class="gl_single_image-wrapper gl_box_border_grey">
+                                       <img width="200" height="150" src="{%-include 'gl_image_format',src: section.settings[img] , size: '200x' -%}" class="gl_single_image-img attachment-full" alt="{{section.settings[img].alt}}">
+                                    </div>
+                                 </figure>
+                              </div>
+                            {%- endif -%}
+                            {%- if section.settings[title] != blank -%}
+                            <h3 style="font-size: 36px;color: #ffffff;line-height: 36px;text-align: center" class="gl_mb_25">{{section.settings[title]}}</h3>
+                            {%- endif -%}
+                            {%- endif -%}
+                             {%- include 'menu_price' -%}
+                 {%- assign check =  false -%}
+                 {%- assign check_numr  =  check_numr | plus: 1  -%}
+                 {%- if check_numr == limit or forloop.last == true  -%}
+                          </div>
+                       </div>
+                    </div>
+                 {%- assign check =  true -%}
+                 {%- assign check_numr =  0 -%}
+                 {%- endif -%}
+              {%- endfor -%}
+           {%- else -%}
+          {%- assign index = 0 -%}
+              {%- for block in section.blocks -%}
+                  {%- assign product = all_products[block.settings.product_id] -%}
+                 {%- if check -%}
+                    {%- assign index = index | plus:1 -%}
+                    {%- assign img = 'image_' | append:index -%}
+                    {%- assign title = 'title_' | append:index -%}
+                    <div class="spb_column gl_column_container gl_col-sm-6 gl_col-md-{{class_double}} gl_col-xs-12" {{ block.shopify_attributes }}>
+                       <div class="gl_column-inner gl_custom_sushi_1494249094915">
+                          <div class="spb_wrapper">
+                            {%- if section.settings[img] != blank -%}
+                            <div class="spb_single_image spb_content_element gl_align_center gl_mt_m75">
+                                 <figure class="spb_wrapper gl_figure">
+                                    <div class="gl_single_image-wrapper gl_box_border_grey">
+                                       <img width="200" height="150" src="{%-include 'gl_image_format',src: section.settings[img] , size: '200x' -%}" class="gl_single_image-img attachment-full" alt="{{section.settings[img].alt}}">
+                                    </div>
+                                 </figure>
+                              </div>
+                            {%- endif -%}
+                            {%- if section.settings[title] != blank -%}
+                            <h3 style="font-size: 36px;color: #ffffff;line-height: 36px;text-align: center" class="gl_mb_25">{{section.settings[title]}}</h3>
+                            {%- endif -%}
+                            
+                 {%- endif -%}
+                             {%- include 'menu_price_block' -%}
+                 {%- assign check =  false -%}
+                 {%- assign check_numr  =  check_numr | plus: 1  -%}
+                 {%- if check_numr == limit or forloop.last == true  -%}
+                          </div>
+                       </div>
+                    </div>
+                 {%- assign check =  true -%}
+                 {%- assign check_numr =  0 -%}
+                 {%- endif -%}
+              {%- endfor -%}
+           {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%- unless section.settings.row_stretch == 'default' -%}
+<div class="gl_row-full-width gl_clearfix"></div>
+{%- endunless -%}
+{%- schema -%}
+  {
+    "name": "Menu Price sushi",
+    "class": "index-section gl_price_sushi",
+    "max_blocks": 20,
+    "settings": [{
+        "type": "header",
+        "content": "== Row Settings"
+      },
+      {
+        "type": "select",
+        "id": "row_stretch",
+        "options": [
+         {
+            "value": "default",
+            "label": "Default"
+          },
+         {
+            "value": "stretch_row",
+            "label": "Stretch row"
+          },
+          {
+            "value": "stretch_row_content",
+            "label": "Stretch row and content"
+          },
+          {
+            "value": "stretch_row_content_no_spaces",
+            "label": "Stretch row and content (no paddings)"
+          }
+        ],
+        "label": "___ Row stretch",
+        "info": "Select stretching options for row and content (Note: stretched may not work properly if parent container has 'overflow: hidden' CSS property).",
+        "default": "default"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_height",
+        "label": "Full height row?",
+        "info": "if checked row will be set to full height.",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "columns_position",
+        "options": [
+         {
+            "value": "middle",
+            "label": "Middle"
+          },
+         {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          },
+          {
+            "value": "stretch",
+            "label": "Stretch"
+          }
+        ],
+        "label": "___ Columns position (only for full height)",
+        "info": "Select columns position within row.",
+        "default": "middle"
+      },
+      {
+        "type": "checkbox",
+        "id": "equal_height",
+        "label": "Equal height?",
+        "info": "If checked columns will be set to equal height.",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "content_position",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+         {
+            "value": "middle",
+            "label": "Middle"
+          },
+         {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "label": "___ Content position",
+        "info": "Select content position within columns.",
+        "default": "default"
+      },
+       {
+        "type": "radio",
+        "id": "conditions_setting",
+        "options": [
+         {
+            "value": "1",
+            "label": "Automatically select products based on conditions"
+          },
+          {
+            "value": "2",
+            "label": "Manually select products"
+          }
+          
+        ],
+        "label": "== Conditions"
+      },
+      {
+        "type": "checkbox",
+        "id": "spaces_section",
+        "label": "== Add spaces between basel menu price?",
+        "default": false
+      },
+      {
+       "type": "header",
+       "content": "== Automatically select products "
+      },
+      {
+        "type": "collection",
+        "id": "id_collection",
+        "label": "Collection to use"
+      },
+      {
+        "type": "text",
+        "id": "number",
+        "label": "Number of products to show at one time (integer)",
+        "default": "14"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_image",
+        "label": "Show image product?",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      },
+      {
+        "type": "image_picker",
+        "id": "section_bg_image",
+        "label": "Background Image"
+      },
+{
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image 1"
+      },
+{
+        "type": "text",
+        "id": "title_1",
+        "label": "Title 1",
+        "default": "Sushi sets"
+      },
+{
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image 2"
+      },
+{
+        "type": "text",
+        "id": "title_2",
+        "label": "Title 2",
+        "default": "Sashimi tataki"
+      },
+      {
+        "type": "color",
+        "id": "section_bg_color",
+        "label": "Background color"
+      },
+      {
+        "type": "color",
+        "id": "section_border_color",
+        "label": "Border color"
+      },
+      {
+        "type": "select",
+        "id": "section_border_style",
+        "options": [
+         {
+            "value": "solid",
+            "label": "Solid"
+          },
+         {
+            "value": "dotted",
+            "label": "Dotted"
+          },
+          {
+            "value": "dashed",
+            "label": "Dashed"
+          },
+          {
+            "value": "double",
+            "label": "Double"
+          },
+          {
+            "value": "groove",
+            "label": "Groove"
+          },
+          {
+            "value": "Ridge",
+            "label": "Ridge"
+          },
+          {
+            "value": "inset",
+            "label": "Inset"
+          },
+          {
+            "value": "outset",
+            "label": "Outset"
+          }
+        ],
+        "label": "Border style",
+        "default": "solid"
+      },
+      {
+        "type": "text",
+        "id": "section_border",
+        "label": "Borders Integer px ( top-right-bottom-left )",
+        "info": "0-0-1px-0"
+      },
+      {
+        "type": "text",
+        "id": "section_margin_top",
+        "label": "Margin top",
+        "info": "60px"
+      },
+      {
+        "type": "text",
+        "id": "section_margin_bottom",
+        "label": "Margin bottom",
+        "info": "60px"
+      },
+      {
+        "type": "text",
+        "id": "section_padding_top",
+        "label": "Padding top",
+        "info": "60px"
+      },
+      {
+        "type": "text",
+        "id": "section_padding_right",
+        "label": "Padding right",
+        "info": "60px"
+      },
+     {
+        "type": "text",
+        "id": "section_padding_bottom",
+        "label": "Padding bottom",
+        "info": "60px"
+      },
+      {
+        "type": "text",
+        "id": "section_padding_left",
+        "label": "Padding left",
+        "info": "60px"
+      },
+      {
+       "type": "header",
+       "content": "== Manually select products"
+      }
+    ],
+    "blocks": [
+      {
+        "type":"menu_price",
+         "name":"Choose product",
+        "settings": [
+         {
+             "type":"product",
+             "id":"product_id",
+             "label":"Choose product"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Leave empty to use 'Product title' title."
+         },
+         {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "info": "Leave empty to use 'Product Description' description."
+         },
+         {
+            "type": "text",
+            "id": "price",
+            "label": "Price",
+            "info": "Leave empty to use 'Product price' price."
+         },
+         {
+           "type": "checkbox",
+           "id": "show_image",
+           "label": "Show image product?",
+           "default": false
+         },
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image (70x70)",
+           "info": "Leave empty to use 'Product image' image."
+         }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Menu Price sushi",
+        "category": "Collections",
+        "blocks": [
+          {
+            "type": "menu_price"
+          },
+          {
+            "type": "menu_price"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+

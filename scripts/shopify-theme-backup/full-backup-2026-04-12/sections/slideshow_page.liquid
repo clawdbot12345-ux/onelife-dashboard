@@ -1,0 +1,565 @@
+{%- capture html -%}
+<div class="row gl_custom_{{section.id}}" id="shopify-section-{{section.id}}">
+  <div class="col-sm-12">
+     <div class="spb_wrapper ins-owl-carousel owl-carousel color-schemebtn-{{ section.settings.banner_color }}" data-dottime='{{ section.settings.dottime | plus: 0 }}' data-animatein='fadein' data-animateout='fadeOut' data-autoheight='true' data-time='{{ section.settings.silder_speed | plus: 0 }}' data-nav='{%- if section.settings.hide_button -%}false{%- else -%}true{%- endif -%}' data-items='1' data-dots='{%- if section.settings.hide_pagination -%}false{%- else -%}true{%- endif -%}' data-autoplay='{{section.settings.autoplay}}' data-loop='{{section.settings.slider_loop}}' data-medium='1' data-small='1' data-exsmall='1'>
+    {%- assign size_block = section.blocks.size -%}
+     {%- for block in section.blocks -%}
+       {%- assign index = forloop.index0 -%}
+        <div id="blockId_{{block.id}}" data-owl-index="{%- if section.settings.slider_loop -%}{{ size_block | plus:index }}{%- else -%}{{index}}{%- endif -%}" class="gl_mb_0 promo-banner text-{{ block.settings.banner_alignment }} vertical-alignment-{{ block.settings.banner_vertical_alignment }} banner-{{ block.settings.banner_content_style }} hover-{{ block.settings.banner_effect }} color-scheme-{{ block.settings.banner_color }} {%- if block.settings.enable_increase %} increased-padding{%- endif %}{%- if block.settings.banner_link != blank %} cursor-pointer{%- endif -%}"{%- if block.settings.banner_link != blank %} onclick="window.location.href='{{ block.settings.banner_link }}'"{%- endif %} {{ block.shopify_attributes }}>
+           <div class="main-wrapp-img">
+              {%- assign image = block.settings.image -%}
+              {%- if image != blank %}
+                <div class="nt_banner_img banner-image pr nt_bg_lz lazyload visible-pc hidden-tb hidden-mb" data-bgset="{%- include 'bgset', image: image -%}" data-sizes="auto" data-parent-fit="cover"{%- if section.settings.use_custom_img == false %} style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;"{%- endif -%}></div>
+                {%- if block.settings.image_tablet != blank -%}{%- assign image = block.settings.image_tablet -%}{%- endif -%}
+                <div class="nt_banner_img banner-image pr nt_bg_lz lazyload visible-tb hidden-pc hidden-mb" data-bgset="{%- include 'bgset', image: image -%}" data-sizes="auto" data-parent-fit="cover"{%- if section.settings.use_custom_img == false %} style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;"{%- endif -%}></div>
+                {%- if block.settings.image_mobile != blank -%}{%- assign image = block.settings.image_mobile -%}{%- else -%}{%- assign image = block.settings.image -%}{%- endif -%}
+                <div class="nt_banner_img banner-image pr nt_bg_lz lazyload visible-mb hidden-pc hidden-tb" data-bgset="{%- include 'bgset', image: image -%}" data-sizes="auto" data-parent-fit="cover"{%- if section.settings.use_custom_img == false %} style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;"{%- endif -%}></div>
+              {%- else -%}
+                <div class="banner-image pr nt_bg_lz">
+              {%- capture current -%}{%- cycle 1, 2 -%}{%- endcapture -%}
+              {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              {%- endif -%}
+           </div>
+           <div class="wrapper-content-baner">
+              <div class="banner-inner">
+                  {%- assign title = block.settings.title -%}
+                  {%- if title != blank -%}
+                  <!-- show on desktop -->
+                  <div class="visible-pc hidden-tb hidden-mb">{{title}}</div>
+                  <!-- show on tablet -->
+                  {%- assign title = block.settings.title_tb |default:title -%}
+                  <div class="visible-tb hidden-pc hidden-mb">{{title}}</div>
+                   <!-- show on mobile -->
+                  {%- assign title = block.settings.title_mb |default:title -%}
+                  <div class="visible-mb hidden-pc hidden-tb">{{title}}</div>
+                  {%- endif -%}
+                 {%- comment -%}
+                 {%- if block.settings.title != blank -%}
+                 <h2 class="h1 text-uppercase visible-pc hidden-tb hidden-mb"><strong>{{ block.settings.title }}</strong></h2>
+                 <h2 class="h3 text-uppercase visible-tb hidden-pc hidden-mb"><strong>{%- if block.settings.title_tablet != blank -%}{{ block.settings.title_tablet }}{%- else -%}{{ block.settings.title }}{%- endif -%}</strong></h2>
+                 <h2 class="h3 text-uppercase visible-mb hidden-pc hidden-tb"><strong>{%- if block.settings.title_mobile != blank -%}{{ block.settings.title_mobile }}{%- else -%}{{ block.settings.title }}{%- endif -%}</strong></h2>
+                 {%- endif -%}
+                 {%- if block.settings.subheading != blank -%}
+                 <h6 class="h2 text-capitalize visible-pc hidden-tb hidden-mb"><span>{{block.settings.subheading}}</span></h6>
+                 <h6 class="h4 text-capitalize visible-tb hidden-pc hidden-mb"><span>{%- if block.settings.subheading_tablet != blank -%}{{ block.settings.subheading_tablet }}{%- else -%}{{ block.settings.subheading }}{%- endif -%}</span></h6>
+                 <h6 class="h4 text-capitalize visible-mb hidden-pc hidden-tb"><span>{%- if block.settings.subheading_mobile != blank -%}{{ block.settings.subheading_mobile }}{%- else -%}{{ block.settings.subheading }}{%- endif -%}</span></h6>
+                 {%- endif -%}
+                 {%- endcomment -%}
+                {%- if block.settings.banner_btn_title != blank and block.settings.banner_link != blank -%}             
+                  <div class="clear"></div>
+                  <div class="basel-button-wrapper text-{{ block.settings.banner_alignment }} gl_mt_20 hidden-xs{%- if block.settings.hide_btn_tablet %} hidden-tb{%- endif -%}">
+                    <a href="{{ block.settings.banner_link }}" class="btn btn-color-{{ block.settings.button_color }} btn-style-{{ block.settings.button_style }} btn-size-{{ block.settings.button_size }}">{{ block.settings.banner_btn_title }}</a>
+                  </div>
+                  <div class="basel-button-wrapper text-{{ block.settings.banner_alignment }} gl_mt_10 visible-xs{%- if block.settings.hide_btn_tablet %} hidden-mb{%- endif -%}">
+                    <a href="{{ block.settings.banner_link }}" class="visible-xs btn btn-color-{{ block.settings.button_color }} btn-style-{{ block.settings.button_style }} btn-size-extra-small">{{ block.settings.banner_btn_title }}</a>
+                  </div>
+                {%- endif -%}
+               </div>
+               {%- comment -%}<style>.gl_custom_{{section.id}} #blockId_{{block.id}} h2.h1 {font-size:{{block.settings.size_heading}}px} .gl_custom_{{section.id}} #blockId_{{block.id}} h6.h2 {font-size:{{block.settings.size_subheading}}px}</style>{%- endcomment -%}
+           </div>
+        </div>
+     {%- endfor -%}
+     </div>
+  </div>
+</div>
+<style>
+{%- if section.settings.use_font -%}
+  {%- assign font_titles = section.settings.font_heading -%}
+  {%- assign font_sub_title = section.settings.font_subheading -%}
+  {%- assign font_btn = section.settings.font_btn -%}
+  {{ font_titles | font_face: font_display: 'swap' }}
+  {%- if font_sub_title != font_titles -%}{{ font_sub_title | font_face: font_display: 'swap' }}{%- endif -%}
+  {%- if font_btn != font_titles and font_btn != font_sub_title -%}{{ font_btn | font_face: font_display: 'swap' }}{%- endif -%}
+  .gl_custom_{{section.id}} h2 {font-family: {{ font_titles.family }}, {{ font_titles.fallback_families }};}.gl_custom_{{section.id}} h6 {font-family: {{ font_sub_title.family }}, {{ font_sub_title.fallback_families }};}.gl_custom_{{section.id}} a {font-family: {{ font_btn.family }}, {{ font_btn.fallback_families }};}
+{%- endif -%}
+{%- if section.settings.use_custom_img -%}
+.gl_custom_{{section.id}} .nt_banner_img {background-position: top;background-repeat: no-repeat;background-size: cover; height:{{section.settings.desktop}} }
+@media (max-width: 1024px) {.gl_custom_{{section.id}} .nt_banner_img{height:{{section.settings.notebook}} }}
+@media (max-width: 778px) {.gl_custom_{{section.id}} .nt_banner_img{height:{{section.settings.tablet}} }}
+@media (max-width: 480px) {.gl_custom_{{section.id}} .nt_banner_img{height:{{section.settings.mobile}} }}
+{%- endif -%}
+</style>
+{%- endcapture -%}
+{{html}}
+<div class="text-center">
+  <p id="p_slider">You must save before click import button</p>
+  <div class="clearfix"></div>
+  <div id="put_slider" class="btn"><span class="text_1">Import Slider</span><span class="text_2">Importing...</span></div>
+</div>
+<style>
+#p_slider {display: inline-block;margin-top: 50px;font-size: 20px;color: red;}
+#put_slider.active {display: inline-block}
+#put_slider .text_2 {display: none}
+#put_slider.loading {pointer-events: none;}
+#put_slider.loading .text_1 {display: none}#put_slider.loading .text_2 {display: inline-block}
+</style>
+<script>
+  if(window.parent.location.pathname.indexOf('/admin')>=0 && window.parent) {$('#put_slider').addClass('active')}
+  function put_slider($this) {
+      $this.addClass('loading');
+      window.parent.$ && window.parent.$.ajax({
+        url:  window.parent.location.pathname.split('/editor')[0] + '/assets.json',
+        type: 'PUT',
+        data: {asset: {"key": "snippets/slideshow_import.liquid","value": {{html | json}} }},
+      }).done(function() {
+        alert("Import Slider Complete");
+        $this.removeClass('loading');
+      });
+  };
+  $('body').on('click', '#put_slider', function(evt) {put_slider($(this)) });
+</script>
+{%- schema -%}
+ {
+  "name": "Slideshow",
+  "class": "gl_slide_show",
+  "settings":[
+      {
+      "type": "header",
+      "content": "== Slider Settings"
+      },
+      {
+        "type": "text",
+        "id": "silder_speed",
+        "label": "Slider speed ( integer )",
+        "info": "Duration of animation between slides (in ms).",
+        "default": "5000"
+      },
+      {
+        "type": "text",
+        "id": "dottime",
+        "label": "Pagination speed ( integer )",
+        "info": "Duration of animation between slides (in ms) 1 - 5000.",
+        "default": "200"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_pagination",
+        "default": true,
+        "label": "Hide pagination control?",
+        "info": "pagination control will be removed"
+      },
+       {
+        "type": "checkbox",
+        "id": "hide_button",
+        "default": true,
+        "label": "Hide prev/next buttons?",
+        "info": "prev/next control will be removed"
+      },
+     {
+       "type": "select",
+       "id": "banner_color",
+       "options": [
+        {
+           "value": "light",
+           "label": "Light"
+         },
+         {
+           "value": "dark",
+           "label": "Dark"
+         }
+       ],
+       "label": "== Color Scheme prev/next buttons",
+       "default": "dark"
+     },
+       {
+        "type": "checkbox",
+        "id": "slider_loop",
+        "default": false,
+        "label": "Slider loop?",
+        "info": "Enables loop mode."
+      },
+      {
+       "type": "checkbox",
+       "id": "autoplay",
+       "label": "Slider autoplay",
+       "info": "Enables autoplay mode.",
+       "default": false
+     },
+     {
+        "type": "header",
+        "content": "== Font Options"
+      },
+      {
+       "type": "checkbox",
+       "id": "use_font",
+       "label": "Enables custom font",
+       "default": false
+     },
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Font Family Heading (h2)",
+        "info": "Use tag 'h2' to apply font",
+        "default": "cabin_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_subheading",
+        "label": "Font Family Subheading (h6)",
+        "info": "Use tag 'h6' to apply font",
+        "default": "cabin_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_btn",
+        "label": "Font Family Button",
+        "default": "cabin_n7"
+      },
+     {
+        "type": "header",
+        "content": "== Design Height Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_custom_img",
+        "label": "Use custom height image?",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "desktop",
+        "label": "Desktop Large",
+        "info": "475px",
+        "default": "475px"
+      },
+      {
+        "type": "text",
+        "id": "notebook",
+        "label": "Notebook (<= 1024px)",
+        "info": "485px",
+        "default": "485px"
+      },
+      {
+        "type": "text",
+        "id": "tablet",
+        "label": "Tablet (<= 778px)",
+        "info": "600px",
+        "default": "600px"
+      },
+      {
+        "type": "text",
+        "id": "mobile",
+        "label": "Mobile (<= 480px)",
+        "info": "600px",
+        "default": "600px"
+      }
+  ],
+   "blocks": [
+      {
+        "type": "item",
+        "name": "Image slide",
+        "settings": [
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "=== image Desktop"
+         },
+         {
+            "type": "image_picker",
+            "id": "image_tablet",
+            "label": "image Tablet"
+         },
+         {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "image Mobile"
+         },
+         {
+            "type": "html",
+            "id": "title",
+            "label": "=== Heading Desktop",
+            "default": "Image slide"
+          },
+         {
+            "type": "html",
+            "id": "title_tb",
+            "label": "=== Heading Tablet",
+            "default": "Image slide"
+          },
+         {
+            "type": "html",
+            "id": "title_mb",
+            "label": "=== Heading Mobile",
+            "default": "Image slide"
+          },
+         /*{
+            "type": "text",
+            "id": "title",
+            "label": "=== Heading",
+            "default": "Image slide"
+          },
+         {
+            "type": "text",
+            "id": "title_tablet",
+            "label": "Heading Tablet"
+          },
+         {
+            "type": "text",
+            "id": "title_mobile",
+            "label": "Heading Mobile"
+          },
+         {
+           "type": "range",
+           "id": "size_heading",
+           "min": 10,
+           "max": 110,
+           "step": 1,
+           "label": "Font size Heading",
+           "unit": "px",
+           "default": 36
+         },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "=== Subheading",
+            "default": "Tell your brand's story through video and images"
+         },
+          {
+            "type": "text",
+            "id": "subheading_tablet",
+            "label": "Subheading Tablet"
+         },
+          {
+            "type": "text",
+            "id": "subheading_mobile",
+            "label": "Subheading Mobile"
+         },
+         {
+           "type": "range",
+           "id": "size_subheading",
+           "min": 10,
+           "max": 110,
+           "step": 1,
+           "label": "Font size Subheading",
+           "unit": "px",
+           "default": 30
+         },*/
+         {
+          "type": "text",
+          "id": "banner_btn_title",
+          "label": "=== Button title",
+          "info": "Add here few words to your title button."
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "Banner link",
+          "info": "Enter URL if you want this banner to have a link."
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_btn_tablet",
+          "default": false,
+          "label": "Hide Button on Tablet?"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_btn_mobile",
+          "default": false,
+          "label": "Hide Button on Mobile?"
+        },
+        {
+        "type": "select",
+        "id": "button_color",
+        "label": "___ Button color",
+        "default": "white",
+        "options": [
+          {
+            "label": "Default",
+            "value": "default"
+          },
+          {
+            "label": "Primary color",
+            "value": "primary"
+          },
+          {
+            "label": "Alternative color",
+            "value": "alt"
+          },
+          {
+            "label": "Black",
+            "value": "black"
+          },
+          {
+            "label": "White",
+            "value": "white"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "___ Button style",
+        "default": "bordered",
+        "options": [
+          {
+            "label": "Default",
+            "value": "default"
+          },
+          {
+            "label": "Bordered",
+            "value": "bordered"
+          },
+          {
+            "label": "Link button",
+            "value": "link"
+          },
+          {
+            "label": "Rounded",
+            "value": "round"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "button_size",
+        "label": "___ Button size",
+        "default": "default",
+        "options": [
+          {
+            "label": "Default",
+            "value": "default"
+          },
+          {
+            "label": "Extra Small",
+            "value": "extra-small"
+          },
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          },
+          {
+            "label": "Extra Large",
+            "value": "extra-large"
+          }
+        ]
+      },
+        {
+          "type": "select",
+          "id": "banner_alignment",
+          "options": [
+           {
+              "value": "left",
+              "label": "Align left"
+            },
+            {
+              "value": "right",
+              "label": "Align right"
+            },
+            {
+              "value": "center",
+              "label": "Align center"
+            }
+          ],
+          "label": "== Text alignment",
+          "info": "Select image alignment.",
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "banner_vertical_alignment",
+          "options": [
+           {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "middle",
+              "label": "Middle"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            }
+          ],
+          "label": "== Content vertical alignment",
+          "default": "top"
+        },
+        {
+          "type": "select",
+          "id": "banner_effect",
+          "options": [
+           {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "1",
+              "label": "Zoom image"
+            },
+            {
+              "value": "2",
+              "label": "Bordered"
+            },
+            {
+              "value": "3",
+              "label": "Content animation"
+            }
+          ],
+          "label": "== Hover effect",
+          "info": "Set beautiful hover effects for your banner.",
+          "default": "default"
+        },
+        {
+          "type": "select",
+          "id": "banner_content_style",
+          "options": [
+           {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "2",
+              "label": "Color mask"
+            },
+            {
+              "value": "3",
+              "label": "Mask with border"
+            },
+            {
+              "value": "1",
+              "label": "Content with line background"
+            },
+            {
+              "value": "5",
+              "label": "Content with rectangular background"
+            }
+          ],
+          "label": "== Content style",
+          "info": "You can use some of our predefined styles for your banner content.",
+          "default": "default"
+        },
+        {
+          "type": "select",
+          "id": "banner_color",
+          "options": [
+           {
+              "value": "light",
+              "label": "Light"
+            },
+            {
+              "value": "dark",
+              "label": "Dark"
+            }
+          ],
+          "label": "== Color Scheme",
+          "default": "light"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_increase",
+          "label": "== Enable Increase spaces",
+          "info": "Suggest to use this option if you have large banners. Padding will be set in percentage to your screen width.",
+          "default": true
+        }
+        ]
+      }
+    ]
+}
+{% endschema %}
+ 

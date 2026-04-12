@@ -1,0 +1,58 @@
+{%- assign current_variant_sticky = product.first_available_variant -%}
+{%- assign loop_countdown = settings.sticky_loop_show_countdown -%}
+{%- assign section_settings_countdown = settings.show_sticky_countdown -%}
+<div class="sticky-nt-atc jas-sticky-nt-atc pf {{settings.sticky_position}}{%- if settings.show_sticky_add_mobile %} sticky_add_mobile{%- endif %}{%- if product.has_only_default_variant %} default_variant{%- endif -%}">
+  <form id="cart_form_sticky" action="/cart/add" method="post" enctype="multipart/form-data" class="flex {{settings.sticky_align}} middle-xs">
+    {%- if settings.show_sticky_countdown -%}
+      {%- assign user_countdown = product.metafields.meta.countdown -%}
+      {%- include 'gecko_count_down',jas_countdow_page:'jas_page_sticky',user_countdown:user_countdown,class:'jas_progress_bar_pr' -%}
+     {%- endif -%}  
+    {%- if settings.show_sticky_img -%}
+       {%- assign featured_image = current_variant_sticky.featured_image | default: product.featured_image -%}
+      <div id="pr_img_sticky" class="mr__10"><div class="sticky_img" style="background-image: url({{ featured_image | img_url: '80x' }});"></div></div>
+    {%- endif -%}
+     {%- if product.has_only_default_variant == false -%}
+    <div class="input-dropdown-inner input-dropdown-inner_pr mr__10" data-option-index="{{ option_index }}">
+      {%- for variant in product.variants -%}
+      {%- if variant.available and variant.id == current_variant_sticky.id -%}
+      <a href="#" data-val="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</a>
+      {%- break -%}
+      {%- endif -%}
+      {%- endfor -%}
+      <ul class="t-swatch dropdown-list swatch_list_sticky">
+        {%- assign check = true -%}
+        {%- for variant in product.variants -%}
+        {%- if variant.available -%}
+        {%- if check -%}{%- assign variant_1 = variant -%}{%- assign check = false -%}{%- endif -%}
+        <li {% if variant.inventory_quantity <= 0 and variant.inventory_management == 'shopify' %}data-preoder="true" {% endif %}data-val='{{ variant.id }}' {%- if variant.featured_image.src.size > 0 %} data-img='{{ variant.featured_image.src | img_url: '80x' }}' {% endif -%}{%- if variant.inventory_management and variant.inventory_quantity < 10 and variant.inventory_quantity > 0 %} data-inventory='{{ variant.inventory_quantity }}' {% endif -%} class="swatch_sticky{%- if variant.id == current_variant_sticky.id %} selected{%- endif %}">
+          <a href="javascript:void(0);" data-val='{{ variant.id }}'>{{ variant.title }} - {{ variant.price | money }}</a>
+        </li>
+        {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+    {%- endif -%}
+    <select name="id" id="productselect-sticky" class="product-form__variants hide hidden">
+      {%- for variant in product.variants -%}
+      {%- if variant.available -%}
+      <option {% if variant.id == current_variant_sticky.id %} selected="selected"{%- endif %} value="{{ variant.id }}"> {{ variant.title | handleize }}</option>
+      {%- endif -%}
+      {%- endfor -%}
+    </select>
+    <div class="flex">
+      {%- if settings.show_sticky_quantiny -%}
+      <div class="single-product-content">
+        <div class="cart">
+          <div class="quantity mr__10">
+               <input type="button" value="-" class="minus">
+               <input type="number" id="number_sticky" step="1" min="1" max="{%- if current_variant_sticky.inventory_management != null -%}{{current_variant_sticky.inventory_quantity}}{%- else -%}999{%- endif -%}" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="[0-9]*" inputmode="numeric">
+               <input type="button" value="+" class="plus">
+          </div>
+        </div>
+      </div>
+      {%- endif -%}
+      <button type="submit" class="ajax_form_cart button_sticky single_add_to_cart_button pr">{%- if variant_1.inventory_quantity <= 0 and variant_1.inventory_management == 'shopify' -%}<span class="pre_txt">{{ 'products.product.pre_orders' | t }}</span><span class="add_txt hide">{{ 'products.product.add_to_cart' | t }}</span>{%- else -%}<span class="pre_txt hide">{{ 'products.product.pre_orders' | t }}</span><span class="add_txt">{{ 'products.product.add_to_cart' | t }}</span>{%- endif -%}</button>
+      </div>
+
+   </form>
+</div>

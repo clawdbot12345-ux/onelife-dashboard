@@ -1,0 +1,38 @@
+{%- if product.featured_image.src == blank -%}
+  <a href="{{ url_nt | within: collection }}">
+   {%- capture current -%}{%- cycle 1, 2 -%}{%- endcapture -%}
+   {{ 'product-' | append: current | placeholder_svg_tag: 'product-item__image icon icon--placeholder' }}
+  </a>
+{%- else -%}
+{%- assign position_img_1 = 0 -%}
+{%- assign position_img_2 = 1 -%}
+{%- assign hide_img_2 = false -%}
+{%- assign featured_image = '' -%}
+{%- assign images_size = product.images.size -%}
+  {%- if settings_pr_img_size and images_size > 0 -%}
+     <a data-chksrc="{{ product.images[position_img_1] | img_url: '50x50' }}" class="nt_bg_lz jas_bg jas-product-img-element jas-pr-image-link lazyload" aria-label="{{ product.title }}" href="{{ url_nt | within: collection }}" data-bgset="{%- include 'bgset', image: product.images[position_img_1] -%}" data-sizes="auto" data-parent-fit="cover">
+        {%- include 'product_labels' -%}
+</a>
+     {%- if settings.show_img_second and images_size > 1 -%}
+     <div class="nt_bg_lz hover-img jas-product-img-element jas-hover-img pa cursor-pointer{%- if hide_img_2 %} hide{%- endif -%}" onclick="window.location.href='{{ url_nt | within: collection }}'"><a class="jas_bg db lazyload" aria-label="{{ product.title }} hover image" href="{{ url_nt | within: collection }}" data-bgset="{%- include 'bgset', image: product.images[position_img_2] -%}" data-sizes="auto" data-parent-fit="cover"></a></div> 
+     {%- endif -%} 
+  {%- elsif images_size > 0 -%}
+     <a class="jas-product-img-element jas-pr-image-link" href="{{ url_nt | within: collection }}">
+        {%- assign img_url = product.images[position_img_1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img src="{{ product.images[position_img_1] | img_url: '50x50' }}" data-chksrc="{{ product.images[position_img_1] | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.images[position_img_1].aspect_ratio }}" data-sizes="auto" class="lazyload attachment-shop_catalog size-shop_catalog" alt="{{product.images[position_img_1].alt}}" width="360" height="360">
+        <div class="jas-wrap-lazy"></div>
+        {%- include 'product_labels' -%}
+     </a>
+     {%- if settings.show_img_second and images_size > 1 -%}
+     <div class="hover-img jas-product-img-element jas-hover-img pa cursor-pointer {%- if hide_img_2 %} hide{%- endif -%}" onclick="window.location.href='{{ url_nt | within: collection }}'">
+        <a href="{{ url_nt | within: collection }}">
+           {%- assign img_url = product.images[position_img_2] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+           <img src="{{ product.images[position_img_2] | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.images[position_img_2].aspect_ratio }}"  data-sizes="auto" class="lazyload attachment-shop_catalog size-shop_catalog" alt="{{product.images[position_img_2].alt}}" width="360" height="360">       
+           <div class="jas-wrap-lazy"></div>
+        </a>
+     </div>
+     {%- endif -%}   
+  {%- endif -%}
+{%- endif -%}
+ 
+

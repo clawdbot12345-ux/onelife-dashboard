@@ -1,0 +1,4 @@
+{%- assign limit = settings.products_per_page | plus:0 -%}{%- if settings.shop_show_per_page -%}{%- assign limit = 12 -%}{%- endif -%}
+{%- assign view_not_default = false -%}
+{%- include 'collection_list' -%}
+

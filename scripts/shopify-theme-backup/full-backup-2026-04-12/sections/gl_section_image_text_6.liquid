@@ -1,0 +1,528 @@
+{%- if section.settings.section_margin_top != blank or section.settings.section_margin_bottom != blank or section.settings.section_border != blank -%}
+{%- assign s_margin_top = section.settings.section_margin_top | remove: ' ' | join: ' ' -%}
+{%- assign s_margin_bottom = section.settings.section_margin_bottom | remove: ' ' | join: ' ' -%}
+{%- assign s_border = section.settings.section_border | remove: ' ' | split: '-' | join: ' ' -%}
+{%- endif -%}
+{%- capture style_block_section -%}
+   {%- if section.settings.section_margin_top != blank or section.settings.section_margin_bottom != blank or section.settings.section_padding_top != blank or section.settings.section_padding_right != blank or section.settings.section_padding_left != blank or section.settings.section_padding_bottom != blank or section.settings.section_bg_color != blank or section.settings.section_bg_image != blank or section.settings.section_border != blank -%}
+   <style type="text/css">.gl_custom_{{section.id}}{ {%- if section.settings.section_margin_top != blank -%} margin-top: {{s_margin_top}} !important;{%- endif -%}{%- if section.settings.section_margin_bottom != blank -%} margin-bottom: {{s_margin_bottom}} !important;{%- endif -%}{%- if section.settings.section_padding_top != blank -%}padding-top: {{section.settings.section_padding_top}} !important;{%- endif-%}{%- if section.settings.section_padding_right != blank -%}padding-right: {{section.settings.section_padding_right}} !important;{%- endif-%}{%- if section.settings.section_padding_bottom != blank -%}padding-bottom: {{section.settings.section_padding_bottom}} !important;{%- endif-%}{%- if section.settings.section_padding_left != blank -%}padding-left: {{section.settings.section_padding_left}} !important; {%- endif -%}{%- if section.settings.section_bg_color != blank -%}background-color: {{ section.settings.section_bg_color }} !important;{%- endif -%}{%- if section.settings.section_bg_image != blank -%}background-position: center !important; background-repeat: no-repeat !important; background-size: cover !important;{%- endif -%}{%- if section.settings.section_border != blank and section.settings.section_border_color != blank -%}border-width: {{ s_border }} !important; border-color: {{section.settings.section_border_color}} !important; border-style: {{section.settings.section_border_style}} !important{%- endif -%} }</style>
+   {%- endif -%}
+{%- endcapture -%}
+{%- capture data_section -%}
+  {%- if section.settings.row_stretch == 'stretch_row' -%}
+   {%- assign class_has_fill = 'gl_row-has-fill' -%}
+   data-gl='has_section_gl_js' data-gl-full-width='true' data-gl-full-width-init='true'
+  {%- elsif section.settings.row_stretch == 'stretch_row_content' or section.settings.row_stretch == 'stretch_row_content_no_spaces' -%}
+   {%- assign class_has_fill = 'gl_row-has-fill' -%}
+   data-gl='has_section_gl_js' data-gl-full-width='true' data-gl-full-width-init='true' data-gl-stretch-content='true'
+  {%- else -%}
+  {%- assign class_has_fill = '' -%}
+  {%- endif -%}
+{%- endcapture -%}
+{{ style_block_section }}
+<div {{ data_section }}{%- if section.settings.use_video and section.settings.video_url != blank %} data-gl-video-bg="{{ section.settings.video_url }}"{%- endif %} class="gl_custom_{{section.id}} row-reverse-mobile {% if section.settings.row_stretch == 'stretch_row_content_no_spaces' %}gl_row-no-padding{%- endif %}{%- if section.settings.use_parallax -%} basel-parallax{%- endif %} gl_row spb_row gl_row-fluid {{class_has_fill}} {%- if section.settings.use_video and section.settings.video_url != blank %} opacity-video-bg gl_video-bg-container gl_has_youtube{%- endif %}{%- if section.settings.full_height %} gl_row-o-full-height gl_row-o-columns-{{section.settings.columns_position}}{%- endif %}{%- if section.settings.equal_height %} gl_row-o-equal-height{%- endif %}{%- unless section.settings.content_position == 'default' %} gl_row-o-content-{{section.settings.content_position}}{%- endunless %}{%- if section.settings.equal_height or section.settings.content_position != 'default' %} gl_row-flex{%- endif %}{%- if section.settings.section_bg_image != blank %} lazy_bg lazyload{%- endif %}"{%- if section.settings.section_bg_image != blank %} data-bgset="{%- include 'bgset', image: section.settings.section_bg_image -%}" data-sizes="auto" data-parent-fit="cover" style="background-image: url('{{ section.settings.section_bg_image | img_url: '50x50' }}')"{%- endif -%}>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'image' -%}
+      <div class="spb_column gl_column_container gl_col-sm-6 gl_col-md-7 text-right">
+          <div class="gl_column-inner gl_mb_4">
+            <div class="spb_wrapper gl_figure">
+              <div class="spb_single_image gl_mb_0 spb_content_element gl_align_{{ block.settings.image_alignment_one }}">
+                <figure class="spb_wrapper gl_figure">
+                  <div class="pr gl_single_image-wrapper gl_box_border_grey {{ block.settings.image_style_one }}">
+                    {%- if block.settings.block_image != blank -%}
+                    {%- assign image = block.settings.block_image -%}
+                    {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}"  data-sizes="auto" class="lazyload w__100 attachment-shop_catalog size-shop_catalog" alt="{{image.alt}}" >
+                    <div class="jas-wrap-lazy"></div>
+                    {%- else -%}
+                    <img width="600" height="442" src="https://cdn.shopify.com/s/files/1/1933/6253/files/portfolio-placeholder_555x555_crop_center.jpg?12790048884060573015" alt="One Life Health">                            
+                    {%- endif -%}
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+       </div>
+      {%- when 'text' -%}
+      <div class="spb_column gl_column_container gl_col-sm-6 gl_col-md-5 text-center">
+         <div class="gl_column-inner gl_mb_4">
+            <div class="spb_wrapper">
+              {%- if block.settings.text_title != blank -%}
+                 <p style="font-size: 16px;color: #9b9b9b;line-height: 1;text-align: center" class="gl_custom_heading gl_mb_15">{{block.settings.text_title}}</p>
+                {%- endif -%}
+                {%- if block.settings.text_heading != blank -%}
+                <h2 style="font-size: 80px;color: #333333;line-height: 1;text-align: center" class="gl_custom_heading hidden-sm hidden-xs">{{block.settings.text_heading}}</h2>
+                {%- endif -%}
+                {%- if block.settings.text_heading != blank -%}
+                <h2 style="font-size: 45px;color: #333333;line-height: 1;text-align: center" class="gl_custom_heading hidden-lg hidden-md">{{block.settings.text_heading}}</h2>
+                {%- endif -%}
+              {%- if block.settings.content != blank -%}
+                                <div class="spb_text_column spb_content_element gl_mb_25">
+                                   <div class="spb_wrapper">
+                                      <p><span class="text-larger" style="color: #b1b1b1;">{{block.settings.content}}</span></p>
+                                   </div>
+                                </div>
+                                {%- endif -%}
+                {%- if block.settings.use_countdown -%}
+               <div class="basel-countdown-timer color-scheme-{{block.settings.countdown_color_scheme}} timer-align-{{block.settings.align}} timer-size-{{block.settings.size}} timer-style-{{block.settings.style}}">
+                  <div class="basel-timer" data-end-date="{{block.settings.date}}"></div>
+               </div>
+              <div class="gl_empty_space" style="height: 25px"><span class="gl_empty_space_inner"></span></div>
+               {%- endif -%}
+             {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+             <div class="basel-button-wrapper text-center btn-inline"><a target="" rel="" title="" href="{{block.settings.button_link}}" class="btn btn-color-primary btn-style-default btn-size-default">{{block.settings.button_label}}</a></div>
+             {%- endif -%}
+             {%- if block.settings.button_label_2 != blank and block.settings.button_link_2 != blank -%}
+             <div class="basel-button-wrapper text-center btn-inline"><a target="" rel="" title="" href="{{block.settings.button_link_2}}" class="btn btn-color-default btn-style-bordered btn-size-default">{{block.settings.button_label_2}}</a></div>
+             {%- endif -%}
+           </div>
+         </div>
+      </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+{%- unless section.settings.row_stretch == 'default' -%}
+  <div class="gl_row-full-width gl_clearfix"></div>
+  {%- endunless -%}
+{%- schema -%}
+  {
+    "name": "Image with text 3",
+    "class": "index-section section_image_text_6",
+    "settings": [
+      {
+      "type": "header",
+      "content": "== General"
+      },
+      {
+        "type": "select",
+        "id": "row_stretch",
+        "options": [
+         {
+            "value": "default",
+            "label": "Default"
+          },
+         {
+            "value": "stretch_row",
+            "label": "Stretch row"
+          },
+          {
+            "value": "stretch_row_content",
+            "label": "Stretch row and content"
+          },
+          {
+            "value": "stretch_row_content_no_spaces",
+            "label": "Stretch row and content (no paddings)"
+          }
+        ],
+        "label": "___ Row stretch",
+        "info": "Select stretching options for row and content (Note: stretched may not work properly if parent container has 'overflow: hidden' CSS property).",
+        "default": "default"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_height",
+        "label": "Full height row?",
+        "info": "if checked row will be set to full height.",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "columns_position",
+        "options": [
+         {
+            "value": "middle",
+            "label": "Middle"
+          },
+         {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          },
+          {
+            "value": "stretch",
+            "label": "Stretch"
+          }
+        ],
+        "label": "___ Columns position (only for full height)",
+        "info": "Select columns position within row.",
+        "default": "middle"
+      },
+      {
+        "type": "checkbox",
+        "id": "equal_height",
+        "label": "Equal height?",
+        "info": "If checked columns will be set to equal height.",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "content_position",
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+         {
+            "value": "middle",
+            "label": "Middle"
+          },
+         {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "label": "___ Content position",
+        "info": "Select content position within columns.",
+        "default": "default"
+      },
+      {
+        "type": "header",
+        "content": "== Design Options"
+      },
+     {
+        "type": "image_picker",
+        "id": "section_bg_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "color",
+        "id": "section_bg_color",
+        "label": "Background color"
+      },
+      {
+        "type": "color",
+        "id": "section_border_color",
+        "label": "Border color"
+      },
+      {
+        "type": "select",
+        "id": "section_border_style",
+        "options": [
+         {
+            "value": "solid",
+            "label": "Solid"
+          },
+         {
+            "value": "dotted",
+            "label": "Dotted"
+          },
+          {
+            "value": "dashed",
+            "label": "Dashed"
+          },
+          {
+            "value": "double",
+            "label": "Double"
+          },
+          {
+            "value": "groove",
+            "label": "Groove"
+          },
+          {
+            "value": "Ridge",
+            "label": "Ridge"
+          },
+          {
+            "value": "inset",
+            "label": "Inset"
+          },
+          {
+            "value": "outset",
+            "label": "Outset"
+          }
+        ],
+        "label": "Border style",
+        "default": "solid"
+      },
+      {
+        "type": "text",
+        "id": "section_border",
+        "label": "Borders Integer px ( top-right-bottom-left )",
+        "info": "0-0-1px-0"
+      },
+      {
+        "type": "text",
+        "id": "section_margin_top",
+        "label": "Margin top",
+        "info": "60px"
+      },
+      {
+        "type": "text",
+        "id": "section_margin_bottom",
+        "label": "Margin bottom",
+        "info": "60px"
+      },
+      {
+        "type": "text",
+        "id": "section_padding_top",
+        "label": "Padding top",
+        "info": "60px"
+      },
+{
+        "type": "text",
+        "id": "section_padding_right",
+        "label": "Padding right",
+        "info": "60px"
+      },
+{
+        "type": "text",
+        "id": "section_padding_bottom",
+        "label": "Padding bottom",
+        "info": "60px"
+      },
+{
+        "type": "text",
+        "id": "section_padding_left",
+        "label": "Padding left",
+        "info": "60px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Images gallery",
+        "limit": 1,
+        "settings": [
+             {
+              "type": "image_picker",
+              "id": "block_image",
+              "label": "Image"
+            },
+            {
+           "type": "select",
+           "id": "image_alignment_one",
+           "options": [
+             {
+               "value": "left",
+               "label": "Left"
+             },
+             {
+               "value": "right",
+               "label": "Right"
+             },
+             {
+               "value": "center",
+               "label": "Center"
+             }
+           ],
+           "label": "___ Image alignment",
+           "default": "center",
+           "info": "Select image alignment."
+         },
+         {
+           "type": "select",
+           "id": "image_style_one",
+           "options": [
+             {
+               "value": "default",
+               "label": "Default"
+             },
+             {
+               "value": "gl_box_rounded",
+               "label": "Rounded"
+             },
+             {
+               "value": "gl_box_border",
+               "label": "Border"
+             },
+             {
+               "value": "gl_box_outline",
+               "label": "Outline"
+             },
+             {
+               "value": "gl_box_shadow",
+               "label": "Shadow"
+             },
+             {
+               "value": "gl_box_shadow_border",
+               "label": "Bordered shadow"
+             },
+             {
+               "value": "gl_box_shadow_3d",
+               "label": "3D Shadow"
+             },
+             {
+               "value": "gl_box_circle",
+               "label": "Round"
+             },
+             {
+               "value": "gl_box_border_circle",
+               "label": "Round Border"
+             },
+             {
+               "value": "gl_box_outline_circle",
+               "label": "Round Outline"
+             },
+             {
+               "value": "gl_box_shadow_circle",
+               "label": "Round Shadow"
+             },
+             {
+               "value": "gl_box_shadow_border_circle",
+               "label": "Round Border Shadow"
+             }
+           ],
+           "label": "___ Image style",
+           "default": "default",
+           "info": "Select image display style."
+         }
+         ]
+      },
+      {
+        "type": "text",
+        "name": "Text Block",
+        "limit": 1,
+        "settings": [
+            {
+              "type": "text",
+              "id": "text_title",
+              "label": "Title",
+              "default":"AN EDIT OF OUR LATEST FAVOURITES"
+            },
+{
+              "type": "text",
+              "id": "text_heading",
+              "label": "Heading",
+              "default":"Training<br>Sneakers"
+            },
+{
+              "type": "textarea",
+              "id": "content",
+              "label": "Content"
+            },
+            {
+              "type": "text",
+              "id": "button_label",
+              "label": "___ Button label"
+            },
+            {
+              "type": "url",
+              "id": "button_link",
+              "label": "___ Button link"
+            },
+            {
+              "type": "text",
+              "id": "button_label_2",
+              "label": "___ Button label 2"
+            },
+            {
+              "type": "url",
+              "id": "button_link_2",
+              "label": "___ Button link 2"
+            },
+            {
+              "type": "header",
+              "content": "== Countdown timer Settings"
+            },
+            {
+              "type": "checkbox",
+              "id": "use_countdown",
+              "default": false,
+              "label": "Use countdown?"
+            },
+            {
+              "type": "text",
+              "id": "date",
+              "label": "Date",
+              "info": "Final date in the format Y/m/d. For example 2017/12/12",
+              "default": "2018/12/12"
+            },
+            {
+              "type": "select",
+              "id": "countdown_color_scheme",
+              "options": [
+                {
+                  "value": "light",
+                  "label": "Light"
+                },
+               {
+                  "value": "dark",
+                  "label": "Dark"
+                }
+              ],
+              "label": "Color Scheme",
+              "default": "dark"
+            },
+            {
+              "type": "select",
+              "id": "size",
+              "options": [
+                {
+                  "value": "small",
+                  "label": "Small"
+                },
+               {
+                  "value": "medium",
+                  "label": "Medium"
+                },
+               {
+                  "value": "large",
+                  "label": "Large"
+                }
+              ],
+              "label": "Size",
+              "default": "large"
+            },
+            {
+              "type": "select",
+              "id": "align",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+               {
+                  "value": "center",
+                  "label": "Center"
+                },
+               {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "label": "Align",
+              "default": "center"
+            },
+            {
+              "type": "select",
+              "id": "style",
+              "options": [
+               {
+                  "value": "standard",
+                  "label": "Standard"
+                },
+               {
+                  "value": "transparent",
+                  "label": "Transparent"
+                }
+              ],
+              "label": "Style",
+              "default": "standard"
+            }
+         ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text 3 (fashion 4.0)",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "image"
+          }
+         ]
+      }
+    ]
+  }
+{% endschema %}

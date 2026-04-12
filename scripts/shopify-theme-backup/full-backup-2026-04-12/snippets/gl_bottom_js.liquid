@@ -1,0 +1,96 @@
+<script src="{{ 'libraries.min.js' | asset_url }}" defer="defer"></script>
+{%- if template contains 'product' or template contains 'article' or check_photowipe  %}
+<script src="{{ 'page.min.js' | asset_url }}" defer="defer"></script>
+{%- endif %}
+<script src="{{ 'option_selection.js' | shopify_asset_url }}"></script>
+{%- if template contains 'product' and settings.show_grouped_variant_image %}
+<script src="{{ 'jquery.blockUI.js' | asset_url }}" defer="defer"></script>
+{%- endif %}
+{%- if page.handle == 'wishlist' %}
+<script src="{{ 'jquery.blockUI.js' | asset_url }}" defer="defer"></script>
+{%- endif %}
+{%- unless template contains 'product' -%}{%- include 'nathan_settings' -%}{%- endunless -%}
+
+<script src="{{ 'functions.min.js' | asset_url }}" defer="defer"></script>
+{% if settings.enable_suggest_products -%}
+<script src="{{ 'suggest.min.js' | asset_url }}" defer="defer"></script>
+{%- endif %}
+{%- if settings.platform_email == '3' and settings.use_ajax_klaviyo and settings.klaviyo_list_id != blank -%}<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>{%- endif -%}
+<script type="text/javascript">
+jQuery(document).ready(function(){var e=function(){var e=jQuery(".dropdown-scroll > .sub-menu-dropdown");e.each(function(){var e=jQuery(this),o=e.find("> .container");e.on("mousemove",function(n){var t=e.offset(),i=n.pageY-t.top,r=o.outerHeight()-e.height();if(!(0>r)){var u=i/e.height(),a=0;a=0>=u?0:u>=1?-r:-u*r,a=parseInt(a),o.css({position:"relative",top:a})}})})};setTimeout(function(){e()},1e3),e()});
+</script>
+{%- if admin_shopify -%}<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>{%- elsif check_youtube -%}<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>{%- endif %}
+{%- if template contains 'product' -%}
+{%- include 'product_js' -%}
+{%- endif -%}
+{%- if template.name == 'addresses' %}
+<script type="text/javascript">
+(function($) {
+  function customerAddressForm() {
+    var $newAddressForm = $('#AddressNewForm');
+
+    if (!$newAddressForm.length) {
+      return;
+    }
+
+    // Initialize observers on address selectors, defined in shopify_common.js
+    if (Shopify) {
+      // eslint-disable-next-line no-new
+      new Shopify.CountryProvinceSelector('AddressCountryNew', 'AddressProvinceNew', {
+        hideElement: 'AddressProvinceContainerNew'
+      });
+    }
+
+    // Initialize each edit form's country/province selector
+    $('.address-country-option').each(function() {
+      var formId = $(this).data('form-id');
+      var countrySelector = 'AddressCountry_' + formId;
+      var provinceSelector = 'AddressProvince_' + formId;
+      var containerSelector = 'AddressProvinceContainer_' + formId;
+
+      // eslint-disable-next-line no-new
+      new Shopify.CountryProvinceSelector(countrySelector, provinceSelector, {
+        hideElement: containerSelector
+      });
+    });
+
+    // Toggle new/edit address forms
+    $('.address-new-toggle').on('click', function() {
+      $newAddressForm.toggleClass('hide');
+    });
+
+    $('.address-edit-toggle').on('click', function() {
+      var formId = $(this).data('form-id');
+      $('#EditAddress_' + formId).toggleClass('hide');
+    });
+
+    $('.address-delete').on('click', function() {
+      var $el = $(this);
+      var formId = $el.data('form-id');
+      var confirmMessage = $el.data('confirm-message');
+
+      // eslint-disable-next-line no-alert
+      if (confirm(confirmMessage || 'Are you sure you wish to delete this address?')) {
+        Shopify.postLink('/account/addresses/' + formId, {parameters: {_method: 'delete'}});
+      }
+    });
+  }
+  customerAddressForm();
+}(jQuery));
+</script>
+{%- endif -%}
+{%- if cart.item_count > 0 and template.name == 'cart' -%}
+<script>
+jQuery(function($) {
+  $('table .quantity:first').focus();
+  $('[max]').change(function() {
+    var max = parseInt($(this).attr('max'), 10);
+    var value = parseInt($(this).val(), 10) || 0;
+    if (value > max) { 
+      alert('We only have ' + max + ' of this item in stock');
+      $(this).val(max); 
+    }    
+  });
+});
+</script>
+{%- endif -%}

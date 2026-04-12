@@ -1,0 +1,40 @@
+{%- assign on_sale = false -%}
+{%- if current_variant.compare_at_price > current_variant.price -%}
+   {%- unless product.tags contains 'notsale'-%}
+   {%- assign on_sale = true -%}
+   {%-endunless-%}
+{%- endif -%}
+{%- assign sold_out = true -%}
+{%- if product.available  -%}
+{%- assign sold_out = false -%}
+{%- endif -%}
+{%- assign hot = false -%}
+{%- for tag in product.tags -%}
+{%- assign tag_handle = tag | handle -%}
+   {%- if tag_handle == 'hot' -%}
+   {%- assign hot = true -%}
+   {%- endif- %}
+{%- endfor -%}
+{%- assign not_group = false -%}
+{%- for tag in product.tags -%}
+{%- assign tag_handle = tag | handle -%}
+   {%- if tag_handle == 'not_group' -%}
+   {%- assign not_group = true -%}
+   {%- endif- %}
+{%- endfor -%}
+{%-unless product.tags contains 'notnew' -%}
+
+  {%- assign dateStart = product.created_at | date: '%s' -%}
+  {%- assign nowTimestamp = 'now' | date: '%s' -%}
+  {%- comment -%} difference in seconds {%- endcomment -%}
+  {%- assign diffSeconds = nowTimestamp | minus: dateStart -%}
+
+  {%- comment -%} difference in days {%- endcomment -%}
+  {%- assign diffDays = diffSeconds | divided_by: 3600 | divided_by: 24 -%}
+  {%- assign new_day_int = settings.new_day | default: 10 | plus: 0 -%}
+  {%- if diffDays <= new_day_int -%}
+      {%-assign new_label = true -%}
+    {%-else-%}
+      {%-assign new_label = false -%}
+    {%-endif-%}
+{%-endunless-%}

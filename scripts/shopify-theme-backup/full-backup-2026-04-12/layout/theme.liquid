@@ -1,0 +1,433 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <meta name="keywords" content="{{ shop.name | strip_html | strip }}">
+  <meta name="author" content="{{ shop.domain | strip_html | strip }}">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://static.klaviyo.com" crossorigin>
+  <link rel="dns-prefetch" href="https://ajax.googleapis.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x' }}" type="image/png">
+  {% endif %}
+   {%- if settings.favicon_apple != blank -%}
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ settings.favicon_apple | img_url: '152x' }}">
+  {%- endif -%}
+  <script type="text/javascript">document.documentElement.className = document.documentElement.className.replace('no-js', 'yes-js js_active js')</script>
+   {%- capture seo_title -%}
+    {%- if template.name == 'index' -%}
+      Health Supplements South Africa | Onelife Health
+    {%- else -%}
+      {{ page_title }}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 -%}
+        &ndash; {{ 'general.meta.page' | t: page: current_page }}
+      {%- endif -%}
+      {%- unless page_title contains shop.name or page_title contains 'Onelife Health' -%}
+        &ndash; {{ shop.name }}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endcapture -%}
+  <title>{{ seo_title }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+  {%- include 'social-meta-tags' -%}
+  {%- capture check_admin -%}
+
+{{ content_for_header }}{%- endcapture -%}
+  {%- capture check_tab -%}{{ content_for_layout  }}{%- endcapture -%}
+  {{ 'tab_shopify.min.css' | asset_url | stylesheet_tag }}
+  <link rel="preload" href="{{ 'gl_linecons_icons.min.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ 'gl_linecons_icons.min.css' | asset_url }}"></noscript>
+  {%- if check_admin contains 'design_mode' -%}{%- assign admin_shopify = true -%}{%- endif -%}
+  {%- if check_tab contains 'section_tab_gl_css' -%}
+  {%- assign section_tab_css_enable = true -%}
+  {%- endif -%}
+  {%- if check_tab contains 'gl_has_youtube' or check_tab contains 'has_section_gl_js' or check_tab contains 'animated_counter' -%}
+  {%- assign section_js_enable = true -%}
+  {%- endif -%}
+  {%- if check_tab contains 'gl_has_google_map' -%}
+  {%- assign section_js_googlem_enable = true -%}
+  {%- endif -%}
+  {%- include 'gl_header_css' -%}
+  
+  {%- include 'load-css' -%}
+  {%- include 'inc_css_home' -%}
+  {%- if settings.show_custom_css -%}{{ 'custom.css' | asset_url | stylesheet_tag }}{%- endif-%}
+  {%- if template contains 'product' -%}{%- include 'space_check_variant' -%}{%- include 'nathan_settings' -%}{%- endif-%}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
+ {%- comment -%} <script src="{{ 'jquery_migrate.min.js' | asset_url }}"></script>{%- endcomment -%}
+  
+
+{{ content_for_header }}
+<!-- GA4 One Life Health -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FQ819LGSV3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FQ819LGSV3');
+gtag('config', 'AW-11098746320');
+</script>  
+{%- if template contains 'product' -%}{%- include 'product-schema-jsonld' -%}{%- endif -%}
+{%- if template == "index" -%}<meta name="description" content="Shop health supplements in South Africa. 4,700+ vitamins and products from 90+ brands. Stores in Centurion, Glen Village and Edenvale. Free delivery available.">{%- endif -%}
+{%- include 'homepage-schema-jsonld' -%}
+  {%- comment -%}Global org + website schema (fires on every page){%- endcomment -%}
+  {%- include 'seo-jsonld-organization' -%}
+  {%- comment -%}Article schema for blog posts{%- endcomment -%}
+  {%- include 'seo-jsonld-article' -%}
+{%- comment -%}Breadcrumb Schema{%- endcomment -%}
+{%- if template contains 'collection' and collection -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"{{ shop.url }}"},
+  {"@type":"ListItem","position":2,"name":{{ collection.title | json }},"item":"{{ shop.url }}/collections/{{ collection.handle }}"}
+]}
+</script>
+{%- elsif template contains 'product' and product -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"{{ shop.url }}"},
+  {%- if product.collections.size > 0 -%}
+  {"@type":"ListItem","position":2,"name":{{ product.collections.first.title | json }},"item":"{{ shop.url }}/collections/{{ product.collections.first.handle }}"},
+  {"@type":"ListItem","position":3,"name":{{ product.title | json }},"item":"{{ shop.url }}{{ product.url }}"}
+  {%- else -%}
+  {"@type":"ListItem","position":2,"name":{{ product.title | json }},"item":"{{ shop.url }}{{ product.url }}"}
+  {%- endif -%}
+]}
+</script>
+{%- elsif template contains 'article' and article -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"{{ shop.url }}"},
+  {"@type":"ListItem","position":2,"name":{{ blog.title | json }},"item":"{{ shop.url }}/blogs/{{ blog.handle }}"},
+  {"@type":"ListItem","position":3,"name":{{ article.title | json }},"item":"{{ shop.url }}{{ article.url }}"}
+]}
+</script>
+{%- endif -%}
+
+
+  <style>
+    /* Smile.io Rewards — desktop: bottom-left; mobile: hidden (blocks chat widget) */
+    #smile-ui,
+    #smile-ui-container,
+    [id^="smile-"] iframe,
+    .smile-launcher {
+      left: 12px !important;
+      right: auto !important;
+      bottom: 24px !important;
+    }
+    @media (max-width: 768px) {
+      #smile-ui,
+      #smile-ui-container,
+      [id^="smile-"] iframe,
+      .smile-launcher {
+        display: none !important;
+      }
+    }
+    /* Cart free delivery threshold UI — hidden during nationwide free-delivery campaign */
+    .ship_nt_wrap,
+    .threshold_bar,
+    .threshold_bar .animate,
+    .threshold_bar span.animate,
+    .shipping_nt,
+    .thresholdError,
+    [class*="threshold_bar"],
+    [class*="ship_nt_wrap"] {
+      display: none !important;
+    }
+    /* Header signup banner hidden during free-delivery campaign */
+    .header-banner,
+    #header-banner-wrapper,
+    .header-banner-enabled .header-banner {
+      display: none !important;
+    }
+    /* Hide duplicate built-in grey top bar while custom signup bar is active */
+    .topbar-wrapp {
+      display: none !important;
+    }
+    /* Top Supplements mobile tabs: 2 columns, multiple rows, cleaner touch layout */
+    @media (max-width: 767px) {
+      #shopify-section-1511431962876 .gl_tta-tabs-container {
+        margin-bottom: 18px !important;
+      }
+      #shopify-section-1511431962876 .gl_tta-tabs-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px 12px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      #shopify-section-1511431962876 .gl_tta-tab {
+        width: auto !important;
+        display: block !important;
+        float: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+      }
+      #shopify-section-1511431962876 .gl_tta-tab:after,
+      #shopify-section-1511431962876 .gl_tta-tab:before,
+      #shopify-section-1511431962876 .gl_tta-tab > a:after,
+      #shopify-section-1511431962876 .gl_tta-tab > a:before {
+        display: none !important;
+        content: none !important;
+      }
+      #shopify-section-1511431962876 .gl_tta-tab > a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 46px !important;
+        padding: 10px 12px !important;
+        text-align: center !important;
+        line-height: 1.25 !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        border: 1px solid rgba(0,0,0,0.10) !important;
+        border-radius: 10px !important;
+        background: #f7f7f2 !important;
+      }
+      #shopify-section-1511431962876 .gl_tta-tab.gl_active > a,
+      #shopify-section-1511431962876 .gl_tta-tab > a:hover {
+        background: #eef5ec !important;
+        border-color: #a7c6a6 !important;
+        color: #6b8f66 !important;
+      }
+    }
+
+    /* Header signup banner: auto-height, single line, no empty space */
+    .header-banner {
+      height: auto !important;
+      min-height: unset !important;
+      padding: 6px 36px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      margin-bottom: 0 !important;
+    }
+    /* Remove gap between signup bar and delivery bar */
+    .header-banner + *,
+    .header-banner ~ .top-bar,
+    .header-banner ~ .gl_top_bar,
+    #header-banner-wrapper + *,
+    .website-wrapper {
+      margin-top: 0 !important;
+    }
+    .header-banner-enabled .top-bar,
+    .header-banner-enabled .gl_top_bar,
+    .header-banner-enabled #top-bar {
+      margin-top: 0 !important;
+      top: 0 !important;
+    }
+  </style>
+
+</head>
+{%- include 'class_body_theme' -%}
+<body class="sticky-toolbar-{{settings.sticky_toolbar}} {%- if settings.ajax_shop -%}basel-ajax-shop-on{%- endif %} template-{{ template | split: '.' | first }} {{header_class }} {{footer_layout}} {{ general_layout }} {{ search_layout }} {{ tab_class }} {{ design_products }} global-header-{{settings.header_design}} global-cart-design-{{settings.cart_design}}{%- if customer %} logged-in{%- endif %}{%- if catalog_mode %} catalog-mode-on{%- else %} catalog-mode-off{%- endif %}{%- unless template contains 'index' %} shopify shopify-page{%- endunless %}{%- if template contains '404' %} error404{%- endif-%}">
+  {%- include 'onelife-announcement-bar' -%}
+
+  {%- if customer == blank and settings.login_side -%}{%- include 'login_side' -%}{%- endif -%}
+  {%- if settings.color_light_mobile_menu -%}
+  <div class="nt_light">{%- section 'gl_mobile_menu'-%}</div>
+  {%- else -%}
+  {%- section 'gl_mobile_menu'-%}
+  {%- endif -%}
+  <!--END MOBILE-NAV-->
+  {%- if settings.enable_header_banner -%}
+  <div class="header-banner color-scheme-light">
+    {%- if settings.close_banner_btn -%}<a href="#" class="close-header-banner" aria-label="Link"></a>{%- endif -%}
+   {%- if settings.link_banner != blank -%}<a href="{{settings.link_banner}}" class="header-banner-link" aria-label="Link"></a>{%- endif -%}
+    <div class="container header-banner-container">
+      <p style="text-align: center; color: {{settings.header_banner_text}} !important;">{{settings.banner_content | strip_html }}</p>
+    </div>
+  </div>
+  {%- endif -%}
+  {%- if settings.cart_position == 'side' -%}{%- include 'cart_widget_side'-%}{%- endif -%}
+  <div class="website-wrapper">
+    {%- include 'header'-%}
+    {{ content_for_layout }}
+    {%- if template == 'index' -%}
+  {%- endif -%}
+  
+  <!-- FOOTER -->
+    {%- include 'footer' -%}
+    <div class="basel-close-side"></div>
+    {%- section 'gl_custom_color' -%}
+  </div>
+  <!-- end wrapper -->
+  {%- section 'toolbar_mobile' -%}
+  {%- if settings.show_backtop -%}<a href="#" class="scrollToTop basel-tooltip"><span class="basel-tooltip-label">Scroll To Top</span>Scroll To Top</a>{%- endif -%}
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'lazysizes.js' | asset_url }}"></script><![endif]-->
+  
+  
+  {%- include 'theme_string' -%}
+  {%- if template.directory == 'customers' -%}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {%- endif -%}
+  {% if admin_shopify -%}
+    {%- if settings.enable_update -%}{{ 'the4-update-theme.js' | asset_url | script_tag }}{%- include 'the4_update_theme' -%}{%- endif -%}
+    {{ 'tta.min.css' | asset_url | stylesheet_tag }}
+  {%- elsif section_tab_css_enable -%}
+    <!-- tta.min.css already loaded -->
+  {%- endif -%}
+  {% if admin_shopify -%}
+    {{ 'animate.min.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'waypoints.min.js' | asset_url }}" defer></script>
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'js_cp_gl_section.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'js_cp_gl_section.min.js' | asset_url }}"></script><![endif]-->
+  {%- elsif section_js_enable -%}
+    <!-- animate.min.css already loaded -->
+    <!-- waypoints already loaded above -->
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'js_cp_gl.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="/* js_cp_gl already loaded */"></script><![endif]-->
+  {%- endif -%}
+  {% if template contains 'collection' and settings.use_pagination == 'infinit' -%}
+  <!-- waypoints already loaded above -->
+  {%- endif -%}
+  {%- assign gl_portfolio = settings.blog_portfolio -%}
+  {%- if blog.handle == gl_portfolio and settings.portfolio_full_width -%}
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="/* js_cp_gl already loaded */" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="/* js_cp_gl already loaded */"></script><![endif]-->
+  {%- endif -%}
+  {%- include 'gl_bottom_js'-%}
+  {% if admin_shopify and template contains 'index' -%}
+  <!-- Maps deferred: only needed on contact pages -->
+<!-- <!-- Google Maps deferred --> -->
+  {%- elsif section_js_googlem_enable and settings.api_key != blank -%}
+  <script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key={{settings.api_key}}"></script>
+  {%- elsif section_js_googlem_enable -%}
+  <!-- Maps deferred: only needed on contact pages -->
+<!-- <!-- Google Maps deferred --> -->
+  {%- endif -%}
+  {%- include 'gl-currencies' -%}
+  {%- if settings.enable_popup -%}{%- include 'basel-promo-popup' -%}{%- endif -%}
+  {%- if settings.enable_cookies_popup -%}{%- include 'basel-cookies-popup' -%}{%- endif -%}
+  {%- if settings.enable_suggest_products -%}{%- include 'tea_suggest' -%}{%- endif -%}
+  {%- if settings.show_sticky_add and template.name == 'product' and product.available == true and linklists[product.handle].links.size == 0 -%}{%- include 'sticky_add_to_cart' -%}{%- endif -%}
+  
+  {%- if shop.enabled_currencies.size > 1 and settings.currency_type == '1' and settings.show_multiple_currencies %}{%- assign cart_iso_code = cart.currency.iso_code -%}{%- form 'currency', class: "hide hidden dn" -%}<select name="currency" id="CurrencySelector">{%- for currency in shop.enabled_currencies -%}{%- assign iso_code = currency.iso_code -%}<option value="{{iso_code}}"{% if iso_code == cart_iso_code %} selected="true"{% endif %}>{{iso_code}}</option>{%- endfor -%}</select>{%- endform -%}{%- endif -%}
+  {%- if template contains 'product' or template contains 'article' or check_photowipe -%}{%- include 'photoswipe' -%}{%- endif -%}
+  {%- if settings.use_compare and pages['compare'].empty? != true -%}{%- include 'gl_compare' -%}{%- endif -%}
+  {%- if settings.custom_js != blank -%}
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'custom_js.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'custom_js.js' | asset_url }}"></script><![endif]-->
+  {%- endif -%}
+  {%- include 'last_catelog_mod',var_last:true -%}
+ {% include 'smile-initializer' %}
+
+  <script>
+  window.chatbaseConfig = {
+    chatbotId: "I2dBNIwHPcLu2fOzPb3VC",
+  }
+</script>
+<script
+  src="https://www.chatbase.co/embed.min.js"
+  id="I2dBNIwHPcLu2fOzPb3VC"
+  defer>
+</script>
+<script>
+  (function() {
+    var ids = ['chatbase-bubble-button','chatbase-bubble-window','chatbase-message-bubbles'];
+    function moveChatbase() {
+      ids.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.style.setProperty('right','auto','important');
+          el.style.setProperty('left','20px','important');
+        }
+      });
+    }
+    var obs = new MutationObserver(moveChatbase);
+    obs.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+    window.addEventListener('load', moveChatbase);
+  })();
+</script>
+  
+
+<script>
+  /* Smile.io launcher — hide on mobile (conflicts with chat widget) */
+  (function() {
+    function fixSmile() {
+      /* Try both known Smile.io element IDs */
+      var el = document.getElementById('smile-ui') || document.getElementById('smile-ui-container') || document.querySelector('[id^="smile-"]');
+      if (!el) return;
+      if (window.innerWidth <= 768) {
+        el.style.setProperty('display', 'none', 'important');
+      } else {
+        el.style.setProperty('left', '12px', 'important');
+        el.style.setProperty('right', 'auto', 'important');
+        el.style.setProperty('bottom', '24px', 'important');
+        el.style.removeProperty('display');
+      }
+    }
+    fixSmile();
+    var obs = new MutationObserver(fixSmile);
+    obs.observe(document.body, { childList: true, subtree: true, attributes: true });
+    window.addEventListener('resize', fixSmile);
+  })();
+</script>
+
+
+{% if template == 'index' %}<!-- Rewards sticky tab — homepage + mobile only -->
+<style>
+  #rewards-tab {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    #rewards-tab {
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #1B5E20;
+      color: #fff !important;
+      font-family: sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 14px 10px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      z-index: 99999;
+      box-shadow: 3px 0 10px rgba(0,0,0,0.25);
+      text-decoration: none !important;
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      transform: translateY(-50%) rotate(180deg);
+      min-width: 36px;
+      text-align: center;
+    }
+  }
+</style>
+<a id="rewards-tab" href="/pages/rewards" title="View Rewards Programme">🎁 Rewards</a>
+{% endif %}
+<script>
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.single_add_to_cart_button, .add_to_cart_button, [data-action="add-to-cart"]');
+  if (btn) {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-11098746320/fejTCOSygpAcENDbpawp',
+      'value': 1.0,
+      'currency': 'ZAR'
+    });
+  }
+});
+</script>
+</body>
+</html>

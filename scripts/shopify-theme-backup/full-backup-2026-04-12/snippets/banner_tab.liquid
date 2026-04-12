@@ -1,0 +1,52 @@
+<div class="spb_column gl_column_container gl_col-sm-4 gl_hidden-sm gl_hidden-xs">
+   <div class="gl_column-inner ">
+      <div class="spb_wrapper">
+         <div class="promo-banner cursor-pointer text-center vertical-alignment-top banner- hover-4 color-scheme-dark " onclick="window.location.href='{{ section.settings.banner_link }}'">
+            <div class="main-wrapp-img">
+               <div class="banner-image pr">
+                  {%- if section.settings.image == blank -%}
+                     <img src="https://placehold.it/360x400" alt ="placehold">
+                  {%- else -%}
+                  {%- assign image = section.settings.image -%}
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" class="lazyload w__100 gl_single_image-img attachment-full" alt="{{image.alt}}">
+                 <div class="jas-wrap-lazy"></div>
+                 {%- endif -%}
+               </div>
+            </div>
+            <div class="wrapper-content-baner">
+               <div class="banner-inner">
+                  <p></p>
+                  {{ section.settings.content }}
+                  {%- if section.settings.banner_link != blank and section.settings.banner_btn_title != blank  -%}
+                  <p><a class="btn btn-color-primary btn-style-default btn-size-small" href="{{ section.settings.banner_link }}">{{ section.settings.banner_btn_title }}</a></p>
+                  {%- endif -%}
+               </div>
+            </div>
+         </div>
+         <div class="promo-banner cursor-pointer text-center vertical-alignment-top banner- hover-4 color-scheme-dark " onclick="window.location.href='{{ section.settings.banner_link_2}}'">
+            <div class="main-wrapp-img">
+               <div class="banner-image pr">
+                  {%- if section.settings.image_2 == blank -%}
+                     <img src="https://placehold.it/360x400" alt ="placehold">
+                  {%- else -%}
+                  {%- assign image = section.settings.image_2 -%}
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" class="lazyload w__100 gl_single_image-img attachment-full" alt="{{image.alt}}">
+                  <div class="jas-wrap-lazy"></div>
+                 {%- endif -%}
+               </div>
+            </div>
+            <div class="wrapper-content-baner">
+               <div class="banner-inner">
+                  <p></p>
+                  {{ section.settings.content_2 }}
+                  {%- if section.settings.banner_link_2 != blank and section.settings.banner_btn_title_2 != blank  -%}
+                  <p><a class="btn btn-color-primary btn-style-default btn-size-small" href="{{ section.settings.banner_link_2 }}">{{ section.settings.banner_btn_title_2 }}</a></p>
+                  {%- endif -%}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

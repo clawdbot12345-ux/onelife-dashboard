@@ -1,0 +1,66 @@
+{%- assign data_time = user_countdown -%}
+{%- assign bl_data_time = false -%}
+{%- if user_countdown contains ',' -%}
+  {%- comment -%} 2018/01/19,2018/02/15,2018/03/20 
+   int : 31/12/1991 -> 19911231
+  2018/02/05 17:34:56 {%- endcomment -%}
+  {%- assign arr_user_countdown = user_countdown | split:"," -%}
+  {%- assign current_times = 'now' | date: "%Y%m%d" | times: 1 -%}
+  {%- for t in arr_user_countdown -%}
+        {%- assign t_r = t | remove: "/" | times: 1 -%}
+        {%- if t_r >= current_times -%}
+            {%- assign data_time = t -%}
+            {%- assign bl_data_time = false -%}
+            {%- break -%}
+        {%- else -%}
+            {%- assign bl_data_time = true -%}
+        {%- endif -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- assign current_times = 'now' | date: "%Y%m%d" | times: 1 -%}
+  {%- assign arr_user_countdown = user_countdown | split:" " | first -%}
+  {%- assign t_r = arr_user_countdown | remove: "/" | times: 1 -%}
+  {%- if t_r >= current_times -%}
+      {%- assign bl_data_time = false -%}
+  {%- else -%}
+      {%- assign bl_data_time = true -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if user_countdown != blank and bl_data_time == false and jas_countdow_page != blank and settings.show_countdown -%}
+    <div class="jas_progress_bar">
+      {%- if jas_countdow_page != 'jas_page_sticky' -%}<div class="gecko_progress_bar {{class}}"></div>{%- endif -%}
+      <div class="jas_countdow_page jas_clock_ticker clearfix" data-time="{{ data_time }}"></div>
+      {%- comment -%}<p class="jas_countdown_end">{{ 'products.product.end_date' | t }} {{ data_time }}</p>{%- endcomment -%}
+    </div>
+{%- elsif settings.gecko_stock_countdown and jas_countdow_page != blank -%}
+  {%- comment -%}
+    8:00:00,16:00:00,23:59:60
+    Hour of the day, 24-hour clock (00..23)
+    Minute of the hour (00..59)
+    Second of the minute (00..60)
+  {%- endcomment -%}
+  {%- assign user_countdown = product.metafields.meta.countdown_day -%}
+  {%- if user_countdown contains ',' or user_countdown == blank -%}
+    {%- assign arr_time = settings.stock_time | split:',' -%}
+    {%- assign current_time = 'now' | date: "%H%M%S" | times: 1 -%}
+    {%- assign current_day = 'now' | date: "%Y/%m/%d " -%}
+    {%- assign get_time = '19041994' -%}
+    {%- assign next_time = '19041994' -%}
+    {%- for time in arr_time -%}
+       {%- assign time_num = time | remove:':' | remove:' ' | plus:0 -%}
+        {%- if time_num >= current_time -%}
+         {%- assign get_time = time | remove:' ' | prepend:current_day -%}
+         {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}{%- assign get_time = user_countdown -%}
+  {%- endif -%}
+    {%- if get_time != '19041994' -%}
+   <div class="jas_progress_bar">
+      {%- if jas_countdow_page != 'jas_page_sticky' -%}<div class="gecko_progress_bar {{class}}"></div>{%- endif -%}
+      <div class="jas_countdow_page jas_loop_bar jas_clock_ticker clearfix nt_loop_deal" data-setttime={{settings.stock_time |json}} data-zone={{'today' | date: "%Z" |json}} data-time="{{get_time}}" data-next="{{next_time}}"></div>
+   </div>
+  {%- endif -%}
+{%- elsif bl_data_time == false and jas_countdow_page == blank -%}
+    <div class="countdown-time pa"><div class="jas-countdown flex tc {{ countdown_timer_style }}" data-time="{{ data_time }}"></div></div>
+{%- endif -%}

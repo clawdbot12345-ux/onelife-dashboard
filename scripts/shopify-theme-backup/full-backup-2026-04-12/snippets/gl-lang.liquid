@@ -1,0 +1,23 @@
+{%- if currency_header -%}
+    <ul>
+      {%- assign title_dow = settings.language_title | downcase -%}
+       {%- for link in linklists[settings.language_link_list].links -%}
+        {%- assign link_dow = link.title | downcase -%}
+        {%- assign link_dow_2 = link.title | split: '[' | first | downcase -%}
+       <li class="{%- if link.active or title_dow == link_dow or title_dow == link_dow_2 -%} active{%- endif -%}"><a class="currency__item" href="{{ link.url }}">{{ link.title | split: '[' | first }}</a></li>
+       {%- endfor -%}
+    </ul>
+{%- else -%}
+<li id="menu-item-0219041994" class="language menu-item menu-item-19041994 menu-item-has-children menu-item-design-default item-event-hover">
+   <a href="#">{{ settings.language_title }}</a>
+   <div class="sub-menu-dropdown color-scheme-dark">
+      <div class="container">
+         <ul class="sub-menu color-scheme-dark">
+         	{%- for link in linklists[settings.language_link_list].links -%}
+         		 <li class="menu-item menu-item-design-default item-event-hover{%- if link.active %} active{%- endif -%}"><a href="{{ link.url }}">{{ link.title | split: '[' | first }}</a></li>
+         	{%- endfor -%}
+         </ul>
+      </div>
+   </div>
+</li>
+ {%- endif -%}

@@ -1,0 +1,56 @@
+{%- if settings.platform_email == '3' -%}
+   {%- if settings.klaviyo_list_id != blank -%}
+   <form id="klaviyo_frm_{{block.id}}" class="mc4wp-form mc4wp-form-{{block.id}} mc4wp-form-basic klaviyo_sub_frm" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" novalidate="novalidate">
+    <div class="mc4wp-form-fields">
+       <input type="hidden" name="g" value="{{settings.klaviyo_list_id}}">
+       <p class="mailchimp-input-icon">
+        <label>Email address: </label>
+        <input type="email" name="email" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"  value="{%- if customer -%}{{ customer.email }}{%- endif -%}" required="required">
+       </p>
+       <p><input type="submit" class="klaviyo_btn btn submit-field ajax_klaviyo_{{settings.use_ajax_klaviyo}}" value="{{ 'general.newsletter_form.submit' | t }}"></p>
+       <div class="mc4wp-response klaviyo_messages">
+         <div class="mc4wp-alert mc4wp-success success_message" style="display:none;">{{ 'general.newsletter_form.confirmation' | t }}</div>
+         <div class="mc4wp-alert mc4wp-error error_message" style="display:none;"></div>
+       </div> 
+    </div>
+   </form>
+   {%- else -%}
+   <div style="text-align: center;"><strong><em>This Klaviyo list ID doesn’t currently include any content. Add Klaviyo list ID to this section using the sidebar.</em></strong></div>
+   {%- endif -%}
+{%- elsif settings.platform_email == '4' -%}
+   {%- if settings.newsletter_form_action != "" -%}
+   <form id="mc4wp-form-{{block.id}}" class="mc4wp-form mc4wp-form-{{block.id}} mc4wp-form-basic" method="post" action="{{ settings.newsletter_form_action }}" target="_blank" data-id="{{block.id}}">
+    <div class="mc4wp-form-fields">
+      <p class="mailchimp-input-icon">
+        <label>Email address: </label>
+        <input type="email" name="EMAIL" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" value="{%- if customer -%}{{ customer.email }}{%- endif -%}" required="">
+      </p>
+      <p>
+        <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}">
+      </p>
+      {%- if bottom -%}<div class="hidden hide"></div>{%- endif -%}
+    </div>
+   </form>
+   {%- else -%}
+   <div style="text-align: center;"><strong><em>Add newsletter redirect link in General / MailChimp form action URL</em></strong></div>
+   {%- endif -%}
+{%- else -%}
+   {%- form 'customer', class:'mc4wp-form' -%}
+   <div class="mc4wp-form-fields">
+    <p class="mailchimp-input-icon">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <label>Email address: </label>
+      <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" value="{%- if customer -%}{{ customer.email }}{%- endif -%}" required="">
+    </p>
+    <p>
+      <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}">
+    </p>
+    {%- if bottom -%}<div class="hidden hide"></div>{%- endif -%}
+   </div>
+   {%- if form.posted_successfully? -%}
+   <div class="mc4wp-response"><div class="mc4wp-alert mc4wp-success">{{ 'contact.form.post_success' | t }}</div></div>
+   {%- elsif form.errors -%}
+   <div class="mc4wp-response"><div class="mc4wp-alert mc4wp-error">{{ form.errors | default_errors }}</div></div>
+   {%- endif -%}
+   {%- endform -%}
+{%- endif -%}

@@ -1,0 +1,328 @@
+{%- if left_text -%}
+  <div class="text-right spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.text_width }}{%- if block.settings.hide_text_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_text_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_text_column spb_content_element{%- if block.settings.animation != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation }} {{ block.settings.animation }} spb_start_animation animated{%- endif -%}">
+             <div class="spb_wrapper">
+                {%- if block.settings.source == '1' -%}
+                   {%- if block.settings.product_single != blank -%}
+                      {%- if block.settings.show_vendor and product.vendor != blank -%}<p style="margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; font-size: 12px; color: #b1b1b1;">{{ product.vendor }}</p>{%- endif -%}
+                      <h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ product.title }}</h1>
+                      {%- if block.settings.show_type and product.type != blank -%}<h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ product.type }}</h1>{%- endif -%}
+                      <h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">{{ product.price | money }}</h1>
+                      {%- if settings.use_description_excerpt_custom == '2' and page_description.size > 0 -%}
+                     <p>{{ page_description }}</p>
+                     {%- elsif product.metafields.meta.description_excerpt and settings.use_description_excerpt_custom == '3' -%}
+                       {{  product.metafields.meta.description_excerpt  }}
+                     {% elsif product.description contains  '[' %}
+                       {% assign pr_des = product.description | split: '[' %}
+                       {% assign pr_des = pr_des[1] | split: ']' | first | append:']' | prepend:'[' %}
+                       <p>{{ product.description | remove: pr_des | strip_html | truncatewords: 31 }}</p>
+                     {%-else-%}
+                       <p>{{ product.description | strip_html | truncatewords: 31 }}</p>
+                     {%-endif-%}
+               {%- unless collection -%}
+               {%- assign collection = product.collections.first -%}
+               {%- endunless -%}
+                      <p>{%- include 'gl_btn_add', tab_button:true,url_nt: product.url -%}</p>
+                   {%- else -%}
+                      <h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">Eames Sofa</h1>
+                      <h1 style="margin-bottom: 0px; font-weight: bold; text-transform: uppercase; font-size: 42px;">Compact</h1>
+                      <h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">$800</h1>
+                      <p>Vel himenaeos quam fringilla a interdum blandit adipiscing ullamcorper per consequat in ut a enim suspendisse luctus commodo varius dictumst egestas at curae ultricies nam.</p>
+                      <p><a class="btn btn-color-primary btn-style-default btn-size-small" href="/admin/products">read more</a></p>
+                   {%- endif -%}
+                {%- else -%}
+                      {%- if block.settings.author != blank -%}<p style="margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; font-size: 12px; color: #b1b1b1;">{{ block.settings.author }}</p>{%- endif -%}
+                      {%- if block.settings.product_title != blank -%}<h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ block.settings.product_title }}</h1>{%- endif -%}
+                      {%- if block.settings.sub_product_title != blank -%}<h1 style="margin-bottom: 0px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ block.settings.sub_product_title }}</h1>{%- endif -%}
+                      {%- if block.settings.product_price != blank -%}<h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">{{ block.settings.product_price }}</h1>{%- endif -%}
+                      {%- if block.settings.product_description != blank -%}<p>{{ block.settings.product_description | strip_html }}</p>{%- endif -%}
+                      {%- if block.settings.link != blank -%}<p><a class="btn btn-color-primary btn-style-default btn-size-small" href="{{ block.settings.link }}">{{ block.settings.title_btn }}</a></p>{%- endif -%}
+                {%- endif -%}
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.one_width }}{%- if block.settings.hide_one_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_one_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_one }} {%- if block.settings.animation_img_one != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation_img_one }} {{ block.settings.animation_img_one }} spb_start_animation animated{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey {{ block.settings.image_style_one }}">
+                   {%- if block.settings.product_single != blank or block.settings.image_source_one != blank -%}
+                         {%- if block.settings.source == '1' -%}
+                              {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                               <img src="{{ product.featured_image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.featured_image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full" alt="{{product.featured_image.alt}}">
+                               <div class="jas-wrap-lazy"></div>
+                  {%- elsif block.settings.image_source_one != blank -%}
+                            {%- assign image = block.settings.image_source_one -%}
+                             {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                               <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{image.alt}}">
+                              <div class="jas-wrap-lazy"></div>
+                  {%- else -%}
+                         <img width="360" height="415" src="https://cdn.shopify.com/s/files/1/1933/6253/files/element-furniture-1.jpg?13506386045270342697" class="gl_single_image-img attachment-full" alt="">
+                         {%- endif -%}
+                   {%- else -%}
+                      <img width="360" height="415" src="https://cdn.shopify.com/s/files/1/1933/6253/files/element-furniture-1.jpg?13506386045270342697" class="gl_single_image-img attachment-full" alt="">
+                   {%- endif -%}
+                </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- if product.images.size > 1 and block.settings.source == '1' -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.two_width }}{%- if block.settings.hide_two_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_two_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_two }}{%- if block.settings.animation_img_one != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation_img_one }} {{ block.settings.animation_img_one }}{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey">
+                  {%- assign img_url = product.images[1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img src="{{ product.images[1] | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.images[1].aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{product.images[1].alt}}"> 
+                  <div class="jas-wrap-lazy"></div>
+               </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- elsif block.settings.image_source_two != blank and block.settings.source == '2' -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.two_width }}{%- if block.settings.hide_two_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_two_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_two }}{%- if block.settings.animation_img_two != 'none' %} spb_animate_when_almost_visible spb_start_animation animated spb_{{ block.settings.animation_img_two }} {{ block.settings.animation_img_two }}{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey">
+                  {%- assign image = block.settings.image_source_two -%}
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{image.alt}}">
+                  <div class="jas-wrap-lazy"></div>
+               </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- endif -%}
+{%- elsif center_text -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.one_width }}{%- if block.settings.hide_one_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_one_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_one }} {%- if block.settings.animation_img_one != 'none' %} spb_animate_when_almost_visible spb_start_animation animated spb_{{ block.settings.animation_img_one }} {{ block.settings.animation_img_one }}{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey {{ block.settings.image_style_one }}">
+                   {%- if block.settings.product_single != blank or block.settings.image_source_one != blank -%}
+                         {%- if block.settings.source == '1' -%}
+                              {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                               <img src="{{ product.featured_image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.featured_image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full" alt="{{product.featured_image.alt}}">
+                            <div class="jas-wrap-lazy"></div>
+                  {%- elsif block.settings.image_source_one != blank -%}
+                            {%- assign image = block.settings.image_source_one -%}
+                             {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                               <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{image.alt}}">
+                              <div class="jas-wrap-lazy"></div>
+                  {%- else -%}
+                         <img width="360" height="415" src="https://cdn.shopify.com/s/files/1/1933/6253/files/element-furniture-1.jpg?13506386045270342697" class="gl_single_image-img attachment-full" alt="">
+                         {%- endif -%}
+                   {%- else -%}
+                      <img width="360" height="415" src="https://cdn.shopify.com/s/files/1/1933/6253/files/element-furniture-1.jpg?13506386045270342697" class="gl_single_image-img attachment-full" alt="">
+                   {%- endif -%}
+                </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+   <div class="text-center spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.text_width }}{%- if block.settings.hide_text_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_text_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_text_column spb_content_element gl_mb_0{%- if block.settings.animation != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation }} {{ block.settings.animation }}{%- endif -%}">
+             <div class="spb_wrapper">
+                {%- if block.settings.source == '1' -%}
+                   {%- if block.settings.product_single != blank -%}
+                      {%- if block.settings.show_vendor and product.vendor != blank -%}<p style="margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; font-size: 12px; color: #b1b1b1;">{{ product.vendor }}</p>{%- endif -%}
+                      <h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ product.title }}</h1>
+                      {%- if block.settings.show_type and product.type != blank -%}<h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ product.type }}</h1>{%- endif -%}
+                      <h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">{{ product.price | money }}</h1>
+                      {%- if settings.use_description_excerpt_custom == '2' and page_description.size > 0 -%}
+                     <p>{{ page_description }}</p>
+                     {%- elsif product.metafields.meta.description_excerpt and settings.use_description_excerpt_custom == '3' -%}
+                       {{  product.metafields.meta.description_excerpt  }}
+                     {% elsif product.description contains  '[' %}
+                       {% assign pr_des = product.description | split: '[' %}
+                       {% assign pr_des = pr_des[1] | split: ']' | first | append:']' | prepend:'[' %}
+                       <p>{{ product.description | remove: pr_des | strip_html | truncatewords: 31 }}</p>
+                     {%-else-%}
+                       <p>{{ product.description | strip_html | truncatewords: 31 }}</p>
+                     {%-endif-%}
+               {%- unless collection -%}
+               {%- assign collection = product.collections.first -%}
+               {%- endunless -%}
+                      <p>{%- include 'gl_btn_add', tab_button:true,url_nt: product.url -%}</p>
+                   {%- else -%}
+                      <h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">Eames Sofa</h1>
+                      <h1 style="margin-bottom: 0px; font-weight: bold; text-transform: uppercase; font-size: 42px;">Compact</h1>
+                      <h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">$800</h1>
+                      <p>Vel himenaeos quam fringilla a interdum blandit adipiscing ullamcorper per consequat in ut a enim suspendisse luctus commodo varius dictumst egestas at curae ultricies nam.</p>
+                      <p><a class="btn btn-color-primary btn-style-default btn-size-small" href="/admin/products">read more</a></p>
+                   {%- endif -%}
+                {%- else -%}
+                      {%- if block.settings.author != blank -%}<p style="margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; font-size: 12px; color: #b1b1b1;">{{ block.settings.author }}</p>{%- endif -%}
+                      {%- if block.settings.product_title != blank -%}<h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ block.settings.product_title }}</h1>{%- endif -%}
+                      {%- if block.settings.sub_product_title != blank -%}<h1 style="margin-bottom: 0px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ block.settings.sub_product_title }}</h1>{%- endif -%}
+                      {%- if block.settings.product_price != blank -%}<h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">{{ block.settings.product_price }}</h1>{%- endif -%}
+                      {%- if block.settings.product_description != blank -%}<p>{{ block.settings.product_description | strip_html }}</p>{%- endif -%}
+                      {%- if block.settings.link != blank -%}<p><a class="btn btn-color-primary btn-style-default btn-size-small" href="{{ block.settings.link }}">{{ block.settings.title_btn }}</a></p>{%- endif -%}
+                {%- endif -%}
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- if product.images.size > 1 and block.settings.source == '1' -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.two_width }}{%- if block.settings.hide_two_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_two_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_two }}{%- if block.settings.animation_img_one != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation_img_one }} {{ block.settings.animation_img_one }}{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey">
+                  {%- assign img_url = product.images[1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img src="{{ product.images[1] | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.images[1].aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{product.images[1].alt}}"> 
+                  <div class="jas-wrap-lazy"></div>
+               </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- elsif block.settings.image_source_two != blank and block.settings.source == '2' -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.two_width }}{%- if block.settings.hide_two_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_two_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_two }}{%- if block.settings.animation_img_two != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation_img_two }} {{ block.settings.animation_img_two }}{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey">
+                  {%- assign image = block.settings.image_source_two -%}
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{image.alt}}">
+                  <div class="jas-wrap-lazy"></div>
+               </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- endif -%}
+{%- else -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.one_width }}{%- if block.settings.hide_one_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_one_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_one }} {%- if block.settings.animation_img_one != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation_img_one }} {{ block.settings.animation_img_one }}{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey {{ block.settings.image_style_one }}">
+                   {%- if block.settings.product_single != blank or block.settings.image_source_one != blank -%}
+                         {%- if block.settings.source == '1' -%}
+                              {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                               <img src="{{ product.featured_image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.featured_image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full" alt="{{product.featured_image.alt}}">
+                               <div class="jas-wrap-lazy"></div>
+                  {%- elsif block.settings.image_source_one != blank -%}
+                            {%- assign image = block.settings.image_source_one -%}
+                             {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                               <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{image.alt}}">
+                               <div class="jas-wrap-lazy"></div>
+                  {%- else -%}
+                         <img width="360" height="415" src="https://cdn.shopify.com/s/files/1/1933/6253/files/element-furniture-1.jpg?13506386045270342697" class="gl_single_image-img attachment-full" alt="">
+                         {%- endif -%}
+                   {%- else -%}
+                      <img width="360" height="415" src="https://cdn.shopify.com/s/files/1/1933/6253/files/element-furniture-1.jpg?13506386045270342697" class="gl_single_image-img attachment-full" alt="">
+                   {%- endif -%}
+                </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- if product.images.size > 1 and block.settings.source == '1' -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.two_width }}{%- if block.settings.hide_two_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_two_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_two }}{%- if block.settings.animation_img_one != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation_img_one }} {{ block.settings.animation_img_one }}{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey">
+                  {%- assign img_url = product.images[1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img src="{{ product.images[1] | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.images[1].aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{product.images[1].alt}}"> 
+                  <div class="jas-wrap-lazy"></div>
+               </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- elsif block.settings.image_source_two != blank and block.settings.source == '2' -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.two_width }}{%- if block.settings.hide_two_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_two_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_single_image spb_content_element gl_mb_0 gl_align_{{ block.settings.image_alignment_two }} {%- if block.settings.animation_img_two != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation_img_two }} {{ block.settings.animation_img_two }}{%- endif -%}">
+             <figure class="spb_wrapper gl_figure">
+                <div class="gl_single_image-wrapper gl_box_border_grey">
+                  {%- assign image = block.settings.image_source_two -%}
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" class="lazyload gl_single_image-img attachment-full w__100" alt="{{image.alt}}">
+                  <div class="jas-wrap-lazy"></div>
+               </div>
+             </figure>
+          </div>
+       </div>
+    </div>
+  </div>
+  {%- endif -%}
+  <div class="spb_column gl_column_container gl_col-md-4 gl_col-lg-{{ block.settings.text_width }}{%- if block.settings.hide_text_tablets %} gl_hidden-sm{%- else %} gl_col-sm-6{%- endif %}{%- if block.settings.hide_text_phones %} gl_hidden-xs{%- endif -%}">
+    <div class="gl_column-inner ">
+       <div class="spb_wrapper">
+          <div class="spb_text_column gl_mb_0 spb_content_element{%- if block.settings.animation != 'none' %} spb_animate_when_almost_visible spb_{{ block.settings.animation }} {{ block.settings.animation }}{%- endif -%}">
+             <div class="spb_wrapper">
+                {%- if block.settings.source == '1' -%}
+                   {%- if block.settings.product_single != blank -%}
+                      {%- if block.settings.show_vendor and product.vendor != blank -%}<p style="margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; font-size: 12px; color: #b1b1b1;">{{ product.vendor }}</p>{%- endif -%}
+                      <h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ product.title }}</h1>
+                      {%- if block.settings.show_type and product.type != blank -%}<h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ product.type }}</h1>{%- endif -%}
+                      <h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">{{ product.price | money }}</h1>
+                      {%- if settings.use_description_excerpt_custom == '2' and page_description.size > 0 -%}
+                     <p>{{ page_description }}</p>
+                     {%- elsif product.metafields.meta.description_excerpt and settings.use_description_excerpt_custom == '3' -%}
+                       {{  product.metafields.meta.description_excerpt  }}
+                     {% elsif product.description contains  '[' %}
+                       {% assign pr_des = product.description | split: '[' %}
+                       {% assign pr_des = pr_des[1] | split: ']' | first | append:']' | prepend:'[' %}
+                       <p>{{ product.description | remove: pr_des | strip_html | truncatewords: 31 }}</p>
+                     {%-else-%}
+                       <p>{{ product.description | strip_html | truncatewords: 31 }}</p>
+                     {%-endif-%}
+               {%- unless collection -%}
+               {%- assign collection = product.collections.first -%}
+               {%- endunless -%}
+                      <p>{%- include 'gl_btn_add', tab_button:true,url_nt: product.url -%}</p>
+                   {%- else -%}
+                      <h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">Eames Sofa</h1>
+                      <h1 style="margin-bottom: 0px; font-weight: bold; text-transform: uppercase; font-size: 42px;">Compact</h1>
+                      <h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">$800</h1>
+                      <p>Vel himenaeos quam fringilla a interdum blandit adipiscing ullamcorper per consequat in ut a enim suspendisse luctus commodo varius dictumst egestas at curae ultricies nam.</p>
+                      <p><a class="btn btn-color-primary btn-style-default btn-size-small" href="/admin/products">read more</a></p>
+                   {%- endif -%}
+                {%- else -%}
+                      {%- if block.settings.author != blank -%}<p style="margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; font-size: 12px; color: #b1b1b1;">{{ block.settings.author }}</p>{%- endif -%}
+                      {%- if block.settings.product_title != blank -%}<h1 style="margin-bottom: -10px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ block.settings.product_title }}</h1>{%- endif -%}
+                      {%- if block.settings.sub_product_title != blank -%}<h1 style="margin-bottom: 0px; font-weight: bold; text-transform: uppercase; font-size: 42px;">{{ block.settings.sub_product_title }}</h1>{%- endif -%}
+                      {%- if block.settings.product_price != blank -%}<h1 class="color-primary" style="margin-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 48px; line-height: 1;">{{ block.settings.product_price }}</h1>{%- endif -%}
+                      {%- if block.settings.product_description != blank -%}<p>{{ block.settings.product_description | strip_html }}</p>{%- endif -%}
+                      {%- if block.settings.link != blank -%}<p><a class="btn btn-color-primary btn-style-default btn-size-small" href="{{ block.settings.link }}">{{ block.settings.title_btn }}</a></p>{%- endif -%}
+                {%- endif -%}
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+{%- endif -%}

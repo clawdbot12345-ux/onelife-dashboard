@@ -1,0 +1,65 @@
+{%- layout none -%}
+{%- comment-%}https://demo-basel.myshopify.com/products/copy-of-backpack-double-strap-4?variant=36455796946&view=ajax{%-endcomment-%}
+{%- capture min_html -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign product_image_photowipe = 'master' -%}
+{%- if product.has_only_default_variant == false and product.images.size > 1 -%}
+  {%- for option in product.options_with_values -%}
+     {%- if settings.color_name_check != blank -%}{%- assign _gl_color_name = settings.color_name_check | replace: ' ,', ',' | replace: ', ', ',' | split: ',' -%}{%- assign gl_color_name = _gl_color_name | downcase -%}{%-else-%}{%- assign gl_color_name = '\nathan_dt\' -%}{%-endif-%}
+      {%- assign downcased_option = option.name | downcase -%}
+      {%- assign downcased_option_check = downcased_option | prepend: '"' | append: '"' | strip -%} 
+      {%- if downcased_option == 'color' or downcased_option == 'couleur' or downcased_option == 'colour' or gl_color_name contains downcased_option_check -%}
+        {%- assign po_position = option.position -%}
+        {%- assign nt_carousel = 'nt-group-carousel' -%}
+        {%- case po_position -%}
+           {%- when 1 -%}{%- assign cv_color = current_variant.option1 | handleize -%}
+           {%- when 2 -%}{%- assign cv_color = current_variant.option2 | handleize -%}
+           {%- else -%}{%- assign cv_color = current_variant.option3 | handleize -%}
+        {%- endcase -%}
+        {%- break -%}
+    {%- endif -%}   
+   {%- endfor -%}
+{%- endif -%}
+{%- for image in product.images -%}
+  {%- assign img_alt = image.alt | split:'|' | first | handleize | strip -%}
+  {%- if img_alt == cv_color -%}
+  {%- if crop_nt != blank -%}
+  {%- assign image_width_append = crop_nt -%}
+  {%- assign image_width_append_arr = image_width_append | replace: ' x', 'x' | replace: 'x ', 'x' | replace: ' x ', 'x' | split: 'x' -%}
+  {%- assign image_width = image_width_append_arr[0] -%}
+  {%- assign image_size_first = image_width | plus:0 -%}
+  {%- assign image_height = image_size_first | divided_by: image.aspect_ratio | round -%}
+  {%- else -%} 
+  {%- assign product_image_size = image.width | append: 'x' -%}
+  {%- assign image_width = image.width -%}
+  {%- endif -%}
+  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+  <figure data-variant="{{image.variants.first.id}}" data-lenght= "{{product.options.size}}" data-one='{{ current_variant.option1 | handleize }}' data-two= '{{ current_variant.option2 | handleize }}' data-three= '{{ current_variant.option3 | handleize }}' data-thumb="{%- if crop_thumb_nt != blank -%}{%-include 'gl_image_format_crop',src: image.src , size: crop_thumb_nt,position:'top' -%}{%- else -%}{%-include 'gl_image_format',cache:true,src: image.src , size: '219x' -%}{%- endif -%}" data-alt="{{ image.alt | split:'|' | last | escape }}" data-id="{{image.id}}" class="shopify-product-gallery__image">
+    <a href="{{ image | img_url: product_image_zoom_size, scale: product_image_scale }}">
+      {%- if crop_nt != blank -%}
+      {%- assign image_height = 50 | divided_by: image.aspect_ratio | round -%}
+      {%- assign image_size_el = 50 | append:'x' | append:image_height -%}
+      <img width="{{ image_size_first }}" height="{{ image_height }}" src="{%-include 'gl_image_format_crop',src: image.src , size:image_size_el,position:'top' %}" class="lazyload attachment-shop_catalog size-shop_catalog" alt="{{ image.alt | split:'|' | last | escape }}" 
+
+           data-variant_id="{{image.variants.first.id}}"
+           data-large_image="{%-include 'gl_image_format',cache:true, src: image.src, size: product_image_photowipe -%}" data-large_image_width="{{ image.width }}" data-large_image_height="{{ image.height }}" 
+           data-srcset="{%-include 'gl_image_format_crop',src: image.src , size: crop_nt,position:'top' %} {{image_size_first}}w 
+                        {%- if image_size_first > 235 -%}{%- assign image_height = 235 | divided_by: image.aspect_ratio | round -%}{%- assign image_size_el = 235 | append:'x' | append:image_height -%},{%-include 'gl_image_format_crop',src: image.src , size:image_size_el,position:'top' %} 235w{%- endif -%} 
+                        {%- if image_size_first > 768 -%}{%- assign image_height = 768 | divided_by: image.aspect_ratio | round -%},{%- assign image_size_el = 768 | append:'x' | append:image_height -%}{%-include 'gl_image_format_crop',src: image.src , size:image_size_el,position:'top' %} 768w{%- endif -%}
+                        {%- if image_size_first > 803 -%}{%- assign image_height = 803 | divided_by: image.aspect_ratio | round -%},{%- assign image_size_el = 803 | append:'x' | append:image_height -%}{%-include 'gl_image_format_crop',src: image.src , size:image_size_el,position:'top' %} 803w{%- endif -%} 
+                        {%- if image_size_first > 266 -%}{%- assign image_height = 266 | divided_by: image.aspect_ratio | round -%}{%- assign image_size_el = 266 | append:'x' | append:image_height -%},{%-include 'gl_image_format_crop',src: image.src , size:image_size_el,position:'top' %} 266w{%- endif -%} 
+                        {%- if image_size_first > 219 -%}{%- assign image_height = 219 | divided_by: image.aspect_ratio | round -%},{%- assign image_size_el = 219 | append:'x' | append:image_height -%}{%-include 'gl_image_format_crop',src: image.src , size:image_size_el,position:'top' %} 219w{%- endif -%} 
+                        {%- if image_size_first > 526 -%}{%- assign image_height = 526 | divided_by: image.aspect_ratio | round -%},{%- assign image_size_el = 526 | append:'x' | append:image_height -%}{%-include 'gl_image_format_crop',src: image.src , size:image_size_el,position:'top' %} 526w{%- endif -%}" sizes="(max-width: {{ image_size_first }}px) 100vw, {{ image_size_first }}px"> 
+      {%- else -%} 
+      <img width="{{ image.width }}" height="{{ image.height }}" src="{{ image | img_url: '50x50' }}" class="lazyload attachment-shop_single size-shop_single sp-post-image" alt="{{ image.alt | split:'|' | last | escape }}" title="{{product.title}}" 
+           data-src="{{ img_url }}" 
+           data-large_image="{%-include 'gl_image_format',cache:true, src: image.src, size: product_image_photowipe -%}" data-large_image_width="{{ image.width }}" data-large_image_height="{{ image.height }}" 
+           data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto">
+      {%- endif -%}
+      <div class="jas-wrap-lazy"></div>
+    </a>
+  </figure>
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{{min_html | strip_newlines | remove: "  "}} 

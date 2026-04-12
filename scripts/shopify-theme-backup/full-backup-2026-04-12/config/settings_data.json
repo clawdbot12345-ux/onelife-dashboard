@@ -1,0 +1,3106 @@
+{
+  "current": {
+    "api_key": "AIzaSyBnnrMwpuVsFXeJ41G4skM30zt0JCHj3Io",
+    "enable_update": true,
+    "use_ajax_add_to_cart": true,
+    "show_vendor": false,
+    "use_rtl": false,
+    "show_backtop": true,
+    "catalog_mode": false,
+    "platform_email": "1",
+    "klaviyo_list_id": "",
+    "use_ajax_klaviyo": false,
+    "mcsp_form_action": "",
+    "use_ajax_mailChimp": false,
+    "show_col_mobile": false,
+    "use_wishlist": true,
+    "use_quickview": true,
+    "use_compare": true,
+    "show_img_second": true,
+    "show_product_rating": false,
+    "app_review": "1",
+    "show_product_color": true,
+    "product_layout_setting": "3",
+    "swatch_home_size": "large",
+    "label_settings": "rounded",
+    "use_sale_label": false,
+    "label_sale_style": "2",
+    "use_sold_out_label": false,
+    "use_new_label": false,
+    "new_day": "2",
+    "use_hot_label": false,
+    "favicon": "shopify:\/\/shop_images\/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png",
+    "favicon_apple": "shopify:\/\/shop_images\/apple-touch-icon-152x152-precomposed.png",
+    "c_1": "",
+    "c_2": "",
+    "c_3": "",
+    "c_4": "",
+    "general_layout": "full_width",
+    "body_bg": "rgba(0,0,0,0)",
+    "body_bg_repeat": "repeat",
+    "body_bg_size": "default",
+    "body_bg_attachment": "default",
+    "body_bg_position": "default",
+    "body_bg_image": "",
+    "page_title_design": "default",
+    "page_show_breadcrumbs": false,
+    "pages_bg": "#a1a1a1",
+    "pages_bg_repeat": "default",
+    "pages_bg_size": "default",
+    "pages_bg_attachment": "default",
+    "pages_bg_position": "default",
+    "pages_bg_image": "",
+    "page_title_size": "small",
+    "page_title_color": "light",
+    "body_logo_svg": "",
+    "body_logo_image": "shopify:\/\/shop_images\/LOGO_1200X400_06be3078-90a9-487d-9f8f-0c7a2fb87899.png",
+    "logo_width": 20,
+    "logo_max_width": "",
+    "body_logo_svg_tra": "",
+    "body_logo_image_tra": "shopify:\/\/shop_images\/LOGO_1200X400_06be3078-90a9-487d-9f8f-0c7a2fb87899.png",
+    "logo_max_width_tr": "",
+    "body_logo_image_sticky": "shopify:\/\/shop_images\/imageedit_1_2394600954.png",
+    "logo_max_width_sticky": "",
+    "top_bar_enable": true,
+    "top_bar_color": "light",
+    "top_bar_bg": "#707070",
+    "top_bar_bg_repeat": "default",
+    "top_bar_bg_size": "default",
+    "top_bar_bg_attachment": "default",
+    "top_bar_bg_position": "default",
+    "top_bar_bg_image": "",
+    "top_bar_text": "Get 10% off — join our community →",
+    "full_header_enable": true,
+    "sticky_header_enable": true,
+    "mobile_nav_center": true,
+    "mobile_cur_lang": false,
+    "header_design": "base",
+    "overlap_header_enable": false,
+    "right_column_width": "200px",
+    "header_height": "",
+    "header_sticky_height": "max-height:15%",
+    "mobile_header_height": "",
+    "cart_position": "side",
+    "cart_design": "1",
+    "shopping_icon_alt": true,
+    "cart_notes_widget_enable": true,
+    "basel_options_add_to_cart_action": "widget",
+    "show_related_pop_up": false,
+    "upsell_collection_cart": "",
+    "header_color_scheme": "light",
+    "header_color_sticky": "light",
+    "header_color_tra": "light",
+    "header_bg": "#515151",
+    "bg_header_sticky": "#515151",
+    "header_bg_repeat": "default",
+    "header_bg_size": "default",
+    "header_bg_attachment": "default",
+    "header_bg_position": "default",
+    "header_bg_image": "",
+    "header_border_color": "#515151",
+    "header_border_style": "solid",
+    "header_border": "",
+    "header_icon_style": "fontawesome",
+    "basel_menu_align": "center",
+    "header_text_ss": "",
+    "basel_search_widget": "full-screen",
+    "ajax_search": true,
+    "ajax_search_mobile": true,
+    "only_search_products": true,
+    "enable_search_category": true,
+    "display_wishlist_icon": true,
+    "sticky_footer_enable": false,
+    "footer_social_design": "icons-design-default",
+    "footer_social_size": "icons-size-default",
+    "footer_color_scheme": "light",
+    "footer_bg": "#515151",
+    "footer_bg_repeat": "default",
+    "footer_bg_size": "default",
+    "footer_bg_attachment": "default",
+    "footer_bg_position": "default",
+    "footer_bg_image": "",
+    "copyrights_layout": "centered",
+    "copyrights_text": "<i class=\"fa fa-copyright\"><\/i>  Edcocube PTY Ltd.",
+    "copyrights_next_text": "Website by Y-Link",
+    "html_before_footer": "",
+    "font_body_text": "Cabin",
+    "size_body_text": 14,
+    "font_titles_text": "Cabin",
+    "style_titles_text": "normal_normal",
+    "font_title_products": "Cabin",
+    "style_title_products": "600",
+    "font_secondary_products": "Lato",
+    "style_secondary_products": "400_italic",
+    "font_info": "",
+    "style_font_info": "normal_normal",
+    "font_post": "Lato",
+    "style_font_post": "400_italic",
+    "font_navigation": "Karla",
+    "size_navigation": 14,
+    "style_navigation": "normal_normal",
+    "use_dark_version": false,
+    "color_light_mobile_menu": false,
+    "color_body_text": "#4c4c4c",
+    "color_titles_text": "#1b1919",
+    "color_title_products": "#252222",
+    "color_primary": "#7ea93e",
+    "mega_navigation_hover": "#fbbc34",
+    "color_navigation": "",
+    "color_sale_bg": "#7ea93e",
+    "color_new_bg": "#56cfe1",
+    "color_hot_bg": "#ec0101",
+    "color_sold_out_bg": "#000000",
+    "color_btn_vc": "#ececec",
+    "color_btn_vc_text": "#2d2d2d",
+    "color_btn_vc_hover": "#3e3e3e",
+    "color_btn_vc_text_hover": "#fff",
+    "color_btn_ck": "#7ea93e",
+    "color_btn_ck_text": "#fff",
+    "color_add_page": "#000",
+    "color_add_page_text": "#fff",
+    "color_add_page_hover": "#333",
+    "color_add_page_text_hover": "#fff",
+    "color_btn_now": "#7ea93e",
+    "color_btn_now_text": "#fff",
+    "color_input_new": "#4c4c4c",
+    "color_sign_up": "#000000",
+    "color_sign_up_text": "#fff",
+    "use_promo_banner_collection": false,
+    "use_top_categories": false,
+    "top_categories_source": "top_categories_show_all",
+    "top_categories_link_list": "",
+    "collection_bg": "#ffffff",
+    "collection_bg_repeat": "no-repeat",
+    "collection_bg_size": "cover",
+    "collection_bg_attachment": "default",
+    "collection_bg_position": "center_center",
+    "collection_bg_image": "",
+    "use_specify_image": true,
+    "collection_title_size": "small",
+    "collection_title_color": "light",
+    "shop_sidebar": "left",
+    "shop_size_sidebar": "3",
+    "products_per_page": "16",
+    "use_pagination": "gl_default",
+    "view_default": "grid",
+    "products_columns": "4",
+    "products_hover": "link",
+    "sale_countdown": false,
+    "collection_countdown_style": "dark",
+    "ajax_shop": true,
+    "shop_filters": true,
+    "shop_show_per_page": false,
+    "grid_list": true,
+    "shop_masonry_grid": false,
+    "shop_different_grid": false,
+    "show_des_collection": false,
+    "use_eq_height": true,
+    "image_ratio": "ratio_nt",
+    "image_size": "nt_contain",
+    "image_position": "8",
+    "product_sidebar": "1",
+    "size_sidebar": "3",
+    "design_products": "1",
+    "size_img_products": "2",
+    "pr_image_size": "",
+    "pr_thumb_image_size": "",
+    "thumbnails_position": "left",
+    "main_click": "zoom",
+    "disable_download_img": true,
+    "show_zoom_img": true,
+    "button_art_to_cart_style": "2",
+    "size_chart_type": "1",
+    "image_size_chart": "",
+    "product_img_trust_seal": false,
+    "img_trust_seal": "",
+    "show_real_time_visitor": false,
+    "real_time_max": 100,
+    "real_interval_time": 2,
+    "text_real": "Real time",
+    "text_visitor": "Visitor right now",
+    "use_flash_sold": false,
+    "flash_sold_img": "",
+    "flash_sold_text_color": "#dd1e31",
+    "flash_sold_text_font_size": "16px",
+    "flash_sold_font_style": "600",
+    "flash_sold_min_qty": 5,
+    "flash_sold_max_qty": 25,
+    "flash_sold_min_time": 3,
+    "flash_sold_max_time": 24,
+    "enable_delivery_order": false,
+    "delivery_end": "15",
+    "delivery_cutoff": "16:00:00",
+    "delivery_off_days": "SAT SUN",
+    "product_bg": "rgba(0,0,0,0)",
+    "product_bg_repeat": "default",
+    "product_bg_size": "default",
+    "product_bg_attachment": "default",
+    "product_bg_position": "default",
+    "product_bg_image": "",
+    "show_share_btn": false,
+    "share_type": "1",
+    "show_first_img": false,
+    "color_name_check": "",
+    "first_available_variant": false,
+    "remove_sold_out": false,
+    "btn_atc_full": false,
+    "enable_payment_button": false,
+    "show_product_page_rating": false,
+    "show_grouped_variant_image": false,
+    "use_view_360": false,
+    "use_clicking_variant_image": false,
+    "product_quantity_message": false,
+    "ck_inventory": 10,
+    "use_description_excerpt": false,
+    "use_description_full": true,
+    "prodcut_excerpt_length": "100",
+    "font_style_des": "normal",
+    "font_weight_des": "normal",
+    "font_text_des": "none",
+    "show_sku": true,
+    "show_pr_vendor": true,
+    "show_category_product": false,
+    "show_tag_product": false,
+    "swatch_design": "1",
+    "swatch_style": "2",
+    "swatch_size": "large",
+    "show_countdown": false,
+    "show_related_products": true,
+    "title_pr_related": "Related products",
+    "related_products_use": "tags",
+    "many_related_products": 8,
+    "related_products_hover": "link",
+    "related_sale_countdown": false,
+    "related_countdown_style": "light",
+    "use_related_eq_height": true,
+    "related_img_ratio": "ratio1_1",
+    "related_image_size": "",
+    "related_img_position": "8",
+    "related_silder_speed": "5000",
+    "related_silder_per_view": "4",
+    "related_hide_pagination": false,
+    "related_hide_button": false,
+    "related_slider_loop": false,
+    "related_autoplay": false,
+    "show_recently_products": true,
+    "title_pr_recently": "Recently viewed products",
+    "many_recently_products": 10,
+    "recently_products_hover": "link",
+    "recently_sale_countdown": false,
+    "recently_countdown_style": "dark",
+    "use_recently_eq_height": true,
+    "recently_img_ratio": "ratio1_1",
+    "recently_image_size": "",
+    "recently_img_position": "8",
+    "recently_silder_speed": "5000",
+    "recently_silder_per_view": "4",
+    "recently_hide_pagination": false,
+    "recently_hide_button": false,
+    "recently_slider_loop": false,
+    "recently_autoplay": false,
+    "show_sticky_add": false,
+    "show_sticky_add_mobile": false,
+    "sticky_position": "bottom",
+    "sticky_align": "center-xs",
+    "show_sticky_countdown": false,
+    "show_sticky_img": false,
+    "show_sticky_quantiny": false,
+    "scrolltop": 1000,
+    "gecko_stock_countdown": false,
+    "stock_time": "8:00:00,16:00:00,23:59:59",
+    "total_items": 50,
+    "stock_from": 12,
+    "stock_to": 20,
+    "stock_message": "Hurry! Only {{stock_number}} left in stock.",
+    "stock_bg_process": "#98cb4c",
+    "stock_bg": "#f5f5f5",
+    "products_per_page_search": "12",
+    "products_columns_search": "4",
+    "products_hover_search": "quick",
+    "sale_countdown_search": true,
+    "collection_countdown_style_search": "dark",
+    "use_eq_height_search": true,
+    "image_ratio_search": "ratio_nt",
+    "image_size_search": "nt_cover",
+    "image_position_search": "8",
+    "use_threshold": true,
+    "use_threshold_page": false,
+    "free_shipping_above": "400",
+    "use_agree_checkbox": false,
+    "use_agree_checkbox_page": false,
+    "link_conditions": "contact-us",
+    "show_custom_css": true,
+    "global_custom_css": "\/* .main-header {\n    background-color: rgba(0,0,0,0.2);\n}\n.main-header.header-has-no-bg.color-scheme-light.act-scroll {\n    border: none;\n    box-shadow: none;\n    background-color: rgba(0,0,0,.9);\n}\n.promo-banner .banner-inner h2 {\nline-height: 1;\n} *\/ \n\n.page-title{\ndisplay: none;\n}\n\n.hover-mask {\n  background-color: rgba(80, 80, 80, 0.5) !important;\n}\n\n.mc4wp-alert mc4wp-success{\n  display: none !important;\n}",
+    "desktop_custom_css": "",
+    "tablet_custom_css": "",
+    "landscape_custom_css": "",
+    "mobile_custom_css": "",
+    "custom_js": "",
+    "cart_clear_enable": true,
+    "use_additional_checkout_buttons": false,
+    "cart_notes_enable": true,
+    "currency_type": "2",
+    "show_multiple_currencies": false,
+    "supported_currencies": "EUR - EUR | USD - USD | GBP - GBP",
+    "show_language_currencies": false,
+    "language_title": "English",
+    "language_link_list": "",
+    "enable_popup": false,
+    "promo_popup_hide_mobile": false,
+    "display_newsletter_index": false,
+    "display_newsletter_product": false,
+    "display_newsletter_collection": false,
+    "display_newsletter_article": false,
+    "display_newsletter_blog": false,
+    "display_newsletter_cart": false,
+    "display_newsletter_page": false,
+    "newsletter_bg": "shopify:\/\/shop_images\/One_life_rgb.png",
+    "popup_newsletter_description": "<h1 style=\"margin-bottom: 0px; text-align: center;\"><strong>SUBSCRIBE TO OUR NEWSLETTER<\/strong><\/h1>\n                        <p style=\"text-align: center; font-size: 16px;\">...and be the first to find out about our promotions and special offers<br>\n                        <\/p>",
+    "show_popup_after": "time",
+    "time_popup_delay": "1000",
+    "scroll_popup_delay": "800",
+    "number_pages": 4,
+    "popup_version": 1,
+    "enable_cookies_popup": false,
+    "text_cookies_popup": "We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.",
+    "link_btn_infor": "shopify:\/\/pages\/privacy-faq",
+    "cookies_version": 1,
+    "display_popup_cookies_index": true,
+    "display_popup_cookies_product": false,
+    "display_popup_cookies_collection": false,
+    "display_popup_cookies_article": false,
+    "display_popup_cookies_blog": false,
+    "display_popup_cookies_cart": false,
+    "display_popup_cookies_page": false,
+    "enable_header_banner": true,
+    "link_banner": "#klaviyo-signup-footer",
+    "banner_content": "🌿 <strong>10% off<\/strong> your first order — <span style=\"text-decoration:underline;cursor:pointer;\">Claim now →<\/span>",
+    "height_desktop": 35,
+    "height_mobile": 35,
+    "header_banner_text": "#ffffff",
+    "header_banner_bg": "#108474",
+    "header_banner_bg_repeat": "no-repeat",
+    "header_banner_bg_size": "cover",
+    "header_banner_bg_attachment": "default",
+    "header_banner_bg_position": "left_top",
+    "header_banner_bg_image": "",
+    "close_banner_btn": true,
+    "banner_version": 14,
+    "enable_suggest_products": false,
+    "show_suggest_mobile": false,
+    "collection_suggest": "accessories",
+    "display_index": false,
+    "display_product": false,
+    "display_collection": false,
+    "display_article": false,
+    "display_blog": false,
+    "display_cart": false,
+    "display_page": false,
+    "sales_popup_type": "2",
+    "start_time": 20,
+    "start_time_unit": "1000",
+    "stay_time": 20,
+    "stay_time_unit": "1000",
+    "use_suggest": false,
+    "use_fake_location": false,
+    "fake_location": "",
+    "show_close_suggest": true,
+    "sales_popup_Layout": "1",
+    "sales_popup_ani": "slideInUp",
+    "sales_popup_color": "dark",
+    "sales_popup_bg": "#fff",
+    "sales_popup_image": "",
+    "login_register_enable": false,
+    "login_tabs_enable": true,
+    "account_header_enable": true,
+    "login_side": false,
+    "registration_text": "Registering for this site allows you to access your order status and history. Just fill in the fields below, and we’ll get a new account set up for you in no time. We will only ask you for information necessary to make the purchase process faster and easier.",
+    "blog_layout": "1",
+    "blog_size_sidebar": "3",
+    "blog_design": "2",
+    "articles_per_grid_page": "12",
+    "blog_columns": "1",
+    "posts_excerpt_length": "35",
+    "enable_button": "show",
+    "enable_post_categories": "show",
+    "enable_post_date": "show",
+    "post_share_buttons": true,
+    "post_navigation": true,
+    "blog_portfolio": "portfolio",
+    "portfolio_styles": "hover",
+    "portfolio_full_width": false,
+    "projects_columns": "4",
+    "projects_spacing": "2",
+    "projects_per_page": "12",
+    "portfolio_filters": true,
+    "portfolio_tags_filter": "",
+    "show_related_portfolio": true,
+    "title_related_portfolio": "Related Portfolio",
+    "how_many_related_portfolio": "9",
+    "sort_faq": "",
+    "image_about_me": "",
+    "title_about_me": "Consectetur lobortis maecenas risus mi lacus [cond consequat.]",
+    "sub_tetx_about_me": "Suspendisse leo sodales varius leo elementum vestibulum a elit at ultrices a mi a praesent enim libero ultrices a amet suscipit. A tempus iaculis habitasse suspendisse aenean parturient blandit a rutrum leo elementum purus a a et id non feugiat donec.",
+    "signature_about_me": "",
+    "show_share_btn_about_me": true,
+    "share_type_about_me": "1",
+    "about_me_margin_top": "",
+    "about_me_margin_bottom": "-40px",
+    "about_me_padding": "",
+    "image_our_shop": "",
+    "title_our_shop": "shop localization [in - Paris]",
+    "info_shop_1": "",
+    "info_shop_2": "",
+    "info_shop_3": "",
+    "info_shop_4": "",
+    "info_shop_btn_title": "Contact Us",
+    "info_shop_btn_url": "shopify:\/\/pages\/contact-us",
+    "show_share_btn_our_shop": true,
+    "share_type_our_shop": "2",
+    "our_shop_bg_color": "#f9f9f9",
+    "our_shop_margin_top": "",
+    "our_shop_margin_bottom": "-40px",
+    "our_shop_padding": "50px",
+    "title_map_contact_us": "VISIT OUR STORE<br>IN CENTURION",
+    "icon_contact_us": "map-marker",
+    "text_map_html_contact_us": "cnr Galway and Kilkenny Rd, Hennopspark, Centurion, 0157",
+    "contact_us_btn_title": "Navigate Now!",
+    "contact_us_btn_url": "https:\/\/goo.gl\/maps\/NsbQLkb138mFFg5j9",
+    "lat_contact_us": "-25.8595209",
+    "lon_contact_us": "28.1669475",
+    "height_contact_us": "600",
+    "style_json_contact_us": "[{\"featureType\":\"landscape\",\"stylers\":[{\"hue\":\"#FFBB00\"},{\"saturation\":43.400000000000006},{\"lightness\":37.599999999999994},{\"gamma\":1}]},{\"featureType\":\"road.highway\",\"stylers\":[{\"hue\":\"#FFC200\"},{\"saturation\":-61.8},{\"lightness\":45.599999999999994},{\"gamma\":1}]},{\"featureType\":\"road.arterial\",\"stylers\":[{\"hue\":\"#FF0300\"},{\"saturation\":-100},{\"lightness\":51.19999999999999},{\"gamma\":1}]},{\"featureType\":\"road.local\",\"stylers\":[{\"hue\":\"#FF0300\"},{\"saturation\":-100},{\"lightness\":52},{\"gamma\":1}]},{\"featureType\":\"water\",\"stylers\":[{\"hue\":\"#0078FF\"},{\"saturation\":-13.200000000000003},{\"lightness\":2.4000000000000057},{\"gamma\":1}]},{\"featureType\":\"poi\",\"stylers\":[{\"hue\":\"#00FF6A\"},{\"saturation\":-1.0989010989011234},{\"lightness\":11.200000000000017},{\"gamma\":1}]}]",
+    "show_form_contact_us": true,
+    "heading_form_contact_us": "GET IN TOUCH WITH US",
+    "show_info_contact_us": true,
+    "heading_info_contact_us": "ABOUT US",
+    "text_info_contact_us": "ONE LIFE offers a holistic approach to health and wellness. \nOur mission is to provide the highest quality innovative, natural, organic, eco-friendly health products to consumers at competitive prices. <br>\nOur store features a wide variety of natural and organic products, including health supplements, skin & beauty, household & pantry items and sports nutrition.\n<br>Our friendly & knowledgeable team at ONE LIFE aim to provide you with cost-effective health solutions, tailored to reach your health goals.",
+    "heading_cont_contact_us": "CONTACT US",
+    "html_one_contact_us": "[envelope]071 374 4910<br>info@onelife.co.za",
+    "html_two_contact_us": "[clock]Quick &amp; Easy<br>Support",
+    "html_three_contact_us": "[cursor]Cnr Galaway &amp; Kilkenny Rd.",
+    "html_four_contact_us": "[rocket ]Speedy Shipping<br>on all orders.",
+    "show_share_btn_contact_us": true,
+    "share_type_contact_us": "2",
+    "show_map_contact_us_2": true,
+    "lat_contact_us_2": "59.91387",
+    "lon_contact_us_2": "10.75225",
+    "height_contact_us_2": "400",
+    "style_json_contact_us_2": "[{\"featureType\":\"all\",\"elementType\":\"labels.text.fill\",\"stylers\":[{\"color\":\"#ffffff\"}]},{\"featureType\":\"all\",\"elementType\":\"labels.text.stroke\",\"stylers\":[{\"color\":\"#000000\"},{\"lightness\":13}]},{\"featureType\":\"administrative\",\"elementType\":\"geometry.fill\",\"stylers\":[{\"color\":\"#000000\"}]},{\"featureType\":\"administrative\",\"elementType\":\"geometry.stroke\",\"stylers\":[{\"color\":\"#144b53\"},{\"lightness\":14},{\"weight\":1.4}]},{\"featureType\":\"administrative.locality\",\"elementType\":\"all\",\"stylers\":[{\"visibility\":\"on\"}]},{\"featureType\":\"administrative.locality\",\"elementType\":\"labels.icon\",\"stylers\":[{\"visibility\":\"on\"}]},{\"featureType\":\"landscape\",\"elementType\":\"all\",\"stylers\":[{\"color\":\"#08304b\"}]},{\"featureType\":\"poi\",\"elementType\":\"geometry\",\"stylers\":[{\"color\":\"#0c4152\"},{\"lightness\":5}]},{\"featureType\":\"road.highway\",\"elementType\":\"geometry.fill\",\"stylers\":[{\"color\":\"#000000\"}]},{\"featureType\":\"road.highway\",\"elementType\":\"geometry.stroke\",\"stylers\":[{\"color\":\"#0b434f\"},{\"lightness\":25}]},{\"featureType\":\"road.arterial\",\"elementType\":\"geometry.fill\",\"stylers\":[{\"color\":\"#000000\"}]},{\"featureType\":\"road.arterial\",\"elementType\":\"geometry.stroke\",\"stylers\":[{\"color\":\"#0b3d51\"},{\"lightness\":16}]},{\"featureType\":\"road.local\",\"elementType\":\"geometry\",\"stylers\":[{\"color\":\"#000000\"}]},{\"featureType\":\"transit\",\"elementType\":\"all\",\"stylers\":[{\"color\":\"#146474\"}]},{\"featureType\":\"water\",\"elementType\":\"all\",\"stylers\":[{\"color\":\"#021019\"}]}]",
+    "show_info_contact_us_2": true,
+    "bg_image_contact_us_2": "",
+    "bg_color_contact_us_2": "#021019",
+    "heading_info_contact_us_2": "CONTACT US",
+    "svg_one_contact_us_2": "<svg version=\"1.1\" id=\"svg-5300\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" width=\"64px\" height=\"64px\" viewbox=\"0 0 64 64\" enable-background=\"new 0 0 64 64\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n\t\t\t\t\t\t\t                                    <g>\n\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" width=\"62\" height=\"37\" d=\"M1 13 L63 13 L63 50 L1 50 Z\" style=\"stroke-dasharray: 198, 200; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M1,13L32,33L63,13\" style=\"stroke-dasharray: 74, 76; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <\/g>\n\t\t\t\t\t\t\t                                 <\/svg>",
+    "html_one_contact_us_2": "[envelope]Tel: 877-45-44-33<br>E-Mail: shop@store.uk",
+    "svg_two_contact_us_2": "<svg version=\"1.1\" id=\"svg-8277\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" width=\"64px\" height=\"64px\" viewbox=\"0 0 64 64\" enable-background=\"new 0 0 64 64\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n\t\t\t\t\t\t\t\t                                    <g>\n\t\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M53.92,10.081\n\t\t\t\t\t\t\t\t                                          c12.107,12.105,12.107,31.732,0,43.838c-12.106,12.108-31.734,12.108-43.84,0c-12.107-12.105-12.107-31.732,0-43.838\n\t\t\t\t\t\t\t\t                                          C22.186-2.027,41.813-2.027,53.92,10.081z\" style=\"stroke-dasharray: 195, 197; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M32,12L32,32L41,41\" style=\"stroke-dasharray: 33, 35; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M4,32L8,32\" style=\"stroke-dasharray: 4, 6; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M56,32L60,32\" style=\"stroke-dasharray: 4, 6; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M32,60L32,56\" style=\"stroke-dasharray: 4, 6; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M32,8L32,4\" style=\"stroke-dasharray: 4, 6; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t\t                                    <\/g>\n\t\t\t\t\t\t\t\t                                 <\/svg>",
+    "html_two_contact_us_2": "[clock]Support forum<br>for over 24h",
+    "svg_three_contact_us_2": "<svg version=\"1.1\" id=\"svg-2872\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" width=\"64px\" height=\"64px\" viewbox=\"0 0 64 64\" enable-background=\"new 0 0 64 64\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n\t\t\t\t\t\t\t                                    <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-linejoin=\"bevel\" stroke-miterlimit=\"10\" d=\"M1,30L63,1L23,41Z\" style=\"stroke-dasharray: 150, 152; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-linejoin=\"bevel\" stroke-miterlimit=\"10\" d=\"M34,63L63,1L23,41Z\" style=\"stroke-dasharray: 150, 152; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                 <\/svg>",
+    "html_three_contact_us_2": "[cursor]20 Margaret St, London<br>Great Britain, 3NM98-LK",
+    "svg_four_contact_us_2": "<svg version=\"1.0\" id=\"svg-9269\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" width=\"64px\" height=\"64px\" viewbox=\"0 0 64 64\" enable-background=\"new 0 0 64 64\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n\t\t\t\t\t\t\t                                    <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M14,57A6,6 0,1,1 26,57A6,6 0,1,1 14,57\" style=\"stroke-dasharray: 38, 40; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M38,57A6,6 0,1,1 50,57A6,6 0,1,1 38,57\" style=\"stroke-dasharray: 38, 40; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M26,57L38,57\" style=\"stroke-dasharray: 12, 14; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M14,57L10,2L0,2\" style=\"stroke-dasharray: 66, 68; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M13,43L56,40L63,10L11,10\" style=\"stroke-dasharray: 126, 128; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-linejoin=\"bevel\" stroke-miterlimit=\"10\" d=\"M27.998,24L\n\t\t\t\t\t\t\t                                       35.998,16L43.998,24\" style=\"stroke-dasharray: 23, 25; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <g>\n\t\t\t\t\t\t\t                                       <path fill=\"none\" stroke=\"#000000\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M35.998,16L35.998,36\" style=\"stroke-dasharray: 20, 22; stroke-dashoffset: 0;\"><\/path>\n\t\t\t\t\t\t\t                                    <\/g>\n\t\t\t\t\t\t\t                                 <\/svg>",
+    "html_four_contact_us_2": "[rocket ]Free standard shipping<br>on all orders.",
+    "show_share_btn_contact_us_2": true,
+    "share_type_contact_us_2": "2",
+    "banner_text_color_pass": "dark",
+    "layout_pass": "2",
+    "tea_revolution_sc_pass": "",
+    "logo_pass": "",
+    "logo_max_width_pass": "100",
+    "header_pass": "MAINTENANCE",
+    "sub_header_pass": "NEW WEB-SITE COMING SOON...",
+    "sub_text_pass": "Condimentum ipsum a adipiscing hac consectetur urna commodo elit parturient a molestie ut nisl parturient convallier ullamcorper phasellus mus cubilia eget.",
+    "show_countdown_pass": true,
+    "sub_countdown_pass": "New store we be launched in:",
+    "date_pass": "2017\/12\/30",
+    "social_newsletter_pass": true,
+    "use_mailchimp_pass": true,
+    "show_use_pass": true,
+    "social_enabled_pass": true,
+    "share_type_pass": "2",
+    "section_bg_image_pass": "",
+    "share_image": "",
+    "share_facebook": false,
+    "share_twitter": false,
+    "share_pinterest": false,
+    "share_tumblr": false,
+    "share_email": false,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_snapchat_link": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/One_life_rgb.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#1990c6",
+    "checkout_error_color": "#ff6d6d",
+    "size_chart": false,
+    "share_google": true,
+    "social_google_plus_link": "",
+    "newsletter_form_action": "\/\/teathemes.us14.list-manage.com\/subscribe\/post?u=b25e3ab13ba347802ca7d5135&amp;id=823b9f1630",
+    "logo_max_height": "95",
+    "logo_max_height_sticky": "75",
+    "use_newsletter_mailchimp": true,
+    "show_qv_suggest": "false",
+    "enable_select_category": "false",
+    "footer_design": "12",
+    "use_agree_checkbox_pop_up": "false",
+    "link_conditions_pop_up": "",
+    "interval_time": "6500",
+    "loop_sale_countdown": "true",
+    "use_promo_shpping": "false",
+    "product_motivator_text": "Free Shipping For Over R400",
+    "promotion_display_user_country": "true",
+    "promotion_display_user_Flag": "true",
+    "supported_codes_ship": "",
+    "enable_country_flag": "true",
+    "shipping_text": "This item Ship to",
+    "no_shipping_text": "This item no ship to",
+    "enable_delivery_option": "true",
+    "delivery_text": "Delivery",
+    "delivery_text_1": "Estimated between",
+    "delivery_start": "10",
+    "delivery_info_text": "Will usually ship within 1 bussiness day.",
+    "loop_related_countdown": "false",
+    "loop_recently_countdown": "false",
+    "loop_show_countdown": "true",
+    "countdown_style": "dark",
+    "calue_stock_countdown": "true",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "shop_image_size": "",
+    "size_titles_text": "26",
+    "size_title_products": "38",
+    "use_mailchimp": "true",
+    "show_comements": "on",
+    "color_secondary": "",
+    "color_regular": "#ececec",
+    "color_regular_hover": "#3e3e3e",
+    "color_shop_btn": "#000000",
+    "color_shop_btn_hover": "#333333",
+    "color_accent_btn": "",
+    "color_accent_btn_hover": "",
+    "style_top_categories": "style_top_show_all",
+    "layout": "grid",
+    "tags_enable": "true",
+    "collection_infinite_scrolling": "true",
+    "body_logo_image_white": "",
+    "top_bar_menu": "main-menu",
+    "title_our_1": "aasdassa",
+    "portfolio_style": "1",
+    "projects_pagination": "2",
+    "share_buttons": "true",
+    "display_related_post": "true",
+    "posts_excerpt": "1",
+    "color_text": "#3d4246",
+    "color_sale_text": "#145377",
+    "color_borders": "#e8e9eb",
+    "color_button": "#7796a8",
+    "color_button_text": "#fff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#000",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": "0.25",
+    "color_body_bg": "#fff",
+    "type_header_family": "Google_Work+Sans_600_sans",
+    "type_header_base_size": "26px",
+    "type_base_family": "Google_Work+Sans_400_sans",
+    "type_base_size": "16px",
+    "type_bold_product_titles": "false",
+    "arr_group_handle": "",
+    "hidden_variant_sold_out": "false",
+    "show_watch_products": "true",
+    "show_helper": "true",
+    "order": [
+      "onelife-community-signup"
+    ],
+    "sections": {
+      "gl-product-page-description": {
+        "type": "gl-product-page-description",
+        "blocks": {
+          "1497870185984": {
+            "type": "description",
+            "settings": {
+              "title": "Description"
+            }
+          },
+          "1497870204981": {
+            "type": "additional",
+            "disabled": true,
+            "settings": {
+              "title": "Additional Information"
+            }
+          },
+          "1497870197904": {
+            "type": "review",
+            "disabled": true,
+            "settings": {
+              "title": "Reviews",
+              "use_count_reviews": true
+            }
+          },
+          "1497870213063": {
+            "type": "html",
+            "disabled": true,
+            "settings": {
+              "title": "Shipping & Delivery",
+              "code": "<img src=\"\/\/cdn.shopify.com\/s\/files\/1\/1933\/6253\/files\/shipping.jpg?2957050064640912120\" class=\"alignleft\"> \n<p>Vestibulum curae torquent diam diam commodo parturient penatibus nunc dui adipiscing convallis bulum parturient suspendisse parturient a.Parturient in parturient scelerisque nibh lectus quam a natoque adipiscing a vestibulum hendrerit et pharetra fames.Consequat net<\/p>\n<p>Vestibulum parturient suspendisse parturient a.Parturient in parturient scelerisque  nibh lectus quam a natoque adipiscing a vestibulum hendrerit et pharetra fames.Consequat netus.<\/p>\n<p>Scelerisque adipiscing bibendum sem vestibulum et in a a a purus lectus faucibus lobortis tincidunt purus lectus nisl class eros.Condimentum a et ullamcorper dictumst mus et tristique elementum nam inceptos hac vestibulum amet elit<\/p>\n<div class=\"clearfix\"><\/div>"
+            }
+          },
+          "e03584ff-e855-4be4-8723-e1996a50e38c": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "title": "Ingredients",
+              "text": ""
+            }
+          }
+        },
+        "block_order": [
+          "1497870185984",
+          "1497870204981",
+          "1497870197904",
+          "1497870213063",
+          "e03584ff-e855-4be4-8723-e1996a50e38c"
+        ],
+        "settings": {}
+      },
+      "gl_section_sidebar_product": {
+        "type": "gl_section_sidebar_product",
+        "blocks": {
+          "1498814226759": {
+            "type": "shipping",
+            "settings": {
+              "title": "Shipping &amp; Delivery",
+              "style": "2",
+              "shipping_1": "clock-o,Save up to 20%,limited time",
+              "shipping_2": "clock-o,Save up to 20%,limited time",
+              "shipping_3": "clock-o,Save up to 20%,limited time",
+              "shipping_4": "",
+              "shipping_5": "",
+              "shipping_6": ""
+            }
+          },
+          "1498815257232": {
+            "type": "collection",
+            "settings": {
+              "title": "Sale Products",
+              "featured_product_list_collection": "",
+              "featured_product_limit_all": "3"
+            }
+          },
+          "1498816326534": {
+            "type": "html",
+            "settings": {
+              "title": "Custom HTML",
+              "code": "<h3>asdsadasd<\/h3><h3><\/h3>"
+            }
+          },
+          "1498816339430": {
+            "type": "text",
+            "settings": {
+              "title": "Talk about your brand",
+              "text": "<p>Use this text to share infor<a href=\"\/pages\/recently-viewed-products\" title=\"recently viewed products\"><strong>mation about your brand with your customers. Describe a product, share<\/strong><\/a> announcements, or welcome customers to your store.<\/p>"
+            }
+          },
+          "1498816375250": {
+            "type": "banner",
+            "settings": {
+              "img_banner": "",
+              "link": ""
+            }
+          },
+          "1498817647779": {
+            "type": "banner",
+            "settings": {
+              "img_banner": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1498814226759",
+          "1498815257232",
+          "1498816326534",
+          "1498816339430",
+          "1498816375250",
+          "1498817647779"
+        ],
+        "settings": {}
+      },
+      "gl_section_sidebar_blog": {
+        "type": "gl_section_sidebar_blog",
+        "blocks": {
+          "1499690601971": {
+            "type": "search",
+            "settings": {
+              "title": "Search"
+            }
+          },
+          "1499701817594": {
+            "type": "categories",
+            "disabled": true,
+            "settings": {
+              "title": "Categories",
+              "menu": "conditions"
+            }
+          },
+          "1499678439559": {
+            "type": "recent",
+            "disabled": true,
+            "settings": {
+              "title": "Recent Post",
+              "featured_posts_limit_all": "5"
+            }
+          },
+          "1499690614762": {
+            "type": "collection",
+            "settings": {
+              "title": "Products",
+              "featured_product_list_collection": "conditions-immune",
+              "featured_product_limit_all": "5"
+            }
+          },
+          "1499702196063": {
+            "type": "instagram",
+            "disabled": true,
+            "settings": {
+              "title": "Instagram",
+              "username": "one_life_health_supermaket",
+              "view_profile": "View profile"
+            }
+          }
+        },
+        "block_order": [
+          "1499690601971",
+          "1499701817594",
+          "1499678439559",
+          "1499690614762",
+          "1499702196063"
+        ],
+        "settings": {}
+      },
+      "faqs_faq": {
+        "type": "faqs_faq",
+        "blocks": {
+          "1499914746683": {
+            "type": "block",
+            "settings": {
+              "title": "envelope",
+              "text": "Tel: 877-45-44-33<br>E-Mail: shop@store.uk"
+            }
+          },
+          "1499914772965": {
+            "type": "block",
+            "settings": {
+              "title": "cursor",
+              "text": "20 Margaret St, London<br>\nGreat Britain, 3NM98-LK"
+            }
+          },
+          "1499914774323": {
+            "type": "block",
+            "settings": {
+              "title": "rocket",
+              "text": "Free standard shipping<br>\non all orders in New York"
+            }
+          },
+          "1499914775895": {
+            "type": "block",
+            "settings": {
+              "title": "clock",
+              "text": "Support forum provide<br>\nfor over 24h, every day."
+            }
+          }
+        },
+        "block_order": [
+          "1499914746683",
+          "1499914772965",
+          "1499914774323",
+          "1499914775895"
+        ],
+        "settings": {
+          "title": "FAQS",
+          "section_bg_image": "",
+          "section_bg_color": "#f9f9f9",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "150px",
+          "section_padding_right": "",
+          "section_padding_bottom": "100px",
+          "section_padding_left": "",
+          "hidden_section": false
+        }
+      },
+      "faqs_question": {
+        "type": "faqs_question",
+        "blocks": {
+          "1499915697028": {
+            "type": "block",
+            "settings": {
+              "title_one": "Eu dictumst cum at sed euismod condimentum?",
+              "answering_one": "Justo est cum sit fames ac convallis est non leo rhoncus feugiat scelerisque tempus nec sapien vestibulum dis parturient felis a taciti.",
+              "title_two": "Odio molestie hac eros consectetur scelerisque?",
+              "answering_two": "Eu tincidunt magnis erat malesuada vulputate parturient nisl a nisl in a facilisis porttitor ullamcorper nec a a lectus eget non leo ad ad parturient pretium magna.A ligula dis vestibulum dapibus."
+            }
+          },
+          "1499915701444": {
+            "type": "block",
+            "settings": {
+              "title_one": "Vestibulum ullamcorper auctor ornare iaculis?",
+              "answering_one": "Facilisi malesuada in penatibus a torquent at a parturient suspendisse suspendisse per a augue fames commodo ullamcorper duis.",
+              "title_two": "Elit id blandit bibendum velit non vulputate?",
+              "answering_two": "Parturient lectus malesuada condimentum suspendisse urna a dis convallis adipiscing vestibulum elit amet porta quis parturient a id facilisis arcu eleifend.A purus nulla suspendisse ullamcorper orci fames."
+            }
+          }
+        },
+        "block_order": [
+          "1499915697028",
+          "1499915701444"
+        ],
+        "settings": {
+          "title": "FaQs. General Information",
+          "section_bg_image": "",
+          "section_bg_color": "#f9f9f9",
+          "section_margin_top": "",
+          "section_margin_bottom": "50px",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": "",
+          "hidden_section": false
+        }
+      },
+      "faqs_tab": {
+        "type": "faqs_tab",
+        "blocks": {
+          "1499916991674": {
+            "type": "block",
+            "settings": {
+              "title": "Sale",
+              "question_1": "I haven't received my item. What can I do?",
+              "answering_1": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_2": "Ipsum ac erat cursus rutrum parturient a a nostra?",
+              "answering_2": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_3": "Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?",
+              "answering_3": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_4": "Ad a dui a lacinia nec nec non volutpat?",
+              "answering_4": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_5": "Dui nisi in cum augue adipiscing nibh taciti mollis condimentum risus?",
+              "answering_5": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_6": "Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?",
+              "answering_6": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_7": "",
+              "answering_7": "",
+              "question_8": "",
+              "answering_8": "",
+              "question_9": "",
+              "answering_9": "",
+              "question_10": "",
+              "answering_10": ""
+            }
+          },
+          "1499917060299": {
+            "type": "block",
+            "settings": {
+              "title": "Terms & Conditions",
+              "question_1": "I haven't received my item. What can I do?",
+              "answering_1": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_2": "Ipsum ac erat cursus rutrum parturient a a nostra?",
+              "answering_2": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_3": "Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?",
+              "answering_3": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_4": "Ad a dui a lacinia nec nec non volutpat?",
+              "answering_4": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_5": "Dui nisi in cum augue adipiscing nibh taciti mollis condimentum risus?",
+              "answering_5": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_6": "Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?",
+              "answering_6": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_7": "",
+              "answering_7": "",
+              "question_8": "",
+              "answering_8": "",
+              "question_9": "",
+              "answering_9": "",
+              "question_10": "",
+              "answering_10": ""
+            }
+          },
+          "1502068081410": {
+            "type": "block",
+            "settings": {
+              "title": "Privacy Policy",
+              "question_1": "Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?",
+              "answering_1": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_2": "Ad a dui a lacinia nec nec non volutpat?",
+              "answering_2": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_3": "Dui nisi in cum augue adipiscing nibh taciti mollis condimentum risus?",
+              "answering_3": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_4": "Ipsum ac erat cursus rutrum parturient a a nostra?",
+              "answering_4": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_5": "I haven't received my item. What can I do?",
+              "answering_5": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_6": "Ad a dui a lacinia nec nec non volutpat?",
+              "answering_6": "<p>Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>\n<p>Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.<\/p>",
+              "question_7": "",
+              "answering_7": "",
+              "question_8": "",
+              "answering_8": "",
+              "question_9": "",
+              "answering_9": "",
+              "question_10": "",
+              "answering_10": ""
+            }
+          }
+        },
+        "block_order": [
+          "1499916991674",
+          "1499917060299",
+          "1502068081410"
+        ],
+        "settings": {
+          "use_form_question": true,
+          "hidden_form_name": false,
+          "title": "Ask a Question",
+          "sub_text": "Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis. Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in",
+          "name": "Your Name",
+          "email": "Your Email (required)",
+          "message": "Your Message",
+          "submit": "ASK A QUESTION",
+          "section_margin_top": "30px",
+          "section_margin_bottom": "30px",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": "",
+          "hidden_section": false
+        }
+      },
+      "faqs_counter": {
+        "type": "faqs_counter",
+        "blocks": {
+          "1499931111239": {
+            "type": "basel-counter",
+            "settings": {
+              "icon": "clip",
+              "value": "3200",
+              "label": "TOPICS CREATED"
+            }
+          },
+          "1499931114678": {
+            "type": "basel-counter",
+            "settings": {
+              "icon": "star",
+              "value": "180",
+              "label": "HAPPY CUSTOMERS"
+            }
+          },
+          "1499931121410": {
+            "type": "basel-counter",
+            "settings": {
+              "icon": "diamond",
+              "value": "5",
+              "label": "YEAR OF DEVELOPING"
+            }
+          },
+          "1499931124082": {
+            "type": "basel-counter",
+            "settings": {
+              "icon": "bubble",
+              "value": "5000",
+              "label": "ANSWERED QUESTIONS"
+            }
+          }
+        },
+        "block_order": [
+          "1499931111239",
+          "1499931114678",
+          "1499931121410",
+          "1499931124082"
+        ],
+        "settings": {
+          "section_bg_image": "",
+          "section_bg_color": "#f9f9f9",
+          "section_margin_top": "",
+          "section_margin_bottom": "-40px",
+          "section_padding_top": "40px",
+          "section_padding_right": "",
+          "section_padding_bottom": "65px",
+          "section_padding_left": "",
+          "hidden_section": false
+        }
+      },
+      "gl_mega_menu": {
+        "type": "gl_mega_menu",
+        "blocks": {
+          "a8da2b8d-7eff-463a-8a2c-8c32513ed819": {
+            "type": "dropdown",
+            "settings": {
+              "title": "Health Supplements",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/health",
+              "label": "",
+              "menu": "health",
+              "color": "#ffffff",
+              "menu_width": ""
+            }
+          },
+          "3627f3e9-2a5d-4a11-a081-477571f01fee": {
+            "type": "dropdown",
+            "settings": {
+              "title": "Health Conditions",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/conditions",
+              "label": "",
+              "menu": "conditions",
+              "color": "#ffffff",
+              "menu_width": ""
+            }
+          },
+          "9554e9e9-9252-494c-a561-6e9d228a3d9d": {
+            "type": "dropdown",
+            "settings": {
+              "title": "Skin & Beauty",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/beauty",
+              "label": "",
+              "menu": "beauty",
+              "color": "#ffffff",
+              "menu_width": ""
+            }
+          },
+          "0bf5bdfe-8c76-47a6-8a26-9bed3004f141": {
+            "type": "dropdown",
+            "settings": {
+              "title": "Food Pantry",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/food",
+              "label": "",
+              "menu": "food",
+              "color": "#ffffff",
+              "menu_width": ""
+            }
+          },
+          "ad861c9a-9f9a-4a4a-b8c4-b267e35e0940": {
+            "type": "dropdown",
+            "settings": {
+              "title": "Sports Nutrition",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/sport",
+              "label": "",
+              "menu": "sport",
+              "color": "#ffffff",
+              "menu_width": ""
+            }
+          },
+          "744124c6-3719-456e-ac35-4e7107de04ef": {
+            "type": "dropdown",
+            "settings": {
+              "title": "Kids Health",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/kids",
+              "label": "",
+              "menu": "kids",
+              "color": "#ffffff",
+              "menu_width": ""
+            }
+          },
+          "b22b96c6-5f41-4e44-ba78-de303e5aade2": {
+            "type": "dropdown",
+            "settings": {
+              "title": "Healthy Home",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/home",
+              "label": "",
+              "menu": "healthy-home",
+              "color": "#ffffff",
+              "menu_width": ""
+            }
+          },
+          "a7646f82-3045-4d92-bf14-668c7b649762": {
+            "type": "menu_item_no_children",
+            "settings": {
+              "title": "Pet Health",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/pets",
+              "label": "",
+              "color": "#ffffff"
+            }
+          },
+          "5580c6aa-2c76-4d30-82b8-cc3ed6343eb9": {
+            "type": "menu_item_no_children",
+            "settings": {
+              "title": "Superfoods",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/food-superfoods",
+              "label": "",
+              "color": "#ffffff"
+            }
+          },
+          "93c3158a-ebe9-461a-9a25-c3f8ec929d95": {
+            "type": "menu_item_no_children",
+            "settings": {
+              "title": "Vivid Health",
+              "icon": "",
+              "button_link": "shopify:\/\/collections\/vivid-health",
+              "label": "",
+              "color": "#ffffff"
+            }
+          },
+          "dropdown_eQLKTT": {
+            "type": "dropdown",
+            "settings": {
+              "title": "Shop By Brand",
+              "icon": "",
+              "button_link": "",
+              "label": "",
+              "menu": "shop-by-brand",
+              "color": "#ffffff",
+              "menu_width": ""
+            }
+          },
+          "supplement_guides_link": {
+            "type": "menu_item_no_children",
+            "settings": {
+              "title": "Supplement Guides",
+              "icon": "",
+              "button_link": "shopify:\/\/pages\/supplement-guides",
+              "label": "",
+              "color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "a8da2b8d-7eff-463a-8a2c-8c32513ed819",
+          "3627f3e9-2a5d-4a11-a081-477571f01fee",
+          "9554e9e9-9252-494c-a561-6e9d228a3d9d",
+          "0bf5bdfe-8c76-47a6-8a26-9bed3004f141",
+          "ad861c9a-9f9a-4a4a-b8c4-b267e35e0940",
+          "744124c6-3719-456e-ac35-4e7107de04ef",
+          "b22b96c6-5f41-4e44-ba78-de303e5aade2",
+          "a7646f82-3045-4d92-bf14-668c7b649762",
+          "5580c6aa-2c76-4d30-82b8-cc3ed6343eb9",
+          "93c3158a-ebe9-461a-9a25-c3f8ec929d95",
+          "dropdown_eQLKTT",
+          "supplement_guides_link"
+        ],
+        "settings": {
+          "active_sub_menu": "hover",
+          "label_1": "",
+          "color_1": "#1e9ca2",
+          "label_2": "",
+          "color_2": "#ac2626",
+          "label_3": "",
+          "color_3": "#c0cb22",
+          "label_4": "",
+          "color_4": "#887272",
+          "label_5": "",
+          "color_5": ""
+        }
+      },
+      "gl_mobile_menu": {
+        "type": "gl_mobile_menu",
+        "settings": {
+          "menu": "collections"
+        }
+      },
+      "gl_search-by-category": {
+        "type": "gl_search-by-category",
+        "blocks": {
+          "1501063628239": {
+            "type": "collection_featured",
+            "settings": {
+              "collection_id": "accessories"
+            }
+          },
+          "1501063632717": {
+            "type": "collection_featured",
+            "settings": {
+              "collection_id": ""
+            }
+          },
+          "1501063636724": {
+            "type": "collection_featured",
+            "settings": {
+              "collection_id": ""
+            }
+          },
+          "1501063643140": {
+            "type": "collection_featured",
+            "settings": {
+              "collection_id": ""
+            }
+          }
+        },
+        "block_order": [
+          "1501063628239",
+          "1501063632717",
+          "1501063636724",
+          "1501063643140"
+        ],
+        "settings": {
+          "top_categories": "2"
+        }
+      },
+      "gl_mega-navigation": {
+        "type": "gl_mega-navigation",
+        "blocks": {
+          "1501116410889": {
+            "type": "dropdown",
+            "settings": {
+              "title": "shop",
+              "icon": "",
+              "button_link": "",
+              "label": "",
+              "color": "#ffffff"
+            }
+          },
+          "1501116421296": {
+            "type": "menu_item_no_children",
+            "settings": {
+              "title": "Home",
+              "icon": "",
+              "button_link": "",
+              "label": "",
+              "color": "#ffffff"
+            }
+          },
+          "1501117830239": {
+            "type": "mega_sub",
+            "settings": {
+              "title": "shop",
+              "icon": "",
+              "button_link": "",
+              "label": "",
+              "color": "#ffffff",
+              "show_img": false,
+              "full_width": false,
+              "menu_width": "825"
+            }
+          },
+          "1501120761632": {
+            "type": "mega_sub",
+            "settings": {
+              "title": "all menu",
+              "icon": "user",
+              "button_link": "\/account",
+              "label": "all",
+              "color": "#c98484",
+              "show_img": true,
+              "full_width": true,
+              "menu_width": "826"
+            }
+          },
+          "supplement_guides_nav_block": {
+            "type": "menu_item_no_children",
+            "settings": {
+              "title": "Supplement Guides",
+              "icon": "",
+              "button_link": "shopify:\/\/pages\/supplement-guides",
+              "label": "NEW",
+              "color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "1501116410889",
+          "1501116421296",
+          "supplement_guides_nav_block",
+          "1501117830239",
+          "1501120761632"
+        ],
+        "settings": {
+          "active_sub_menu": "click",
+          "label_1": "",
+          "color_1": "",
+          "label_2": "",
+          "color_2": "",
+          "label_3": "",
+          "color_3": "",
+          "label_4": "",
+          "color_4": "",
+          "label_5": "",
+          "color_5": ""
+        }
+      },
+      "gl_top_bar_menu": {
+        "type": "gl_top_bar_menu",
+        "blocks": {
+          "1501749498671": {
+            "type": "menu_item_no_children",
+            "settings": {
+              "title": "Contact Us",
+              "icon": "phone",
+              "button_link": "shopify:\/\/pages\/contact"
+            }
+          },
+          "1501123128286": {
+            "type": "menu_item_no_children",
+            "settings": {
+              "title": "My Account",
+              "icon": "user",
+              "button_link": "\/account"
+            }
+          }
+        },
+        "block_order": [
+          "1501749498671",
+          "1501123128286"
+        ],
+        "settings": {}
+      },
+      "gl_footer": {
+        "type": "gl_footer",
+        "blocks": {
+          "1501148151649": {
+            "type": "html",
+            "settings": {
+              "title": "About Us",
+              "html": "<strong><a href=\"\/pages\/about-us\">Our Story<\/a><\/strong><br><br><i class=\"fa fa-location-arrow\"><\/i> <strong>Centurion<\/strong><br><a href=\"https:\/\/goo.gl\/maps\/gHmVJ5nQtvLAud916\" target=\"_blank\">117 Galway Ave, Hennopspark<\/a><br><a href=\"callto:+27126543750\"><i class=\"fa fa-phone\"><\/i> (012) 654 3750<\/a>  <a href=\"https:\/\/wa.me\/27713744910\" target=\"_blank\"><i class=\"fa fa-whatsapp\"><\/i> (071) 374 4910<\/a><br><br><i class=\"fa fa-location-arrow\"><\/i> <strong>Glen Village<\/strong><br><a href=\"https:\/\/www.google.com\/maps\/place\/Glen+Village+South\/@-25.7894906,28.3241586,17z\" target=\"_blank\">Glen Village Center South, Faerie Glen, Pretoria<\/a><br><a href=\"callto:+27660227457\"><i class=\"fa fa-phone\"><\/i> (066) 022 7457<\/a><br><br><i class=\"fa fa-location-arrow\"><\/i> <strong>Edenvale<\/strong><br><a href=\"https:\/\/maps.google.com\/?q=Shop+7+Green+Valley+Shopping+Centre+Stoneridge+Dr+Greenstone+Hill\" target=\"_blank\">Shop 7, Green Valley Shopping Centre, Greenstone Hill, JHB<\/a><br><a href=\"callto:+27773560173\"><i class=\"fa fa-phone\"><\/i> (077) 356 0173<\/a>",
+              "enabled_payment_types": false,
+              "width": "25%",
+              "width_tablet": "50%",
+              "width_mobile": "100%"
+            }
+          },
+          "827847c3-2056-4813-a651-4560d1dba5f8": {
+            "type": "html",
+            "settings": {
+              "title": "Connect with Us",
+              "html": "<a href=\"https:\/\/www.facebook.com\/OneLifeHealthSupermarket\" target=\"_blank\"><i class=\"fa fa-facebook\"><\/i> One Life Health Supermarket<\/a><br> \n<a href=\"https:\/\/instagram.com\/one_life_health_supermarket\/\" target=\"_blank\">\n<i class=\"fa fa-instagram\"><\/i> one_life_health_supermarket<\/a><br>\n<a href=\"mailto:orders@onelife.co.za\">\n    <i class=\"fa fa-envelope\"><\/i> orders@onelife.co.za<\/a><p><a href=\"mailto:orders@onelife.co.za\"><\/a><\/p>",
+              "enabled_payment_types": true,
+              "width": "25%",
+              "width_tablet": "50%",
+              "width_mobile": "100%"
+            }
+          },
+          "1501752631358": {
+            "type": "html",
+            "settings": {
+              "title": "INFORMATION",
+              "html": "<ul class=\"menu\">\n  <strong>\n    <li><a href=\"\/pages\/return\">Return Policy<\/a><\/li>\n    <li><a href=\"\/pages\/exchange-refund-policy\">Exchange &amp; Refund Policy<\/a><\/li>\n    <li><a href=\"\/pages\/delivery-terms\">Delivery Terms<\/a><\/li>\n    <li><a href=\"\/pages\/privacy-policy\">Privacy Policy<\/a><\/li>\n    <li><a href=\"\/pages\/terms-conditions\">Terms of Use<\/a><\/li>\n    <li><a href=\"\/pages\/my-health-rewards\">My Health Rewards<\/a><\/li>\n    <li><a href=\"\/pages\/contact\">Contact Us<\/a><\/li>\n  <\/strong>\n<\/ul>",
+              "enabled_payment_types": true,
+              "width": "25%",
+              "width_tablet": "50%",
+              "width_mobile": "100%"
+            }
+          },
+          "9560f212-3e77-40b7-8e85-bcbe29392cd2": {
+            "type": "newsletter",
+            "settings": {
+              "title": "Newsletter",
+              "use_mailchimp": false,
+              "width": "25%",
+              "width_tablet": "50%",
+              "width_mobile": "100%"
+            }
+          }
+        },
+        "block_order": [
+          "1501148151649",
+          "827847c3-2056-4813-a651-4560d1dba5f8",
+          "1501752631358",
+          "9560f212-3e77-40b7-8e85-bcbe29392cd2"
+        ],
+        "settings": {}
+      },
+      "gl_filter_area": {
+        "type": "gl_filter_area",
+        "blocks": {
+          "1501350109289": {
+            "type": "sortby",
+            "settings": {
+              "title": "Sort by"
+            }
+          },
+          "1501752920204": {
+            "type": "price",
+            "settings": {
+              "title": "Price filter",
+              "shop_by_tags_price": "£0.00 - £150.00, £150.00 - £300.00, £300.00 - £450.00, £450.00 +",
+              "use_auto_filter_tag": false,
+              "key_2": "price",
+              "key": ""
+            }
+          },
+          "1501347494048": {
+            "type": "color",
+            "settings": {
+              "title": "Filter by color",
+              "shop_by_tags_color": "Blue, White, Red, Black, Brown, yellow, green",
+              "use_auto_filter_tag": false,
+              "key_2": "color",
+              "key": ""
+            }
+          },
+          "1501752967968": {
+            "type": "size",
+            "settings": {
+              "title": "Filter by size",
+              "shop_by_tags_size": "L, M, XL, S, XS",
+              "use_auto_filter_tag": false,
+              "key_2": "size",
+              "key": ""
+            }
+          }
+        },
+        "block_order": [
+          "1501350109289",
+          "1501752920204",
+          "1501347494048",
+          "1501752967968"
+        ],
+        "settings": {}
+      },
+      "gl_section_sidebar_shop": {
+        "type": "gl_section_sidebar_shop",
+        "blocks": {
+          "1501492296062": {
+            "type": "category",
+            "settings": {
+              "title": "Product Categories",
+              "top_categories_source": "top_categories_link_list",
+              "top_categories_link_list": "collections"
+            }
+          },
+          "12233a5b-5135-4b30-b2c5-953101a7d97b": {
+            "type": "brand",
+            "settings": {
+              "title": "Shop by brand",
+              "shop_by_tags_brand": "",
+              "use_auto_filter_tag": true,
+              "key_2": "brand",
+              "key": ""
+            }
+          }
+        },
+        "block_order": [
+          "1501492296062",
+          "12233a5b-5135-4b30-b2c5-953101a7d97b"
+        ],
+        "settings": {}
+      },
+      "gl_custom_color": {
+        "type": "gl_custom_color",
+        "settings": {}
+      },
+      "promo_banner_collection": {
+        "type": "promo_banner_collection",
+        "blocks": {
+          "1501643382367": {
+            "type": "item",
+            "settings": {
+              "title": "shoes",
+              "collection_id": "shoes",
+              "banner_content": "",
+              "banner_btn_title": "click me",
+              "banner_link": "shopify:\/\/collections\/shoes",
+              "button_style_color": "default",
+              "banner_alignment": "right",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "4",
+              "banner_content_style": "default",
+              "banner_color": "dark",
+              "enable_increase": true
+            }
+          },
+          "1501644401965": {
+            "type": "item",
+            "settings": {
+              "title": "cosmetics",
+              "collection_id": "",
+              "banner_content": "",
+              "banner_btn_title": "Buy Now",
+              "banner_link": "shopify:\/\/collections\/cosmetics",
+              "button_style_color": "btn-style-bordered",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "default",
+              "banner_content_style": "default",
+              "banner_color": "light",
+              "enable_increase": false
+            }
+          }
+        },
+        "block_order": [
+          "1501643382367",
+          "1501644401965"
+        ],
+        "settings": {}
+      },
+      "product_360_section": {
+        "type": "product_360_section",
+        "blocks": {
+          "1501810369998": {
+            "type": "item_image",
+            "settings": {
+              "title": "Bitish Hunter Limited  Edition",
+              "product_id": "",
+              "image_1": "",
+              "image_2": "",
+              "image_3": "",
+              "image_4": "",
+              "image_5": "",
+              "image_6": "",
+              "image_7": "",
+              "image_8": "",
+              "image_9": "",
+              "image_10": "",
+              "image_11": "",
+              "image_12": "",
+              "image_13": "",
+              "image_14": "",
+              "image_15": "",
+              "image_16": "",
+              "image_17": "",
+              "image_18": "",
+              "image_19": "",
+              "image_20": "",
+              "image_21": "",
+              "image_22": "",
+              "image_23": "",
+              "image_24": "",
+              "image_25": ""
+            }
+          }
+        },
+        "block_order": [
+          "1501810369998"
+        ],
+        "settings": {}
+      },
+      "1509672386647": {
+        "type": "gl_section_Information",
+        "blocks": {
+          "1509672386647-0": {
+            "type": "information",
+            "settings": {
+              "banner_width": "4",
+              "image": "shopify:\/\/shop_images\/2_450fc476-d100-4557-9482-62831196fb27.png",
+              "svg_link": "",
+              "banner_content": "<h2 style=\"font-weight: bold; text-align: center;\">\n<span class=\"color-primary h3\">1.<\/span><span> Add items to your cart<\/span>\n<\/h2>\n<p style=\"text-align: center;\">Browse 1000's of products across our multiple categories and add them to your cart.<\/p>",
+              "banner_btn_title": "",
+              "banner_link": "shopify:\/\/collections\/organic",
+              "button_style": "hover",
+              "button_design": "style_1",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "box_style": "base",
+              "banner_color": "dark",
+              "block_border_color": "",
+              "block_border_style": "solid",
+              "block_border": "",
+              "block_margin_top": "",
+              "block_margin_bottom": "60px",
+              "block_padding_top": "",
+              "block_padding_right": "",
+              "block_padding_bottom": "",
+              "block_padding_left": ""
+            }
+          },
+          "1509672386647-1": {
+            "type": "information",
+            "settings": {
+              "banner_width": "4",
+              "image": "shopify:\/\/shop_images\/3_ee3330ed-5825-421c-9481-fff2ae937600.png",
+              "svg_link": "",
+              "banner_content": "<h2 style=\"font-weight: bold; text-align: center;\">\n<span class=\"color-primary h3\">2.<\/span> Securely Checkout<\/h2>\n<p style=\"text-align: center;\">Once you have confirmed your cart contents proceed to checkout and make payment safely and securely via PayFast..<\/p>",
+              "banner_btn_title": "",
+              "banner_link": "shopify:\/\/collections\/organic",
+              "button_style": "hover",
+              "button_design": "style_1",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "box_style": "base",
+              "banner_color": "dark",
+              "block_border_color": "",
+              "block_border_style": "solid",
+              "block_border": "",
+              "block_margin_top": "",
+              "block_margin_bottom": "60px",
+              "block_padding_top": "",
+              "block_padding_right": "",
+              "block_padding_bottom": "",
+              "block_padding_left": ""
+            }
+          },
+          "1509672386647-2": {
+            "type": "information",
+            "settings": {
+              "banner_width": "4",
+              "image": "shopify:\/\/shop_images\/1_68d0b060-e5f2-460d-a0f5-bbda8a3b68ce.png",
+              "svg_link": "",
+              "banner_content": "<h2 style=\"font-weight: bold; text-align: center;\">\n<span class=\"color-primary h3\">3.<\/span> Receive your items<\/h2>\n<p style=\"text-align: center;\">Once payment is confirmed, you will receive your order within a few days.<\/p>",
+              "banner_btn_title": "",
+              "banner_link": "shopify:\/\/collections\/organic",
+              "button_style": "hover",
+              "button_design": "style_1",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "box_style": "base",
+              "banner_color": "dark",
+              "block_border_color": "",
+              "block_border_style": "solid",
+              "block_border": "",
+              "block_margin_top": "",
+              "block_margin_bottom": "60px",
+              "block_padding_top": "",
+              "block_padding_right": "",
+              "block_padding_bottom": "",
+              "block_padding_left": ""
+            }
+          }
+        },
+        "block_order": [
+          "1509672386647-0",
+          "1509672386647-1",
+          "1509672386647-2"
+        ],
+        "settings": {
+          "title": "",
+          "row_stretch": "stretch_row",
+          "button_text": "",
+          "link": "",
+          "section_bg_color": "#f9f9f9",
+          "section_margin_top": "",
+          "section_margin_bottom": "5vh",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "1509672956813": {
+        "type": "gl_section_title",
+        "settings": {
+          "row_stretch": "stretch_row",
+          "grid_width": "12",
+          "title": "How it works",
+          "sub_title": "",
+          "text_after_title": "",
+          "title_style": "simple",
+          "title_color": "default",
+          "title_size": "extra-large",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "section_bg_color": "#f9f9f9",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "8vh",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "1509673805182": {
+        "type": "gl_section_title",
+        "settings": {
+          "row_stretch": "default",
+          "grid_width": "12",
+          "title": "Top Supplements",
+          "sub_title": "",
+          "text_after_title": "",
+          "title_style": "simple",
+          "title_color": "default",
+          "title_size": "extra-large",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "1511431962876": {
+        "type": "gl_section_product_tab_banner",
+        "blocks": {
+          "1511432250373": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Health Supplements",
+              "id_collection": "top-health-supplements",
+              "paginate_index": "6",
+              "use_pagination": "arrows",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "4d816f81-b53d-4844-aa9c-0a4c6e00b0a7": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Health Conditions",
+              "id_collection": "top-health-conditions",
+              "paginate_index": "6",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "1511432208594": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Skin & Beauty",
+              "id_collection": "top-skin-beauty",
+              "paginate_index": "6",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "25f41509-d359-4219-88e4-79015a96b259": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Food Pantry",
+              "id_collection": "top-food-pantry",
+              "paginate_index": "6",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "1511431962876-0": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Sports Nutrition",
+              "id_collection": "top-sports-nutrition",
+              "paginate_index": "6",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "ac504329-d627-4f8b-983a-e965d23ee8b3": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Kids Health",
+              "id_collection": "top-kids-health",
+              "paginate_index": "6",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "2ebe37cb-272e-4273-ac22-fee073859cb7": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Healthy Home",
+              "id_collection": "top-healthy-home",
+              "paginate_index": "6",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "a160d00d-8647-435b-8c0a-37fade24ef03": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Pet Health",
+              "id_collection": "top-pet-health",
+              "paginate_index": "6",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "d8741dc7-f6b6-48ce-b357-930d27cb9db2": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Superfoods",
+              "id_collection": "top-superfoods",
+              "paginate_index": "6",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": true,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          },
+          "6b814ae0-65ab-467e-a3fc-d6e16519fde0": {
+            "type": "collection",
+            "settings": {
+              "title_block": "Vivid Health",
+              "id_collection": "top-vivid-health",
+              "paginate_index": "8",
+              "use_pagination": "none",
+              "grid_columns": "3",
+              "products_hover": "alt",
+              "sale_countdown": false,
+              "countdown_style": "dark",
+              "use_eq_height": false,
+              "image_ratio": "ratio_nt",
+              "image_size": "nt_cover",
+              "image_position": "8"
+            }
+          }
+        },
+        "block_order": [
+          "1511432250373",
+          "4d816f81-b53d-4844-aa9c-0a4c6e00b0a7",
+          "1511432208594",
+          "25f41509-d359-4219-88e4-79015a96b259",
+          "1511431962876-0",
+          "ac504329-d627-4f8b-983a-e965d23ee8b3",
+          "2ebe37cb-272e-4273-ac22-fee073859cb7",
+          "a160d00d-8647-435b-8c0a-37fade24ef03",
+          "d8741dc7-f6b6-48ce-b357-930d27cb9db2",
+          "6b814ae0-65ab-467e-a3fc-d6e16519fde0"
+        ],
+        "settings": {
+          "row_stretch": "default",
+          "banner_layout_setting": "1",
+          "image": "shopify:\/\/shop_images\/tyler-nix-Y1drF0Y3Oe0-unsplash.jpg",
+          "content": "<h1 style=\"font-size: 32px; margin-bottom: 15px;\">Health Supplements South Africa — Your Leading Health Store<\/h1>\n<p><\/p>",
+          "banner_btn_title": "Shop now",
+          "banner_link": "shopify:\/\/collections\/sport",
+          "image_2": "shopify:\/\/shop_images\/Untitled_design_38.png",
+          "content_2": "<h2 style=\"font-size: 32px; margin-bottom: 15px;\">Luxurious Skin Care<\/h2>\n<p><br><\/p>",
+          "banner_btn_title_2": "Shop now",
+          "banner_link_2": "shopify:\/\/collections\/beauty",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "3vh",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "1511492084367": {
+        "type": "gl_testimonials",
+        "blocks": {
+          "1511492084367-0": {
+            "type": "quote",
+            "settings": {
+              "author": "Miranda Louis",
+              "user_title": "Vloger",
+              "quote": "Rhoncus id ut gravida ante mi mattis a dignissim ridiculus a ornare est fusce sem a orci. Quis ante a a sodales dolor consectetur ligula vivamus per natoque ac adipiscing interdum litora consectetur consequat iaculis etiam ad ac vestibulum dolor."
+            }
+          },
+          "1511492084367-1": {
+            "type": "quote",
+            "settings": {
+              "author": "Lenard Chad",
+              "user_title": "CEO Theme & Co",
+              "quote": "Odio tortor purus ullamcorper consectetur cras velit nisl vehicula habitasse diam malesuada facilisis a a aptent a in ridiculus a nunc consectetur quis a consequat condimentum.Pharetra inceptos leo ullamcorper penatibus faucibus eu."
+            }
+          },
+          "1511492084367-2": {
+            "type": "quote",
+            "settings": {
+              "author": "Mila Rickey",
+              "user_title": "Bloger",
+              "quote": "Dignissim adipiscing tempor rutrum condimentum eu curabitur adipiscing consequat venenatis a egestas senectus facilisi condimentum a vestibulum metus ridiculus torquent.Mus consectetur dictum aenean a sit a quisque adipiscing."
+            }
+          },
+          "1511492469135": {
+            "type": "quote",
+            "settings": {
+              "author": "Lenard Chad",
+              "user_title": "Web developer",
+              "quote": "Praesent a ut vestibulum curae bibendum luctus ante consectetur porttitor consectetur parturient vestibulum sed fusce suspendisse nullam ut in.Mollis aliquam netus consectetur curae est nulla euismod vestibulum diam a non a a potenti."
+            }
+          },
+          "1511492472674": {
+            "type": "quote",
+            "settings": {
+              "author": "Margaret Doe",
+              "user_title": "Traveler",
+              "quote": "Ante mattis mauris facilisis curae eros scelerisque praesent ridiculus laoreet feugiat condimentum leo ante imperdiet a accumsan.Adipiscing ullamcorper phasellus a fringilla vestibulum ut lorem leo scelerisque proin adipiscing a a consectetur."
+            }
+          },
+          "1511492475139": {
+            "type": "quote",
+            "settings": {
+              "author": "Lenard Chad",
+              "user_title": "CEO Theme & Co",
+              "quote": "Sit per dis neque cum adipiscing nec ante a eget a bibendum sodales ut ultricies malesuada pharetra scelerisque facilisis a.Etiam aptent dignissim curabitur scelerisque duis pulvinar semper etiam ac litora adipiscing volutpat aenean adipiscing."
+            }
+          }
+        },
+        "block_order": [
+          "1511492084367-0",
+          "1511492084367-1",
+          "1511492084367-2",
+          "1511492469135",
+          "1511492472674",
+          "1511492475139"
+        ],
+        "disabled": true,
+        "settings": {
+          "row_stretch": "stretch_row",
+          "full_height": false,
+          "columns_position": "middle",
+          "equal_height": false,
+          "content_position": "default",
+          "width": "12",
+          "text_color": "dark",
+          "title": "Our clients say",
+          "sub_title": "",
+          "text_after_title": "",
+          "title_style": "simple",
+          "title_color": "default",
+          "title_size": "extra-large",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "layout": "slider",
+          "style": "boxed",
+          "align": "center",
+          "columns": "1",
+          "silder_speed": "5000",
+          "silder_per_view": "3",
+          "hide_pagination": false,
+          "hide_button": false,
+          "slider_loop": false,
+          "autoplay": false,
+          "section_bg_image": "shopify:\/\/shop_images\/organic-testimo-bg.webp",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "50px",
+          "section_padding_right": "",
+          "section_padding_bottom": "30px",
+          "section_padding_left": "",
+          "use_parallax": false
+        }
+      },
+      "1511493957262": {
+        "type": "gl_section_image_with_text",
+        "blocks": {
+          "1511493957262-1": {
+            "type": "text",
+            "settings": {
+              "text_block": "<h1 style=\"font-size: 20px;color: rgba(255,255,255,0.9);line-height: 1;text-align: right\" class=\"gl_custom_heading\">CLEAN FOOD'S MOTTO<\/h1>\n<h1 style=\"font-size: 50px;color: #ffffff;line-height: 1;text-align: right\" class=\"gl_custom_heading\">Eat clean food<\/h1>\n<div class=\"spb_text_column spb_content_element \">\n   <div class=\"spb_wrapper\">\n      <p style=\"text-align: right;\">Malesuada ultrices natoque ullamcorper suspendisse penatibus fringilla risus parturient suscipit torquent et condimentum convallis dapibus. Condimentum dui vestibulum fusce pharetra urna mi porta curae a in eu non auctor nulla a condimentum a elit mus.<\/p>\n      <p style=\"text-align: right;\">Phasellus scelerisque adipiscing a a luctus mattis a eget adipiscing ultricies habitasse suspendisse suspendisse quam facilisis quam conubia parturient ipsum dolor a facilisis ullamcorper.<\/p>\n   <\/div>\n<\/div>"
+            }
+          },
+          "1511493957262-0": {
+            "type": "image",
+            "settings": {
+              "block_image_1": "shopify:\/\/shop_images\/shutterstock52-428x370_428x_d8ccfd78-9378-4094-90bb-3b8a2f0cdf1a.webp"
+            }
+          }
+        },
+        "block_order": [
+          "1511493957262-1",
+          "1511493957262-0"
+        ],
+        "disabled": true,
+        "settings": {
+          "row_stretch": "stretch_row",
+          "full_height": false,
+          "columns_position": "middle",
+          "equal_height": false,
+          "content_position": "middle",
+          "use_countdown": false,
+          "date": "2018\/12\/12",
+          "countdown_color_scheme": "dark",
+          "size": "small",
+          "align": "left",
+          "style": "standard",
+          "button_label": "",
+          "button_link": "",
+          "button_color": "white",
+          "button_style": "default",
+          "button_size": "default",
+          "hide_pagination": false,
+          "hide_button": false,
+          "slider_loop": false,
+          "autoplay": false,
+          "align_img": "2",
+          "color_scheme": "light",
+          "section_bg_image": "shopify:\/\/shop_images\/organic-about-us-bg_1950x_2f9e5516-c194-48df-a08c-65876b240bb2.webp",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "70px",
+          "section_padding_right": "",
+          "section_padding_bottom": "70px",
+          "section_padding_left": "",
+          "use_parallax": true
+        }
+      },
+      "1511510985409": {
+        "type": "gl_section_blog_carousel",
+        "disabled": true,
+        "settings": {
+          "row_stretch": "stretch_row",
+          "title": "Our blog",
+          "sub_title": "",
+          "text_after_title": "",
+          "title_style": "simple",
+          "title_color": "default",
+          "title_size": "extra-large",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "blog": "health-wellness-hub",
+          "paginate_index": "8",
+          "silder_speed": "5000",
+          "silder_per_view": "3",
+          "hide_pagination": false,
+          "hide_button": false,
+          "slider_loop": false,
+          "autoplay": false,
+          "use_eq_height": false,
+          "image_ratio": "ratio4_3",
+          "image_size": "",
+          "image_position": "8",
+          "style": "masonry",
+          "enable_title": "show",
+          "enable_meta": "hide",
+          "enable_text": "show",
+          "enable_button": "show",
+          "enable_post_categories": "show",
+          "enable_post_date": "show",
+          "section_bg_color": "#f9f9f9",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "4vh",
+          "section_padding_top": "8vh",
+          "section_padding_right": "",
+          "section_padding_bottom": "6vh",
+          "section_padding_left": ""
+        }
+      },
+      "1511926230597": {
+        "type": "gl_section_group_block",
+        "blocks": {
+          "1511926230597-0": {
+            "type": "collection",
+            "settings": {
+              "title": "New products",
+              "featured_product_list_collection": "organic",
+              "featured_product_limit_all": "3"
+            }
+          },
+          "1511926230597-1": {
+            "type": "collection",
+            "settings": {
+              "title": "Featured",
+              "featured_product_list_collection": "organic",
+              "featured_product_limit_all": "3"
+            }
+          },
+          "1511926230597-2": {
+            "type": "twitter",
+            "settings": {
+              "title": "Recent tweets",
+              "embed_code": "<a class=\"twitter-timeline\" href=\"https:\/\/twitter.com\/Shopify?ref_src=twsrc%5Etfw\">Tweets by Shopify<\/a> <script async=\"\" src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"><\/script>"
+            }
+          },
+          "1511926230597-3": {
+            "type": "instagram",
+            "settings": {
+              "title": "Instagram",
+              "username": "one_life_health_supermarket",
+              "view_profile": ""
+            }
+          }
+        },
+        "block_order": [
+          "1511926230597-0",
+          "1511926230597-1",
+          "1511926230597-2",
+          "1511926230597-3"
+        ],
+        "disabled": true,
+        "settings": {
+          "row_stretch": "default",
+          "full_height": false,
+          "columns_position": "middle",
+          "equal_height": false,
+          "content_position": "default",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "1511940832411": {
+        "type": "gl_shipping_organic",
+        "blocks": {
+          "1511940832411-1": {
+            "type": "text_block",
+            "disabled": true,
+            "settings": {
+              "icon": "life-ring",
+              "content": "100% CUSTOMER SATISFACTION"
+            }
+          },
+          "1511940832411-2": {
+            "type": "text_block",
+            "settings": {
+              "icon": "cc-visa",
+              "content": "SECURE PAYMENTS"
+            }
+          },
+          "1511940832411-3": {
+            "type": "text_block",
+            "disabled": true,
+            "settings": {
+              "icon": "leaf",
+              "content": "MADE WITH LOVE"
+            }
+          }
+        },
+        "block_order": [
+          "1511940832411-1",
+          "1511940832411-2",
+          "1511940832411-3"
+        ],
+        "settings": {
+          "row_stretch": "stretch_row",
+          "full_height": false,
+          "columns_position": "middle",
+          "equal_height": false,
+          "content_position": "default",
+          "section_bg_color": "#7ea93e",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "1548808703526": {
+        "type": "slideshow",
+        "blocks": {
+          "item_wyTCJc": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/August-Website_banner_2025.png",
+              "image_mobile": "shopify:\/\/shop_images\/August-Mobile_Banner_2025.png",
+              "title": "",
+              "title_tb": "",
+              "title_mb": "",
+              "banner_btn_title": "",
+              "banner_link": "",
+              "hide_btn_tablet": false,
+              "hide_btn_mobile": false,
+              "button_color": "white",
+              "button_style": "bordered",
+              "button_size": "default",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "default",
+              "banner_content_style": "default",
+              "banner_color": "light",
+              "enable_increase": true
+            }
+          },
+          "item_kmx7Rk": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/2_4b5399ec-7d27-41fc-9a71-f72467146140.png",
+              "image_mobile": "shopify:\/\/shop_images\/3_675edfa1-cf68-4169-8ceb-58c0947eaa8c.png",
+              "title": "",
+              "title_tb": "",
+              "title_mb": "",
+              "banner_btn_title": "",
+              "banner_link": "https:\/\/onelife.co.za\/collections\/vivid-health",
+              "hide_btn_tablet": false,
+              "hide_btn_mobile": false,
+              "button_color": "white",
+              "button_style": "bordered",
+              "button_size": "default",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "default",
+              "banner_content_style": "default",
+              "banner_color": "light",
+              "enable_increase": true
+            }
+          },
+          "item_LhFc43": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/5_f0a3bff5-ed5e-422a-b546-64cf90dfdab3.png",
+              "image_mobile": "shopify:\/\/shop_images\/2_339fdcdf-0bbc-4481-ad1c-43971cc815f6.png",
+              "title": "",
+              "title_tb": "",
+              "title_mb": "",
+              "banner_btn_title": "",
+              "banner_link": "https:\/\/onelife.co.za\/search?q=Natroceutics&type=product",
+              "hide_btn_tablet": false,
+              "hide_btn_mobile": false,
+              "button_color": "white",
+              "button_style": "bordered",
+              "button_size": "default",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "default",
+              "banner_content_style": "default",
+              "banner_color": "light",
+              "enable_increase": true
+            }
+          },
+          "item_UdJjHP": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/4_eb6e8115-56da-4c0f-b702-21065cf1f76a.png",
+              "image_mobile": "shopify:\/\/shop_images\/1_5c002973-5e45-400d-850b-d2d1dd4d395f.png",
+              "title": "",
+              "title_tb": "",
+              "title_mb": "",
+              "banner_btn_title": "",
+              "banner_link": "https:\/\/onelife.co.za\/search?q=chinaherb&type=product",
+              "hide_btn_tablet": false,
+              "hide_btn_mobile": false,
+              "button_color": "white",
+              "button_style": "bordered",
+              "button_size": "default",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "default",
+              "banner_content_style": "default",
+              "banner_color": "light",
+              "enable_increase": true
+            }
+          },
+          "item_CaA7ch": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1_fb3a4568-49ae-41bd-8598-13f55d44e946.png",
+              "image_mobile": "shopify:\/\/shop_images\/5_ff1820e4-cef6-4386-b4cf-08f66b383387.png",
+              "title": "",
+              "title_tb": "",
+              "title_mb": "",
+              "banner_btn_title": "",
+              "banner_link": "https:\/\/onelife.co.za\/search?q=delfran&type=product",
+              "hide_btn_tablet": false,
+              "hide_btn_mobile": false,
+              "button_color": "white",
+              "button_style": "bordered",
+              "button_size": "default",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "default",
+              "banner_content_style": "default",
+              "banner_color": "light",
+              "enable_increase": true
+            }
+          },
+          "item_bLK8K8": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/August-Website_banner_2025_415ee63c-ad1c-424c-b01d-25bae5c87f78.png",
+              "image_mobile": "shopify:\/\/shop_images\/Blackseed-Mobile_Banner.png",
+              "title": "",
+              "title_tb": "",
+              "title_mb": "",
+              "banner_btn_title": "",
+              "banner_link": "https:\/\/onelife.co.za\/search?q=HOLISTQ&type=product",
+              "hide_btn_tablet": false,
+              "hide_btn_mobile": false,
+              "button_color": "white",
+              "button_style": "bordered",
+              "button_size": "default",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "default",
+              "banner_content_style": "default",
+              "banner_color": "light",
+              "enable_increase": true
+            }
+          },
+          "item_freeDeliveryApr2026": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/August-Website_banner_2025.png",
+              "image_mobile": "shopify:\/\/shop_images\/August-Mobile_Banner_2025.png",
+              "title": "",
+              "title_tb": "",
+              "title_mb": "",
+              "banner_btn_title": "",
+              "banner_link": "https:\/\/onelife.co.za\/collections\/all",
+              "hide_btn_tablet": false,
+              "hide_btn_mobile": false,
+              "button_color": "white",
+              "button_style": "bordered",
+              "button_size": "default",
+              "banner_alignment": "center",
+              "banner_vertical_alignment": "top",
+              "banner_effect": "default",
+              "banner_content_style": "default",
+              "banner_color": "light",
+              "enable_increase": true
+            }
+          }
+        },
+        "block_order": [
+          "item_freeDeliveryApr2026",
+          "item_wyTCJc",
+          "item_kmx7Rk",
+          "item_LhFc43",
+          "item_UdJjHP",
+          "item_CaA7ch",
+          "item_bLK8K8"
+        ],
+        "settings": {
+          "row_stretch": "stretch_row_content_no_spaces",
+          "silder_speed": "5000",
+          "dottime": "200",
+          "hide_pagination": false,
+          "hide_button": true,
+          "banner_color": "light",
+          "slider_loop": true,
+          "autoplay": true,
+          "use_font": false,
+          "font_heading": "alegreya_sans_n8",
+          "font_subheading": "amiri_n4",
+          "font_btn": "karla_n4",
+          "use_custom_img": true,
+          "desktop": "640px",
+          "notebook": "600px",
+          "tablet": "450px",
+          "mobile": "450px",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_margin_left": "",
+          "section_margin_right": "",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "toolbar_mobile": {
+        "type": "toolbar_mobile",
+        "blocks": {
+          "toolbar_mobile-0": {
+            "type": "shop",
+            "settings": {
+              "title": "Shop",
+              "link": ""
+            }
+          },
+          "toolbar_mobile-1": {
+            "type": "wish",
+            "settings": {
+              "title": "Wishlist"
+            }
+          },
+          "toolbar_mobile-2": {
+            "type": "cart",
+            "settings": {
+              "title": "Cart"
+            }
+          },
+          "toolbar_mobile-3": {
+            "type": "account",
+            "settings": {
+              "title": "My account"
+            }
+          }
+        },
+        "block_order": [
+          "toolbar_mobile-0",
+          "toolbar_mobile-1",
+          "toolbar_mobile-2",
+          "toolbar_mobile-3"
+        ],
+        "settings": {
+          "show_sticky": false,
+          "show_txt": false
+        }
+      },
+      "ea05852f-6085-4ea9-a1dc-2ba7c48370c4": {
+        "type": "gl_section_brands",
+        "blocks": {
+          "ea05852f-6085-4ea9-a1dc-2ba7c48370c4-1671449002ca32398c-0": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png",
+              "link": ""
+            }
+          },
+          "ea05852f-6085-4ea9-a1dc-2ba7c48370c4-1671449002ca32398c-2": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png",
+              "link": ""
+            }
+          },
+          "ea6066f2-b7df-463c-87a5-f68659d9aab9": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png",
+              "link": ""
+            }
+          },
+          "ad60a9ed-4385-454a-9f20-2fcce87ba02a": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png",
+              "link": ""
+            }
+          },
+          "5b7a8f03-e2e5-4244-9429-f58c7bcc6248": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png",
+              "link": ""
+            }
+          },
+          "aed65a2d-af2d-4306-aefe-9101f3dae3a7": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "ea05852f-6085-4ea9-a1dc-2ba7c48370c4-1671449002ca32398c-0",
+          "ea05852f-6085-4ea9-a1dc-2ba7c48370c4-1671449002ca32398c-2",
+          "ea6066f2-b7df-463c-87a5-f68659d9aab9",
+          "ad60a9ed-4385-454a-9f20-2fcce87ba02a",
+          "5b7a8f03-e2e5-4244-9429-f58c7bcc6248",
+          "aed65a2d-af2d-4306-aefe-9101f3dae3a7"
+        ],
+        "disabled": true,
+        "settings": {
+          "title": "Featured <br> Brands",
+          "padding_title": "78px-30px",
+          "row_stretch": "default",
+          "content_position": "middle",
+          "use_photowipe": false,
+          "view": "masonry",
+          "space": "30",
+          "columns": "6",
+          "silder_speed": "5000",
+          "silder_per_view": "4",
+          "hide_pagination": false,
+          "hide_button": false,
+          "slider_loop": false,
+          "autoplay": false,
+          "hide_medium": false,
+          "hide_small": false,
+          "hide_extra_small": false,
+          "section_bg_color": "#f9f9f9",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "70px",
+          "section_padding_top": "40px",
+          "section_padding_right": "",
+          "section_padding_bottom": "40px",
+          "section_padding_left": ""
+        }
+      },
+      "10cacd21-96f0-42b3-8c86-fa61acbbed47": {
+        "type": "gl_section_categories",
+        "blocks": {
+          "10cacd21-96f0-42b3-8c86-fa61acbbed47-16714486966380521f-2": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "health",
+              "width": "6",
+              "mobile_width": "6"
+            }
+          },
+          "f28cc447-29d9-4810-9d5a-11e36e0d6d5e": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "sport",
+              "width": "3",
+              "mobile_width": "6"
+            }
+          },
+          "10cacd21-96f0-42b3-8c86-fa61acbbed47-16714486966380521f-0": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "beauty",
+              "width": "3",
+              "mobile_width": "6"
+            }
+          },
+          "10cacd21-96f0-42b3-8c86-fa61acbbed47-16714486966380521f-3": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "conditions",
+              "width": "3",
+              "mobile_width": "6"
+            }
+          },
+          "572b7e53-a8a4-4d81-91a8-e0d1ff36bc75": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "food",
+              "width": "3",
+              "mobile_width": "6"
+            }
+          },
+          "a3559e4e-05c5-44cd-b4be-db2faf5737ad": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "vivid-health",
+              "width": "6",
+              "mobile_width": "6"
+            }
+          },
+          "41efb8f9-e37f-42e8-8bff-32ab01700692": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "food-superfoods",
+              "width": "3",
+              "mobile_width": "6"
+            }
+          },
+          "77abcd35-220a-4c60-b5ff-8e4b78e9d225": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "kids",
+              "width": "3",
+              "mobile_width": "6"
+            }
+          },
+          "413f3d90-c69e-45e9-9293-179b445bfb1f": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "pets",
+              "width": "3",
+              "mobile_width": "6"
+            }
+          },
+          "b700dbc4-2394-4eae-b73f-aafcd2f85f3a": {
+            "type": "masonry_image",
+            "settings": {
+              "id_collection": "home",
+              "width": "3",
+              "mobile_width": "6"
+            }
+          }
+        },
+        "block_order": [
+          "10cacd21-96f0-42b3-8c86-fa61acbbed47-16714486966380521f-2",
+          "f28cc447-29d9-4810-9d5a-11e36e0d6d5e",
+          "10cacd21-96f0-42b3-8c86-fa61acbbed47-16714486966380521f-0",
+          "10cacd21-96f0-42b3-8c86-fa61acbbed47-16714486966380521f-3",
+          "572b7e53-a8a4-4d81-91a8-e0d1ff36bc75",
+          "a3559e4e-05c5-44cd-b4be-db2faf5737ad",
+          "41efb8f9-e37f-42e8-8bff-32ab01700692",
+          "77abcd35-220a-4c60-b5ff-8e4b78e9d225",
+          "413f3d90-c69e-45e9-9293-179b445bfb1f",
+          "b700dbc4-2394-4eae-b73f-aafcd2f85f3a"
+        ],
+        "custom_css": [
+          "h3 {color: white;}"
+        ],
+        "settings": {
+          "row_stretch": "default",
+          "categories_layout": "masonry_first",
+          "categories_design": "default",
+          "space_categories": "6",
+          "silder_speed": "5000",
+          "silder_per_view": "4",
+          "hide_pagination": false,
+          "hide_button": false,
+          "slider_loop": false,
+          "autoplay": false,
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "5vh",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "c1e04405-5483-447e-a238-2a9295184430": {
+        "type": "gl_section_title",
+        "settings": {
+          "row_stretch": "default",
+          "grid_width": "12",
+          "title": "Featured Categories",
+          "sub_title": "",
+          "text_after_title": "",
+          "title_style": "default",
+          "title_color": "default",
+          "title_size": "default",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "8vh",
+          "section_padding_right": "",
+          "section_padding_bottom": "30px",
+          "section_padding_left": ""
+        }
+      },
+      "5cb636d3-5a4d-4825-94eb-1b04cc737d8a": {
+        "type": "gl_section_product_carousel",
+        "disabled": true,
+        "settings": {
+          "row_stretch": "default",
+          "home_featured_products": "health",
+          "paginate_index": "8",
+          "silder_speed": "5000",
+          "silder_per_view": "4",
+          "hide_pagination": false,
+          "hide_button": false,
+          "slider_loop": false,
+          "autoplay": false,
+          "products_hover": "link",
+          "sale_countdown": false,
+          "countdown_style": "dark",
+          "use_eq_height": true,
+          "image_ratio": "ratio_nt",
+          "image_size": "nt_cover",
+          "image_position": "8",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "5vh",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "c3e5cdd2-773e-4c3a-af61-93e1faada4ea": {
+        "type": "gl_section_title",
+        "disabled": true,
+        "settings": {
+          "row_stretch": "default",
+          "grid_width": "12",
+          "title": "Featured Products",
+          "sub_title": "",
+          "text_after_title": "",
+          "title_style": "default",
+          "title_color": "default",
+          "title_size": "default",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "b9fe191c-3820-46d6-9882-3c42740aea1f": {
+        "type": "gl_section_product_gird",
+        "disabled": true,
+        "settings": {
+          "row_stretch": "default",
+          "home_featured_products": "beauty",
+          "paginate_index": "4",
+          "use_pagination": "arrows",
+          "grid_columns": "4",
+          "products_hover": "alt",
+          "sale_countdown": false,
+          "countdown_style": "dark",
+          "use_eq_height": true,
+          "image_ratio": "ratio_nt",
+          "image_size": "nt_cover",
+          "image_position": "8",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "5vh",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "01eb9dd3-54b5-4a7e-b3fe-f5aeace961ec": {
+        "type": "gl_section_title",
+        "disabled": true,
+        "settings": {
+          "row_stretch": "default",
+          "grid_width": "12",
+          "title": "Beauty",
+          "sub_title": "",
+          "text_after_title": "",
+          "title_style": "default",
+          "title_color": "default",
+          "title_size": "default",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "33244530-f860-4623-830f-8b1d50a5fb6f": {
+        "type": "gl_section_product_carousel",
+        "disabled": true,
+        "settings": {
+          "row_stretch": "default",
+          "home_featured_products": "food",
+          "paginate_index": "8",
+          "silder_speed": "5000",
+          "silder_per_view": "4",
+          "hide_pagination": false,
+          "hide_button": false,
+          "slider_loop": false,
+          "autoplay": false,
+          "products_hover": "alt",
+          "sale_countdown": false,
+          "countdown_style": "dark",
+          "use_eq_height": true,
+          "image_ratio": "ratio_nt",
+          "image_size": "nt_cover",
+          "image_position": "8",
+          "section_bg_color": "rgba(0,0,0,0)",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "5vh",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "d23c826d-66de-4041-87ae-841c3ddab997": {
+        "type": "gl_section_title",
+        "disabled": true,
+        "settings": {
+          "row_stretch": "default",
+          "grid_width": "12",
+          "title": "Food",
+          "sub_title": "",
+          "text_after_title": "",
+          "title_style": "default",
+          "title_color": "default",
+          "title_size": "default",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "aec01a36-1608-47e6-863f-beeb54f146f1": {
+        "type": "gl_section_categories",
+        "blocks": {
+          "aec01a36-1608-47e6-863f-beeb54f146f1-1672551406db2bc5d5-0": {
+            "type": "masonry_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Untitled_design_14_350x_crop_top_2x_b3f4d1a8-9c6a-4bf1-be76-ba268019f5e2.webp",
+              "id_collection": "pets",
+              "width": "4",
+              "mobile_width": "6"
+            }
+          },
+          "aec01a36-1608-47e6-863f-beeb54f146f1-1672551406db2bc5d5-1": {
+            "type": "masonry_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Untitled_design_-_2022-12-07T124405.741_350x_crop_top_2x_1a7daff6-ff3d-4a65-9a40-ad4a0928db95.webp",
+              "id_collection": "appliances",
+              "width": "4",
+              "mobile_width": "6"
+            }
+          },
+          "a625bf64-80d3-4e5a-b0f9-9fa4b908175b": {
+            "type": "masonry_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/leo-rivas-wtxcaDIdOCM-unsplash_350x_crop_top_2x_79354152-c0f3-4d23-ba12-18e03438e02a.webp",
+              "id_collection": "kids",
+              "width": "4",
+              "mobile_width": "6"
+            }
+          }
+        },
+        "block_order": [
+          "aec01a36-1608-47e6-863f-beeb54f146f1-1672551406db2bc5d5-0",
+          "aec01a36-1608-47e6-863f-beeb54f146f1-1672551406db2bc5d5-1",
+          "a625bf64-80d3-4e5a-b0f9-9fa4b908175b"
+        ],
+        "disabled": true,
+        "settings": {
+          "row_stretch": "default",
+          "categories_layout": "default",
+          "categories_design": "default",
+          "space_categories": "10",
+          "silder_speed": "5000",
+          "silder_per_view": "4",
+          "hide_pagination": false,
+          "hide_button": false,
+          "slider_loop": false,
+          "autoplay": false,
+          "section_bg_color": "",
+          "section_border_color": "",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "5vh",
+          "section_padding_top": "",
+          "section_padding_right": "",
+          "section_padding_bottom": "",
+          "section_padding_left": ""
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": 3
+        }
+      },
+      "ad0cc461-b160-412a-96b7-cff99a66e83f": {
+        "type": "gl_section_blog",
+        "settings": {
+          "row_stretch": "default",
+          "title": "Our Blog",
+          "sub_title": "HEALTH HUB",
+          "text_after_title": "",
+          "title_style": "simple",
+          "title_color": "primary",
+          "title_size": "large",
+          "subtitle_font": "default",
+          "title_align": "center",
+          "blog": "health-wellness-hub",
+          "paginate_index": "6",
+          "use_pagination": "more_btn",
+          "use_eq_height": false,
+          "image_ratio": "ratio4_3",
+          "image_size": "nt_cover",
+          "image_position": "8",
+          "style": "default_alt",
+          "columns": "3",
+          "enable_title": "show",
+          "enable_meta": "show",
+          "enable_text": "show",
+          "enable_button": "show",
+          "enable_post_categories": "hide",
+          "enable_post_date": "hide",
+          "section_bg_color": "#ececec",
+          "section_border_color": "#707070",
+          "section_border_style": "solid",
+          "section_border": "",
+          "section_margin_top": "",
+          "section_margin_bottom": "",
+          "section_padding_top": "4vh",
+          "section_padding_right": "",
+          "section_padding_bottom": "2vh",
+          "section_padding_left": ""
+        }
+      },
+      "onelife-community-signup": {
+        "type": "onelife-community-signup",
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "1548808703526",
+      "c1e04405-5483-447e-a238-2a9295184430",
+      "10cacd21-96f0-42b3-8c86-fa61acbbed47",
+      "1509673805182",
+      "1511431962876",
+      "1509672956813",
+      "1509672386647",
+      "onelife-community-signup",
+      "ad0cc461-b160-412a-96b7-cff99a66e83f",
+      "ea05852f-6085-4ea9-a1dc-2ba7c48370c4",
+      "c3e5cdd2-773e-4c3a-af61-93e1faada4ea",
+      "5cb636d3-5a4d-4825-94eb-1b04cc737d8a",
+      "d23c826d-66de-4041-87ae-841c3ddab997",
+      "33244530-f860-4623-830f-8b1d50a5fb6f",
+      "aec01a36-1608-47e6-863f-beeb54f146f1",
+      "01eb9dd3-54b5-4a7e-b3fe-f5aeace961ec",
+      "b9fe191c-3820-46d6-9882-3c42740aea1f",
+      "1511492084367",
+      "1511493957262",
+      "1511510985409",
+      "1511926230597",
+      "1511940832411"
+    ],
+    "blocks": {
+      "15683396631634586217": {
+        "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": true,
+        "settings": {
+          "button_color": "#202a36",
+          "button_icon": "chat_bubble",
+          "button_text": "no_text",
+          "button_horizontal_position": "bottom_left",
+          "button_vertical_position": "lowest",
+          "greeting_message": "👋 Hi, message us with any questions. We're happy to help!\nPlease note: Messages sent here will be answered by a One Life staff member during working hours. (For immediate replies chat to our One Life Chat AI Assistant. Please see chat icon on the bottom right corner of our website!)"
+        }
+      },
+      "6174324309569838175": {
+        "type": "shopify:\/\/apps\/smile-io\/blocks\/smile-shopify-app\/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
+        "disabled": false,
+        "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "234697707474025726": {
+        "type": "shopify:\/\/apps\/analyzify-ga4-ads-tracking\/blocks\/app-embed-v4\/69637cfd-dd6f-4511-aa97-7037cfb5515c",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#788188",
+      "color_sale_text": "#7796A8",
+      "color_borders": "#e8e9eb",
+      "color_button": "#7796A8",
+      "color_button_text": "#fff",
+      "color_small_button": "#fff",
+      "color_small_button_text": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": "0.25",
+      "color_body_bg": "#fff",
+      "type_header_family": "Google_Work+Sans_600_sans",
+      "type_header_base_size": "26px",
+      "type_base_family": "Google_Work+Sans_400_sans",
+      "type_base_size": "16px",
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "content_for_index": []
+    }
+  },
+  "platform_customizations": {
+    "custom_css": []
+  }
+}

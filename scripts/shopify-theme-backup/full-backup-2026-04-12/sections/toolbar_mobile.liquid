@@ -1,0 +1,108 @@
+{%- if section.settings.show_sticky -%}
+  <div class="basel-toolbar icons-design-line basel-toolbar-label-{{section.settings.show_txt}}">
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'shop' -%}
+     <div class="basel-toolbar-shop basel-toolbar-item"> <a href="{{block.settings.link|default:routes.all_products_collection_url}}"> <span class="basel-toolbar-label"> {{block.settings.title}} </span> </a></div>
+    {%- when 'wish' -%}
+    {%- if settings.use_wishlist and shop.customer_accounts_enabled and settings.display_wishlist_icon -%}
+      {%- include 'nitro-wishlist' -%}
+      <div class="wishlist-info-widget"><a href="{%- if customer -%}/pages/wishlist{%- else -%}/account/login{%- endif -%}"> <span class="gl_count_wishlist">{{ NITRO_WISHLIST_COUNT }}</span> <span class="basel-toolbar-label"> {{block.settings.title}} </span> </a></div>
+    {%- endif -%} 
+    {%- when 'cart' -%}
+     <div class="shopping-cart basel-cart-design-3 cart-widget-opener" title="My cart"> <a href="{{routes.cart_url}}"> 
+        <span class="basel-cart-totals"><span class="basel-cart-number">{{cart.item_count}}</span></span> 
+        <span class="basel-toolbar-label"> {{block.settings.title}} </span> </a>
+     </div>
+    {%- else -%}
+     <div class="basel-toolbar-account basel-toolbar-item login-side-opener"> <a href="{{routes.account_url}}"> <span class="basel-toolbar-label"> {{block.settings.title}} </span> </a></div>
+  {%- endcase -%}
+  {%- endfor -%}
+  </div>
+{%- endif -%} 
+
+{%- schema -%}
+  {
+    "name": "Sticky toolbar mobile",
+    /*"class": "basel-toolbar icons-design-line basel-toolbar-label-show",*/
+    "max_blocks": 8,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_sticky",
+        "label": "Show Sticky toolbar mobile?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_txt",
+        "label": "Show text under icon?",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "shop",
+        "name": "Shop",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Shop"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link (optional)"
+          }
+        ]
+      },
+      {
+        "type": "wish",
+        "name": "Wishlist",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Wishlist"
+          }
+        ]
+      },
+      {
+        "type": "cart",
+        "name": "Cart",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Cart"
+          }
+        ]
+      },
+      {
+        "type": "account",
+        "name": "Account",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "My account"
+          }
+        ]
+      }
+    ],
+    "default": {
+      "blocks": [
+        {"type": "shop"},{"type": "wish"},{"type": "cart"},{"type": "account"}
+      ]
+    }
+  }
+{% endschema %}
