@@ -1,0 +1,12 @@
+{"action": "run_start", "model": "gemini-3-pro-image-preview", "limit": 5, "concurrency": 3, "apply": true, "target_count": 5, "ts": "2026-04-12T00:54:00.483715+00:00"}
+{"action": "image_generated", "product_id": 10655553749302, "bytes": 619750, "mime": "image/jpeg", "ts": "2026-04-12T00:54:17.559600+00:00"}
+{"action": "image_generated", "product_id": 10655553880374, "bytes": 510655, "mime": "image/jpeg", "ts": "2026-04-12T00:54:18.596558+00:00"}
+{"action": "image_uploaded", "product_id": 10655553749302, "title": "AMRITA NUTRACEUTICS - Boswellia Oleo Resin - 30ml", "src": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/product-10655553749302.jpg?v=1775955258", "ts": "2026-04-12T00:54:18.830823+00:00"}
+{"action": "image_generated", "product_id": 10655553782070, "bytes": 637793, "mime": "image/jpeg", "ts": "2026-04-12T00:54:18.929470+00:00"}
+{"action": "image_uploaded", "product_id": 10655553880374, "title": "AMRITA NUTRACEUTICS - Ashwagandha Extract Alcohol-free Tincture - 30ml", "src": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/product-10655553880374.jpg?v=1775955259", "ts": "2026-04-12T00:54:19.811746+00:00"}
+{"action": "image_uploaded", "product_id": 10655553782070, "title": "AMRITA NUTRACEUTICS - Chamomile Extract Alcohol-free Tincture - 30ml", "src": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/product-10655553782070.jpg?v=1775955260", "ts": "2026-04-12T00:54:20.347307+00:00"}
+{"action": "image_generated", "product_id": 10655554076982, "bytes": 546257, "mime": "image/jpeg", "ts": "2026-04-12T00:54:37.966951+00:00"}
+{"action": "image_generated", "product_id": 10655553683766, "bytes": 609837, "mime": "image/jpeg", "ts": "2026-04-12T00:54:38.997799+00:00"}
+{"action": "image_uploaded", "product_id": 10655554076982, "title": "AMRITA NUTRACEUTICS - Cordyceps Extract Alcohol-free Tincture - 30ml", "src": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/product-10655554076982.jpg?v=1775955279", "ts": "2026-04-12T00:54:39.197580+00:00"}
+{"action": "image_uploaded", "product_id": 10655553683766, "title": "AMRITA NUTRACEUTICS - Dragons Blood Oleo Resin - 30ml", "src": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/product-10655553683766.jpg?v=1775955280", "ts": "2026-04-12T00:54:40.259854+00:00"}
+{"action": "run_end", "ok": 5, "fail": 0, "ts": "2026-04-12T00:54:42.260794+00:00"}

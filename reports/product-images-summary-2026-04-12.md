@@ -4,8 +4,8 @@
 |---|---:|
 | Target (fixable `no_image`) | 473 |
 | Already done (resume) | 0 |
-| Attempted this run | 20 |
-| **Succeeded** | **20** |
+| Attempted this run | 5 |
+| **Succeeded** | **5** |
 | **Failed** | **0** |
 | Model | `gemini-3-pro-image-preview` |
 | Concurrency | 3 |
