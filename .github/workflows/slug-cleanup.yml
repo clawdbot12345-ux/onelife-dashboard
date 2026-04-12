@@ -1,0 +1,71 @@
+name: URL Slug Cleanup
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Actually rename handles + create redirects (true) or dry-run (false)'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      limit:
+        description: 'Max products to process (0 = all barcode handles)'
+        required: false
+        default: '0'
+
+permissions:
+  contents: write
+
+jobs:
+  slug-cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: claude/deduplicate-shopify-products-tAKJ9
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run slug cleanup
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          SLUG_APPLY: ${{ github.event.inputs.apply }}
+          SLUG_LIMIT: ${{ github.event.inputs.limit }}
+        run: python scripts/slug_cleanup.py
+
+      - name: Upload log as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: slug-cleanup-${{ github.run_id }}
+          path: reports/slug-cleanup-*.log
+          if-no-files-found: warn
+
+      - name: Commit log
+        if: always()
+        run: |
+          set -x
+          git config user.name "onelife-seo-bot"
+          git config user.email "bot@onelife.co.za"
+          for pattern in "reports/slug-cleanup-*.log"; do
+            matches=$(compgen -G "$pattern" 2>/dev/null || true)
+            if [ -n "$matches" ]; then
+              git add $matches
+            fi
+          done
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: URL slug cleanup $(date +%Y-%m-%d)"
+            git push
+          fi
