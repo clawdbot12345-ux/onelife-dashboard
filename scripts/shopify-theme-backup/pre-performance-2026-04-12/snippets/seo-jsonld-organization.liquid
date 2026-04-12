@@ -1,0 +1,53 @@
+{%- comment -%}
+  Global Organization + WebSite JSON-LD. Fires on every page.
+  Enables the Google brand knowledge panel + sitelinks search box.
+  Added 2026-04-12 by Claude (seo-schema-injection).
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ shop.url }}/#organization",
+      "name": {{ shop.name | json }},
+      "alternateName": "One Life Health Supermarket",
+      "url": "{{ shop.url }}",
+      {%- if settings.logo != blank -%}
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ settings.logo | img_url: '600x' | prepend: 'https:' | json }}
+      },
+      {%- endif -%}
+      "sameAs": [
+        "https://www.facebook.com/share/17SZVn4ygS/",
+        "https://www.instagram.com/one_life_health_supermarket",
+        "https://www.tiktok.com/@onelifehealth"
+      ],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+27713744910",
+        "contactType": "customer service",
+        "email": "info@onelife.co.za",
+        "areaServed": "ZA",
+        "availableLanguage": ["English", "Afrikaans"]
+      }]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ shop.url }}/#website",
+      "url": "{{ shop.url }}",
+      "name": {{ shop.name | json }},
+      "publisher": { "@id": "{{ shop.url }}/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ shop.url }}/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>

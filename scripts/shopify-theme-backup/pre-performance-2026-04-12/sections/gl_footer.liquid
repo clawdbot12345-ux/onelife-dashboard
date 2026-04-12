@@ -1,0 +1,603 @@
+{%- if section.blocks.size > 0 -%}
+   {%- assign footer_design = settings.footer_design -%}
+   {%- assign break = false -%}
+   {%- assign visible_sm = false -%}
+   {%- assign visible_lg = false -%}
+   <aside class="footer-sidebar widget-area row" role="complementary">
+      {%- for block in section.blocks -%}
+         {%- case block.settings.width -%}
+           {%- when '16%' -%}
+             {%- assign block_width = 'col-md-2' -%}
+           {%- when '25%' -%}
+             {%- assign block_width = 'col-md-3' -%}
+           {%- when '33%' -%}
+             {%- assign block_width = 'col-md-4' -%}
+           {%- when '50%' -%}
+             {%- assign block_width = 'col-md-6' -%}
+           {%- when '66%' -%}
+             {%- assign block_width = 'col-md-8' -%}
+           {%- when '75%' -%}
+             {%- assign block_width = 'col-md-9' -%}
+           {%- when '100%' -%}
+             {%- assign block_width = 'col-md-12' -%}
+         {%- endcase -%}
+         {%- case block.settings.width_tablet -%}
+           {%- when '16%' -%}
+             {%- assign block_width_tablet = 'col-sm-2' -%}
+           {%- when '25%' -%}
+             {%- assign block_width_tablet = 'col-sm-3' -%}
+           {%- when '33%' -%}
+             {%- assign block_width_tablet = 'col-sm-4' -%}
+           {%- when '50%' -%}
+             {%- assign block_width_tablet = 'col-sm-6' -%}
+           {%- when '66%' -%}
+             {%- assign block_width_tablet = 'col-sm-8' -%}
+           {%- when '75%' -%}
+             {%- assign block_width_tablet = 'col-sm-9' -%}
+           {%- when '100%' -%}
+             {%- assign block_width_tablet = 'col-sm-12' -%}
+         {%- endcase -%}
+         {%- case block.settings.width_mobile -%}
+           {%- when '50%' -%}
+             {%- assign block_width_mobile = 'col-xs-6' -%}
+           {%- when '100%' -%}
+             {%- assign block_width_mobile = 'col-xs-12' -%}
+         {%- endcase -%}
+         {%- case block.type -%}
+            {%- when 'menu' -%}
+               <div class="footer-column footer-column-{{forloop.index}} {{ block_width }} {{block_width_tablet}} {{block_width_mobile}}" {{ block.shopify_attributes }}>
+                  <div id="text-{{block.id}}" class="footer-widget widget_text">
+                    {%- if block.settings.title != blank -%}<h5 class="widget-title">{{block.settings.title}}</h5>{%- endif -%}
+                     <div class="textwidget">
+                        <ul class="menu">
+                           {%- for link in linklists[block.settings.menu].links -%}
+                           <li{% if link.active %} class="current-menu-item"{% endif %}><a href="{{ link.url }}">{{ link.title | split: '[' | first }}</a></li>
+                         {%- else -%}
+                           {% capture theme_settings_footer_linklist_path %}<strong>Footer</strong> > <strong>Quick links link list</strong>{% endcapture %}
+                           {{ 'layout.footer.instructions_for_linklist_html' | t: theme_settings_link: theme_settings_link, theme_settings_footer_linklist_path: theme_settings_footer_linklist_path }}
+                         {%- endfor -%}
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               {%- if break -%}{%- break -%}{%- endif -%}
+               {%- if visible_sm -%}<div class="clearfix visible-sm-block"></div>{%- endif -%}
+               {%- if visible_lg -%}<div class="clearfix visible-lg-block"></div>{%- endif -%}
+            {%- when 'logo' -%}
+               <div class="footer-column footer-column-{{forloop.index}} {{ block_width }} {{block_width_tablet}} {{block_width_mobile}}" {{ block.shopify_attributes }}>
+                  <div id="text-{{block.id}}" class="footer-widget widget_text">
+                     <div class="textwidget">
+                     {%- if block.settings.footer_logo_image != blank -%}
+                        {%- assign image = block.settings.footer_logo_image -%}
+                        {%- assign image_width = image.width | append:'x' -%}
+                        {%- if image.width > 600 -%}
+                        {%- assign image_width = '600x' -%}
+                        {%- endif -%}
+                        <p style="text-align:center; margin-bottom:0px;"><img src="{%-include 'gl_image_format',src: image , size: image_width -%}" alt="{{ image.alt | default: shop.name }}" title="{{shop.name}}" style="max-width:{{ block.settings.logo_max_width | escape | default: '300' | remove: 'px' | append: 'px' }}"></p>
+                     {%-endif-%}
+                        {%- if block.settings.share_type == '1' -%}
+                           {%- assign gl_follow_social = false -%}
+                        {%- elsif block.settings.share_type == '2' -%}
+                           {%- assign gl_follow_social = true -%}
+                        {%- endif -%}
+                        {%- if block.settings.social_enabled -%}
+                        {%- include 'social-sharing', gl_design:settings.footer_social_design, gl_size:settings.footer_social_size, follow_social:gl_follow_social -%}
+                        <br>
+                        {%- endif -%}
+                        {%- if block.settings.logo_custom_html != blank -%}{{block.settings.logo_custom_html}}{%- endif -%}
+                     </div>
+                  </div>
+               </div>
+               {%- if break -%}{%- break -%}{%- endif -%}
+               {%- if visible_sm -%}<div class="clearfix visible-sm-block"></div>{%- endif -%}
+               {%- if visible_lg -%}<div class="clearfix visible-lg-block"></div>{%- endif -%}
+            {%- when 'newsletter' -%}
+               <div class="footer-column footer-column-{{forloop.index}} {{ block_width }} {{block_width_tablet}} {{block_width_mobile}}" {{ block.shopify_attributes }}>
+                  <div id="text-{{block.id}}" class="footer-widget widget_text">
+                     {%- if block.settings.title != blank -%}<h5 class="widget-title">{{block.settings.title}}</h5>{%- endif -%}
+                     <div class="textwidget">
+                        {%- include 'gl_form_newlester' -%}
+                     </div>
+                  </div>
+               </div>
+               {%- if break -%}{%- break -%}{%- endif -%}
+               {%- if visible_sm -%}<div class="clearfix visible-sm-block"></div>{%- endif -%}
+               {%- if visible_lg -%}<div class="clearfix visible-lg-block"></div>{%- endif -%}
+            {%- when 'html' -%}
+               <div class="footer-column footer-column-{{forloop.index}} {{ block_width }} {{block_width_tablet}} {{block_width_mobile}}" {{ block.shopify_attributes }}>
+                  <div id="text-{{block.id}}" class="footer-widget widget_text">
+                     {%- if block.settings.title != blank -%}<h5 class="widget-title">{{block.settings.title}}</h5>{%- endif -%}
+                     <div class="textwidget">
+                        {{block.settings.html}}
+                        {%- if block.settings.enabled_payment_types and block.settings.footer_payment_image != blank -%}
+                        {%- assign image = block.settings.footer_payment_image -%}
+                        {%- assign image_width = image.width | append:'x' -%}
+                        <br>
+                        <p><img src="{%-include 'gl_image_format',src: image , size: image_width -%}" alt="{{ image.alt | default: shop.name }}"></p>
+                        {%- endif -%}
+                     </div>
+                  </div>
+               </div>
+               {%- if break -%}{%- break -%}{%- endif -%}
+               {%- if visible_sm -%}<div class="clearfix visible-sm-block"></div>{%- endif -%}
+               {%- if visible_lg -%}<div class="clearfix visible-lg-block"></div>{%- endif -%}
+         {%- endcase -%}
+      {%- endfor -%}
+   </aside>
+{%- endif -%}
+{%- schema -%}
+  {
+    "name": "Footer layout",
+    "class": "container main-footer",
+    "max_blocks": 6,
+    "blocks": [
+      {
+        "type": "menu",
+        "name": "Add Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Quick links"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Add menu"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "16%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_tablet",
+            "label": "Container width tablet",
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_mobile",
+            "label": "Container width mobile",
+            "default": "100%",
+            "options": [
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "logo",
+        "name": "Logo",
+         "limit": 1,
+        "settings": [
+         {
+           "type": "header",
+           "content": "Logo"
+         },
+         {
+           "type": "image_picker",
+           "id": "footer_logo_image",
+           "label": "Logo image",
+           "info": "Upload image: png, jpg or gif file"
+         },
+         {
+           "type": "text",
+           "id": "logo_max_width",
+           "label": "___ Logo image maximum width",
+           "info": "Set maximum width for logo image in the footer. In pixels, min-width:50px, max-width:600px",
+           "default": "300"
+         },
+         {
+           "type": "checkbox",
+           "id": "social_enabled",
+           "label": "Show social media icons"
+         },
+         {
+           "type": "radio",
+           "id": "share_type",
+           "default":"2",
+           "options": [
+             {
+               "value": "1",
+               "label": "Share"
+             },
+             {
+               "value": "2",
+               "label": "Follow"
+             }
+           ],
+           "label": "== Share buttons type"
+         },
+         {
+            "type": "html",
+            "id": "logo_custom_html",
+            "label": "Custom HTML"
+         },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "16%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_tablet",
+            "label": "Container width tablet",
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_mobile",
+            "label": "Container width mobile",
+            "default": "100%",
+            "options": [
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "html",
+        "name": "Custom HTML",
+        "settings": [
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "About The Store"
+         },
+         {
+            "type": "html",
+            "id": "html",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers.</p>"
+         },
+         {
+           "type": "checkbox",
+           "id": "enabled_payment_types",
+           "label": "Show image payment",
+            "default": true
+         },
+         {
+           "type": "image_picker",
+           "id": "footer_payment_image",
+           "label": "upload image payment"
+         },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "16%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_tablet",
+            "label": "Container width tablet",
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_mobile",
+            "label": "Container width mobile",
+            "default": "100%",
+            "options": [
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Newsletter signup",
+        "limit": 1,
+        "settings": [
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Newsletter"
+         },
+         {
+           "type": "checkbox",
+           "id": "use_mailchimp",
+           "label": "Use Mailchimp?",
+           "default": true
+         },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "16%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_tablet",
+            "label": "Container width tablet",
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "width_mobile",
+            "label": "Container width mobile",
+            "default": "100%",
+            "options": [
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }
+   ]
+  }
+{% endschema %}

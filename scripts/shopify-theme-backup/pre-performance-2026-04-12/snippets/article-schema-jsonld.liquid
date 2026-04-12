@@ -1,0 +1,15 @@
+{%- if template contains 'article' and article -%}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":{{ article.title | json }},
+  "author":{"@type":"Organization","name":"One Life Health"},
+  "publisher":{"@type":"Organization","name":"One Life Health","url":"https://onelife.co.za"},
+  "datePublished":"{{ article.published_at | date: '%Y-%m-%d' }}",
+  "dateModified":"{{ article.updated_at | date: '%Y-%m-%d' }}",
+  {%- if article.image -%}"image":"{{ article.image | img_url: '1200x630' | prepend: 'https:' }}",{%- endif -%}
+  "url":"{{ shop.url }}{{ article.url }}"
+}
+</script>
+{%- endif -%}

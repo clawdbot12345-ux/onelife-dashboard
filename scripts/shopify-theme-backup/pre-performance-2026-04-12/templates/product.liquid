@@ -1,0 +1,60 @@
+{%- comment -%}
+  Teathemes https://teathemes.net/forums/
+{%- endcomment -%}
+{%- case settings.design_products -%}
+   {%- when '1' -%}
+      {%- assign design_products_page = "product-design-default" -%}
+   {%- when '2' -%}
+      {%- assign design_products_page = "product-design-alt" -%}
+   {%- when '3' -%}
+      {%- assign design_products_page = "product-design-sticky" -%}
+   {%- when '4' -%}
+      {%- assign design_products_page = "product-design-compact" -%}
+   {%- endcase -%}
+<div class="main-page-wrapper">
+    <!-- MAIN CONTENT AREA -->
+      <div class="container-fluid">
+         <div class="row">
+            <div class="site-content col-sm-12" role="main">
+              {%- if settings.use_wishlist -%}{%- include 'nitro-wishlist' -%}{%- endif -%}
+              {%- include 'product_page_area' -%}
+              <!-- Start of Judge.me code -->{% assign has_legacy = false %}{% if product.metafields.judgeme.widget.size > 20 %}{% assign has_legacy = true %}{% endif %}<div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-product-id='{{ product.id }}' data-widget='review' data-auto-install='false' data-shop-reviews-count='{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}' data-entry-point='review_widget.js' data-entry-key='review-widget/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'>{{ product.metafields.judgeme.widget }}</div>{% endif %}</div>{% if product.metafields.judgeme.review_widget_data %}<script>jdgm.data ||= {}; jdgm.data.reviewWidget ||= {}; jdgm.data.reviewWidget[{{ product.id }}] = {{ product.metafields.judgeme.review_widget_data }}</script>{% endif %}<!-- End of Judge.me code -->
+            </div><!-- .site-content -->
+            <div class="clearfix"></div>
+            {%- if settings.show_related_products or settings.show_recently_products or product.metafields.meta.hashtag != blank -%}
+            <div class="container related-and-upsells">
+              {%- if settings.show_related_products -%}
+                  {%- if settings.related_image_size != blank -%}{%- assign crop_nt = settings.related_image_size -%}{%- endif -%}
+                  {%- assign loop_countdown = settings.loop_related_countdown -%}
+                  {%- case settings.related_products_use -%}
+                     {%- when 'use_collection' -%}
+                        {%- include 'related-products-sectioned' -%}
+                     {%- when 'handle' -%}
+                        {%- include 'related-products-by-handle' -%}
+                     {%- else -%}
+                         {%- include 'related-products-by-tags' -%}
+                  {%- endcase -%}
+              {%-endif-%}
+              {%- if settings.show_recently_products and pages['recently-viewed-products'].empty? != true -%}{%- include 'gl-recently-viewed' -%}{%-endif-%}
+              {%- if product.metafields.meta.hashtag != blank and product.metafields.meta.hashtag contains '#' -%}
+              <div class="basel-product-instagram">
+                <p class="product-instagram-intro">{{ 'products.product.instagram_intro_html' | t: has_tag: product.metafields.meta.hashtag }}</p>
+                <div id="carousel-{{product.id}}" class="instagram-widget instagram-per-row-4"><ul class="instagram-pics"></ul></div>
+              </div>
+              {%- elsif product.metafields.meta.username != blank -%}
+              <div class="basel-product-instagram">
+                <p class="product-instagram-intro">{{ 'products.product.instagram_intro_html' | t: has_tag: product.metafields.meta.username }}</p>
+                <div id="carousel-{{product.id}}" class="instagram-widget instagram-per-row-4"><ul class="instagram-pics"></ul></div>
+              </div>
+              {%- endif -%}
+            </div>
+            {%-endif-%}
+         </div><!-- end row -->
+      </div><!-- end container -->
+      <!-- end container -->
+{%- include 'product-badges' -%}
+{%- include 'product-trust-strip' -%}
+{%- include 'back-in-stock' -%}
+</div><!-- .main-page-wrapper -->
+
+

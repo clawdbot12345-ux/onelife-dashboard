@@ -1,0 +1,20 @@
+{%- if settings.show_newsletter_popup != false -%}
+<div id="klaviyo-signup-footer" style="background:#f8f8f8;padding:40px 20px;text-align:center;border-top:1px solid #e0e0e0;">
+  <div style="max-width:480px;margin:0 auto;">
+    <h3 style="margin:0 0 8px;font-size:20px;color:#222;">Join the One Life Health Community</h3>
+    <p style="margin:0 0 20px;color:#555;font-size:14px;">Health tips, new arrivals and exclusive offers — straight to your inbox.</p>
+    <div class="klaviyo-form-S86r7e"></div>
+    <form action="https://manage.kmail-lists.com/subscriptions/subscribe" method="POST" 
+          target="_blank" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <input type="hidden" name="g" value="Xrk5jD">
+      <input type="email" name="email" placeholder="Your email address" required
+             style="padding:12px 16px;border:1px solid #ccc;border-radius:4px;font-size:14px;flex:1;min-width:220px;max-width:300px;">
+      <button type="submit" 
+              style="padding:12px 24px;background:#108474;color:#fff;border:none;border-radius:4px;font-size:14px;cursor:pointer;white-space:nowrap;">
+        Subscribe
+      </button>
+    </form>
+    <p style="margin:12px 0 0;font-size:11px;color:#999;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+{%- endif -%}

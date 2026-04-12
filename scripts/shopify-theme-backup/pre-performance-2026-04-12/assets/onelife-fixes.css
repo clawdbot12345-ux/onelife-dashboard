@@ -1,0 +1,160 @@
+/* Onelife fixes — Claude 2026-04-12 */
+
+/* Hide How it Works section */
+#shopify-section-1509672386647 {
+  display: none !important;
+}
+
+/* Consultation slide overlay */
+#shopify-section-1548808703526 .owl-item:nth-child(3) {
+  position: relative;
+}
+#shopify-section-1548808703526 .owl-item:nth-child(3)::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+#shopify-section-1548808703526 .owl-item:nth-child(3) .banner-content {
+  z-index: 2 !important;
+  position: relative !important;
+}
+#shopify-section-1548808703526 .owl-item:nth-child(3) h2 {
+  font-size: 34px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  text-shadow: 0 3px 16px rgba(0,0,0,0.9) !important;
+}
+#shopify-section-1548808703526 .owl-item:nth-child(3) .btn {
+  background: #2d6a4f !important;
+  border: 3px solid #fff !important;
+  color: #fff !important;
+  padding: 16px 40px !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  border-radius: 8px !important;
+  text-shadow: none !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5) !important;
+}
+
+/* Consultation banner readability */
+.ol-consult-desc {
+  color: #d8f3dc !important;
+  opacity: 1 !important;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+
+
+/* Top Supplements: full width + horizontal tabs (banner removed) */
+@media (min-width: 992px) {
+  #shopify-section-1511431962876 .gl_col-lg-8,
+  #shopify-section-1511431962876 .gl_col-md-8 {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  #shopify-section-1511431962876 .gl_tta-tabs-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+  #shopify-section-1511431962876 .gl_tta-tabs-list li {
+    display: inline-block !important;
+    float: none !important;
+  }
+  #shopify-section-1511431962876 .gl_tta-tabs-container {
+    text-align: center !important;
+  }
+/* Products: 4 per row handled by grid_columns=4 in settings */
+}
+
+
+/* Banner: prevent side/bottom cropping on wide desktop screens */
+@media (min-width: 992px) {
+  #shopify-section-1548808703526 .nt_banner_img.visible-pc {
+    background-position: left center !important;
+    height: 48vw !important;
+    max-height: 780px !important;
+  }
+}
+
+
+
+
+/* Smile.io: visible on mobile (repositioned, slightly smaller) */
+@media (max-width: 768px) {
+  #smile-ui,
+  #smile-ui-container,
+  [id^="smile-"] iframe,
+  .smile-launcher {
+    display: block !important;
+    left: auto !important;
+    right: 12px !important;
+    bottom: 80px !important;
+    transform: scale(0.85) !important;
+  }
+}
+
+/* Consistent green CTA buttons */
+.btn-atc, .product-add-to-cart .btn, .add-to-cart-btn,
+button[type="submit"].btn, .ol-bis-btn {
+  background-color: #2d6a4f !important;
+  border-color: #2d6a4f !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+.btn-atc:hover, .product-add-to-cart .btn:hover,
+.add-to-cart-btn:hover, button[type="submit"].btn:hover {
+  background-color: #1b4332 !important;
+  border-color: #1b4332 !important;
+}
+
+/* Product card hover lift */
+.gl_product-item, .product-item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.gl_product-item:hover, .product-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+}
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Better focus states on inputs */
+input:focus, textarea:focus, select:focus {
+  border-color: #2d6a4f !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(45,106,79,0.1) !important;
+}
+
+
+/* Fix homepage heading hierarchy: H4 used for "Featured Categories" etc.
+   should be H2 visually. This CSS override doesn't change the HTML
+   (that's in theme sections) but makes the visual hierarchy correct. */
+.index-sections h4.title,
+.index-sections h4.section-title {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+}
+
+
+
+/* Also handle SVG-based heart icons */
+.header-wishlist svg,
+a[href*="wishlist"] svg {
+  display: none !important;
+}
+.header-wishlist:before,
+a[href*="wishlist"]:before {
+  content: "\f007";
+  font-family: "FontAwesome", "Font Awesome 5 Free", "fa" !important;
+  font-weight: 900;
+  font-size: 18px;
+}

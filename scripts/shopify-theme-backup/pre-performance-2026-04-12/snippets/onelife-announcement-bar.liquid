@@ -1,0 +1,70 @@
+<style>
+  #ol-bar { background:linear-gradient(90deg,#0a5c4e 0%,#108474 50%,#0d7a6b 100%); position:relative; z-index:999; border-bottom:1px solid rgba(255,255,255,0.12); box-shadow:0 2px 10px rgba(0,0,0,0.15); }
+  #ol-bar-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:0 16px; height:50px; gap:12px; }
+  /* Desktop: show form, hide mobile link */
+  #ol-bar-mobile-cta { display:none; }
+  #ol-bar-form-wrap { display:flex; flex:1; max-width:360px; }
+  /* Close btn */
+  #ol-bar-close { background:none; border:none; color:rgba(255,255,255,0.55); font-size:20px; cursor:pointer; padding:4px 6px; line-height:1; flex-shrink:0; }
+  #ol-bar-close:hover { color:#fff; }
+  /* Mobile: slim single line */
+  @media(max-width:700px){
+    #ol-bar-inner { height:38px; padding:0 12px; }
+    #ol-bar-form-wrap { display:none; }
+    #ol-bar-mobile-cta { display:inline; }
+    #ol-bar-desktop-text { display:none; }
+  }
+</style>
+
+<div id="ol-bar">
+  <div id="ol-bar-inner">
+    <!-- Text -->
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+      <span style="font-size:16px;line-height:1;">🌿</span>
+      <span id="ol-bar-desktop-text" style="color:#fff;font-size:13px;font-weight:600;">
+        <span style="color:#ffe082;">10% off</span> your first order
+        <span style="color:rgba(255,255,255,0.65);font-weight:400;"> — deals, new arrivals &amp; health tips</span>
+      </span>
+      <!-- Mobile: shorter text + tap link -->
+      <a id="ol-bar-mobile-cta" href="#ol-community"
+         style="color:#ffe082;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.3px;">
+        Get 10% off — join our community →
+      </a>
+    </div>
+
+    <!-- Desktop inline form -->
+    <form id="ol-bar-form-wrap"
+      action="https://manage.kmail-lists.com/subscriptions/subscribe"
+      method="POST" target="_blank"
+      style="align-items:center;gap:0;border-radius:22px;overflow:hidden;border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.1);">
+      <input type="hidden" name="g" value="Xrk5jD">
+      <input type="hidden" name="$fields" value="$first_name,$email">
+      <input type="text" name="first_name" placeholder="First name" required
+        style="background:transparent;border:none;border-right:1px solid rgba(255,255,255,0.2);padding:9px 12px;font-size:13px;color:#fff;outline:none;width:110px;flex-shrink:0;">
+      <input type="email" name="email" placeholder="Email address…" required
+        style="flex:1;background:transparent;border:none;padding:9px 12px;font-size:13px;color:#fff;outline:none;min-width:0;">
+      <button type="submit"
+        style="background:#f5a623;color:#fff;border:none;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;">
+        Subscribe →
+      </button>
+    </form>
+
+    <!-- Close -->
+    <button id="ol-bar-close" onclick="document.getElementById('ol-bar').style.display='none';try{localStorage.setItem('ol_bar_v2','1')}catch(e){}" aria-label="Close">&times;</button>
+  </div>
+</div>
+
+<script>
+  (function(){
+    try{ if(localStorage.getItem('ol_bar_v2')==='1'){
+      var el=document.getElementById('ol-bar');
+      if(el) el.style.display='none';
+    }}catch(e){}
+    // Smooth scroll for mobile CTA
+    var cta=document.getElementById('ol-bar-mobile-cta');
+    if(cta){ cta.addEventListener('click',function(e){
+      var target=document.getElementById('ol-community');
+      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+    }); }
+  })();
+</script>

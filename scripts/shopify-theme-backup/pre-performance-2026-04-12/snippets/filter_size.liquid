@@ -1,0 +1,49 @@
+<div class="basel-scroll">
+   <ul class="show-labels-on swatches-normal swatches-display-inline basel-scroll-content">
+     {%- assign check_tag_hide = true -%}
+     {%- assign key = block.settings.key_2 | default:"not_nt_t4" -%}{%- assign key_2 = block.settings.key | default:"not_nt_t4" -%}
+      {%- if cat_array.size > 0 and block.settings.use_auto_filter_tag -%}
+         {%- if cat_array contains key or cat_array contains key_2 -%}
+             {%- for t in tag_arr -%}
+                  {%- if t contains key or t contains key_2 -%}
+                    {%- assign t_d = t | downcase -%}
+                    {%- if current_tags contains t_d -%}
+                       {%- assign tag_value_remove = t | remove: key_2 | remove: key| remove: '_' -%} 
+                       {%- capture cat_link_remove -%}{{ tag_value_remove | append: '&nbsp;x' | link_to_remove_tag: t_d }}{%- endcapture -%}
+                       {%- assign get_link_remove = cat_link_remove | split:'href="' | last | split:'"' | first -%}
+                          <li class="sc-layered-nav-term with-swatch-text chosen"><a href="{{get_link_remove}}">{{ tag_value_remove | upcase }}</a></li>
+                    {%- else -%}
+                     {%- assign tag_value = t | remove: key_2 | remove: key| remove: '_' -%} 
+                     {%- capture cat_link -%}{{ tag_value | link_to_add_tag: t }}{%- endcapture -%}
+                     {%- assign get_link = cat_link | split:'href="' | last | split:'"' | first -%}
+                            <li class="sc-layered-nav-term with-swatch-text"><a href="{{get_link}}">{{ tag_value | upcase }}</a></li>
+                    {%- endif -%}
+                   {%- assign check_tag_hide = false -%}
+                 {%- endif -%}
+             {%- endfor -%}
+         {%- endif -%}
+     {%- elsif tags.size > 0 -%}
+          {%- for t_o in tags -%}
+             {%- assign tag = t_o | downcase  -%}
+             {%- if current_tags contains tag -%}
+                 {%- assign tag_value_remove = tag | remove:key_2 | remove:key | remove: '_' -%} 
+                 {%- capture cat_link_remove -%}{{ tag_value_remove | append: '&nbsp;x' | link_to_remove_tag: tag }}{%- endcapture -%}
+                 {%- assign get_link_remove = cat_link_remove | split:'href="' | last | split:'"' | first -%}
+                 <li class="sc-layered-nav-term with-swatch-text chosen"><a href="{{get_link_remove}}">{{ tag_value_remove | upcase }}</a></li>
+                  {%- assign check_tag_hide = false -%}
+              {%- else -%}
+                {%- for t_d in tag_arr -%}
+                   {%- assign t = t_d | downcase -%}
+                   {%- if t == tag -%}
+                     {%- assign tag_value = t | remove:key_2 | remove:key | remove: '_' -%} 
+                     {%- capture cat_link -%}{{ tag_value | link_to_add_tag: t_d }}{%- endcapture -%}
+                     {%- assign get_link = cat_link | split:'href="' | last | split:'"' | first -%}
+                     <li class="sc-layered-nav-term with-swatch-text"><a href="{{get_link}}">{{ tag_value | upcase }}</a></li>
+                      {%- assign check_tag_hide = false -%}
+                    {%- endif -%} 
+                 {%- endfor -%}
+              {%- endif -%} 
+           {%- endfor -%}
+      {%- endif -%}
+   </ul>
+</div>

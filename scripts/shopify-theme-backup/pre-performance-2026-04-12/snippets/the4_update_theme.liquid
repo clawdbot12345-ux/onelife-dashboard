@@ -1,0 +1,198 @@
+<style>
+  .the4-drag-zone{
+    width: 100%;
+    display: block;
+    min-height: 300px;    
+    border: 2px dashed #179a94;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .the4-drag-zone.the4-drag-over{
+  	border-color:red;
+  }
+  .the4-drag-zone .the4-drag-holder{
+  	height: 100%;
+    width: 100%;
+    display: block;
+    position: relative;
+    text-align:center;
+  }
+.the4-drag-zone .the4-drag-holder p {
+margin-bottom: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    height: 300px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #646C7F;
+  }
+.claue-import .import-form-fields, .claue-import .page-preview {
+    text-align: center;
+}
+.claue-import .import-form-fields button {
+  min-width: 200px;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #999;
+    border-color: #999;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+}
+.claue-import .import-form-fields button.import-btn {
+    margin-top: 25px;
+    margin-bottom: 20px;    
+    background: #179a94;
+    border-color: #179a94;
+}
+#popup_basel .tab label {
+    line-height: 24px;
+}
+.claue-import .page-preview img {
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+}
+.imported-base .base-imported-alert{letter-spacing: 1px;
+}
+.claue-box-footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+    opacity: .7;
+    letter-spacing: 1px;
+}
+#the4_mess_notice {
+    color: red;
+    display: none;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+button#tea-import-from-btn {
+    margin-top: 15px;
+}
+button.import-btn.active {
+	transition: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='100px' height='100px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid'%3E%3Cpath fill='none' d='M24.3,30C11.4,30,5,43.3,5,50s6.4,20,19.3,20c19.3,0,32.1-40,51.4-40 C88.6,30,95,43.3,95,50s-6.4,20-19.3,20C56.4,70,43.6,30,24.3,30z' stroke='%23fff' stroke-width='2' stroke-dasharray='205.271142578125 51.317785644531256'%3E%3Canimate attributeName='stroke-dashoffset' calcMode='linear' values='0;256.58892822265625' keyTimes='0;1' dur='1' begin='0s' repeatCount='indefinite'%3E%3C/animate%3E%3C/path%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 50px !important;
+    font-size: 0;
+}
+#the4_dz_progress {
+	opacity: 0;
+    width: 300px;
+    position: absolute;
+    height: 16px;
+    left: 50%;
+    top: 50%;
+    margin-top: -8px;
+    margin-left: -150px;
+    background-color: #fff;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+    pointer-events: none;
+}
+#the4_dz_progress>span {
+	border-radius: 8px;
+    background: #17bbb4;
+    background: linear-gradient(to bottom, #405857, #17bbb4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    -webkit-transition: width 300ms ease-in-out;
+    -moz-transition: width 300ms ease-in-out;
+    -ms-transition: width 300ms ease-in-out;
+    -o-transition: width 300ms ease-in-out;
+    transition: width 300ms ease-in-out;
+    cursor: default;
+}
+
+#the4_dz_progress.t4_upding {
+	opacity: 1
+}
+#the4_dz_progress.t4_up_doing>span {
+    width: 40%;
+}
+#the4_dz_progress.t4_up_done>span {
+    width: 100%;
+}
+/* .the4-drag-zone {
+    border-color: red;
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+} */
+</style>
+<a class="jas-wc-help" id="tea-theme-update" style="display:none" href="#popup_basel">Set up version</a>
+<div class="basel-promo-popup tea-promo-popup mfp-hide" id="popup_basel">
+	<div class="tabs">
+
+       <div class="tab">
+           <input type="radio" id="tab-1" name="tab-group-1" value="demo">
+           <label for="tab-1">Demo versions</label>
+
+           <div class="content">
+           		<div class="imported-base">
+	           		<div class="claue-success base-imported-alert">
+							Please select the demo data file in the DEMO DATA folder from the Download and upload package here to start importing the demo.
+						</div>
+						<div class="claue-box-footer">
+							<p><strong>WARNING</strong>: it may override all theme settings and reload the editor. You should backup your theme settings using Export tab before importing. </p>
+						</div>
+						 	<drag class="the4-drag-zone" ondragleave="window.The4DragLeave(event)" ondrop="window.The4DropZoneDropped(event)" ondragover="window.The4DragZoneOver(event)">
+                        	  	 <div class="the4-drag-holder">
+                                   <span id="the4_mess_notice">Hmzz seems like the JSON file you just uploaded is not for Basel, please check again or contact support.</span>
+                                   <p id="the4_mess_drop">Drop a file here or click to upload.</p>
+                                   <div id="the4_dz_progress"><span></span></div>
+                                 </div>
+                               	
+                  			</drag>
+                            <form method="POST" enctype="multipart/form-data" style="display:none">
+                            <input type="file"   name="layout" id="the4-import-layout" required accept="application/json">
+                          </form>
+                         <div class="claue-import" style="display:none">
+							<div class="page-preview">
+								<img id="img_prv_t4" data-src="https://cdn.shopify.com/s/files/1/0271/5972/4165/files/name_img.jpg?v=157623243245" src="none" alt="preview demo">
+							</div>
+							<div class="import-form-fields">
+								<button class="btn btn-color-black btn-style-default btn-size-small import-btn">Import</button>
+							</div>
+                           <div class="import-form-fields">
+								<button class="btn btn-color-black btn-style-danger btn-size-small the4-cancel-btn">Cancel</button>
+							</div>
+						</div>
+					</div>
+           </div>
+       </div>
+
+       <div class="tab">
+           <input type="radio" id="tab-2" name="tab-group-1" value="import">
+           <label for="tab-2">Import</label>
+
+           <div class="content">
+           <form action="">
+               <textarea class="tea-form-control " id="tea-import-from-text" rows="10" placeholder="Paste the exported data here..."></textarea>
+           		<div class="pt__30 tr"><button class="btn btn-secondary" id="tea-import-from-btn" type="submit">IMPORT AND SAVE</button></div>
+           	</form>
+           </div>
+       </div>
+
+        <div class="tab">
+           <input type="radio" id="tab-3" name="tab-group-1" value="export" checked="checked">
+           <label for="tab-3">Export</label>
+
+           <div class="content">
+           	<form action="">
+               <textarea id="tea-form-export" class="tea-form-control" rows="10" placeholder="Paste the exported data here..."></textarea>
+           	</form>
+           </div>
+       </div>
+
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="site-logo">
+   <div class="basel-logo-wrap" itemscope itemtype="http://schema.org/Organization">
+      <a href="/" class="basel-logo basel-main-logo" rel="home" itemprop="url">
+      {%- if settings.overlap_header_enable and template contains 'index' and settings.header_design != 'vertical' %}{%- assign check_overlay = true -%}{%- assign logo_svg = settings.body_logo_svg_tra |default:settings.body_logo_svg -%}{%- else -%}{%- assign check_overlay = false -%}{%- assign logo_svg = settings.body_logo_svg -%}{%- endif -%}
+      {%- if logo_svg != blank -%}
+        <img src="{{ logo_svg | file_url }}" alt="{{ shop.name }}" itemprop="logo">               
+      {%- elsif settings.body_logo_image != blank -%}
+        {%- if check_overlay -%}
+          {%- assign image = settings.body_logo_image_tra |default:settings.body_logo_image -%}
+          {%- assign image_retina = settings.body_logo_image_retina_tra | default:settings.body_logo_image_retina | default:image -%}
+        {%- else -%}
+          {%- assign image = settings.body_logo_image -%}
+          {%- assign image_retina = settings.body_logo_image_retina | default:image -%}
+        {%- endif -%}
+        {%- assign image_width = image.width | append:'x' -%}{%- assign image_retina_w = image_retina.width | append:'x' -%}
+        {%- if image.width > 600 -%}{%- assign image_width = '600x' -%}{%- endif -%}{%- if image_retina.width > 600 -%}{%- assign image_retina_w = '600x' -%}{%- endif -%}
+        <img class="regular-logo" src="{%-include 'gl_image_format',src: image , size: image_width -%}" srcset="{{ image | img_url: image_width }} 1x, {{ image_retina | img_url: image_retina_w, scale: 2 }} 2x" alt="{{ image.alt | default: shop.name }}" itemprop="logo">
+        {%- else -%}
+        {{shop.name}}
+        {%- endif -%}
+        {%- if settings.body_logo_image_sticky != blank -%}
+           {%- assign image = settings.body_logo_image_sticky -%}
+           {%- assign image_width = image.width | append:'x' -%}
+           {%- if image.width > 600 -%}
+              {%- assign image_width = '600x' -%}
+           {%- endif -%}
+           <img class="sticky-logo" src="{%-include 'gl_image_format',src: image , size: image_width -%}" srcset="{{ image | img_url: image_width }} 1x, {{ image | img_url: image_width, scale: 2 }} 2x" alt="{{ image.alt | default: shop.name }}" itemprop="logo">
+        {%- endif -%}
+      </a>
+   </div>
+</div>

@@ -1,0 +1,12 @@
+{%- assign settings_free_shipping_above = settings.free_shipping_above -%}
+{%- assign free_shipping_above = settings_free_shipping_above | times: 1 | default:0 -%}
+{%- assign convert_free_shipping = free_shipping_above | times: 100.0 -%}
+{%- assign missing_till_free_shipping = convert_free_shipping | minus: cart.total_price -%}
+{%- assign precent_free_shipping = cart.total_price | divided_by: convert_free_shipping | times: 100 -%}
+<div class="threshold_bar gradient stripe color{%- if precent_free_shipping < 50 %} w_0{%- elsif precent_free_shipping < 80 %} w_50{%- elsif precent_free_shipping < 100 %} w_80{%- else %} w_100{%- endif -%}"><span class="animate" style="width:{%- if missing_till_free_shipping > 0 and missing_till_free_shipping != convert_free_shipping -%}{{precent_free_shipping}}%{%- elsif missing_till_free_shipping != convert_free_shipping -%}100%{%- else-%}0%{%- endif -%} !important">{%- if missing_till_free_shipping > 0 and missing_till_free_shipping != convert_free_shipping -%}{{precent_free_shipping | ceil }}%{%- elsif missing_till_free_shipping != convert_free_shipping -%}100%{%- endif -%}</span></div>
+  {%- if missing_till_free_shipping > 0 and missing_till_free_shipping != convert_free_shipping -%}
+  <p class="content_threshold">{{ 'general.shipping_threshold.spend' | t }} <strong><span class="amount">{{ missing_till_free_shipping | money }}</span></strong> {{ 'general.shipping_threshold.more' | t }} <strong class="basel-tooltip">{{ 'general.shipping_threshold.free' | t }}<span class="basel-tooltip-label">{{ 'general.shipping_threshold.days' | t }}</span></strong>
+  <a href="/collections/all?sort_by=best-selling"> {{ 'general.shipping_threshold.continue' | t }}</a> {{ 'general.shipping_threshold.add_more' | t }} {{convert_free_shipping| money }}.</p>
+  {%- elsif missing_till_free_shipping != convert_free_shipping -%}
+    <p class="content_threshold threshold_congrats"><i class="pe-7s-medal" style="font-size: 16px"></i> {{ 'general.shipping_threshold.congratulations' | t }}</p>
+  {%- endif -%}

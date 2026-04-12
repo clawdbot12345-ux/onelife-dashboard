@@ -1,0 +1,454 @@
+{%- if section.settings.section_margin_top != blank or section.settings.section_margin_bottom != blank or section.settings.section_border != blank -%}
+{%- assign s_margin_top = section.settings.section_margin_top | remove: ' ' | join: ' ' -%}
+{%- assign s_margin_bottom = section.settings.section_margin_bottom | remove: ' ' | join: ' ' -%}
+{%- assign s_border = section.settings.section_border | remove: ' ' | split: '-' | join: ' ' -%}
+{%- endif -%}
+{%- capture style_block_section -%}
+   {%- if section.settings.section_margin_top != blank or section.settings.section_margin_bottom != blank or section.settings.section_padding_top != blank or section.settings.section_padding_right != blank or section.settings.section_padding_left != blank or section.settings.section_padding_bottom != blank or section.settings.section_bg_color != blank or section.settings.section_bg_image != blank or section.settings.section_border != blank -%}
+   <style type="text/css">.gl_custom_{{section.id}}{ {%- if section.settings.section_margin_top != blank -%} margin-top: {{s_margin_top}} !important;{%- endif -%}{%- if section.settings.section_margin_bottom != blank -%} margin-bottom: {{s_margin_bottom}} !important;{%- endif -%}{%- if section.settings.section_padding_top != blank -%}padding-top: {{section.settings.section_padding_top}} !important;{%- endif-%}{%- if section.settings.section_padding_right != blank -%}padding-right: {{section.settings.section_padding_right}} !important;{%- endif-%}{%- if section.settings.section_padding_bottom != blank -%}padding-bottom: {{section.settings.section_padding_bottom}} !important;{%- endif-%}{%- if section.settings.section_padding_left != blank -%}padding-left: {{section.settings.section_padding_left}} !important; {%- endif -%}{%- if section.settings.section_bg_color != blank -%}background-color: {{ section.settings.section_bg_color }} !important;{%- endif -%}{%- if section.settings.section_bg_image != blank -%}background-position: center !important; background-repeat: no-repeat !important; background-size: cover !important;{%- endif -%}{%- if section.settings.section_border != blank and section.settings.section_border_color != blank -%}border-width: {{ s_border }} !important; border-color: {{section.settings.section_border_color}} !important; border-style: {{section.settings.section_border_style}} !important{%- endif -%} }</style>
+   {%- endif -%}
+{%- endcapture -%}
+{%- capture data_section -%}
+  {%- if section.settings.row_stretch == 'stretch_row' -%}
+   {%- assign class_has_fill = 'gl_row-has-fill' -%}
+   data-gl='has_section_gl_js' data-gl-full-width='true' data-gl-full-width-init='true'
+  {%- elsif section.settings.row_stretch == 'stretch_row_content' or section.settings.row_stretch == 'stretch_row_content_no_spaces' -%}
+   {%- assign class_has_fill = 'gl_row-has-fill' -%}
+   data-gl='has_section_gl_js' data-gl-full-width='true' data-gl-full-width-init='true' data-gl-stretch-content='true'
+  {%- else -%}
+  {%- assign class_has_fill = '' -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign number = section.settings.silder_per_view | plus: 0 -%}
+{{ style_block_section }}
+<div {{ data_section }} {%- if section.settings.use_video and section.settings.video_url != blank %} data-gl-video-bg="{{ section.settings.video_url }}"{%- endif %} class="{%- if settings_pr_img_size -%}equal-columns {% endif -%}{{section.settings.image_size}} gl_custom_{{section.id}} featured-blog{%- if section.settings.row_stretch == 'stretch_row_content_no_spaces' %} gl_row-no-padding{%- endif %}{%- if section.settings.use_parallax %} basel-parallax{%- endif %} gl_row spb_row gl_row-fluid {%- if section.settings.use_video and section.settings.video_url != blank %} opacity-video-bg gl_video-bg-container gl_has_youtube{%- endif %}{%- if section.settings.full_height %} gl_row-o-full-height gl_row-o-columns-{{section.settings.columns_position}}{%- endif %}{%- if section.settings.equal_height %} gl_row-o-equal-height{%- endif %}{%- if section.settings.use_parallax %} basel-parallax{%- endif %}{%- if section.settings.section_bg_image != blank %} lazy_bg lazyload{%- endif %}"{%- if section.settings.section_bg_image != blank %} data-bgset="{%- include 'bgset', image: section.settings.section_bg_image -%}" data-sizes="auto" data-parent-fit="cover" style="background-image: url('{{ section.settings.section_bg_image | img_url: '50x50' }}')"{%- endif -%}>
+  <div class="spb_column gl_column_container gl_col-sm-12">
+       <div class="spb_wrapper">
+          <div class="gl_carousel_container info-box-carousel-wrapper info-box-spacing-30 basel-spacing-30 info-box-per-view-6">
+             <div class="owl-carousel gl_carousel_data info-box-carousel" data-time='{{ section.settings.silder_speed | plus: 0 }}' data-nav='{%- if section.settings.hide_button -%}false{%- else -%}true{%- endif -%}' data-items='{{ number }}' data-dots='{%- if section.settings.hide_pagination -%}false{%- else -%}true{%- endif -%}' data-autoplay='{%- if section.settings.autoplay -%}true{%- else -%}false{%- endif -%}' data-loop='{%- if section.settings.slider_loop -%}true{%- else -%}false{%- endif -%}' data-medium='{%- if number > 2 -%}{{ number | minus: 1 }}{%- else -%}2{%- endif -%}' data-small='2'>
+                {%- for block in section.blocks -%}
+                  <div class="{%- if block.settings.banner_link != blank -%}cursor-pointer{%- endif %} basel-info-box text-{{ block.settings.banner_alignment }} icon-alignment-{{ block.settings.banner_vertical_alignment }} box-style-{{ block.settings.box_style }} color-scheme-{{ block.settings.banner_color }} btn-position-{{ block.settings.button_style }} with-animation" {%- if block.settings.banner_link != blank -%}onclick="window.location.href='{{ block.settings.banner_link }}'"{%- endif %}>
+                     <div class="box-icon-wrapper">
+                        <div class="info-box-icon">
+                            {%- if block.settings.svg_link != blank -%}
+                            <div class="info-svg-wrapper" style="width: 60px;height: 60px;">{{ block.settings.svg_link }}</div>
+                            {%- elsif block.settings.image != blank -%}
+                               {%- assign image = block.settings.image -%}
+                               {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                                   <img src="{{ image | img_url: '50x50' }}" data-src="{{ img_url }}" data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ image.aspect_ratio }}"  data-sizes="auto" class="lazyload w__100 promo-banner-image image-1" alt="{{image.alt}}" style="max-width: {{image.width}}px">
+                                   <div class="jas-wrap-lazy"></div>
+                          {%- else -%}
+                               <img width="600" height="442" src="https://cdn.shopify.com/s/files/1/1933/6253/files/portfolio-placeholder_360x360_crop_center.jpg?12790048884060573015">                            
+                            {%- endif -%}
+                        </div>
+                     </div>
+                     <div class="info-box-content">
+                        <div class="info-box-inner">
+                            {%- if block.settings.banner_content != blank -%}
+                             {{ block.settings.banner_content }}
+                            {%- else -%}
+                              <p></p>
+                              <h1 style="text-align: center;"><strong class="font-alt color-primary">Dog care</strong>&nbsp;ADVICE</h1>
+                              <p>Dapibus parturient sit morbi lobortis urna a diam lacus scelerisque a potenti suspendisse a a ullamcorper facilisi dapibus ultricies sed.</p>
+                            {%- endif -%}
+                            {%- if block.settings.banner_link != blank  and block.settings.banner_btn_title != blank  -%}
+                            <div class="info-btn-wrapper">
+                            <a href="{{ block.settings.banner_link }}" class="btn btn-style-link btn-color-primary info-box-btn">{{ block.settings.banner_btn_title }}</a>
+                            </div>
+                            {%- endif -%}
+                        </div>
+                     </div>
+                  </div>
+                {%- endfor -%}
+             </div>
+          </div>
+       </div>
+    </div>
+</div>
+{%- unless section.settings.row_stretch == 'default' -%}
+<div class="gl_row-full-width gl_clearfix"></div>
+{%- endunless -%}
+
+{%- schema -%}
+  {
+    "name": "information box carousel",
+    "class": "index-section has_section_gl_js gl_info_box_carousel",
+    "settings": [{
+        "type": "header",
+        "content": "== Row Settings"
+      },
+      {
+        "type": "select",
+        "id": "row_stretch",
+        "options": [
+         {
+            "value": "default",
+            "label": "Default"
+          },
+         {
+            "value": "stretch_row",
+            "label": "Stretch row"
+          },
+          {
+            "value": "stretch_row_content",
+            "label": "Stretch row and content"
+          },
+          {
+            "value": "stretch_row_content_no_spaces",
+            "label": "Stretch row and content (no paddings)"
+          }
+        ],
+        "label": "___ Row stretch",
+        "info": "Select stretching options for row and content (Note: stretched may not work properly if parent container has 'overflow: hidden' CSS property).",
+        "default": "default"
+      },
+      {
+        "type": "header",
+        "content": "___ Carousel Settings"
+      },
+      {
+        "type": "text",
+        "id": "silder_speed",
+        "label": "Slider speed ( integer )",
+        "info": "Duration of animation between slides (in ms).",
+        "default": "5000"
+      },
+      {
+        "type": "select",
+        "id": "silder_per_view",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          }
+        ],
+        "label": "Slides per view",
+        "default": "7",
+        "info": "Set numbers of slides you want to display at the same time on slider's container for carousel mode."
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_pagination",
+        "default": false,
+        "label": "Hide pagination control?",
+        "info": "pagination control will be removed"
+      },
+       {
+        "type": "checkbox",
+        "id": "hide_button",
+        "default": false,
+        "label": "Hide prev/next buttons?",
+        "info": "prev/next control will be removed"
+      },
+       {
+        "type": "checkbox",
+        "id": "slider_loop",
+        "default": false,
+        "label": "Slider loop?",
+        "info": "Enables loop mode."
+      },
+      {
+       "type": "checkbox",
+       "id": "autoplay",
+       "label": "___ Slider autoplay",
+       "info": "Enables autoplay mode.",
+       "default": false
+     },
+     {
+        "type": "header",
+        "content": "== Design settings"
+      },
+      {
+        "type": "color",
+        "id": "section_bg_color",
+        "label": "Background color"
+      },
+      {
+        "type": "color",
+        "id": "section_border_color",
+        "label": "Border color"
+      },
+      {
+        "type": "select",
+        "id": "section_border_style",
+        "options": [
+         {
+            "value": "solid",
+            "label": "Solid"
+          },
+         {
+            "value": "dotted",
+            "label": "Dotted"
+          },
+          {
+            "value": "dashed",
+            "label": "Dashed"
+          },
+          {
+            "value": "double",
+            "label": "Double"
+          },
+          {
+            "value": "groove",
+            "label": "Groove"
+          },
+          {
+            "value": "Ridge",
+            "label": "Ridge"
+          },
+          {
+            "value": "inset",
+            "label": "Inset"
+          },
+          {
+            "value": "outset",
+            "label": "Outset"
+          }
+        ],
+        "label": "Border style",
+        "default": "solid"
+      },
+      {
+        "type": "text",
+        "id": "section_border",
+        "label": "Borders Integer px ( top-right-bottom-left )",
+        "info": "0-0-1px-0"
+      },
+      {
+        "type": "text",
+        "id": "section_margin_top",
+        "label": "Margin top",
+        "info": "60px"
+      },
+      {
+        "type": "text",
+        "id": "section_margin_bottom",
+        "label": "Margin bottom",
+        "info": "60px"
+      },
+      {
+        "type": "text",
+        "id": "section_padding_top",
+        "label": "Padding top",
+        "info": "60px"
+      },
+{
+        "type": "text",
+        "id": "section_padding_right",
+        "label": "Padding right",
+        "info": "60px"
+      },
+{
+        "type": "text",
+        "id": "section_padding_bottom",
+        "label": "Padding bottom",
+        "info": "60px"
+      },
+{
+        "type": "text",
+        "id": "section_padding_left",
+        "label": "Padding left",
+        "info": "60px"
+      }],
+"blocks": [
+      {
+        "type": "information",
+        "name": "Information",
+        "settings": [
+           {
+               "type": "image_picker",
+               "id": "image",
+               "label": "== Image"
+             },
+            {
+               "type": "html",
+              "id": "svg_link",
+              "label": "== svg image"
+            },
+           {
+             "type": "html",
+             "id": "banner_content",
+             "label": "== Banner content",
+             "info": "Add here few words to your banner image."
+           },
+           {
+             "type": "paragraph",
+             "content": "[Copy information content style 1 ( home-cars ) ](http:\/\/codepen.io\/sarus\/pen\/XRwGVB?editors=1000)"
+           },
+           {
+             "type": "paragraph",
+             "content": "[Copy information content style 2 ( home-cosmetics ) ](http:\/\/codepen.io\/sarus\/pen\/pPmYLd?editors=1000)."
+           },
+           {
+             "type": "paragraph",
+             "content": "[Copy information content style 3 ( home-pets ) ](http:\/\/codepen.io\/sarus\/pen\/QvRomg?editors=1000)."
+           },
+           {
+             "type": "paragraph",
+             "content": "[Copy information content style 4 ( home-jewellery ) ](http:\/\/codepen.io\/sarus\/pen\/NjVJYp?editors=1000)."
+           },
+           {
+             "type": "text",
+             "id": "banner_btn_title",
+             "label": "== Button title",
+             "info": "Add here few words to your title button."
+           },
+           {
+             "type": "url",
+             "id": "banner_link",
+             "label": "== Banner link",
+             "info": "Enter URL if you want this banner to have a link."
+           },
+           {
+            "type": "select",
+            "id": "button_style",
+            "options": [
+             {
+                "value": "hover",
+                "label": "Show on hover"
+              },
+              {
+                "value": "static",
+                "label": "Static"
+              }
+            ],
+            "label": "== Button style",
+            "default": "hover"
+          },
+           {
+            "type": "select",
+            "id": "banner_alignment",
+            "options": [
+             {
+                "value": "left",
+                "label": "Align left"
+              },
+              {
+                "value": "right",
+                "label": "Align right"
+              },
+              {
+                "value": "center",
+                "label": "Align center"
+              }
+            ],
+            "label": "== Text alignment",
+            "info": "Select Text alignment.",
+            "default": "center"
+          },
+          {
+            "type": "select",
+            "id": "banner_vertical_alignment",
+            "options": [
+             {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "label": "== Image alignment",
+            "default": "top"
+          },
+          {
+            "type": "select",
+            "id": "box_style",
+            "options": [
+             {
+                "value": "base",
+                "label": "Base"
+              },
+              {
+                "value": "border",
+                "label": "Bordered"
+              },
+              {
+                "value": "shadow",
+                "label": "Shadow"
+              }
+            ],
+            "label": "== Box style",
+            "default": "base"
+          },
+          {
+            "type": "select",
+            "id": "banner_color",
+            "options": [
+             {
+                "value": "light",
+                "label": "Light"
+              },
+              {
+                "value": "dark",
+                "label": "Dark"
+              }
+            ],
+            "label": "== Color Scheme",
+            "default": "dark"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Information box carousel",
+      "category": "Text",
+      "blocks": [
+       {
+         "type": "information"
+       },
+       {
+         "type": "information"
+       },
+       {
+         "type": "information"
+       },
+       {
+         "type": "information"
+       },
+       {
+         "type": "information"
+       },
+       {
+         "type": "information"
+       },
+       {
+         "type": "information"
+       }
+     ]
+    }]
+  }
+{% endschema %}

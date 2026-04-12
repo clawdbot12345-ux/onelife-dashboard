@@ -1,0 +1,49 @@
+<div class="product-additional-galleries">
+{%- if product.metafields.meta.video contains 'youtube' or product.metafields.meta.video contains 'vimeo' -%}
+   <div class="product-video-button">
+   <a href="{{product.metafields.meta.video}}"><span>{{ 'products.product.video' | t }}</span></a>
+   </div>
+   {%- endif -%}
+   {%- assign images_alt = product.images | map: 'alt' -%}
+{%- if images_alt contains 'nt_360' -%}
+   <div class="product-360-button">
+      <a href="#product-360-view"><span>{{ 'products.product.view_360'| t }}</span></a>
+   </div>
+   <div id="product-360-view" class="product-360-view-wrapper mfp-hide">
+      <div class="basel-threed-view threed-id-{{product.id}}">
+         <ul class="threed-view-images"></ul>
+         <div class="spinner"><span>0%</span></div>
+      </div>
+      {%- assign check_360 = false -%}
+      {%- capture _array_view_360 -%}
+         {%- for image in product.images -%}
+             {%- if check_360 -%}
+               {{image.src | img_url: "master" }}{%- if forloop.last == false -%},{%- endif -%}
+            {%- elsif image.alt contains 'nt_360' -%}
+               {%- assign image_first = image -%}
+               {{image.src | img_url: "master" }}
+               {%- assign check_360 = true -%}
+            {%- endif -%}
+         {%- endfor -%}
+      {%- endcapture -%}
+      {%- assign array_view_360 = _array_view_360 | replace: ' ,', ',' | replace: ', ', ',' | split: ',' -%}
+      {%- assign image_first_width = image_first.width -%}
+      <script type="text/javascript">
+         jQuery(document).ready(function( $ ) {
+             $('.threed-id-{{product.id}}').ThreeSixty({
+                 totalFrames: {{array_view_360.size | json }},
+                 endFrame: {{array_view_360.size | json }},
+                 currentFrame: 1, 
+                 imgList: '.threed-view-images', 
+                 progress: '.spinner',
+                 imgArray: {{array_view_360 | json}},
+                 height: {{ image_first.height | json }},
+                 width: {{ image_first.width | json }},
+                 responsive: true,
+                 navigation: true
+             });
+         });
+      </script>
+   </div>
+{%- endif -%}
+</div>

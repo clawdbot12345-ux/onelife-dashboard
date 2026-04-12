@@ -1,0 +1,57 @@
+{%- assign ck_nt = false -%}
+{%- if settings.top_bar_enable  == false or settings.header_design == 'menu-top' -%}
+   {%- assign ck_nt = true -%}
+{%- endif -%}
+{%- unless offpopup -%}
+{%- assign offpopup = false -%}
+{%- endunless -%}
+{%- if settings.account_header_enable -%}
+<div class="header-links{%- if ck_curency_lang and ck_nt %} topbar-menu nathan_my-account nt-settings{%- endif -%}">
+   <ul>
+   	{%- if ck_curency_lang and ck_nt -%}
+   	<li>
+   	  	<a href="javascript:void(0)">{{ 'general.settings.settings' | t }}</a>
+		   <div class="sub-menu-dropdown color-scheme-dark">
+		   	<div class="setting-content text-left">
+		   		{%- if settings.show_multiple_currencies and settings.supported_currencies != blank -%}
+		            <div class="select-currency currencies currency clearfix">
+		              <div class="currency-title">{{ 'general.settings.currency' | t }}</div>
+		              <div class="currency-topbar">                                                
+		                  <div class="currency-list currency-lists">
+		                     {%- include 'gl_currency',currency_header:true -%}
+		                  </div>
+		               </div>
+		            </div>
+	            {%- endif -%}
+	            {%- if settings.show_language_currencies and settings.language_link_list != blank -%}
+	               <div class="select-currency jas_lang clearfix">
+	                 <div class="currency-title">{{ 'general.settings.language' | t }}</div>
+	                 <div class="currency-topbar">                                                
+	                     <div class="currency-list currency-lists">
+	                        {%- include 'gl-lang',currency_header:true -%}
+	                     </div>
+	                  </div>
+	               </div>
+	            {%- endif -%}
+	            {%- if shop.customer_accounts_enabled -%}
+	               <ul class="clearfix">
+	                  {%- if customer -%}
+	                  <li><a class="pr" href="/account">{{ 'layout.customer.my_account' | t }}</a></li>
+	                  <li><a class="pr" href="/account/logout">{{ 'layout.customer.log_out' | t }}</a></li>
+	                  {%- else -%}
+	                  <li{% if settings.login_side and offpopup == false %} class="login-side-opener"{% endif %}><a class="pr" href="/account/login">{{ 'layout.customer.log_in' | t }}</a></li>
+	                   {%- endif -%}
+	               </ul>
+	            {%- endif -%}
+	         </div>
+		   </div>
+		</li>
+      {%- elsif customer -%}
+      <li><a href="/account">{{ 'layout.customer.my_account' | t }}</a></li>
+      <li><a href="/account/logout">{{ 'layout.customer.log_out' | t }}</a></li>
+      {%- elsif shop.customer_accounts_enabled -%}
+      <li{% if settings.login_side and offpopup == false %} class="login-side-opener"{% endif %}><a href="/account/login">{{ 'layout.customer.log_in' | t }}</a></li>
+       {%- endif -%}
+   </ul>
+</div>
+{%- endif -%}

@@ -1,0 +1,59 @@
+{%- if settings.color_name_check != blank -%}{%- assign _gl_color_name = settings.color_name_check | replace: ' ,', ',' | replace: ', ', ',' | split: ',' -%}{%- assign gl_color_name = _gl_color_name | downcase -%}{%-else-%}{%- assign gl_color_name = '\nathan_dt\' -%}{%-endif-%}
+{%- if settings_pr_img_size -%}
+   <div class="swatches-on-grid">
+      {%- for option in product.options -%}
+      {%- assign downcased_option = option | downcase -%}
+      {%- assign downcased_option_check = downcased_option | prepend: '"' | append: '"' | strip -%} 
+      {%- if downcased_option == 'color' or downcased_option == 'colour' or gl_color_name contains downcased_option_check -%}
+      {%- assign option_index = forloop.index0 -%}
+      {%- assign displayed_option_values = '' -%}
+      {%- for variant in product.variants -%}
+      {%- assign option_value = variant.options[option_index] -%}
+      {%- unless displayed_option_values contains option_value -%}
+        {%- unless variant.featured_image.src == blank -%}
+                  {%- assign image = variant.featured_image -%}
+                  <span class="swatch-on-grid bg_color_{{ option_value | handleize }} jas_swatch_on_bg cursor-pointer basel-tooltip{%- if settings.product_layout_setting == '3' %} swatch-has-image{%- endif %} swatch-size-{{settings.swatch_home_size}}{%- if current_variant.title contains option_value and template contains 'collection' and current_tags != blank %} current-swatch{%- endif -%}" data-bgset="{%- include 'bgset', image: image -%}" data-src="{{ image | img_url: '50x50' }}" style="background-size: cover; {%- if settings.product_layout_setting == '3' -%}background-image: url( {{image | img_url: '118x'}} ){%- endif -%}"><span class="basel-tooltip-label">{{ option_value | capitalize }}</span></span>
+           {%- assign displayed_option_values = displayed_option_values | join: ',' -%}
+            {%- assign displayed_option_values = displayed_option_values | append: ',' | append: option_value -%}
+            {%- assign displayed_option_values = displayed_option_values | split: ',' -%}
+        {%- else -%}
+            <span class="swatch-on-grid bg_color_{{ option_value | handleize }} cursor_default basel-tooltip swatch-size-{{settings.swatch_home_size}}{%- if current_variant.title contains option_value and template contains 'collection' and current_tags != blank %} current-swatch{%- endif -%}"><span class="basel-tooltip-label">{{ option_value | capitalize }}</span></span>
+           {%- assign displayed_option_values = displayed_option_values | join: ',' -%}
+            {%- assign displayed_option_values = displayed_option_values | append: ',' | append: option_value -%}
+            {%- assign displayed_option_values = displayed_option_values | split: ',' -%}
+        {%- endunless -%}
+      {%- endunless -%}
+      {%- endfor -%}
+      {%- endif -%}
+      {%- endfor -%}
+   </div>
+{%- else -%}
+   <div class="swatches-on-grid">
+      {%- for option in product.options -%}
+      {%- assign downcased_option = option | downcase -%}
+      {%- assign downcased_option_check = downcased_option | prepend: '"' | append: '"' | strip -%} 
+      {%- if downcased_option == 'color' or downcased_option == 'colour' or gl_color_name contains downcased_option_check -%}
+      {%- assign option_index = forloop.index0 -%}
+      {%- assign displayed_option_values = '' -%}
+      {%- for variant in product.variants -%}
+      {%- assign option_value = variant.options[option_index] -%}
+      {%- unless displayed_option_values contains option_value -%}
+        {%- unless variant.featured_image.src == blank -%}
+                  {%- assign image = variant.featured_image -%}
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <span class="jas_swatch_on_img bg_color_{{ option_value | handleize }} swatch-on-grid cursor-pointer basel-tooltip{%- if settings.product_layout_setting == '3' %} swatch-has-image{%- endif %} swatch-size-{{settings.swatch_home_size}}{%- if current_variant.title contains option_value and template contains 'collection' and current_tags != blank %} current-swatch{%- endif -%}" data-src="{{ image | img_url: '50x50' }}" data-dtsrc="{{ img_url }}" data-aspectratio="{{image.aspect_ratio}}" style="background-size: cover; {%- if settings.product_layout_setting == '3' -%}background-image: url( {{image | img_url: '118x'}} ){%- endif -%}"><span class="basel-tooltip-label">{{ option_value | capitalize }}</span></span>
+           {%- assign displayed_option_values = displayed_option_values | join: ',' -%}
+            {%- assign displayed_option_values = displayed_option_values | append: ',' | append: option_value -%}
+            {%- assign displayed_option_values = displayed_option_values | split: ',' -%}
+        {%- else -%}
+            <span class="swatch-on-grid bg_color_{{ option_value | handleize }} cursor_default basel-tooltip swatch-size-{{settings.swatch_home_size}}{%- if current_variant.title contains option_value and template contains 'collection' and current_tags != blank %} current-swatch{%- endif -%}"><span class="basel-tooltip-label">{{ option_value | capitalize }}</span></span>
+           {%- assign displayed_option_values = displayed_option_values | join: ',' -%}
+            {%- assign displayed_option_values = displayed_option_values | append: ',' | append: option_value -%}
+            {%- assign displayed_option_values = displayed_option_values | split: ',' -%}
+        {%- endunless -%}
+      {%- endunless -%}
+      {%- endfor -%}
+      {%- endif -%}
+      {%- endfor -%}
+   </div>
+{%- endif -%}
