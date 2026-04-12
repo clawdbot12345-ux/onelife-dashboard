@@ -63,7 +63,7 @@ Rules:
 - "Cruelty-free" = not tested on animals. Most supplement brands qualify.
 - "Kosher" = only if explicitly stated or from a known kosher-certified brand
 - "Non-GMO" = only if explicitly stated
-- "Proudly-south-african" = SA brand or manufactured in SA. Brands: Solal, Bioharmony, Natroceutics, Sally-Ann Creed, Go Natural, Soaring Free, The Real Thing, NeoGenesis, Faithful to Nature, A.Vogel SA, etc.
+- "Proudly-south-african" = SA brand or manufactured in SA. Brands: Solal, Bioharmony, Natroceutics, Sally-Ann Creed, Go Natural, Soaring Free, The Real Thing, NeoGenesis, Faithful to Nature, A.Vogel SA, Willow, Green Pharm, Kura, etc.
 
 Return ONLY a JSON array with one object per product:
 [{"id": 12345, "attrs": ["vegan", "gluten-free", "dairy-free"]}, ...]
