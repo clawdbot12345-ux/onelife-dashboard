@@ -1,5 +1,5 @@
 {
-  "audited_at": "2026-04-12T00:54:00.068764+00:00",
+  "audited_at": "2026-04-12T00:58:42.636760+00:00",
   "store": "onelifehealth",
   "sample_size": "full",
   "stats": {
@@ -10,13 +10,13 @@
       "critical": 109,
       "issue_breakdown": {
         "medium:active_but_oos": 1606,
-        "high:no_image": 473,
+        "high:no_image": 468,
         "critical:description_placeholder": 109,
         "low:title_allcaps": 9,
         "medium:title_short": 6,
+        "low:alt_weak": 6,
         "medium:title_long": 2,
-        "medium:no_price": 1,
-        "low:alt_weak": 1
+        "medium:no_price": 1
       }
     },
     "articles": {
@@ -3443,9 +3443,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3455,7 +3455,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553749302,
@@ -3466,9 +3466,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3478,7 +3478,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553782070,
@@ -3489,9 +3489,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3501,7 +3501,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655554076982,
@@ -3512,9 +3512,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3524,7 +3524,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553683766,
@@ -3535,9 +3535,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3547,7 +3547,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553847606,
