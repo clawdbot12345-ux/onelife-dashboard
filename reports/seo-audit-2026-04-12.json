@@ -1,26 +1,22 @@
 {
-  "audited_at": "2026-04-12T00:10:46.633551+00:00",
+  "audited_at": "2026-04-12T00:41:52.653657+00:00",
   "store": "onelifehealth",
   "sample_size": "full",
   "stats": {
     "products": {
       "label": "Products",
       "total": 4700,
-      "with_issues": 1951,
-      "critical": 117,
+      "with_issues": 1708,
+      "critical": 109,
       "issue_breakdown": {
-        "medium:active_but_oos": 1790,
+        "medium:active_but_oos": 1606,
         "high:no_image": 473,
         "critical:description_placeholder": 109,
-        "medium:no_product_type": 96,
         "low:title_allcaps": 9,
-        "critical:description_missing": 8,
-        "low:no_tags": 8,
         "medium:title_short": 6,
         "medium:title_long": 2,
         "medium:no_price": 1,
-        "low:alt_weak": 1,
-        "high:alt_missing_all": 1
+        "low:alt_weak": 1
       }
     },
     "articles": {
@@ -1178,8 +1174,14 @@
       "vendor": "A.VOGEL",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -2971,14 +2973,8 @@
       "vendor": "Aloe Unique",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -3007,14 +3003,8 @@
       "vendor": "Aloe Unique",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -3025,14 +3015,8 @@
       "vendor": "Aloe Unique",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -3055,14 +3039,8 @@
       "vendor": "Aloe Unique",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -3097,14 +3075,8 @@
       "vendor": "Aloe Unique",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -3139,14 +3111,8 @@
       "vendor": "Aloe Unique",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -3199,14 +3165,8 @@
       "vendor": "Aloe Unique",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -3803,14 +3763,8 @@
       "vendor": "ARCON INTERNATIONAL",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -4013,14 +3967,8 @@
       "vendor": "B.WELLNESS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -5974,8 +5922,14 @@
       "vendor": "BIOMAX\u00ae",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -6034,14 +5988,8 @@
       "vendor": "BIOSIL",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -6609,14 +6557,8 @@
       "vendor": "BOIRON",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -6685,8 +6627,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -6733,14 +6681,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -6805,8 +6747,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -6835,14 +6783,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -6973,14 +6915,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -7063,8 +6999,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -7111,8 +7053,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -7314,14 +7262,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -7368,14 +7310,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -7398,8 +7334,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -7979,14 +7921,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -8033,14 +7969,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -8297,14 +8227,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -8405,14 +8329,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -8483,14 +8401,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -8555,8 +8467,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -8675,14 +8593,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -8873,14 +8785,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9083,14 +8989,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9149,14 +9049,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9167,8 +9061,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9226,8 +9126,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9238,14 +9144,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9321,8 +9221,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9333,14 +9239,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9363,14 +9263,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9399,14 +9293,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9417,14 +9305,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9537,8 +9419,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9549,14 +9437,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9567,14 +9449,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9597,8 +9473,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9735,14 +9617,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9819,14 +9695,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9879,14 +9749,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9897,14 +9761,8 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -9933,8 +9791,14 @@
       "vendor": "BOODY",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -10213,14 +10077,8 @@
       "vendor": "BUTTANUT",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -10475,14 +10333,8 @@
       "vendor": "BWT",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -10541,14 +10393,8 @@
       "vendor": "BYTJIE SALF",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -10719,14 +10565,8 @@
       "vendor": "CANNACO",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -11090,14 +10930,8 @@
       "vendor": "CARBSMART",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -11190,14 +11024,8 @@
       "vendor": "CARBSMART",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -11231,14 +11059,8 @@
       "vendor": "CARBSMART",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -11326,14 +11148,8 @@
       "vendor": "CARBSMART",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -11356,14 +11172,8 @@
       "vendor": "CARBSMART",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -11497,14 +11307,8 @@
       "vendor": "CARBSMART",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -11686,14 +11490,8 @@
       "vendor": "CARBSMART",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -12589,14 +12387,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -12673,14 +12465,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -12691,14 +12477,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -12775,14 +12555,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -12847,14 +12621,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -13009,14 +12777,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -13171,14 +12933,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -13261,14 +13017,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -13279,14 +13029,8 @@
       "vendor": "CHINAHERB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14004,8 +13748,14 @@
       "vendor": "CRED\u00c9 NATURAL OILS",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14016,14 +13766,8 @@
       "vendor": "CRED\u00c9 NATURAL OILS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14046,14 +13790,8 @@
       "vendor": "CRED\u00c9 NATURAL OILS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14094,14 +13832,8 @@
       "vendor": "CREDENCE PHARMA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14358,14 +14090,8 @@
       "vendor": "DELFRAN",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14400,14 +14126,8 @@
       "vendor": "DELFRAN",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14514,14 +14234,8 @@
       "vendor": "DERMA CLINICAL",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14532,14 +14246,8 @@
       "vendor": "DERMA CLINICAL",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14657,8 +14365,14 @@
       "vendor": "DMANNOSE",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -14669,8 +14383,14 @@
       "vendor": "DMANNOSE",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -15161,14 +14881,8 @@
       "vendor": "EARTH BLENDS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -15424,14 +15138,9 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 1,
       "high_count": 0
     },
@@ -15465,14 +15174,9 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 1,
       "high_count": 0
     },
@@ -15744,9 +15448,14 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
+        ],
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 1,
+      "issue_count": 2,
       "critical_count": 1,
       "high_count": 0
     },
@@ -15775,14 +15484,8 @@
       "vendor": "EARTHSAP",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -15823,14 +15526,8 @@
       "vendor": "EARTHSAP",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -15853,14 +15550,8 @@
       "vendor": "EARTHSAP",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -15876,14 +15567,9 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 1,
       "high_count": 0
     },
@@ -15899,14 +15585,9 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 1,
       "high_count": 0
     },
@@ -15971,8 +15652,14 @@
       "vendor": "EARTHSAP",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -16054,14 +15741,9 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 1,
       "high_count": 0
     },
@@ -16240,14 +15922,8 @@
       "vendor": "EARTHSAP",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -16258,14 +15934,8 @@
       "vendor": "EARTHSAP",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -16281,14 +15951,9 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 1,
       "high_count": 0
     },
@@ -16359,8 +16024,14 @@
       "vendor": "EARTHSAP",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -16939,14 +16610,8 @@
       "vendor": "Enduren",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17071,14 +16736,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17089,14 +16748,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17125,14 +16778,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17341,14 +16988,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17449,14 +17090,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17503,14 +17138,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17551,14 +17180,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17569,14 +17192,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17587,14 +17204,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17617,14 +17228,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17647,14 +17252,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17683,14 +17282,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17875,8 +17468,14 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17911,8 +17510,14 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -17923,14 +17528,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18019,14 +17618,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18079,14 +17672,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18109,14 +17696,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18175,14 +17756,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18193,14 +17768,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18391,14 +17960,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18629,8 +18192,14 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18719,14 +18288,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18797,14 +18360,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -18815,14 +18372,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19102,14 +18653,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19156,14 +18701,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19222,8 +18761,14 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19293,14 +18838,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19335,14 +18874,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19461,14 +18994,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19479,14 +19006,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19557,14 +19078,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19821,14 +19336,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19839,14 +19348,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19964,14 +19467,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -19994,14 +19491,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -20263,14 +19754,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -20377,14 +19862,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -20395,14 +19874,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -20527,14 +20000,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -20617,14 +20084,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -20647,14 +20108,8 @@
       "vendor": "ESCENTIA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -20766,14 +20221,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -20802,14 +20251,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -21013,14 +20456,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -21043,14 +20480,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -21079,14 +20510,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -21097,14 +20522,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -21163,14 +20582,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -21301,14 +20714,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -21391,14 +20798,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -21427,14 +20828,8 @@
       "vendor": "ESSE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22333,14 +21728,8 @@
       "vendor": "FORTIFOOD",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22495,8 +21884,14 @@
       "vendor": "FORTIFOOD",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22555,14 +21950,8 @@
       "vendor": "FORTIFOOD",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22675,14 +22064,8 @@
       "vendor": "FORTIFOOD",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22747,14 +22130,8 @@
       "vendor": "FUTUREHEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22789,14 +22166,8 @@
       "vendor": "FUTUREHEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22861,8 +22232,14 @@
       "vendor": "FUTUREHEALTH",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22927,14 +22304,8 @@
       "vendor": "FUTUREHEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -22945,14 +22316,8 @@
       "vendor": "FUTUREHEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -23338,14 +22703,8 @@
       "vendor": "GABY'S EARTH FOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -23379,14 +22738,8 @@
       "vendor": "GABY'S EARTH FOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -23433,14 +22786,8 @@
       "vendor": "GABY'S EARTH FOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24549,14 +23896,8 @@
       "vendor": "GLUTAGON",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24603,14 +23944,8 @@
       "vendor": "GLUTAGON",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24657,14 +23992,8 @@
       "vendor": "GLUTAGON",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24705,14 +24034,8 @@
       "vendor": "GLUTAGON",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24723,14 +24046,8 @@
       "vendor": "GLUTAGON",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24741,14 +24058,8 @@
       "vendor": "GLUTAGON",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24819,14 +24130,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24855,14 +24160,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24873,14 +24172,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24891,14 +24184,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24927,14 +24214,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -24987,14 +24268,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25028,14 +24303,9 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 1,
       "high_count": 0
     },
@@ -25046,14 +24316,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25064,14 +24328,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25094,14 +24352,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25124,14 +24376,8 @@
       "vendor": "GOOD HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25261,14 +24507,8 @@
       "vendor": "GOOD LIFE ORGANIC",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25343,14 +24583,8 @@
       "vendor": "GOOD LIFE ORGANIC",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25407,14 +24641,8 @@
       "vendor": "GOOD LIFE ORGANIC",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25507,14 +24735,8 @@
       "vendor": "GOOD LIFE ORGANIC",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -25683,14 +24905,8 @@
       "vendor": "GOOD LIFE ORGANIC",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -26153,14 +25369,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -26321,14 +25531,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -26687,14 +25891,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -26717,14 +25915,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -27226,14 +26418,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -27508,14 +26694,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -27730,14 +26910,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -27832,14 +27006,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -28294,14 +27462,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -28666,14 +27828,8 @@
       "vendor": "GREEN PHARM",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -30999,8 +30155,14 @@
       "vendor": "HIMALAYA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -31047,14 +30209,8 @@
       "vendor": "HIMALAYA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -31149,14 +30305,8 @@
       "vendor": "HIMALAYA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -31335,8 +30485,14 @@
       "vendor": "HIMALAYA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -32568,14 +31724,8 @@
       "vendor": "KARA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33059,8 +32209,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33119,14 +32275,8 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33179,8 +32329,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33227,8 +32383,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33299,14 +32461,8 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33317,14 +32473,8 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33449,14 +32599,8 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33593,14 +32737,8 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33725,8 +32863,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33923,8 +33067,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33935,14 +33085,8 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -33983,8 +33127,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -34097,8 +33247,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -34193,8 +33349,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -34283,8 +33445,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -34408,8 +33576,14 @@
       "vendor": "KURA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -34486,8 +33660,14 @@
       "vendor": "KWA-NALA FARMS",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -35527,14 +34707,8 @@
       "vendor": "MARCUS ROHRER",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -36025,14 +35199,8 @@
       "vendor": "METAGENICS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -36181,14 +35349,8 @@
       "vendor": "METAGENICS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -36481,8 +35643,14 @@
       "vendor": "METAGENICS",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -36553,8 +35721,14 @@
       "vendor": "METAGENICS",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -37051,8 +36225,14 @@
       "vendor": "MINERALIFE",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -37111,14 +36291,8 @@
       "vendor": "MINERALIFE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -37165,8 +36339,14 @@
       "vendor": "MINERALIFE",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -37364,14 +36544,8 @@
       "vendor": "MORINGA INITIATIVE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -37583,14 +36757,8 @@
       "vendor": "MY-T-CHAI",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -37631,14 +36799,8 @@
       "vendor": "MY-T-CHAI",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -37649,14 +36811,8 @@
       "vendor": "MY-T-CHAI",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -41077,14 +40233,8 @@
       "vendor": "NATURE\u2019S COLOURS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -41095,14 +40245,8 @@
       "vendor": "NATURE\u2019S COLOURS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -41113,14 +40257,8 @@
       "vendor": "NATURE\u2019S COLOURS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -41131,14 +40269,8 @@
       "vendor": "NATURE\u2019S COLOURS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -41347,14 +40479,8 @@
       "vendor": "NATURE\u2019S COLOURS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42483,16 +41609,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42539,14 +41660,8 @@
       "vendor": "NEOGENESIS HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42581,14 +41696,8 @@
       "vendor": "NEOGENESIS HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42599,14 +41708,8 @@
       "vendor": "NEOGENESIS HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42701,14 +41804,8 @@
       "vendor": "NEOGENESIS HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42731,14 +41828,8 @@
       "vendor": "NEOGENESIS HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42773,14 +41864,8 @@
       "vendor": "NEOGENESIS HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42815,14 +41900,8 @@
       "vendor": "NEOGENESIS HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -42911,8 +41990,14 @@
       "vendor": "NEOGENESIS HEALTH",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -43451,14 +42536,8 @@
       "vendor": "NOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -43487,8 +42566,14 @@
       "vendor": "NOW",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -43523,8 +42608,14 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -43942,14 +43033,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -43972,14 +43057,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44020,14 +43099,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44074,14 +43147,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44164,14 +43231,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44248,8 +43309,14 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44296,14 +43363,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44410,14 +43471,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44428,14 +43483,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44458,8 +43507,14 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44786,14 +43841,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44894,14 +43943,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44948,14 +43991,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44966,14 +44003,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -44984,14 +44015,8 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -45032,8 +44057,14 @@
       "vendor": "NOW\u00ae",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -45215,14 +44246,8 @@
       "vendor": "NPL",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -45233,14 +44258,8 @@
       "vendor": "NPL",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -45251,14 +44270,8 @@
       "vendor": "NPL",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -45440,14 +44453,8 @@
       "vendor": "NPL",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -48143,14 +47150,9 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 1,
       "high_count": 0
     },
@@ -48651,14 +47653,8 @@
       "vendor": "ORGANIC CHOICE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -48704,14 +47700,8 @@
       "vendor": "ORGANIC CHOICE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -48764,8 +47754,14 @@
       "vendor": "ORGANIC CHOICE",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -49142,8 +48138,14 @@
       "vendor": "ORGANIC INDIA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -52438,14 +51440,8 @@
       "vendor": "PLUSH ORGANICS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -52804,9 +51800,14 @@
           "critical",
           "description_placeholder",
           "Placeholder text detected: 'contact us for more info'"
+        ],
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 1,
+      "issue_count": 2,
       "critical_count": 1,
       "high_count": 0
     },
@@ -52961,8 +51962,14 @@
       "vendor": "PRIMESELF",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -53529,14 +52536,8 @@
       "vendor": "PROBIOTECH Green Cleaning Technology",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -53709,14 +52710,8 @@
       "vendor": "PURE BEGINNINGS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -53727,14 +52722,8 @@
       "vendor": "PURE BEGINNINGS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -53745,14 +52734,8 @@
       "vendor": "PURE BEGINNINGS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -53930,14 +52913,8 @@
       "vendor": "PURE BEGINNINGS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -54379,14 +53356,8 @@
       "vendor": "RAWBIOTICS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -55683,14 +54654,8 @@
       "vendor": "SALVITA",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -55719,8 +54684,14 @@
       "vendor": "SALVITA",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56079,14 +55050,8 @@
       "vendor": "SFERA BIO NUTRITION",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56151,8 +55116,14 @@
       "vendor": "SFERA BIO NUTRITION",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56361,14 +55332,8 @@
       "vendor": "SILVERLAB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56493,14 +55458,8 @@
       "vendor": "SILVERLAB",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56669,14 +55628,8 @@
       "vendor": "SIMILASAN",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56710,14 +55663,8 @@
       "vendor": "SIMILASAN",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56781,8 +55728,14 @@
       "vendor": "SIMILISAN",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56841,8 +55794,14 @@
       "vendor": "SIMILISAN",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -56973,14 +55932,8 @@
       "vendor": "SOARING FREE SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -57015,8 +55968,14 @@
       "vendor": "SOARING FREE SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -57141,14 +56100,8 @@
       "vendor": "SOARING FREE SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -57243,14 +56196,8 @@
       "vendor": "SOARING FREE SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -57333,8 +56280,14 @@
       "vendor": "SOARING FREE SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -57357,8 +56310,14 @@
       "vendor": "SOARING FREE SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -57447,14 +56406,8 @@
       "vendor": "SOARING FREE SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -61313,14 +60266,8 @@
       "vendor": "SWANSON",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -62452,14 +61399,8 @@
       "vendor": "The Real Thing Food Supplements",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64618,24 +63559,9 @@
       "published": true,
       "issues": [
         [
-          "critical",
-          "description_missing",
-          "No product description (0 chars)"
-        ],
-        [
           "high",
           "no_image",
           "Product has no images at all"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "low",
-          "no_tags",
-          "No tags (hurts collection membership + internal linking)"
         ],
         [
           "medium",
@@ -64643,8 +63569,8 @@
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 5,
-      "critical_count": 1,
+      "issue_count": 2,
+      "critical_count": 0,
       "high_count": 1
     },
     {
@@ -64654,14 +63580,8 @@
       "vendor": "VIRIDIAN",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64674,24 +63594,9 @@
       "published": true,
       "issues": [
         [
-          "critical",
-          "description_missing",
-          "No product description (0 chars)"
-        ],
-        [
           "high",
           "no_image",
           "Product has no images at all"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "low",
-          "no_tags",
-          "No tags (hurts collection membership + internal linking)"
         ],
         [
           "medium",
@@ -64699,8 +63604,8 @@
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 5,
-      "critical_count": 1,
+      "issue_count": 2,
+      "critical_count": 0,
       "high_count": 1
     },
     {
@@ -64713,16 +63618,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64735,24 +63635,9 @@
       "published": true,
       "issues": [
         [
-          "critical",
-          "description_missing",
-          "No product description (0 chars)"
-        ],
-        [
           "high",
           "no_image",
           "Product has no images at all"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "low",
-          "no_tags",
-          "No tags (hurts collection membership + internal linking)"
         ],
         [
           "medium",
@@ -64760,8 +63645,8 @@
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 5,
-      "critical_count": 1,
+      "issue_count": 2,
+      "critical_count": 0,
       "high_count": 1
     },
     {
@@ -64774,16 +63659,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64794,14 +63674,8 @@
       "vendor": "VIRIDIAN",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64815,16 +63689,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64835,14 +63704,8 @@
       "vendor": "VIRIDIAN",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64856,16 +63719,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64878,24 +63736,9 @@
       "published": true,
       "issues": [
         [
-          "critical",
-          "description_missing",
-          "No product description (0 chars)"
-        ],
-        [
           "high",
           "no_image",
           "Product has no images at all"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "low",
-          "no_tags",
-          "No tags (hurts collection membership + internal linking)"
         ],
         [
           "medium",
@@ -64903,8 +63746,8 @@
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 5,
-      "critical_count": 1,
+      "issue_count": 2,
+      "critical_count": 0,
       "high_count": 1
     },
     {
@@ -64914,14 +63757,8 @@
       "vendor": "VIRIDIAN HIGH FIVE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64932,14 +63769,8 @@
       "vendor": "VIRIDIAN HIGH FIVE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64950,14 +63781,8 @@
       "vendor": "VIRIDIAN HIGH FIVE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64968,14 +63793,8 @@
       "vendor": "VIRIDIAN HIGH FIVE",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -64989,16 +63808,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65012,16 +63826,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65079,14 +63888,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65097,14 +63900,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65115,14 +63912,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65133,14 +63924,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65151,14 +63936,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65172,16 +63951,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65194,24 +63968,9 @@
       "published": true,
       "issues": [
         [
-          "critical",
-          "description_missing",
-          "No product description (0 chars)"
-        ],
-        [
           "high",
           "no_image",
           "Product has no images at all"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "low",
-          "no_tags",
-          "No tags (hurts collection membership + internal linking)"
         ],
         [
           "medium",
@@ -65219,8 +63978,8 @@
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 5,
-      "critical_count": 1,
+      "issue_count": 2,
+      "critical_count": 0,
       "high_count": 1
     },
     {
@@ -65230,14 +63989,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65248,14 +64001,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65266,14 +64013,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65284,14 +64025,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65302,14 +64037,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65320,14 +64049,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65338,14 +64061,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65359,16 +64076,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65379,14 +64091,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65397,14 +64103,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65418,16 +64118,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65440,24 +64135,9 @@
       "published": true,
       "issues": [
         [
-          "critical",
-          "description_missing",
-          "No product description (0 chars)"
-        ],
-        [
           "high",
           "no_image",
           "Product has no images at all"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "low",
-          "no_tags",
-          "No tags (hurts collection membership + internal linking)"
         ],
         [
           "medium",
@@ -65465,8 +64145,8 @@
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 5,
-      "critical_count": 1,
+      "issue_count": 2,
+      "critical_count": 0,
       "high_count": 1
     },
     {
@@ -65491,16 +64171,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65514,16 +64189,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65564,14 +64234,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65585,16 +64249,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65605,14 +64264,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65623,14 +64276,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65641,14 +64288,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65659,14 +64300,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65677,14 +64312,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65698,16 +64327,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65721,16 +64345,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65741,14 +64360,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65762,16 +64375,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65782,14 +64390,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65800,14 +64402,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65818,14 +64414,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65836,14 +64426,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65854,14 +64438,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65872,14 +64450,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65890,14 +64462,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65908,19 +64474,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 2,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65931,21 +64486,10 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "high",
-          "alt_missing_all",
-          "ALL 2 image(s) missing alt text"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 2,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8155078000950,
@@ -65954,14 +64498,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65972,14 +64510,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -65990,14 +64522,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66011,16 +64537,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66031,14 +64552,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66049,14 +64564,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66067,14 +64576,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66085,14 +64588,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66103,14 +64600,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66124,16 +64615,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66144,14 +64630,8 @@
       "vendor": "VIVID HEALTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66396,14 +64876,8 @@
       "vendor": "WAZOOGLES SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66414,14 +64888,8 @@
       "vendor": "WAZOOGLES SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66456,14 +64924,8 @@
       "vendor": "WAZOOGLES SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66486,14 +64948,8 @@
       "vendor": "WAZOOGLES SUPERFOODS",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66722,24 +65178,9 @@
       "published": true,
       "issues": [
         [
-          "critical",
-          "description_missing",
-          "No product description (0 chars)"
-        ],
-        [
           "high",
           "no_image",
           "Product has no images at all"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "low",
-          "no_tags",
-          "No tags (hurts collection membership + internal linking)"
         ],
         [
           "medium",
@@ -66747,8 +65188,8 @@
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 5,
-      "critical_count": 1,
+      "issue_count": 2,
+      "critical_count": 0,
       "high_count": 1
     },
     {
@@ -66778,24 +65219,9 @@
       "published": true,
       "issues": [
         [
-          "critical",
-          "description_missing",
-          "No product description (0 chars)"
-        ],
-        [
           "high",
           "no_image",
           "Product has no images at all"
-        ],
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "low",
-          "no_tags",
-          "No tags (hurts collection membership + internal linking)"
         ],
         [
           "medium",
@@ -66803,8 +65229,8 @@
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 5,
-      "critical_count": 1,
+      "issue_count": 2,
+      "critical_count": 0,
       "high_count": 1
     },
     {
@@ -66850,14 +65276,8 @@
       "vendor": "WHOLESOME EARTH",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66970,14 +65390,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -66991,16 +65405,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67032,16 +65441,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67052,14 +65456,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67082,14 +65480,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67103,16 +65495,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67123,14 +65510,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67144,16 +65525,11 @@
       "issues": [
         [
           "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ],
-        [
-          "medium",
           "active_but_oos",
           "Active product with 0 inventory (consider hiding or restocking)"
         ]
       ],
-      "issue_count": 2,
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67164,14 +65540,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67182,14 +65552,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67200,14 +65564,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67218,14 +65576,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67236,14 +65588,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67266,14 +65612,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67284,14 +65624,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67302,14 +65636,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67320,14 +65648,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67338,14 +65660,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67356,14 +65672,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67374,14 +65684,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67392,14 +65696,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67410,14 +65708,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67428,14 +65720,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -67476,14 +65762,8 @@
       "vendor": "WILLOW",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "no_product_type",
-          "No product_type (Shopify uses this for filtering + schema)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -71585,14 +69865,8 @@
       "vendor": "ZINPLEX",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -71762,14 +70036,8 @@
       "vendor": "ZINPLEX",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -71804,8 +70072,14 @@
       "vendor": "ZINPLEX",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -71869,14 +70143,8 @@
       "vendor": "ZUZANNA'S",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
@@ -71923,8 +70191,14 @@
       "vendor": "ZUZANNA'S",
       "status": "active",
       "published": true,
-      "issues": [],
-      "issue_count": 0,
+      "issues": [
+        [
+          "medium",
+          "active_but_oos",
+          "Active product with 0 inventory (consider hiding or restocking)"
+        ]
+      ],
+      "issue_count": 1,
       "critical_count": 0,
       "high_count": 0
     },
@@ -71935,14 +70209,8 @@
       "vendor": "ZUZANNA'S",
       "status": "active",
       "published": true,
-      "issues": [
-        [
-          "medium",
-          "active_but_oos",
-          "Active product with 0 inventory (consider hiding or restocking)"
-        ]
-      ],
-      "issue_count": 1,
+      "issues": [],
+      "issue_count": 0,
       "critical_count": 0,
       "high_count": 0
     },
