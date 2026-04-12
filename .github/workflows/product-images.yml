@@ -1,0 +1,114 @@
+name: Product Image Generator
+
+# Runs scripts/generate_product_images.py end-to-end against the live Shopify
+# catalog using Gemini 3 Pro Image (Nano Banana Pro) to generate clean
+# product photography for every product flagged as `no_image` in the latest
+# SEO audit, then uploads the generated images via the Shopify Admin API.
+#
+# Gated by apply=true (configurable via workflow input). Every action is
+# logged to reports/product-images-applied-YYYY-MM-DD.log for resume +
+# rollback.
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Actually upload images to Shopify (true) or generate-only (false)'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      limit:
+        description: 'Max products this run (0 = all no_image targets)'
+        required: false
+        default: '0'
+      concurrency:
+        description: 'Parallel Gemini calls'
+        required: false
+        default: '3'
+      model:
+        description: 'Gemini image model'
+        required: false
+        default: 'gemini-3-pro-image-preview'
+
+permissions:
+  contents: write
+
+jobs:
+  generate-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: claude/deduplicate-shopify-products-tAKJ9
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Re-run SEO audit (so no_image list is fresh)
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+        run: python scripts/seo_audit.py
+
+      - name: Run product image generator
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          IMG_APPLY: ${{ github.event.inputs.apply }}
+          IMG_LIMIT: ${{ github.event.inputs.limit }}
+          IMG_CONCURRENCY: ${{ github.event.inputs.concurrency }}
+          IMG_MODEL: ${{ github.event.inputs.model }}
+        run: python scripts/generate_product_images.py
+
+      - name: List report files before commit (diagnostic)
+        if: always()
+        run: |
+          echo "=== reports/ directory ==="
+          ls -la reports/ 2>&1 || echo "(reports/ does not exist)"
+          echo
+          find reports -name 'product-images-*' -type f -printf '%p  %s bytes\n' 2>&1 || true
+
+      - name: Upload log + summary as artifact (backup)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: product-images-output-${{ github.run_id }}
+          path: |
+            reports/product-images-applied-*.log
+            reports/product-images-summary-*.md
+            reports/seo-audit-*.json
+            reports/seo-audit-*.md
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Commit log + summary
+        if: always()
+        run: |
+          set -x
+          git config user.name "onelife-seo-bot"
+          git config user.email "bot@onelife.co.za"
+          for pattern in "reports/product-images-applied-*.log" "reports/product-images-summary-*.md" "reports/seo-audit-*.json" "reports/seo-audit-*.md"; do
+            matches=$(compgen -G "$pattern" 2>/dev/null || true)
+            if [ -n "$matches" ]; then
+              echo "staging: $matches"
+              git add $matches
+            else
+              echo "no matches for: $pattern"
+            fi
+          done
+          git status --short
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: product image gen $(date +%Y-%m-%d) (apply=${{ github.event.inputs.apply }}, limit=${{ github.event.inputs.limit }})"
+            git push
+          fi
