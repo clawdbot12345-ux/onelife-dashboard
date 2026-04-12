@@ -1,5 +1,5 @@
 {
-  "audited_at": "2026-04-12T00:58:42.636760+00:00",
+  "audited_at": "2026-04-12T05:50:54.830526+00:00",
   "store": "onelifehealth",
   "sample_size": "full",
   "stats": {
@@ -10,11 +10,11 @@
       "critical": 109,
       "issue_breakdown": {
         "medium:active_but_oos": 1606,
-        "high:no_image": 468,
+        "high:no_image": 239,
+        "low:alt_weak": 235,
         "critical:description_placeholder": 109,
         "low:title_allcaps": 9,
         "medium:title_short": 6,
-        "low:alt_weak": 6,
         "medium:title_long": 2,
         "medium:no_price": 1
       }
@@ -3558,9 +3558,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3570,7 +3570,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655554044214,
@@ -3581,9 +3581,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3593,7 +3593,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553716534,
@@ -3604,9 +3604,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3616,7 +3616,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553978678,
@@ -3627,9 +3627,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3639,7 +3639,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553913142,
@@ -3650,9 +3650,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3662,7 +3662,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655554011446,
@@ -3673,9 +3673,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3685,7 +3685,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553945910,
@@ -3696,9 +3696,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3708,7 +3708,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655553814838,
@@ -3719,9 +3719,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3731,7 +3731,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655566299446,
@@ -3742,9 +3742,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -3754,7 +3754,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8053057585462,
@@ -4113,9 +4113,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4125,7 +4125,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580586294,
@@ -4136,9 +4136,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4148,7 +4148,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580553526,
@@ -4159,9 +4159,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4171,7 +4171,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580520758,
@@ -4182,9 +4182,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4194,7 +4194,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580487990,
@@ -4205,9 +4205,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4217,7 +4217,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655587795254,
@@ -4228,9 +4228,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4240,7 +4240,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655586746678,
@@ -4251,9 +4251,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4263,7 +4263,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655585993014,
@@ -4274,9 +4274,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4286,7 +4286,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8947266191670,
@@ -4399,9 +4399,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4411,7 +4411,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594742070,
@@ -4422,9 +4422,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4434,7 +4434,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8868836278582,
@@ -4985,9 +4985,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -4997,7 +4997,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655586517302,
@@ -5008,9 +5008,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5020,7 +5020,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655586484534,
@@ -5031,9 +5031,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5043,7 +5043,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655587762486,
@@ -5054,9 +5054,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5066,7 +5066,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8901241635126,
@@ -5149,9 +5149,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5161,7 +5161,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8446222270774,
@@ -5472,9 +5472,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5484,7 +5484,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620235574,
@@ -5495,9 +5495,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5507,7 +5507,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655619416374,
@@ -5518,9 +5518,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5530,7 +5530,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620071734,
@@ -5541,9 +5541,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5553,7 +5553,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8903475560758,
@@ -5582,9 +5582,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5594,7 +5594,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655619678518,
@@ -5605,9 +5605,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5617,7 +5617,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655619711286,
@@ -5628,9 +5628,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5640,7 +5640,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620104502,
@@ -5651,9 +5651,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5663,7 +5663,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655618826550,
@@ -5674,9 +5674,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5686,7 +5686,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655612535094,
@@ -5697,9 +5697,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -5709,7 +5709,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8053012627766,
@@ -6212,9 +6212,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -6224,7 +6224,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8885959655734,
@@ -6571,9 +6571,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -6583,7 +6583,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655619842358,
@@ -6594,9 +6594,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -6606,7 +6606,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8533372600630,
@@ -7199,9 +7199,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -7211,7 +7211,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8951469310262,
@@ -7372,9 +7372,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -7384,7 +7384,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9290818191670,
@@ -9081,9 +9081,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -9093,7 +9093,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8958782243126,
@@ -9188,9 +9188,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -9200,7 +9200,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8958802919734,
@@ -10056,9 +10056,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10068,7 +10068,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8462795866422,
@@ -10091,9 +10091,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10103,7 +10103,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655587565878,
@@ -10114,9 +10114,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10126,7 +10126,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655587500342,
@@ -10137,9 +10137,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10149,7 +10149,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8462802682166,
@@ -10184,9 +10184,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10196,7 +10196,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8462798946614,
@@ -10219,9 +10219,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10231,7 +10231,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655650578742,
@@ -10242,9 +10242,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10254,7 +10254,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655569215798,
@@ -10265,9 +10265,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10277,7 +10277,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9035297784118,
@@ -10300,9 +10300,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10312,7 +10312,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9035298668854,
@@ -10509,9 +10509,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10521,7 +10521,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655657460022,
@@ -10532,9 +10532,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10544,7 +10544,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8049754505526,
@@ -10633,9 +10633,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10645,7 +10645,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655598543158,
@@ -10656,9 +10656,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10668,7 +10668,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655598477622,
@@ -10679,9 +10679,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10691,7 +10691,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8864488751414,
@@ -10822,9 +10822,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10834,7 +10834,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655587434806,
@@ -10845,9 +10845,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10857,7 +10857,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655587696950,
@@ -10868,9 +10868,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10880,7 +10880,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538070450486,
@@ -10909,9 +10909,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10921,7 +10921,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538013991222,
@@ -10944,9 +10944,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -10956,7 +10956,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538034012470,
@@ -11003,9 +11003,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11015,7 +11015,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538022412598,
@@ -11038,9 +11038,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11050,7 +11050,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538033160502,
@@ -11091,9 +11091,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11103,7 +11103,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8875848925494,
@@ -11186,9 +11186,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11198,7 +11198,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655608701238,
@@ -11209,9 +11209,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11221,7 +11221,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538094272822,
@@ -11250,9 +11250,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11262,7 +11262,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8875854201142,
@@ -11321,9 +11321,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11333,7 +11333,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538063110454,
@@ -11374,9 +11374,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11386,7 +11386,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538067075382,
@@ -11451,9 +11451,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11463,7 +11463,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538068386102,
@@ -11504,9 +11504,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11516,7 +11516,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538032505142,
@@ -11539,9 +11539,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11551,7 +11551,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599853878,
@@ -11562,9 +11562,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11574,7 +11574,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599821110,
@@ -11585,9 +11585,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11597,7 +11597,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599788342,
@@ -11608,9 +11608,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11620,7 +11620,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599755574,
@@ -11631,9 +11631,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11643,7 +11643,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599591734,
@@ -11654,9 +11654,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11666,7 +11666,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599722806,
@@ -11677,9 +11677,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11689,7 +11689,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599526198,
@@ -11700,9 +11700,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11712,7 +11712,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599493430,
@@ -11723,9 +11723,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11735,7 +11735,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599690038,
@@ -11746,9 +11746,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11758,7 +11758,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599558966,
@@ -11769,9 +11769,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11781,7 +11781,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599952182,
@@ -11792,9 +11792,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11804,7 +11804,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655599657270,
@@ -11815,9 +11815,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -11827,7 +11827,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8947281822006,
@@ -12264,9 +12264,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -12276,7 +12276,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8406942220598,
@@ -13211,9 +13211,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -13223,7 +13223,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8848418079030,
@@ -14272,9 +14272,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -14284,7 +14284,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10094672314678,
@@ -16121,9 +16121,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16133,7 +16133,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655563448630,
@@ -16144,9 +16144,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16156,7 +16156,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620989238,
@@ -16167,9 +16167,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16179,7 +16179,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620727094,
@@ -16190,9 +16190,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16202,7 +16202,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620661558,
@@ -16213,9 +16213,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16225,7 +16225,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620596022,
@@ -16236,9 +16236,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16248,7 +16248,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620825398,
@@ -16259,9 +16259,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16271,7 +16271,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655620792630,
@@ -16282,9 +16282,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16294,7 +16294,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8616729608502,
@@ -16425,9 +16425,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16437,7 +16437,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655586025782,
@@ -16448,9 +16448,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16460,7 +16460,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655650382134,
@@ -16471,9 +16471,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16483,7 +16483,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655650316598,
@@ -16494,9 +16494,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16506,7 +16506,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655650349366,
@@ -16517,9 +16517,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -16529,7 +16529,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8864636043574,
@@ -18064,9 +18064,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -18076,7 +18076,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655630000438,
@@ -18087,9 +18087,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -18099,7 +18099,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8493162758454,
@@ -18632,9 +18632,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -18644,7 +18644,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8493240975670,
@@ -18805,9 +18805,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -18817,7 +18817,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8512476512566,
@@ -19416,9 +19416,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -19428,7 +19428,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8510431887670,
@@ -19691,9 +19691,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -19703,7 +19703,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8518184763702,
@@ -19948,14 +19948,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8510448107830,
@@ -20014,14 +20014,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8510453449014,
@@ -20200,9 +20200,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -20212,7 +20212,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8907235131702,
@@ -20265,9 +20265,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -20277,7 +20277,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655546114358,
@@ -20288,9 +20288,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -20300,7 +20300,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655546081590,
@@ -20311,9 +20311,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -20323,7 +20323,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655546048822,
@@ -20334,9 +20334,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -20346,7 +20346,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655546016054,
@@ -20357,9 +20357,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -20369,7 +20369,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8907403002166,
@@ -20998,9 +20998,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21010,7 +21010,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655641764150,
@@ -21021,9 +21021,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21033,7 +21033,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8487364919606,
@@ -21056,9 +21056,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21068,7 +21068,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8865832010038,
@@ -21115,9 +21115,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21127,7 +21127,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655595462966,
@@ -21138,9 +21138,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21150,7 +21150,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655595430198,
@@ -21161,9 +21161,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21173,7 +21173,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655596052790,
@@ -21184,9 +21184,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21196,7 +21196,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8865889485110,
@@ -21225,9 +21225,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21237,7 +21237,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8451557949750,
@@ -21326,9 +21326,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21338,7 +21338,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8468325499190,
@@ -21373,9 +21373,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21385,7 +21385,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8468302594358,
@@ -21468,9 +21468,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21480,7 +21480,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580062006,
@@ -21491,9 +21491,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21503,7 +21503,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580225846,
@@ -21514,9 +21514,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21526,7 +21526,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580094774,
@@ -21537,9 +21537,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21549,7 +21549,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580258614,
@@ -21560,9 +21560,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21572,7 +21572,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580127542,
@@ -21583,9 +21583,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21595,7 +21595,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580160310,
@@ -21606,9 +21606,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21618,7 +21618,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655580029238,
@@ -21629,9 +21629,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -21641,7 +21641,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8226231353654,
@@ -22426,9 +22426,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22438,7 +22438,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9032824619318,
@@ -22467,9 +22467,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22479,7 +22479,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9032828453174,
@@ -22508,9 +22508,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22520,7 +22520,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655572623670,
@@ -22531,9 +22531,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22543,7 +22543,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655570231606,
@@ -22554,9 +22554,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22566,7 +22566,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655572427062,
@@ -22577,9 +22577,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22589,7 +22589,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8970298720566,
@@ -22636,9 +22636,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22648,7 +22648,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655572459830,
@@ -22659,9 +22659,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22671,7 +22671,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655572787510,
@@ -22682,9 +22682,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22694,7 +22694,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8970320281910,
@@ -22717,9 +22717,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22729,7 +22729,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8970304323894,
@@ -22800,9 +22800,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22812,7 +22812,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655569871158,
@@ -22823,9 +22823,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22835,7 +22835,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655569969462,
@@ -22846,9 +22846,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22858,7 +22858,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655572558134,
@@ -22869,9 +22869,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22881,7 +22881,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655572492598,
@@ -22892,9 +22892,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22904,7 +22904,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655572394294,
@@ -22915,9 +22915,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22927,7 +22927,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9032844247350,
@@ -22956,9 +22956,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -22968,7 +22968,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8970305569078,
@@ -23057,9 +23057,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23069,7 +23069,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655615189302,
@@ -23080,9 +23080,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23092,7 +23092,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655615254838,
@@ -23103,9 +23103,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23115,7 +23115,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655615353142,
@@ -23126,9 +23126,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23138,7 +23138,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10012080931126,
@@ -23545,9 +23545,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23557,7 +23557,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655597920566,
@@ -23568,9 +23568,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23580,7 +23580,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655597855030,
@@ -23591,9 +23591,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23603,7 +23603,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594381622,
@@ -23614,9 +23614,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23626,7 +23626,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594348854,
@@ -23637,9 +23637,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23649,7 +23649,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594316086,
@@ -23660,9 +23660,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23672,7 +23672,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594283318,
@@ -23683,9 +23683,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23695,7 +23695,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594938678,
@@ -23706,9 +23706,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23718,7 +23718,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594250550,
@@ -23729,9 +23729,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23741,7 +23741,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594217782,
@@ -23752,9 +23752,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23764,7 +23764,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594185014,
@@ -23775,9 +23775,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23787,7 +23787,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594152246,
@@ -23798,9 +23798,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23810,7 +23810,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655594119478,
@@ -23821,9 +23821,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -23833,7 +23833,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10636302909750,
@@ -24438,9 +24438,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24450,7 +24450,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8053026750774,
@@ -24521,9 +24521,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24533,7 +24533,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655607521590,
@@ -24544,9 +24544,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24556,7 +24556,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8545430634806,
@@ -24597,9 +24597,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24609,7 +24609,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655607488822,
@@ -24620,9 +24620,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24632,7 +24632,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8545445282102,
@@ -24673,9 +24673,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24685,7 +24685,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655607423286,
@@ -24696,9 +24696,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24708,7 +24708,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8545449967926,
@@ -24749,9 +24749,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24761,7 +24761,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655607324982,
@@ -24772,9 +24772,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24784,7 +24784,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8545342226742,
@@ -24807,9 +24807,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24819,7 +24819,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8545361002806,
@@ -24848,9 +24848,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24860,7 +24860,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8545517601078,
@@ -24949,9 +24949,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -24961,7 +24961,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8869557600566,
@@ -24990,9 +24990,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -25002,7 +25002,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8869563892022,
@@ -25258,9 +25258,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -25270,7 +25270,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8355520872758,
@@ -25491,14 +25491,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8378478919990,
@@ -25641,14 +25641,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8361155723574,
@@ -25725,14 +25725,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8304654909750,
@@ -25767,14 +25767,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8361168798006,
@@ -25989,14 +25989,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8364682346806,
@@ -26061,9 +26061,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -26073,7 +26073,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9711616196918,
@@ -26552,14 +26552,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8378501890358,
@@ -26570,14 +26570,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8367016608054,
@@ -27104,14 +27104,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8377326567734,
@@ -27398,14 +27398,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8353069826358,
@@ -27524,14 +27524,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8378513948982,
@@ -27542,14 +27542,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8377204900150,
@@ -27926,9 +27926,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -27938,7 +27938,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8378519748918,
@@ -27949,14 +27949,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8378498351414,
@@ -27967,14 +27967,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8358369034550,
@@ -28219,14 +28219,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8347642462518,
@@ -28237,14 +28237,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8347649605942,
@@ -28501,9 +28501,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -28513,7 +28513,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655616500022,
@@ -28524,9 +28524,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -28536,7 +28536,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655616434486,
@@ -28547,9 +28547,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -28559,7 +28559,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8535400841526,
@@ -28582,9 +28582,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -28594,7 +28594,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8053016625462,
@@ -29799,9 +29799,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -29811,7 +29811,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8470286696758,
@@ -29924,9 +29924,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -29936,7 +29936,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8476689629494,
@@ -30955,9 +30955,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -30967,7 +30967,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655579013430,
@@ -30978,9 +30978,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -30990,7 +30990,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8949052670262,
@@ -31138,9 +31138,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31150,7 +31150,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538101776694,
@@ -31179,9 +31179,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31191,7 +31191,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538123010358,
@@ -31225,9 +31225,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31237,7 +31237,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9129117090102,
@@ -31266,9 +31266,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31278,7 +31278,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538111246646,
@@ -31312,9 +31312,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31324,7 +31324,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8544230703414,
@@ -31358,9 +31358,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31370,7 +31370,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538117996854,
@@ -31404,9 +31404,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31416,7 +31416,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8544176275766,
@@ -31450,9 +31450,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31462,7 +31462,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538102858038,
@@ -31491,9 +31491,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31503,7 +31503,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8544393920822,
@@ -31532,9 +31532,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31544,7 +31544,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538138181942,
@@ -31573,9 +31573,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31585,7 +31585,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8538145980726,
@@ -31619,9 +31619,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31631,7 +31631,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8901270995254,
@@ -31660,14 +31660,14 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ]
       ],
       "issue_count": 1,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9127056605494,
@@ -31792,9 +31792,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31804,7 +31804,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655574130998,
@@ -31815,9 +31815,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31827,7 +31827,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655574098230,
@@ -31838,9 +31838,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31850,7 +31850,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655574065462,
@@ -31861,9 +31861,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31873,7 +31873,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655574032694,
@@ -31884,9 +31884,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31896,7 +31896,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655573999926,
@@ -31907,9 +31907,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -31919,7 +31919,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8960421036342,
@@ -31988,9 +31988,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -32000,7 +32000,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 8984852431158,
@@ -32058,9 +32058,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -32070,7 +32070,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655586844982,
@@ -32081,9 +32081,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -32093,7 +32093,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655650447670,
@@ -32104,9 +32104,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -32116,7 +32116,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 9127427670326,
@@ -33925,9 +33925,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -33937,7 +33937,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655589597494,
@@ -33994,9 +33994,9 @@
       "published": true,
       "issues": [
         [
-          "high",
-          "no_image",
-          "Product has no images at all"
+          "low",
+          "alt_weak",
+          "1/1 image(s) have weak/generic alt text"
         ],
         [
           "medium",
@@ -34006,7 +34006,7 @@
       ],
       "issue_count": 2,
       "critical_count": 0,
-      "high_count": 1
+      "high_count": 0
     },
     {
       "id": 10655617351990,
