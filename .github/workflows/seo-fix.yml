@@ -76,12 +76,49 @@ jobs:
           FIX_CONCURRENCY: '5'
         run: python scripts/seo_fix_agent.py
 
+      - name: List report files before commit (diagnostic)
+        if: always()
+        run: |
+          echo "=== reports/ directory ==="
+          ls -la reports/ 2>&1 || echo "(reports/ does not exist)"
+          echo
+          echo "=== seo-related files ==="
+          find reports -name 'seo-*' -type f -printf '%p  %s bytes  %TY-%Tm-%Td %TH:%TM\n' 2>&1 || true
+          echo
+          echo "=== git status ==="
+          git status --short 2>&1 || true
+
+      - name: Upload log + reports as artifact (backup if git commit fails)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-fix-output-${{ github.run_id }}
+          path: |
+            reports/seo-audit-*.json
+            reports/seo-audit-*.md
+            reports/seo-fixes-*.jsonl
+            reports/seo-fixes-applied-*.log
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Commit action log + reports
         if: always()
         run: |
+          set -x
           git config user.name "onelife-seo-bot"
           git config user.email "bot@onelife.co.za"
-          git add reports/seo-audit-*.json reports/seo-audit-*.md reports/seo-fixes-*.jsonl reports/seo-fixes-applied-*.log 2>/dev/null || true
+          # Stage each pattern individually so a missing match doesn't hide
+          # errors for the others. Print anything we find.
+          for pattern in "reports/seo-audit-*.json" "reports/seo-audit-*.md" "reports/seo-fixes-*.jsonl" "reports/seo-fixes-applied-*.log"; do
+            matches=$(compgen -G "$pattern" 2>/dev/null || true)
+            if [ -n "$matches" ]; then
+              echo "staging: $matches"
+              git add $matches
+            else
+              echo "no matches for: $pattern"
+            fi
+          done
+          git status --short
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
