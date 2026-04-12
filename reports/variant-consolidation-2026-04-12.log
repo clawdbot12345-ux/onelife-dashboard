@@ -1,0 +1,51 @@
+{"action": "run_start", "groups": 52, "products": 178, "apply": true, "ts": "2026-04-12T19:27:10.291891+00:00"}
+{"action": "canonical_set", "parent": "BOODY - Ladies Black 3/4 Length Leggings", "id": 8951280861494, "handle": "boody-ladies-black-34-length-leggings-l", "size": "L", "ts": "2026-04-12T19:27:12.511642+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black 3/4 Length Leggings", "size": "S", "from_product": 8951301538102, "new_variant_id": 53900059410742, "price": "429.95", "ts": "2026-04-12T19:27:13.691892+00:00"}
+{"action": "archived", "id": 8951301538102, "handle": "boody-ladies-black-34-length-leggings-s", "ts": "2026-04-12T19:27:15.035282+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-34-length-leggings-s", "to_handle": "boody-ladies-black-34-length-leggings-l", "ts": "2026-04-12T19:27:15.718617+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black 3/4 Length Leggings", "size": "M", "from_product": 8951296557366, "new_variant_id": 53900059476278, "price": "429.95", "ts": "2026-04-12T19:27:16.768033+00:00"}
+{"action": "archived", "id": 8951296557366, "handle": "boody-ladies-black-34-length-leggings-m", "ts": "2026-04-12T19:27:18.088666+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-34-length-leggings-m", "to_handle": "boody-ladies-black-34-length-leggings-l", "ts": "2026-04-12T19:27:18.782761+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black 3/4 Length Leggings", "size": "XL", "from_product": 9291262361910, "new_variant_id": 53900059509046, "price": "429.95", "ts": "2026-04-12T19:27:19.855727+00:00"}
+{"action": "archived", "id": 9291262361910, "handle": "boody-ladies-black-34-length-leggings-xl", "ts": "2026-04-12T19:27:21.308042+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-34-length-leggings-xl", "to_handle": "boody-ladies-black-34-length-leggings-l", "ts": "2026-04-12T19:27:21.997275+00:00"}
+{"action": "group_done", "parent": "BOODY - Ladies Black 3/4 Length Leggings", "canonical_id": 8951280861494, "sizes_merged": 3, "ts": "2026-04-12T19:27:21.997335+00:00"}
+{"action": "canonical_set", "parent": "BOODY - Ladies Black Boyleg Briefs", "id": 8950663250230, "handle": "boody-ladies-black-boyleg-briefs-l", "size": "L", "ts": "2026-04-12T19:27:24.126538+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Boyleg Briefs", "size": "M", "from_product": 8950711615798, "new_variant_id": 53900059541814, "price": "239.95", "ts": "2026-04-12T19:27:25.211022+00:00"}
+{"action": "archived", "id": 8950711615798, "handle": "boody-ladies-black-boyleg-briefs-m", "ts": "2026-04-12T19:27:26.565010+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-boyleg-briefs-m", "to_handle": "boody-ladies-black-boyleg-briefs-l", "ts": "2026-04-12T19:27:27.240211+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Boyleg Briefs", "size": "XL", "from_product": 8950726000950, "new_variant_id": 53900059574582, "price": "239.95", "ts": "2026-04-12T19:27:28.370223+00:00"}
+{"action": "archived", "id": 8950726000950, "handle": "boody-ladies-black-boyleg-briefs-xl", "ts": "2026-04-12T19:27:29.752516+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-boyleg-briefs-xl", "to_handle": "boody-ladies-black-boyleg-briefs-l", "ts": "2026-04-12T19:27:30.450852+00:00"}
+{"action": "group_done", "parent": "BOODY - Ladies Black Boyleg Briefs", "canonical_id": 8950663250230, "sizes_merged": 2, "ts": "2026-04-12T19:27:30.450908+00:00"}
+{"action": "canonical_set", "parent": "BOODY - Ladies Black Cami Top", "id": 8950729572662, "handle": "boody-ladies-black-cami-top-l", "size": "L", "ts": "2026-04-12T19:27:32.610260+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Cami Top", "size": "S", "from_product": 8950742942006, "new_variant_id": 53900059607350, "price": "369.95", "ts": "2026-04-12T19:27:33.643273+00:00"}
+{"action": "archived", "id": 8950742942006, "handle": "boody-ladies-black-cami-top-s", "ts": "2026-04-12T19:27:34.998789+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-cami-top-s", "to_handle": "boody-ladies-black-cami-top-l", "ts": "2026-04-12T19:27:35.697002+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Cami Top", "size": "M", "from_product": 8950738878774, "new_variant_id": 53900059640118, "price": "369.95", "ts": "2026-04-12T19:27:36.837449+00:00"}
+{"action": "archived", "id": 8950738878774, "handle": "boody-ladies-black-cami-top-m", "ts": "2026-04-12T19:27:38.107158+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-cami-top-m", "to_handle": "boody-ladies-black-cami-top-l", "ts": "2026-04-12T19:27:38.794601+00:00"}
+{"action": "group_done", "parent": "BOODY - Ladies Black Cami Top", "canonical_id": 8950729572662, "sizes_merged": 2, "ts": "2026-04-12T19:27:38.794659+00:00"}
+{"action": "canonical_set", "parent": "BOODY - Ladies Black Classic Bikini", "id": 8950617932086, "handle": "boody-ladies-black-classic-bikini-m", "size": "M", "ts": "2026-04-12T19:27:41.093524+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Classic Bikini", "size": "S", "from_product": 8950634938678, "new_variant_id": 53900059672886, "price": "239.95", "ts": "2026-04-12T19:27:42.183098+00:00"}
+{"action": "archived", "id": 8950634938678, "handle": "boody-ladies-black-classic-bikini-s-v1", "ts": "2026-04-12T19:27:43.867243+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-classic-bikini-s-v1", "to_handle": "boody-ladies-black-classic-bikini-m", "ts": "2026-04-12T19:27:44.540274+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Classic Bikini", "size": "L", "from_product": 8950641787190, "new_variant_id": 53900059705654, "price": "239.95", "ts": "2026-04-12T19:27:45.643327+00:00"}
+{"action": "archived", "id": 8950641787190, "handle": "boody-ladies-black-classic-bikini-l", "ts": "2026-04-12T19:27:46.904679+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-classic-bikini-l", "to_handle": "boody-ladies-black-classic-bikini-m", "ts": "2026-04-12T19:27:47.594457+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Classic Bikini", "size": "XL", "from_product": 8950648144182, "new_variant_id": 53900059738422, "price": "239.95", "ts": "2026-04-12T19:27:48.691509+00:00"}
+{"action": "archived", "id": 8950648144182, "handle": "boody-ladies-black-classic-bikini-xl", "ts": "2026-04-12T19:27:49.942672+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-classic-bikini-xl", "to_handle": "boody-ladies-black-classic-bikini-m", "ts": "2026-04-12T19:27:50.629512+00:00"}
+{"action": "group_done", "parent": "BOODY - Ladies Black Classic Bikini", "canonical_id": 8950617932086, "sizes_merged": 3, "ts": "2026-04-12T19:27:50.629569+00:00"}
+{"action": "canonical_set", "parent": "BOODY - Ladies Black Crop Leggings", "id": 8951309369654, "handle": "boody-ladies-black-crop-leggings-l", "size": "L", "ts": "2026-04-12T19:27:52.867070+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Crop Leggings", "size": "S", "from_product": 8951321297206, "new_variant_id": 53900059771190, "price": "429.95", "ts": "2026-04-12T19:27:53.943263+00:00"}
+{"action": "archived", "id": 8951321297206, "handle": "boody-ladies-black-crop-leggings-s", "ts": "2026-04-12T19:27:55.242874+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-crop-leggings-s", "to_handle": "boody-ladies-black-crop-leggings-l", "ts": "2026-04-12T19:27:55.952549+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Crop Leggings", "size": "M", "from_product": 8951319658806, "new_variant_id": 53900059836726, "price": "329.95", "ts": "2026-04-12T19:27:56.966034+00:00"}
+{"action": "archived", "id": 8951319658806, "handle": "boody-ladies-black-crop-leggings-m", "ts": "2026-04-12T19:27:58.238629+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-crop-leggings-m", "to_handle": "boody-ladies-black-crop-leggings-l", "ts": "2026-04-12T19:27:58.925185+00:00"}
+{"action": "group_done", "parent": "BOODY - Ladies Black Crop Leggings", "canonical_id": 8951309369654, "sizes_merged": 2, "ts": "2026-04-12T19:27:58.925243+00:00"}
+{"action": "canonical_set", "parent": "BOODY - Ladies Black Downtime Lounge Pants", "id": 8951607165238, "handle": "boody-ladies-black-downtime-lounge-pants-l", "size": "L", "ts": "2026-04-12T19:28:01.134557+00:00"}
+{"action": "variant_added", "parent": "BOODY - Ladies Black Downtime Lounge Pants", "size": "S", "from_product": 8951610212662, "new_variant_id": 53900059869494, "price": "1149.95", "ts": "2026-04-12T19:28:02.299070+00:00"}
+{"action": "archived", "id": 8951610212662, "handle": "boody-ladies-black-downtime-lounge-pants-s", "ts": "2026-04-12T19:28:03.498188+00:00"}
+{"action": "redirect_created", "from_handle": "boody-ladies-black-downtime-lounge-pants-s", "to_handle": "boody-ladies-black-downtime-lounge-pants-l", "ts": "2026-04-12T19:28:04.184141+00:00"}
