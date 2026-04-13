@@ -1,0 +1,47 @@
+{%- if template contains 'product' -%}
+<script>
+(function(){
+  var p = {
+    handle: '{{ product.handle }}',
+    title: '{{ product.title | escape }}',
+    image: '{{ product.featured_image | img_url: "200x200" }}',
+    price: '{{ product.price | money }}',
+    url: '{{ product.url }}'
+  };
+  var rv = JSON.parse(localStorage.getItem('ol_rv') || '[]');
+  rv = rv.filter(function(x){return x.handle !== p.handle;});
+  rv.unshift(p);
+  if(rv.length > 12) rv = rv.slice(0,12);
+  localStorage.setItem('ol_rv', JSON.stringify(rv));
+})();
+</script>
+{%- endif -%}
+<div id="ol-recently-viewed" style="display:none;max-width:1200px;margin:24px auto;padding:0 16px;">
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:12px;text-align:center;">Recently Viewed</h2>
+  <div id="ol-rv-grid" style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;overflow-x:auto;"></div>
+</div>
+<style>
+  @media(max-width:768px){#ol-rv-grid{grid-template-columns:repeat(2,1fr)!important;}}
+  .ol-rv-card{text-align:center;border:1px solid #f0f0f0;border-radius:6px;padding:6px;background:#fff;}
+  .ol-rv-card img{width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:4px;background:#fafafa;}
+  .ol-rv-card .rv-name{font-size:10px;font-weight:600;margin:4px 0 1px;line-height:1.2;max-height:24px;overflow:hidden;}
+  .ol-rv-card .rv-name a{color:#333;text-decoration:none;}
+  .ol-rv-card .rv-price{font-size:11px;font-weight:700;color:#1b4332;margin:2px 0 0;}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var rv = JSON.parse(localStorage.getItem('ol_rv') || '[]');
+  var current = window.location.pathname;
+  rv = rv.filter(function(x){return x.url !== current;});
+  if(rv.length < 2) return;
+  var grid = document.getElementById('ol-rv-grid');
+  var show = rv.slice(0, 6);
+  show.forEach(function(p){
+    var card = document.createElement('div');
+    card.className = 'ol-rv-card';
+    card.innerHTML = '<a href="'+p.url+'"><img src="'+p.image+'" alt="" loading="lazy"></a><p class="rv-name"><a href="'+p.url+'">'+p.title.substring(0,35)+'</a></p><p class="rv-price">'+p.price+'</p>';
+    grid.appendChild(card);
+  });
+  document.getElementById('ol-recently-viewed').style.display = 'block';
+});
+</script>

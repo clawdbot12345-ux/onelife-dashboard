@@ -1,0 +1,54 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "col-stores": {
+          "type": "text",
+          "settings": {
+            "heading": "Our Stores",
+            "subtext": "<p><strong>Centurion<\/strong><br>117 Galaway Ave, Hennopspark<br><a href=\"tel:0126543750\">(012) 654 3750<\/a><\/p><p><strong>Glen Village<\/strong><br>Glen Village South, Faerie Glen<br><a href=\"tel:0660227457\">(066) 022 7457<\/a><\/p><p><strong>Edenvale<\/strong><br>Shop 7, Green Valley Shopping Centre<br><a href=\"tel:0773560173\">(077) 356 0173<\/a><\/p>"
+          }
+        },
+        "col-connect": {
+          "type": "text",
+          "settings": {
+            "heading": "Connect With Us",
+            "subtext": "<p>&#9993; <a href=\"mailto:info@onelife.co.za\">info@onelife.co.za<\/a><br>&#9993; <a href=\"mailto:orders@onelife.co.za\">orders@onelife.co.za<\/a><br>&#9742; WhatsApp: <a href=\"https:\/\/wa.me\/27713744910\">(071) 374 4910<\/a><\/p><p><a href=\"https:\/\/www.facebook.com\/share\/17SZVn4ygS\/\">&#402; Facebook<\/a> &middot; <a href=\"https:\/\/www.instagram.com\/one_life_health_supermarket\">&#9679; Instagram<\/a> &middot; <a href=\"https:\/\/www.tiktok.com\/@onelifehealthstore\">&#9654; TikTok<\/a><\/p>"
+          }
+        },
+        "col-info": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Information",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "col-stores",
+        "col-connect",
+        "col-info"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe & Save 10%",
+        "show_social": false,
+        "payment_enable": true,
+        "show_policy": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_follow_on_shop": false,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

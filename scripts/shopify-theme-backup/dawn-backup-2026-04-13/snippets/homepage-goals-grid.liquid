@@ -1,0 +1,99 @@
+{%- comment -%}
+  "Shop by Health Goal" grid with JS repositioning.
+  Renders hidden, then JS moves it after the hero/banner sections.
+  This avoids the fragile settings_data.json section-order approach.
+  Added 2026-04-12.
+{%- endcomment -%}
+{%- if template == 'index' -%}
+<style>
+.ol-goals-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.ol-goals-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1b4332;
+  margin-bottom: 8px;
+}
+.ol-goals-subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 28px;
+}
+.ol-goals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.ol-goal-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  border: 1px solid transparent;
+}
+.ol-goal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(45, 106, 79, 0.12);
+  background: linear-gradient(135deg, #d8f3dc 0%, #b7e4c7 100%);
+  border-color: #95d5b2;
+}
+.ol-goal-emoji { font-size: 36px; display: block; margin-bottom: 10px; }
+.ol-goal-name { font-size: 14px; font-weight: 600; color: #1b4332; line-height: 1.3; }
+@media (max-width: 768px) {
+  .ol-goals-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .ol-goal-card { padding: 18px 12px; }
+  .ol-goal-emoji { font-size: 28px; }
+  .ol-goals-title { font-size: 22px; }
+}
+</style>
+<div id="ol-goals-container">
+  <div class="ol-goals-section">
+    <h2 class="ol-goals-title">Shop by Health Goal</h2>
+    <p class="ol-goals-subtitle">Find the right supplements for your specific needs</p>
+    <div class="ol-goals-grid">
+      <a href="/collections/immunity" class="ol-goal-card">
+        <span class="ol-goal-emoji">&#129482;</span>
+        <span class="ol-goal-name">Immunity &amp; Cold Season</span>
+      </a>
+      <a href="/collections/gut-health" class="ol-goal-card">
+        <span class="ol-goal-emoji">&#129756;</span>
+        <span class="ol-goal-name">Gut Health &amp; Digestion</span>
+      </a>
+      <a href="/collections/energy-vitality" class="ol-goal-card">
+        <span class="ol-goal-emoji">&#9889;</span>
+        <span class="ol-goal-name">Energy &amp; Vitality</span>
+      </a>
+      <a href="/collections/sleep-relaxation" class="ol-goal-card">
+        <span class="ol-goal-emoji">&#128164;</span>
+        <span class="ol-goal-name">Sleep &amp; Relaxation</span>
+      </a>
+      <a href="/collections/stress-mood" class="ol-goal-card">
+        <span class="ol-goal-emoji">&#129782;</span>
+        <span class="ol-goal-name">Stress &amp; Mood</span>
+      </a>
+      <a href="/collections/joints-mobility" class="ol-goal-card">
+        <span class="ol-goal-emoji">&#129470;</span>
+        <span class="ol-goal-name">Joints &amp; Mobility</span>
+      </a>
+      <a href="/collections/weight-management" class="ol-goal-card">
+        <span class="ol-goal-emoji">&#9878;&#65039;</span>
+        <span class="ol-goal-name">Weight Management</span>
+      </a>
+      <a href="/collections/skin-hair-nails" class="ol-goal-card">
+        <span class="ol-goal-emoji">&#10024;</span>
+        <span class="ol-goal-name">Skin, Hair &amp; Nails</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}
+

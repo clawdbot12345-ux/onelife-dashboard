@@ -1,0 +1,68 @@
+{%- if template == 'index' -%}
+<style>
+.ol-diet-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.ol-diet-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1b4332;
+  margin-bottom: 8px;
+}
+.ol-diet-subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 28px;
+}
+.ol-diet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.ol-diet-card {
+  background: #fff;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  padding: 16px 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.2s;
+  font-weight: 600;
+  font-size: 14px;
+}
+.ol-diet-card:hover {
+  border-color: #2d6a4f;
+  background: #d8f3dc;
+  color: #1b4332;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45,106,79,0.1);
+}
+.ol-diet-icon { font-size: 24px; display: block; margin-bottom: 6px; }
+@media (max-width: 768px) {
+  .ol-diet-grid { grid-template-columns: repeat(2, 1fr); }
+  .ol-diet-title { font-size: 22px; }
+}
+</style>
+<div id="ol-diet-container">
+  <div class="ol-diet-section">
+    <h2 class="ol-diet-title">Shop by Dietary Preference</h2>
+    <p class="ol-diet-subtitle">Filter products that match your lifestyle</p>
+    <div class="ol-diet-grid">
+      <a href="/collections/vegan" class="ol-diet-card"><span class="ol-diet-icon">&#127793;</span>Vegan</a>
+      <a href="/collections/halaal-kosher" class="ol-diet-card"><span class="ol-diet-icon">&#9770;&#65039;</span>Halal &amp; Kosher</a>
+      <a href="/collections/gluten-free" class="ol-diet-card"><span class="ol-diet-icon">&#127838;</span>Gluten Free</a>
+      <a href="/collections/sugar-free" class="ol-diet-card"><span class="ol-diet-icon">&#128683;</span>Sugar Free</a>
+      <a href="/collections/keto" class="ol-diet-card"><span class="ol-diet-icon">&#129361;</span>Keto Friendly</a>
+      <a href="/collections/dairy-free" class="ol-diet-card"><span class="ol-diet-icon">&#129371;</span>Dairy Free</a>
+      <a href="/collections/vegetarian" class="ol-diet-card"><span class="ol-diet-icon">&#129388;</span>Vegetarian</a>
+      <a href="/collections/sa-made" class="ol-diet-card"><span class="ol-diet-icon">&#127487;&#127462;</span>SA Made</a>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}

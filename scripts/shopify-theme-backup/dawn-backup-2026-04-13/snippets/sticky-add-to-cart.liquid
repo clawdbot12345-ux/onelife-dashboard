@@ -1,0 +1,36 @@
+{%- if template == 'product' -%}
+<div id="sticky-atc-bar" style="position:fixed;bottom:0;left:0;right:0;z-index:999;background:#fff;box-shadow:0 -2px 10px rgba(0,0,0,0.1);padding:6px 16px;display:none;align-items:center;justify-content:space-between;gap:10px;font-size:13px;transition:transform 0.3s ease;transform:translateY(100%);">
+  <div style="flex:1;min-width:0;display:flex;align-items:center;gap:8px;">
+    <span style="font-weight:600;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;">{{ product.title }}</span>
+    <span style="color:#2d6a4f;font-weight:700;white-space:nowrap;">{{ product.selected_or_first_available_variant.price | money }}</span>
+  </div>
+  {%- if product.selected_or_first_available_variant.available -%}
+    <form action="/cart/add" method="post" style="margin:0;">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" style="background:#2d6a4f;color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">Add to Cart</button>
+    </form>
+  {%- else -%}
+    <button disabled style="background:#ccc;color:#666;border:none;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:not-allowed;white-space:nowrap;">Sold Out</button>
+  {%- endif -%}
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('sticky-atc-bar');
+  if (!bar) return;
+  var target = document.querySelector('.product-form__submit') || document.querySelector('[name="add"]') || document.querySelector('form[action="/cart/add"] button[type="submit"]');
+  if (!target) return;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        bar.style.display = 'none';
+        bar.style.transform = 'translateY(100%)';
+      } else {
+        bar.style.display = 'flex';
+        requestAnimationFrame(function(){ bar.style.transform = 'translateY(0)'; });
+      }
+    });
+  }, { threshold: 0 });
+  observer.observe(target);
+})();
+</script>
+{%- endif -%}

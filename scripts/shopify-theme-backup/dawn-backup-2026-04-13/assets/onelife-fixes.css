@@ -1,0 +1,152 @@
+/* Onelife Dawn Theme Fixes — 2026-04-12 */
+
+:root {
+  --ol-green: #2d6a4f;
+  --ol-green-dark: #1b4332;
+  --ol-green-light: #7ea93e;
+  --ol-grey: #515151;
+  --ol-text: #4c4c4c;
+}
+
+/* ========== GREEN CTA BUTTONS ========== */
+.button:not(.button--tertiary),
+.shopify-challenge__button,
+.cart__submit,
+.product-form__submit {
+  background-color: var(--ol-green) !important;
+  border-color: var(--ol-green) !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+.button:not(.button--tertiary):hover,
+.cart__submit:hover,
+.product-form__submit:hover {
+  background-color: var(--ol-green-dark) !important;
+  border-color: var(--ol-green-dark) !important;
+}
+
+/* ========== PRODUCT CARD HOVER ========== */
+.card-wrapper {
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.card-wrapper:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+}
+
+/* ========== PROMO + PROOF BARS ========== */
+.ol-promo-bar { min-height: 56px; }
+.ol-proof-bar { min-height: 50px; }
+@media (max-width: 768px) {
+  .ol-promo-bar { min-height: 72px; }
+  .ol-proof-bar { min-height: 64px; }
+}
+
+/* ========== PRODUCT IMAGE ASPECT RATIO ========== */
+.card--standard .card__media img,
+.card--card .card__media img {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ========== BLOG CARD IMAGES ========== */
+.blog-articles .article-card__image img {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ========== CONSULTATION BANNER ========== */
+.ol-consult-desc {
+  color: #d8f3dc !important;
+  opacity: 1 !important;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+
+/* ========== GENERAL ========== */
+html { scroll-behavior: smooth; }
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--ol-green) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(45,106,79,0.1) !important;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========== GRIDS ========== */
+#ol-goals-container,
+#ol-diet-container {
+  contain: layout;
+}
+
+/* ========== SMILE.IO MOBILE ========== */
+@media (max-width: 768px) {
+  #smile-ui, #smile-ui-container,
+  [id^="smile-"] iframe, .smile-launcher {
+    display: block !important;
+    left: auto !important;
+    right: 12px !important;
+    bottom: 80px !important;
+    transform: scale(0.85) !important;
+  }
+}
+.smile-launcher, #smile-ui-container {
+  position: fixed !important;
+}
+
+/* ========== ANNOUNCEMENT BAR ========== */
+.announcement-bar {
+  background: var(--ol-green) !important;
+}
+.announcement-bar__link, .announcement-bar__message {
+  color: #fff !important;
+}
+
+/* ========== HEADER LOGO ========== */
+.header__heading-logo {
+  max-width: 200px !important;
+}
+
+/* Push Smile.io below tab buttons */
+@media (max-width: 768px) {
+  .smile-launcher, #smile-ui-container,
+  [id^="smile-"] iframe {
+    z-index: 99 !important;
+  }
+}
+
+/* Tighter section spacing on mobile */
+@media (max-width: 768px) {
+  .section-template--index > .shopify-section + .shopify-section {
+    margin-top: 16px !important;
+  }
+}
+
+/* Hide "Buy it now" on sold-out products */
+.product-form__submit[disabled] ~ .shopify-payment-button,
+.product-form__buttons .shopify-payment-button:has(~ [disabled]) {
+  display: none !important;
+}
+/* Also hide via JS class */
+.product__info-wrapper .shopify-payment-button--hidden,
+.product-form__error-message-wrapper + .shopify-payment-button {
+  display: none !important;
+}
