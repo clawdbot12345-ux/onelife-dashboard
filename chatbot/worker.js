@@ -1,12 +1,6 @@
 /**
  * Onelife Health AI Chatbot — Cloudflare Worker
- *
- * Deploy to Cloudflare Workers (free tier: 100K requests/day)
- *
- * Environment variables (set in Cloudflare dashboard):
- *   ANTHROPIC_API_KEY — Claude API key
- *   SHOPIFY_CLIENT_ID — Shopify app client ID
- *   SHOPIFY_CLIENT_SECRET — Shopify app client secret
+ * Uses Claude Sonnet 4.6 + Shopify GraphQL for real product search
  */
 
 const STORE = 'onelifehealth.myshopify.com';
@@ -31,121 +25,98 @@ YOUR ROLE:
 RULES:
 - Be warm, professional, and South African-friendly
 - Use "R" for Rand (e.g. R299.00)
-- When recommending products, use the search results provided to give specific names, prices, and links
-- ALWAYS include the product URL as a clickable link when mentioning a product
+- When you receive PRODUCT SEARCH RESULTS, you MUST use them to give specific product names, prices, and links
+- ALWAYS include the product URL when mentioning a product
+- Do NOT say "I don't have pricing" or "I can't check stock" — you DO have this info in the search results
 - Never diagnose — recommend consulting a healthcare professional for serious concerns
 - Mention free delivery over R400 when relevant
 - Mention free health consultations when someone seems unsure
 - Keep responses concise — max 2-3 short paragraphs
-- Format product recommendations as a clear list
+- Format product recommendations as a numbered list with name, price, and link
 
 DIETARY FILTERS: Vegan, Organic, Halaal, Gluten Free, Sugar Free, Keto, Dairy Free, Vegetarian, Cruelty Free, Non-GMO, SA Made
 
 POPULAR BRANDS: Solal, Bioharmony, Natroceutics, Sally-Ann Creed, Vivid Health, Metagenics, Viridian, NOW Foods, Solgar, A.Vogel, Willow, NeoGenesis Health, The Real Thing`;
 
-// Get Shopify Admin API token
 async function getShopifyToken(env) {
-  const resp = await fetch(`https://${STORE}/admin/oauth/access_token`, {
+  const resp = await fetch('https://' + STORE + '/admin/oauth/access_token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `grant_type=client_credentials&client_id=${env.SHOPIFY_CLIENT_ID}&client_secret=${env.SHOPIFY_CLIENT_SECRET}`,
+    body: 'grant_type=client_credentials&client_id=' + env.SHOPIFY_CLIENT_ID + '&client_secret=' + env.SHOPIFY_CLIENT_SECRET,
   });
   const data = await resp.json();
   return data.access_token;
 }
 
-// Search products via Admin REST API
 async function searchProducts(query, env) {
   try {
     const token = await getShopifyToken(env);
-    const url = `https://${STORE}/admin/api/2025-01/products.json?limit=6&status=active&title=${encodeURIComponent(query)}&fields=id,title,handle,vendor,tags,body_html,variants`;
-
-    const resp = await fetch(url, {
-      headers: { 'X-Shopify-Access-Token': token, 'Accept': 'application/json' },
+    const gql = JSON.stringify({
+      query: '{ products(first: 6, query: "status:active ' + query.replace(/"/g, '') + '") { edges { node { title handle vendor tags totalInventory description(truncateAt: 120) priceRangeV2 { minVariantPrice { amount } } } } } }'
     });
+
+    const resp = await fetch('https://' + STORE + '/admin/api/2025-01/graphql.json', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token },
+      body: gql,
+    });
+
     const data = await resp.json();
-    let products = data.products || [];
+    const products = (data.data && data.data.products && data.data.products.edges) ? data.data.products.edges.map(function(e) { return e.node; }) : [];
 
-    // If title search returns few results, try a broader search
-    if (products.length < 3) {
-      const url2 = `https://${STORE}/admin/api/2025-01/products.json?limit=6&status=active&fields=id,title,handle,vendor,tags,body_html,variants`;
-      const resp2 = await fetch(url2, {
-        headers: { 'X-Shopify-Access-Token': token, 'Accept': 'application/json' },
-      });
-      const data2 = await resp2.json();
-      const all = data2.products || [];
-      // Filter by query in title, vendor, or tags
-      const q = query.toLowerCase();
-      const filtered = all.filter(p =>
-        p.title.toLowerCase().includes(q) ||
-        (p.vendor || '').toLowerCase().includes(q) ||
-        (p.tags || '').toLowerCase().includes(q) ||
-        (p.body_html || '').toLowerCase().includes(q)
-      );
-      products = [...products, ...filtered].slice(0, 6);
-    }
-
-    // Deduplicate
-    const seen = new Set();
-    products = products.filter(p => {
-      if (seen.has(p.id)) return false;
-      seen.add(p.id);
-      return true;
-    });
-
-    return products.map(p => {
-      const variant = (p.variants || [{}])[0];
-      const price = variant.price || '0.00';
-      const available = variant.inventory_quantity > 0 || variant.inventory_management === null;
-      const desc = (p.body_html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120);
-      const dietTags = (p.tags || '').split(',').map(t => t.trim()).filter(t =>
-        ['vegan','organic','halaal','gluten-free','sugar-free','keto','dairy-free','vegetarian','cruelty-free','non-gmo','proudly-south-african'].includes(t.toLowerCase())
-      );
+    return products.map(function(p) {
+      var price = (p.priceRangeV2 && p.priceRangeV2.minVariantPrice) ? p.priceRangeV2.minVariantPrice.amount : '0.00';
+      var inStock = (p.totalInventory || 0) > 0;
       return {
         title: p.title,
-        url: `https://onelife.co.za/products/${p.handle}`,
+        url: 'https://onelife.co.za/products/' + p.handle,
         vendor: p.vendor,
-        price: `R ${parseFloat(price).toFixed(2)}`,
-        available: available,
-        description: desc,
-        dietary: dietTags.join(', '),
+        price: 'R ' + parseFloat(price).toFixed(2),
+        available: inStock ? 'In Stock' : 'Out of Stock',
+        description: p.description || '',
+        tags: (p.tags || []).slice(0, 6).join(', '),
       };
     });
   } catch (err) {
-    console.error('Shopify search error:', err);
+    console.error('Search error:', err);
     return [];
   }
 }
 
-// Should we search products?
 function shouldSearch(message) {
-  const triggers = [
-    'recommend', 'suggest', 'looking for', 'need', 'want', 'help with',
-    'supplement', 'vitamin', 'product', 'buy', 'price', 'cost', 'stock',
-    'available', 'best for', 'good for', 'what can', 'do you have',
-    'immunity', 'immune', 'sleep', 'energy', 'stress', 'weight', 'joint',
-    'gut', 'skin', 'hair', 'brain', 'heart', 'collagen', 'probiotic',
-    'omega', 'magnesium', 'vitamin d', 'vitamin c', 'zinc', 'iron',
-    'ashwagandha', 'turmeric', 'melatonin', 'protein', 'bcaa', 'creatine',
-    'vegan', 'gluten free', 'organic', 'halaal', 'keto', 'sugar free',
-    'natroceutics', 'solal', 'vivid', 'sally-ann', 'metagenics', 'vogel',
+  var triggers = [
+    'recommend','suggest','looking for','need','want','help with',
+    'supplement','vitamin','product','buy','price','cost','stock',
+    'available','best for','good for','what can','do you have',
+    'immunity','immune','sleep','energy','stress','weight','joint',
+    'gut','skin','hair','brain','heart','collagen','probiotic',
+    'omega','magnesium','vitamin d','vitamin c','zinc','iron',
+    'ashwagandha','turmeric','melatonin','protein','bcaa','creatine',
+    'vegan','gluten free','organic','halaal','keto','sugar free',
+    'natroceutics','solal','vivid','sally-ann','metagenics','vogel',
   ];
-  const lower = message.toLowerCase();
-  return triggers.some(t => lower.includes(t));
+  var lower = message.toLowerCase();
+  for (var i = 0; i < triggers.length; i++) {
+    if (lower.indexOf(triggers[i]) !== -1) return true;
+  }
+  return false;
 }
 
 function extractSearchTerms(message) {
-  const stop = ['i','me','my','am','is','are','the','a','an','and','or','but',
+  var stop = ['i','me','my','am','is','are','the','a','an','and','or','but',
     'do','you','have','any','can','what','which','for','to','of','in','on',
     'looking','need','want','help','please','thanks','hi','hello','hey',
-    'something','anything','recommend','suggest','good','best','take'];
-  const words = message.toLowerCase().replace(/[?!.,]/g, '').split(/\s+/);
-  return words.filter(w => !stop.includes(w) && w.length > 2).slice(0, 3).join(' ');
+    'something','anything','recommend','suggest','good','best','take','some'];
+  var words = message.toLowerCase().replace(/[?!.,]/g, '').split(/\s+/);
+  var terms = [];
+  for (var i = 0; i < words.length; i++) {
+    if (stop.indexOf(words[i]) === -1 && words[i].length > 2) terms.push(words[i]);
+  }
+  return terms.slice(0, 4).join(' ');
 }
 
-// Call Claude
 async function callClaude(messages, systemAddendum, env) {
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+  var resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
       'x-api-key': env.ANTHROPIC_API_KEY,
@@ -159,47 +130,48 @@ async function callClaude(messages, systemAddendum, env) {
       messages: messages,
     }),
   });
-  const data = await resp.json();
-  return data?.content?.[0]?.text || "I'm sorry, I'm having trouble right now. Please WhatsApp us at (071) 374 4910.";
+  var data = await resp.json();
+  if (data && data.content && data.content[0]) return data.content[0].text;
+  return "I'm sorry, I'm having trouble right now. Please WhatsApp us at (071) 374 4910.";
 }
 
 export default {
   async fetch(request, env) {
-    const cors = {
+    var cors = {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     };
-
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
     if (request.method !== 'POST') return new Response('Method not allowed', { status: 405, headers: cors });
-
     try {
-      const { messages } = await request.json();
-      if (!messages?.length) return new Response(JSON.stringify({ error: 'No messages' }), { status: 400, headers: { ...cors, 'Content-Type': 'application/json' } });
+      var body = await request.json();
+      var messages = body.messages;
+      if (!messages || !messages.length) return new Response(JSON.stringify({ error: 'No messages' }), { status: 400, headers: Object.assign({}, cors, { 'Content-Type': 'application/json' }) });
 
-      const lastMsg = messages[messages.length - 1]?.content || '';
-      let addendum = '';
+      var lastMsg = messages[messages.length - 1].content || '';
+      var addendum = '';
 
       if (shouldSearch(lastMsg)) {
-        const terms = extractSearchTerms(lastMsg);
+        var terms = extractSearchTerms(lastMsg);
         if (terms) {
-          const products = await searchProducts(terms, env);
+          var products = await searchProducts(terms, env);
           if (products.length) {
-            addendum = `PRODUCT SEARCH RESULTS for "${terms}":\n` +
-              products.map((p, i) =>
-                `${i+1}. ${p.title}\n   Brand: ${p.vendor} | Price: ${p.price} | ${p.available ? 'In Stock' : 'Out of Stock'}\n   Dietary: ${p.dietary || 'N/A'}\n   URL: ${p.url}\n   ${p.description}`
-              ).join('\n\n') +
-              '\n\nUse these results to recommend specific products with names, prices, and URLs.';
+            addendum = 'PRODUCT SEARCH RESULTS for "' + terms + '":\n' +
+              products.map(function(p, i) {
+                return (i+1) + '. ' + p.title + '\n   Brand: ' + p.vendor + ' | Price: ' + p.price + ' | ' + p.available + '\n   Tags: ' + p.tags + '\n   URL: ' + p.url + '\n   ' + p.description;
+              }).join('\n\n') +
+              '\n\nIMPORTANT: Use these ACTUAL results to recommend products. Include the exact product names, prices, and URLs from above. Do NOT say you cannot check prices or stock.';
           }
         }
       }
 
-      const reply = await callClaude(messages.slice(-10), addendum, env);
-      return new Response(JSON.stringify({ reply }), { headers: { ...cors, 'Content-Type': 'application/json' } });
+      var recent = messages.slice(-10);
+      var reply = await callClaude(recent, addendum, env);
+      return new Response(JSON.stringify({ reply: reply }), { headers: Object.assign({}, cors, { 'Content-Type': 'application/json' }) });
     } catch (err) {
       return new Response(JSON.stringify({ reply: "Something went wrong. Please WhatsApp us at (071) 374 4910." }), {
-        status: 500, headers: { ...cors, 'Content-Type': 'application/json' }
+        status: 500, headers: Object.assign({}, cors, { 'Content-Type': 'application/json' })
       });
     }
   },
