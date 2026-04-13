@@ -1,11 +1,9 @@
 {%- comment -%}
   Product certification badges. Reads product tags and displays
-  matching dietary/certification icons. Include on product cards
+  matching dietary/certification labels. Include on product cards
   and product pages.
-  Added 2026-04-12.
 {%- endcomment -%}
 {%- assign badge_tags = product.tags | join: ',' | downcase -%}
-{%- assign has_badges = false -%}
 
 <style>
 .ol-badges { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; }
@@ -22,32 +20,43 @@
 .ol-badge-sf { background: #e2e3e5; color: #383d41; }
 .ol-badge-keto { background: #cce5ff; color: #004085; }
 .ol-badge-df { background: #d6d8db; color: #1b1e21; }
-.ol-badge-sa { background: #d4edda; color: #155724; }
+.ol-badge-veg { background: #d4edda; color: #155724; }
+.ol-badge-cf { background: #f0e6ff; color: #5a2d82; }
+.ol-badge-nongmo { background: #e8f5e9; color: #2e7d32; }
+.ol-badge-sa { background: #fff8e1; color: #f57f17; }
 </style>
 <div class="ol-badges">
 {%- if badge_tags contains 'vegan' or badge_tags contains 'plant-based' -%}
-  <span class="ol-badge ol-badge-vegan">&#127793; Vegan</span>{%- assign has_badges = true -%}
+  <span class="ol-badge ol-badge-vegan">Vegan</span>
 {%- endif -%}
 {%- if badge_tags contains 'organic' -%}
-  <span class="ol-badge ol-badge-organic">&#127807; Organic</span>{%- assign has_badges = true -%}
+  <span class="ol-badge ol-badge-organic">Organic</span>
 {%- endif -%}
 {%- if badge_tags contains 'halaal' or badge_tags contains 'halal' or badge_tags contains 'kosher' -%}
-  <span class="ol-badge ol-badge-halaal">&#9770;&#65039; Halal/Kosher</span>{%- assign has_badges = true -%}
+  <span class="ol-badge ol-badge-halaal">Halaal</span>
 {%- endif -%}
-{%- if badge_tags contains 'gluten free' or badge_tags contains 'gluten-free' -%}
-  <span class="ol-badge ol-badge-gf">GF</span>{%- assign has_badges = true -%}
+{%- if badge_tags contains 'gluten-free' or badge_tags contains 'gluten free' -%}
+  <span class="ol-badge ol-badge-gf">Gluten Free</span>
 {%- endif -%}
-{%- if badge_tags contains 'sugar free' or badge_tags contains 'sugar-free' -%}
-  <span class="ol-badge ol-badge-sf">SF</span>{%- assign has_badges = true -%}
+{%- if badge_tags contains 'sugar-free' or badge_tags contains 'sugar free' -%}
+  <span class="ol-badge ol-badge-sf">Sugar Free</span>
 {%- endif -%}
 {%- if badge_tags contains 'keto' -%}
-  <span class="ol-badge ol-badge-keto">Keto</span>{%- assign has_badges = true -%}
+  <span class="ol-badge ol-badge-keto">Keto</span>
 {%- endif -%}
-{%- if badge_tags contains 'dairy free' or badge_tags contains 'dairy-free' -%}
-  <span class="ol-badge ol-badge-df">DF</span>{%- assign has_badges = true -%}
+{%- if badge_tags contains 'dairy-free' or badge_tags contains 'dairy free' -%}
+  <span class="ol-badge ol-badge-df">Dairy Free</span>
 {%- endif -%}
-{%- if badge_tags contains 'proudly south african' or badge_tags contains 'sa-made' -%}
-  <span class="ol-badge ol-badge-sa">&#127487;&#127462; SA Made</span>{%- assign has_badges = true -%}
+{%- if badge_tags contains 'vegetarian' -%}
+  <span class="ol-badge ol-badge-veg">Vegetarian</span>
 {%- endif -%}
-
+{%- if badge_tags contains 'cruelty-free' or badge_tags contains 'cruelty free' -%}
+  <span class="ol-badge ol-badge-cf">Cruelty Free</span>
+{%- endif -%}
+{%- if badge_tags contains 'non-gmo' -%}
+  <span class="ol-badge ol-badge-nongmo">Non-GMO</span>
+{%- endif -%}
+{%- if badge_tags contains 'proudly-south-african' or badge_tags contains 'sa-made' -%}
+  <span class="ol-badge ol-badge-sa">SA Made</span>
+{%- endif -%}
 </div>
