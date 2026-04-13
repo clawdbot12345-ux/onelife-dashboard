@@ -4,3 +4,4 @@ package-lock.json
 *.pdf
 __pycache__/
 *.pyc
+scripts/shopify-theme-backup/backup_theme.py
