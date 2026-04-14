@@ -1,0 +1,6 @@
+# Binary assets in theme (not downloaded)
+# Theme ID: 184546230582
+# Generated: 2026-04-14
+# Total binary assets: 1
+
+assets/sparkle.gif
