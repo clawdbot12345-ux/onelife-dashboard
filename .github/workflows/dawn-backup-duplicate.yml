@@ -1,0 +1,60 @@
+name: Dawn Theme Backup + Duplicate
+
+# Manually triggered. Pulls the live Dawn theme from Shopify,
+# uploads a full snapshot as a workflow artifact, and creates an
+# unpublished duplicate theme in the store.
+#
+# The snapshot is NOT committed to the repo — scripts/shopify-theme-backup/
+# is gitignored to keep Claude Code sessions and clones lean. Download
+# the artifact from the run's summary page if you need the files locally.
+
+on:
+  workflow_dispatch:
+    inputs:
+      duplicate_name:
+        description: 'Name for the duplicated theme (default: Dawn Backup <today>)'
+        required: false
+        default: ''
+      skip_duplicate:
+        description: 'Back up only, do not create a duplicate theme'
+        type: boolean
+        required: false
+        default: false
+      skip_backup:
+        description: 'Duplicate only, skip the local snapshot'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  backup-and-duplicate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run backup + duplicate
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          DUPLICATE_NAME: ${{ github.event.inputs.duplicate_name }}
+          SKIP_DUPLICATE: ${{ github.event.inputs.skip_duplicate == 'true' && '1' || '' }}
+          SKIP_BACKUP: ${{ github.event.inputs.skip_backup == 'true' && '1' || '' }}
+        run: python scripts/backup_and_duplicate_dawn.py
+
+      - name: Upload theme snapshot
+        if: ${{ github.event.inputs.skip_backup != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: dawn-backup-${{ github.run_id }}
+          path: scripts/shopify-theme-backup/dawn-backup-*/
+          retention-days: 90
+          if-no-files-found: warn
