@@ -1,0 +1,54 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "col-about": {
+          "type": "text",
+          "settings": {
+            "heading": "About Us",
+            "subtext": "<p><a href=\"\/pages\/about-us\">Our Story<\/a><\/p>"
+          }
+        },
+        "col-visit": {
+          "type": "text",
+          "settings": {
+            "heading": "Visit Us",
+            "subtext": "<p><strong>Centurion<\/strong><br>117 Galway Ave, Hennopspark<br><a href=\"tel:0126543750\">(012) 654 3750<\/a> | <a href=\"https:\/\/wa.me\/27713744910\">(071) 374 4910<\/a><\/p><p><strong>Glen Village<\/strong><br>Glen Village Center South, Faerie Glen<br><a href=\"tel:0660227457\">(066) 022 7457<\/a><\/p><p><strong>Edenvale<\/strong><br>Shop 7, Green Valley Shopping Centre<br><a href=\"tel:0773560173\">(077) 356 0173<\/a><\/p>"
+          }
+        },
+        "col-info": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Information",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "col-about",
+        "col-visit",
+        "col-info"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "newsletter_enable": false,
+        "newsletter_heading": "Newsletter",
+        "show_social": true,
+        "payment_enable": true,
+        "show_policy": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_follow_on_shop": false,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,41 @@
+{%- comment -%}
+  Article JSON-LD for blog articles. Added 2026-04-12 by Claude.
+  Required fields per Google Article guidelines: headline, image, datePublished, author.
+{%- endcomment -%}
+{%- if template contains 'article' and article -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ shop.url }}{{ article.url }}"
+  },
+  "headline": {{ article.title | truncate: 110 | json }},
+  {%- if article.image -%}
+  "image": [{{ article.image | img_url: '1200x' | prepend: 'https:' | json }}],
+  {%- endif -%}
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "dateModified": "{{ article.updated_at | default: article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ article.author | default: 'One Life Health' | json }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "{{ shop.url }}/#organization",
+    "name": {{ shop.name | json }}{%- if settings.logo != blank -%},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ settings.logo | img_url: '600x' | prepend: 'https:' | json }}
+    }
+    {%- endif -%}
+  },
+  {%- if article.excerpt != blank -%}
+  "description": {{ article.excerpt | strip_html | truncate: 500 | json }}
+  {%- else -%}
+  "description": {{ article.content | strip_html | truncate: 300 | json }}
+  {%- endif -%}
+}
+</script>
+{%- endif -%}

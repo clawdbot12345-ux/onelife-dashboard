@@ -1,0 +1,15 @@
+{%- assign threshold = 40000 -%}
+{%- assign cart_total = cart.total_price -%}
+{%- assign remaining = threshold | minus: cart_total -%}
+{%- assign progress = cart_total | times: 100 | divided_by: threshold -%}
+{%- if progress > 100 %}{% assign progress = 100 %}{% endif -%}
+<div style="padding:12px 16px;background:#f0fdf4;border-radius:8px;margin:8px 0 12px;text-align:center;font-size:13px;">
+  {%- if cart_total >= threshold -%}
+    <div style="color:#1b4332;font-weight:700;">🎉 You qualify for FREE shipping!</div>
+  {%- else -%}
+    <div style="color:#333;margin-bottom:6px;">You're <strong style="color:#2d6a4f;">{{ remaining | money }}</strong> away from free shipping!</div>
+  {%- endif -%}
+  <div style="background:#e5e7eb;border-radius:10px;height:8px;overflow:hidden;margin-top:4px;">
+    <div style="background:linear-gradient(90deg,#2d6a4f,#40916c);height:100%;width:{{ progress }}%;border-radius:10px;transition:width 0.3s ease;"></div>
+  </div>
+</div>

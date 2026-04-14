@@ -1,0 +1,254 @@
+{
+  "sections": {
+    "hero": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/August-Website_banner_2025.png",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "shopify:\/\/collections\/all",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3424547C-4D02-4F7B-A95C-68A1B3ECD4B1.png",
+            "heading": "Book a Free Health Consultation",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "BOOK NOW — IT'S FREE",
+            "link": "\/pages\/book-consultation",
+            "button_style_secondary": false,
+            "box_align": "bottom-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 40,
+            "color_scheme": "scheme-5",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_4b5399ec-7d27-41fc-9a71-f72467146140.png",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "Shop Vivid Health",
+            "link": "shopify:\/\/collections\/vivid-health",
+            "button_style_secondary": false,
+            "box_align": "bottom-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide-4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_f0a3bff5-ed5e-422a-b546-64cf90dfdab3.png",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "Shop Natroceutics",
+            "link": "\/search?q=Natroceutics&type=product",
+            "button_style_secondary": false,
+            "box_align": "bottom-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide-5": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_fb3a4568-49ae-41bd-8598-13f55d44e946.png",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "Shop Delfran",
+            "link": "\/search?q=delfran&type=product",
+            "button_style_secondary": false,
+            "box_align": "bottom-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3",
+        "slide-4",
+        "slide-5"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "Onelife Health Slideshow"
+      }
+    },
+    "goals": {
+      "type": "health-goals-grid",
+      "settings": {}
+    },
+    "diet": {
+      "type": "dietary-grid",
+      "settings": {}
+    },
+    "consult": {
+      "type": "consultation-banner",
+      "settings": {}
+    },
+    "follow": {
+      "type": "social-follow",
+      "settings": {}
+    },
+    "news": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'onelife-community-signup' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "cats": {
+      "type": "collection-list",
+      "blocks": {
+        "c0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "health"
+          }
+        },
+        "c1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "conditions"
+          }
+        },
+        "c2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "beauty"
+          }
+        },
+        "c3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "food"
+          }
+        },
+        "c4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sport"
+          }
+        },
+        "c5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kids"
+          }
+        },
+        "c6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pets"
+          }
+        },
+        "c7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "home"
+          }
+        },
+        "c8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "food-superfoods"
+          }
+        },
+        "c9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vivid-health"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9"
+      ],
+      "settings": {
+        "title": "Featured Categories",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 8
+      }
+    },
+    "blog": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Health Hub — Our Blog",
+        "blog": "health-wellness-hub"
+      }
+    },
+    "tabs": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width:1200px;margin:16px auto;padding:0 12px;\">\n  <h2 style=\"text-align:center;font-size:22px;font-weight:700;margin-bottom:12px;\">Top Supplements<\/h2>\n  <style>\n    .ol-tabs{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:12px}\n    .ol-tab{padding:6px 10px;border:1.5px solid #ddd;border-radius:4px;background:#fff;color:#555;font-weight:600;font-size:10px;cursor:pointer;text-transform:uppercase;transition:all .15s;white-space:nowrap}\n    .ol-tab:hover{border-color:#2d6a4f;color:#2d6a4f}\n    .ol-tab-active,.ol-tab-active:hover{background:#2d6a4f!important;color:#fff!important;border-color:#2d6a4f!important}\n    .ol-pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}\n    .ol-pcard{text-align:center;border:1px solid #f0f0f0;border-radius:4px;padding:6px;background:#fff}\n    .ol-pcard:hover{box-shadow:0 2px 10px rgba(0,0,0,.06)}\n    .ol-pcard img{width:100%;aspect-ratio:1\/1;object-fit:contain;background:#fafafa;border-radius:3px}\n    .ol-pcard .pn{font-size:10px;font-weight:600;margin:4px 0 1px;line-height:1.2;max-height:24px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}\n    .ol-pcard .pn a{color:#333;text-decoration:none}\n    .ol-pcard .pv{font-size:9px;color:#aaa;margin:0}\n    .ol-pcard .pp{font-size:12px;font-weight:700;color:#1b4332;margin:2px 0 0}\n    .ol-pcard .pp .cp{text-decoration:line-through;color:#999;font-weight:400;font-size:10px;margin-right:3px}\n    @media(max-width:768px){\n      .ol-pgrid{grid-template-columns:repeat(2,1fr);gap:6px}\n      .ol-pcard{padding:5px}\n      .ol-pcard .pn{font-size:9px}\n      .ol-pcard .pp{font-size:11px}\n    }\n  <\/style>\n  <div class=\"ol-tabs\">\n    <button onclick=\"showTab('health')\" class=\"ol-tab ol-tab-active\" id=\"tab-health\">Health Supplements<\/button>\n    <button onclick=\"showTab('conditions')\" class=\"ol-tab\" id=\"tab-conditions\">Health Conditions<\/button>\n    <button onclick=\"showTab('beauty')\" class=\"ol-tab\" id=\"tab-beauty\">Skin & Beauty<\/button>\n    <button onclick=\"showTab('food')\" class=\"ol-tab\" id=\"tab-food\">Food Pantry<\/button>\n    <button onclick=\"showTab('sport')\" class=\"ol-tab\" id=\"tab-sport\">Sports Nutrition<\/button>\n    <button onclick=\"showTab('kids')\" class=\"ol-tab\" id=\"tab-kids\">Kids Health<\/button>\n    <button onclick=\"showTab('home')\" class=\"ol-tab\" id=\"tab-home\">Healthy Home<\/button>\n    <button onclick=\"showTab('pets')\" class=\"ol-tab\" id=\"tab-pets\">Pet Health<\/button>\n    <button onclick=\"showTab('superfoods')\" class=\"ol-tab\" id=\"tab-superfoods\">Superfoods<\/button>\n    <button onclick=\"showTab('vivid')\" class=\"ol-tab\" id=\"tab-vivid\">Vivid Health<\/button>\n  <\/div>\n  {% assign tab_collections = 'top-health-supplements,top-health-conditions,top-skin-beauty,top-food-pantry,top-sports-nutrition,top-kids-health,top-healthy-home,top-pet-health,top-superfoods,top-vivid-health' | split: ',' %}\n  {% assign tab_ids = 'health,conditions,beauty,food,sport,kids,home,pets,superfoods,vivid' | split: ',' %}\n  {% for col_handle in tab_collections %}\n    {% assign tid = tab_ids[forloop.index0] %}\n    <div id=\"panel-{{ tid }}\" class=\"ol-panel\" style=\"{% unless forloop.first %}display:none;{% endunless %}\">\n      <div class=\"ol-pgrid\">\n        {% assign col = collections[col_handle] %}\n        {% for product in col.products limit:8 %}\n          <div class=\"ol-pcard\">\n            <a href=\"{{ product.url }}\"><img src=\"{{ product.featured_image | img_url: '200x200' }}\" alt=\"{{ product.title | escape }}\" loading=\"lazy\"><\/a>\n            <p class=\"pn\"><a href=\"{{ product.url }}\">{{ product.title | truncate: 35 }}<\/a><\/p>\n            <p class=\"pv\">{{ product.vendor | truncate: 18 }}<\/p>\n            <p class=\"pp\">{% if product.compare_at_price > product.price %}<span class=\"cp\">{{ product.compare_at_price | money }}<\/span>{% endif %}{{ product.price | money }}<\/p>\n          <\/div>\n        {% endfor %}\n      <\/div>\n      <p style=\"text-align:center;margin:10px 0 0;\"><a href=\"\/collections\/{{ col_handle }}\" style=\"display:inline-block;background:#2d6a4f;color:#fff;padding:8px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:11px;\">View All →<\/a><\/p>\n    <\/div>\n  {% endfor %}\n<\/div>\n<script>\nfunction showTab(id){\n  document.querySelectorAll('.ol-panel').forEach(function(p){p.style.display='none'});\n  document.querySelectorAll('.ol-tab').forEach(function(t){t.classList.remove('ol-tab-active')});\n  document.getElementById('panel-'+id).style.display='block';\n  document.getElementById('tab-'+id).classList.add('ol-tab-active');\n}\n<\/script>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "goals",
+    "diet",
+    "cats",
+    "tabs",
+    "consult",
+    "news",
+    "blog",
+    "follow"
+  ]
+}

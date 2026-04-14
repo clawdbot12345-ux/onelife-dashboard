@@ -1,0 +1,502 @@
+{%- comment -%}
+  Onelife Health AI Chat Widget
+  Powered by Claude — knows the full product catalogue
+  Replace WORKER_URL with your deployed Cloudflare Worker URL
+{%- endcomment -%}
+
+<style>
+.ol-chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 80px;
+  z-index: 997;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: 3px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: ol-chat-glow 2s ease-in-out infinite;
+}
+@keyframes ol-chat-glow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(99,102,241,0.4); }
+  50% { box-shadow: 0 4px 30px rgba(99,102,241,0.6); }
+}
+.ol-chat-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(99,102,241,0.5);
+  animation: none;
+}
+.ol-chat-btn svg { width: 26px; height: 26px; fill: #fff; }
+
+@media (max-width: 749px) {
+  .ol-chat-btn {
+    bottom: 62px;
+    right: 72px;
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+  }
+  .ol-chat-btn svg { width: 22px; height: 22px; }
+}
+
+/* Chat panel */
+.ol-chat-panel {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 380px;
+  max-height: 520px;
+  z-index: 9999;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+  flex-direction: column;
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.ol-chat-panel.open { display: flex; }
+
+@media (max-width: 749px) {
+  .ol-chat-panel {
+    bottom: 56px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    max-height: 45vh;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+  .ol-chat-messages {
+    max-height: 150px !important;
+    min-height: 60px !important;
+  }
+}
+
+/* Header */
+.ol-chat-header {
+  background: linear-gradient(135deg, #2d6a4f, #1b4332);
+  color: #fff;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+@media (max-width: 749px) {
+  .ol-chat-header { padding: 10px; }
+  .ol-chat-avatar { width: 32px; height: 32px; font-size: 16px; }
+  .ol-chat-header-text h3 { font-size: 13px !important; }
+  .ol-chat-header-text p { font-size: 10px; }
+}
+.ol-chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.ol-chat-header-text h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff !important;
+}
+.ol-chat-header-text p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+}
+.ol-chat-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.7;
+}
+.ol-chat-close:hover { opacity: 1; }
+
+/* Messages */
+.ol-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f8f9fa;
+  min-height: 120px;
+  max-height: 340px;
+}
+@media (max-width: 749px) {
+  .ol-chat-messages {
+    padding: 10px;
+    gap: 8px;
+    min-height: 80px;
+    max-height: 200px;
+  }
+}
+
+.ol-chat-msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+@media (max-width: 749px) {
+  .ol-chat-msg { padding: 8px 10px; font-size: 12px; line-height: 1.4; }
+}
+.ol-chat-msg a {
+  color: #2d6a4f;
+  text-decoration: underline;
+}
+.ol-chat-msg-bot {
+  background: #fff;
+  color: #333;
+  align-self: flex-start;
+  border: 1px solid #e8e8e8;
+  border-bottom-left-radius: 4px;
+}
+.ol-chat-msg-user {
+  background: #2d6a4f;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.ol-chat-typing {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #999;
+}
+.ol-chat-typing span {
+  animation: ol-dot 1.4s infinite;
+  display: inline-block;
+}
+.ol-chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.ol-chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ol-dot {
+  0%, 60%, 100% { opacity: 0.3; }
+  30% { opacity: 1; }
+}
+
+/* Input */
+.ol-chat-input-area {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 6px;
+  background: #fff;
+}
+@media (max-width: 749px) {
+  .ol-chat-input-area { padding: 8px; }
+  .ol-chat-input {
+  font-size: 16px !important; /* prevents iOS zoom */ font-size: 12px; padding: 8px 10px; }
+  .ol-chat-send { width: 36px; height: 36px; }
+}
+.ol-chat-input {
+  font-size: 16px !important; /* prevents iOS zoom */
+  flex: 1;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  max-height: 80px;
+}
+.ol-chat-input:focus {
+  border-color: #2d6a4f;
+}
+.ol-chat-send {
+  background: #2d6a4f;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.ol-chat-send:hover { background: #1b4332; }
+.ol-chat-send svg { width: 18px; height: 18px; fill: #fff; }
+.ol-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Quick actions */
+.ol-chat-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 12px;
+  background: #f8f9fa;
+}
+.ol-chat-quick button {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 5px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.2s;
+}
+@media (max-width: 749px) {
+  .ol-chat-quick { padding: 0 10px 8px; gap: 4px; }
+  .ol-chat-quick button { padding: 4px 8px; font-size: 10px; }
+}
+.ol-chat-quick button:hover {
+  border-color: #2d6a4f;
+  color: #2d6a4f;
+}
+
+/* Notification dot */
+.ol-chat-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  background: #ef4444;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+</style>
+
+<!-- Chat button -->
+<button class="ol-chat-btn" id="ol-chat-toggle" aria-label="Chat with us">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/><circle cx="8" cy="10" r="1.2"/><circle cx="12" cy="10" r="1.2"/><circle cx="16" cy="10" r="1.2"/></svg>
+  <span class="ol-chat-dot" id="ol-chat-dot"></span>
+</button>
+
+<!-- Chat panel -->
+<div class="ol-chat-panel" id="ol-chat-panel">
+  <div class="ol-chat-header">
+    <div class="ol-chat-avatar">🌿</div>
+    <div class="ol-chat-header-text">
+      <h3>Onelife Health Assistant</h3>
+      <p>Powered by AI · Typically replies instantly</p>
+    </div>
+    <button class="ol-chat-close" id="ol-chat-close">&times;</button>
+  </div>
+
+  <div class="ol-chat-messages" id="ol-chat-messages">
+    <div class="ol-chat-msg ol-chat-msg-bot">
+      Hi there! 👋 I'm the Onelife Health AI Assistant. I can help you find the right supplements, check product availability, or answer any health product questions. How can I help you today?
+    </div>
+    <div class="ol-chat-msg ol-chat-msg-bot" style="font-size:10px;color:#999;background:#f5f5f5;border:1px solid #eee;padding:6px 10px;">
+      ⚠️ This is not medical advice or a diagnosis. Always consult a healthcare professional before starting any supplement.
+    </div>
+  </div>
+
+  <div class="ol-chat-quick" id="ol-chat-quick">
+    <button onclick="olChatQuick('What supplements help with sleep?')">Sleep</button>
+    <button onclick="olChatQuick('What do you recommend for gut health?')">Gut Health</button>
+    <button onclick="olChatQuick('Best supplements for immunity?')">Immunity</button>
+    <button onclick="olChatQuick('Help me with stress and anxiety')">Stress</button>
+    <button onclick="olChatQuick('What sports supplements do you have?')">Sports Nutrition</button>
+    <button onclick="olChatQuick('What supplements help with weight loss?')">Weight Loss</button>
+  </div>
+
+  <div class="ol-chat-input-area">
+    <textarea class="ol-chat-input" id="ol-chat-input" placeholder="Ask about supplements, health goals..." rows="1"></textarea>
+    <button class="ol-chat-send" id="ol-chat-send">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function() {
+  // REPLACE THIS with your Cloudflare Worker URL after deployment
+  var WORKER_URL = 'https://onelife-chat.naadir.workers.dev/';
+
+  var panel = document.getElementById('ol-chat-panel');
+  var messages = document.getElementById('ol-chat-messages');
+  var input = document.getElementById('ol-chat-input');
+  var sendBtn = document.getElementById('ol-chat-send');
+  var dot = document.getElementById('ol-chat-dot');
+  var quickActions = document.getElementById('ol-chat-quick');
+  // Restore chat history — expires after 30 minutes of inactivity
+  var chatData = JSON.parse(localStorage.getItem('ol_chat_data') || '{}');
+  var now = Date.now();
+  var EXPIRY = 60 * 60 * 1000; // 1 hour
+  var MAX_MESSAGES = 15;
+  var chatHistory = [];
+  var chatOpen = false;
+  if (chatData.messages && chatData.ts && (now - chatData.ts) < EXPIRY) {
+    chatHistory = chatData.messages;
+    chatOpen = chatData.open || false;
+  } else {
+    localStorage.removeItem('ol_chat_data');
+  }
+
+  function saveChat() {
+    localStorage.setItem('ol_chat_data', JSON.stringify({
+      messages: chatHistory,
+      open: panel.classList.contains('open'),
+      ts: Date.now()
+    }));
+  }
+
+  // Toggle panel
+  document.getElementById('ol-chat-toggle').addEventListener('click', function() {
+    panel.classList.toggle('open');
+    saveChat();
+    if (panel.classList.contains('open')) {
+      dot.style.display = 'none';
+      setTimeout(function() { messages.scrollTop = messages.scrollHeight; }, 50);
+    }
+  });
+
+  document.getElementById('ol-chat-close').addEventListener('click', function() {
+    panel.classList.remove('open');
+    saveChat();
+  });
+
+  // Send message
+  function sendMessage(text) {
+    if (!text.trim()) return;
+
+    // Check message limit
+    var userMsgCount = chatHistory.filter(function(m) { return m.role === 'user'; }).length;
+    if (userMsgCount >= MAX_MESSAGES) {
+      addMessage('Thanks for chatting! For more detailed help, WhatsApp our team at (071) 374 4910 or book a free health consultation at onelife.co.za/pages/book-consultation', 'bot');
+      return;
+    }
+
+    // Quick actions stay visible
+
+    // Add user message
+    addMessage(text, 'user');
+    chatHistory.push({ role: 'user', content: text });
+    saveChat();
+    input.value = '';
+    input.style.height = 'auto';
+    sendBtn.disabled = true;
+
+    // Show typing
+    var typing = document.createElement('div');
+    typing.className = 'ol-chat-typing';
+    typing.id = 'ol-typing';
+    typing.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+    messages.appendChild(typing);
+    messages.scrollTop = messages.scrollHeight;
+
+    // Call API
+    if (!WORKER_URL) {
+      // Fallback if no worker URL configured
+      removeTyping();
+      addMessage("I'm not fully set up yet. For now, please WhatsApp us at (071) 374 4910 or email orders@onelife.co.za — our team will help you!", 'bot');
+      sendBtn.disabled = false;
+      return;
+    }
+
+    fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory }),
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      removeTyping();
+      var reply = data.reply || "Sorry, I couldn't process that. Try again?";
+      addMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+      saveChat();
+      sendBtn.disabled = false;
+    })
+    .catch(function() {
+      removeTyping();
+      addMessage("I'm having trouble connecting. Please try again or WhatsApp us at (071) 374 4910.", 'bot');
+      sendBtn.disabled = false;
+    });
+  }
+
+  function addMessage(text, type) {
+    var div = document.createElement('div');
+    div.className = 'ol-chat-msg ol-chat-msg-' + type;
+    // Bold
+    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // Markdown links [text](url) → clickable
+    text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2"  style="color:#2d6a4f;text-decoration:underline;">$1</a>');
+    // Plain URLs → clickable (only if not already inside a tag)
+    text = text.replace(/(^|\s)(https?:\/\/[^\s<]+)/g, '$1<a href="$2"  style="color:#2d6a4f;text-decoration:underline;">View Product</a>');
+    // Newlines
+    text = text.replace(/\n/g, '<br>');
+    div.innerHTML = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function removeTyping() {
+    var t = document.getElementById('ol-typing');
+    if (t) t.remove();
+  }
+
+  // Restore previous messages on page load
+  if (chatHistory.length > 0) {
+    chatHistory.forEach(function(msg) {
+      addMessage(msg.content, msg.role === 'user' ? 'user' : 'bot');
+    });
+    // Scroll to bottom after restoring messages
+    setTimeout(function() { messages.scrollTop = messages.scrollHeight; }, 100);
+    // Auto-open if was open before
+    if (chatOpen) {
+      panel.classList.add('open');
+      dot.style.display = 'none';
+      setTimeout(function() { messages.scrollTop = messages.scrollHeight; }, 200);
+    }
+  }
+
+  // Send on button click
+  sendBtn.addEventListener('click', function() { sendMessage(input.value); });
+
+  // Send on Enter (Shift+Enter for newline)
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(input.value);
+    }
+  });
+
+  // Auto-resize textarea
+  input.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 80) + 'px';
+  });
+
+  // Quick action buttons
+  // Close chat when clicking a product link
+  messages.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A' && e.target.href) {
+      panel.classList.remove('open');
+      saveChat();
+    }
+  });
+
+  window.olChatQuick = function(text) {
+    sendMessage(text);
+  };
+})();
+</script>

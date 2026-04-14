@@ -1,0 +1,48 @@
+{%- comment -%}
+  Combined announcement bar: delivery promo + signup + consultation.
+  Updated 2026-04-12.
+{%- endcomment -%}
+<style>
+.ol-promo-bar {
+  background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+.ol-promo-bar a {
+  color: #b7e4c7;
+  text-decoration: underline;
+  font-weight: 600;
+}
+.ol-promo-bar a:hover { color: #fff; }
+.ol-promo-highlight {
+  background: rgba(255,255,255,0.15);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.ol-promo-sep {
+  opacity: 0.4;
+  margin: 0 4px;
+}
+@media (max-width: 600px) {
+  .ol-promo-bar { font-size: 11.5px; padding: 8px 12px; gap: 4px 12px; }
+}
+</style>
+<div class="ol-promo-bar">
+  <span>&#128722; <span class="ol-promo-highlight">FREE DELIVERY</span> on all orders this month!</span>
+  <span class="ol-promo-sep">|</span>
+  <span>Get <strong>10% off</strong> &mdash; <a href="#ol-community">join our community</a></span>
+  <span class="ol-promo-sep">|</span>
+  <span>Collect in-store: <a href="/pages/store-locator">Centurion, Glen Village &amp; Edenvale</a></span>
+</div>

@@ -1,0 +1,71 @@
+/* Onelife Dawn — Premium Design */
+:root { --ol-forest: #1b4332; --ol-green: #2d6a4f; --ol-sage: #52796f; --ol-mint: #7ec8a0; --ol-cream: #f7f5f0; --ol-charcoal: #1a1a1a; --ol-text: #333; }
+.section-header, .header-wrapper, .shopify-section-header-group { background: #3a3a3a !important; }
+.section-header { border-bottom: none !important; }
+.header__heading-logo { max-width: 220px !important; }
+.header__inline-menu > .list-menu > .list-menu__item > .header__menu-item { color: #fff !important; }
+.section-header .header__icon, .section-header .header__icon svg, .section-header .header__heading-link, .section-header .header__cart-count { color: #fff !important; fill: #fff !important; }
+.section-header .header__active-menu-item { border-color: #fff !important; }
+.header__submenu, .header__submenu a, .list-menu--disclosure a, .mega-menu a { color: #333 !important; }
+.header__submenu a:hover, .list-menu--disclosure a:hover { color: #2d6a4f !important; }
+.menu-drawer, .menu-drawer__inner-container, .menu-drawer a, .menu-drawer summary, .menu-drawer .menu-drawer__menu-item, .menu-drawer span { color: #333 !important; }
+.menu-drawer svg { fill: #333 !important; }
+.menu-drawer__utility-links a { color: #333 !important; }
+.announcement-bar { background: var(--ol-green) !important; }
+.announcement-bar__link, .announcement-bar__message { color: #fff !important; }
+.slideshow .button, .banner__button .button, .slideshow__slide .button { background: #fff !important; border: none !important; color: var(--ol-forest) !important; font-weight: 700 !important; letter-spacing: 1.2px !important; border-radius: 4px !important; padding: 14px 36px !important; text-transform: uppercase !important; font-size: 12px !important; box-shadow: 0 2px 12px rgba(0,0,0,0.15) !important; }
+.slideshow .button:hover, .banner__button .button:hover { background: var(--ol-forest) !important; color: #fff !important; }
+.slideshow__text-wrapper, .banner__box { background: transparent !important; box-shadow: none !important; }
+.slideshow__heading, .banner__heading { color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.4) !important; }
+.slideshow__controls { background: #2c2c2c !important; padding: 10px 0 !important; }
+.slideshow__autoplay, button[aria-label*="Pause"], button[aria-label*="pause"] { display: none !important; }
+.slider-button--prev, .slider-button--next { display: none !important; }
+.slider-counter__link { width: 10px !important; height: 10px !important; border-radius: 50% !important; background: rgba(255,255,255,0.3) !important; border: none !important; padding: 0 !important; margin: 0 5px !important; opacity: 1 !important; }
+.slider-counter__link .dot { display: none !important; }
+.slider-counter__link[aria-current="true"], .slider-counter__link--active { background: #fff !important; transform: scale(1.3) !important; }
+.slider-counter--dots { display: flex !important; justify-content: center !important; align-items: center !important; }
+.slider-counter--current, .slider-counter--total, .slider-counter--counter { display: none !important; }
+h1, h2, h3, h4, h5, h6 { color: var(--ol-charcoal) !important; }
+.ol-consult-inner h2, .ol-consult-title, .ol-consult-banner h2, #ol-community h2, .section-footer h2 { color: #fff !important; }
+.product-form__submit, .cart__submit, .shopify-challenge__button { background-color: var(--ol-green) !important; border-color: var(--ol-green) !important; color: #fff !important; border-radius: 4px !important; font-weight: 700 !important; text-transform: uppercase !important; }
+.product-form__submit:hover, .cart__submit:hover { background-color: var(--ol-forest) !important; border-color: var(--ol-forest) !important; }
+.card-wrapper { transition: transform 0.3s ease, box-shadow 0.3s ease !important; }
+.card-wrapper:hover { transform: translateY(-5px) !important; box-shadow: 0 16px 40px rgba(0,0,0,0.06) !important; }
+.card { border-radius: 8px !important; overflow: hidden !important; border: 1px solid #eee !important; background: #fff !important; }
+.card__media, .card__inner .media { background: #f8f8f8 !important; }
+.card__heading a { font-weight: 600 !important; color: var(--ol-charcoal) !important; }
+.price-item--regular, .price-item--sale { color: var(--ol-forest) !important; font-weight: 700 !important; }
+.collection-card-wrapper { border-radius: 8px !important; overflow: hidden !important; }
+.collection-card-wrapper:hover { transform: translateY(-3px) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important; }
+.collection-card-wrapper .card__content, .collection-card-wrapper .card__information, .collection-list .card__content { text-align: center !important; padding: 8px !important; }
+.collection-card-wrapper .card__heading, .collection-list .card__heading { text-align: center !important; font-size: 14px !important; }
+.blog-articles .article-card__image, .blog-articles .article-card__image .media { aspect-ratio: 16/9 !important; overflow: hidden !important; }
+.blog-articles .article-card__image img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+.article-card { border-radius: 8px !important; overflow: hidden; }
+.ol-promo-bar { min-height: 56px; }
+.ol-proof-bar { min-height: 50px; }
+@media (max-width: 768px) { .ol-promo-bar { min-height: 72px; } .ol-proof-bar { min-height: 64px; } }
+.ol-consult-desc { color: #d8f3dc !important; opacity: 1 !important; font-size: 16px !important; line-height: 1.7 !important; }
+.newsletter { background: var(--ol-cream) !important; }
+.newsletter .newsletter-form__button { background: var(--ol-green) !important; }
+.section-footer { border-top: 2px solid var(--ol-sage) !important; }
+.footer-block__heading, .section-footer h2, .section-footer h3, .section-footer h4, .footer__content-top h2 { color: #fff !important; font-weight: 700 !important; text-transform: uppercase !important; font-size: 16px !important; }
+.section-footer .footer-block__details-content, .section-footer .footer-block__details-content p, .section-footer .footer-block__details-content a, .section-footer .list-menu a { color: #ccc !important; }
+.section-footer .footer-block__details-content a:hover, .section-footer .list-menu a:hover { color: #fff !important; }
+.section-footer .footer-block__details-content strong { color: #fff !important; }
+.section-footer .newsletter__heading, .section-footer .footer__newsletter h2 { color: #fff !important; font-weight: 700 !important; text-transform: uppercase !important; }
+html { scroll-behavior: smooth; }
+input:focus, textarea:focus, select:focus { border-color: var(--ol-green) !important; outline: none !important; box-shadow: 0 0 0 3px rgba(45,106,79,0.08) !important; }
+body { text-rendering: optimizeSpeed; -webkit-font-smoothing: antialiased; }
+#ol-goals-container, #ol-diet-container { contain: layout; }
+.shopify-section + .shopify-section { border-top: 1px solid rgba(0,0,0,0.04); }
+.product-form__submit[disabled] ~ .shopify-payment-button { display: none !important; }
+.ol-goals-title::after, .ol-diet-title::after { content: ''; display: block; width: 50px; height: 2px; background: var(--ol-sage); margin: 8px auto 0; border-radius: 1px; }
+.collection-list + .center a, .view-all a { background: transparent !important; color: var(--ol-green) !important; border: 2px solid var(--ol-green) !important; font-weight: 600 !important; border-radius: 4px !important; }
+.collection-list + .center a:hover, .view-all a:hover { background: var(--ol-green) !important; color: #fff !important; }
+.ol-goal-card { background: linear-gradient(135deg, #faf8f4 0%, #f0ede6 100%) !important; border: 1px solid #e8e2d6 !important; }
+.ol-goal-card:hover { background: linear-gradient(135deg, #d8f3dc 0%, #b7e4c7 100%) !important; border-color: var(--ol-mint) !important; }
+.ol-diet-card { background: #faf8f4 !important; border: 2px solid #e8e2d6 !important; }
+.ol-diet-card:hover { border-color: var(--ol-green) !important; background: #d8f3dc !important; }
+slideshow-component { max-width: 100vw !important; overflow-x: clip !important; }
+.slideshow__slide img, .slideshow__media img, .slideshow__slide .media img { width: 100% !important; height: auto !important; object-fit: cover !important; object-position: center center !important; }
