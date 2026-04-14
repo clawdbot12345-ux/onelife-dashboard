@@ -1,0 +1,51 @@
+name: Optimize Theme Performance
+
+# Pushes performance fixes to the live Shopify Dawn theme.
+# Targets: CLS, LCP, TBT, FCP — all PageSpeed Insights critical metrics.
+#
+# Manual trigger only — review the dry-run output before applying.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (preview changes without writing to Shopify)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run performance optimizer
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_STORE: onelifehealth
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: python scripts/optimize_performance.py
+
+      - name: Commit audit log + backups
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/ scripts/shopify-theme-backup/ || true
+          if git diff --cached --quiet; then
+            echo "No new files to commit"
+          else
+            git commit -m "chore: performance optimization $(date -u +%Y-%m-%d)"
+            git push
+          fi
