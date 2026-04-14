@@ -4,3 +4,10 @@ package-lock.json
 *.pdf
 __pycache__/
 *.pyc
+
+# Large generated artifacts — keep .md summaries in-repo, ignore raw dumps
+# so Claude Code sessions and git clones don't blow up on multi-MB files.
+reports/*.json
+reports/*.jsonl
+reports/*.log
+scripts/shopify-theme-backup/

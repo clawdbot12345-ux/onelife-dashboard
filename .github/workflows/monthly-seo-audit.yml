@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "onelife-seo-bot"
           git config user.email "bot@onelife.co.za"
-          git add reports/seo-audit-*.md reports/seo-audit-*.json
+          git add reports/seo-audit-*.md
           if git diff --staged --quiet; then
             echo "No new audit report to commit"
           else

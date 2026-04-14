@@ -50,9 +50,9 @@ jobs:
         run: |
           git config user.name "onelife-seo-bot"
           git config user.email "bot@onelife.co.za"
-          git add reports/seo-fixes-*.jsonl
+          git add reports/seo-fixes-*.jsonl 2>/dev/null || true
           if git diff --staged --quiet; then
-            echo "No fixes ledger to commit"
+            echo "No fixes ledger to commit (jsonl ledger is gitignored — pulled from workflow artifacts instead)"
           else
             git commit -m "chore: SEO fix run $(date +%Y-%m-%d) — ${{ github.event.inputs.sample_size }} products, apply=${{ github.event.inputs.apply }}"
             git push
