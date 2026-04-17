@@ -1,0 +1,153 @@
+/*
+ * One Life Health — global styles & design tokens
+ *
+ * CSS custom properties are the source of truth; tailwind.config.ts
+ * reads them via var(). Non-Tailwind CSS (emails, print) can share
+ * the same palette by importing this file.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Palette — Apothecary Modern.
+       Hex values defined once, here. Nowhere else. */
+    --ink:         #1A1915;
+    --ink-muted:   #5C5A52;
+    --ink-subtle:  #8A8578;
+
+    --paper:       #F4F1EA;
+    --paper-deep:  #EAE5DA;
+    --bone:        #FFFCF5;
+
+    --sage:        #6B7A5A;
+    --sage-deep:   #3E4A34;
+
+    --terracotta:  #B5654A;
+    --gold:        #B8934A;
+
+    --signal:      #2C4A3A;
+    --alert:       #8B3A2E;
+
+    --hairline:    rgba(26, 25, 21, 0.08);
+
+    /* Motion */
+    --ease-quiet:  cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-fast:    160ms;
+    --dur-base:    280ms;
+    --dur-slow:    480ms;
+  }
+
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: theme("fontFamily.sans");
+    font-size: 1rem;           /* 16px floor — never smaller for body */
+    line-height: 1.5;
+    font-feature-settings: "ss01", "cv11";  /* humanist alt a, l if available */
+  }
+
+  /* Display type = serif, unapologetically. */
+  h1, h2, h3 {
+    font-family: theme("fontFamily.display");
+    font-weight: 400;           /* serifs never go bold */
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  h1 { font-size: 3rem; }        /* 48 */
+  h2 { font-size: 2.125rem; }    /* 34 */
+  h3 { font-size: 1.5rem; letter-spacing: -0.01em; line-height: 1.25; }
+
+  /* Micro-labels: the only all-caps allowed. */
+  .u-micro,
+  [data-micro] {
+    font-family: theme("fontFamily.sans");
+    font-size: 0.6875rem;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* Prices, dosage, data — always tabular mono. */
+  .u-num,
+  [data-num] {
+    font-family: theme("fontFamily.mono");
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Hairline dividers on paper. Never pure black. */
+  hr {
+    border: 0;
+    border-top: 1px solid var(--hairline);
+  }
+
+  /* Links inherit ink unless explicitly wrapped. Underline offset
+     gives editorial feel vs. default hugging. */
+  a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  /* Focus ring — sage, never system blue. */
+  :focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Selection — paper-deep block, ink text. */
+  ::selection {
+    background: var(--paper-deep);
+    color: var(--ink);
+  }
+
+  /* Scrollbars on webkit — thin, paper-coloured, near-invisible. */
+  ::-webkit-scrollbar        { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track  { background: transparent; }
+  ::-webkit-scrollbar-thumb  { background: var(--hairline); border-radius: 999px; }
+
+  /* Respect user preference. Framer Motion also reads this. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Minimum tap target for anything interactive. */
+  .u-tap { min-width: 44px; min-height: 44px; }
+
+  /* Editorial pull-quote — the only place italics are allowed. */
+  .u-pullquote {
+    font-family: theme("fontFamily.display");
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: var(--ink);
+    max-width: 32ch;
+  }
+
+  /* 8s scroll-parallax hook. JS sets --py from scroll offset. */
+  .u-parallax {
+    transform: translate3d(0, var(--py, 0), 0);
+    will-change: transform;
+  }
+}
