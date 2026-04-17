@@ -50,31 +50,12 @@ const config: Config = {
     },
 
     fontFamily: {
-      // Commercial primaries with open-source fallbacks that ship today.
-      // Swap to Canela / Söhne via next/font once licences are in place.
-      display: [
-        "Canela",
-        "PP Editorial New",
-        "Fraunces",
-        "ui-serif",
-        "Georgia",
-        "serif",
-      ],
-      sans: [
-        "Söhne",
-        "Inter Tight",
-        "Inter",
-        "ui-sans-serif",
-        "system-ui",
-        "sans-serif",
-      ],
-      mono: [
-        "Söhne Mono",
-        "JetBrains Mono",
-        "ui-monospace",
-        "SFMono-Regular",
-        "monospace",
-      ],
+      // CSS vars are provided by next/font in app/layout.tsx (Fraunces /
+      // Inter Tight / JetBrains Mono). When Canela / Söhne licences land,
+      // swap the next/font loader — consumers don't change.
+      display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
+      sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+      mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
     },
 
     // Scale: 48 / 34 / 24 / 18 / 16 / 14 / 12

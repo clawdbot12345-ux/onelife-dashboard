@@ -1,8 +1,26 @@
 # One Life Health — App
 
-Pass 1 deliverable: design system tokens + typed component API sketches.
-This is **not** a running app yet. Pass 2 wires up Next.js and the `/design`
-showcase route; passes 3–5 build the six hero screens, then polish.
+Premium mobile-first PWA for One Life Health. Built on Next.js 14 + TypeScript
++ Tailwind + Framer Motion, against the Apothecary Modern design system.
+
+## Status
+
+- **Pass 1 ✓** — Design tokens and typed component API sketches.
+- **Pass 2 ✓** — Next.js scaffold, all 20 primitives implemented, `/design`
+  showcase route. `npm run dev` → `http://localhost:3000/design`.
+- Pass 3 — Home + Product Detail screens.
+- Pass 4 — Shop + Consult + Rewards + Onboarding.
+- Pass 5 — Polish, docs, PWA manifest.
+
+## Run it
+
+```bash
+cd onelife-app
+npm install
+npm run dev         # http://localhost:3000 → redirects to /design
+npm run build       # production build, statically generated
+npm run typecheck
+```
 
 ## What's in here
 
@@ -53,14 +71,16 @@ A few constraints are encoded directly as TypeScript unions in
   through `TabularPrice`. Caller can't accidentally render `2.4999999` with
   hand-rolled `.toFixed`.
 
-## What's deliberately missing
+## What's still deliberately missing
 
-- No package.json / lockfile yet — avoids committing dep choices that review
-  might change (react 18 vs 19, tailwind 3 vs 4).
-- No components/\*.tsx implementations — Pass 2.
-- No `/design` route — Pass 2.
-- No icons, no fonts, no images — those come with the showcase route where we
-  can see them in context.
+- No commissioned photography. Every image surface renders a `PaperImage` —
+  paper-deep tile with a botanical glyph — until shoots land. Zero CLS,
+  honest placeholder, on-brand.
+- No real Shopify / ERP integration. Pass 3 introduces the typed adapter
+  layer and stubs realistic data.
+- Commercial fonts (Canela, Söhne) aren't shipped. Open fallbacks are wired
+  via `next/font/google`. Swap the loader in `app/layout.tsx` when licences
+  land — no other code changes.
 
 ## Quality bar — self-check
 
@@ -74,10 +94,12 @@ A few constraints are encoded directly as TypeScript unions in
 
 ## Next — waiting for your react
 
-Pass 2 will:
-1. Add `package.json`, `next.config.js`, `tsconfig.json`.
-2. Implement the 20 primitives against the contracts above.
-3. Ship `/design` — a Storybook-style showcase route with every token,
-   component, and state visible on one page.
+Pass 3 will:
+1. Build the Home screen — greeting, active protocol, next consultation slot,
+   editorial hero, curated-for-you rail, this-week strip, store card.
+2. Build Product Detail — parallax hero, sticky add-to-cart, Why-we-stock-it
+   / How-to-take-it / Ingredients / Evidence / Pairs-with tabs,
+   contraindication banner, reviews.
+3. Wire both into `AppShell` so the product feels like one thing, not two.
 
-Hold off on the showcase until you've pushed back on anything in this pass.
+Hold off until you've pushed back on anything in the showcase.
