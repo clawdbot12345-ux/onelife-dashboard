@@ -76,10 +76,11 @@ export interface TabularPriceProps extends WithClassName {
 /* ------------------------------------------------------------------ */
 /* 04. ProductCard                                                     */
 /* Shop grid + Curated-for-you rails. ONE tag max — the union enforces */
-/* precedence: pharmacistPick > saMade > new > subscribe.              */
+/* precedence: consultantPick > saMade > new > subscribe.              */
+/* Label: "Consultant pick" — credentialed in-house role, brand rule.  */
 /* ------------------------------------------------------------------ */
 export type ProductTag =
-  | { kind: "pharmacistPick" }
+  | { kind: "consultantPick" }
   | { kind: "saMade" }
   | { kind: "new" }
   | { kind: "subscribe"; percentOff: number };
@@ -125,8 +126,8 @@ export interface ConsultationSlotProps extends WithClassName {
   durationMinutes: number;
   mode: ConsultMode;
   storeName?: string;        // required if mode === "in-store"
-  pharmacistName?: string;
-  pharmacistImageUrl?: string;
+  consultantName?: string;
+  consultantImageUrl?: string;
   onBook: (isoStart: string) => void;
   disabled?: boolean;
 }
@@ -242,7 +243,7 @@ export interface ProtocolCardProps extends WithClassName {
   daysRemaining?: number;    // null for AI-suggested (not yet on subscription)
   source: "consultation" | "ai-assistant" | "repeat-purchase";
   onReorder?: () => void;
-  onReview?: () => void;     // "Have a pharmacist review this"
+  onReview?: () => void;     // "Have a health consultant review this"
 }
 
 /* ------------------------------------------------------------------ */
@@ -313,7 +314,7 @@ export interface IngredientTableProps extends WithClassName {
 /* ------------------------------------------------------------------ */
 /* 20. ProtocolAssistantPrompt                                         */
 /* Free-text intake on Consult tab. Returns a ProtocolCard result.     */
-/* Clearly labelled AI. "Have a pharmacist review this" required.      */
+/* Clearly labelled AI. "Have a health consultant review this" required.*/
 /* ------------------------------------------------------------------ */
 export interface ProtocolAssistantPromptProps extends WithClassName {
   onSubmit: (prompt: string) => void;

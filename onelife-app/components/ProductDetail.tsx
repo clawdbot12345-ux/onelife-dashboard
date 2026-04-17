@@ -128,9 +128,9 @@ export function ProductDetail({
         )}
 
         <div className="flex flex-wrap gap-2 pt-1">
-          {product.pharmacistPick && (
+          {product.consultantPick && (
             <span className="inline-flex items-center gap-1.5 rounded-pill bg-sage/10 px-3 py-1.5 text-sm text-sage-deep">
-              <Leaf weight="regular" size={14} /> Pharmacist pick
+              <Leaf weight="regular" size={14} /> Consultant pick
             </span>
           )}
           {product.saMade && (
@@ -225,8 +225,8 @@ export function ProductDetail({
                   imageAlt={p.name}
                   price={p.price}
                   tag={
-                    p.pharmacistPick
-                      ? { kind: "pharmacistPick" }
+                    p.consultantPick
+                      ? { kind: "consultantPick" }
                       : p.saMade
                         ? { kind: "saMade" }
                         : undefined

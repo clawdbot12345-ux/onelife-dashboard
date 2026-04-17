@@ -19,7 +19,7 @@ const modeMeta: Record<
   "in-store": {
     Icon: MapPin,
     title: "In-store",
-    copy: "Sit down with a pharmacist at Centurion, Glen Village, Edenvale, or Woodlands.",
+    copy: "Sit down with a health consultant at Centurion, Glen Village, Edenvale, or Woodlands.",
     cta: "Pick a store",
   },
   video: {
@@ -31,7 +31,7 @@ const modeMeta: Record<
   message: {
     Icon: ChatCircle,
     title: "Message",
-    copy: "Ask anything. A pharmacist replies within four business hours.",
+    copy: "Ask anything. A health consultant replies within four business hours.",
     cta: "Start a thread",
   },
 };
@@ -59,7 +59,7 @@ export default function ConsultPage() {
       <header className="px-page-x">
         <p data-micro>Consult</p>
         <h1 className="mt-3 font-display text-3xl leading-display tracking-tight text-ink">
-          Talk to a pharmacist.
+          Talk to a health consultant.
         </h1>
         <p className="mt-3 max-w-prose text-lg text-ink-muted">
           Free. Fifteen minutes. No obligation. Fifteen years of experience on
@@ -111,7 +111,7 @@ export default function ConsultPage() {
                 durationMinutes={s.durationMinutes}
                 mode={s.mode}
                 storeName={"storeName" in s ? s.storeName : undefined}
-                pharmacistName={s.pharmacistName}
+                consultantName={s.consultantName}
                 onBook={() => {}}
               />
             ))}
@@ -124,7 +124,7 @@ export default function ConsultPage() {
         <SectionHeader
           eyebrow="Protocol assistant"
           title="Or start with a description."
-          description="An AI drafts a three-to-five product protocol. A pharmacist reviews it before you buy."
+          description="An AI drafts a three-to-five product protocol. A health consultant reviews it before you buy."
         />
         <div className="px-page-x">
           <ProtocolAssistantPrompt onSubmit={handleProtocol} loading={generating} />

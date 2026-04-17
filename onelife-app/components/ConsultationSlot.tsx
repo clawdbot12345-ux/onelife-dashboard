@@ -17,7 +17,7 @@ export function ConsultationSlot({
   durationMinutes,
   mode,
   storeName,
-  pharmacistName,
+  consultantName,
   onBook,
   disabled,
   className,
@@ -53,9 +53,9 @@ export function ConsultationSlot({
             {storeName && ` · ${storeName}`}
             {` · ${durationMinutes} min`}
           </p>
-          {pharmacistName && (
+          {consultantName && (
             <p data-micro className="mt-1">
-              With {pharmacistName}
+              With {consultantName}
             </p>
           )}
         </div>

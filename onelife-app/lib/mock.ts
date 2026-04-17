@@ -21,7 +21,7 @@ export type MockProduct = {
   daysSupplyPerBottle: number;
   goals: Goal[];
   saMade: boolean;
-  pharmacistPick: boolean;
+  consultantPick: boolean;
   vegan: boolean;
   inStockAtUserStore: boolean;
   glyph: "bottle" | "mortar" | "leaf";
@@ -59,7 +59,7 @@ export type MockConsultSlot = {
   durationMinutes: number;
   mode: "in-store" | "video" | "message";
   storeName?: string;
-  pharmacistName: string;
+  consultantName: string;
 };
 
 export type MockStore = {
@@ -86,7 +86,7 @@ export const MOCK_PRODUCTS: MockProduct[] = [
     daysSupplyPerBottle: 60,
     goals: ["sleep", "stress", "recovery"],
     saMade: true,
-    pharmacistPick: true,
+    consultantPick: true,
     vegan: true,
     inStockAtUserStore: true,
     glyph: "bottle",
@@ -134,7 +134,7 @@ export const MOCK_PRODUCTS: MockProduct[] = [
     daysSupplyPerBottle: 60,
     goals: ["stress", "energy", "recovery"],
     saMade: false,
-    pharmacistPick: true,
+    consultantPick: true,
     vegan: false,
     inStockAtUserStore: true,
     glyph: "bottle",
@@ -169,7 +169,7 @@ export const MOCK_PRODUCTS: MockProduct[] = [
     daysSupplyPerBottle: 60,
     goals: ["stress", "focus", "sleep"],
     saMade: true,
-    pharmacistPick: false,
+    consultantPick: false,
     vegan: true,
     inStockAtUserStore: true,
     glyph: "bottle",
@@ -203,7 +203,7 @@ export const MOCK_PRODUCTS: MockProduct[] = [
     daysSupplyPerBottle: 45,
     goals: ["focus", "joints", "immunity"],
     saMade: true,
-    pharmacistPick: false,
+    consultantPick: false,
     vegan: false,
     inStockAtUserStore: true,
     glyph: "bottle",
@@ -238,7 +238,7 @@ export const MOCK_PRODUCTS: MockProduct[] = [
     daysSupplyPerBottle: 90,
     goals: ["immunity", "joints"],
     saMade: true,
-    pharmacistPick: false,
+    consultantPick: false,
     vegan: false,
     inStockAtUserStore: true,
     glyph: "bottle",
@@ -272,7 +272,7 @@ export const MOCK_PRODUCTS: MockProduct[] = [
     daysSupplyPerBottle: 30,
     goals: ["gut", "immunity"],
     saMade: false,
-    pharmacistPick: true,
+    consultantPick: true,
     vegan: true,
     inStockAtUserStore: false,
     glyph: "mortar",
@@ -329,21 +329,21 @@ export const MOCK_CONSULT_SLOTS: MockConsultSlot[] = [
     isoStart: new Date(Date.now() + 90 * 60_000).toISOString(),
     durationMinutes: 15,
     mode: "video",
-    pharmacistName: "Dr. Naledi Khumalo",
+    consultantName: "Dr. Naledi Khumalo",
   },
   {
     isoStart: new Date(Date.now() + 3.5 * 3600_000).toISOString(),
     durationMinutes: 15,
     mode: "in-store",
     storeName: "Centurion",
-    pharmacistName: "Ahmed Patel",
+    consultantName: "Ahmed Patel",
   },
   {
     isoStart: new Date(Date.now() + 23 * 3600_000).toISOString(),
     durationMinutes: 30,
     mode: "in-store",
     storeName: "Glen Village",
-    pharmacistName: "Thandi Maseko",
+    consultantName: "Thandi Maseko",
   },
 ];
 
@@ -462,7 +462,7 @@ export const MOCK_MEMBER_PERKS = [
   "Free delivery on orders under R400",
   "Early access to new arrivals and restocks",
   "Birthday gift from the buyer's desk",
-  "One free quarterly pharmacist consultation",
+  "One free quarterly in-depth consultation",
   "Members-only events in-store",
 ];
 
@@ -474,21 +474,21 @@ export const MOCK_CONSULT_SLOTS_FULL = {
       durationMinutes: 15,
       mode: "in-store" as const,
       storeName: "Centurion",
-      pharmacistName: "Ahmed Patel",
+      consultantName: "Ahmed Patel",
     },
     {
       isoStart: new Date(Date.now() + 5 * 3600_000).toISOString(),
       durationMinutes: 15,
       mode: "in-store" as const,
       storeName: "Centurion",
-      pharmacistName: "Ahmed Patel",
+      consultantName: "Ahmed Patel",
     },
     {
       isoStart: new Date(Date.now() + 23 * 3600_000).toISOString(),
       durationMinutes: 30,
       mode: "in-store" as const,
       storeName: "Glen Village",
-      pharmacistName: "Thandi Maseko",
+      consultantName: "Thandi Maseko",
     },
   ],
   video: [
@@ -496,13 +496,13 @@ export const MOCK_CONSULT_SLOTS_FULL = {
       isoStart: new Date(Date.now() + 90 * 60_000).toISOString(),
       durationMinutes: 15,
       mode: "video" as const,
-      pharmacistName: "Dr. Naledi Khumalo",
+      consultantName: "Dr. Naledi Khumalo",
     },
     {
       isoStart: new Date(Date.now() + 4 * 3600_000).toISOString(),
       durationMinutes: 30,
       mode: "video" as const,
-      pharmacistName: "Dr. Naledi Khumalo",
+      consultantName: "Dr. Naledi Khumalo",
     },
   ],
   message: [
@@ -510,7 +510,7 @@ export const MOCK_CONSULT_SLOTS_FULL = {
       isoStart: new Date(Date.now() + 2 * 3600_000).toISOString(),
       durationMinutes: 240,
       mode: "message" as const,
-      pharmacistName: "First available pharmacist",
+      consultantName: "First available consultant",
     },
   ],
 };

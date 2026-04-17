@@ -10,7 +10,7 @@ const sourceMeta: Record<
   { Icon: typeof Sparkle; label: string }
 > = {
   consultation: { Icon: UserCircle, label: "From your consultation" },
-  "ai-assistant": { Icon: Sparkle, label: "AI suggestion · pharmacist review recommended" },
+  "ai-assistant": { Icon: Sparkle, label: "AI suggestion · consultant review recommended" },
   "repeat-purchase": { Icon: Package, label: "Reorder soon" },
 };
 
@@ -79,7 +79,7 @@ export function ProtocolCard({
             onClick={onReview}
             className="u-tap inline-flex items-center justify-center rounded-pill border border-ink/30 px-4 py-2 text-sm font-medium text-ink"
           >
-            Have a pharmacist review
+            Have a consultant review
           </button>
         )}
       </div>

@@ -291,7 +291,7 @@ function StepConsult({
       <div className="space-y-4 px-page-x py-8">
         <p data-micro>Before we recommend anything</p>
         <h1 className="font-display text-2xl leading-display tracking-snug text-ink">
-          Book fifteen minutes with a pharmacist. It's free, forever.
+          Book fifteen minutes with a health consultant. It's free, forever.
         </h1>
         <p className="max-w-prose text-base text-ink-muted">
           Fifteen years of experience, a quiet conversation, no upsell. It's

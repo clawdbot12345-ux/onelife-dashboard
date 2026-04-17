@@ -47,7 +47,7 @@ export function ContraindicationBanner({
           A quick word, before you add this.
         </p>
         <p className="mt-1 max-w-prose text-sm text-ink-muted">
-          You told us about {phrase}. A pharmacist should see {productName} first —
+          You told us about {phrase}. A health consultant should see {productName} first —
           some ingredients interact with common medicines, and we'd rather be
           certain than sorry.
         </p>
@@ -56,7 +56,7 @@ export function ContraindicationBanner({
           onClick={onConsult}
           className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-sage-deep underline underline-offset-4"
         >
-          Message a pharmacist
+          Message a health consultant
         </button>
       </div>
     </aside>

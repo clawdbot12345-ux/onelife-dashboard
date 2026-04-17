@@ -193,7 +193,7 @@ export default function DesignShowcase() {
         <Demo label="States">
           <Button loading>Booking</Button>
           <Button disabled>Out of stock</Button>
-          <Button leadingIcon={<Leaf weight="regular" size={16} />}>Pharmacist pick</Button>
+          <Button leadingIcon={<Leaf weight="regular" size={16} />}>Consultant pick</Button>
         </Demo>
       </Group>
 
@@ -242,7 +242,7 @@ export default function DesignShowcase() {
               imageAlt="Magnesium Glycinate"
               price={24900}
               compareAtPrice={29900}
-              tag={{ kind: "pharmacistPick" }}
+              tag={{ kind: "consultantPick" }}
             />
             <ProductCard
               id="2"
@@ -296,14 +296,14 @@ export default function DesignShowcase() {
             durationMinutes={15}
             mode="in-store"
             storeName="Centurion"
-            pharmacistName="Dr. Naledi Khumalo"
+            consultantName="Dr. Naledi Khumalo"
             onBook={() => {}}
           />
           <ConsultationSlot
             isoStart={new Date(Date.now() + 7200_000).toISOString()}
             durationMinutes={15}
             mode="video"
-            pharmacistName="Ahmed Patel"
+            consultantName="Ahmed Patel"
             onBook={() => {}}
           />
           <ConsultationSlot
@@ -430,7 +430,7 @@ export default function DesignShowcase() {
         <p className="mt-2 max-w-prose text-sm text-ink-muted">
           Pass 3 brings Home and Product Detail. Hold off on celebrating until we
           see a product image on paper, a sticky add-to-cart bar in mono numerals,
-          and a pharmacist's name on a consult card.
+          and a consultant's name on a consult card.
         </p>
       </footer>
     </div>

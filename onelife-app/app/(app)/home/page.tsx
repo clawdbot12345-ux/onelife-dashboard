@@ -77,7 +77,7 @@ export default function HomePage() {
       <section className="space-y-5">
         <SectionHeader
           eyebrow="Consult"
-          title="Talk to a pharmacist."
+          title="Talk to a health consultant."
           description="Free, fifteen minutes, no obligation. Today's earliest below."
           action={{ label: "All slots", href: "/consult" }}
         />
@@ -89,7 +89,7 @@ export default function HomePage() {
               durationMinutes={slot.durationMinutes}
               mode={slot.mode}
               storeName={slot.storeName}
-              pharmacistName={slot.pharmacistName}
+              consultantName={slot.consultantName}
               onBook={() => router.push("/consult")}
             />
           ))}
@@ -134,8 +134,8 @@ export default function HomePage() {
                 price={p.price}
                 compareAtPrice={p.compareAtPrice}
                 tag={
-                  p.pharmacistPick
-                    ? { kind: "pharmacistPick" }
+                  p.consultantPick
+                    ? { kind: "consultantPick" }
                     : p.saMade
                       ? { kind: "saMade" }
                       : undefined

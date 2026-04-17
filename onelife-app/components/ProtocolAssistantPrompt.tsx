@@ -24,7 +24,7 @@ export function ProtocolAssistantPrompt({
     <section className={cn("space-y-4 rounded-hero bg-bone p-6 shadow-card", className)}>
       <div className="flex items-center gap-2 text-ink-muted">
         <Sparkle weight="regular" size={16} />
-        <span data-micro>AI · always reviewed by a human pharmacist</span>
+        <span data-micro>AI · always reviewed by a human consultant</span>
       </div>
 
       <h3 className="font-display text-xl text-ink">
@@ -32,7 +32,7 @@ export function ProtocolAssistantPrompt({
       </h3>
       <p className="max-w-prose text-sm text-ink-muted">
         Describe what's going on. We'll suggest a three-to-five product protocol
-        with studies and timing, and offer a free pharmacist review before you
+        with studies and timing, and offer a free consultant review before you
         buy anything.
       </p>
 

@@ -124,8 +124,8 @@ export default function ShopPage() {
               price={p.price}
               compareAtPrice={p.compareAtPrice}
               tag={
-                p.pharmacistPick
-                  ? { kind: "pharmacistPick" }
+                p.consultantPick
+                  ? { kind: "consultantPick" }
                   : p.saMade
                     ? { kind: "saMade" }
                     : undefined
@@ -142,12 +142,12 @@ export default function ShopPage() {
         <div className="mt-16 space-y-4 px-page-x text-center">
           <p data-micro>Nothing matches</p>
           <p className="mx-auto max-w-prose text-lg text-ink-muted">
-            Widen your filters, or ask a pharmacist — they know the catalogue
+            Widen your filters, or ask a consultant — they know the catalogue
             better than any search bar.
           </p>
           <div className="pt-2">
             <Button variant="secondary" onClick={() => router.push("/consult")}>
-              Message a pharmacist
+              Message a health consultant
             </Button>
           </div>
         </div>

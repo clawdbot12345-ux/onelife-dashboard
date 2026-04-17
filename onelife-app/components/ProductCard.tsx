@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 // Tag precedence encoded in the type already; this just maps to copy + tone.
 const tagCopy = (tag: ProductTag) => {
   switch (tag.kind) {
-    case "pharmacistPick":
-      return { label: "Pharmacist pick", tone: "sage" as const };
+    case "consultantPick":
+      return { label: "Consultant pick", tone: "sage" as const };
     case "saMade":
       return { label: "SA made", tone: "ink" as const };
     case "new":
