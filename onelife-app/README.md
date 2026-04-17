@@ -6,21 +6,33 @@ Premium mobile-first PWA for One Life Health. Built on Next.js 14 + TypeScript
 ## Status
 
 - **Pass 1 ✓** — Design tokens and typed component API sketches.
-- **Pass 2 ✓** — Next.js scaffold, all 20 primitives implemented, `/design`
-  showcase route. `npm run dev` → `http://localhost:3000/design`.
-- Pass 3 — Home + Product Detail screens.
-- Pass 4 — Shop + Consult + Rewards + Onboarding.
-- Pass 5 — Polish, docs, PWA manifest.
+- **Pass 2 ✓** — Next.js scaffold, 20 primitives, `/design` showcase.
+- **Pass 3 ✓** — Home + Product Detail, wired through `AppShell`.
+- **Pass 4 ✓** — Shop + Consult + Rewards + Onboarding.
+- Pass 5 — Polish, docs, PWA manifest, photography integration.
 
 ## Run it
 
 ```bash
 cd onelife-app
 npm install
-npm run dev         # http://localhost:3000 → redirects to /design
+npm run dev         # http://localhost:3000 → /home
 npm run build       # production build, statically generated
 npm run typecheck
 ```
+
+## Routes
+
+| Path | What |
+|---|---|
+| `/` | Redirects to `/home`. |
+| `/home` | Greeting, active protocol, next slots, editorial, curated rail, store card. |
+| `/shop` | Goal-first filter rail, bottom-sheet secondary filters, 2-col grid. |
+| `/product/[slug]` | Parallax hero, subscribe toggle, 5-tab info, reviews. SSG from mock data. |
+| `/consult` | Three modes (in-store / video / message) + AI protocol assistant. |
+| `/rewards` | Membership card, earn ways, redemption catalogue, perks. |
+| `/onboarding` | 4-step first-run flow — writes goals + contraindications to `useUser`. |
+| `/design` | Audit surface. Every token and component state in one scroll. |
 
 ## What's in here
 
@@ -92,14 +104,16 @@ A few constraints are encoded directly as TypeScript unions in
 - [x] Minimum 16px body, 44×44 tap target — in tokens.
 - [x] Default Tailwind palette banned at the config level.
 
-## Next — waiting for your react
+## Next — Pass 5 (polish)
 
-Pass 3 will:
-1. Build the Home screen — greeting, active protocol, next consultation slot,
-   editorial hero, curated-for-you rail, this-week strip, store card.
-2. Build Product Detail — parallax hero, sticky add-to-cart, Why-we-stock-it
-   / How-to-take-it / Ingredients / Evidence / Pairs-with tabs,
-   contraindication banner, reviews.
-3. Wire both into `AppShell` so the product feels like one thing, not two.
-
-Hold off until you've pushed back on anything in the showcase.
+1. Drop commissioned photography into `PaperImage` surfaces (product, hero,
+   editorial). Single `ProductImage` component keeps `PaperImage` fallback
+   when a shoot hasn't landed.
+2. PWA manifest + install prompt. Apple splash, maskable icons, offline
+   shell.
+3. Analytics event spec (`product_viewed`, `added_to_cart`,
+   `consultation_booked`, `protocol_generated`, `tier_upgraded`) wired to
+   a thin `track()` shim ready for Segment / GTM.
+4. Lighthouse pass — LCP, CLS, TBT green on mobile 4G throttle.
+5. README diagrams for the adapter layer (Shopify Storefront, Omni Accounts
+   ERP, Klaviyo) so the next engineer can extend without drift.

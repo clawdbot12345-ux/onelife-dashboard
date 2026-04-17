@@ -413,6 +413,108 @@ export const MOCK_USER = {
   memberSince: "2022-08-02",
 };
 
+export const MOCK_BRANDS = [
+  "Vivid Health",
+  "Solgar",
+  "Solal",
+  "Seed",
+  "Thorne",
+  "Garden of Life",
+  "NOW Foods",
+  "Vital Proteins",
+];
+
+export const MOCK_EARN_WAYS = [
+  { title: "Every R10 spent", reward: "1 point" },
+  { title: "Complete a consultation", reward: "50 points" },
+  { title: "Leave a verified review", reward: "25 points" },
+  { title: "Refer a friend", reward: "200 points" },
+];
+
+export const MOCK_REDEMPTIONS = [
+  {
+    id: "r-1",
+    title: "R50 off your next order",
+    cost: 500,
+    glyph: "bottle" as const,
+  },
+  {
+    id: "r-2",
+    title: "Free 30-minute consultation",
+    cost: 750,
+    glyph: "mortar" as const,
+  },
+  {
+    id: "r-3",
+    title: "Vivid Health tote bag",
+    cost: 1200,
+    glyph: "leaf" as const,
+  },
+  {
+    id: "r-4",
+    title: "R200 off any Seed product",
+    cost: 2000,
+    glyph: "bottle" as const,
+  },
+];
+
+export const MOCK_MEMBER_PERKS = [
+  "Free delivery on orders under R400",
+  "Early access to new arrivals and restocks",
+  "Birthday gift from the buyer's desk",
+  "One free quarterly pharmacist consultation",
+  "Members-only events in-store",
+];
+
+// Fuller consult roster so Consult page's three modes feel real.
+export const MOCK_CONSULT_SLOTS_FULL = {
+  "in-store": [
+    {
+      isoStart: new Date(Date.now() + 3.5 * 3600_000).toISOString(),
+      durationMinutes: 15,
+      mode: "in-store" as const,
+      storeName: "Centurion",
+      pharmacistName: "Ahmed Patel",
+    },
+    {
+      isoStart: new Date(Date.now() + 5 * 3600_000).toISOString(),
+      durationMinutes: 15,
+      mode: "in-store" as const,
+      storeName: "Centurion",
+      pharmacistName: "Ahmed Patel",
+    },
+    {
+      isoStart: new Date(Date.now() + 23 * 3600_000).toISOString(),
+      durationMinutes: 30,
+      mode: "in-store" as const,
+      storeName: "Glen Village",
+      pharmacistName: "Thandi Maseko",
+    },
+  ],
+  video: [
+    {
+      isoStart: new Date(Date.now() + 90 * 60_000).toISOString(),
+      durationMinutes: 15,
+      mode: "video" as const,
+      pharmacistName: "Dr. Naledi Khumalo",
+    },
+    {
+      isoStart: new Date(Date.now() + 4 * 3600_000).toISOString(),
+      durationMinutes: 30,
+      mode: "video" as const,
+      pharmacistName: "Dr. Naledi Khumalo",
+    },
+  ],
+  message: [
+    {
+      isoStart: new Date(Date.now() + 2 * 3600_000).toISOString(),
+      durationMinutes: 240,
+      mode: "message" as const,
+      pharmacistName: "First available pharmacist",
+    },
+  ],
+};
+
 /* ---------------------------------------------------------------- */
 
 export function findProduct(slug: string) {
