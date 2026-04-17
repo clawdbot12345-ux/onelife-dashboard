@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import type { SectionHeaderProps } from "./primitives";

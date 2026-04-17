@@ -322,7 +322,37 @@ export interface ProtocolAssistantPromptProps extends WithClassName {
 }
 
 /* ------------------------------------------------------------------ */
-/* Layout shells — not counted in the 20, but needed to route.         */
+/* 21. Tabs                                                            */
+/* Sticky tab strip for PDP info panels. Controlled by parent so       */
+/* deep links can open on a specific tab.                              */
+/* ------------------------------------------------------------------ */
+export interface TabsItem<T extends string = string> {
+  key: T;
+  label: string;
+}
+
+export interface TabsProps<T extends string = string> extends WithClassName {
+  items: readonly TabsItem<T>[];
+  active: T;
+  onChange: (key: T) => void;
+  /** Sticks to top of scroll container when scrolled past. */
+  sticky?: boolean;
+}
+
+/* ------------------------------------------------------------------ */
+/* 22. SubscriptionToggle                                              */
+/* PDP + cart. Two-state pill: one-time vs subscription (10% off,      */
+/* free delivery). Intentionally not a checkbox — this is a decision.  */
+/* ------------------------------------------------------------------ */
+export interface SubscriptionToggleProps extends WithClassName {
+  value: "one-time" | "subscribe";
+  onChange: (v: "one-time" | "subscribe") => void;
+  percentOff: number;
+  cadenceLabel?: string;     // "every 30 days"
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout shells — not counted in the primitive set, but needed.       */
 /* ------------------------------------------------------------------ */
 
 export interface AppShellProps extends WithChildren {
