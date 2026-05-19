@@ -1,0 +1,2 @@
+old_url,new_url_skeleton,status_code,rationale
+https://vividhealthsa.co.za/,/,503,"origin unreachable during crawl; map provisionally, verify when site is up"
