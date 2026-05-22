@@ -37,13 +37,13 @@
   --alert:#A33324;
   --success:#3F6048;
 
-  /* Per-goal palettes — every category gets its own color world */
+  /* Per-goal palettes — aligned to the Vivid label color system */
   --g-gut-bg:#EBC9A0;       --g-gut-text:#5A3617;       --g-gut-accent:#8C3F23;
-  --g-immunity-bg:#C6D5BC;  --g-immunity-text:#1B3A2E;  --g-immunity-accent:#3F6048;
+  --g-immunity-bg:#FFD1BC;  --g-immunity-text:#7A2E14;  --g-immunity-accent:#E76A47;   /* Immune Health = peach/coral */
   --g-energy-bg:#E8B891;    --g-energy-text:#6A2818;    --g-energy-accent:#A33324;
-  --g-stress-bg:#D4C0BD;    --g-stress-text:#3A1F2C;    --g-stress-accent:#5A2436;
-  --g-joints-bg:#D6C499;    --g-joints-text:#3F2D14;    --g-joints-accent:#7A5A23;
-  --g-women-bg:#E5C9C5;     --g-women-text:#5A1F2A;     --g-women-accent:#8C2F3C;
+  --g-stress-bg:#B8C8DE;    --g-stress-text:#1F3759;    --g-stress-accent:#3A5C8C;   /* Mental Health = deep blue */
+  --g-joints-bg:#B7CFAF;    --g-joints-text:#1F3A26;   --g-joints-accent:#3F6048;    /* Physical Health green */
+  --g-women-bg:#D9B6BD;     --g-women-text:#4F1F30;     --g-women-accent:#7A2E40;    /* Women's Health dusty plum */
   --g-men-bg:#B8B5A6;       --g-men-text:#1F1A14;       --g-men-accent:#3A3225;
   --g-daily-bg:#C7D1B6;     --g-daily-text:#1F2E1C;    --g-daily-accent:#3F5532;
   --g-bundles-bg:#1B3A2E;   --g-bundles-text:#F4ECDB;  --g-bundles-accent:#CC8848;
@@ -146,33 +146,25 @@ em{font-style:italic;font-weight:300;font-variation-settings:"SOFT" 100}
 .pill--alert{background:rgba(163,51,36,.10);color:var(--alert);border-color:rgba(163,51,36,.28)}
 .pill--dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 
-/* ─── Hero — editorial cover ─── */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);min-height:88vh;display:grid;grid-template-columns:5fr 7fr}
-@media (max-width:1000px){.hero{grid-template-columns:1fr;min-height:auto}}
-.hero-text{background:var(--forest-deep);color:var(--paper);padding:var(--s-9) var(--s-7) var(--s-8);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.hero-text::after{content:"";position:absolute;inset:auto -20% -30% auto;width:80%;height:80%;background:radial-gradient(circle, rgba(204,136,72,.18) 0%, transparent 60%);pointer-events:none}
-.hero-text > * {position:relative;z-index:1}
-.hero-eyebrow{font-family:var(--font-sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);font-weight:500;margin-bottom:var(--s-7);display:flex;gap:14px;align-items:center}
-.hero-eyebrow::before{content:"";width:32px;height:1px;background:var(--sage);display:inline-block}
-.hero h1{color:var(--paper);font-size:clamp(54px,7.5vw,128px);line-height:.94;letter-spacing:-.035em;font-variation-settings:"opsz" 144, "SOFT" 30}
-.hero h1 em{color:var(--ochre);font-style:italic;font-weight:300;display:block;font-variation-settings:"SOFT" 100}
-.hero-lede{font-size:18px;line-height:1.55;color:rgba(244,236,219,.78);max-width:46ch;margin:var(--s-6) 0 var(--s-6)}
+/* ─── Hero — full-bleed photo cover ─── */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);min-height:92vh;display:flex;align-items:flex-end;color:var(--paper)}
+.hero-photo{position:absolute;inset:0;background-size:cover;background-position:center 35%;background-repeat:no-repeat;z-index:0}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(11,22,16,.05) 0%, rgba(11,22,16,.0) 30%, rgba(11,22,16,.55) 75%, rgba(11,22,16,.85) 100%)}
+.hero-content{position:relative;z-index:2;padding:var(--s-9) 0 var(--s-7);max-width:760px}
+.hero-eyebrow{font-family:var(--font-sans);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(244,236,219,.88);font-weight:600;margin-bottom:var(--s-5);display:flex;gap:14px;align-items:center}
+.hero-eyebrow::before{content:"";width:36px;height:1px;background:rgba(244,236,219,.55);display:inline-block}
+.hero h1{color:var(--paper);font-size:clamp(48px,6.5vw,108px);line-height:.94;letter-spacing:-.03em;font-variation-settings:"opsz" 144, "SOFT" 30;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero h1 em{color:var(--sage-soft);font-style:italic;font-weight:300;font-variation-settings:"SOFT" 100}
+.hero-lede{font-size:18px;line-height:1.55;color:rgba(244,236,219,.92);max-width:50ch;margin:var(--s-5) 0 var(--s-6);text-shadow:0 1px 12px rgba(0,0,0,.3)}
 .hero-cta{display:flex;gap:var(--s-3);flex-wrap:wrap}
-.hero-stats{display:flex;gap:var(--s-7);margin-top:var(--s-8);padding-top:var(--s-5);border-top:1px solid rgba(244,236,219,.18)}
+.hero-cta .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.hero-cta .btn:hover{background:var(--bone);border-color:var(--bone)}
+.hero-cta .btn--ghost{background:transparent;color:var(--paper);border-color:rgba(244,236,219,.45)}
+.hero-cta .btn--ghost:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.hero-stats{display:flex;gap:var(--s-7);margin-top:var(--s-6);padding-top:var(--s-5);border-top:1px solid rgba(244,236,219,.22);max-width:520px}
 .hero-stat .num{font-family:var(--font-display);font-size:44px;line-height:1;color:var(--paper);font-variation-settings:"opsz" 144,"SOFT" 40}
-.hero-stat .lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-top:8px;font-weight:600}
-
-.hero-visual{position:relative;background:linear-gradient(135deg, var(--bone) 0%, var(--wheat) 60%, var(--cream) 100%);display:grid;place-items:center;overflow:hidden;min-height:60vh}
-.hero-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%, rgba(255,255,255,.35) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(204,136,72,.18) 0%, transparent 50%);pointer-events:none}
-.hero-product{position:relative;width:62%;max-width:520px;aspect-ratio:1;display:grid;place-items:center}
-.hero-product::before{content:"";position:absolute;inset:6% 12% 4% 12%;background:radial-gradient(circle at 50% 45%, rgba(255,255,255,.55) 0%, transparent 60%);border-radius:50%;filter:blur(20px)}
-.hero-product img{position:relative;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 50px 60px rgba(11,22,16,.32))}
-.hero-tag{position:absolute;top:24px;left:24px;background:rgba(11,22,16,.92);color:var(--paper);padding:8px 14px;border-radius:var(--r-pill);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;z-index:2;backdrop-filter:blur(6px)}
-.hero-meta{position:absolute;bottom:24px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:flex-end;z-index:2;gap:24px}
-.hero-meta-card{background:rgba(244,236,219,.92);backdrop-filter:blur(8px);padding:16px 18px;border-radius:var(--r-md);max-width:260px;border:1px solid var(--line)}
-.hero-meta-card .lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);font-weight:600;margin-bottom:4px}
-.hero-meta-card .val{font-family:var(--font-display);font-size:18px;color:var(--ink);line-height:1.2}
-.hero-meta-card .sub{font-size:12px;color:var(--ink-soft);margin-top:4px}
+.hero-stat .lbl{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,236,219,.78);margin-top:6px;font-weight:600}
+@media (max-width:760px){.hero{min-height:78vh}.hero-content{padding-bottom:var(--s-6)}.hero h1{font-size:48px}}
 
 /* ─── Trust strip ─── */
 .trust{background:var(--bone);padding:var(--s-5) 0;border-bottom:1px solid var(--line);position:relative;z-index:2}
@@ -255,15 +247,22 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 
 /* Per-goal product card backgrounds */
 .card[data-goal="gut"] .card-media{background:linear-gradient(140deg, var(--g-gut-bg) 0%, #DBB587 100%)}
-.card[data-goal="immunity"] .card-media{background:linear-gradient(140deg, var(--g-immunity-bg) 0%, #ABBFA0 100%)}
+.card[data-goal="immunity"] .card-media{background:linear-gradient(140deg, var(--g-immunity-bg) 0%, #F2A98C 100%)}
 .card[data-goal="energy"] .card-media{background:linear-gradient(140deg, var(--g-energy-bg) 0%, #D9A077 100%)}
-.card[data-goal="stress"] .card-media{background:linear-gradient(140deg, var(--g-stress-bg) 0%, #BFA59F 100%)}
-.card[data-goal="joints"] .card-media{background:linear-gradient(140deg, var(--g-joints-bg) 0%, #C2AC78 100%)}
-.card[data-goal="women"] .card-media{background:linear-gradient(140deg, var(--g-women-bg) 0%, #D3ADA7 100%)}
+.card[data-goal="stress"] .card-media{background:linear-gradient(140deg, var(--g-stress-bg) 0%, #8FA8C7 100%)}
+.card[data-goal="joints"] .card-media{background:linear-gradient(140deg, var(--g-joints-bg) 0%, #8FAE85 100%)}
+.card[data-goal="women"] .card-media{background:linear-gradient(140deg, var(--g-women-bg) 0%, #BC8E97 100%)}
 .card[data-goal="men"] .card-media{background:linear-gradient(140deg, var(--g-men-bg) 0%, #9E9A85 100%)}
 .card[data-goal="daily"] .card-media{background:linear-gradient(140deg, var(--g-daily-bg) 0%, #B1BFA0 100%)}
 .card[data-goal="bundles"] .card-media{background:linear-gradient(140deg, var(--cream) 0%, var(--wheat) 100%)}
-.card[data-goal="bundles"] .card-media img{mix-blend-mode:normal;width:84%;max-height:88%}
+.card[data-goal="bundles"] .card-media img{mix-blend-mode:normal;width:100%;max-height:100%;height:100%;object-fit:cover}
+
+/* Lifestyle / cover photo cards — full-bleed, no multiply, no plinth */
+.card--cover .card-media{background:#1a1a1a !important}
+.card--cover .card-media::before,
+.card--cover .card-media::after{display:none}
+.card--cover .card-media img{mix-blend-mode:normal;width:100%;height:100%;max-height:100%;object-fit:cover}
+.card--cover:hover .card-media img{transform:scale(1.04)}
 
 .card-badge{position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:5px;z-index:2}
 .card-quickadd{position:absolute;bottom:14px;right:14px;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;opacity:0;transform:translateY(8px) scale(.85);transition:.25s cubic-bezier(.2,.7,.3,1);z-index:2;box-shadow:0 8px 20px -6px rgba(11,22,16,.4)}
@@ -422,12 +421,15 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .pdp-main-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.4) 0%, transparent 55%);pointer-events:none;z-index:1}
 .pdp-main-img::after{content:"";position:absolute;left:50%;bottom:12%;transform:translateX(-50%);width:60%;height:14px;background:radial-gradient(ellipse, rgba(11,22,16,.22) 0%, transparent 70%);filter:blur(8px)}
 .pdp-main-img img{width:62%;height:auto;max-height:72%;object-fit:contain;mix-blend-mode:multiply;position:relative;z-index:1}
+.pdp-main-img--cover{background:#1a1a1a !important;border-color:transparent}
+.pdp-main-img--cover::before,.pdp-main-img--cover::after{display:none}
+.pdp-main-img--cover img{width:100%;height:100%;max-height:100%;object-fit:cover;mix-blend-mode:normal}
 .pdp[data-goal="gut"] .pdp-main-img{background:linear-gradient(140deg, var(--g-gut-bg), #DBB587)}
-.pdp[data-goal="immunity"] .pdp-main-img{background:linear-gradient(140deg, var(--g-immunity-bg), #ABBFA0)}
+.pdp[data-goal="immunity"] .pdp-main-img{background:linear-gradient(140deg, var(--g-immunity-bg), #F2A98C)}
 .pdp[data-goal="energy"] .pdp-main-img{background:linear-gradient(140deg, var(--g-energy-bg), #D9A077)}
-.pdp[data-goal="stress"] .pdp-main-img{background:linear-gradient(140deg, var(--g-stress-bg), #BFA59F)}
-.pdp[data-goal="joints"] .pdp-main-img{background:linear-gradient(140deg, var(--g-joints-bg), #C2AC78)}
-.pdp[data-goal="women"] .pdp-main-img{background:linear-gradient(140deg, var(--g-women-bg), #D3ADA7)}
+.pdp[data-goal="stress"] .pdp-main-img{background:linear-gradient(140deg, var(--g-stress-bg), #8FA8C7)}
+.pdp[data-goal="joints"] .pdp-main-img{background:linear-gradient(140deg, var(--g-joints-bg), #8FAE85)}
+.pdp[data-goal="women"] .pdp-main-img{background:linear-gradient(140deg, var(--g-women-bg), #BC8E97)}
 .pdp[data-goal="men"] .pdp-main-img{background:linear-gradient(140deg, var(--g-men-bg), #9E9A85)}
 .pdp[data-goal="daily"] .pdp-main-img{background:linear-gradient(140deg, var(--g-daily-bg), #B1BFA0)}
 .pdp-thumbs{display:flex;gap:10px}
@@ -677,10 +679,27 @@ const PRODUCTS = [
 ];
 
 const BUNDLES = [
-  {handle:"rest-focus",name:"Rest & Focus Stack",desc:"Sleep, calm, and mental clarity in one stack — Tranquil, Griffonia 5-HTP, GABA powder.",price:587.67,save:120,img:CDN+"vivid-rest-focus-v3.jpg",includes:["tranquil-60","griffonia-5htp-60","gaba-150g"]},
-  {handle:"bone-joint",name:"Bone & Joint Pack",desc:"Complete skeletal support — Bone Supreme, MSM, Flexijoint Advanced.",price:742.66,save:150,img:CDN+"vivid-bone-joint-v3.jpg",includes:["bone-supreme-120","msm-90","flexijoint-advanced-120"]},
-  {handle:"allergy-stack",name:"Allergy Stack",desc:"Allergy and immune support — Allergy Control, Quercetin Complex, Buffered C.",price:594.72,save:110,img:CDN+"vivid-allergy-stack-v4.jpg",includes:["allergy-control-60","quercetin-complex-60","buffered-c-90"]},
+  {handle:"rest-focus",name:"Rest & Focus Stack",desc:"Sleep, calm, and mental clarity in one stack — Tranquil, Griffonia 5-HTP, GABA powder.",price:587.67,save:120,img:"assets/products/griffonia-moss.jpg",includes:["tranquil-60","griffonia-5htp-60","gaba-150g"]},
+  {handle:"bone-joint",name:"Bone & Joint Pack",desc:"Complete skeletal support — Bone Supreme, MSM, Flexijoint Advanced.",price:742.66,save:150,img:"assets/products/physical-trio.jpg",includes:["bone-supreme-120","msm-90","flexijoint-advanced-120"]},
+  {handle:"allergy-stack",name:"Allergy Stack",desc:"Allergy and immune support — Allergy Control, Quercetin Complex, Buffered C.",price:594.72,save:110,img:"assets/products/allergy-control-lavender.jpg",includes:["allergy-control-60","quercetin-complex-60","buffered-c-90"]},
 ];
+
+const HEROES = {
+  "allergy-control-60": ["assets/products/allergy-control-lavender.jpg","assets/products/allergy-control-stone.jpg","assets/products/allergy-control-infographic.jpg"],
+  "maca-60": ["assets/products/maca.jpg"],
+  "liver-kidney-90": ["assets/products/liver-kidney.jpg"],
+  "griffonia-5htp-60": ["assets/products/griffonia-moss.jpg","assets/products/griffonia-bedside.jpg"],
+  "bone-supreme-120": ["assets/products/bone-supreme.jpg","assets/products/physical-trio.jpg"],
+  "bone-supreme-500": ["assets/products/bone-supreme.jpg"],
+  "msm-90": ["assets/products/physical-trio.jpg"],
+  "msm-300": ["assets/products/physical-trio.jpg"],
+  "msm-500": ["assets/products/physical-trio.jpg"],
+  "msm-150g": ["assets/products/physical-trio.jpg"],
+  "flexijoint-advanced-120": ["assets/products/physical-trio.jpg"],
+  "flexijoint-300": ["assets/products/physical-trio.jpg"],
+};
+const imagesFor = (p) => [...(HEROES[p.handle]||[]), ...(p.img||[])];
+const isLifestyle = (src) => /\/assets\/products\//.test(src) && !/hero-group/.test(src);
 
 const JOURNAL = [
   {
@@ -916,16 +935,16 @@ function renderHome(main){
   const moreFeatured = ["moringa-300","griffonia-5htp-60","flexijoint-advanced-120","l-glutamine-500"].map(findProduct).filter(Boolean);
 
   main.innerHTML = `
-  <section class="hero">
-    <div class="hero-text">
-      <div>
-        <div class="hero-eyebrow">Made in Centurion · Since 2023</div>
-        <h1>Vivid by<br><em>nature.</em><br>Verified by<br>science.</h1>
-        <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Fifty-five formulations across gut, immunity, sleep, joints, and daily nutrition.</p>
-        <div class="hero-cta">
-          <a href="#/shop" class="btn btn--cream btn-arrow">Shop the range</a>
-          <a href="#/about" class="btn btn--ghost" style="color:var(--paper);border-color:rgba(244,236,219,.32)">Our story</a>
-        </div>
+  <section class="hero hero--photo">
+    <div class="hero-photo" style="background-image:url('assets/products/hero-group.jpg')"></div>
+    <div class="hero-scrim"></div>
+    <div class="container hero-content">
+      <div class="hero-eyebrow">Made in Centurion · Since 2023</div>
+      <h1>Vivid by <em>nature.</em><br>Verified by science.</h1>
+      <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Six health categories. Fifty-five formulations.</p>
+      <div class="hero-cta">
+        <a href="#/shop" class="btn btn-arrow">Shop the range</a>
+        <a href="#/about" class="btn btn--ghost">Our story</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num">55</div><div class="lbl">Formulations</div></div>
@@ -933,24 +952,6 @@ function renderHome(main){
         <div class="hero-stat"><div class="num">3</div><div class="lbl">Retail stores</div></div>
       </div>
     </div>
-    <a href="#/product/${hero.handle}" class="hero-visual">
-      <span class="hero-tag">Featured · ${hero.size}</span>
-      <div class="hero-product">
-        <img src="${hero.img[0]}" alt="${hero.name}" loading="eager">
-      </div>
-      <div class="hero-meta">
-        <div class="hero-meta-card">
-          <div class="lbl">This month</div>
-          <div class="val">${hero.name}</div>
-          <div class="sub">${hero.bench}</div>
-        </div>
-        <div class="hero-meta-card" style="text-align:right">
-          <div class="lbl">From</div>
-          <div class="val">${fmtR(hero.price)}</div>
-          <div class="sub">incl. VAT</div>
-        </div>
-      </div>
-    </a>
   </section>
 
   <div class="trust">
@@ -1152,15 +1153,17 @@ function initReveal(){
 function cardHTML(p, feature=false){
   const sold = !p.stock;
   const isVegan = (p.diet||[]).includes("vegan");
+  const primaryImg = imagesFor(p)[0];
+  const cover = isLifestyle(primaryImg);
   return `
-  <a href="#/product/${p.handle}" class="card ${feature?'card--feature':''}" data-goal="${p.goal}" aria-label="${p.name}">
+  <a href="#/product/${p.handle}" class="card ${feature?'card--feature':''} ${cover?'card--cover':''}" data-goal="${p.goal}" aria-label="${p.name}">
     <div class="card-media">
       <div class="card-badge">
         ${isVegan?`<span class="pill pill--green">Vegan</span>`:""}
         ${sold?`<span class="pill pill--alert">Sold out</span>`:""}
         ${p.hero?`<span class="pill pill--dark">Best seller</span>`:""}
       </div>
-      <img src="${p.img[0]}" alt="${p.name}" loading="lazy">
+      <img src="${primaryImg}" alt="${p.name}" loading="lazy">
       ${p.stock?`<button class="card-quickadd" aria-label="Quick add" onclick="event.preventDefault();event.stopPropagation();addToCart('${p.handle}')">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       </button>`:""}
@@ -1310,10 +1313,12 @@ function renderProductPDP(main, p){
     <div class="crumb"><a href="#/">Home</a> · <a href="#/shop">Shop</a> · <a href="#/shop?goal=${p.goal}">${goalName(p.goal)}</a> · ${p.name}</div>
     <div class="pdp-grid">
       <div class="pdp-gallery">
-        <div class="pdp-main-img" id="pdpMain"><img src="${p.img[0]}" alt="${p.name}"></div>
+        ${(()=>{ const imgs = imagesFor(p); const first = imgs[0]; const cover = isLifestyle(first); return `
+        <div class="pdp-main-img ${cover?'pdp-main-img--cover':''}" id="pdpMain"><img src="${first}" alt="${p.name}"></div>
         <div class="pdp-thumbs">
-          ${p.img.map((src,i)=>`<button class="pdp-thumb ${i===0?'active':''}" onclick="swapThumb(this,'${src}')"><img src="${src}" alt=""></button>`).join("")}
+          ${imgs.slice(0,6).map((src,i)=>`<button class="pdp-thumb ${i===0?'active':''}" onclick="swapThumb(this,'${src}', ${isLifestyle(src)})"><img src="${src}" alt=""></button>`).join("")}
         </div>
+        `; })()}
       </div>
       <div>
         <div class="pdp-cat">${goalName(p.goal)} · ${p.form}</div>
@@ -1435,9 +1440,11 @@ function renderBundlePDP(main, b){
     </div>
   </div>`;
 }
-function swapThumb(btn, src){
+function swapThumb(btn, src, cover){
   $$(".pdp-thumb").forEach(t=>t.classList.remove("active"));
   btn.classList.add("active");
+  const main = $("#pdpMain");
+  main.classList.toggle("pdp-main-img--cover", !!cover);
   $("#pdpMain img").src = src;
 }
 function setTab(btn, key){
