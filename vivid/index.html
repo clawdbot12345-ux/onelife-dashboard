@@ -503,6 +503,162 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1)}
 .reveal.in{opacity:1;transform:none}
 
+/* ─── Mobile pass — tighter spacing, hierarchy, less text density ─── */
+@media (max-width:880px){
+  .container,.container-wide{padding:0 20px}
+  section{padding:56px 0}
+  .section-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:32px}
+  .section-head .lead{font-size:15px}
+  .section-head h2{font-size:38px;line-height:1.0}
+  .section-head .btn{margin-top:8px}
+  /* Nav */
+  .nav-inner{height:60px;padding:0 18px;gap:12px}
+  .brand img{height:30px}
+  .icon-btn{width:38px;height:38px}
+  .announce{font-size:10px;padding:8px 12px;letter-spacing:.14em}
+  .announce span{margin:0 6px}
+  .announce span::after{margin-left:6px}
+  /* Hero */
+  .hero{min-height:84vh}
+  .hero-content{padding:48px 0 32px}
+  .hero h1{font-size:42px;line-height:.96;letter-spacing:-.025em}
+  .hero-lede{font-size:15px;margin:18px 0 22px;line-height:1.5}
+  .hero-eyebrow{font-size:10px;letter-spacing:.2em;margin-bottom:18px}
+  .hero-eyebrow::before{width:24px}
+  .hero-stats{gap:18px;margin-top:28px;padding-top:16px}
+  .hero-stat .num{font-size:28px}
+  .hero-stat .lbl{font-size:9px;letter-spacing:.16em}
+  .hero-cta{gap:8px}
+  .hero-cta .btn{padding:13px 18px;font-size:12px}
+  /* Cards */
+  .card-body{padding:16px 14px;gap:4px}
+  .card-cat{font-size:9px;letter-spacing:.14em}
+  .card-name{font-size:17px;line-height:1.12}
+  .card-bench{font-size:12px;line-height:1.4;min-height:auto}
+  .card-meta{padding-top:10px;margin-top:10px}
+  .card-price{font-size:17px}
+  .card-form{font-size:9px}
+  .card-quickadd{width:38px;height:38px}
+  .card-badge{top:10px;left:10px}
+  .pill{padding:4px 8px;font-size:9px}
+  .card--feature .card-name{font-size:22px}
+  .card--feature .card-body{padding:18px 16px}
+  /* Goals */
+  .goals{gap:8px;grid-template-columns:repeat(2,1fr)}
+  .goal{min-height:160px;padding:18px;border-radius:18px}
+  .goal-name{font-size:24px;line-height:1.0}
+  .goal-tag{font-size:9px;letter-spacing:.16em}
+  .goal-meta{font-size:10px}
+  .goal-meta .arrow{width:28px;height:28px}
+  /* Editorial */
+  .split{gap:32px}
+  .editorial-img{aspect-ratio:1/1;border-radius:24px}
+  .editorial-img .stamp{width:72px;height:72px;font-size:11px;bottom:16px;right:16px}
+  .editorial-img .lab{top:14px;left:14px;font-size:9px;padding:6px 10px}
+  .editorial-body p{font-size:16px;line-height:1.55}
+  .editorial-body p:first-of-type{font-size:18px}
+  .editorial-body p:first-of-type::first-letter{font-size:3.6em;margin:.1em .08em 0 -.02em}
+  .pullquote{font-size:22px;padding:20px 16px;margin:20px 0}
+  .kicker{font-size:10px;letter-spacing:.18em;margin-bottom:14px}
+  /* Bundles */
+  .bundles{gap:14px}
+  .bundle{border-radius:22px}
+  .bundle-name{font-size:24px;line-height:1.0}
+  .bundle-body{padding:22px 18px}
+  .bundle-desc{font-size:13px}
+  .bundle-price{font-size:22px}
+  .bundle-tag{font-size:9px;padding:6px 10px;top:12px;right:12px}
+  /* Ingredients */
+  .ing-list{gap:8px}
+  .ing-list .ing{padding:18px}
+  .ing-list .ing strong{font-size:18px}
+  .ing-list .ing span{font-size:12px}
+  /* Journal */
+  .journal,.journal-feature{gap:24px;grid-template-columns:1fr}
+  .article h3{font-size:20px}
+  .article--feature h3{font-size:28px}
+  .article-cat{font-size:10px;letter-spacing:.14em}
+  /* Capture */
+  .capture{padding:64px 0}
+  .capture h2{font-size:36px}
+  .capture p{font-size:15px}
+  .capture-form{flex-direction:column;gap:8px}
+  .capture-form input,.capture-form .btn{width:100%}
+  .capture-tiny{font-size:10px;letter-spacing:.1em}
+  /* Footer */
+  footer{padding:56px 0 24px}
+  .foot-grid{gap:32px;grid-template-columns:1fr 1fr}
+  .foot-grid > .foot-col:first-child{grid-column:1/-1}
+  .foot-col h5{font-size:10px;letter-spacing:.18em;margin-bottom:14px}
+  .foot-col a{font-size:13px}
+  .foot-col ul{gap:8px}
+  .foot-bottom{font-size:10px;text-align:center;flex-direction:column;gap:6px;margin-top:36px;padding-top:18px}
+  /* Collection */
+  .collection-head{padding:56px 0 32px}
+  .collection-head h1{font-size:48px;line-height:.98}
+  .collection-head p{font-size:15px;margin-top:12px}
+  .collection-layout{grid-template-columns:1fr;gap:24px;padding:24px 0 56px}
+  .filters{padding:0;border:0;display:flex;gap:8px;flex-wrap:wrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .filter-group{margin-bottom:0;flex-shrink:0}
+  .filter-group h5{display:none}
+  .filter-opts{flex-direction:row;gap:6px}
+  .filter-opts label{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:12px;white-space:nowrap}
+  .filter-opts label .ct{font-size:10px;margin-left:4px}
+  .filter-opts input[type=radio],.filter-opts input[type=checkbox]{display:none}
+  .filter-opts label:has(:checked){background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .toolbar{margin-bottom:20px;padding-bottom:14px}
+  .toolbar-count{font-size:12px}
+  .products-row{grid-template-columns:repeat(2,1fr) !important;gap:10px}
+  .crumb{font-size:10px;letter-spacing:.14em}
+  /* PDP */
+  .pdp{padding:24px 0 64px}
+  .pdp-grid{grid-template-columns:1fr;gap:32px}
+  .pdp-cat{font-size:10px;letter-spacing:.14em}
+  .pdp h1{font-size:36px;line-height:1.02}
+  .pdp-sub{font-size:15px;margin-bottom:18px}
+  .pdp-price-row{gap:14px;margin-bottom:20px}
+  .pdp-price{font-size:32px}
+  .pdp-price-tax{font-size:10px;letter-spacing:.08em}
+  .pdp-thumb{flex:0 0 60px}
+  .opts{margin-bottom:16px}
+  .opt{padding:9px 14px;font-size:12px}
+  .qty button{width:38px;height:46px}
+  .qty input{width:34px;height:46px}
+  .add-row .btn{padding:15px 22px;min-width:auto}
+  .tab-head{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tab-head button{margin-right:22px;padding:16px 0;font-size:11px;letter-spacing:.1em;white-space:nowrap}
+  .tab-body{padding:24px 0}
+  .tab-body h4{font-size:20px}
+  .tab-body p{font-size:15px}
+  .pairs h3{font-size:28px}
+  .pairs{margin-top:64px;padding-top:48px}
+  /* Drawer */
+  .drawer-head{padding:18px 22px}
+  .drawer-head h3{font-size:22px}
+  .drawer-body{padding:8px 22px}
+  .drawer-foot{padding:22px}
+  /* Reveal less aggressive on mobile */
+  .reveal{transform:translateY(12px);transition-duration:.55s}
+}
+
+@media (max-width:480px){
+  .hero h1{font-size:36px}
+  .hero-stats{gap:14px}
+  .hero-stat .num{font-size:24px}
+  .products-row{grid-template-columns:1fr !important}
+  .products-mosaic{grid-template-columns:1fr}
+  .products-mosaic .card--feature{grid-column:1;grid-row:auto}
+  .goals{grid-template-columns:1fr}
+  .goal{min-height:140px}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-grid > .foot-col:first-child{grid-column:1}
+  .section-head h2{font-size:32px}
+  .editorial-body p:first-of-type::first-letter{font-size:3em}
+  body{font-size:15px}
+  .trust-row{gap:14px;font-size:10px}
+  .trust-row > div{flex:1 1 40%;justify-content:center}
+}
+
 /* ─── Misc ─── */
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:8px;top:8px;background:var(--ink);color:var(--paper);padding:8px 12px;border-radius:var(--r-md);z-index:100}
@@ -698,7 +854,32 @@ const HEROES = {
   "flexijoint-advanced-120": ["assets/products/physical-trio.jpg"],
   "flexijoint-300": ["assets/products/physical-trio.jpg"],
 };
-const imagesFor = (p) => [...(HEROES[p.handle]||[]), ...(p.img||[])];
+
+/* When a product doesn't have its own lifestyle photo, fall back to the
+   category hero so the storefront never shows a flat white bottle. */
+const CATEGORY_HEROES = {
+  immunity: ["assets/products/allergy-control-lavender.jpg","assets/products/allergy-control-stone.jpg"],
+  stress:   ["assets/products/griffonia-moss.jpg","assets/products/griffonia-bedside.jpg"],
+  women:    ["assets/products/maca.jpg"],
+  joints:   ["assets/products/physical-trio.jpg","assets/products/bone-supreme.jpg"],
+  daily:    ["assets/products/bone-supreme.jpg","assets/products/liver-kidney.jpg"],
+  gut:      ["assets/products/liver-kidney.jpg"],
+  energy:   ["assets/products/physical-trio.jpg"],
+  men:      ["assets/products/physical-trio.jpg"],
+};
+function categoryHero(p){
+  const arr = CATEGORY_HEROES[p.goal];
+  if (!arr || !arr.length) return null;
+  const seed = (p.handle||"").split("").reduce((s,c)=>s+c.charCodeAt(0),0);
+  return arr[seed % arr.length];
+}
+function imagesFor(p){
+  const own = HEROES[p.handle];
+  if (own && own.length) return [...own, ...(p.img||[])];
+  const cat = categoryHero(p);
+  if (cat) return [cat, ...(p.img||[])];
+  return p.img || [];
+}
 const isLifestyle = (src) => /\/assets\/products\//.test(src) && !/hero-group/.test(src);
 
 const JOURNAL = [
