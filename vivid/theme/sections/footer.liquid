@@ -2,10 +2,11 @@
   <div class="container">
     <div class="foot-grid">
       <div class="foot-col">
-        <div class="foot-brand" style="font-family:var(--font-display);font-size:28px;color:var(--paper);margin-bottom:12px;display:flex;align-items:center;gap:10px">
-          <span class="brand-mark" style="background:radial-gradient(circle at 35% 30%,var(--sage) 0%,var(--moss) 70%)"></span>
-          {{ shop.name }}
-        </div>
+        {%- if section.settings.logo_light != blank -%}
+          {{ section.settings.logo_light | image_url: width: 320 | image_tag: loading: 'lazy', widths: '160,320', sizes: '160px', alt: shop.name, style: 'height:40px;width:auto;display:block;margin-bottom:14px' }}
+        {%- else -%}
+          <div style="font-family:var(--font-display);font-size:28px;color:var(--paper);margin-bottom:14px">{{ shop.name }}</div>
+        {%- endif -%}
         <p style="font-size:14px;color:rgba(244,238,226,.66);max-width:32ch;line-height:1.55">{{ section.settings.brand_lede }}</p>
       </div>
       {%- for block in section.blocks -%}
@@ -30,6 +31,7 @@
 {
   "name": "Footer",
   "settings": [
+    { "type": "image_picker", "id": "logo_light", "label": "Logo (light, for dark footer)" },
     { "type": "textarea", "id": "brand_lede", "label": "Brand lede", "default": "Plant-based supplements made in South Africa. Ancient remedies, modern science, vegetable capsules." }
   ],
   "blocks": [

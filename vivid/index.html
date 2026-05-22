@@ -388,7 +388,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-9) 0 var(--s-5)}
 
 <nav class="nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="#/" class="brand"><span class="brand-mark" aria-hidden="true"></span>Vivid Health</a>
+    <a href="#/" class="brand" aria-label="Vivid Health home"><img src="https://vividhealthsa.co.za/wp-content/uploads/2023/09/Vivid-Logo_Black.png" alt="Vivid Health" style="height:36px;width:auto;display:block"></a>
     <div class="nav-links">
       <a href="#/shop">Shop</a>
       <a href="#/shop?goal=gut">Gut</a>
@@ -431,7 +431,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-9) 0 var(--s-5)}
   <div class="container">
     <div class="foot-grid">
       <div class="foot-col">
-        <div class="foot-brand"><span class="brand-mark" aria-hidden="true"></span>Vivid Health</div>
+        <div class="foot-brand"><img src="https://vividhealthsa.co.za/wp-content/uploads/2023/09/Vivid-Logo_White.png" alt="Vivid Health" style="height:40px;width:auto;display:block;margin-bottom:14px"></div>
         <p class="foot-lede">Plant-based supplements made in South Africa. Ancient remedies, modern science, vegetable capsules.</p>
       </div>
       <div class="foot-col">
@@ -487,65 +487,244 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-9) 0 var(--s-5)}
 const CDN = "https://onelife.co.za/cdn/shop/files/";
 const P = (file) => CDN + file;
 
+const WP = "https://vividhealthsa.co.za/wp-content/uploads/";
 const PRODUCTS = [
-  {handle:"mullein-60",name:"Mullein",size:"60 capsules",price:133.00,goal:"immunity",form:"capsule",bench:"Soothing respiratory and bronchial support",dose:"360mg Mullein Herb Extract per capsule",benefits:["Helps expel excess mucus","Supports clear breathing","Anti-inflammatory demulcent action","Soothes throat and bronchial passages"],img:[P("IMG-5192.png"),P("IMG-5193.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000004675"},
-  {handle:"clove-60",name:"Clove",size:"60 capsules",price:123.28,goal:"gut",form:"capsule",bench:"Eugenol-rich antiparasitic gut support",dose:"Clove Bud Extract 4:1",benefits:["Antimicrobial gut support","Natural source of eugenol","Traditional digestive aid"],img:[P("10140-VividHealthLabels_Clove60_s_Front.png"),P("IMG-5184.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000632557"},
-  {handle:"colon-flush-120",name:"Colon Flush",size:"120 capsules",price:196.07,goal:"gut",form:"capsule",bench:"Osmotic magnesium oxide cleanse",dose:"Magnesium oxide 500mg per capsule",benefits:["Gentle constipation relief","Supports digestive reset","Magnesium-based osmotic action"],img:[P("10140-VividHealthLabels_colonflush120_s_Front_2beb9f57-02b6-4036-9466-25df44c68e39.png"),P("IMG-5187.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:false,sku:"6009689720135"},
-  {handle:"turmeric-300",name:"Turmeric",size:"300 capsules",price:301.88,goal:"daily",form:"capsule",bench:"Curcumin for joint, brain and gut support",dose:"Turmeric Root Extract per capsule",benefits:["Powerful anti-inflammatory","Supports joint mobility","Antioxidant for whole-body health","Aids digestion"],img:[P("IMG-5333.png"),P("IMG-5332.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000083380",hero:true},
-  {handle:"cayenne-300",name:"Cayenne",size:"300 capsules",price:342.00,goal:"daily",form:"capsule",bench:"Capsaicin for metabolism and circulation",dose:"Capsicum frutescens extract",benefits:["Supports metabolism","Boosts circulation","Aids digestive stimulation"],img:[P("IMG-5327.png"),P("IMG-5326.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033699"},
-  {handle:"liver-kidney-90",name:"Liver & Kidney Formula",size:"90 capsules",price:248.00,goal:"daily",form:"capsule",bench:"Hepatic and renal detox support",dose:"Milk Thistle, Dandelion, Marshmallow, Boldo, Burdock",benefits:["Supports liver detoxification","Promotes kidney health","Milk thistle hepatoprotection","Traditional cleansing herbs"],img:[P("IMG-5246.png"),P("IMG-5245.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:false,sku:"6000000820374"},
-  {handle:"black-walnut-60",name:"Black Walnut",size:"60 capsules",price:140.41,goal:"gut",form:"capsule",bench:"Juglone-rich antiparasitic and antifungal",dose:"460mg Black Walnut Herb Extract 4:1",benefits:["Rich in antioxidants","Traditional antiparasitic support","Antifungal botanical","Supports intestinal health"],img:[P("10140-VividHealthLabels_BlackWalnut60_s_Front.png"),P("IMG-5183.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000006051"},
-  {handle:"wormwood-60",name:"Wormwood",size:"60 capsules",price:133.00,goal:"gut",form:"capsule",bench:"Artemisia annua for gut and immune support",dose:"Artemisia annua extract",benefits:["Traditional antiparasitic","Reduces digestive inflammation","Supports immune resilience"],img:[P("10140-VividHealthLabels_Wormwood60_s_Front.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6999000456730"},
-  {handle:"maca-60",name:"Maca",size:"60 capsules",price:179.86,goal:"women",form:"capsule",bench:"Endocrine adaptogen for hormonal balance",dose:"Lepidium meyenii root extract",benefits:["Hormonal balance support","Energy and libido","Menopause symptom relief","Adaptogenic adrenal support"],img:[P("IMG-5284.png"),P("IMG-5283.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000820046"},
-  {handle:"flexijoint-advanced-120",name:"Flexijoint Advanced",size:"120 capsules",price:322.00,goal:"joints",form:"capsule",bench:"Targeted joint and mobility support",dose:"Glucosamine, MSM, Chondroitin blend",benefits:["Supports cartilage","Reduces joint discomfort","Built for active lifestyles","Synergistic mobility formula"],img:[P("IMG-5270.png"),P("IMG-5271.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000719456"},
-  {handle:"d-ribose-150",name:"D-Ribose",size:"150g powder",price:307.39,goal:"energy",form:"powder",bench:"ATP-supporting energy substrate",dose:"5g per scoop",benefits:["Supports cellular ATP","Cardiovascular energy","Athletic recovery","Vegan and sugar-free"],img:[P("IMG-5252.png"),P("IMG-5251.png")],diet:["vegan","gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000820381"},
-  {handle:"bone-supreme-120",name:"Bone Supreme",size:"120 capsules",price:437.00,goal:"daily",form:"capsule",bench:"Complete bone matrix formula",dose:"Calcium, D3, K2, Mg, Boron",benefits:["Full bone matrix support","Vitamin K2 for calcium routing","D3 for absorption","Magnesium and boron cofactors"],img:[P("IMG-5249.png"),P("IMG-5250.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000822354"},
-  {handle:"omega-oil-90",name:"Omega Oil",size:"90 capsules",price:237.18,goal:"daily",form:"capsule",bench:"Molecularly distilled EPA/DHA",dose:"1000mg fish oil per capsule",benefits:["Heart and circulatory support","Brain and cognitive function","Anti-inflammatory","Joint mobility"],img:[P("IMG-5247.png"),P("IMG-5248.png")],diet:["gluten-free","sugar-free","sa-made"],stock:false,sku:"6000000034597"},
-  {handle:"prosta-care-60",name:"Prosta Care",size:"60 capsules",price:263.93,goal:"men",form:"capsule",bench:"Saw palmetto, zinc and selenium blend",dose:"Saw palmetto extract + zinc + selenium",benefits:["Targeted prostate health","5-alpha-reductase support","Essential mineral cofactors","Traditional men's botanicals"],img:[P("10140-VividHealthLabels_ProstaCare60_s_Front.png"),P("IMG-5215.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000791414"},
-  {handle:"allergy-control-60",name:"Allergy Control",size:"60 capsules",price:199.00,goal:"immunity",form:"capsule",bench:"Mast cell stabilising allergy formula",dose:"Quercetin, Nettle, Bromelain blend",benefits:["Non-sedating allergy support","Mast cell stabilisation","Hay fever and sinus support","Year-round respiratory comfort"],img:[P("IMG-5199.png"),P("IMG-5198.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000696467"},
-  {handle:"colon-flush-powder-135",name:"Colon Flush Powder",size:"135g",price:143.00,goal:"gut",form:"powder",bench:"Magnesium oxide flexible-dose powder",dose:"1 tsp = ~5g magnesium oxide",benefits:["Flexible osmotic cleanse dosing","Easier to titrate than capsules","Travel-friendly powder format"],img:[P("10140-VividHealthLabels_colonflush135G_Front.png"),P("IMG-5188.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000034573"},
-  {handle:"colest-control-60",name:"Colest Control",size:"60 capsules",price:239.90,goal:"daily",form:"capsule",bench:"Phytochemical cholesterol support",dose:"Red yeast rice + plant sterols",benefits:["Cardiovascular health","Phytosterol cholesterol support","Daily cardio-metabolic care"],img:[P("IMG-5264.png"),P("IMG-5265.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000837402"},
-  {handle:"astragalus-60",name:"Astragalus",size:"60 capsules",price:164.00,goal:"immunity",form:"capsule",bench:"Adaptogenic immune modulator",dose:"Astragalus membranaceus root extract",benefits:["Astragaloside-rich immune support","Adaptogenic resilience","Sustained energy","Traditional Chinese tonic herb"],img:[P("IMG-5196.png"),P("IMG-5197.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000002800"},
-  {handle:"l-glutamine-500",name:"L-Glutamine",size:"500g powder",price:345.00,goal:"energy",form:"powder",bench:"Amino acid for gut and recovery",dose:"5g per scoop",benefits:["Supports gut lining","Aids post-exercise recovery","Immune function support","Pure free-form amino acid"],img:[P("IMG-5260.png"),P("IMG-5261.png")],diet:["vegan","vegetarian","sa-made"],stock:true,sku:"748927022803"},
-  {handle:"l-lysine-60",name:"L-Lysine",size:"60 capsules",price:118.00,goal:"immunity",form:"capsule",bench:"Essential amino for immunity and skin",dose:"500mg L-lysine HCl per capsule",benefits:["Cold sore / herpes support","Collagen synthesis cofactor","Cardiovascular health","Essential amino acid"],img:[P("IMG-5242.png"),P("IMG-5241.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000612818"},
-  {handle:"buffered-c-300",name:"Buffered C",size:"300 capsules",price:428.49,goal:"immunity",form:"capsule",bench:"Non-acidic calcium ascorbate",dose:"500mg buffered vitamin C per capsule",benefits:["Stomach-friendly vitamin C","Immune and stress support","High-dose immune building","Calcium-buffered for daily use"],img:[P("IMG-5210.png"),P("IMG-5209.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"600000082009",hero:true},
-  {handle:"tranquil-60",name:"Tranquil",size:"60 capsules",price:130.00,goal:"stress",form:"capsule",bench:"Botanical calming and sleep blend",dose:"Passionflower, Valerian, Hops",benefits:["Eases everyday stress","Supports sleep onset","Non-habit-forming botanicals","Calm without sedation"],img:[P("IMG-5229.png"),P("IMG-5228.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000675028"},
-  {handle:"sage-60",name:"Sage",size:"60 capsules",price:120.61,goal:"women",form:"capsule",bench:"Hot flush and menopause support",dose:"Salvia officinalis leaf extract",benefits:["Reduces hot flushes","Hormonal transition support","Traditional women's herb"],img:[P("IMG-5286.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000820367"},
-  {handle:"msm-90",name:"MSM",size:"90 capsules",price:170.78,goal:"joints",form:"capsule",bench:"Organic sulphur for joints and skin",dose:"810mg MSM per capsule",benefits:["Cartilage and collagen support","Anti-inflammatory","Joint flexibility","Skin health"],img:[P("IMG-5268.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033798"},
-  {handle:"msm-500",name:"MSM",size:"500g powder",price:349.60,goal:"joints",form:"powder",bench:"Bulk MSM powder for active users",dose:"~3g per scoop",benefits:["High-dose joint support","Flexible powder dosing","Better value per gram","Easy to add to drinks"],img:[P("IMG-5635.jpg")],diet:["gluten-free","sugar-free","sa-made"],stock:false,sku:"6000000033804"},
-  {handle:"msm-300",name:"MSM",size:"300 capsules",price:390.00,goal:"joints",form:"capsule",bench:"Family-size MSM capsules",dose:"810mg MSM per capsule",benefits:["3-month supply at full dose","Cartilage and collagen support","Joint mobility","Anti-inflammatory sulphur"],img:[P("IMG-5277.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000033811"},
-  {handle:"liquorice-root-60",name:"Liquorice Root",size:"60 capsules",price:132.99,goal:"stress",form:"capsule",bench:"Adrenal and gut soothing botanical",dose:"Glycyrrhiza glabra root extract",benefits:["Adrenal support","Soothes digestive lining","Adaptogenic resilience"],img:[P("IMG-5244.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000820411"},
-  {handle:"joint-relief-60",name:"Joint Relief",size:"60 capsules",price:138.00,goal:"joints",form:"capsule",bench:"Daily anti-inflammatory joint blend",dose:"Turmeric, Boswellia, Ginger blend",benefits:["Targets joint discomfort","Botanical anti-inflammatories","Daily mobility support"],img:[P("IMG-5267.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033828"},
-  {handle:"garcinia-cambogia-60",name:"Garcinia Cambogia",size:"60 capsules",price:166.06,goal:"daily",form:"capsule",bench:"HCA-rich appetite support",dose:"Garcinia cambogia rind extract (HCA)",benefits:["Appetite control","Traditional Ayurvedic weight herb","Supports satiety"],img:[P("IMG-5240.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033835"},
-  {handle:"cayenne-90",name:"Cayenne",size:"90 capsules",price:128.80,goal:"daily",form:"capsule",bench:"Starter-size cayenne metabolic herb",dose:"Capsicum frutescens extract",benefits:["Supports metabolism","Boosts circulation","Lower-cost intro size"],img:[P("IMG-5313.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033842"},
-  {handle:"cayenne-250g",name:"Cayenne Powder",size:"250g",price:130.00,goal:"daily",form:"powder",bench:"Flexible-dose cayenne powder",dose:"½ tsp daily",benefits:["Culinary or capsule dosing","Bulk value pack","South African cayenne"],img:[P("WhatsAppImage2026-02-23at16.32.58.jpg")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033859"},
-  {handle:"buffered-c-90",name:"Buffered C",size:"90 capsules",price:189.76,goal:"immunity",form:"capsule",bench:"Daily-size buffered vitamin C",dose:"500mg buffered vitamin C per capsule",benefits:["Stomach-friendly vitamin C","Immune support","Daily 3-month size"],img:[P("IMG-5203.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033866"},
-  {handle:"buffered-c-150g",name:"Buffered C Powder",size:"150g",price:105.34,goal:"immunity",form:"powder",bench:"Mix-in-water buffered C",dose:"~1 tsp = 1g vitamin C",benefits:["Flexible high-dose vitamin C","Non-acidic","Add to water or smoothies"],img:[P("10140-Vivid-Health--Labels_buff-c-150g-size_0001_Front.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033873"},
-  {handle:"apple-cider-90",name:"Apple Cider Vinegar",size:"90 capsules",price:199.24,goal:"daily",form:"capsule",bench:"ACV with mother in convenient capsule",dose:"Apple cider vinegar powder",benefits:["Daily digestive support","No vinegar taste","Convenient dosing"],img:[P("IMG-5310.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033880"},
-  {handle:"turmeric-plus-60",name:"Turmeric Plus",size:"60 capsules",price:257.60,goal:"daily",form:"capsule",bench:"Turmeric with black pepper for absorption",dose:"Curcumin + Piperine 95%",benefits:["Enhanced curcumin absorption","Piperine bioavailability boost","Anti-inflammatory","Joint and gut support"],img:[P("IMG-5314.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033897"},
-  {handle:"advanced-buffered-c-300",name:"Advanced Buffered C",size:"300 capsules",price:550.00,goal:"immunity",form:"capsule",bench:"Buffered C with zinc and bioflavonoids",dose:"500mg C + Zn + bioflavonoid complex",benefits:["Synergistic immune complex","Zinc cofactor","Bioflavonoid antioxidants","High-dose immune building"],img:[P("IMG-5207.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000033903"},
-  {handle:"spirulina-250g",name:"Spirulina Powder",size:"250g",price:185.84,goal:"daily",form:"powder",bench:"Nutrient-dense green algae",dose:"~1 tsp daily",benefits:["Protein and iron rich","B-vitamin source","Antioxidant phycocyanin","Daily greens base"],img:[P("IMG-5321.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033910"},
-  {handle:"quercetin-complex-60",name:"Quercetin Complex",size:"60 capsules",price:285.20,goal:"immunity",form:"capsule",bench:"Flavonoid antioxidant complex",dose:"Quercetin + Vitamin C + Bromelain",benefits:["Allergy and immune support","Mast cell stabiliser","Synergistic with vitamin C","Cellular antioxidant"],img:[P("IMG-5190.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033927"},
-  {handle:"omega-oil-300",name:"Omega Oil",size:"300 capsules",price:684.25,goal:"daily",form:"capsule",bench:"Family-size molecularly distilled fish oil",dose:"1000mg fish oil per capsule",benefits:["6-month supply","Heart and brain support","Cost-effective per dose"],img:[P("IMG-5255.png")],diet:["gluten-free","sugar-free","sa-made"],stock:true,sku:"6000000033934"},
-  {handle:"msm-150g",name:"MSM Powder",size:"150g",price:136.85,goal:"joints",form:"powder",bench:"Smaller-size MSM powder",dose:"~3g per scoop",benefits:["Try-size MSM powder","Joint and skin support","Easy mix-in dose"],img:[P("IMG-5272.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033941"},
-  {handle:"moringa-300",name:"Moringa Powder",size:"300 capsules",price:298.08,goal:"daily",form:"capsule",bench:"Nutrient-dense moringa leaf",dose:"Moringa oleifera leaf powder",benefits:["Plant protein and iron","Antioxidant polyphenols","Daily nutritional insurance","Traditional African superfood"],img:[P("IMG-5329.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033958"},
-  {handle:"immune-plus-60",name:"Immune Plus",size:"60 capsules",price:125.00,goal:"immunity",form:"capsule",bench:"Vitamin C, Zn, Selenium combo",dose:"C 500mg + Zinc 15mg + Selenium 100mcg",benefits:["Three-nutrient immune stack","Daily prevention","One-capsule simplicity","Cold and flu season ready"],img:[P("IMG-5194.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033965"},
-  {handle:"griffonia-5htp-60",name:"Griffonia (5-HTP)",size:"60 capsules",price:275.00,goal:"stress",form:"capsule",bench:"Serotonin precursor for mood and sleep",dose:"100mg 5-HTP per capsule",benefits:["Mood and serotonin support","Sleep onset","Natural Griffonia seed source"],img:[P("IMG-5222.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033972"},
-  {handle:"gaba-150g",name:"GABA Powder",size:"150g",price:258.00,goal:"stress",form:"powder",bench:"Calming neurotransmitter powder",dose:"500mg per scoop",benefits:["Calms an overactive mind","Supports sleep","Flexible dosing","Stress recovery"],img:[P("IMG-5236.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033989"},
-  {handle:"flexijoint-300",name:"Flexijoint",size:"300 capsules",price:625.60,goal:"joints",form:"capsule",bench:"Family-size joint matrix",dose:"Glucosamine + Chondroitin + MSM",benefits:["6-month joint supply","Cartilage and mobility","Active-lifestyle dosing","Synergistic ingredients"],img:[P("IMG-5274.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033996"},
-  {handle:"epsom-salt-1kg",name:"Epsom Salt",size:"1kg",price:90.99,goal:"daily",form:"powder",bench:"Magnesium sulfate for baths and recovery",dose:"1–2 cups per bath",benefits:["Muscle recovery soak","Magnesium absorption","Sleep ritual","Best value per kg"],img:[P("IMG-5293.png")],diet:["vegan","gluten-free","sugar-free","sa-made"],stock:true,sku:"6000000034009"},
-  {handle:"dmae-150g",name:"DMAE Powder",size:"150g",price:235.69,goal:"daily",form:"powder",bench:"Choline-related cognitive nutrient",dose:"100mg per scoop",benefits:["Supports focus and clarity","Cholinergic activity","Flexible powder dose"],img:[P("IMG-5234.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034016"},
-  {handle:"coq10-60",name:"Coenzyme Q10",size:"60 capsules",price:340.40,goal:"daily",form:"capsule",bench:"Mitochondrial energy and heart support",dose:"100mg CoQ10 per capsule",benefits:["Mitochondrial energy","Cardiovascular health","Antioxidant","Statin-user friendly"],img:[P("IMG-5263.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000034023"},
-  {handle:"bone-supreme-500",name:"Bone Supreme",size:"500 capsules",price:1251.20,goal:"daily",form:"capsule",bench:"Family-size bone matrix formula",dose:"Calcium + D3 + K2 + Mg + Boron",benefits:["8-month supply","Full bone matrix cofactors","Best value per dose"],img:[P("IMG-5258.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034030"},
-  {handle:"barley-grass-300",name:"Barley Grass",size:"300 capsules",price:283.02,goal:"daily",form:"capsule",bench:"Whole-leaf greens nutrition",dose:"Barley grass leaf powder",benefits:["Chlorophyll-rich greens","Whole-food vitamins","Daily greens insurance"],img:[P("IMG-5324.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034047"},
-  {handle:"barley-grass-200g",name:"Barley Grass Powder",size:"200g",price:224.25,goal:"daily",form:"powder",bench:"Bulk greens powder",dose:"~1 tsp daily",benefits:["Flexible greens dosing","Whole-leaf chlorophyll","Smoothie-ready"],img:[P("IMG-5316.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034054"},
-  {handle:"angus-castus-60",name:"Angus Castus",size:"60 capsules",price:180.00,goal:"women",form:"capsule",bench:"Chasteberry for PMS and cycle balance",dose:"Vitex agnus-castus extract",benefits:["PMS support","Cycle regularity","Menopausal balance","Traditional women's herb"],img:[P("IMG-5281.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000034061"},
+  {handle:"mullein-60",name:"Mullein",size:"60 capsules",price:133.00,goal:"immunity",form:"capsule",bench:"Soothing respiratory and bronchial support",dose:"360mg Mullein Herb Extract per capsule",benefits:["Helps expel excess mucus to support easier breathing","Promotes productive coughs to clear chest and throat","Acts as a demulcent with anti-inflammatory coating on mucous membranes","Soothes irritated lungs, throat, and bronchial passages","Supports healthy respiratory and bronchial function"],dosage:"Take 1-3 capsules daily with water, preferably before mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5192.png"),P("IMG-5193.png"),WP+"2023/10/2-1.png",WP+"2023/10/10-3.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000004675"},
+  {handle:"clove-60",name:"Clove",size:"60 capsules",price:123.28,goal:"gut",form:"capsule",bench:"Eugenol-rich antiparasitic gut support",dose:"450mg Clove Herb Extract 4:1 per capsule",benefits:["Analgesic and antibacterial qualities","Rich in antioxidants and supports digestive wellness","Stimulates gastric mucus production to protect stomach lining","Potential capacity to eliminate H. pylori bacteria","Antimicrobial properties support oral health"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("10140-VividHealthLabels_Clove60_s_Front.png"),P("IMG-5184.png"),WP+"2023/10/12.png"],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000632557"},
+  {handle:"colon-flush-120",name:"Colon Flush",size:"120 capsules",price:196.07,goal:"gut",form:"capsule",bench:"Osmotic magnesium oxide cleanse",dose:"Magnesium oxide 500mg per capsule",benefits:["Gentle constipation relief","Supports digestive reset","Magnesium-based osmotic action","Useful for occasional bowel sluggishness"],dosage:"Take 2-4 capsules at bedtime with a full glass of water, or as directed by your healthcare practitioner.",img:[P("10140-VividHealthLabels_colonflush120_s_Front_2beb9f57-02b6-4036-9466-25df44c68e39.png"),P("IMG-5187.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:false,sku:"6009689720135"},
+  {handle:"turmeric-300",name:"Turmeric",size:"300 capsules",price:301.88,goal:"daily",form:"capsule",bench:"Curcumin for joint, brain and gut support",dose:"550mg Turmeric Powder per capsule",benefits:["Potent anti-inflammatory effects","Functions as a strong antioxidant","Supports joint mobility","Aids digestion","Revered for thousands of years in traditional medicine"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5333.png"),P("IMG-5332.png"),WP+"2023/10/4-3.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000083380",hero:true},
+  {handle:"cayenne-300",name:"Cayenne",size:"300 capsules",price:342.00,goal:"daily",form:"capsule",bench:"Capsaicin for metabolism and circulation",dose:"550mg Cayenne Powder per capsule",benefits:["Significant source of antioxidants beneficial for cellular protection","Boosts metabolism","Aids digestion","Provides protection against inflammation","Supports circulation"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5327.png"),P("IMG-5326.png"),WP+"2023/10/8-3.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033699"},
+  {handle:"liver-kidney-90",name:"Liver & Kidney Formula",size:"90 capsules",price:248.00,goal:"daily",form:"capsule",bench:"Hepatic and renal detox support",dose:"Per capsule: Milk Thistle Extract 150mg, Dandelion Root Extract 150mg, Marshmallow Powder 100mg, Boldo Powder 100mg, Burdock Extract 65mg",benefits:["Potent blend of traditional herbs to support liver, kidney and gallbladder health","Milk thistle hepatoprotection","Dandelion as a mild diuretic and bile flow promoter","Marshmallow and burdock for gentle cleansing","Manufactured exclusively in South Africa"],dosage:"Take 1 capsule three times per day with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5246.png"),P("IMG-5245.png"),WP+"2016/05/3-1.png"],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:false,sku:"6000000820374"},
+  {handle:"black-walnut-60",name:"Black Walnut",size:"60 capsules",price:140.41,goal:"gut",form:"capsule",bench:"Juglone-rich antiparasitic and antifungal",dose:"460mg Black Walnut Herb Extract 4:1 per capsule",benefits:["Rich source of antioxidants","Traditionally used to address parasitic infections and reduce inflammation","Antibacterial properties","Supports heart health","Antifungal botanical"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("10140-VividHealthLabels_BlackWalnut60_s_Front.png"),P("IMG-5183.png"),WP+"2023/10/11.png"],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000006051"},
+  {handle:"wormwood-60",name:"Wormwood",size:"60 capsules",price:133.00,goal:"gut",form:"capsule",bench:"Artemisia annua for gut and immune support",dose:"445mg Wormwood Herb Extract per capsule",benefits:["Alleviates pain and inflammation","Fights oxidative stress","Traditional antiparasitic","Combats viruses such as malaria","Supports immune resilience"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("10140-VividHealthLabels_Wormwood60_s_Front.png"),WP+"2023/10/10.png"],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6999000456730"},
+  {handle:"maca-60",name:"Maca",size:"60 capsules",price:179.86,goal:"women",form:"capsule",bench:"Endocrine adaptogen for hormonal balance",dose:"640mg Maca Extract 4:1 per capsule",benefits:["Maintains emotional and hormonal balance","Supports menstrual cycle regulation","Alleviates menopausal symptoms","Adaptogenic stress-coping support","Promotes overall resilience"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5284.png"),P("IMG-5283.png"),WP+"2023/10/2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000820046"},
+  {handle:"flexijoint-advanced-120",name:"Flexijoint Advanced",size:"120 capsules",price:322.00,goal:"joints",form:"capsule",bench:"Targeted joint and mobility support",dose:"Glucosamine sulfate + Chondroitin sulfate + MSM blend",benefits:["Supports cartilage matrix","Reduces joint discomfort","Built for active lifestyles","Synergistic mobility formula","6-week effect window"],dosage:"Take 2 capsules twice daily with food, or as directed by your healthcare practitioner.",img:[P("IMG-5270.png"),P("IMG-5271.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000719456"},
+  {handle:"d-ribose-150",name:"D-Ribose",size:"150g powder",price:307.39,goal:"energy",form:"powder",bench:"ATP-supporting energy substrate",dose:"5g D-Ribose per scoop",benefits:["Fuels energy production within cells","Reduces fatigue","Enhances athletic performance","Favoured by athletes and those with energy deficits","Cardiovascular support"],dosage:"Mix 1 teaspoon with water or juice before training, or as directed by your healthcare practitioner.",img:[P("IMG-5252.png"),P("IMG-5251.png"),WP+"2016/05/8.png"],diet:["vegan","gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000820381"},
+  {handle:"bone-supreme-120",name:"Bone Supreme",size:"120 capsules",price:437.00,goal:"daily",form:"capsule",bench:"Complete bone matrix formula",dose:"Per capsule: Di-Calcium Phosphate 275mg, Tri-Calcium Di-Citrate 275mg, Magnesium Citrate 125mg, Magnesium Phosphate 125mg, Horsetail Herb 15mg, Zinc Gluconate 7.5mg, Manganese 4mg, Boron 1.5mg, Vanadium 50mcg, Vitamin D3 50mcg",benefits:["Bioavailable calcium easily absorbed by the body","Trace minerals essential for calcium absorption","Magnesium and boron for bone mineralisation","Vitamin D3 cofactor for absorption","Fortifies bones while enhancing utilisation"],dosage:"Osteoporosis: 2 capsules twice daily. Children: 1 capsule daily. Take with water, preferably at mealtime.",img:[P("IMG-5249.png"),P("IMG-5250.png"),WP+"2023/10/7.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000822354"},
+  {handle:"omega-oil-90",name:"Omega Oil",size:"90 capsules",price:237.18,goal:"daily",form:"capsule",bench:"Molecularly distilled EPA/DHA",dose:"1000mg fish oil per capsule (EPA + DHA)",benefits:["Heart and circulatory support","Brain and cognitive function","Anti-inflammatory","Joint mobility","Molecularly distilled for purity"],dosage:"Take 1-3 capsules daily with food, or as directed by your healthcare practitioner.",img:[P("IMG-5247.png"),P("IMG-5248.png")],diet:["gluten-free","sugar-free","sa-made"],stock:false,sku:"6000000034597"},
+  {handle:"prosta-care-60",name:"Prosta Care",size:"60 capsules",price:263.93,goal:"men",form:"capsule",bench:"Saw palmetto, zinc and selenium blend",dose:"Per capsule: Saw Palmetto 25% Extract 8:1 300mg, Stinging Nettle Root Extract 5:1 125mg, Beta-Sitosterols 100mg, Pumpkin Seed Extract 4:1 75mg, Lycopene 10% 2mg, Zinc 2mg",benefits:["Inhibits testosterone-to-DHT conversion","Addresses hair loss linked to elevated DHT","Reduces urinary flow constraints from prostate enlargement","Lessens associated discomfort and inflammation","Essential mineral cofactors. Not suitable for women or children."],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("10140-VividHealthLabels_ProstaCare60_s_Front.png"),P("IMG-5215.png"),WP+"2023/10/6-2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000791414"},
+  {handle:"allergy-control-60",name:"Allergy Control",size:"60 capsules",price:199.00,goal:"immunity",form:"capsule",bench:"Mast cell stabilising allergy formula",dose:"Per 2 capsules: Eyebright 250mg, Boswellia Serrata 65% 200mg, Elderberry Flower 4:1 200mg, Quercetin Extract 125mg, Histidine 125mg, Skullcap 100mg, Sarsaparilla 75mg, Fenugreek 75mg",benefits:["Relief from hay fever symptoms","Allergy symptom management","Sinusitis support","Respiratory system support","Non-sedating, non-drowsy formula"],dosage:"Take 1-2 capsules daily with water, preferably before mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5199.png"),P("IMG-5198.png"),WP+"2023/10/8-1.png"],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000696467"},
+  {handle:"colon-flush-powder-135",name:"Colon Flush Powder",size:"135g",price:143.00,goal:"gut",form:"powder",bench:"Magnesium oxide flexible-dose powder",dose:"1 tsp = ~5g magnesium oxide",benefits:["Flexible osmotic cleanse dosing","Easier to titrate than capsules","Travel-friendly powder format","Mixes into water"],dosage:"Mix 1 teaspoon with a full glass of water at bedtime, or as directed by your healthcare practitioner.",img:[P("10140-VividHealthLabels_colonflush135G_Front.png"),P("IMG-5188.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000034573"},
+  {handle:"colest-control-60",name:"Colest Control",size:"60 capsules",price:239.90,goal:"daily",form:"capsule",bench:"Phytochemical cholesterol support",dose:"Red yeast rice extract + plant sterols + Co-Q10",benefits:["Cardiovascular health support","Phytosterol cholesterol management","Daily cardio-metabolic care","Statin-alternative phytochemistry"],dosage:"Take 1-2 capsules daily with food, or as directed by your healthcare practitioner.",img:[P("IMG-5264.png"),P("IMG-5265.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000837402"},
+  {handle:"astragalus-60",name:"Astragalus",size:"60 capsules",price:164.00,goal:"immunity",form:"capsule",bench:"Adaptogenic immune modulator",dose:"490mg Astragalus Herb Extract 4:1 per capsule",benefits:["Balances immune system and helps prevent bacterial and viral infections","May reduce chronic fatigue symptoms","May alleviate seasonal allergies","May enhance kidney function","Traditional Chinese tonic herb"],dosage:"Take 1-2 capsules daily with water, preferably before mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5196.png"),P("IMG-5197.png"),WP+"2023/10/6-1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000002800"},
+  {handle:"l-glutamine-500",name:"L-Glutamine",size:"500g powder",price:345.00,goal:"energy",form:"powder",bench:"Amino acid for gut and recovery",dose:"Pure L-Glutamine powder; 1 heaped teaspoon (~5g) twice daily",benefits:["Removes excess ammonia from the body","Supports immune system functioning","Brain function support","Digestive health and gut lining repair","Useful during physical stress, injury, or illness"],dosage:"Mix 1 heaped teaspoon with water or juice, twice daily, preferably at mealtime.",img:[P("IMG-5260.png"),P("IMG-5261.png"),WP+"2016/05/1-1.png"],diet:["vegan","vegetarian","sa-made"],stock:true,sku:"748927022803"},
+  {handle:"l-lysine-60",name:"L-Lysine",size:"60 capsules",price:118.00,goal:"immunity",form:"capsule",bench:"Essential amino for immunity and skin",dose:"800mg L-Lysine per capsule",benefits:["Supports antibody, hormone, and enzyme production","Promotes collagen formation and tissue repair","Essential for growth and bone development","May help reduce elevated triglyceride levels","Helps combat cold sores and herpesviruses"],dosage:"Chronic conditions: 1 capsule three times daily. General support: 1 capsule daily.",img:[P("IMG-5242.png"),P("IMG-5241.png"),WP+"2016/05/5-1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000612818"},
+  {handle:"buffered-c-300",name:"Buffered C",size:"300 capsules",price:428.49,goal:"immunity",form:"capsule",bench:"Non-acidic calcium ascorbate",dose:"960mg Calcium Ascorbate per capsule (788mg Vitamin C + 172mg Calcium)",benefits:["Powerful antioxidant","Fortifies immune function","Helps reduce high cortisol levels from prolonged stress","Non-acidic formulation, stomach-friendly","Family-size supply"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5210.png"),P("IMG-5209.png"),WP+"2023/10/7-2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"600000082009",hero:true},
+  {handle:"tranquil-60",name:"Tranquil",size:"60 capsules",price:130.00,goal:"stress",form:"capsule",bench:"Botanical calming and sleep blend",dose:"Per capsule: Hops 150mg, Valerian 100mg, Passion Flower 50mg, Skullcap Extract 50mg",benefits:["Helps relieve symptoms of mild anxiety and nervous tension","Supports everyday stress management","Promotes relaxation and restful sleep","Valerian's calming properties address restlessness","Non-habit-forming botanicals"],dosage:"Daily use: 1 capsule 2-3 times daily before meals. Sleep support: 1-2 capsules 30 minutes before bedtime.",img:[P("IMG-5229.png"),P("IMG-5228.png"),WP+"2023/10/1-2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000675028"},
+  {handle:"sage-60",name:"Sage",size:"60 capsules",price:120.61,goal:"women",form:"capsule",bench:"Hot flush and menopause support",dose:"440mg Sage Herb Extract 4:1 per capsule",benefits:["Reduces menopausal symptoms including hot flushes, irritability, night sweats","Clinical evidence supports improvement in mood, cognition and memory","Rich in vitamins and antioxidants supporting brain function","Antimicrobial properties","Traditional women's herb"],dosage:"Take 1-2 capsules twice daily with water or juice, or as directed by your healthcare practitioner.",img:[P("IMG-5286.png"),WP+"2023/10/1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000820367"},
+  {handle:"msm-90",name:"MSM",size:"90 capsules",price:170.78,goal:"joints",form:"capsule",bench:"Organic sulphur for joints and skin",dose:"810mg MSM (Methylsulfonylmethane) per capsule",benefits:["Contributes to structural component of cartilage and collagen","Anti-inflammatory and pain-relieving properties","May reduce oxidative stress","Supports immune function, recovery, and energy","Enhances joint flexibility and mobility"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5268.png"),WP+"2023/10/4.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033798"},
+  {handle:"msm-500",name:"MSM",size:"500g powder",price:349.60,goal:"joints",form:"powder",bench:"Bulk MSM powder for active users",dose:"~3g MSM per scoop",benefits:["High-dose joint support","Flexible powder dosing","Better value per gram","Easy to add to drinks","Cartilage and skin building block"],dosage:"Mix 1 teaspoon (~3g) with water or juice 1-3 times daily, preferably at mealtime.",img:[P("IMG-5635.jpg")],diet:["gluten-free","sugar-free","sa-made"],stock:false,sku:"6000000033804"},
+  {handle:"msm-300",name:"MSM",size:"300 capsules",price:390.00,goal:"joints",form:"capsule",bench:"Family-size MSM capsules",dose:"810mg MSM per capsule",benefits:["3-month supply at full dose","Cartilage and collagen building block","Joint mobility","Anti-inflammatory sulphur","Skin and connective tissue support"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime.",img:[P("IMG-5277.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000033811"},
+  {handle:"liquorice-root-60",name:"Liquorice Root",size:"60 capsules",price:132.99,goal:"stress",form:"capsule",bench:"Adrenal and gut soothing botanical",dose:"450mg Liquorice Extract 4:1 per capsule",benefits:["Supports adrenal fatigue management","Assists with peptic ulcer relief","Helps combat respiratory infections","Addresses low blood sugar concerns","Supports urinary tract health"],dosage:"Take 1-2 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5244.png"),WP+"2016/05/4-1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000820411"},
+  {handle:"joint-relief-60",name:"Joint Relief",size:"60 capsules",price:138.00,goal:"joints",form:"capsule",bench:"Daily anti-inflammatory joint blend",dose:"500mg Cissus Quadrangularis Extract per capsule",benefits:["Promotes bone health","Protects and supports joints","Relieves joint pain","Protects against chronic conditions","Traditionally used for hemorrhoids, gout, asthma, allergies"],dosage:"Take 1-2 capsules three times a day, preferably 10 minutes before mealtime.",img:[P("IMG-5267.png"),WP+"2023/10/6.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033828"},
+  {handle:"garcinia-cambogia-60",name:"Garcinia Cambogia",size:"60 capsules",price:166.06,goal:"daily",form:"capsule",bench:"HCA-rich appetite support",dose:"600mg Garcinia Cambogia per capsule",benefits:["Suppresses appetite and enhances feelings of satiety","Assists in reduction of excess weight","Supports carbohydrate metabolism","Promotes energy levels","Traditional Ayurvedic weight herb"],dosage:"Take 1-2 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5240.png"),WP+"2016/05/6-1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033835"},
+  {handle:"cayenne-90",name:"Cayenne",size:"90 capsules",price:128.80,goal:"daily",form:"capsule",bench:"Starter-size cayenne metabolic herb",dose:"550mg Cayenne Powder per capsule",benefits:["Significant source of antioxidants","Boosts metabolism","Aids digestion","Provides protection against inflammation","Supports circulation"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime.",img:[P("IMG-5313.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033842"},
+  {handle:"cayenne-250g",name:"Cayenne Powder",size:"250g",price:130.00,goal:"daily",form:"powder",bench:"Flexible-dose cayenne powder",dose:"550mg = ½ tsp daily",benefits:["Culinary or therapeutic dosing","Bulk value pack","South African cayenne","Same metabolic and circulation support as capsules"],dosage:"Take ½ teaspoon daily mixed into water, smoothie, or food.",img:[P("WhatsAppImage2026-02-23at16.32.58.jpg")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033859"},
+  {handle:"buffered-c-90",name:"Buffered C",size:"90 capsules",price:189.76,goal:"immunity",form:"capsule",bench:"Daily-size buffered vitamin C",dose:"960mg Calcium Ascorbate per capsule (788mg Vitamin C + 172mg Calcium)",benefits:["Powerful antioxidant","Stomach-friendly vitamin C","Immune and stress support","Daily 3-month size","Calcium-buffered for high-dose use"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime.",img:[P("IMG-5203.png"),WP+"2023/10/11-3.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033866"},
+  {handle:"buffered-c-150g",name:"Buffered C Powder",size:"150g",price:105.34,goal:"immunity",form:"powder",bench:"Mix-in-water buffered C",dose:"~1 tsp = 1g vitamin C",benefits:["Flexible high-dose vitamin C","Non-acidic on the gut","Add to water or smoothies","Cost-effective high-dose","Daily immune support"],dosage:"Mix 1 teaspoon in water or juice once daily, or split across the day for higher doses.",img:[P("10140-Vivid-Health--Labels_buff-c-150g-size_0001_Front.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033873"},
+  {handle:"apple-cider-90",name:"Apple Cider Vinegar",size:"90 capsules",price:199.24,goal:"daily",form:"capsule",bench:"ACV in convenient capsule",dose:"450mg Apple Cider Vinegar Powder 7% per capsule",benefits:["Supports digestion and weight management","Aids blood sugar regulation","Promotes heart health via cholesterol reduction","Antimicrobial immune support","Helps with appetite control"],dosage:"Take 1 capsule 2-3 times per day, just before mealtime.",img:[P("IMG-5310.png"),WP+"2023/10/9-3.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033880"},
+  {handle:"turmeric-plus-60",name:"Turmeric Plus",size:"60 capsules",price:257.60,goal:"daily",form:"capsule",bench:"Turmeric with piperine for absorption",dose:"Curcumin 95% standardised extract + Piperine (black pepper extract)",benefits:["Enhanced curcumin absorption via piperine","Piperine increases bioavailability up to 20-fold","Anti-inflammatory","Joint and gut support","Lower-dose, higher-impact formulation"],dosage:"Take 1-2 capsules daily with food, or as directed by your healthcare practitioner.",img:[P("IMG-5314.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033897"},
+  {handle:"advanced-buffered-c-300",name:"Advanced Buffered C",size:"300 capsules",price:550.00,goal:"immunity",form:"capsule",bench:"Buffered C with zinc and bioflavonoids",dose:"500mg Vitamin C + Zinc + Bioflavonoid complex per capsule",benefits:["Synergistic immune complex","Zinc cofactor for immune function","Bioflavonoid antioxidants","High-dose immune building","Stomach-friendly"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime.",img:[P("IMG-5207.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000033903"},
+  {handle:"spirulina-250g",name:"Spirulina Powder",size:"250g",price:185.84,goal:"daily",form:"powder",bench:"Nutrient-dense green algae",dose:"500mg Spirulina Powder per gram (~1 tsp daily)",benefits:["Nutrient-rich superfood","Powerful antioxidant properties","Great source of iron, copper, and B-vitamins","Plant protein dense","Phycocyanin antioxidant"],dosage:"Mix 1-2 heaped teaspoons daily with water or smoothie, preferably at mealtime.",img:[P("IMG-5321.png"),WP+"2023/10/5-3.png"],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033910"},
+  {handle:"quercetin-complex-60",name:"Quercetin Complex",size:"60 capsules",price:285.20,goal:"immunity",form:"capsule",bench:"Flavonoid antioxidant complex",dose:"Per 2 capsules: Quercetin Extract 500mg, Bromelain (2000GDU) 50mg, Citrus Bioflavonoids 50mg, Rose Hip 50mg, Acerola 50mg, Rutin 10mg",benefits:["Potent anti-histamine and anti-inflammatory properties","May relieve allergic symptoms (runny nose, sneezing, itchy eyes)","Antioxidant properties","Bioflavonoids enhance vitamin C absorption","Mast cell stabiliser"],dosage:"General support: 2 capsules once daily. Acute conditions: 2 capsules twice daily.",img:[P("IMG-5190.png"),WP+"2023/10/1-1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033927"},
+  {handle:"omega-oil-300",name:"Omega Oil",size:"300 capsules",price:684.25,goal:"daily",form:"capsule",bench:"Family-size molecularly distilled fish oil",dose:"1000mg fish oil per capsule (EPA + DHA)",benefits:["6-month supply at full daily dose","Heart and brain support","Cost-effective per dose","Molecularly distilled for purity","Anti-inflammatory daily essential"],dosage:"Take 1-3 capsules daily with food.",img:[P("IMG-5255.png")],diet:["gluten-free","sugar-free","sa-made"],stock:true,sku:"6000000033934"},
+  {handle:"msm-150g",name:"MSM Powder",size:"150g",price:136.85,goal:"joints",form:"powder",bench:"Smaller-size MSM powder",dose:"~3g MSM per scoop",benefits:["Try-size MSM powder","Joint and skin support","Easy mix-in dose","Cartilage cofactor","Anti-inflammatory sulphur"],dosage:"Mix 1 teaspoon (~3g) with water or juice 1-3 times daily.",img:[P("IMG-5272.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033941"},
+  {handle:"moringa-300",name:"Moringa",size:"300 capsules",price:298.08,goal:"daily",form:"capsule",bench:"Nutrient-dense moringa leaf",dose:"500mg Moringa Powder per capsule",benefits:["Rich in antioxidants","Lowers blood sugar levels","Reduces inflammation","Maintains a healthy body pH","Traditional African superfood"],dosage:"Standard: 5-10 capsules daily with water at mealtime. Cold/flu: 2 capsules three times daily.",img:[P("IMG-5329.png"),WP+"2023/10/6-3.png"],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033958"},
+  {handle:"immune-plus-60",name:"Immune Plus",size:"60 capsules",price:125.00,goal:"immunity",form:"capsule",bench:"Olive leaf, echinacea, buffered C combo",dose:"Per capsule: Olive Leaf Extract 4:1 142.5mg, Echinacea Extract 4:1 142.5mg, Buffered Vitamin C blend 350mg",dosage:"Standard: 2 capsules daily with water at mealtime. During cold/flu: 2 capsules three times daily.",benefits:["Antioxidant, anti-inflammatory, and strong antiviral properties from olive leaf","Supports immune function while reducing discomfort","Echinacea for acute immune response","No artificial additives, gluten, or dairy","One-capsule immune simplicity"],img:[P("IMG-5194.png"),WP+"2023/10/3-1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033965"},
+  {handle:"griffonia-5htp-60",name:"Griffonia (5-HTP)",size:"60 capsules",price:275.00,goal:"stress",form:"capsule",bench:"Serotonin precursor for mood and sleep",dose:"100mg Griffonia (5-HTP) per capsule",benefits:["Supports healthy mood","Promotes better sleep quality","Helps regulate appetite","Potentially alleviates symptoms of depression, anxiety, fibromyalgia","Natural Griffonia seed source"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5222.png"),WP+"2023/10/2-2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033972"},
+  {handle:"gaba-150g",name:"GABA Powder",size:"150g",price:258.00,goal:"stress",form:"powder",bench:"Calming neurotransmitter powder",dose:"GABA (Gamma-Aminobutyric Acid) 1 teaspoon (~500mg) daily",benefits:["May aid restful sleep","Helps control blood sugar levels","May elevate growth hormones","Improves concentration","Regulates anxiety and stress through inhibitory CNS action"],dosage:"Mix 1 teaspoon with water or juice daily, best taken 45 minutes before bedtime.",img:[P("IMG-5236.png"),WP+"2023/10/3-2.png"],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033989"},
+  {handle:"flexijoint-300",name:"Flexijoint",size:"300 capsules",price:625.60,goal:"joints",form:"capsule",bench:"Family-size joint matrix",dose:"Glucosamine + Chondroitin + MSM per capsule",benefits:["6-month joint supply at full dose","Cartilage and mobility support","Active-lifestyle dosing","Synergistic ingredients","Best value family size"],dosage:"Take 2 capsules twice daily with food.",img:[P("IMG-5274.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033996"},
+  {handle:"epsom-salt-1kg",name:"Epsom Salt",size:"1kg",price:90.99,goal:"daily",form:"powder",bench:"Magnesium sulfate for baths and recovery",dose:"Magnesium Sulfate (Epsom Salt) — 1–2 cups per bath",benefits:["Improved sleep","Pain relief","Reduced inflammation","Stress reduction","Boosts energy levels"],dosage:"Add 1–2 cups to a warm bath and soak for 15–20 minutes. Do not ingest orally.",img:[P("IMG-5293.png"),WP+"2023/10/16.png"],diet:["vegan","gluten-free","sugar-free","sa-made"],stock:true,sku:"6000000034009"},
+  {handle:"dmae-150g",name:"DMAE Powder",size:"150g",price:235.69,goal:"daily",form:"powder",bench:"Choline-related cognitive nutrient",dose:"1250mg DMAE per ¼ teaspoon",benefits:["Supports optimal brain health and skin firmness","Enables choline production, supporting acetylcholine synthesis","Enhances memory and learning function","Cognitive support"],dosage:"Mix ¼ teaspoon with water or juice daily, preferably in the mornings.",img:[P("IMG-5234.png"),WP+"2023/10/4-2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034016"},
+  {handle:"coq10-60",name:"Coenzyme Q10",size:"60 capsules",price:340.40,goal:"daily",form:"capsule",bench:"Mitochondrial energy and heart support",dose:"100mg CoQ10 (Ubiquinone) per capsule",benefits:["Mitochondrial energy production","Cardiovascular health support","Powerful antioxidant","Statin-user friendly","Migraine prevention adjunct"],dosage:"Take 1-3 capsules daily with food (CoQ10 is fat-soluble).",img:[P("IMG-5263.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000034023"},
+  {handle:"bone-supreme-500",name:"Bone Supreme",size:"500 capsules",price:1251.20,goal:"daily",form:"capsule",bench:"Family-size bone matrix formula",dose:"Per capsule: Calcium + D3 + K2 + Magnesium + Boron + Manganese + Zinc",benefits:["8-month supply at full dose","Full bone matrix cofactors","Best value per dose","Trace mineral synergy","Vitamin D3 absorption support"],dosage:"Osteoporosis: 2 capsules twice daily. Maintenance: 1 capsule daily.",img:[P("IMG-5258.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034030"},
+  {handle:"barley-grass-300",name:"Barley Grass",size:"300 capsules",price:283.02,goal:"daily",form:"capsule",bench:"Whole-leaf greens nutrition",dose:"500mg Barley Grass Powder per capsule",benefits:["Exceptional source of fibre, polyphenols, flavonoids","Vitamins A, C, and K","Rich in chlorophyll and essential amino acids","Powerful antioxidant","Whole-food greens insurance"],dosage:"Take 6-12 capsules daily with water, preferably at mealtime.",img:[P("IMG-5324.png"),WP+"2023/10/Natural.png"],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034047"},
+  {handle:"barley-grass-200g",name:"Barley Grass Powder",size:"200g",price:224.25,goal:"daily",form:"powder",bench:"Bulk greens powder",dose:"~1 tsp (~3g) daily",benefits:["Flexible greens dosing","Whole-leaf chlorophyll","Smoothie-ready","Polyphenol antioxidants","Plant-based daily nutrition"],dosage:"Mix 1 teaspoon with water, juice, or smoothie daily.",img:[P("IMG-5316.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034054"},
+  {handle:"angus-castus-60",name:"Angus Castus",size:"60 capsules",price:180.00,goal:"women",form:"capsule",bench:"Chasteberry for PMS and cycle balance",dose:"400mg Chaste Tree Berry Extract (Vitex Angus Castus) per capsule",benefits:["Alleviates PMS symptoms","Supports menopause symptom relief","Addresses infertility concerns","May influence neurotransmitter function for emotional well-being","Promotes holistic women's health"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5281.png"),WP+"2023/10/3.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000034061"},
 ];
 
 const BUNDLES = [
   {handle:"rest-focus",name:"Rest & Focus Stack",desc:"Sleep, calm, and mental clarity in one stack — Tranquil, Griffonia 5-HTP, GABA powder.",price:587.67,save:120,img:CDN+"vivid-rest-focus-v3.jpg",includes:["tranquil-60","griffonia-5htp-60","gaba-150g"]},
   {handle:"bone-joint",name:"Bone & Joint Pack",desc:"Complete skeletal support — Bone Supreme, MSM, Flexijoint Advanced.",price:742.66,save:150,img:CDN+"vivid-bone-joint-v3.jpg",includes:["bone-supreme-120","msm-90","flexijoint-advanced-120"]},
   {handle:"allergy-stack",name:"Allergy Stack",desc:"Allergy and immune support — Allergy Control, Quercetin Complex, Buffered C.",price:594.72,save:110,img:CDN+"vivid-allergy-stack-v4.jpg",includes:["allergy-control-60","quercetin-complex-60","buffered-c-90"]},
+];
+
+const JOURNAL = [
+  {
+    handle:"buffered-vitamin-c-explained",
+    title:"Why we buffer vitamin C with calcium",
+    sub:"The pH problem with high-dose ascorbic acid, and how calcium ascorbate solves it without losing potency.",
+    cat:"Immunity",
+    author:"Vivid Lab Team",
+    read:"6 min read",
+    date:"May 2026",
+    hero:P("IMG-5210.png"),
+    related:["buffered-c-90","buffered-c-300","buffered-c-150g","advanced-buffered-c-300"],
+    body:`
+      <p>If you've ever taken a high dose of ordinary vitamin C and felt your stomach turn, you've met the central problem with ascorbic acid. The molecule itself is brilliant — humans can't make it, and we need it for everything from collagen synthesis to immune function to iron absorption. But ordinary ascorbic acid is, well, an acid. Drop a gram of it into a glass of water and the pH lands around 2.5 — close to stomach acid itself.</p>
+      <p>For occasional 500 mg doses, most people tolerate this fine. But the moment you want to use vitamin C for what it's most useful for — stress, immune support, the first three days of a cold, post-surgical recovery — you're often looking at 2–4 grams a day. And at that volume, the acidity matters.</p>
+      <h3>What "buffered" actually means</h3>
+      <p>A buffer in chemistry is anything that resists pH change. In the case of buffered vitamin C, we're talking about calcium ascorbate — the same vitamin C molecule, but with a calcium counter-ion attached. When it dissolves in water, the pH lands around 7 (neutral) instead of 2.5. Same vitamin C, same absorption, same plasma levels — but your gut treats it like food, not battery acid.</p>
+      <p>That's the entire trick. There's no clever proprietary technology, no nanoparticle delivery system, no liposomal whatever. Just a different counter-ion.</p>
+      <h3>What the science says</h3>
+      <p>Multiple studies have compared bioavailability of ascorbic acid against calcium ascorbate. The plasma curves are essentially identical. Whether you take 1000 mg of cheap ascorbic acid or 1000 mg of calcium ascorbate, you end up with the same vitamin C in your blood. The only difference is what happens between your mouth and your bloodstream.</p>
+      <p>The case for high-dose daily vitamin C is mixed — the cold-prevention literature is weaker than people assume. But for stress recovery, post-surgical healing, intense training, and supporting a body that's already getting sick, the evidence is solid. And the only thing that determines whether you actually take the dose consistently is gut tolerance.</p>
+      <h3>What's in Vivid's Buffered C</h3>
+      <p>Every Vivid Buffered C capsule delivers 960 mg of calcium ascorbate — that breaks down to 788 mg of pure vitamin C plus 172 mg of bioavailable calcium. The calcium is a side benefit, not a marketing claim: at three capsules a day you're getting about half a gram of vitamin C and a meaningful amount of calcium too.</p>
+      <p>For daily use, one to two capsules. For acute stress or immune use, three capsules split across the day. The 300-capsule jar is a 3-to-6 month supply at typical dosing.</p>
+      <h3>When to consider the 150g powder instead</h3>
+      <p>If you want to dose flexibly — say, 2 grams in one go during a stress event — the powder gives you that. A teaspoon delivers roughly 1 g of vitamin C, and it's still buffered, so it goes down easy. The capsules are convenient. The powder is flexible. Choose what you'll actually take consistently.</p>
+    `
+  },
+  {
+    handle:"parasite-cleanse-evidence",
+    title:"A parasite cleanse without the woo",
+    sub:"What black walnut, wormwood, and clove actually do — and when it's nonsense.",
+    cat:"Gut",
+    author:"Vivid Lab Team",
+    read:"7 min read",
+    date:"May 2026",
+    hero:P("10140-VividHealthLabels_BlackWalnut60_s_Front.png"),
+    related:["black-walnut-60","wormwood-60","clove-60"],
+    body:`
+      <p>The "parasite cleanse" is one of those wellness concepts that lives in the strange overlap between traditional herbalism with real pharmacological backing and Instagram nonsense involving photos of stringy bathroom contents. Let's separate them.</p>
+      <h3>The triad: what it is and where it came from</h3>
+      <p>Three herbs show up together in nearly every traditional Western antiparasitic protocol: black walnut hull, wormwood (Artemisia), and clove bud. The combination isn't random.</p>
+      <p>Black walnut hull contains juglone, a naphthoquinone with documented antimicrobial and antifungal activity in laboratory settings. Wormwood contains artemisinin — the same compound, in derivatised form, that won Tu Youyou the 2015 Nobel Prize in Medicine for treating malaria. Clove buds are unusually rich in eugenol, an aromatic compound with broad antimicrobial action.</p>
+      <p>Each herb targets a different life stage of intestinal parasites. Black walnut and wormwood are most active against adult worms and larvae. Clove is added because eugenol affects the egg stage that the first two herbs don't penetrate effectively. Take only one, and you can leave half the population behind.</p>
+      <h3>What the evidence does and doesn't show</h3>
+      <p>The pharmacology is well-supported. The clinical trials in humans are much thinner — most use is based on traditional protocol rather than randomised trials. That doesn't mean the herbs don't work; it means the trials haven't been done. Antiparasitic drugs are cheap and effective, and almost nobody funds head-to-head trials of herbal alternatives.</p>
+      <p>So: useful adjunct or preventive in the right context, particularly if you've travelled in regions with high parasite burden or you have suggestive symptoms (chronic gut irritability, certain food intolerances, anal itching at night). Not a substitute for an actual diagnosis and treatment if you have a serious parasitic infection.</p>
+      <h3>What a sensible protocol looks like</h3>
+      <p>The classic protocol is 4 to 6 weeks of all three herbs together. Vivid's capsules let you build it modularly:</p>
+      <ul style="padding-left:20px;margin:14px 0">
+        <li>Black Walnut 60: 1–3 capsules daily with meals</li>
+        <li>Wormwood 60: 1–3 capsules daily with meals</li>
+        <li>Clove 60: 1–3 capsules daily with meals</li>
+      </ul>
+      <p>Start at the low end of each, build up over the first week, hold for 4 weeks at the upper end, then taper. Some protocols repeat after a 2-week break.</p>
+      <h3>What this isn't</h3>
+      <p>This isn't a 3-day detox tea. It's not going to "release toxins". It doesn't produce dramatic visible effects in the bathroom — the photos circulating online are typically dietary fibre and bile, not parasites. The actual mechanism, when it works, is quiet and chemical, not visual.</p>
+      <p>And it isn't for everyone. Pregnancy, breastfeeding, kids, seizure disorders, and active GI disease are all reasons to skip this protocol or do it under guidance.</p>
+      <h3>The bigger point</h3>
+      <p>"Parasite cleanse" has become a meme. The underlying pharmacology — juglone, artemisinin, eugenol — is real, well-characterised, and used in serious medicine. Vivid's contribution is just making the dosage and the protocol unambiguous instead of hidden behind proprietary blends and marketing language.</p>
+    `
+  },
+  {
+    handle:"three-magnesiums",
+    title:"Three magnesiums, three jobs",
+    sub:"Oxide, sulfate, glycinate, citrate — how to pick the right one.",
+    cat:"Daily Nutrients",
+    author:"Vivid Lab Team",
+    read:"5 min read",
+    date:"April 2026",
+    hero:P("IMG-5293.png"),
+    related:["epsom-salt-1kg","colon-flush-120","bone-supreme-120"],
+    body:`
+      <p>Magnesium is one of the most-deficient minerals in modern diets and one of the most-confusing supplements to buy. "Magnesium" alone tells you almost nothing — what matters is what it's bonded to. The counter-ion changes the absorption, the side effects, and what the supplement is actually good for.</p>
+      <h3>Magnesium oxide — the colon-flush form</h3>
+      <p>Magnesium oxide is poorly absorbed in the gut. Counter-intuitively, that's a feature, not a bug, if your goal is osmotic laxation. The unabsorbed magnesium pulls water into the colon, producing a gentle bowel movement. That's why Vivid's Colon Flush uses magnesium oxide — it's the right tool for that specific job.</p>
+      <p>It's the wrong tool if you want to raise your serum magnesium levels for muscle, sleep, or anxiety reasons. Most of what you swallow doesn't make it into the bloodstream.</p>
+      <h3>Magnesium sulfate (epsom salt) — the bath form</h3>
+      <p>Epsom salt is magnesium sulfate. Whether magnesium absorbs meaningfully through skin is debated — the body of evidence is mixed. But warm-water immersion plus the muscle-relaxation ritual produces real benefits regardless of how much magnesium technically crosses the skin barrier.</p>
+      <p>Don't ingest epsom salt orally without medical guidance — at oral dose it's a powerful osmotic laxative that's hard to titrate.</p>
+      <h3>Magnesium citrate and glycinate — the systemic forms</h3>
+      <p>For raising serum magnesium — for sleep, muscle tension, blood pressure, anxiety, restless legs — you want citrate or glycinate. Citrate is well-absorbed and slightly laxative at high doses. Glycinate (bisglycinate) is the gentlest on the gut and the form most associated with sleep benefit, because glycine itself is a calming amino acid.</p>
+      <p>Vivid's Bone Supreme uses magnesium citrate and magnesium phosphate as part of its bone-support stack. The citrate gives you systemic magnesium for bone mineralisation; the phosphate is paired with calcium for the bone matrix itself.</p>
+      <h3>So what should you actually take?</h3>
+      <ul style="padding-left:20px;margin:14px 0">
+        <li><strong>Constipation, occasional gut reset:</strong> Colon Flush (magnesium oxide)</li>
+        <li><strong>Muscle recovery, sleep ritual, post-workout soak:</strong> Epsom Salt (sulfate, bath only)</li>
+        <li><strong>Bone matrix, osteoporosis support:</strong> Bone Supreme (citrate + phosphate, alongside calcium and cofactors)</li>
+        <li><strong>Daily systemic magnesium for sleep or muscle tension:</strong> Magnesium glycinate (not in the Vivid range — yet)</li>
+      </ul>
+      <p>The label matters. "Magnesium 400 mg" without specifying the form is a marketing trap — the same number can mean radically different things depending on what's actually in the capsule.</p>
+    `
+  },
+  {
+    handle:"hay-fever-gauteng",
+    title:"Hay fever in Gauteng — a non-drowsy supplement protocol",
+    sub:"What to take through grass and tree pollen season without spending the day half-asleep.",
+    cat:"Immunity",
+    author:"Vivid Lab Team",
+    read:"6 min read",
+    date:"April 2026",
+    hero:P("IMG-5199.png"),
+    related:["allergy-control-60","quercetin-complex-60","buffered-c-90"],
+    body:`
+      <p>South African hay fever isn't seasonal in the European sense. Highveld grass pollens peak from August through November. Tree pollens dominate June through September. Mould and house dust trigger people year-round. For most Gauteng residents that means at least half the year is symptomatic, and the standard answer — first-generation antihistamines that make you drowsy, or second-generation ones that cost a fortune at retail — is a frustrating compromise.</p>
+      <p>Here's a supplement protocol that targets the underlying immune cascade rather than just blocking histamine after it's released.</p>
+      <h3>The mast cell, not the histamine</h3>
+      <p>Antihistamines work by blocking histamine receptors after histamine has already been released. They treat the symptom. The cell that releases the histamine in the first place is the mast cell — and there are botanicals and nutrients that stabilise mast cells so they release less histamine to begin with.</p>
+      <p>This is a different intervention point. It doesn't replace your rescue antihistamine for acute episodes. It reduces how often you need one.</p>
+      <h3>The stack</h3>
+      <p><strong>Quercetin Complex — 2 capsules once or twice daily.</strong> Quercetin is the most-evidenced mast cell stabiliser in the flavonoid family. Vivid's complex pairs it with bromelain (which boosts absorption), bioflavonoids, and vitamin C cofactors. Start 2–4 weeks before your trigger season for cumulative effect.</p>
+      <p><strong>Allergy Control — 1–2 capsules daily.</strong> A formulated blend: eyebright, boswellia (anti-inflammatory), elderberry, additional quercetin, histidine, skullcap, sarsaparilla, fenugreek. The boswellia in particular targets the inflammatory side of allergic response — the watery eyes and stuffy nose feel as much like inflammation as histamine release.</p>
+      <p><strong>Buffered C — 1–2 capsules daily.</strong> Vitamin C has its own mild antihistamine action and supports quercetin's effect. Take it daily during trigger season, not just on bad days.</p>
+      <h3>Timing</h3>
+      <p>The mistake people make is starting on a bad pollen day. Mast cell stabilisation is preventive — you're depleting the mast cells' histamine stockpile gradually. Start 2–4 weeks before the worst of your season and run through it.</p>
+      <p>If you still need a rescue antihistamine on the worst days, take one. The supplement stack reduces your reliance on antihistamines; it doesn't always replace them entirely.</p>
+      <h3>The Allergy Stack bundle</h3>
+      <p>Vivid bundles all three as the <em>Allergy Stack</em> — Quercetin Complex + Allergy Control + Buffered C — for R594.72, saving R110 versus buying separately. It's a 6–8 week supply at typical dosing.</p>
+      <h3>What this won't fix</h3>
+      <p>If your eyes swell shut every time the wind blows or you've ended up in the ER with anaphylaxis, this isn't your intervention. See an allergist. For the "I'm functioning but my nose runs for three months a year" demographic — which is most of Gauteng — the stack is well-placed.</p>
+    `
+  },
+  {
+    handle:"mullein-chest-tightness",
+    title:"Mullein for chronic chest tightness",
+    sub:"Why a fuzzy European weed has found a permanent place in Vivid's respiratory range.",
+    cat:"Immunity",
+    author:"Vivid Lab Team",
+    read:"5 min read",
+    date:"March 2026",
+    hero:P("IMG-5192.png"),
+    related:["mullein-60","allergy-control-60"],
+    body:`
+      <p>Mullein (Verbascum thapsus) is a tall biennial with woolly grey-green leaves and a single yellow flower spike. It grows on roadsides across Europe and now naturalised across most of the world, including the highveld. If you've walked past it, you've probably ignored it. But it's been used continuously for respiratory complaints since at least Dioscorides, who recommended it in the first century AD.</p>
+      <h3>What it actually does</h3>
+      <p>The mullein leaf is unusual in being both an expectorant and a demulcent — two actions that usually need different herbs. The saponins thin and loosen respiratory mucus, helping productive coughs do their job. The mucilage coats irritated mucous membranes, reducing the rawness that drives unproductive tickly coughs.</p>
+      <p>So mullein is useful in two distinct situations: when you have congestion that needs moving, and when you have an irritated airway that needs soothing. Most respiratory herbs do one or the other. Mullein does both.</p>
+      <h3>Where the evidence is</h3>
+      <p>Modern randomised trials of mullein in humans are limited. The case for mullein rests on a long monograph history in European pharmacopoeias and in-vitro studies showing anti-inflammatory and antibacterial action against common respiratory pathogens. It's well-tolerated, used continuously for centuries, and the mechanism (mucilage and saponins) is straightforward and consistent with the observed effect.</p>
+      <p>For the persistent post-cold cough that hangs around for weeks, the post-smoking cough, the dry tickly cough that no syrup seems to touch, the asthma-adjacent chest tightness that isn't full-blown asthma — mullein is reliable enough that it earns its place in the cabinet.</p>
+      <h3>How Vivid formulates it</h3>
+      <p>Vivid's Mullein 60 delivers 360 mg of standardised mullein leaf extract per capsule. The seedless preparation — mullein seeds contain saponins not appropriate for ingestion — and a vegetable capsule shell. One to three capsules daily, with water, ideally before meals so the demulcent action coats before food competes.</p>
+      <h3>What it's not</h3>
+      <p>Not a substitute for inhaled bronchodilators in active asthma. Not a treatment for pneumonia. If a cough has lasted longer than three weeks, see a doctor first — chronic cough warrants investigation, not self-supplementing.</p>
+      <p>But for the wide middle ground of "my chest feels tight and the cold isn't going away" — that's exactly what mullein is for.</p>
+    `
+  },
+  {
+    handle:"curcumin-bioavailability",
+    title:"Curcumin's bioavailability problem",
+    sub:"Why we pair turmeric with black pepper — and what 'enhanced absorption' actually means.",
+    cat:"Daily Nutrients",
+    author:"Vivid Lab Team",
+    read:"6 min read",
+    date:"March 2026",
+    hero:P("IMG-5333.png"),
+    related:["turmeric-300","turmeric-plus-60","joint-relief-60"],
+    body:`
+      <p>Turmeric is the most-studied medicinal plant in the modern literature. PubMed has over 10,000 entries on curcumin — its active polyphenol — covering everything from osteoarthritis to depression to gut inflammation to cardiovascular health. The data is impressive enough that most integrative doctors include it in their go-to recommendations.</p>
+      <p>There's just one problem. Plain curcumin has terrible bioavailability.</p>
+      <h3>The problem</h3>
+      <p>If you swallow a 500 mg capsule of plain curcumin, your gut absorbs maybe 1–2% of it. The rest passes straight through. Whatever does cross the gut wall gets rapidly broken down by the liver before it can do anything systemic. Plasma levels peak low and crash fast.</p>
+      <p>This isn't a marketing problem — it's a pharmacological one. Curcumin is highly hydrophobic (doesn't dissolve in water), gets glucuronidated quickly, and has a short half-life. You can throw 3 grams of curry powder at the problem and not raise blood levels meaningfully.</p>
+      <h3>The piperine fix</h3>
+      <p>Black pepper contains piperine. Piperine inhibits the specific enzyme that glucuronidates curcumin — meaning the curcumin that does make it into your blood stays there longer. The classic study by Shoba et al. (1998) showed that adding 20 mg of piperine to 2 g of curcumin raised bioavailability by approximately 2000% — not 20%, two thousand percent.</p>
+      <p>So Vivid's Turmeric Plus pairs standardised 95% curcuminoid extract with piperine in the same capsule. That single change means a 500 mg curcumin dose actually delivers comparable plasma curcumin to what you'd need 3–4 grams of plain turmeric to achieve.</p>
+      <h3>So why does plain Turmeric 300 still exist?</h3>
+      <p>Three reasons.</p>
+      <p>First, food-form turmeric (the whole-rhizome powder, not isolated curcumin) has effects beyond just curcumin — the other polyphenols and aromatic oils have their own anti-inflammatory action that doesn't depend on systemic absorption.</p>
+      <p>Second, for gut-targeted applications — leaky gut, gentle anti-inflammatory in the digestive tract — you don't necessarily want high systemic absorption. You want the turmeric to act on the gut wall, which means staying local.</p>
+      <p>Third, some users get reflux on high-dose curcumin, and a lower-dose food-form turmeric is gentler.</p>
+      <h3>So which do you take?</h3>
+      <p>If you want systemic anti-inflammatory effect — joints, post-workout, daily inflammation control — Turmeric Plus. If you want gentler daily food-form support, especially gut-focused, plain Turmeric 300. If you want both, take them together.</p>
+      <h3>What "absorption-enhanced" should mean</h3>
+      <p>"Enhanced absorption" on a turmeric label should mean one of three things: piperine, phospholipid carrier (Meriva, BCM-95), or nanoparticle delivery. If the label just says "enhanced" without naming the mechanism, it's marketing language. Vivid's mechanism is piperine — clearly stated, multi-decade evidence base, no proprietary blend smoke.</p>
+    `
+  },
 ];
 
 const GOALS = [
@@ -589,6 +768,7 @@ function renderRoute(){
   if (path.startsWith("/product/")) return renderPDP(main, path.split("/")[2]);
   if (path === "/ingredients") return renderIngredients(main);
   if (path === "/journal") return renderJournal(main);
+  if (path.startsWith("/article/")) return renderArticle(main, path.split("/")[2]);
   if (path === "/about") return renderAbout(main);
   renderHome(main);
 }
@@ -750,18 +930,14 @@ function renderHome(main){
         <a href="#/journal" class="btn btn--ghost btn-arrow">All articles</a>
       </div>
       <div class="journal">
-        ${[
-          {cat:"Gut",t:"What a parasite cleanse actually does (and when it's nonsense)",d:"Black walnut, wormwood, clove — what the evidence says about the triad.",img:PRODUCTS.find(p=>p.handle==='black-walnut-60').img[0]},
-          {cat:"Immunity",t:"Why we buffer vitamin C with calcium",d:"The pH problem with high-dose ascorbic acid, and how calcium ascorbate fixes it.",img:PRODUCTS.find(p=>p.handle==='buffered-c-300').img[0]},
-          {cat:"Stress",t:"Magnesium oxide vs glycinate vs citrate — what's the difference?",d:"Three magnesiums, three jobs. How to pick.",img:PRODUCTS.find(p=>p.handle==='epsom-salt-1kg').img[0]},
-        ].map(a=>`
-          <article class="article">
-            <div class="article-img"><img src="${a.img}" alt="" style="width:60%;margin:auto;height:100%"></div>
-            <div class="article-cat">${a.cat}</div>
-            <h3>${a.t}</h3>
-            <p>${a.d}</p>
-            <a class="more" href="#/journal">Read article →</a>
-          </article>
+        ${JOURNAL.slice(0,3).map(a=>`
+          <a href="#/article/${a.handle}" class="article" style="cursor:pointer">
+            <div class="article-img"><img src="${a.hero}" alt="" style="width:60%;margin:auto;height:100%;object-fit:contain"></div>
+            <div class="article-cat">${a.cat} · ${a.read}</div>
+            <h3>${a.title}</h3>
+            <p>${a.sub}</p>
+            <span class="more">Read article →</span>
+          </a>
         `).join("")}
       </div>
     </div>
@@ -986,27 +1162,28 @@ function renderProductPDP(main, p){
           </div>
           <div class="tab-body active" data-tab="benefits">
             <h4>What ${p.name} is built for</h4>
-            <p>${p.bench}. Each capsule contains ${p.dose||"a clinically meaningful dose"}. Formulated with vegetable capsules, sugar-free, manufactured in a SAHPRA-aligned facility in Centurion.</p>
+            <p>${p.bench}. ${p.dose ? "Each capsule delivers " + p.dose + "." : ""} Formulated with vegetable capsules, sugar-free where indicated, manufactured in a SAHPRA-aligned facility in Centurion, South Africa.</p>
+            <ul class="bullets" style="margin-top:20px">
+              ${(p.benefits||[]).map(b=>`<li>${b}</li>`).join("")}
+            </ul>
           </div>
           <div class="tab-body" data-tab="ingredients">
             <h4>Per dose</h4>
-            <table>
-              <tr><td>${p.dose||p.name+" extract"}</td><td>active</td></tr>
-              <tr><td>Vegetable capsule shell (HPMC)</td><td>—</td></tr>
-              <tr><td>Magnesium stearate (plant-source)</td><td>flow agent</td></tr>
-            </table>
-            <p style="margin-top:16px;font-size:13px">Free from gluten, sugar, dairy, soy, and added colourants where indicated. Manufactured in a facility that handles tree nuts and shellfish-derived ingredients.</p>
+            <p style="font-family:var(--font-mono);font-size:14px;background:var(--bone);padding:14px 18px;border-radius:var(--r-md);border-left:3px solid var(--moss)">${p.dose||p.name+" standardised extract"}</p>
+            <p style="margin-top:18px">Other ingredients: vegetable capsule shell (HPMC), magnesium stearate (plant-source) as a flow agent.</p>
+            <p style="margin-top:12px;font-size:13px;color:var(--ink-soft)">Free from gluten, sugar, dairy, soy, and added colourants where indicated on the label. Manufactured in a facility that also handles tree nuts and shellfish-derived ingredients.</p>
           </div>
           <div class="tab-body" data-tab="how">
             <h4>Daily routine</h4>
-            <p>Take 1–3 capsules daily with water, ideally with a meal, or as directed by a qualified healthcare practitioner. Start at the lower end of the range and titrate up. Best taken consistently for at least 6–8 weeks to assess effect.</p>
-            <p style="margin-top:14px;font-size:13px;color:var(--ink-soft)"><strong>Storage:</strong> Below 25°C, in a cool, dry place. Keep out of reach of children. Do not use if seal is broken.</p>
+            <p>${p.dosage || "Take 1–3 capsules daily with water, ideally with a meal, or as directed by a qualified healthcare practitioner. Start at the lower end of the range and titrate up. Best taken consistently for at least 6–8 weeks to assess effect."}</p>
+            <p style="margin-top:14px;font-size:13px;color:var(--ink-soft)"><strong>Storage:</strong> Below 25°C, in a cool, dry place. Keep out of reach of children. Do not use if the safety seal is broken.</p>
           </div>
           <div class="tab-body" data-tab="faq">
             <h4>Common questions</h4>
-            <p><strong>Is this safe in pregnancy?</strong><br>Consult your healthcare provider before use during pregnancy or while breastfeeding.</p>
-            <p style="margin-top:14px"><strong>Will it interact with my medication?</strong><br>If you take prescription medication, check with your pharmacist or doctor before starting any supplement.</p>
-            <p style="margin-top:14px"><strong>How long until I feel something?</strong><br>Most botanical and nutrient supplements take 4–8 weeks of consistent use. ${p.name} works best as part of a daily routine.</p>
+            <p><strong>Is ${p.name} safe in pregnancy or while breastfeeding?</strong><br>Consult your healthcare provider before use during pregnancy or while breastfeeding. Some botanicals are not recommended during these times.</p>
+            <p style="margin-top:14px"><strong>Will it interact with my medication?</strong><br>If you take prescription medication, check with your pharmacist or doctor before starting any supplement — particularly anticoagulants, antidepressants, immunosuppressants, or diabetes medication.</p>
+            <p style="margin-top:14px"><strong>How long until I notice a difference?</strong><br>Most botanical and nutrient supplements take 4–8 weeks of consistent daily use before effect is clear. ${p.name} works best as part of a routine, not as a one-off.</p>
+            <p style="margin-top:14px"><strong>Is this product third-party tested?</strong><br>Yes — every Vivid batch is independently tested for identity, potency, and heavy metals before release.</p>
           </div>
         </div>
       </div>
@@ -1129,24 +1306,62 @@ function renderJournal(main){
   </div></div>
   <div class="container" style="padding:48px 0 96px">
     <div class="journal" style="grid-template-columns:repeat(2,1fr)">
-      ${[
-        {cat:"Gut",t:"What a parasite cleanse actually does",d:"Black walnut, wormwood, clove — what the evidence really says.",img:findProduct("black-walnut-60").img[0]},
-        {cat:"Immunity",t:"Why we buffer vitamin C with calcium",d:"The pH problem with high-dose ascorbic acid.",img:findProduct("buffered-c-300").img[0]},
-        {cat:"Stress",t:"Three magnesiums, three jobs",d:"Oxide, glycinate, citrate, sulfate — how to pick.",img:findProduct("epsom-salt-1kg").img[0]},
-        {cat:"Women",t:"The Vitex case for cycle regularity",d:"What Angus Castus actually does to pituitary signalling.",img:findProduct("angus-castus-60").img[0]},
-        {cat:"Joints",t:"MSM is mostly sulphur. So what?",d:"How a small molecule shows up in cartilage, skin and gut.",img:findProduct("msm-90").img[0]},
-        {cat:"Sleep",t:"5-HTP and the serotonin shortcut",d:"Where Griffonia helps — and where it doesn't.",img:findProduct("griffonia-5htp-60").img[0]},
-      ].map(a=>`
-        <article class="article">
-          <div class="article-img" style="aspect-ratio:16/10"><img src="${a.img}" alt="" style="width:50%;height:100%;margin:auto"></div>
-          <div class="article-cat">${a.cat}</div>
-          <h3>${a.t}</h3>
-          <p>${a.d}</p>
-          <a class="more" href="#/">Read article →</a>
-        </article>
+      ${JOURNAL.map(a=>`
+        <a href="#/article/${a.handle}" class="article" style="cursor:pointer">
+          <div class="article-img" style="aspect-ratio:16/10"><img src="${a.hero}" alt="" style="width:50%;height:100%;margin:auto;object-fit:contain"></div>
+          <div class="article-cat">${a.cat} · ${a.read}</div>
+          <h3>${a.title}</h3>
+          <p>${a.sub}</p>
+          <span class="more">Read article →</span>
+        </a>
       `).join("")}
     </div>
   </div>`;
+}
+
+function renderArticle(main, handle){
+  const a = JOURNAL.find(x=>x.handle===handle);
+  if (!a){
+    main.innerHTML = `<div class="container" style="padding:120px 0;text-align:center"><h1>Article not found</h1><a href="#/journal" class="btn" style="margin-top:24px">Back to journal</a></div>`;
+    return;
+  }
+  const related = (a.related||[]).map(findProduct).filter(Boolean);
+  main.innerHTML = `
+  <div style="background:var(--bone);border-bottom:1px solid var(--line);padding:48px 0 24px">
+    <div class="container" style="max-width:780px">
+      <div class="crumb"><a href="#/">Home</a> · <a href="#/journal">Journal</a> · ${a.cat}</div>
+      <div class="article-cat" style="color:var(--clay);margin-top:12px">${a.cat} · ${a.date} · ${a.read}</div>
+      <h1 style="font-size:clamp(36px,5vw,68px);max-width:22ch;margin-top:14px">${a.title}</h1>
+      <p style="font-size:19px;color:var(--ink-soft);line-height:1.5;max-width:60ch;margin-top:18px">${a.sub}</p>
+      <div style="display:flex;gap:14px;align-items:center;margin-top:24px;font-size:13px;color:var(--ink-soft)">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--moss);display:grid;place-items:center;color:var(--paper);font-family:var(--font-display);font-size:14px">V</div>
+        ${a.author}
+      </div>
+    </div>
+  </div>
+  <article class="container" style="max-width:720px;padding:48px 0 32px;font-family:var(--font-sans);font-size:18px;line-height:1.7;color:var(--ink-soft)">
+    <style>
+      article p{margin:0 0 22px}
+      article h3{font-family:var(--font-display);font-size:28px;color:var(--ink);line-height:1.15;margin:36px 0 16px}
+      article p:first-of-type::first-letter{font-family:var(--font-display);font-size:72px;float:left;line-height:.85;margin:6px 10px 0 -2px;color:var(--forest);font-weight:300}
+      article ul{font-size:17px}
+      article em{font-style:italic}
+      article strong{color:var(--ink);font-weight:600}
+    </style>
+    ${a.body}
+  </article>
+  ${related.length ? `
+    <div style="background:var(--bone);border-top:1px solid var(--line);padding:64px 0 96px;margin-top:48px">
+      <div class="container">
+        <div class="section-head"><h2 style="font-size:36px">Products discussed in this article</h2></div>
+        <div class="products-row">${related.map(cardHTML).join("")}</div>
+      </div>
+    </div>
+  ` : ""}
+  <div class="container" style="padding:48px 0;text-align:center">
+    <a href="#/journal" class="btn btn--ghost">← All articles</a>
+  </div>
+  `;
 }
 function renderAbout(main){
   main.innerHTML = `
