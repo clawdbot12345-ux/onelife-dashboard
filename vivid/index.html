@@ -1,0 +1,1292 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Vivid Health — Plant-based supplements, made in South Africa</title>
+<meta name="description" content="Vivid Health makes science-backed herbal and nutritional supplements in South Africa. Mullein, MSM, Turmeric, Buffered C and 50+ formulations in vegetable capsules." />
+<meta name="theme-color" content="#1F3D2E" />
+<meta property="og:title" content="Vivid Health — Plant-based supplements, made in South Africa" />
+<meta property="og:description" content="Science-backed herbal supplements. Vegetarian capsules. Made in South Africa." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bone:#F4EEE2;
+  --paper:#FBF7EE;
+  --cream:#EEE5D2;
+  --ink:#0E1A14;
+  --ink-soft:#2A3A30;
+  --forest:#1F3D2E;
+  --forest-deep:#142A1E;
+  --moss:#466B4F;
+  --sage:#A8B89B;
+  --clay:#C3704B;
+  --ochre:#C99A6F;
+  --alert:#B23A2E;
+  --success:#4F7C4A;
+  --line:rgba(14,26,20,.10);
+  --line-strong:rgba(14,26,20,.22);
+  --shadow-1: 0 1px 0 rgba(14,26,20,.04), 0 1px 2px rgba(14,26,20,.04);
+  --shadow-2: 0 8px 24px -12px rgba(14,26,20,.18);
+  --r-sm:6px; --r-md:10px; --r-lg:18px; --r-xl:28px; --r-pill:999px;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+  --container:1280px;
+  --font-display:"Fraunces", ui-serif, Georgia, serif;
+  --font-sans:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-sans);
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;letter-spacing:-.01em;margin:0;font-variation-settings:"opsz" 48, "SOFT" 50}
+h1{font-size:clamp(44px,7vw,108px);line-height:.96;letter-spacing:-.025em;font-variation-settings:"opsz" 144, "SOFT" 30}
+h2{font-size:clamp(32px,4.2vw,60px);line-height:1.02;letter-spacing:-.02em;font-variation-settings:"opsz" 96, "SOFT" 40}
+h3{font-size:clamp(22px,2.4vw,30px);line-height:1.15;letter-spacing:-.01em}
+h4{font-size:18px;line-height:1.25}
+.eyebrow{font-family:var(--font-sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);font-weight:500}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.02em}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+.row{display:flex;gap:var(--s-5);align-items:center}
+.col{display:flex;flex-direction:column;gap:var(--s-3)}
+.spacer{flex:1}
+
+/* ─── Top bar ─── */
+.announce{background:var(--forest);color:#F4EEE2;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:9px 16px;font-weight:500}
+.announce span{opacity:.85;margin:0 14px}
+
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,247,238,.86);
+  backdrop-filter:saturate(140%) blur(12px);
+  -webkit-backdrop-filter:saturate(140%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;gap:var(--s-5);height:68px;padding:0 24px;max-width:var(--container);margin:0 auto}
+.brand{font-family:var(--font-display);font-weight:600;font-size:24px;letter-spacing:-.02em;color:var(--forest-deep);font-variation-settings:"opsz" 48, "SOFT" 30;display:flex;align-items:center;gap:10px}
+.brand-mark{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%, var(--moss) 0%, var(--forest-deep) 70%);box-shadow:inset 0 -3px 6px rgba(255,255,255,.18)}
+.nav-links{display:flex;gap:var(--s-5);align-items:center;font-size:14px;font-weight:500}
+.nav-links a{padding:6px 2px;border-bottom:1px solid transparent;transition:.15s}
+.nav-links a:hover{border-bottom-color:var(--ink)}
+.nav-actions{display:flex;gap:var(--s-3);align-items:center;margin-left:auto}
+.icon-btn{width:38px;height:38px;border-radius:var(--r-pill);display:grid;place-items:center;color:var(--ink);border:1px solid transparent}
+.icon-btn:hover{background:var(--bone);border-color:var(--line)}
+.cart-pip{position:relative}
+.cart-pip[data-count]:not([data-count="0"])::after{content:attr(data-count);position:absolute;top:-2px;right:-2px;background:var(--clay);color:#fff;font-size:10px;font-weight:600;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--paper)}
+
+@media (max-width:880px){
+  .nav-links{display:none}
+}
+
+/* ─── Buttons ─── */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 22px;border-radius:var(--r-pill);
+  font-size:14px;font-weight:600;letter-spacing:.01em;
+  background:var(--ink);color:var(--paper);
+  transition:transform .15s, background .15s;
+}
+.btn:hover{transform:translateY(-1px);background:var(--forest)}
+.btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.btn--forest{background:var(--forest)}
+.btn--forest:hover{background:var(--forest-deep)}
+.btn--clay{background:var(--clay)}
+.btn--clay:hover{background:#A85B3A}
+.btn--block{width:100%;justify-content:center}
+.btn-arrow::after{content:"→";font-size:16px;line-height:1;transform:translateY(-1px)}
+
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:var(--r-pill);font-size:11px;font-weight:500;letter-spacing:.04em;background:var(--bone);color:var(--ink-soft);border:1px solid var(--line)}
+.pill--green{background:rgba(70,107,79,.10);color:var(--forest);border-color:rgba(70,107,79,.22)}
+.pill--clay{background:rgba(195,112,75,.12);color:var(--clay);border-color:rgba(195,112,75,.28)}
+.pill--alert{background:rgba(178,58,46,.10);color:var(--alert);border-color:rgba(178,58,46,.25)}
+
+/* ─── Hero ─── */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg, var(--paper) 0%, var(--bone) 100%);
+  padding:var(--s-8) 0 var(--s-9);
+  border-bottom:1px solid var(--line);
+}
+.hero-leaf{position:absolute;inset:0;pointer-events:none;opacity:.06;background-image:radial-gradient(ellipse 60% 50% at 80% 20%, var(--forest) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 10% 80%, var(--moss) 0%, transparent 60%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-7);align-items:center;position:relative;z-index:1}
+@media (max-width:960px){.hero-grid{grid-template-columns:1fr;gap:var(--s-6)}}
+.hero h1{margin-bottom:var(--s-5)}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--moss)}
+.hero-lede{font-size:18px;line-height:1.5;color:var(--ink-soft);max-width:54ch;margin-bottom:var(--s-6)}
+.hero-cta{display:flex;gap:var(--s-3);flex-wrap:wrap}
+.hero-stats{display:flex;gap:var(--s-6);margin-top:var(--s-7);padding-top:var(--s-5);border-top:1px solid var(--line)}
+.hero-stat .num{font-family:var(--font-display);font-size:36px;line-height:1;color:var(--forest);font-variation-settings:"opsz" 72}
+.hero-stat .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px}
+.hero-image{position:relative;aspect-ratio:5/6;background:radial-gradient(circle at 50% 40%, var(--cream) 0%, var(--bone) 60%);border-radius:var(--r-xl);overflow:hidden;display:grid;place-items:center;box-shadow:var(--shadow-2)}
+.hero-image::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(0deg, rgba(14,26,20,.06), transparent)}
+.hero-image img{width:70%;object-fit:contain;filter:drop-shadow(0 24px 36px rgba(14,26,20,.18))}
+.hero-badge{position:absolute;top:18px;left:18px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-pill);padding:6px 12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--forest);font-weight:600;z-index:2}
+.hero-callout{position:absolute;bottom:18px;right:18px;background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:var(--r-md);font-size:12px;line-height:1.35;max-width:200px;z-index:2}
+.hero-callout strong{display:block;font-family:var(--font-display);font-size:18px;font-weight:400;margin-bottom:3px}
+
+/* ─── Trust strip ─── */
+.trust{background:var(--paper);padding:var(--s-5) 0;border-bottom:1px solid var(--line)}
+.trust-row{display:flex;justify-content:space-around;gap:var(--s-5);flex-wrap:wrap;align-items:center;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+.trust-row > div{display:flex;align-items:center;gap:8px}
+.trust-row svg{width:14px;height:14px;color:var(--moss)}
+
+/* ─── Section ─── */
+section{padding:var(--s-9) 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--s-5);margin-bottom:var(--s-6);flex-wrap:wrap}
+.section-head .lead{max-width:46ch;color:var(--ink-soft);font-size:16px}
+
+/* ─── Goals grid ─── */
+.goals{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-3)}
+@media (max-width:900px){.goals{grid-template-columns:repeat(2,1fr)}}
+.goal{
+  background:var(--bone);border-radius:var(--r-lg);
+  padding:var(--s-5);min-height:180px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border:1px solid var(--line);
+  transition:.2s;cursor:pointer;position:relative;overflow:hidden;
+}
+.goal::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 110% -10%, rgba(70,107,79,.18), transparent 50%);opacity:0;transition:.3s}
+.goal:hover{transform:translateY(-3px);border-color:var(--moss)}
+.goal:hover::before{opacity:1}
+.goal-icon{width:36px;height:36px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center;color:var(--forest);position:relative;z-index:1}
+.goal-name{font-family:var(--font-display);font-size:22px;line-height:1.05;color:var(--ink);position:relative;z-index:1}
+.goal-count{font-size:12px;color:var(--ink-soft);position:relative;z-index:1}
+
+/* ─── Featured products carousel ─── */
+.products-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4)}
+@media (max-width:1100px){.products-row{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:780px){.products-row{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.products-row{grid-template-columns:1fr}}
+
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:.2s;position:relative;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-strong)}
+.card-media{position:relative;aspect-ratio:1;background:var(--bone);display:grid;place-items:center;overflow:hidden}
+.card-media img{width:74%;object-fit:contain;mix-blend-mode:multiply;transition:transform .4s ease}
+.card:hover .card-media img{transform:scale(1.04)}
+.card-badge{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:4px}
+.card-quickadd{position:absolute;bottom:10px;right:10px;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;opacity:0;transform:translateY(4px);transition:.2s}
+.card:hover .card-quickadd{opacity:1;transform:translateY(0)}
+.card-quickadd:hover{background:var(--forest)}
+.card-body{padding:var(--s-4);display:flex;flex-direction:column;gap:6px;flex:1}
+.card-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);font-weight:600}
+.card-name{font-family:var(--font-display);font-size:17px;line-height:1.22;color:var(--ink);min-height:42px}
+.card-bench{font-size:13px;color:var(--ink-soft);line-height:1.42;min-height:36px}
+.card-meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:var(--s-3);border-top:1px solid var(--line)}
+.card-price{font-family:var(--font-display);font-size:18px;color:var(--ink);font-weight:500}
+.card-form{font-size:11px;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
+
+/* ─── Editorial blocks ─── */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s-7);align-items:center}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.editorial-img{aspect-ratio:4/5;background:var(--cream);border-radius:var(--r-xl);overflow:hidden;position:relative;display:grid;place-items:center}
+.editorial-img img{width:65%;object-fit:contain;filter:drop-shadow(0 18px 32px rgba(14,26,20,.16))}
+.editorial-img .lab{position:absolute;top:18px;left:18px;background:var(--ink);color:var(--paper);padding:7px 12px;border-radius:var(--r-pill);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:var(--s-4);font-weight:600}
+.editorial-body p{font-size:17px;line-height:1.55;color:var(--ink-soft);max-width:56ch;margin:0 0 var(--s-4)}
+.editorial-body p:first-of-type::first-letter{font-family:var(--font-display);font-size:60px;float:left;line-height:.85;margin:6px 8px 0 -2px;color:var(--forest);font-weight:300}
+
+.ing-list{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-3);margin-top:var(--s-5)}
+@media (max-width:700px){.ing-list{grid-template-columns:repeat(2,1fr)}}
+.ing-list .ing{padding:var(--s-4);border:1px solid var(--line);border-radius:var(--r-md);background:var(--paper)}
+.ing-list .ing strong{display:block;font-family:var(--font-display);font-size:18px;color:var(--ink);margin-bottom:2px}
+.ing-list .ing span{font-size:13px;color:var(--ink-soft)}
+
+/* ─── Bundles ─── */
+.bundles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-4)}
+@media (max-width:880px){.bundles{grid-template-columns:1fr}}
+.bundle{
+  background:linear-gradient(150deg, var(--cream), var(--bone));
+  border-radius:var(--r-xl);overflow:hidden;
+  display:grid;grid-template-rows:auto 1fr;
+  border:1px solid var(--line);
+  transition:.2s;cursor:pointer;
+}
+.bundle:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
+.bundle-media{aspect-ratio:5/4;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%, var(--paper) 0%, var(--cream) 80%);position:relative}
+.bundle-media img{width:80%;object-fit:contain;filter:drop-shadow(0 16px 28px rgba(14,26,20,.18))}
+.bundle-tag{position:absolute;top:14px;right:14px;background:var(--clay);color:#fff;padding:5px 10px;border-radius:var(--r-pill);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.bundle-body{padding:var(--s-5)}
+.bundle-name{font-family:var(--font-display);font-size:28px;line-height:1.05;letter-spacing:-.015em;color:var(--ink);margin-bottom:6px}
+.bundle-desc{font-size:14px;color:var(--ink-soft);line-height:1.5;margin-bottom:var(--s-4)}
+.bundle-foot{display:flex;justify-content:space-between;align-items:center}
+.bundle-price{font-family:var(--font-display);font-size:22px;color:var(--ink)}
+.bundle-save{font-size:12px;color:var(--moss);font-weight:600;margin-left:8px}
+
+/* ─── Journal / press ─── */
+.journal{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5)}
+@media (max-width:780px){.journal{grid-template-columns:1fr}}
+.article{display:flex;flex-direction:column;gap:var(--s-3)}
+.article-img{aspect-ratio:4/3;background:var(--cream);border-radius:var(--r-lg);overflow:hidden;position:relative}
+.article-img::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(31,61,46,.15), transparent 50%)}
+.article-cat{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);font-weight:600}
+.article h3{margin:0}
+.article p{font-size:14px;color:var(--ink-soft);margin:0}
+.article a.more{font-size:13px;color:var(--forest);font-weight:600;border-bottom:1px solid var(--moss);padding-bottom:1px;align-self:flex-start;margin-top:4px}
+
+/* ─── Email capture ─── */
+.capture{
+  background:var(--forest-deep);color:var(--paper);
+  padding:var(--s-9) 0;position:relative;overflow:hidden;
+}
+.capture::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 90% 110%, rgba(168,184,155,.20), transparent 60%);pointer-events:none}
+.capture-inner{max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:1;padding:0 24px}
+.capture h2{color:var(--paper);margin-bottom:var(--s-4)}
+.capture h2 em{font-style:italic;color:var(--sage)}
+.capture p{font-size:16px;color:rgba(244,238,226,.78);max-width:52ch;margin:0 auto var(--s-5)}
+.capture-form{display:flex;gap:8px;max-width:480px;margin:0 auto}
+.capture-form input{flex:1;background:rgba(244,238,226,.06);border:1px solid rgba(244,238,226,.16);color:var(--paper);padding:14px 18px;border-radius:var(--r-pill);font-size:14px;outline:none}
+.capture-form input::placeholder{color:rgba(244,238,226,.5)}
+.capture-form input:focus{border-color:var(--sage)}
+.capture-tiny{font-size:11px;color:rgba(244,238,226,.5);margin-top:var(--s-4)}
+
+/* ─── Footer ─── */
+footer{background:var(--ink);color:var(--paper);padding:var(--s-9) 0 var(--s-5)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:var(--s-6)}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-col h5{font-family:var(--font-sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin:0 0 var(--s-4);font-weight:600}
+.foot-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.foot-col a{font-size:14px;color:rgba(244,238,226,.78);transition:.15s}
+.foot-col a:hover{color:var(--paper)}
+.foot-brand{font-family:var(--font-display);font-size:28px;color:var(--paper);margin-bottom:var(--s-3);display:flex;align-items:center;gap:10px}
+.foot-brand .brand-mark{background:radial-gradient(circle at 35% 30%, var(--sage) 0%, var(--moss) 70%)}
+.foot-lede{font-size:14px;color:rgba(244,238,226,.66);max-width:32ch;line-height:1.55}
+.foot-bottom{margin-top:var(--s-7);padding-top:var(--s-5);border-top:1px solid rgba(244,238,226,.10);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s-3);font-size:12px;color:rgba(244,238,226,.5)}
+
+/* ─── Collection page ─── */
+.collection-head{padding:var(--s-8) 0 var(--s-6);border-bottom:1px solid var(--line);background:var(--bone)}
+.collection-head h1{font-size:clamp(40px,5vw,72px);max-width:18ch}
+.collection-head p{font-size:17px;color:var(--ink-soft);max-width:54ch;margin-top:var(--s-3)}
+.crumb{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--s-4)}
+.crumb a{color:var(--forest);font-weight:600}
+
+.collection-layout{display:grid;grid-template-columns:240px 1fr;gap:var(--s-6);padding:var(--s-6) 0 var(--s-9)}
+@media (max-width:880px){.collection-layout{grid-template-columns:1fr}}
+.filters{position:sticky;top:90px;align-self:start;height:max-content;border-right:1px solid var(--line);padding-right:var(--s-5)}
+@media (max-width:880px){.filters{position:static;border:0;padding:0;display:flex;gap:var(--s-3);flex-wrap:wrap;overflow:auto}}
+.filter-group{margin-bottom:var(--s-5)}
+.filter-group h5{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 var(--s-3);font-weight:600}
+.filter-opts{display:flex;flex-direction:column;gap:8px}
+@media (max-width:880px){.filter-opts{flex-direction:row;flex-wrap:wrap}}
+.filter-opts label{display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;color:var(--ink-soft)}
+.filter-opts label input{accent-color:var(--forest)}
+.filter-opts label:hover{color:var(--ink)}
+.filter-opts label .ct{margin-left:auto;font-size:11px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--s-5);gap:var(--s-4);flex-wrap:wrap}
+.toolbar-count{font-size:13px;color:var(--ink-soft)}
+.sort{display:flex;align-items:center;gap:8px;font-size:13px}
+.sort select{background:var(--paper);border:1px solid var(--line-strong);padding:8px 14px;border-radius:var(--r-pill);font-size:13px;cursor:pointer}
+
+/* ─── PDP ─── */
+.pdp{padding:var(--s-6) 0 var(--s-9)}
+.pdp-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-7);align-items:start}
+@media (max-width:880px){.pdp-grid{grid-template-columns:1fr}}
+.pdp-gallery{display:flex;flex-direction:column;gap:var(--s-3);position:sticky;top:90px}
+@media (max-width:880px){.pdp-gallery{position:static}}
+.pdp-main-img{aspect-ratio:1;background:var(--bone);border-radius:var(--r-xl);overflow:hidden;display:grid;place-items:center;border:1px solid var(--line)}
+.pdp-main-img img{width:70%;object-fit:contain;mix-blend-mode:multiply}
+.pdp-thumbs{display:flex;gap:8px}
+.pdp-thumb{flex:0 0 80px;aspect-ratio:1;background:var(--bone);border-radius:var(--r-md);border:1.5px solid transparent;cursor:pointer;display:grid;place-items:center;overflow:hidden}
+.pdp-thumb.active{border-color:var(--forest)}
+.pdp-thumb img{width:78%;object-fit:contain;mix-blend-mode:multiply}
+
+.pdp-cat{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);font-weight:600;margin-bottom:var(--s-3)}
+.pdp h1{font-size:clamp(32px,4vw,52px);line-height:1.02;letter-spacing:-.018em;margin-bottom:var(--s-3)}
+.pdp-sub{font-size:16px;color:var(--ink-soft);line-height:1.55;margin-bottom:var(--s-5);max-width:48ch}
+.pdp-rate{display:flex;align-items:center;gap:10px;margin-bottom:var(--s-5);font-size:13px;color:var(--ink-soft)}
+.stars{color:var(--clay);letter-spacing:1px;font-size:14px}
+.pdp-price-row{display:flex;align-items:baseline;gap:var(--s-3);margin-bottom:var(--s-5)}
+.pdp-price{font-family:var(--font-display);font-size:38px;color:var(--ink);font-weight:500}
+.pdp-price-tax{font-size:12px;color:var(--ink-soft)}
+
+.opts{display:flex;gap:10px;margin-bottom:var(--s-4)}
+.opt{padding:10px 16px;border:1.5px solid var(--line-strong);border-radius:var(--r-pill);font-size:13px;font-weight:500;cursor:pointer;background:var(--paper)}
+.opt.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line-strong);border-radius:var(--r-pill);overflow:hidden}
+.qty button{width:38px;height:46px;display:grid;place-items:center;font-size:16px;color:var(--ink)}
+.qty input{width:40px;height:46px;border:0;text-align:center;font-size:14px;background:transparent;font-weight:600}
+.add-row{display:flex;gap:12px;margin-bottom:var(--s-5);flex-wrap:wrap}
+.add-row .btn{flex:1;min-width:200px;padding:16px 24px;font-size:14px;justify-content:center}
+
+.bullets{list-style:none;padding:0;margin:0 0 var(--s-5);display:flex;flex-direction:column;gap:10px}
+.bullets li{font-size:14px;color:var(--ink-soft);display:flex;gap:10px;line-height:1.5}
+.bullets li::before{content:"";flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:var(--moss);margin-top:9px}
+
+.tabs{margin-top:var(--s-7);border-top:1px solid var(--line)}
+.tab-head{display:flex;gap:0;border-bottom:1px solid var(--line)}
+.tab-head button{padding:18px 0;margin-right:28px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid transparent;color:var(--ink-soft)}
+.tab-head button.active{color:var(--ink);border-bottom-color:var(--ink)}
+.tab-body{padding:var(--s-5) 0;display:none}
+.tab-body.active{display:block}
+.tab-body h4{font-family:var(--font-display);font-size:20px;margin:0 0 var(--s-3);color:var(--ink)}
+.tab-body p{font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:62ch}
+.tab-body table{border-collapse:collapse;width:100%;max-width:520px;margin-top:var(--s-3)}
+.tab-body td{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+.tab-body td:first-child{color:var(--ink);font-weight:500;width:60%}
+.tab-body td:last-child{text-align:right;font-family:var(--font-mono);color:var(--forest)}
+
+.pairs{margin-top:var(--s-9)}
+.pairs h3{margin-bottom:var(--s-5)}
+
+/* ─── Drawer (cart) ─── */
+.scrim{position:fixed;inset:0;background:rgba(14,26,20,.4);backdrop-filter:blur(4px);z-index:60;opacity:0;pointer-events:none;transition:.2s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,92vw);background:var(--paper);z-index:70;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-20px 0 40px rgba(14,26,20,.18)}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:var(--s-5);border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:22px;letter-spacing:-.01em}
+.drawer-body{flex:1;overflow:auto;padding:var(--s-4) var(--s-5)}
+.drawer-foot{padding:var(--s-5);border-top:1px solid var(--line);background:var(--bone)}
+.cart-item{display:grid;grid-template-columns:64px 1fr auto;gap:var(--s-4);padding:var(--s-4) 0;border-bottom:1px solid var(--line);align-items:start}
+.cart-item-img{background:var(--cream);aspect-ratio:1;border-radius:var(--r-md);display:grid;place-items:center}
+.cart-item-img img{width:78%;object-fit:contain;mix-blend-mode:multiply}
+.cart-item-name{font-size:13px;font-weight:500;color:var(--ink);line-height:1.3}
+.cart-item-meta{font-size:12px;color:var(--ink-soft);margin-top:4px}
+.cart-item-price{font-family:var(--font-display);font-size:16px;color:var(--ink)}
+.cart-empty{text-align:center;padding:var(--s-7) 0;color:var(--ink-soft)}
+.cart-totals{display:flex;justify-content:space-between;font-size:14px;margin-bottom:var(--s-3)}
+.cart-totals.total{font-family:var(--font-display);font-size:22px;color:var(--ink);margin-bottom:var(--s-4)}
+
+/* ─── Misc ─── */
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--ink);color:var(--paper);padding:8px 12px;border-radius:var(--r-md);z-index:100}
+[hidden]{display:none !important}
+.fade-in{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="announce">
+  <span>Free delivery on orders over R600</span>
+  <span>Made in South Africa</span>
+  <span>Third-party tested</span>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#/" class="brand"><span class="brand-mark" aria-hidden="true"></span>Vivid Health</a>
+    <div class="nav-links">
+      <a href="#/shop">Shop</a>
+      <a href="#/shop?goal=gut">Gut</a>
+      <a href="#/shop?goal=immunity">Immunity</a>
+      <a href="#/shop?goal=energy">Energy</a>
+      <a href="#/shop?bundles=1">Bundles</a>
+      <a href="#/ingredients">Ingredients</a>
+      <a href="#/journal">Journal</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Search" onclick="openSearch()">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Account">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      </button>
+      <button class="icon-btn cart-pip" aria-label="Cart" id="cartBtn" data-count="0">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 6h2l2.7 12.5a2 2 0 0 0 2 1.5h8.6a2 2 0 0 0 2-1.5L22 9H6"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main"><!-- view router renders here --></main>
+
+<!-- ─── Cart drawer ─── -->
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Cart" role="dialog" aria-modal="true">
+  <div class="drawer-head">
+    <h3>Your basket</h3>
+    <button class="icon-btn" onclick="closeCart()" aria-label="Close">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot"></div>
+</aside>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand"><span class="brand-mark" aria-hidden="true"></span>Vivid Health</div>
+        <p class="foot-lede">Plant-based supplements made in South Africa. Ancient remedies, modern science, vegetable capsules.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#/shop">All products</a></li>
+          <li><a href="#/shop?goal=gut">Gut health</a></li>
+          <li><a href="#/shop?goal=immunity">Immunity</a></li>
+          <li><a href="#/shop?goal=stress">Stress & sleep</a></li>
+          <li><a href="#/shop?bundles=1">Bundles</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="#/ingredients">Ingredient library</a></li>
+          <li><a href="#/journal">Journal</a></li>
+          <li><a href="#/about">Our story</a></li>
+          <li><a href="#/stores">Find a stockist</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Help</h5>
+        <ul>
+          <li><a href="#/contact">Contact</a></li>
+          <li><a href="#/shipping">Shipping</a></li>
+          <li><a href="#/returns">Returns</a></li>
+          <li><a href="#/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Follow</h5>
+        <ul>
+          <li><a href="https://facebook.com">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span id="yr"></span> Vivid Health (Pty) Ltd. All prices in ZAR, incl. VAT where applicable.</div>
+      <div>Privacy · Terms · POPIA</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ───────────────────────────────────────────────
+   Product catalogue — sourced from onelife.co.za/collections/vivid-health
+   Real ZAR prices, real Shopify CDN images. 55 SKUs.
+   ─────────────────────────────────────────────── */
+const CDN = "https://onelife.co.za/cdn/shop/files/";
+const P = (file) => CDN + file;
+
+const PRODUCTS = [
+  {handle:"mullein-60",name:"Mullein",size:"60 capsules",price:133.00,goal:"immunity",form:"capsule",bench:"Soothing respiratory and bronchial support",dose:"360mg Mullein Herb Extract per capsule",benefits:["Helps expel excess mucus","Supports clear breathing","Anti-inflammatory demulcent action","Soothes throat and bronchial passages"],img:[P("IMG-5192.png"),P("IMG-5193.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000004675"},
+  {handle:"clove-60",name:"Clove",size:"60 capsules",price:123.28,goal:"gut",form:"capsule",bench:"Eugenol-rich antiparasitic gut support",dose:"Clove Bud Extract 4:1",benefits:["Antimicrobial gut support","Natural source of eugenol","Traditional digestive aid"],img:[P("10140-VividHealthLabels_Clove60_s_Front.png"),P("IMG-5184.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000632557"},
+  {handle:"colon-flush-120",name:"Colon Flush",size:"120 capsules",price:196.07,goal:"gut",form:"capsule",bench:"Osmotic magnesium oxide cleanse",dose:"Magnesium oxide 500mg per capsule",benefits:["Gentle constipation relief","Supports digestive reset","Magnesium-based osmotic action"],img:[P("10140-VividHealthLabels_colonflush120_s_Front_2beb9f57-02b6-4036-9466-25df44c68e39.png"),P("IMG-5187.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:false,sku:"6009689720135"},
+  {handle:"turmeric-300",name:"Turmeric",size:"300 capsules",price:301.88,goal:"daily",form:"capsule",bench:"Curcumin for joint, brain and gut support",dose:"Turmeric Root Extract per capsule",benefits:["Powerful anti-inflammatory","Supports joint mobility","Antioxidant for whole-body health","Aids digestion"],img:[P("IMG-5333.png"),P("IMG-5332.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000083380",hero:true},
+  {handle:"cayenne-300",name:"Cayenne",size:"300 capsules",price:342.00,goal:"daily",form:"capsule",bench:"Capsaicin for metabolism and circulation",dose:"Capsicum frutescens extract",benefits:["Supports metabolism","Boosts circulation","Aids digestive stimulation"],img:[P("IMG-5327.png"),P("IMG-5326.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033699"},
+  {handle:"liver-kidney-90",name:"Liver & Kidney Formula",size:"90 capsules",price:248.00,goal:"daily",form:"capsule",bench:"Hepatic and renal detox support",dose:"Milk Thistle, Dandelion, Marshmallow, Boldo, Burdock",benefits:["Supports liver detoxification","Promotes kidney health","Milk thistle hepatoprotection","Traditional cleansing herbs"],img:[P("IMG-5246.png"),P("IMG-5245.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:false,sku:"6000000820374"},
+  {handle:"black-walnut-60",name:"Black Walnut",size:"60 capsules",price:140.41,goal:"gut",form:"capsule",bench:"Juglone-rich antiparasitic and antifungal",dose:"460mg Black Walnut Herb Extract 4:1",benefits:["Rich in antioxidants","Traditional antiparasitic support","Antifungal botanical","Supports intestinal health"],img:[P("10140-VividHealthLabels_BlackWalnut60_s_Front.png"),P("IMG-5183.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000006051"},
+  {handle:"wormwood-60",name:"Wormwood",size:"60 capsules",price:133.00,goal:"gut",form:"capsule",bench:"Artemisia annua for gut and immune support",dose:"Artemisia annua extract",benefits:["Traditional antiparasitic","Reduces digestive inflammation","Supports immune resilience"],img:[P("10140-VividHealthLabels_Wormwood60_s_Front.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6999000456730"},
+  {handle:"maca-60",name:"Maca",size:"60 capsules",price:179.86,goal:"women",form:"capsule",bench:"Endocrine adaptogen for hormonal balance",dose:"Lepidium meyenii root extract",benefits:["Hormonal balance support","Energy and libido","Menopause symptom relief","Adaptogenic adrenal support"],img:[P("IMG-5284.png"),P("IMG-5283.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000820046"},
+  {handle:"flexijoint-advanced-120",name:"Flexijoint Advanced",size:"120 capsules",price:322.00,goal:"joints",form:"capsule",bench:"Targeted joint and mobility support",dose:"Glucosamine, MSM, Chondroitin blend",benefits:["Supports cartilage","Reduces joint discomfort","Built for active lifestyles","Synergistic mobility formula"],img:[P("IMG-5270.png"),P("IMG-5271.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000719456"},
+  {handle:"d-ribose-150",name:"D-Ribose",size:"150g powder",price:307.39,goal:"energy",form:"powder",bench:"ATP-supporting energy substrate",dose:"5g per scoop",benefits:["Supports cellular ATP","Cardiovascular energy","Athletic recovery","Vegan and sugar-free"],img:[P("IMG-5252.png"),P("IMG-5251.png")],diet:["vegan","gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000820381"},
+  {handle:"bone-supreme-120",name:"Bone Supreme",size:"120 capsules",price:437.00,goal:"daily",form:"capsule",bench:"Complete bone matrix formula",dose:"Calcium, D3, K2, Mg, Boron",benefits:["Full bone matrix support","Vitamin K2 for calcium routing","D3 for absorption","Magnesium and boron cofactors"],img:[P("IMG-5249.png"),P("IMG-5250.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000822354"},
+  {handle:"omega-oil-90",name:"Omega Oil",size:"90 capsules",price:237.18,goal:"daily",form:"capsule",bench:"Molecularly distilled EPA/DHA",dose:"1000mg fish oil per capsule",benefits:["Heart and circulatory support","Brain and cognitive function","Anti-inflammatory","Joint mobility"],img:[P("IMG-5247.png"),P("IMG-5248.png")],diet:["gluten-free","sugar-free","sa-made"],stock:false,sku:"6000000034597"},
+  {handle:"prosta-care-60",name:"Prosta Care",size:"60 capsules",price:263.93,goal:"men",form:"capsule",bench:"Saw palmetto, zinc and selenium blend",dose:"Saw palmetto extract + zinc + selenium",benefits:["Targeted prostate health","5-alpha-reductase support","Essential mineral cofactors","Traditional men's botanicals"],img:[P("10140-VividHealthLabels_ProstaCare60_s_Front.png"),P("IMG-5215.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000791414"},
+  {handle:"allergy-control-60",name:"Allergy Control",size:"60 capsules",price:199.00,goal:"immunity",form:"capsule",bench:"Mast cell stabilising allergy formula",dose:"Quercetin, Nettle, Bromelain blend",benefits:["Non-sedating allergy support","Mast cell stabilisation","Hay fever and sinus support","Year-round respiratory comfort"],img:[P("IMG-5199.png"),P("IMG-5198.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000696467"},
+  {handle:"colon-flush-powder-135",name:"Colon Flush Powder",size:"135g",price:143.00,goal:"gut",form:"powder",bench:"Magnesium oxide flexible-dose powder",dose:"1 tsp = ~5g magnesium oxide",benefits:["Flexible osmotic cleanse dosing","Easier to titrate than capsules","Travel-friendly powder format"],img:[P("10140-VividHealthLabels_colonflush135G_Front.png"),P("IMG-5188.png")],diet:["gluten-free","sugar-free","dairy-free","vegetarian","sa-made"],stock:true,sku:"6000000034573"},
+  {handle:"colest-control-60",name:"Colest Control",size:"60 capsules",price:239.90,goal:"daily",form:"capsule",bench:"Phytochemical cholesterol support",dose:"Red yeast rice + plant sterols",benefits:["Cardiovascular health","Phytosterol cholesterol support","Daily cardio-metabolic care"],img:[P("IMG-5264.png"),P("IMG-5265.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000837402"},
+  {handle:"astragalus-60",name:"Astragalus",size:"60 capsules",price:164.00,goal:"immunity",form:"capsule",bench:"Adaptogenic immune modulator",dose:"Astragalus membranaceus root extract",benefits:["Astragaloside-rich immune support","Adaptogenic resilience","Sustained energy","Traditional Chinese tonic herb"],img:[P("IMG-5196.png"),P("IMG-5197.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000002800"},
+  {handle:"l-glutamine-500",name:"L-Glutamine",size:"500g powder",price:345.00,goal:"energy",form:"powder",bench:"Amino acid for gut and recovery",dose:"5g per scoop",benefits:["Supports gut lining","Aids post-exercise recovery","Immune function support","Pure free-form amino acid"],img:[P("IMG-5260.png"),P("IMG-5261.png")],diet:["vegan","vegetarian","sa-made"],stock:true,sku:"748927022803"},
+  {handle:"l-lysine-60",name:"L-Lysine",size:"60 capsules",price:118.00,goal:"immunity",form:"capsule",bench:"Essential amino for immunity and skin",dose:"500mg L-lysine HCl per capsule",benefits:["Cold sore / herpes support","Collagen synthesis cofactor","Cardiovascular health","Essential amino acid"],img:[P("IMG-5242.png"),P("IMG-5241.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000612818"},
+  {handle:"buffered-c-300",name:"Buffered C",size:"300 capsules",price:428.49,goal:"immunity",form:"capsule",bench:"Non-acidic calcium ascorbate",dose:"500mg buffered vitamin C per capsule",benefits:["Stomach-friendly vitamin C","Immune and stress support","High-dose immune building","Calcium-buffered for daily use"],img:[P("IMG-5210.png"),P("IMG-5209.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"600000082009",hero:true},
+  {handle:"tranquil-60",name:"Tranquil",size:"60 capsules",price:130.00,goal:"stress",form:"capsule",bench:"Botanical calming and sleep blend",dose:"Passionflower, Valerian, Hops",benefits:["Eases everyday stress","Supports sleep onset","Non-habit-forming botanicals","Calm without sedation"],img:[P("IMG-5229.png"),P("IMG-5228.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000675028"},
+  {handle:"sage-60",name:"Sage",size:"60 capsules",price:120.61,goal:"women",form:"capsule",bench:"Hot flush and menopause support",dose:"Salvia officinalis leaf extract",benefits:["Reduces hot flushes","Hormonal transition support","Traditional women's herb"],img:[P("IMG-5286.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000820367"},
+  {handle:"msm-90",name:"MSM",size:"90 capsules",price:170.78,goal:"joints",form:"capsule",bench:"Organic sulphur for joints and skin",dose:"810mg MSM per capsule",benefits:["Cartilage and collagen support","Anti-inflammatory","Joint flexibility","Skin health"],img:[P("IMG-5268.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033798"},
+  {handle:"msm-500",name:"MSM",size:"500g powder",price:349.60,goal:"joints",form:"powder",bench:"Bulk MSM powder for active users",dose:"~3g per scoop",benefits:["High-dose joint support","Flexible powder dosing","Better value per gram","Easy to add to drinks"],img:[P("IMG-5635.jpg")],diet:["gluten-free","sugar-free","sa-made"],stock:false,sku:"6000000033804"},
+  {handle:"msm-300",name:"MSM",size:"300 capsules",price:390.00,goal:"joints",form:"capsule",bench:"Family-size MSM capsules",dose:"810mg MSM per capsule",benefits:["3-month supply at full dose","Cartilage and collagen support","Joint mobility","Anti-inflammatory sulphur"],img:[P("IMG-5277.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000033811"},
+  {handle:"liquorice-root-60",name:"Liquorice Root",size:"60 capsules",price:132.99,goal:"stress",form:"capsule",bench:"Adrenal and gut soothing botanical",dose:"Glycyrrhiza glabra root extract",benefits:["Adrenal support","Soothes digestive lining","Adaptogenic resilience"],img:[P("IMG-5244.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000820411"},
+  {handle:"joint-relief-60",name:"Joint Relief",size:"60 capsules",price:138.00,goal:"joints",form:"capsule",bench:"Daily anti-inflammatory joint blend",dose:"Turmeric, Boswellia, Ginger blend",benefits:["Targets joint discomfort","Botanical anti-inflammatories","Daily mobility support"],img:[P("IMG-5267.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033828"},
+  {handle:"garcinia-cambogia-60",name:"Garcinia Cambogia",size:"60 capsules",price:166.06,goal:"daily",form:"capsule",bench:"HCA-rich appetite support",dose:"Garcinia cambogia rind extract (HCA)",benefits:["Appetite control","Traditional Ayurvedic weight herb","Supports satiety"],img:[P("IMG-5240.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033835"},
+  {handle:"cayenne-90",name:"Cayenne",size:"90 capsules",price:128.80,goal:"daily",form:"capsule",bench:"Starter-size cayenne metabolic herb",dose:"Capsicum frutescens extract",benefits:["Supports metabolism","Boosts circulation","Lower-cost intro size"],img:[P("IMG-5313.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033842"},
+  {handle:"cayenne-250g",name:"Cayenne Powder",size:"250g",price:130.00,goal:"daily",form:"powder",bench:"Flexible-dose cayenne powder",dose:"½ tsp daily",benefits:["Culinary or capsule dosing","Bulk value pack","South African cayenne"],img:[P("WhatsAppImage2026-02-23at16.32.58.jpg")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033859"},
+  {handle:"buffered-c-90",name:"Buffered C",size:"90 capsules",price:189.76,goal:"immunity",form:"capsule",bench:"Daily-size buffered vitamin C",dose:"500mg buffered vitamin C per capsule",benefits:["Stomach-friendly vitamin C","Immune support","Daily 3-month size"],img:[P("IMG-5203.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033866"},
+  {handle:"buffered-c-150g",name:"Buffered C Powder",size:"150g",price:105.34,goal:"immunity",form:"powder",bench:"Mix-in-water buffered C",dose:"~1 tsp = 1g vitamin C",benefits:["Flexible high-dose vitamin C","Non-acidic","Add to water or smoothies"],img:[P("10140-Vivid-Health--Labels_buff-c-150g-size_0001_Front.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033873"},
+  {handle:"apple-cider-90",name:"Apple Cider Vinegar",size:"90 capsules",price:199.24,goal:"daily",form:"capsule",bench:"ACV with mother in convenient capsule",dose:"Apple cider vinegar powder",benefits:["Daily digestive support","No vinegar taste","Convenient dosing"],img:[P("IMG-5310.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033880"},
+  {handle:"turmeric-plus-60",name:"Turmeric Plus",size:"60 capsules",price:257.60,goal:"daily",form:"capsule",bench:"Turmeric with black pepper for absorption",dose:"Curcumin + Piperine 95%",benefits:["Enhanced curcumin absorption","Piperine bioavailability boost","Anti-inflammatory","Joint and gut support"],img:[P("IMG-5314.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033897"},
+  {handle:"advanced-buffered-c-300",name:"Advanced Buffered C",size:"300 capsules",price:550.00,goal:"immunity",form:"capsule",bench:"Buffered C with zinc and bioflavonoids",dose:"500mg C + Zn + bioflavonoid complex",benefits:["Synergistic immune complex","Zinc cofactor","Bioflavonoid antioxidants","High-dose immune building"],img:[P("IMG-5207.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000033903"},
+  {handle:"spirulina-250g",name:"Spirulina Powder",size:"250g",price:185.84,goal:"daily",form:"powder",bench:"Nutrient-dense green algae",dose:"~1 tsp daily",benefits:["Protein and iron rich","B-vitamin source","Antioxidant phycocyanin","Daily greens base"],img:[P("IMG-5321.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033910"},
+  {handle:"quercetin-complex-60",name:"Quercetin Complex",size:"60 capsules",price:285.20,goal:"immunity",form:"capsule",bench:"Flavonoid antioxidant complex",dose:"Quercetin + Vitamin C + Bromelain",benefits:["Allergy and immune support","Mast cell stabiliser","Synergistic with vitamin C","Cellular antioxidant"],img:[P("IMG-5190.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033927"},
+  {handle:"omega-oil-300",name:"Omega Oil",size:"300 capsules",price:684.25,goal:"daily",form:"capsule",bench:"Family-size molecularly distilled fish oil",dose:"1000mg fish oil per capsule",benefits:["6-month supply","Heart and brain support","Cost-effective per dose"],img:[P("IMG-5255.png")],diet:["gluten-free","sugar-free","sa-made"],stock:true,sku:"6000000033934"},
+  {handle:"msm-150g",name:"MSM Powder",size:"150g",price:136.85,goal:"joints",form:"powder",bench:"Smaller-size MSM powder",dose:"~3g per scoop",benefits:["Try-size MSM powder","Joint and skin support","Easy mix-in dose"],img:[P("IMG-5272.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033941"},
+  {handle:"moringa-300",name:"Moringa Powder",size:"300 capsules",price:298.08,goal:"daily",form:"capsule",bench:"Nutrient-dense moringa leaf",dose:"Moringa oleifera leaf powder",benefits:["Plant protein and iron","Antioxidant polyphenols","Daily nutritional insurance","Traditional African superfood"],img:[P("IMG-5329.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033958"},
+  {handle:"immune-plus-60",name:"Immune Plus",size:"60 capsules",price:125.00,goal:"immunity",form:"capsule",bench:"Vitamin C, Zn, Selenium combo",dose:"C 500mg + Zinc 15mg + Selenium 100mcg",benefits:["Three-nutrient immune stack","Daily prevention","One-capsule simplicity","Cold and flu season ready"],img:[P("IMG-5194.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033965"},
+  {handle:"griffonia-5htp-60",name:"Griffonia (5-HTP)",size:"60 capsules",price:275.00,goal:"stress",form:"capsule",bench:"Serotonin precursor for mood and sleep",dose:"100mg 5-HTP per capsule",benefits:["Mood and serotonin support","Sleep onset","Natural Griffonia seed source"],img:[P("IMG-5222.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033972"},
+  {handle:"gaba-150g",name:"GABA Powder",size:"150g",price:258.00,goal:"stress",form:"powder",bench:"Calming neurotransmitter powder",dose:"500mg per scoop",benefits:["Calms an overactive mind","Supports sleep","Flexible dosing","Stress recovery"],img:[P("IMG-5236.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033989"},
+  {handle:"flexijoint-300",name:"Flexijoint",size:"300 capsules",price:625.60,goal:"joints",form:"capsule",bench:"Family-size joint matrix",dose:"Glucosamine + Chondroitin + MSM",benefits:["6-month joint supply","Cartilage and mobility","Active-lifestyle dosing","Synergistic ingredients"],img:[P("IMG-5274.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033996"},
+  {handle:"epsom-salt-1kg",name:"Epsom Salt",size:"1kg",price:90.99,goal:"daily",form:"powder",bench:"Magnesium sulfate for baths and recovery",dose:"1–2 cups per bath",benefits:["Muscle recovery soak","Magnesium absorption","Sleep ritual","Best value per kg"],img:[P("IMG-5293.png")],diet:["vegan","gluten-free","sugar-free","sa-made"],stock:true,sku:"6000000034009"},
+  {handle:"dmae-150g",name:"DMAE Powder",size:"150g",price:235.69,goal:"daily",form:"powder",bench:"Choline-related cognitive nutrient",dose:"100mg per scoop",benefits:["Supports focus and clarity","Cholinergic activity","Flexible powder dose"],img:[P("IMG-5234.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034016"},
+  {handle:"coq10-60",name:"Coenzyme Q10",size:"60 capsules",price:340.40,goal:"daily",form:"capsule",bench:"Mitochondrial energy and heart support",dose:"100mg CoQ10 per capsule",benefits:["Mitochondrial energy","Cardiovascular health","Antioxidant","Statin-user friendly"],img:[P("IMG-5263.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000034023"},
+  {handle:"bone-supreme-500",name:"Bone Supreme",size:"500 capsules",price:1251.20,goal:"daily",form:"capsule",bench:"Family-size bone matrix formula",dose:"Calcium + D3 + K2 + Mg + Boron",benefits:["8-month supply","Full bone matrix cofactors","Best value per dose"],img:[P("IMG-5258.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034030"},
+  {handle:"barley-grass-300",name:"Barley Grass",size:"300 capsules",price:283.02,goal:"daily",form:"capsule",bench:"Whole-leaf greens nutrition",dose:"Barley grass leaf powder",benefits:["Chlorophyll-rich greens","Whole-food vitamins","Daily greens insurance"],img:[P("IMG-5324.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034047"},
+  {handle:"barley-grass-200g",name:"Barley Grass Powder",size:"200g",price:224.25,goal:"daily",form:"powder",bench:"Bulk greens powder",dose:"~1 tsp daily",benefits:["Flexible greens dosing","Whole-leaf chlorophyll","Smoothie-ready"],img:[P("IMG-5316.png")],diet:["vegan","gluten-free","sugar-free","vegetarian","sa-made"],stock:false,sku:"6000000034054"},
+  {handle:"angus-castus-60",name:"Angus Castus",size:"60 capsules",price:180.00,goal:"women",form:"capsule",bench:"Chasteberry for PMS and cycle balance",dose:"Vitex agnus-castus extract",benefits:["PMS support","Cycle regularity","Menopausal balance","Traditional women's herb"],img:[P("IMG-5281.png")],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000034061"},
+];
+
+const BUNDLES = [
+  {handle:"rest-focus",name:"Rest & Focus Stack",desc:"Sleep, calm, and mental clarity in one stack — Tranquil, Griffonia 5-HTP, GABA powder.",price:587.67,save:120,img:CDN+"vivid-rest-focus-v3.jpg",includes:["tranquil-60","griffonia-5htp-60","gaba-150g"]},
+  {handle:"bone-joint",name:"Bone & Joint Pack",desc:"Complete skeletal support — Bone Supreme, MSM, Flexijoint Advanced.",price:742.66,save:150,img:CDN+"vivid-bone-joint-v3.jpg",includes:["bone-supreme-120","msm-90","flexijoint-advanced-120"]},
+  {handle:"allergy-stack",name:"Allergy Stack",desc:"Allergy and immune support — Allergy Control, Quercetin Complex, Buffered C.",price:594.72,save:110,img:CDN+"vivid-allergy-stack-v4.jpg",includes:["allergy-control-60","quercetin-complex-60","buffered-c-90"]},
+];
+
+const GOALS = [
+  {id:"gut",name:"Gut Health",desc:"Cleanse, balance, restore",icon:"M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z M12 9v6"},
+  {id:"immunity",name:"Immunity",desc:"Daily defense, year-round",icon:"M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"},
+  {id:"energy",name:"Energy & Vitality",desc:"Cellular fuel, not stimulants",icon:"M13 2L3 14h7l-1 8 10-12h-7z"},
+  {id:"stress",name:"Stress, Sleep & Mood",desc:"Calm without sedation",icon:"M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"},
+  {id:"joints",name:"Joints & Mobility",desc:"Move freely, age strongly",icon:"M6 6l4 4-2 2-4-4 2-2zm12 12l-4-4 2-2 4 4-2 2zM10 14l4-4"},
+  {id:"women",name:"Women's Health",desc:"Hormones, cycles, balance",icon:"M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 0v8m-3-4h6"},
+  {id:"men",name:"Men's Health",desc:"Prostate, vitality, focus",icon:"M14 4h6v6M20 4L13 11m-7 9a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"},
+  {id:"daily",name:"Daily Nutrients",desc:"Vitamins, omegas, basics",icon:"M12 2v20m-8-10h16"},
+];
+
+/* ─── State ─── */
+const cart = JSON.parse(localStorage.getItem("vh_cart")||"[]");
+let activeRoute = "/";
+
+const fmtR = (n) => "R" + n.toLocaleString("en-ZA",{minimumFractionDigits:2,maximumFractionDigits:2});
+const findProduct = (h) => PRODUCTS.find(p=>p.handle===h);
+const findBundle = (h) => BUNDLES.find(b=>b.handle===h);
+const goalName = (id) => (GOALS.find(g=>g.id===id)||{}).name || "All";
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+
+/* ─── Router ─── */
+function parseHash(){
+  const h = location.hash.slice(1) || "/";
+  const [path, qs] = h.split("?");
+  const params = new URLSearchParams(qs||"");
+  return {path, params};
+}
+function navigate(path){ location.hash = path; }
+function renderRoute(){
+  const {path, params} = parseHash();
+  const main = $("#main");
+  main.innerHTML = "";
+  main.classList.remove("fade-in"); void main.offsetWidth; main.classList.add("fade-in");
+  window.scrollTo({top:0,behavior:"instant"});
+  if (path === "/" || path === "") return renderHome(main);
+  if (path === "/shop") return renderShop(main, params);
+  if (path.startsWith("/product/")) return renderPDP(main, path.split("/")[2]);
+  if (path === "/ingredients") return renderIngredients(main);
+  if (path === "/journal") return renderJournal(main);
+  if (path === "/about") return renderAbout(main);
+  renderHome(main);
+}
+window.addEventListener("hashchange", renderRoute);
+
+/* ─── HOME ─── */
+function renderHome(main){
+  const hero = PRODUCTS.find(p=>p.hero) || PRODUCTS[3];
+  const featured = ["turmeric-300","buffered-c-300","allergy-control-60","mullein-60","tranquil-60","msm-90","moringa-300","flexijoint-advanced-120"].map(findProduct).filter(Boolean);
+
+  main.innerHTML = `
+  <section class="hero">
+    <div class="hero-leaf"></div>
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Made in South Africa · Since 2023</div>
+        <h1 style="margin-top:18px">Vivid by <em>nature.</em><br>Verified by science.</h1>
+        <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Fifty-five formulations across gut, immunity, sleep, joints, and daily nutrition.</p>
+        <div class="hero-cta">
+          <a href="#/shop" class="btn btn--forest btn-arrow">Shop the range</a>
+          <a href="#/ingredients" class="btn btn--ghost">Browse ingredients</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num">55</div><div class="lbl">Formulations</div></div>
+          <div class="hero-stat"><div class="num">100%</div><div class="lbl">SA Made</div></div>
+          <div class="hero-stat"><div class="num">3</div><div class="lbl">Onelife stores</div></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <span class="hero-badge">Hero · ${hero.size}</span>
+        <img src="${hero.img[0]}" alt="${hero.name}" loading="eager">
+        <div class="hero-callout"><strong>${hero.name}</strong>${hero.bench}</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="container trust-row">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Vegetarian capsules</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Sugar-free</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Gluten-free</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Third-party tested</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> SAHPRA-compliant facility</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Shop by goal</div>
+          <h2 style="margin-top:12px">Built around what your body actually does.</h2>
+        </div>
+        <p class="lead">Not categories. Outcomes. Pick the system you're working on — we'll show you the formulations our customers and three retail stores reach for most.</p>
+      </div>
+      <div class="goals">
+        ${GOALS.map(g=>`
+          <a href="#/shop?goal=${g.id}" class="goal" aria-label="${g.name}">
+            <div class="goal-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="${g.icon}"/></svg></div>
+            <div>
+              <div class="goal-name">${g.name}</div>
+              <div class="goal-count">${PRODUCTS.filter(p=>p.goal===g.id).length} formulations · ${g.desc}</div>
+            </div>
+          </a>
+        `).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Most loved</div>
+          <h2 style="margin-top:12px">The formulations the team keeps reordering.</h2>
+        </div>
+        <a href="#/shop" class="btn btn--ghost btn-arrow">See all 55</a>
+      </div>
+      <div class="products-row">${featured.map(cardHTML).join("")}</div>
+    </div>
+  </section>
+
+  <section style="background:var(--bone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container split">
+      <div class="editorial-img">
+        <div class="lab">The Vivid Lab</div>
+        <img src="${PRODUCTS[20].img[0]}" alt="Buffered C">
+      </div>
+      <div class="editorial-body">
+        <div class="kicker">Our philosophy</div>
+        <h2>We don't believe in fairy dusting.</h2>
+        <p>Every Vivid formulation states the milligrams. No proprietary blends hiding 12mg of an ingredient that needs 300mg to work. If a study used 810mg of MSM, our MSM capsule has 810mg. If saw palmetto needs a 4:1 extract to do anything, that's what's in the bottle.</p>
+        <p>We're South African-made because we believe the local supplement industry deserves a brand built on dosage, not marketing copy. Vegetable capsules. Sugar-free. Plant-first where it matters.</p>
+        <div class="row" style="margin-top:24px"><a href="#/about" class="btn btn--forest btn-arrow">Read the full story</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Curated stacks</div>
+          <h2 style="margin-top:12px">Three bundles, built for outcomes.</h2>
+        </div>
+        <p class="lead">Pre-paired formulations that work together. Saves you R110–R150 vs buying separately.</p>
+      </div>
+      <div class="bundles">
+        ${BUNDLES.map(b=>`
+          <a href="#/product/${b.handle}" class="bundle">
+            <div class="bundle-media">
+              <span class="bundle-tag">Save R${b.save}</span>
+              <img src="${b.img}" alt="${b.name}">
+            </div>
+            <div class="bundle-body">
+              <div class="bundle-name">${b.name}</div>
+              <div class="bundle-desc">${b.desc}</div>
+              <div class="bundle-foot">
+                <div><span class="bundle-price">${fmtR(b.price)}</span><span class="bundle-save">incl. ${b.includes.length} products</span></div>
+                <span class="btn btn--ghost" style="padding:8px 14px;font-size:12px">Shop stack →</span>
+              </div>
+            </div>
+          </a>
+        `).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Ingredient library</div>
+          <h2 style="margin-top:12px">Search by ingredient.<br>Read by ailment.</h2>
+        </div>
+        <a href="#/ingredients" class="btn btn--ghost btn-arrow">Open the library</a>
+      </div>
+      <p class="lead" style="max-width:60ch;color:var(--ink-soft);font-size:16px;margin-bottom:32px">A growing reference of single ingredients, their evidence, their typical doses, and which Vivid formulations contain them. Designed to be the cleanest supplement reference in South Africa.</p>
+      <div class="ing-list">
+        ${[
+          {n:"Mullein",d:"Respiratory and bronchial herb. 360mg per dose."},
+          {n:"MSM",d:"Organic sulphur. 810mg cartilage & collagen cofactor."},
+          {n:"Quercetin",d:"Mast cell stabiliser. Pairs with vitamin C."},
+          {n:"Astragalus",d:"Adaptogenic immune modulator."},
+          {n:"Ashwagandha",d:"Stress and cortisol balancing adaptogen."},
+          {n:"5-HTP",d:"Serotonin precursor from Griffonia seed."},
+        ].map(i=>`<div class="ing"><strong>${i.n}</strong><span>${i.d}</span></div>`).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">The Journal</div>
+          <h2 style="margin-top:12px">Reading, not marketing.</h2>
+        </div>
+        <a href="#/journal" class="btn btn--ghost btn-arrow">All articles</a>
+      </div>
+      <div class="journal">
+        ${[
+          {cat:"Gut",t:"What a parasite cleanse actually does (and when it's nonsense)",d:"Black walnut, wormwood, clove — what the evidence says about the triad.",img:PRODUCTS.find(p=>p.handle==='black-walnut-60').img[0]},
+          {cat:"Immunity",t:"Why we buffer vitamin C with calcium",d:"The pH problem with high-dose ascorbic acid, and how calcium ascorbate fixes it.",img:PRODUCTS.find(p=>p.handle==='buffered-c-300').img[0]},
+          {cat:"Stress",t:"Magnesium oxide vs glycinate vs citrate — what's the difference?",d:"Three magnesiums, three jobs. How to pick.",img:PRODUCTS.find(p=>p.handle==='epsom-salt-1kg').img[0]},
+        ].map(a=>`
+          <article class="article">
+            <div class="article-img"><img src="${a.img}" alt="" style="width:60%;margin:auto;height:100%"></div>
+            <div class="article-cat">${a.cat}</div>
+            <h3>${a.t}</h3>
+            <p>${a.d}</p>
+            <a class="more" href="#/journal">Read article →</a>
+          </article>
+        `).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section class="capture">
+    <div class="capture-inner">
+      <div class="eyebrow" style="color:var(--sage)">Welcome 10%</div>
+      <h2 style="margin-top:14px">Get the <em>field notes</em>.</h2>
+      <p>Monthly long-form on single ingredients, formulation choices, and what we're testing next. Subscribers get 10% off their first order.</p>
+      <form class="capture-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';this.querySelector('input').value=''">
+        <input type="email" placeholder="your@email.co.za" required aria-label="Email">
+        <button class="btn btn--clay" type="submit">Subscribe</button>
+      </form>
+      <div class="capture-tiny">No spam. Unsubscribe in one click. POPIA-compliant.</div>
+    </div>
+  </section>
+  `;
+}
+
+function cardHTML(p){
+  const sold = !p.stock;
+  return `
+  <a href="#/product/${p.handle}" class="card" aria-label="${p.name}">
+    <div class="card-media">
+      <div class="card-badge">
+        ${p.diet.includes("vegan")?`<span class="pill pill--green">Vegan</span>`:""}
+        ${sold?`<span class="pill pill--alert">Sold out</span>`:""}
+        ${p.hero?`<span class="pill pill--clay">Best seller</span>`:""}
+      </div>
+      <img src="${p.img[0]}" alt="${p.name}" loading="lazy">
+      <button class="card-quickadd" aria-label="Quick add" onclick="event.preventDefault();event.stopPropagation();addToCart('${p.handle}')">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="card-cat">${goalName(p.goal)}</div>
+      <div class="card-name">${p.name}</div>
+      <div class="card-bench">${p.bench}</div>
+      <div class="card-meta">
+        <div class="card-price">${fmtR(p.price)}</div>
+        <div class="card-form">${p.size}</div>
+      </div>
+    </div>
+  </a>`;
+}
+
+/* ─── SHOP / Collection ─── */
+function renderShop(main, params){
+  const goal = params.get("goal");
+  const bundlesOnly = params.get("bundles");
+  const formFilter = params.get("form");
+  const inStockOnly = params.get("instock");
+  const sort = params.get("sort") || "featured";
+
+  let list = bundlesOnly ? [...BUNDLES.map(b=>({...b,bundle:true,goal:"bundles",img:[b.img],form:"stack"}))] : [...PRODUCTS];
+  if (goal && !bundlesOnly) list = list.filter(p=>p.goal===goal);
+  if (formFilter) list = list.filter(p=>p.form===formFilter);
+  if (inStockOnly === "1") list = list.filter(p=>p.stock!==false);
+  if (sort === "price-asc") list.sort((a,b)=>a.price-b.price);
+  if (sort === "price-desc") list.sort((a,b)=>b.price-a.price);
+  if (sort === "name") list.sort((a,b)=>a.name.localeCompare(b.name));
+
+  const counts = {
+    capsule: PRODUCTS.filter(p=>p.form==="capsule").length,
+    powder: PRODUCTS.filter(p=>p.form==="powder").length,
+    vegan: PRODUCTS.filter(p=>p.diet.includes("vegan")).length,
+    instock: PRODUCTS.filter(p=>p.stock).length,
+  };
+
+  const title = bundlesOnly ? "Bundles" : (goal ? goalName(goal) : "All formulations");
+  const desc = bundlesOnly
+    ? "Pre-paired stacks built for an outcome. Save R110–R150 vs buying separately."
+    : (goal
+        ? `Vivid Health formulations for ${goalName(goal).toLowerCase()}. South African made, dose-stated, vegetable capsules where applicable.`
+        : "Browse the full Vivid Health range — 55 single-ingredient and combination formulations, all made in South Africa.");
+
+  main.innerHTML = `
+  <div class="collection-head">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · ${bundlesOnly?"Bundles":"Shop"}${goal?` · ${goalName(goal)}`:""}</div>
+      <h1>${title}</h1>
+      <p>${desc}</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="collection-layout">
+      <aside class="filters">
+        <div class="filter-group">
+          <h5>Goal</h5>
+          <div class="filter-opts">
+            <label><input type="radio" name="goal" value="" ${!goal?"checked":""} onchange="setFilter('goal','')"> All <span class="ct">${PRODUCTS.length}</span></label>
+            ${GOALS.map(g=>`<label><input type="radio" name="goal" value="${g.id}" ${goal===g.id?"checked":""} onchange="setFilter('goal','${g.id}')"> ${g.name} <span class="ct">${PRODUCTS.filter(p=>p.goal===g.id).length}</span></label>`).join("")}
+          </div>
+        </div>
+        <div class="filter-group">
+          <h5>Form</h5>
+          <div class="filter-opts">
+            <label><input type="radio" name="form" value="" ${!formFilter?"checked":""} onchange="setFilter('form','')"> All</label>
+            <label><input type="radio" name="form" value="capsule" ${formFilter==='capsule'?"checked":""} onchange="setFilter('form','capsule')"> Capsule <span class="ct">${counts.capsule}</span></label>
+            <label><input type="radio" name="form" value="powder" ${formFilter==='powder'?"checked":""} onchange="setFilter('form','powder')"> Powder <span class="ct">${counts.powder}</span></label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h5>Availability</h5>
+          <div class="filter-opts">
+            <label><input type="checkbox" ${inStockOnly==='1'?"checked":""} onchange="setFilter('instock', this.checked?'1':'')"> In stock only <span class="ct">${counts.instock}</span></label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h5>Made for South Africa</h5>
+          <div class="filter-opts" style="font-size:12px;color:var(--ink-soft);line-height:1.55">
+            Every Vivid product is blended and bottled in Centurion. Stocked in Onelife Health stores across Gauteng.
+          </div>
+        </div>
+      </aside>
+
+      <div>
+        <div class="toolbar">
+          <div class="toolbar-count">${list.length} product${list.length===1?"":"s"}</div>
+          <div class="sort">
+            Sort by
+            <select onchange="setFilter('sort', this.value)">
+              <option value="featured" ${sort==='featured'?'selected':''}>Featured</option>
+              <option value="name" ${sort==='name'?'selected':''}>Name (A–Z)</option>
+              <option value="price-asc" ${sort==='price-asc'?'selected':''}>Price (low → high)</option>
+              <option value="price-desc" ${sort==='price-desc'?'selected':''}>Price (high → low)</option>
+            </select>
+          </div>
+        </div>
+        <div class="products-row" style="grid-template-columns:repeat(3,1fr)">
+          ${list.length === 0
+            ? `<div style="grid-column:1/-1;padding:64px 0;text-align:center;color:var(--ink-soft)"><p>No products match those filters.</p><a href="#/shop" class="btn btn--ghost" style="margin-top:16px">Reset</a></div>`
+            : list.map(p=>p.bundle?bundleCardHTML(p):cardHTML(p)).join("")}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+function bundleCardHTML(b){
+  return `
+  <a href="#/product/${b.handle}" class="card">
+    <div class="card-media" style="background:linear-gradient(150deg, var(--cream), var(--bone))">
+      <div class="card-badge"><span class="pill pill--clay">Save R${b.save}</span></div>
+      <img src="${b.img[0]}" alt="${b.name}">
+    </div>
+    <div class="card-body">
+      <div class="card-cat">Bundle</div>
+      <div class="card-name">${b.name}</div>
+      <div class="card-bench">${b.desc}</div>
+      <div class="card-meta">
+        <div class="card-price">${fmtR(b.price)}</div>
+        <div class="card-form">${b.includes.length} products</div>
+      </div>
+    </div>
+  </a>`;
+}
+function setFilter(key,val){
+  const {path,params} = parseHash();
+  if (val) params.set(key,val); else params.delete(key);
+  const qs = params.toString();
+  location.hash = "/shop" + (qs?"?"+qs:"");
+}
+
+/* ─── PDP ─── */
+function renderPDP(main, handle){
+  const p = findProduct(handle);
+  const b = findBundle(handle);
+  if (p) return renderProductPDP(main, p);
+  if (b) return renderBundlePDP(main, b);
+  main.innerHTML = `<div class="container" style="padding:120px 0;text-align:center"><h1>Product not found</h1><a href="#/shop" class="btn" style="margin-top:24px">Back to shop</a></div>`;
+}
+function renderProductPDP(main, p){
+  const related = PRODUCTS.filter(x=>x.goal===p.goal && x.handle!==p.handle).slice(0,4);
+  const ingredientRows = (p.benefits || []).slice(0,4);
+  main.innerHTML = `
+  <div class="container pdp">
+    <div class="crumb"><a href="#/">Home</a> · <a href="#/shop">Shop</a> · <a href="#/shop?goal=${p.goal}">${goalName(p.goal)}</a> · ${p.name}</div>
+    <div class="pdp-grid">
+      <div class="pdp-gallery">
+        <div class="pdp-main-img" id="pdpMain"><img src="${p.img[0]}" alt="${p.name}"></div>
+        <div class="pdp-thumbs">
+          ${p.img.map((src,i)=>`<button class="pdp-thumb ${i===0?'active':''}" onclick="swapThumb(this,'${src}')"><img src="${src}" alt=""></button>`).join("")}
+        </div>
+      </div>
+      <div>
+        <div class="pdp-cat">${goalName(p.goal)} · ${p.form}</div>
+        <h1>${p.name}</h1>
+        <p class="pdp-sub">${p.bench}.</p>
+        <div class="pdp-rate"><span class="stars">★★★★★</span> 4.8 · 47 reviews <span style="opacity:.5">·</span> <span>SKU ${p.sku}</span></div>
+        <div class="pdp-price-row">
+          <div class="pdp-price">${fmtR(p.price)}</div>
+          <div class="pdp-price-tax">incl. VAT</div>
+          ${!p.stock?`<span class="pill pill--alert">Currently sold out</span>`:""}
+        </div>
+        <div class="opts">
+          <div class="opt active">${p.size}</div>
+        </div>
+        <div class="add-row">
+          <div class="qty">
+            <button onclick="qStep(-1)" aria-label="Decrease">−</button>
+            <input id="qty" type="text" value="1" aria-label="Quantity">
+            <button onclick="qStep(1)" aria-label="Increase">+</button>
+          </div>
+          <button class="btn btn--forest btn--block" ${!p.stock?'disabled':''} onclick="addToCart('${p.handle}', parseInt(document.getElementById('qty').value)||1)">
+            ${p.stock?`Add to basket — ${fmtR(p.price)}`:"Notify me when back"}
+          </button>
+        </div>
+        <ul class="bullets">
+          ${(p.benefits||[]).map(b=>`<li>${b}</li>`).join("")}
+        </ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          ${p.diet.map(d=>`<span class="pill">${d.replace(/-/g,' ').replace(/sa made/,'SA Made')}</span>`).join("")}
+        </div>
+
+        <div class="tabs">
+          <div class="tab-head">
+            <button class="active" onclick="setTab(this,'benefits')">Benefits</button>
+            <button onclick="setTab(this,'ingredients')">Ingredients & dose</button>
+            <button onclick="setTab(this,'how')">How to take</button>
+            <button onclick="setTab(this,'faq')">FAQ</button>
+          </div>
+          <div class="tab-body active" data-tab="benefits">
+            <h4>What ${p.name} is built for</h4>
+            <p>${p.bench}. Each capsule contains ${p.dose||"a clinically meaningful dose"}. Formulated with vegetable capsules, sugar-free, manufactured in a SAHPRA-aligned facility in Centurion.</p>
+          </div>
+          <div class="tab-body" data-tab="ingredients">
+            <h4>Per dose</h4>
+            <table>
+              <tr><td>${p.dose||p.name+" extract"}</td><td>active</td></tr>
+              <tr><td>Vegetable capsule shell (HPMC)</td><td>—</td></tr>
+              <tr><td>Magnesium stearate (plant-source)</td><td>flow agent</td></tr>
+            </table>
+            <p style="margin-top:16px;font-size:13px">Free from gluten, sugar, dairy, soy, and added colourants where indicated. Manufactured in a facility that handles tree nuts and shellfish-derived ingredients.</p>
+          </div>
+          <div class="tab-body" data-tab="how">
+            <h4>Daily routine</h4>
+            <p>Take 1–3 capsules daily with water, ideally with a meal, or as directed by a qualified healthcare practitioner. Start at the lower end of the range and titrate up. Best taken consistently for at least 6–8 weeks to assess effect.</p>
+            <p style="margin-top:14px;font-size:13px;color:var(--ink-soft)"><strong>Storage:</strong> Below 25°C, in a cool, dry place. Keep out of reach of children. Do not use if seal is broken.</p>
+          </div>
+          <div class="tab-body" data-tab="faq">
+            <h4>Common questions</h4>
+            <p><strong>Is this safe in pregnancy?</strong><br>Consult your healthcare provider before use during pregnancy or while breastfeeding.</p>
+            <p style="margin-top:14px"><strong>Will it interact with my medication?</strong><br>If you take prescription medication, check with your pharmacist or doctor before starting any supplement.</p>
+            <p style="margin-top:14px"><strong>How long until I feel something?</strong><br>Most botanical and nutrient supplements take 4–8 weeks of consistent use. ${p.name} works best as part of a daily routine.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pairs">
+      <h3>Pairs well with</h3>
+      <div class="products-row" style="margin-top:24px">
+        ${related.map(cardHTML).join("")}
+      </div>
+    </div>
+  </div>
+  `;
+}
+function renderBundlePDP(main, b){
+  const items = b.includes.map(findProduct).filter(Boolean);
+  const sum = items.reduce((s,p)=>s+p.price,0);
+  main.innerHTML = `
+  <div class="container pdp">
+    <div class="crumb"><a href="#/">Home</a> · <a href="#/shop?bundles=1">Bundles</a> · ${b.name}</div>
+    <div class="pdp-grid">
+      <div class="pdp-gallery">
+        <div class="pdp-main-img" style="background:linear-gradient(150deg, var(--cream), var(--bone))"><img src="${b.img}" alt="${b.name}"></div>
+      </div>
+      <div>
+        <div class="pdp-cat">Curated stack · ${items.length} products</div>
+        <h1>${b.name}</h1>
+        <p class="pdp-sub">${b.desc}</p>
+        <div class="pdp-price-row">
+          <div class="pdp-price">${fmtR(b.price)}</div>
+          <div class="pdp-price-tax">incl. VAT · was ${fmtR(sum)}</div>
+          <span class="pill pill--clay">You save R${b.save}</span>
+        </div>
+        <div class="add-row">
+          <div class="qty">
+            <button onclick="qStep(-1)">−</button>
+            <input id="qty" type="text" value="1">
+            <button onclick="qStep(1)">+</button>
+          </div>
+          <button class="btn btn--forest btn--block" onclick="addToCart('${b.handle}', parseInt(document.getElementById('qty').value)||1, true)">Add bundle — ${fmtR(b.price)}</button>
+        </div>
+        <h4 style="font-family:var(--font-display);font-size:22px;margin:32px 0 12px">What's in the stack</h4>
+        <div class="products-row" style="grid-template-columns:1fr;gap:12px">
+          ${items.map(p=>`
+            <a href="#/product/${p.handle}" class="card" style="flex-direction:row;align-items:center">
+              <div class="card-media" style="flex:0 0 96px;aspect-ratio:1;border-radius:var(--r-lg) 0 0 var(--r-lg)"><img src="${p.img[0]}" alt=""></div>
+              <div class="card-body" style="padding:14px 18px">
+                <div class="card-cat">${goalName(p.goal)}</div>
+                <div class="card-name" style="font-size:16px;min-height:auto">${p.name}</div>
+                <div class="card-bench" style="min-height:auto">${p.bench}</div>
+              </div>
+              <div style="padding-right:18px;font-family:var(--font-display);font-size:16px">${fmtR(p.price)}</div>
+            </a>
+          `).join("")}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+function swapThumb(btn, src){
+  $$(".pdp-thumb").forEach(t=>t.classList.remove("active"));
+  btn.classList.add("active");
+  $("#pdpMain img").src = src;
+}
+function setTab(btn, key){
+  $$(".tab-head button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  $$(".tab-body").forEach(b=>b.classList.toggle("active", b.dataset.tab===key));
+}
+function qStep(d){
+  const i = $("#qty");
+  i.value = Math.max(1, (parseInt(i.value)||1) + d);
+}
+
+/* ─── Other routes ─── */
+function renderIngredients(main){
+  main.innerHTML = `
+  <div class="collection-head"><div class="container">
+    <div class="crumb"><a href="#/">Home</a> · Ingredient library</div>
+    <h1>The Vivid ingredient library.</h1>
+    <p>Every ingredient we use, what it does, the dose the research uses, and which Vivid formulations contain it. Built as the cleanest supplement reference in South Africa.</p>
+  </div></div>
+  <div class="container" style="padding:48px 0 96px">
+    <div class="ing-list">
+      ${[
+        {n:"Mullein leaf",d:"Demulcent respiratory herb. Vivid uses 360mg per capsule.",in:"mullein-60"},
+        {n:"Black Walnut hull",d:"Juglone source. Traditional antiparasitic. 460mg, 4:1 extract.",in:"black-walnut-60"},
+        {n:"Wormwood (Artemisia)",d:"Artemisinin-bearing bitter herb. Used for parasites and gut.",in:"wormwood-60"},
+        {n:"Clove bud",d:"Eugenol-rich. Antimicrobial gut support.",in:"clove-60"},
+        {n:"MSM (sulphur)",d:"Methylsulfonylmethane. 810mg per capsule. Cartilage cofactor.",in:"msm-90"},
+        {n:"Curcumin (Turmeric)",d:"Polyphenol anti-inflammatory. Paired with piperine in Turmeric Plus.",in:"turmeric-300"},
+        {n:"Capsaicin (Cayenne)",d:"Metabolism and circulation. Builds tolerance over weeks.",in:"cayenne-90"},
+        {n:"Calcium ascorbate",d:"Non-acidic buffered vitamin C. 500mg per capsule.",in:"buffered-c-90"},
+        {n:"Quercetin",d:"Flavonoid. Mast cell stabiliser. Pairs with vitamin C.",in:"quercetin-complex-60"},
+        {n:"Astragalus root",d:"Adaptogenic Chinese tonic. Immune modulator.",in:"astragalus-60"},
+        {n:"L-Lysine",d:"Essential amino. Cold sore and collagen support.",in:"l-lysine-60"},
+        {n:"L-Glutamine",d:"Gut lining and recovery amino. 5g powder dose.",in:"l-glutamine-500"},
+        {n:"Maca root",d:"Endocrine adaptogen. Energy and hormonal balance.",in:"maca-60"},
+        {n:"Vitex agnus-castus",d:"Chasteberry. PMS and cycle support.",in:"angus-castus-60"},
+        {n:"Saw palmetto",d:"5-alpha-reductase modulator. Prostate health.",in:"prosta-care-60"},
+        {n:"5-HTP (Griffonia)",d:"Serotonin precursor. Mood and sleep.",in:"griffonia-5htp-60"},
+        {n:"GABA",d:"Inhibitory neurotransmitter. Calm focus.",in:"gaba-150g"},
+        {n:"D-Ribose",d:"Pentose sugar. Cardiac and athletic ATP support.",in:"d-ribose-150"},
+        {n:"Spirulina",d:"Algae. Protein, iron, phycocyanin.",in:"spirulina-250g"},
+        {n:"Moringa",d:"African leaf superfood. Plant iron and protein.",in:"moringa-300"},
+        {n:"Barley grass",d:"Whole-leaf greens. Chlorophyll-rich.",in:"barley-grass-200g"},
+        {n:"CoQ10",d:"Mitochondrial cofactor. 100mg per capsule.",in:"coq10-60"},
+        {n:"Epsom salt",d:"Magnesium sulfate. Topical absorption via bath.",in:"epsom-salt-1kg"},
+        {n:"Liquorice root",d:"Adrenal and gut soothing botanical.",in:"liquorice-root-60"},
+      ].map(i=>`<a href="#/product/${i.in}" class="ing"><strong>${i.n}</strong><span>${i.d}</span></a>`).join("")}
+    </div>
+  </div>`;
+}
+function renderJournal(main){
+  main.innerHTML = `
+  <div class="collection-head"><div class="container">
+    <div class="crumb"><a href="#/">Home</a> · Journal</div>
+    <h1>The Vivid Journal.</h1>
+    <p>Long-form reading on single ingredients, formulation choices, and the science we're reading. No "5 ways to be healthy" listicles.</p>
+  </div></div>
+  <div class="container" style="padding:48px 0 96px">
+    <div class="journal" style="grid-template-columns:repeat(2,1fr)">
+      ${[
+        {cat:"Gut",t:"What a parasite cleanse actually does",d:"Black walnut, wormwood, clove — what the evidence really says.",img:findProduct("black-walnut-60").img[0]},
+        {cat:"Immunity",t:"Why we buffer vitamin C with calcium",d:"The pH problem with high-dose ascorbic acid.",img:findProduct("buffered-c-300").img[0]},
+        {cat:"Stress",t:"Three magnesiums, three jobs",d:"Oxide, glycinate, citrate, sulfate — how to pick.",img:findProduct("epsom-salt-1kg").img[0]},
+        {cat:"Women",t:"The Vitex case for cycle regularity",d:"What Angus Castus actually does to pituitary signalling.",img:findProduct("angus-castus-60").img[0]},
+        {cat:"Joints",t:"MSM is mostly sulphur. So what?",d:"How a small molecule shows up in cartilage, skin and gut.",img:findProduct("msm-90").img[0]},
+        {cat:"Sleep",t:"5-HTP and the serotonin shortcut",d:"Where Griffonia helps — and where it doesn't.",img:findProduct("griffonia-5htp-60").img[0]},
+      ].map(a=>`
+        <article class="article">
+          <div class="article-img" style="aspect-ratio:16/10"><img src="${a.img}" alt="" style="width:50%;height:100%;margin:auto"></div>
+          <div class="article-cat">${a.cat}</div>
+          <h3>${a.t}</h3>
+          <p>${a.d}</p>
+          <a class="more" href="#/">Read article →</a>
+        </article>
+      `).join("")}
+    </div>
+  </div>`;
+}
+function renderAbout(main){
+  main.innerHTML = `
+  <div class="collection-head"><div class="container">
+    <div class="crumb"><a href="#/">Home</a> · About</div>
+    <h1>Built in Centurion. <em style="font-style:italic;color:var(--moss)">Made for South Africa.</em></h1>
+    <p>Vivid Health is the in-house brand of Onelife Health — a South African health retailer with three physical stores across Gauteng and a growing online presence. We make the supplements we wish were on every shelf.</p>
+  </div></div>
+  <div class="container" style="padding:48px 0 96px">
+    <div class="split">
+      <div class="editorial-img"><div class="lab">Our story</div><img src="${findProduct('turmeric-300').img[0]}" alt=""></div>
+      <div class="editorial-body">
+        <div class="kicker">Why Vivid exists</div>
+        <h2>Most "South African" supplements aren't.</h2>
+        <p>The local market is full of imported white-label capsules with a SA sticker. The doses are often too low to do what the research says they should. The labels hide ingredients behind "proprietary blends." The marketing leans on photos of fields and the word "natural."</p>
+        <p>Vivid Health started because the team behind Onelife — three retail stores across Centurion, Glen Village, and Edenvale — kept being asked the same question by customers: <em>which one actually works?</em> The honest answer was usually: none of these at this dose.</p>
+        <p>So we built our own. Single ingredients first, real doses, vegetable capsules, made in Centurion. Then combination formulations where the synergy is real. Then bundles where the routine matters more than any one product.</p>
+      </div>
+    </div>
+    <div style="margin-top:96px;text-align:center">
+      <div class="eyebrow">Find us</div>
+      <h2 style="margin-top:14px">Three stores. One online home.</h2>
+    </div>
+    <div class="products-row" style="grid-template-columns:repeat(3,1fr);margin-top:48px">
+      ${[
+        {n:"Onelife Centurion",a:"Centurion · Gauteng",h:"Mon–Sat 09:00–18:00"},
+        {n:"Onelife Glen Village",a:"Glen Village · Pretoria",h:"Mon–Sat 09:00–18:00"},
+        {n:"Onelife Edenvale",a:"Edenvale · Gauteng",h:"Mon–Sat 09:00–18:00"},
+      ].map(s=>`
+        <div class="card" style="padding:24px">
+          <div class="card-cat">Stockist</div>
+          <div class="card-name" style="min-height:auto;margin-top:8px">${s.n}</div>
+          <div class="card-bench" style="min-height:auto">${s.a}</div>
+          <div class="card-meta" style="border:0;padding-top:6px"><div style="font-size:13px;color:var(--ink-soft)">${s.h}</div></div>
+        </div>
+      `).join("")}
+    </div>
+  </div>`;
+}
+
+/* ─── Cart ─── */
+function addToCart(handle, qty=1, bundle=false){
+  const existing = cart.find(c=>c.handle===handle);
+  if (existing) existing.qty += qty;
+  else cart.push({handle, qty, bundle});
+  saveCart();
+  openCart();
+}
+function removeFromCart(handle){
+  const i = cart.findIndex(c=>c.handle===handle);
+  if (i>=0) cart.splice(i,1);
+  saveCart(); renderCart();
+}
+function updateQty(handle, qty){
+  const c = cart.find(c=>c.handle===handle);
+  if (!c) return;
+  c.qty = Math.max(1, qty|0);
+  saveCart(); renderCart();
+}
+function saveCart(){
+  localStorage.setItem("vh_cart", JSON.stringify(cart));
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  $("#cartBtn").setAttribute("data-count", count);
+}
+function openCart(){
+  $("#scrim").classList.add("open");
+  $("#drawer").classList.add("open");
+  renderCart();
+}
+function closeCart(){
+  $("#scrim").classList.remove("open");
+  $("#drawer").classList.remove("open");
+}
+function renderCart(){
+  const body = $("#drawerBody");
+  const foot = $("#drawerFoot");
+  if (cart.length === 0){
+    body.innerHTML = `<div class="cart-empty"><p>Your basket is empty.</p><a href="#/shop" class="btn btn--ghost" style="margin-top:18px" onclick="closeCart()">Browse the range</a></div>`;
+    foot.innerHTML = "";
+    return;
+  }
+  const items = cart.map(c=>{
+    const p = c.bundle ? findBundle(c.handle) : findProduct(c.handle);
+    if (!p) return null;
+    const img = c.bundle ? p.img : p.img[0];
+    return `
+      <div class="cart-item">
+        <div class="cart-item-img"><img src="${img}" alt=""></div>
+        <div>
+          <div class="cart-item-name">${c.bundle?"Bundle · ":""}${p.name}</div>
+          <div class="cart-item-meta">${c.bundle?(p.includes.length+" products"):p.size}</div>
+          <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+            <div class="qty" style="height:30px">
+              <button style="width:28px;height:28px" onclick="updateQty('${c.handle}', ${c.qty-1})">−</button>
+              <input style="width:32px;height:28px" value="${c.qty}" onchange="updateQty('${c.handle}', this.value)">
+              <button style="width:28px;height:28px" onclick="updateQty('${c.handle}', ${c.qty+1})">+</button>
+            </div>
+            <button onclick="removeFromCart('${c.handle}')" style="font-size:12px;color:var(--ink-soft);text-decoration:underline">Remove</button>
+          </div>
+        </div>
+        <div class="cart-item-price">${fmtR(p.price * c.qty)}</div>
+      </div>`;
+  }).filter(Boolean).join("");
+  body.innerHTML = items;
+
+  const subtotal = cart.reduce((s,c)=>{
+    const p = c.bundle ? findBundle(c.handle) : findProduct(c.handle);
+    return s + (p?p.price*c.qty:0);
+  },0);
+  const ship = subtotal >= 600 ? 0 : 79;
+  const total = subtotal + ship;
+  foot.innerHTML = `
+    <div class="cart-totals"><span>Subtotal</span><span>${fmtR(subtotal)}</span></div>
+    <div class="cart-totals"><span>Shipping</span><span>${ship===0?'Free over R600':fmtR(ship)}</span></div>
+    <div class="cart-totals total"><span>Total</span><span>${fmtR(total)}</span></div>
+    <button class="btn btn--forest btn--block">Checkout — ${fmtR(total)}</button>
+    <div style="text-align:center;font-size:12px;color:var(--ink-soft);margin-top:10px">Secure checkout · Powered by Shopify</div>
+  `;
+}
+$("#cartBtn").addEventListener("click", openCart);
+
+function openSearch(){
+  const q = prompt("Search by ingredient or product name (e.g. 'msm', 'sleep', 'turmeric')");
+  if (!q) return;
+  const term = q.toLowerCase();
+  const matches = PRODUCTS.filter(p=>
+    p.name.toLowerCase().includes(term) ||
+    p.bench.toLowerCase().includes(term) ||
+    p.goal.toLowerCase().includes(term) ||
+    (p.dose||"").toLowerCase().includes(term)
+  );
+  if (matches.length === 0) alert("No matches. Try 'magnesium', 'gut', 'allergy'.");
+  else if (matches.length === 1) navigate("/product/"+matches[0].handle);
+  else navigate("/shop?goal="+matches[0].goal);
+}
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+renderRoute();
+saveCart();
+</script>
+
+</body>
+</html>

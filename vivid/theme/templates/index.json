@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Made in South Africa · Since 2023",
+        "heading": "<p>Vivid by <em>nature.</em><br>Verified by science.</p>",
+        "lede": "Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Fifty-five formulations across gut, immunity, sleep, joints, and daily nutrition.",
+        "cta_primary_label": "Shop the range",
+        "cta_primary_link": "/collections/all",
+        "cta_secondary_label": "Browse ingredients",
+        "cta_secondary_link": "/pages/ingredients"
+      },
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": "55", "label": "Formulations" } },
+        "s2": { "type": "stat", "settings": { "value": "100%", "label": "SA Made" } },
+        "s3": { "type": "stat", "settings": { "value": "3", "label": "Onelife stores" } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "trust": { "type": "trust-strip" },
+    "goals": {
+      "type": "category-grid",
+      "blocks": {
+        "g1": { "type": "goal", "settings": { "name": "Gut Health", "tagline": "Cleanse, balance, restore", "icon_path": "M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z M12 9v6" } },
+        "g2": { "type": "goal", "settings": { "name": "Immunity", "tagline": "Daily defense, year-round", "icon_path": "M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z" } },
+        "g3": { "type": "goal", "settings": { "name": "Energy & Vitality", "tagline": "Cellular fuel", "icon_path": "M13 2L3 14h7l-1 8 10-12h-7z" } },
+        "g4": { "type": "goal", "settings": { "name": "Stress, Sleep & Mood", "tagline": "Calm without sedation", "icon_path": "M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z" } },
+        "g5": { "type": "goal", "settings": { "name": "Joints & Mobility", "tagline": "Move freely, age strongly", "icon_path": "M6 6l4 4-2 2-4-4 2-2zm12 12l-4-4 2-2 4 4-2 2zM10 14l4-4" } },
+        "g6": { "type": "goal", "settings": { "name": "Women's Health", "tagline": "Hormones, cycles, balance", "icon_path": "M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 0v8m-3-4h6" } },
+        "g7": { "type": "goal", "settings": { "name": "Men's Health", "tagline": "Prostate, vitality, focus", "icon_path": "M14 4h6v6M20 4L13 11m-7 9a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" } },
+        "g8": { "type": "goal", "settings": { "name": "Daily Nutrients", "tagline": "Vitamins, omegas, basics", "icon_path": "M12 2v20m-8-10h16" } }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8"]
+    },
+    "featured": { "type": "featured-products" },
+    "editorial": { "type": "editorial" },
+    "bundles": { "type": "bundle-row" },
+    "capture": { "type": "email-capture" }
+  },
+  "order": ["hero", "trust", "goals", "featured", "editorial", "bundles", "capture"]
+}

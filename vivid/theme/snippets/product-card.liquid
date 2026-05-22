@@ -1,0 +1,24 @@
+<a href="{{ product.url }}" class="card" aria-label="{{ product.title }}">
+  <div class="card-media">
+    <div class="card-badge">
+      {%- if product.tags contains 'vegan' -%}<span class="pill pill--green">Vegan</span>{%- endif -%}
+      {%- unless product.available -%}<span class="pill pill--alert">Sold out</span>{%- endunless -%}
+      {%- if product.tags contains 'bestseller' -%}<span class="pill pill--clay">Best seller</span>{%- endif -%}
+    </div>
+    <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy" width="600" height="600">
+    {%- if product.available -%}
+      <button class="card-quickadd js-add-to-cart" data-variant-id="{{ product.first_available_variant.id }}" aria-label="Quick add" onclick="event.preventDefault();">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    {%- endif -%}
+  </div>
+  <div class="card-body">
+    <div class="card-cat">{{ product.type }}</div>
+    <div class="card-name">{{ product.title | split: ' - ' | last }}</div>
+    <div class="card-bench">{{ product.metafields.vivid.bench | default: product.description | strip_html | truncate: 80 }}</div>
+    <div class="card-meta">
+      <div class="card-price">{{ product.price | money }}</div>
+      <div class="card-form">{{ product.first_available_variant.title | default: '' }}</div>
+    </div>
+  </div>
+</a>

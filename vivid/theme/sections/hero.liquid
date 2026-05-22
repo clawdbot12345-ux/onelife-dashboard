@@ -1,0 +1,67 @@
+{%- assign hero_product = all_products[section.settings.hero_product] -%}
+<section class="hero">
+  <div class="hero-leaf"></div>
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 style="margin-top:18px">{{ section.settings.heading }}</h1>
+      <p class="hero-lede">{{ section.settings.lede }}</p>
+      <div class="hero-cta">
+        <a href="{{ section.settings.cta_primary_link }}" class="btn btn--forest btn-arrow">{{ section.settings.cta_primary_label }}</a>
+        <a href="{{ section.settings.cta_secondary_link }}" class="btn btn--ghost">{{ section.settings.cta_secondary_label }}</a>
+      </div>
+      <div class="hero-stats">
+        {%- for block in section.blocks -%}
+          <div class="hero-stat">
+            <div class="num">{{ block.settings.value }}</div>
+            <div class="lbl">{{ block.settings.label }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- if hero_product != blank -%}
+      <a href="{{ hero_product.url }}" class="hero-image">
+        <span class="hero-badge">Hero · {{ hero_product.first_available_variant.title }}</span>
+        <img src="{{ hero_product.featured_image | image_url: width: 800 }}" alt="{{ hero_product.title }}" loading="eager" width="800" height="800">
+        <div class="hero-callout"><strong>{{ hero_product.title | split: ' - ' | last }}</strong>{{ hero_product.metafields.vivid.bench | default: hero_product.description | strip_html | truncate: 60 }}</div>
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Made in South Africa · Since 2023" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Vivid by <em>nature.</em><br>Verified by science.</p>" },
+    { "type": "textarea", "id": "lede", "label": "Lede", "default": "Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Fifty-five formulations across gut, immunity, sleep, joints, and daily nutrition." },
+    { "type": "text", "id": "cta_primary_label", "label": "Primary CTA label", "default": "Shop the range" },
+    { "type": "url", "id": "cta_primary_link", "label": "Primary CTA link" },
+    { "type": "text", "id": "cta_secondary_label", "label": "Secondary CTA label", "default": "Browse ingredients" },
+    { "type": "url", "id": "cta_secondary_link", "label": "Secondary CTA link" },
+    { "type": "product", "id": "hero_product", "label": "Hero product" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "55" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Formulations" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "55", "label": "Formulations" } },
+        { "type": "stat", "settings": { "value": "100%", "label": "SA Made" } },
+        { "type": "stat", "settings": { "value": "3", "label": "Onelife stores" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

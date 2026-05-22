@@ -1,0 +1,21 @@
+{
+  "current": {
+    "color_bone": "#F4EEE2",
+    "color_paper": "#FBF7EE",
+    "color_cream": "#EEE5D2",
+    "color_ink": "#0E1A14",
+    "color_forest": "#1F3D2E",
+    "color_forest_deep": "#142A1E",
+    "color_moss": "#466B4F",
+    "color_sage": "#A8B89B",
+    "color_clay": "#C3704B",
+    "container_max": 1280
+  },
+  "presets": {
+    "Vivid Default": {
+      "color_bone": "#F4EEE2",
+      "color_paper": "#FBF7EE",
+      "color_forest": "#1F3D2E"
+    }
+  }
+}

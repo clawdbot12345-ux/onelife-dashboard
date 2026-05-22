@@ -1,0 +1,31 @@
+<div class="announce">
+  {%- for block in section.blocks -%}
+    <span>{{ block.settings.text }}</span>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Message", "default": "Free delivery on orders over R600" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "blocks": [
+        { "type": "message", "settings": { "text": "Free delivery on orders over R600" } },
+        { "type": "message", "settings": { "text": "Made in South Africa" } },
+        { "type": "message", "settings": { "text": "Third-party tested" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

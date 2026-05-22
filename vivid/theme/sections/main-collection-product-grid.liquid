@@ -1,0 +1,62 @@
+<div class="collection-head">
+  <div class="container">
+    <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px"><a href="{{ routes.root_url }}" style="color:var(--forest);font-weight:600">Home</a> · {{ collection.title }}</div>
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <p style="font-size:17px;color:var(--ink-soft);max-width:54ch;margin-top:12px">{{ collection.description }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+<div class="container">
+  <div class="collection-layout">
+    <aside class="filters">
+      {%- for filter in collection.filters -%}
+        <div class="filter-group">
+          <h5>{{ filter.label }}</h5>
+          <div class="filter-opts">
+            {%- for value in filter.values -%}
+              <label>
+                <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} onchange="window.location.href='{{ value.url_to_add }}'">
+                {{ value.label }} <span class="ct" style="margin-left:auto;font-size:11px;color:var(--ink-soft)">{{ value.count }}</span>
+              </label>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </aside>
+
+    <div>
+      <div class="toolbar">
+        <div style="font-size:13px;color:var(--ink-soft)">{{ collection.products_count }} products</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px">
+          Sort by
+          <select onchange="window.location.href=this.value">
+            {%- for option in collection.sort_options -%}
+              <option value="?sort_by={{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+      </div>
+      <div class="products-row" style="grid-template-columns:repeat(3,1fr)">
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <div style="margin-top:48px;display:flex;justify-content:center;gap:8px">
+          {{ paginate | default_pagination }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "min": 12, "max": 48, "step": 4, "default": 24, "label": "Products per page" }
+  ]
+}
+{% endschema %}

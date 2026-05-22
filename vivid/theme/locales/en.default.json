@@ -1,0 +1,27 @@
+{
+  "general": {
+    "accessibility": { "skip_to_text": "Skip to content" },
+    "search": { "title": "Search", "placeholder": "Search for ingredients or products" },
+    "social": { "links": { "instagram": "Instagram", "facebook": "Facebook", "tiktok": "TikTok", "youtube": "YouTube" } }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to basket",
+      "sold_out": "Sold out",
+      "notify_me": "Notify me when back",
+      "incl_vat": "incl. VAT",
+      "quantity": "Quantity"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your basket",
+      "empty": "Your basket is empty.",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "total": "Total",
+      "checkout": "Checkout",
+      "free_shipping": "Free over R600"
+    }
+  }
+}

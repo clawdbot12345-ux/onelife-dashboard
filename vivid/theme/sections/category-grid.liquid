@@ -1,0 +1,50 @@
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <h2 style="margin-top:12px">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="lead">{{ section.settings.lead }}</p>
+    </div>
+    <div class="goals">
+      {%- for block in section.blocks -%}
+        {%- assign coll = collections[block.settings.collection] -%}
+        <a href="{{ coll.url }}" class="goal" aria-label="{{ block.settings.name }}">
+          <div class="goal-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="{{ block.settings.icon_path }}"/></svg>
+          </div>
+          <div>
+            <div class="goal-name">{{ block.settings.name }}</div>
+            <div class="goal-count">{{ coll.products_count }} formulations · {{ block.settings.tagline }}</div>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category grid",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop by goal" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Built around what your body actually does." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "Not categories. Outcomes. Pick the system you're working on." }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "goal",
+      "name": "Goal tile",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "tagline", "label": "Tagline" },
+        { "type": "collection", "id": "collection", "label": "Linked collection" },
+        { "type": "text", "id": "icon_path", "label": "Icon SVG path", "default": "M12 2v20m-8-10h16" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Category grid" }]
+}
+{% endschema %}

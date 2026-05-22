@@ -1,0 +1,47 @@
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand" style="font-family:var(--font-display);font-size:28px;color:var(--paper);margin-bottom:12px;display:flex;align-items:center;gap:10px">
+          <span class="brand-mark" style="background:radial-gradient(circle at 35% 30%,var(--sage) 0%,var(--moss) 70%)"></span>
+          {{ shop.name }}
+        </div>
+        <p style="font-size:14px;color:rgba(244,238,226,.66);max-width:32ch;line-height:1.55">{{ section.settings.brand_lede }}</p>
+      </div>
+      {%- for block in section.blocks -%}
+        <div class="foot-col">
+          <h5>{{ block.settings.heading }}</h5>
+          <ul>
+            {%- for link in block.settings.menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+    <div style="margin-top:48px;padding-top:24px;border-top:1px solid rgba(244,238,226,.10);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:rgba(244,238,226,.5)">
+      <div>© {{ 'now' | date: '%Y' }} {{ shop.name }} (Pty) Ltd. All prices in ZAR.</div>
+      <div>Privacy · Terms · POPIA</div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "brand_lede", "label": "Brand lede", "default": "Plant-based supplements made in South Africa. Ancient remedies, modern science, vegetable capsules." }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Footer" }]
+}
+{% endschema %}
