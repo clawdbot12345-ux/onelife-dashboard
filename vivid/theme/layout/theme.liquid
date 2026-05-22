@@ -29,9 +29,17 @@
   {%- if page_description -%}<meta property="og:description" content="{{ page_description | escape }}">{%- endif -%}
   <meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+  {{ settings.font_display | font_face: font_display: 'swap' }}
+  {{ settings.font_body | font_face: font_display: 'swap' }}
+
+  {% style %}
+    :root {
+      --font-display: {{ settings.font_display.family }}, {{ settings.font_display.fallback_families }};
+      --font-sans: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+    }
+  {% endstyle %}
 
   {{ 'base.css' | asset_url | stylesheet_tag }}
 

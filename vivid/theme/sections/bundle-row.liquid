@@ -15,7 +15,7 @@
             {%- if product.metafields.vivid.save != blank -%}
               <span class="bundle-tag">Save R{{ product.metafields.vivid.save }}</span>
             {%- endif -%}
-            <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}" loading="lazy">
+            {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,600,900,1200', sizes: '(min-width: 880px) 33vw, 100vw', alt: product.title }}
           </div>
           <div class="bundle-body">
             <div class="bundle-name">{{ product.title }}</div>

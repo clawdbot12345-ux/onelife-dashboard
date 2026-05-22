@@ -3,7 +3,7 @@
     {%- if section.settings.image != blank -%}
       <div class="editorial-img">
         <div class="lab">{{ section.settings.image_label }}</div>
-        <img src="{{ section.settings.image | image_url: width: 1000 }}" alt="" loading="lazy">
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,800,1200,1600', sizes: '(min-width: 900px) 40vw, 90vw', alt: '' }}
       </div>
     {%- endif -%}
     <div class="editorial-body">

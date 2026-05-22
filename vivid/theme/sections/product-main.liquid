@@ -7,11 +7,13 @@
   </div>
   <div class="pdp-grid">
     <div class="pdp-gallery">
-      <div class="pdp-main-img"><img id="pdpMainImg" src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.title }}"></div>
+      <div class="pdp-main-img">
+        {{ product.featured_image | image_url: width: 1200 | image_tag: id: 'pdpMainImg', widths: '600,900,1200,1600', sizes: '(min-width: 880px) 50vw, 100vw', alt: product.title }}
+      </div>
       <div class="pdp-thumbs">
         {%- for img in product.images limit: 6 -%}
           <button class="pdp-thumb js-thumb {% if forloop.first %}active{% endif %}" data-src="{{ img | image_url: width: 1200 }}">
-            <img src="{{ img | image_url: width: 200 }}" alt="">
+            {{ img | image_url: width: 200 | image_tag: loading: 'lazy', widths: '100,200,300', alt: '' }}
           </button>
         {%- endfor -%}
       </div>
@@ -94,7 +96,13 @@
     </div>
   </div>
 
-  {%- assign related = collections[product.type | handleize].products | default: collections.all.products -%}
+  {%- assign related_handle = product.type | handleize -%}
+  {%- assign related_collection = collections[related_handle] -%}
+  {%- if related_collection != blank and related_collection.products.size > 0 -%}
+    {%- assign related = related_collection.products -%}
+  {%- else -%}
+    {%- assign related = collections.all.products -%}
+  {%- endif -%}
   {%- if related.size > 1 -%}
     <div style="margin-top:96px">
       <h3 style="margin-bottom:24px">Pairs well with</h3>

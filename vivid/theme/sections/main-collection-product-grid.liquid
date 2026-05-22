@@ -9,6 +9,7 @@
 </div>
 
 <div class="container">
+  {%- paginate collection.products by section.settings.products_per_page -%}
   <div class="collection-layout">
     <aside class="filters">
       {%- for filter in collection.filters -%}
@@ -50,6 +51,7 @@
       {%- endif -%}
     </div>
   </div>
+  {%- endpaginate -%}
 </div>
 
 {% schema %}
