@@ -43,21 +43,47 @@ For each product, extract:
 
 Save the extracted data to `vivid/data/shopify-images.json`.
 
-### Step 2: Generate 3 uniform images per product
+### Step 2: Generate images per product
 
-For EACH of the 55 Vivid Health products, generate 3 images using
-image generation:
+**CRITICAL — Cinematic photography direction (applies to ALL formats below)**
+
+Every image must follow these rules to achieve true studio/cinematic quality:
+
+1. **Dramatic directional lighting.** Use a strong key light from the left or right side (never flat/even). Visible shadow fall-off across the bottle and surface. Rim light separating the bottle from the background. The lighting should look like a single window or studio strobe — NOT diffused ambient.
+
+2. **Shallow depth of field.** Shoot at f/2.8 or wider. The product bottle is tack-sharp. Background props are soft and dreamy with visible bokeh circles. This is the #1 thing that separates cinematic from catalog.
+
+3. **Angle variety across the set.** For each product's 4 images (A-D), use a DIFFERENT angle:
+   - Image A: front-on hero, slightly below eye level (heroic angle)
+   - Image B: top-down 90-degree flat-lay
+   - Image C: extreme close-up macro, 15-degree angle on the ingredient
+   - Image D: 3/4 angle with the person, product at arm's length toward camera
+
+4. **One "imperfect" prop element per shot.** One herb sprig slightly out of frame. Honey mid-drip. A leaf caught mid-fall. A lemon half-squeezed with juice visible. This makes it feel styled by a human, not placed by an algorithm.
+
+5. **Contact shadows must be physically convincing.** The bottle sits ON the surface with a real shadow. No floating. The shadow should show the direction of the key light.
+
+6. **Color grading:** warm highlights (slightly golden), cool shadows (slightly blue-green). This is the "cinematic" color science. Avoid flat neutral white balance.
+
+7. **Resolution:** 1200x1500px (4:5 portrait) for product cards, 1920x1080px (16:9 landscape) for hero/banner images.
+
+---
+
+For EACH of the 55 Vivid Health products, generate these images:
 
 **Image A — Hero product shot (primary card image)**
 Prompt pattern:
 ```
-Professional product photography of a white supplement bottle labeled
+Cinematic product photography of a white supplement bottle labeled
 "VIVID HEALTH" with a [CATEGORY COLOR] color band. Product name
 "[PRODUCT NAME]" on the label. Category badge "[CATEGORY NAME]" with
 icon. [CAPSULE COUNT] capsules. The bottle sits on a natural stone
-podium against a [SCENE BACKGROUND]. Soft natural lighting, shallow
-depth of field, editorial magazine quality. Shot on medium format
-camera. No text overlays outside the label.
+podium against a [SCENE BACKGROUND]. Strong directional key light
+from the left with visible shadow fall-off. Rim light on the right
+edge of the bottle. Shot on medium format camera at f/2.8, background
+props beautifully out of focus with visible bokeh. One botanical prop
+element slightly out of frame. Warm golden highlights, cool blue-green
+shadows. No text overlays outside the label. 1200x1500px.
 ```
 
 Scene backgrounds by category:
@@ -72,49 +98,58 @@ Scene backgrounds by category:
 **Image B — Lifestyle context shot**
 Prompt pattern:
 ```
-Lifestyle flat-lay photograph featuring a white supplement bottle
-labeled "VIVID HEALTH [PRODUCT NAME]" with [CATEGORY COLOR] band.
-Surrounded by [LIFESTYLE PROPS]. Morning natural light, top-down
-angle, linen or marble surface. Premium editorial supplement brand
-photography. Warm tones.
+Cinematic top-down flat-lay photograph, shot at f/2.8 on a 50mm lens.
+A white supplement bottle labeled "VIVID HEALTH [PRODUCT NAME]" with
+[CATEGORY COLOR] band lies slightly angled on a [SURFACE]. Surrounded
+by [LIFESTYLE PROPS], with one element slightly out of frame and one
+element in slight motion (dripping honey, falling petal, steam rising).
+Strong directional light from upper-left creating long diagonal shadows.
+Background props soft with visible bokeh. Warm highlights, cool shadows.
+Premium editorial supplement brand photography. 1200x1500px.
 ```
 
 Lifestyle props by category:
-- Immune Health: fresh citrus slices, eucalyptus, honey jar
-- Physical Health: yoga mat edge, resistance band, rosemary
-- Women's Health: dried flowers, journal, herbal tea
-- Mental Health: glass of water, book, candle, nightstand
-- Gut Health: fresh herbs, mortar and pestle, lemon
-- Nutrient Health: avocado, greens, smoothie bowl
-- Men's Health: leather watch, coffee, dark wood
+- Immune Health: fresh citrus slices, eucalyptus, honey jar mid-drip
+- Physical Health: yoga mat edge, resistance band, rosemary sprig
+- Women's Health: dried flowers, journal, herbal tea with steam rising
+- Mental Health: glass of water, open book, candle with soft glow
+- Gut Health: fresh herbs, mortar and pestle, lemon half-squeezed
+- Nutrient Health: avocado half, greens, smoothie bowl
+- Men's Health: leather watch, black coffee, dark wood grain
 
 **Image C — Ingredient close-up**
 Prompt pattern:
 ```
-Close-up still life of [RAW INGREDIENT] — the active ingredient in
-Vivid Health [PRODUCT NAME]. [INGREDIENT DESCRIPTION]. Shot on macro
-lens with shallow depth of field. Natural light. The raw ingredient
-dominates the frame. A small white supplement bottle is visible but
-out of focus in the background. Premium editorial photography.
+Extreme macro close-up of [RAW INGREDIENT] — the active ingredient in
+Vivid Health [PRODUCT NAME]. [INGREDIENT DESCRIPTION]. Shot at f/2.0
+on a macro lens, 15-degree low angle. The raw ingredient fills 70% of
+the frame with incredible texture detail. A white supplement bottle with
+[CATEGORY COLOR] band is visible but completely out of focus in the
+background (heavy bokeh). Single dramatic side light creating deep
+shadows and texture on the ingredient surface. Warm cinematic color
+grade. 1200x1500px.
 ```
 
 **Image D — AI influencer / person-holding-product shot**
 Prompt pattern:
 ```
-Professional lifestyle photograph of a [DEMOGRAPHIC] person holding
-a white supplement bottle labeled "VIVID HEALTH [PRODUCT NAME]" with
-a [CATEGORY COLOR] label band. The person is [ACTIVITY CONTEXT].
-Natural light, warm tones, shallow depth of field. The product is
-clearly visible with the label facing camera. Premium editorial
-advertising photography. No text overlays.
+Cinematic portrait photograph of a [DEMOGRAPHIC] person holding a white
+supplement bottle labeled "VIVID HEALTH [PRODUCT NAME]" with a
+[CATEGORY COLOR] label band toward the camera at 3/4 angle. The person
+is [ACTIVITY CONTEXT]. Shot at f/2.0, the person's face is slightly
+soft while the product label is tack-sharp (focus on the product).
+Strong natural window light from one side creating dramatic shadow on
+the opposite side of the face. Warm golden skin tones. Background
+heavily blurred with visible bokeh. The scene feels candid and
+aspirational, not posed. 1200x1500px.
 ```
 
 Demographics and contexts by category:
 - Immune Health: woman 30s, morning kitchen with citrus + tea
-- Physical Health: athletic man/woman 35-45, post-workout or morning stretch
-- Women's Health: woman 30-40, serene morning breakfast scene with granola
-- Mental Health: person 30s, evening bedroom reading scene, calm ambiance
-- Gut Health: woman 25-35, bright kitchen preparing healthy food
+- Physical Health: athletic man/woman 35-45, post-workout with towel, Pilates studio
+- Women's Health: woman 30-40, serene morning breakfast scene with granola + lemon water
+- Mental Health: person 30s, evening bedroom reading scene, warm lamp light
+- Gut Health: woman 25-35, bright kitchen preparing herbs
 - Nutrient Health: diverse person 30s, outdoor morning light, active lifestyle
 - Men's Health: man 35-50, modern home office or morning routine
 
