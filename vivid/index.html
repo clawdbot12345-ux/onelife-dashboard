@@ -710,6 +710,12 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .foot-grid > .foot-col:first-child{grid-column:1/-1}
   .foot-col h5{font-size:10px;letter-spacing:.18em;margin-bottom:14px}
   .foot-col a{font-size:13px}
+  .why-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px !important}
+  .why-compare{grid-template-columns:1fr !important}
+  .social-icons{gap:10px}
+  .foot-certs{gap:14px !important;font-size:10px !important}
+  .foot-pay{gap:10px}
+  .foot-pay span{padding:5px 10px;font-size:9px}
   .foot-col ul{gap:8px}
   .foot-bottom{font-size:10px;text-align:center;flex-direction:column;gap:6px;margin-top:36px;padding-top:18px}
   /* Collection */
@@ -1414,6 +1420,62 @@ function renderHome(main){
         <div class="pullquote">"The dose makes the medicine. Everything else is <em>marketing copy.</em>"</div>
         <p>We're South African-made because we believe the local supplement industry deserves a brand built on dosage, not labels. Vegetable capsules. Sugar-free. Plant-first where it matters.</p>
         <div style="margin-top:32px"><a href="#/about" class="btn btn--forest btn-arrow">Read the full story</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--forest-deep);color:var(--paper);position:relative;overflow:hidden" class="reveal">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%, rgba(157,179,154,.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(204,136,72,.10) 0%, transparent 50%);pointer-events:none"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div style="text-align:center;max-width:720px;margin:0 auto var(--s-7)">
+        <div class="eyebrow" style="color:var(--ochre)">Why Vivid</div>
+        <h2 style="margin-top:14px;color:var(--paper)">The numbers behind <em style="color:var(--sage)">the formulations.</em></h2>
+        <p style="font-size:17px;color:rgba(244,236,219,.72);margin-top:14px;line-height:1.55">Not marketing language. Measurable commitments that you can verify on every label, every batch, every bottle.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4);text-align:center" class="why-grid">
+        <div style="padding:var(--s-6) var(--s-4);border:1px solid rgba(244,236,219,.12);border-radius:var(--r-lg);background:rgba(244,236,219,.04)">
+          <div style="font-family:var(--font-display);font-size:52px;color:var(--paper);line-height:1;font-variation-settings:'opsz' 144,'SOFT' 40">55</div>
+          <div style="font-size:14px;color:rgba(244,236,219,.78);margin-top:10px;font-weight:500">Formulations</div>
+          <div style="font-size:12px;color:rgba(244,236,219,.5);margin-top:6px;line-height:1.4">Single-ingredient and combination. No white-label imports.</div>
+        </div>
+        <div style="padding:var(--s-6) var(--s-4);border:1px solid rgba(244,236,219,.12);border-radius:var(--r-lg);background:rgba(244,236,219,.04)">
+          <div style="font-family:var(--font-display);font-size:52px;color:var(--ochre);line-height:1;font-variation-settings:'opsz' 144,'SOFT' 40">0</div>
+          <div style="font-size:14px;color:rgba(244,236,219,.78);margin-top:10px;font-weight:500">Proprietary blends</div>
+          <div style="font-size:12px;color:rgba(244,236,219,.5);margin-top:6px;line-height:1.4">Every mg is stated. Every ingredient is named. No "blend" hiding doses.</div>
+        </div>
+        <div style="padding:var(--s-6) var(--s-4);border:1px solid rgba(244,236,219,.12);border-radius:var(--r-lg);background:rgba(244,236,219,.04)">
+          <div style="font-family:var(--font-display);font-size:52px;color:var(--sage);line-height:1;font-variation-settings:'opsz' 144,'SOFT' 40">100%</div>
+          <div style="font-size:14px;color:rgba(244,236,219,.78);margin-top:10px;font-weight:500">SA manufactured</div>
+          <div style="font-size:12px;color:rgba(244,236,219,.5);margin-top:6px;line-height:1.4">Blended and bottled in Centurion. Not imported and relabelled.</div>
+        </div>
+        <div style="padding:var(--s-6) var(--s-4);border:1px solid rgba(244,236,219,.12);border-radius:var(--r-lg);background:rgba(244,236,219,.04)">
+          <div style="font-family:var(--font-display);font-size:52px;color:var(--paper);line-height:1;font-variation-settings:'opsz' 144,'SOFT' 40">3</div>
+          <div style="font-size:14px;color:rgba(244,236,219,.78);margin-top:10px;font-weight:500">Retail stores</div>
+          <div style="font-size:12px;color:rgba(244,236,219,.5);margin-top:6px;line-height:1.4">Centurion, Glen Village, Edenvale. Touch it before you buy it.</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4);margin-top:var(--s-4)" class="why-compare">
+        <div style="padding:var(--s-5);border:1px solid rgba(244,236,219,.12);border-radius:var(--r-lg);background:rgba(244,236,219,.04)">
+          <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);font-weight:700;margin-bottom:14px">Them</div>
+          <div style="font-size:14px;color:rgba(244,236,219,.6);line-height:1.7">
+            <div style="margin-bottom:8px">Proprietary blends hiding real doses</div>
+            <div style="margin-bottom:8px">Imported white-label with SA sticker</div>
+            <div style="margin-bottom:8px">"Natural" marketing, synthetic fillers</div>
+            <div>Generic capsule shells, added sugar</div>
+          </div>
+        </div>
+        <div style="padding:var(--s-5);border:1px solid rgba(157,179,154,.28);border-radius:var(--r-lg);background:rgba(157,179,154,.08)">
+          <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:14px">Vivid Health</div>
+          <div style="font-size:14px;color:rgba(244,236,219,.88);line-height:1.7;font-weight:500">
+            <div style="margin-bottom:8px">Every mg stated on every label</div>
+            <div style="margin-bottom:8px">Formulated and manufactured in Centurion</div>
+            <div style="margin-bottom:8px">Plant-first ingredients, third-party tested</div>
+            <div>Vegetable capsules, sugar-free, gluten-free</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:var(--s-6)">
+        <a href="#/about" class="btn" style="background:var(--paper);color:var(--ink);border-color:var(--paper)">Read our full story →</a>
       </div>
     </div>
   </section>
