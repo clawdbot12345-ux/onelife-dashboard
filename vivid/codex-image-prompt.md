@@ -135,6 +135,58 @@ Each before/after uses a vertical split layout:
 - After: 4 benefit bullet points with checkmarks
 - Bottom: brand tagline
 
+**Image F — Product infographic (benefits + trust badges)**
+Generate for ALL 55 products. Layout:
+```
+Top: VIVID HEALTH wordmark in category color
+Large headline: "[BENEFIT HEADLINE]." e.g. "Strong Bones. Active Life."
+Right side: product bottle on stone podium with botanical props
+Left side: 3 benefit pills with icons (category-colored icons):
+  - [Benefit 1] with icon + short description
+  - [Benefit 2] with icon + short description
+  - [Benefit 3] with icon + short description
+Green "SHOP NOW" button
+Bottom strip: 4 trust badges (Premium Ingredients, Science Backed,
+  Quality Assured, Easy Daily Routine)
+Footer bar: category tagline
+```
+
+**Image G — "Them vs Us" competitive comparison**
+Generate for the 10 highest-value SKUs. Layout:
+```
+Top: "THEM VS US — The clear choice for [benefit]"
+Left half (dark grey/charcoal): "THEM" column with 3 weakness points
+  shown as grey circle icons (Calcium only, Basic support, etc.)
+Right half (category color gradient): "US" column with product bottle +
+  3 strength points as green circle icons (Calcium + D3 + K2 + Mg, etc.)
+Central "VS" divider circle
+```
+
+**Image H — "From Clutter to Calm" brand before/after**
+Generate 3 variants. Layout:
+```
+Headline: "FROM CLUTTER TO CALM" or "FROM SCATTERED TO SORTED"
+Subline: "Your daily wellness routine, refined."
+Left photo: messy supplement shelf — generic amber bottles scattered,
+  blister packs, cardboard boxes, loose capsules
+Right photo: clean marble shelf with Vivid products neatly arranged,
+  color-coded, with boxes behind bottles
+Footer: "Available at Onelife"
+```
+
+**Image I — Morning kitchen lifestyle (multi-product hero)**
+Generate 3 variants showing 3-5 Vivid products on a marble kitchen
+counter with morning props (steaming coffee mug, glass of water,
+eucalyptus sprig, linen napkin). Warm natural light. Headline overlay:
+"WELLNESS THAT FITS YOUR DAY" + "Premium daily support. House brand value."
++ testimonial quote. Footer: "VIVID HEALTH - Available at Onelife"
+
+**Image J — "Onelife House Brand. Built Better." collection hero**
+Generate for the Onelife.co.za collection page. 4 core products +
+boxes arranged on stone/marble. Trust badge callouts floating around
+the products: "Trusted by Onelife customers", "Premium wellness essentials",
+"Clear routines, clean shelf". Footer: "Shop Vivid Health at Onelife"
+
 ### Step 3: Upload to Shopify
 
 For each generated image:
