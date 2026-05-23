@@ -98,6 +98,43 @@ dominates the frame. A small white supplement bottle is visible but
 out of focus in the background. Premium editorial photography.
 ```
 
+**Image D — AI influencer / person-holding-product shot**
+Prompt pattern:
+```
+Professional lifestyle photograph of a [DEMOGRAPHIC] person holding
+a white supplement bottle labeled "VIVID HEALTH [PRODUCT NAME]" with
+a [CATEGORY COLOR] label band. The person is [ACTIVITY CONTEXT].
+Natural light, warm tones, shallow depth of field. The product is
+clearly visible with the label facing camera. Premium editorial
+advertising photography. No text overlays.
+```
+
+Demographics and contexts by category:
+- Immune Health: woman 30s, morning kitchen with citrus + tea
+- Physical Health: athletic man/woman 35-45, post-workout or morning stretch
+- Women's Health: woman 30-40, serene morning breakfast scene with granola
+- Mental Health: person 30s, evening bedroom reading scene, calm ambiance
+- Gut Health: woman 25-35, bright kitchen preparing healthy food
+- Nutrient Health: diverse person 30s, outdoor morning light, active lifestyle
+- Men's Health: man 35-50, modern home office or morning routine
+
+**Image E — Before/after transformation split (for key products)**
+Generate ONLY for these high-impact products:
+- Griffonia 5-HTP: "Restless Nights → Restful Nights" (blue cold vs warm lamp)
+- Allergy Control: "Allergy Season → Breathing Easy" (sneezing vs outdoors smiling)
+- MSM / Flexijoint: "Stiff Joints → Moving Freely" (holding knee vs active hiking)
+- Tranquil: "Stressed Days → Calm Evenings" (work stress vs relaxed evening)
+- Maca: "Low Energy → Rooted Energy" (fatigued vs vibrant morning)
+- Buffered C: "Catching Everything → Building Immunity" (sick in bed vs healthy active)
+
+Each before/after uses a vertical split layout:
+- Left side: "BEFORE" with cold/blue tones, problem state
+- Right side: "AFTER" with warm/golden tones, resolved state
+- Product bottle centered between the two panels
+- Before: 4 problem bullet points with X marks
+- After: 4 benefit bullet points with checkmarks
+- Bottom: brand tagline
+
 ### Step 3: Upload to Shopify
 
 For each generated image:
