@@ -499,6 +499,99 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .cart-totals{display:flex;justify-content:space-between;font-size:14px;margin-bottom:var(--s-3);color:var(--ink-soft)}
 .cart-totals.total{font-family:var(--font-display);font-size:26px;color:var(--ink);margin-bottom:var(--s-4);font-variation-settings:"opsz" 96}
 
+/* ─── Mobile menu ─── */
+.burger{display:none}
+@media (max-width:1000px){.burger{display:grid}}
+.mob-scrim{position:fixed;inset:0;background:rgba(11,22,16,.5);backdrop-filter:blur(4px);z-index:80;opacity:0;pointer-events:none;transition:.25s}
+.mob-scrim.open{opacity:1;pointer-events:auto}
+.mob-menu{position:fixed;top:0;left:0;bottom:0;width:min(380px,88vw);background:var(--paper);z-index:90;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.3,1);overflow-y:auto;box-shadow:20px 0 40px rgba(11,22,16,.18)}
+.mob-menu.open{transform:translateX(0)}
+.mob-link{display:block;font-size:17px;font-weight:500;padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink);font-family:var(--font-display);font-variation-settings:"opsz" 96,"SOFT" 50;letter-spacing:-.01em}
+.mob-link:last-child{border:0}
+
+/* ─── Search overlay ─── */
+.search-overlay{position:fixed;inset:0;z-index:100;background:rgba(244,236,219,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:.25s;display:flex;align-items:flex-start;justify-content:center;padding:12vh 24px 24px}
+.search-overlay.open{opacity:1;pointer-events:auto}
+.search-inner{width:100%;max-width:680px}
+.search-field{flex:1;background:none;border:0;outline:0;font-size:22px;font-family:var(--font-display);color:var(--ink);font-variation-settings:"opsz" 96,"SOFT" 50;letter-spacing:-.01em;padding:0}
+.search-field::placeholder{color:var(--ink-mute)}
+.search-results{padding:24px 0;display:flex;flex-direction:column;gap:12px;max-height:60vh;overflow-y:auto}
+.sr-item{display:flex;align-items:center;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer;text-decoration:none;color:inherit}
+.sr-item:hover{background:var(--bone);margin:0 -14px;padding:14px;border-radius:var(--r-md)}
+.sr-img{width:56px;height:56px;border-radius:var(--r-md);background:var(--bone);display:grid;place-items:center;overflow:hidden;flex-shrink:0}
+.sr-img img{width:100%;height:100%;object-fit:cover}
+.sr-name{font-family:var(--font-display);font-size:18px;color:var(--ink);font-variation-settings:"opsz" 96}
+.sr-bench{font-size:13px;color:var(--ink-soft)}
+.sr-price{margin-left:auto;font-family:var(--font-display);font-size:16px;color:var(--ink);flex-shrink:0}
+.sr-empty{text-align:center;padding:48px 0;color:var(--ink-mute);font-size:15px}
+.sr-popular{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.sr-popular a{padding:8px 16px;border:1px solid var(--line-strong);border-radius:var(--r-pill);font-size:13px;font-weight:500;transition:.15s;color:var(--ink-soft)}
+.sr-popular a:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ─── Free-shipping progress bar ─── */
+.ship-bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:14px}
+.ship-bar-fill{height:100%;background:var(--moss);border-radius:2px;transition:width .4s ease}
+.ship-msg{font-size:12px;color:var(--moss);text-align:center;margin-bottom:14px;font-weight:500}
+.ship-msg strong{color:var(--forest)}
+
+/* ─── Cart upsell ─── */
+.cart-upsell{border-top:1px solid var(--line);padding-top:18px;margin-top:14px}
+.cart-upsell h5{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 12px;font-weight:700}
+.cart-upsell-item{display:flex;gap:12px;align-items:center;padding:10px 0;cursor:pointer}
+.cart-upsell-item img{width:44px;height:44px;border-radius:var(--r-sm);object-fit:cover;background:var(--bone)}
+.cart-upsell-item .name{font-size:13px;font-weight:500;color:var(--ink)}
+.cart-upsell-item .price{font-size:12px;color:var(--ink-soft)}
+.cart-upsell-item .add-sm{margin-left:auto;padding:6px 14px;border:1px solid var(--line-strong);border-radius:var(--r-pill);font-size:11px;font-weight:600;background:var(--paper);color:var(--ink);transition:.15s;cursor:pointer}
+.cart-upsell-item .add-sm:hover{background:var(--ink);color:var(--paper)}
+
+/* ─── Supplement facts table ─── */
+.supp-facts{border:1px solid var(--line-strong);border-radius:var(--r-md);overflow:hidden;margin:18px 0}
+.supp-facts caption{background:var(--ink);color:var(--paper);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:12px 18px;text-align:left}
+.supp-facts td,.supp-facts th{padding:10px 18px;font-size:14px;text-align:left;border-bottom:1px solid var(--line)}
+.supp-facts th{font-weight:700;color:var(--ink);background:var(--bone);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.supp-facts td:last-child{text-align:right;font-family:var(--font-mono);color:var(--forest);font-weight:500;white-space:nowrap}
+.supp-facts .supp-other{font-size:12px;color:var(--ink-soft);padding:12px 18px;background:var(--paper-2)}
+
+/* ─── Subscription toggle ─── */
+.sub-toggle{display:flex;gap:12px;margin-bottom:20px}
+.sub-opt{flex:1;padding:16px;border:1.5px solid var(--line);border-radius:var(--r-md);cursor:pointer;transition:.15s;position:relative;text-align:center}
+.sub-opt:hover{border-color:var(--moss)}
+.sub-opt.active{border-color:var(--forest);background:rgba(63,96,72,.06)}
+.sub-opt .sub-label{font-size:14px;font-weight:600;color:var(--ink)}
+.sub-opt .sub-desc{font-size:12px;color:var(--ink-soft);margin-top:4px}
+.sub-opt .sub-save{position:absolute;top:-10px;right:12px;background:var(--clay);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:var(--r-pill);letter-spacing:.06em;text-transform:uppercase}
+
+/* ─── Sticky mobile ATC ─── */
+.sticky-atc{position:fixed;bottom:0;left:0;right:0;z-index:55;background:var(--paper);border-top:1px solid var(--line);padding:14px 20px;display:none;gap:14px;align-items:center;box-shadow:0 -8px 24px rgba(11,22,16,.12);transform:translateY(100%);transition:transform .25s ease}
+.sticky-atc.visible{transform:translateY(0)}
+@media (max-width:880px){.sticky-atc{display:flex}}
+.sticky-atc .name{font-family:var(--font-display);font-size:16px;color:var(--ink);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky-atc .price{font-family:var(--font-display);font-size:18px;color:var(--ink);flex-shrink:0}
+.sticky-atc .btn{padding:12px 20px;font-size:13px}
+
+/* ─── Quiz ─── */
+.quiz-overlay{padding:var(--s-9) 0}
+.quiz-box{max-width:780px;margin:0 auto}
+.quiz-q{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);line-height:1.08;margin-bottom:var(--s-6);letter-spacing:-.02em;font-variation-settings:"opsz" 96,"SOFT" 50}
+.quiz-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-3)}
+@media (max-width:600px){.quiz-opts{grid-template-columns:1fr}}
+.quiz-opt{padding:var(--s-5);border:1.5px solid var(--line);border-radius:var(--r-lg);cursor:pointer;transition:.15s;background:var(--paper)}
+.quiz-opt:hover{border-color:var(--moss);transform:translateY(-2px);box-shadow:var(--shadow-2)}
+.quiz-opt.selected{border-color:var(--forest);background:rgba(63,96,72,.06)}
+.quiz-opt strong{display:block;font-family:var(--font-display);font-size:20px;margin-bottom:6px;font-variation-settings:"opsz" 96}
+.quiz-opt span{font-size:13px;color:var(--ink-soft);line-height:1.4}
+.quiz-progress{display:flex;gap:6px;margin-bottom:var(--s-6)}
+.quiz-dot{width:100%;height:3px;border-radius:2px;background:var(--line)}
+.quiz-dot.done{background:var(--forest)}
+.quiz-dot.active{background:var(--clay)}
+.quiz-result{margin-top:var(--s-7)}
+
+/* ─── Back-in-stock capture ─── */
+.bis-form{display:flex;gap:8px;margin-top:14px}
+.bis-form input{flex:1;padding:12px 16px;border:1.5px solid var(--line-strong);border-radius:var(--r-pill);font-size:13px;outline:none;background:var(--paper)}
+.bis-form input:focus{border-color:var(--forest)}
+.bis-form button{padding:12px 18px;border-radius:var(--r-pill);font-size:12px;font-weight:600;background:var(--ink);color:var(--paper);border:0;cursor:pointer}
+
 /* ─── Reveal on scroll ─── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1)}
 .reveal.in{opacity:1;transform:none}
@@ -693,15 +786,53 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
       <button class="icon-btn" aria-label="Search" onclick="openSearch()">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       </button>
-      <button class="icon-btn" aria-label="Account">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-      </button>
       <button class="icon-btn cart-pip" aria-label="Cart" id="cartBtn" data-count="0">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 6h2l2.7 12.5a2 2 0 0 0 2 1.5h8.6a2 2 0 0 0 2-1.5L22 9H6"/></svg>
+      </button>
+      <button class="icon-btn burger" aria-label="Menu" onclick="toggleMenu()">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </div>
 </nav>
+
+<!-- Mobile menu -->
+<div class="mob-scrim" id="mobScrim" onclick="toggleMenu()"></div>
+<aside class="mob-menu" id="mobMenu" role="dialog" aria-modal="true">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)">
+    <a href="#/" onclick="toggleMenu()"><img src="https://vividhealthsa.co.za/wp-content/uploads/2023/09/Vivid-Logo_Black.png" alt="Vivid Health" style="height:30px"></a>
+    <button class="icon-btn" onclick="toggleMenu()" aria-label="Close"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <nav style="padding:24px">
+    <a href="#/shop" class="mob-link" onclick="toggleMenu()">Shop all</a>
+    <a href="#/shop?goal=gut" class="mob-link" onclick="toggleMenu()">Gut Health</a>
+    <a href="#/shop?goal=immunity" class="mob-link" onclick="toggleMenu()">Immunity</a>
+    <a href="#/shop?goal=stress" class="mob-link" onclick="toggleMenu()">Stress, Sleep & Mood</a>
+    <a href="#/shop?goal=joints" class="mob-link" onclick="toggleMenu()">Joints & Mobility</a>
+    <a href="#/shop?goal=women" class="mob-link" onclick="toggleMenu()">Women's Health</a>
+    <a href="#/shop?goal=men" class="mob-link" onclick="toggleMenu()">Men's Health</a>
+    <a href="#/shop?goal=energy" class="mob-link" onclick="toggleMenu()">Energy & Vitality</a>
+    <a href="#/shop?goal=daily" class="mob-link" onclick="toggleMenu()">Daily Nutrients</a>
+    <a href="#/shop?bundles=1" class="mob-link" onclick="toggleMenu()">Bundles</a>
+    <div style="border-top:1px solid var(--line);margin:18px 0"></div>
+    <a href="#/ingredients" class="mob-link" onclick="toggleMenu()">Ingredient library</a>
+    <a href="#/journal" class="mob-link" onclick="toggleMenu()">Journal</a>
+    <a href="#/about" class="mob-link" onclick="toggleMenu()">Our story</a>
+    <a href="#/quiz" class="mob-link" onclick="toggleMenu()" style="color:var(--clay);font-weight:700">Find your formulation →</a>
+  </nav>
+</aside>
+
+<!-- Search overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-inner">
+    <div style="display:flex;align-items:center;gap:14px;padding:0 0 24px;border-bottom:1px solid var(--line)">
+      <svg width="22" height="22" fill="none" stroke="var(--ink-soft)" stroke-width="1.8" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" class="search-field" placeholder="Search by ingredient, product, or health goal..." autofocus oninput="liveSearch(this.value)">
+      <button class="icon-btn" onclick="closeSearch()" aria-label="Close"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
 
 <main id="main"><!-- view router renders here --></main>
 
@@ -1103,6 +1234,7 @@ function renderRoute(){
   if (path === "/journal") return renderJournal(main);
   if (path.startsWith("/article/")) return renderArticle(main, path.split("/")[2]);
   if (path === "/about") return renderAbout(main);
+  if (path === "/quiz") return renderQuiz(main);
   renderHome(main);
 }
 window.addEventListener("hashchange", renderRoute);
@@ -1125,7 +1257,7 @@ function renderHome(main){
       <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Six health categories. Fifty-five formulations.</p>
       <div class="hero-cta">
         <a href="#/shop" class="btn btn-arrow">Shop the range</a>
-        <a href="#/about" class="btn btn--ghost">Our story</a>
+        <a href="#/quiz" class="btn btn--ghost">Find your formulation</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num">55</div><div class="lbl">Formulations</div></div>
@@ -1505,12 +1637,27 @@ function renderProductPDP(main, p){
         <div class="pdp-cat">${goalName(p.goal)} · ${p.form}</div>
         <h1>${p.name}</h1>
         <p class="pdp-sub">${p.bench}.</p>
-        <div class="pdp-rate"><span class="stars">★★★★★</span> 4.8 · 47 reviews <span style="opacity:.5">·</span> <span>SKU ${p.sku}</span></div>
+        <div class="pdp-rate"><span class="mono">SKU ${p.sku}</span> <span style="opacity:.4;margin:0 8px">·</span> ${goalName(p.goal)} <span style="opacity:.4;margin:0 8px">·</span> <span class="pill pill--green" style="vertical-align:2px">SA Made</span></div>
         <div class="pdp-price-row">
           <div class="pdp-price">${fmtR(p.price)}</div>
           <div class="pdp-price-tax">incl. VAT</div>
           ${!p.stock?`<span class="pill pill--alert">Currently sold out</span>`:""}
         </div>
+
+        ${p.stock ? `
+        <div class="sub-toggle">
+          <div class="sub-opt active" onclick="$$('.sub-opt').forEach(e=>e.classList.remove('active'));this.classList.add('active')">
+            <div class="sub-label">One-time purchase</div>
+            <div class="sub-desc">${fmtR(p.price)}</div>
+          </div>
+          <div class="sub-opt" onclick="$$('.sub-opt').forEach(e=>e.classList.remove('active'));this.classList.add('active')">
+            <span class="sub-save">Save 10%</span>
+            <div class="sub-label">Subscribe</div>
+            <div class="sub-desc">${fmtR(p.price * 0.9)} / delivery</div>
+          </div>
+        </div>
+        ` : ""}
+
         <div class="opts">
           <div class="opt active">${p.size}</div>
         </div>
@@ -1520,9 +1667,16 @@ function renderProductPDP(main, p){
             <input id="qty" type="text" value="1" aria-label="Quantity">
             <button onclick="qStep(1)" aria-label="Increase">+</button>
           </div>
-          <button class="btn btn--forest btn--block" ${!p.stock?'disabled':''} onclick="addToCart('${p.handle}', parseInt(document.getElementById('qty').value)||1)">
-            ${p.stock?`Add to basket — ${fmtR(p.price)}`:"Notify me when back"}
-          </button>
+          ${p.stock
+            ? `<button class="btn btn--forest btn--block" onclick="addToCart('${p.handle}', parseInt(document.getElementById('qty').value)||1)">Add to basket — ${fmtR(p.price)}</button>`
+            : `<div style="width:100%">
+                <button class="btn btn--ghost btn--block" disabled>Sold out</button>
+                <form class="bis-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Notified';this.querySelector('input').value=''">
+                  <input type="email" placeholder="your@email.co.za" required aria-label="Email for back-in-stock">
+                  <button type="submit">Notify me</button>
+                </form>
+               </div>`
+          }
         </div>
         <ul class="bullets">
           ${(p.benefits||[]).map(b=>`<li>${b}</li>`).join("")}
@@ -1546,10 +1700,19 @@ function renderProductPDP(main, p){
             </ul>
           </div>
           <div class="tab-body" data-tab="ingredients">
-            <h4>Per dose</h4>
-            <p style="font-family:var(--font-mono);font-size:14px;background:var(--bone);padding:14px 18px;border-radius:var(--r-md);border-left:3px solid var(--moss)">${p.dose||p.name+" standardised extract"}</p>
-            <p style="margin-top:18px">Other ingredients: vegetable capsule shell (HPMC), magnesium stearate (plant-source) as a flow agent.</p>
-            <p style="margin-top:12px;font-size:13px;color:var(--ink-soft)">Free from gluten, sugar, dairy, soy, and added colourants where indicated on the label. Manufactured in a facility that also handles tree nuts and shellfish-derived ingredients.</p>
+            <table class="supp-facts">
+              <caption>Supplement Facts — ${p.name} (${p.size})</caption>
+              <tr><th>Active Ingredient</th><th>Amount per serving</th></tr>
+              ${(p.dose||p.name+" extract").split(",").map(d=>d.trim()).map(d=>{
+                const parts = d.split(/(\d+(?:\.\d+)?(?:mg|mcg|g|%|IU))/i);
+                return `<tr><td>${parts[0]||d}</td><td>${parts[1]||"active"}</td></tr>`;
+              }).join("")}
+            </table>
+            <div class="supp-other">
+              <strong>Other ingredients:</strong> Vegetable capsule shell (HPMC), magnesium stearate (plant-source flow agent).<br>
+              <strong>Free from:</strong> Gluten, sugar, dairy, soy, added colourants (where indicated on label).<br>
+              <strong>Manufactured:</strong> Centurion, South Africa in a SAHPRA-aligned facility. Facility also processes tree nuts and shellfish-derived ingredients.
+            </div>
           </div>
           <div class="tab-body" data-tab="how">
             <h4>Daily routine</h4>
@@ -1575,6 +1738,7 @@ function renderProductPDP(main, p){
     </div>
   </div>
   `;
+  initStickyATC(p);
 }
 function renderBundlePDP(main, b){
   const items = b.includes.map(findProduct).filter(Boolean);
@@ -1826,10 +1990,10 @@ function renderCart(){
   const items = cart.map(c=>{
     const p = c.bundle ? findBundle(c.handle) : findProduct(c.handle);
     if (!p) return null;
-    const img = c.bundle ? p.img : p.img[0];
+    const imgs = c.bundle ? [p.img] : imagesFor(p);
     return `
       <div class="cart-item">
-        <div class="cart-item-img"><img src="${img}" alt=""></div>
+        <div class="cart-item-img"><img src="${imgs[0]}" alt=""></div>
         <div>
           <div class="cart-item-name">${c.bundle?"Bundle · ":""}${p.name}</div>
           <div class="cart-item-meta">${c.bundle?(p.includes.length+" products"):p.size}</div>
@@ -1845,37 +2009,207 @@ function renderCart(){
         <div class="cart-item-price">${fmtR(p.price * c.qty)}</div>
       </div>`;
   }).filter(Boolean).join("");
-  body.innerHTML = items;
 
   const subtotal = cart.reduce((s,c)=>{
     const p = c.bundle ? findBundle(c.handle) : findProduct(c.handle);
     return s + (p?p.price*c.qty:0);
   },0);
-  const ship = subtotal >= 600 ? 0 : 79;
+  const threshold = 600;
+  const ship = subtotal >= threshold ? 0 : 79;
   const total = subtotal + ship;
+  const pct = Math.min(100, (subtotal/threshold)*100);
+  const remaining = threshold - subtotal;
+
+  const upsells = PRODUCTS.filter(p=>p.stock && !cart.find(c=>c.handle===p.handle)).sort(()=>Math.random()-.5).slice(0,2);
+
+  body.innerHTML = `
+    <div class="ship-bar"><div class="ship-bar-fill" style="width:${pct}%"></div></div>
+    <div class="ship-msg">${remaining > 0 ? `Add <strong>${fmtR(remaining)}</strong> more for free delivery` : 'You qualify for <strong>free delivery</strong>'}</div>
+    ${items}
+    ${upsells.length ? `
+      <div class="cart-upsell">
+        <h5>You might also need</h5>
+        ${upsells.map(u=>`
+          <div class="cart-upsell-item">
+            <img src="${imagesFor(u)[0]}" alt="">
+            <div>
+              <div class="name">${u.name}</div>
+              <div class="price">${fmtR(u.price)} · ${u.size}</div>
+            </div>
+            <button class="add-sm" onclick="addToCart('${u.handle}')">Add</button>
+          </div>
+        `).join("")}
+      </div>
+    ` : ""}
+  `;
+
   foot.innerHTML = `
     <div class="cart-totals"><span>Subtotal</span><span>${fmtR(subtotal)}</span></div>
-    <div class="cart-totals"><span>Shipping</span><span>${ship===0?'Free over R600':fmtR(ship)}</span></div>
+    <div class="cart-totals"><span>Shipping</span><span>${ship===0?'Free':'R79.00'}</span></div>
     <div class="cart-totals total"><span>Total</span><span>${fmtR(total)}</span></div>
     <button class="btn btn--forest btn--block">Checkout — ${fmtR(total)}</button>
-    <div style="text-align:center;font-size:12px;color:var(--ink-soft);margin-top:10px">Secure checkout · Powered by Shopify</div>
+    <div style="text-align:center;font-size:11px;color:var(--ink-mute);margin-top:10px;letter-spacing:.08em;text-transform:uppercase">Secure checkout · Powered by Shopify</div>
   `;
 }
 $("#cartBtn").addEventListener("click", openCart);
 
+/* ─── Mobile menu ─── */
+function toggleMenu(){
+  $("#mobMenu").classList.toggle("open");
+  $("#mobScrim").classList.toggle("open");
+}
+
+/* ─── Search overlay ─── */
 function openSearch(){
-  const q = prompt("Search by ingredient or product name (e.g. 'msm', 'sleep', 'turmeric')");
-  if (!q) return;
-  const term = q.toLowerCase();
+  const ov = $("#searchOverlay");
+  ov.classList.add("open");
+  setTimeout(()=>$("#searchInput").focus(), 100);
+  liveSearch("");
+}
+function closeSearch(){
+  $("#searchOverlay").classList.remove("open");
+  $("#searchInput").value = "";
+}
+function liveSearch(q){
+  const res = $("#searchResults");
+  const term = q.trim().toLowerCase();
+  if (!term){
+    const popular = ["turmeric","msm","allergy","gut","buffered c","sleep"];
+    res.innerHTML = `
+      <div class="sr-empty">Search 55 formulations by ingredient, product name, or health goal.</div>
+      <div class="sr-popular">${popular.map(t=>`<a href="#" onclick="event.preventDefault();document.getElementById('searchInput').value='${t}';liveSearch('${t}')">${t}</a>`).join("")}</div>
+    `;
+    return;
+  }
   const matches = PRODUCTS.filter(p=>
     p.name.toLowerCase().includes(term) ||
     p.bench.toLowerCase().includes(term) ||
-    p.goal.toLowerCase().includes(term) ||
-    (p.dose||"").toLowerCase().includes(term)
-  );
-  if (matches.length === 0) alert("No matches. Try 'magnesium', 'gut', 'allergy'.");
-  else if (matches.length === 1) navigate("/product/"+matches[0].handle);
-  else navigate("/shop?goal="+matches[0].goal);
+    goalName(p.goal).toLowerCase().includes(term) ||
+    (p.dose||"").toLowerCase().includes(term) ||
+    (p.benefits||[]).some(b=>b.toLowerCase().includes(term))
+  ).slice(0,10);
+  if (matches.length === 0){
+    res.innerHTML = `<div class="sr-empty">No products match "${q}". Try "magnesium", "gut", "sleep", or "allergy".</div>`;
+    return;
+  }
+  res.innerHTML = matches.map(p=>`
+    <a class="sr-item" href="#/product/${p.handle}" onclick="closeSearch()">
+      <div class="sr-img"><img src="${imagesFor(p)[0]}" alt=""></div>
+      <div>
+        <div class="sr-name">${p.name}</div>
+        <div class="sr-bench">${goalName(p.goal)} · ${p.size}</div>
+      </div>
+      <div class="sr-price">${fmtR(p.price)}</div>
+    </a>
+  `).join("");
+}
+document.addEventListener("keydown", e=>{
+  if (e.key==="Escape" && $("#searchOverlay").classList.contains("open")) closeSearch();
+  if ((e.metaKey||e.ctrlKey) && e.key==="k"){ e.preventDefault(); openSearch(); }
+});
+
+/* ─── Sticky mobile ATC ─── */
+let stickyEl = null;
+function initStickyATC(p){
+  if (stickyEl) stickyEl.remove();
+  stickyEl = document.createElement("div");
+  stickyEl.className = "sticky-atc";
+  stickyEl.innerHTML = `
+    <span class="name">${p.name}</span>
+    <span class="price">${fmtR(p.price)}</span>
+    <button class="btn btn--forest" ${!p.stock?"disabled":""} onclick="addToCart('${p.handle}')">${p.stock?"Add":"Sold out"}</button>
+  `;
+  document.body.appendChild(stickyEl);
+  const addRow = document.querySelector(".add-row");
+  if (!addRow) return;
+  const io = new IntersectionObserver(([e])=>{
+    stickyEl.classList.toggle("visible", !e.isIntersecting);
+  },{threshold:0});
+  io.observe(addRow);
+}
+
+/* ─── Quiz — find your formulation ─── */
+const QUIZ = [
+  {q:"What's your primary health focus right now?", opts:[
+    {label:"Gut health",desc:"Digestion, bloating, parasites, gut repair",goal:"gut"},
+    {label:"Immunity",desc:"Cold prevention, allergies, seasonal defence",goal:"immunity"},
+    {label:"Stress, sleep & mood",desc:"Anxiety, insomnia, mental clarity",goal:"stress"},
+    {label:"Joints & mobility",desc:"Pain, stiffness, cartilage, flexibility",goal:"joints"},
+    {label:"Women's health",desc:"Hormones, PMS, menopause, cycle balance",goal:"women"},
+    {label:"Men's health",desc:"Prostate, DHT, vitality",goal:"men"},
+    {label:"Energy & recovery",desc:"Fatigue, athletic performance, cellular energy",goal:"energy"},
+    {label:"Daily nutrition",desc:"Vitamins, minerals, greens, omega-3s",goal:"daily"},
+  ]},
+  {q:"Do you prefer capsules or powder?", opts:[
+    {label:"Capsules",desc:"Pre-dosed, convenient, easy to take",form:"capsule"},
+    {label:"Powder",desc:"Flexible dosing, mix into drinks",form:"powder"},
+    {label:"Either is fine",desc:"Show me everything",form:null},
+  ]},
+  {q:"Any dietary requirements?", opts:[
+    {label:"Vegan",desc:"No animal-derived ingredients",diet:"vegan"},
+    {label:"Gluten-free",desc:"Certified gluten-free",diet:"gluten-free"},
+    {label:"No restrictions",desc:"Show me the full range",diet:null},
+  ]},
+];
+function renderQuiz(main){
+  let step = 0;
+  let answers = {};
+  function draw(){
+    const quiz = QUIZ[step];
+    main.innerHTML = `
+    <div class="collection-head" style="background:var(--forest-deep)">
+      <div class="container">
+        <div class="crumb" style="color:var(--sage)"><a href="#/" style="color:var(--sage)">Home</a> · Find your formulation</div>
+        <h1 style="color:var(--paper);font-size:clamp(36px,5vw,64px)">Find your<br><em>formulation.</em></h1>
+        <p style="color:rgba(244,236,219,.78);font-size:17px;margin-top:14px">Three questions. Personalised product recommendations from 55 Vivid formulations.</p>
+      </div>
+    </div>
+    <div class="container quiz-overlay">
+      <div class="quiz-box">
+        <div class="quiz-progress">${QUIZ.map((_,i)=>`<div class="quiz-dot ${i<step?'done':''} ${i===step?'active':''}"></div>`).join("")}</div>
+        <div class="quiz-q">Q${step+1}. ${quiz.q}</div>
+        <div class="quiz-opts">
+          ${quiz.opts.map((o,i)=>`
+            <div class="quiz-opt" onclick="quizPick(${step},${i},'${o.goal||o.form||o.diet||''}')">
+              <strong>${o.label}</strong>
+              <span>${o.desc}</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    </div>`;
+  }
+  window.quizPick = (s, idx, val)=>{
+    const q = QUIZ[s];
+    const o = q.opts[idx];
+    if (o.goal) answers.goal = o.goal;
+    if (o.form) answers.form = o.form;
+    if (o.diet) answers.diet = o.diet;
+    step++;
+    if (step < QUIZ.length) return draw();
+    let results = [...PRODUCTS].filter(p=>p.stock);
+    if (answers.goal) results = results.filter(p=>p.goal===answers.goal);
+    if (answers.form) results = results.filter(p=>p.form===answers.form);
+    if (answers.diet) results = results.filter(p=>(p.diet||[]).includes(answers.diet));
+    if (results.length === 0) results = PRODUCTS.filter(p=>p.goal===(answers.goal||"daily")).slice(0,4);
+    results = results.slice(0,6);
+    main.innerHTML = `
+    <div class="collection-head" style="background:var(--forest-deep)">
+      <div class="container">
+        <div class="crumb" style="color:var(--sage)"><a href="#/" style="color:var(--sage)">Home</a> · Your results</div>
+        <h1 style="color:var(--paper);font-size:clamp(36px,5vw,64px)">Your <em>formulations.</em></h1>
+        <p style="color:rgba(244,236,219,.78);font-size:17px;margin-top:14px">Based on your answers, we recommend these ${results.length} products from the Vivid range.</p>
+      </div>
+    </div>
+    <section class="container" style="padding:48px 0 96px">
+      <div class="products-row">${results.map(p=>cardHTML(p)).join("")}</div>
+      <div style="text-align:center;margin-top:48px">
+        <a href="#/quiz" class="btn btn--ghost" style="margin-right:12px" onclick="event.preventDefault();step=0;answers={};draw()">Retake quiz</a>
+        <a href="#/shop" class="btn btn--forest btn-arrow">Browse all 55</a>
+      </div>
+    </section>`;
+  };
+  draw();
 }
 
 document.getElementById("yr").textContent = new Date().getFullYear();
