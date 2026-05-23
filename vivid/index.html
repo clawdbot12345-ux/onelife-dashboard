@@ -236,33 +236,23 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 }
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card);border-color:var(--line-strong)}
 .card-media{
-  position:relative;aspect-ratio:1;
+  position:relative;aspect-ratio:4/5;
   display:grid;place-items:center;overflow:hidden;
   border-bottom:1px solid var(--line);
 }
-.card-media::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.4) 0%, transparent 55%);pointer-events:none;z-index:1}
-.card-media::after{content:"";position:absolute;left:50%;bottom:8%;transform:translateX(-50%);width:65%;height:8px;background:radial-gradient(ellipse, rgba(11,22,16,.18) 0%, transparent 70%);filter:blur(4px);pointer-events:none;z-index:0}
-.card-media img{width:72%;height:auto;max-height:78%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s cubic-bezier(.2,.7,.3,1);position:relative;z-index:1}
-.card:hover .card-media img{transform:scale(1.06)}
+.card-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.3,1);position:relative;z-index:1}
+.card:hover .card-media img{transform:scale(1.04)}
 
-/* Per-goal product card backgrounds */
-.card[data-goal="gut"] .card-media{background:linear-gradient(140deg, var(--g-gut-bg) 0%, #DBB587 100%)}
-.card[data-goal="immunity"] .card-media{background:linear-gradient(140deg, var(--g-immunity-bg) 0%, #F2A98C 100%)}
-.card[data-goal="energy"] .card-media{background:linear-gradient(140deg, var(--g-energy-bg) 0%, #D9A077 100%)}
-.card[data-goal="stress"] .card-media{background:linear-gradient(140deg, var(--g-stress-bg) 0%, #8FA8C7 100%)}
-.card[data-goal="joints"] .card-media{background:linear-gradient(140deg, var(--g-joints-bg) 0%, #8FAE85 100%)}
-.card[data-goal="women"] .card-media{background:linear-gradient(140deg, var(--g-women-bg) 0%, #BC8E97 100%)}
-.card[data-goal="men"] .card-media{background:linear-gradient(140deg, var(--g-men-bg) 0%, #9E9A85 100%)}
-.card[data-goal="daily"] .card-media{background:linear-gradient(140deg, var(--g-daily-bg) 0%, #B1BFA0 100%)}
-.card[data-goal="bundles"] .card-media{background:linear-gradient(140deg, var(--cream) 0%, var(--wheat) 100%)}
-.card[data-goal="bundles"] .card-media img{mix-blend-mode:normal;width:100%;max-height:100%;height:100%;object-fit:cover}
-
-/* Lifestyle / cover photo cards — full-bleed, no multiply, no plinth */
-.card--cover .card-media{background:#1a1a1a !important}
-.card--cover .card-media::before,
-.card--cover .card-media::after{display:none}
-.card--cover .card-media img{mix-blend-mode:normal;width:100%;height:100%;max-height:100%;object-fit:cover}
-.card--cover:hover .card-media img{transform:scale(1.04)}
+/* Per-goal product card backgrounds — unified subtle overlay on all photos */
+.card[data-goal="gut"] .card-media{background:var(--g-gut-bg)}
+.card[data-goal="immunity"] .card-media{background:var(--g-immunity-bg)}
+.card[data-goal="energy"] .card-media{background:var(--g-energy-bg)}
+.card[data-goal="stress"] .card-media{background:var(--g-stress-bg)}
+.card[data-goal="joints"] .card-media{background:var(--g-joints-bg)}
+.card[data-goal="women"] .card-media{background:var(--g-women-bg)}
+.card[data-goal="men"] .card-media{background:var(--g-men-bg)}
+.card[data-goal="daily"] .card-media{background:var(--g-daily-bg)}
+.card[data-goal="bundles"] .card-media{background:var(--cream)}
 
 .card-badge{position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:5px;z-index:2}
 .card-quickadd{position:absolute;bottom:14px;right:14px;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;opacity:0;transform:translateY(8px) scale(.85);transition:.25s cubic-bezier(.2,.7,.3,1);z-index:2;box-shadow:0 8px 20px -6px rgba(11,22,16,.4)}
@@ -278,8 +268,7 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 .card-form{font-size:11px;color:var(--ink-soft);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
 
 /* Feature card — bigger treatment */
-.card--feature .card-media{aspect-ratio:auto}
-.card--feature .card-media img{width:62%;max-height:64%}
+.card--feature .card-media{aspect-ratio:3/4}
 .card--feature .card-body{padding:var(--s-6) var(--s-5)}
 .card--feature .card-name{font-size:34px;line-height:1.02}
 .card--feature .card-bench{font-size:15px;line-height:1.5;min-height:auto}
@@ -417,13 +406,8 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 @media (max-width:900px){.pdp-grid{grid-template-columns:1fr;gap:var(--s-6)}}
 .pdp-gallery{display:flex;flex-direction:column;gap:var(--s-3);position:sticky;top:96px}
 @media (max-width:900px){.pdp-gallery{position:static}}
-.pdp-main-img{aspect-ratio:1;border-radius:var(--r-xl);overflow:hidden;display:grid;place-items:center;border:1px solid var(--line);position:relative}
-.pdp-main-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.4) 0%, transparent 55%);pointer-events:none;z-index:1}
-.pdp-main-img::after{content:"";position:absolute;left:50%;bottom:12%;transform:translateX(-50%);width:60%;height:14px;background:radial-gradient(ellipse, rgba(11,22,16,.22) 0%, transparent 70%);filter:blur(8px)}
-.pdp-main-img img{width:62%;height:auto;max-height:72%;object-fit:contain;mix-blend-mode:multiply;position:relative;z-index:1}
-.pdp-main-img--cover{background:#1a1a1a !important;border-color:transparent}
-.pdp-main-img--cover::before,.pdp-main-img--cover::after{display:none}
-.pdp-main-img--cover img{width:100%;height:100%;max-height:100%;object-fit:cover;mix-blend-mode:normal}
+.pdp-main-img{aspect-ratio:4/5;border-radius:var(--r-xl);overflow:hidden;display:grid;place-items:center;border:1px solid var(--line);position:relative}
+.pdp-main-img img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
 .pdp[data-goal="gut"] .pdp-main-img{background:linear-gradient(140deg, var(--g-gut-bg), #DBB587)}
 .pdp[data-goal="immunity"] .pdp-main-img{background:linear-gradient(140deg, var(--g-immunity-bg), #F2A98C)}
 .pdp[data-goal="energy"] .pdp-main-img{background:linear-gradient(140deg, var(--g-energy-bg), #D9A077)}
@@ -436,7 +420,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .pdp-thumb{flex:0 0 88px;aspect-ratio:1;background:var(--bone);border-radius:var(--r-md);border:1.5px solid transparent;cursor:pointer;display:grid;place-items:center;overflow:hidden;transition:.15s}
 .pdp-thumb:hover{border-color:var(--moss)}
 .pdp-thumb.active{border-color:var(--forest);background:var(--cream)}
-.pdp-thumb img{width:80%;object-fit:contain;mix-blend-mode:multiply}
+.pdp-thumb img{width:100%;height:100%;object-fit:cover}
 
 .pdp-cat{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);font-weight:700;margin-bottom:var(--s-3)}
 .pdp h1{font-size:clamp(36px,4.5vw,68px);line-height:1.0;letter-spacing:-.025em;margin-bottom:var(--s-4);font-variation-settings:"opsz" 144,"SOFT" 40}
@@ -591,6 +575,31 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .bis-form input{flex:1;padding:12px 16px;border:1.5px solid var(--line-strong);border-radius:var(--r-pill);font-size:13px;outline:none;background:var(--paper)}
 .bis-form input:focus{border-color:var(--forest)}
 .bis-form button{padding:12px 18px;border-radius:var(--r-pill);font-size:12px;font-weight:600;background:var(--ink);color:var(--paper);border:0;cursor:pointer}
+
+/* ─── Floating action buttons ─── */
+.fab-stack{position:fixed;bottom:24px;right:24px;z-index:55;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.fab{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;border:0;cursor:pointer;box-shadow:0 6px 20px rgba(11,22,16,.28);transition:transform .2s, box-shadow .2s}
+.fab:hover{transform:scale(1.08);box-shadow:0 10px 28px rgba(11,22,16,.36)}
+.fab--wa{background:#25D366}
+.fab--chat{background:var(--forest)}
+@media (max-width:880px){.fab-stack{bottom:18px;right:18px;gap:10px}.fab{width:50px;height:50px}}
+
+/* ─── Chat widget ─── */
+.chat-widget{position:fixed;bottom:96px;right:24px;width:min(380px,calc(100vw - 48px));height:480px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-xl);z-index:56;display:flex;flex-direction:column;box-shadow:0 20px 50px rgba(11,22,16,.25);transform:translateY(20px) scale(.95);opacity:0;pointer-events:none;transition:.25s cubic-bezier(.2,.7,.3,1);overflow:hidden}
+.chat-widget.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+.chat-head{display:flex;align-items:center;gap:10px;padding:16px 20px;background:var(--forest-deep);color:var(--paper)}
+.chat-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px}
+.chat-msg{max-width:85%;padding:14px 18px;border-radius:var(--r-lg);font-size:14px;line-height:1.5}
+.chat-msg--them{background:var(--bone);color:var(--ink);align-self:flex-start;border-bottom-left-radius:var(--r-sm)}
+.chat-msg--me{background:var(--forest);color:var(--paper);align-self:flex-end;border-bottom-right-radius:var(--r-sm)}
+.chat-msg p{margin:0}
+.chat-time{display:block;font-size:10px;color:var(--ink-mute);margin-top:6px;letter-spacing:.06em}
+.chat-foot{display:flex;gap:8px;padding:14px 16px;border-top:1px solid var(--line);background:var(--paper)}
+.chat-input{flex:1;padding:12px 16px;border:1.5px solid var(--line);border-radius:var(--r-pill);font-size:14px;outline:none;background:var(--paper)}
+.chat-input:focus{border-color:var(--forest)}
+.chat-send{width:44px;height:44px;border-radius:50%;background:var(--forest);color:var(--paper);display:grid;place-items:center;border:0;cursor:pointer;flex-shrink:0;transition:.15s}
+.chat-send:hover{background:var(--forest-deep)}
+@media (max-width:880px){.chat-widget{bottom:80px;right:12px;height:420px;width:calc(100vw - 24px);border-radius:var(--r-lg)}}
 
 /* ─── Reveal on scroll ─── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1)}
@@ -848,6 +857,37 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   <div class="drawer-body" id="drawerBody"></div>
   <div class="drawer-foot" id="drawerFoot"></div>
 </aside>
+
+<!-- Floating action buttons — WhatsApp + Chat -->
+<div class="fab-stack" id="fabStack">
+  <a href="https://wa.me/27000000000?text=Hi%2C%20I%27d%20like%20to%20speak%20to%20a%20Vivid%20Health%20consultant" target="_blank" rel="noopener" class="fab fab--wa" aria-label="WhatsApp a health consultant">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <button class="fab fab--chat" aria-label="Chat with us" onclick="openChat()">
+    <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+</div>
+
+<!-- Chat widget -->
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-head">
+    <img src="https://vividhealthsa.co.za/wp-content/uploads/2023/09/Vivid-Logo_White.png" alt="" style="height:20px">
+    <span style="flex:1;font-weight:600;font-size:14px">Vivid Health Support</span>
+    <button class="icon-btn" onclick="closeChat()" style="color:var(--paper)" aria-label="Close"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="chat-body">
+    <div class="chat-msg chat-msg--them">
+      <p>Hi! I'm here to help you find the right Vivid formulation. What are you looking for?</p>
+      <span class="chat-time">Vivid Health</span>
+    </div>
+  </div>
+  <div class="chat-foot">
+    <input type="text" placeholder="Ask about a product or ingredient..." class="chat-input" onkeydown="if(event.key==='Enter'){sendChat(this)}">
+    <button onclick="sendChat($('.chat-input'))" class="chat-send">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+    </button>
+  </div>
+</div>
 
 <footer>
   <div class="container">
@@ -1467,9 +1507,8 @@ function cardHTML(p, feature=false){
   const sold = !p.stock;
   const isVegan = (p.diet||[]).includes("vegan");
   const primaryImg = imagesFor(p)[0];
-  const cover = isLifestyle(primaryImg);
   return `
-  <a href="#/product/${p.handle}" class="card ${feature?'card--feature':''} ${cover?'card--cover':''}" data-goal="${p.goal}" aria-label="${p.name}">
+  <a href="#/product/${p.handle}" class="card ${feature?'card--feature':''}" data-goal="${p.goal}" aria-label="${p.name}">
     <div class="card-media">
       <div class="card-badge">
         ${isVegan?`<span class="pill pill--green">Vegan</span>`:""}
@@ -1626,10 +1665,10 @@ function renderProductPDP(main, p){
     <div class="crumb"><a href="#/">Home</a> · <a href="#/shop">Shop</a> · <a href="#/shop?goal=${p.goal}">${goalName(p.goal)}</a> · ${p.name}</div>
     <div class="pdp-grid">
       <div class="pdp-gallery">
-        ${(()=>{ const imgs = imagesFor(p); const first = imgs[0]; const cover = isLifestyle(first); return `
-        <div class="pdp-main-img ${cover?'pdp-main-img--cover':''}" id="pdpMain"><img src="${first}" alt="${p.name}"></div>
+        ${(()=>{ const imgs = imagesFor(p); return `
+        <div class="pdp-main-img" id="pdpMain"><img src="${imgs[0]}" alt="${p.name}"></div>
         <div class="pdp-thumbs">
-          ${imgs.slice(0,6).map((src,i)=>`<button class="pdp-thumb ${i===0?'active':''}" onclick="swapThumb(this,'${src}', ${isLifestyle(src)})"><img src="${src}" alt=""></button>`).join("")}
+          ${imgs.slice(0,6).map((src,i)=>`<button class="pdp-thumb ${i===0?'active':''}" onclick="swapThumb(this,'${src}')"><img src="${src}" alt=""></button>`).join("")}
         </div>
         `; })()}
       </div>
@@ -1785,11 +1824,9 @@ function renderBundlePDP(main, b){
     </div>
   </div>`;
 }
-function swapThumb(btn, src, cover){
+function swapThumb(btn, src){
   $$(".pdp-thumb").forEach(t=>t.classList.remove("active"));
   btn.classList.add("active");
-  const main = $("#pdpMain");
-  main.classList.toggle("pdp-main-img--cover", !!cover);
   $("#pdpMain img").src = src;
 }
 function setTab(btn, key){
@@ -2210,6 +2247,31 @@ function renderQuiz(main){
     </section>`;
   };
   draw();
+}
+
+/* ─── Chat widget ─── */
+function openChat(){
+  $("#chatWidget").classList.add("open");
+}
+function closeChat(){
+  $("#chatWidget").classList.remove("open");
+}
+function sendChat(input){
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = "";
+  const body = $(".chat-body");
+  body.innerHTML += `<div class="chat-msg chat-msg--me"><p>${msg}</p></div>`;
+  body.scrollTop = body.scrollHeight;
+  setTimeout(()=>{
+    const term = msg.toLowerCase();
+    const match = PRODUCTS.find(p=>p.name.toLowerCase().includes(term) || p.bench.toLowerCase().includes(term) || goalName(p.goal).toLowerCase().includes(term));
+    let reply = match
+      ? `I'd recommend <strong>${match.name}</strong> (${match.size}) — ${match.bench}. It's ${fmtR(match.price)} incl. VAT. <a href="#/product/${match.handle}" onclick="closeChat()" style="color:var(--clay);font-weight:600">View product →</a>`
+      : `I'd be happy to help! For personalised advice, try our <a href="#/quiz" onclick="closeChat()" style="color:var(--clay);font-weight:600">product finder quiz</a> or WhatsApp our health consultant directly.`;
+    body.innerHTML += `<div class="chat-msg chat-msg--them"><p>${reply}</p><span class="chat-time">Vivid Health</span></div>`;
+    body.scrollTop = body.scrollHeight;
+  }, 800);
 }
 
 document.getElementById("yr").textContent = new Date().getFullYear();
