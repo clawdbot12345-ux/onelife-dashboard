@@ -9,6 +9,8 @@
 <meta property="og:title" content="Vivid Health — Plant-based supplements, made in South Africa" />
 <meta property="og:description" content="Science-backed herbal supplements. Vegetarian capsules. Made in South Africa." />
 <meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231B3A2E'/%3E%3Cpath d='M18 18h8l6 22 6-22h8L36 48h-8L18 18z' fill='%23F4ECDB'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/banners/banner-hero-kitchen.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +29,7 @@
   --moss:#3F6048;
   --sage:#9DB39A;
   --sage-soft:#C5D2BD;
-  --clay:#B85E3A;
+  --clay:#A64F2F;
   --clay-deep:#8C3F23;
   --ochre:#CC8848;
   --rust:#9C3D1C;
@@ -89,6 +91,11 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 input,select,textarea{font:inherit;color:inherit}
 main{position:relative;z-index:2}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--ochre);
+  outline-offset:3px;
+  border-radius:var(--r-sm);
+}
 
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;letter-spacing:-.015em;margin:0;font-variation-settings:"opsz" 96, "SOFT" 60}
 h1{font-size:clamp(54px,9vw,148px);line-height:.92;letter-spacing:-.035em;font-variation-settings:"opsz" 144, "SOFT" 30, "wght" 400}
@@ -213,16 +220,11 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 .goal--daily .goal-bg{background:var(--g-daily-bg)}.goal--daily{color:var(--g-daily-text)}.goal--daily .arrow svg{stroke:var(--g-daily-text)}
 
 /* ─── Product cards — per-goal palettes, layered ─── */
-.products-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4)}
+.products-row{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:var(--s-4)}
 .products-row--3col{grid-template-columns:repeat(3,1fr)}
 @media (max-width:1100px){.products-row{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:780px){.products-row{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:480px){.products-row{grid-template-columns:1fr}}
-
-/* Hero featured mosaic — 1 large + 4 small */
-.products-row{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:var(--s-4)}
-@media (max-width:1100px){.products-row{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:780px){.products-row{grid-template-columns:repeat(2,1fr)}}
 
 .card{
   border-radius:var(--r-lg);
@@ -415,6 +417,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 /* ─── PDP ─── */
 .pdp{padding:var(--s-7) 0 var(--s-9)}
 .pdp-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s-8);align-items:start}
+.pdp-grid > *{min-width:0}
 @media (max-width:900px){.pdp-grid{grid-template-columns:1fr;gap:var(--s-6)}}
 .pdp-gallery{display:flex;flex-direction:column;gap:var(--s-3);position:sticky;top:96px}
 @media (max-width:900px){.pdp-gallery{position:static}}
@@ -428,7 +431,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .pdp[data-goal="women"] .pdp-main-img{background:linear-gradient(140deg, var(--g-women-bg), #BC8E97)}
 .pdp[data-goal="men"] .pdp-main-img{background:linear-gradient(140deg, var(--g-men-bg), #9E9A85)}
 .pdp[data-goal="daily"] .pdp-main-img{background:linear-gradient(140deg, var(--g-daily-bg), #B1BFA0)}
-.pdp-thumbs{display:flex;gap:10px}
+.pdp-thumbs{display:flex;gap:10px;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
 .pdp-thumb{flex:0 0 88px;aspect-ratio:1;background:var(--bone);border-radius:var(--r-md);border:1.5px solid transparent;cursor:pointer;display:grid;place-items:center;overflow:hidden;transition:.15s}
 .pdp-thumb:hover{border-color:var(--moss)}
 .pdp-thumb.active{border-color:var(--forest);background:var(--cream)}
@@ -550,7 +553,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 
 /* ─── Subscription toggle ─── */
 .sub-toggle{display:flex;gap:12px;margin-bottom:20px}
-.sub-opt{flex:1;padding:16px;border:1.5px solid var(--line);border-radius:var(--r-md);cursor:pointer;transition:.15s;position:relative;text-align:center}
+.sub-opt{flex:1;padding:16px;border:1.5px solid var(--line);border-radius:var(--r-md);cursor:pointer;transition:.15s;position:relative;text-align:center;background:transparent}
 .sub-opt:hover{border-color:var(--moss)}
 .sub-opt.active{border-color:var(--forest);background:rgba(63,96,72,.06)}
 .sub-opt .sub-label{font-size:14px;font-weight:600;color:var(--ink)}
@@ -571,7 +574,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .quiz-q{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);line-height:1.08;margin-bottom:var(--s-6);letter-spacing:-.02em;font-variation-settings:"opsz" 96,"SOFT" 50}
 .quiz-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-3)}
 @media (max-width:600px){.quiz-opts{grid-template-columns:1fr}}
-.quiz-opt{padding:var(--s-5);border:1.5px solid var(--line);border-radius:var(--r-lg);cursor:pointer;transition:.15s;background:var(--paper)}
+.quiz-opt{padding:var(--s-5);border:1.5px solid var(--line);border-radius:var(--r-lg);cursor:pointer;transition:.15s;background:var(--paper);text-align:left;width:100%}
 .quiz-opt:hover{border-color:var(--moss);transform:translateY(-2px);box-shadow:var(--shadow-2)}
 .quiz-opt.selected{border-color:var(--forest);background:rgba(63,96,72,.06)}
 .quiz-opt strong{display:block;font-family:var(--font-display);font-size:20px;margin-bottom:6px;font-variation-settings:"opsz" 96}
@@ -788,7 +791,6 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .hero-stats{gap:14px}
   .hero-stat .num{font-size:24px}
   .products-row,.products-row--3col{grid-template-columns:1fr}
-  .products-row{grid-template-columns:1fr}
   .goals{grid-template-columns:1fr}
   .goal{min-height:140px}
   .foot-grid{grid-template-columns:1fr}
@@ -831,13 +833,13 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
       <a href="#/journal">Journal</a>
     </div>
     <div class="nav-actions">
-      <button class="icon-btn" aria-label="Search" onclick="openSearch()">
+      <button class="icon-btn" id="searchBtn" aria-label="Search" aria-expanded="false" aria-controls="searchOverlay" onclick="openSearch()">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       </button>
-      <button class="icon-btn cart-pip" aria-label="Cart" id="cartBtn" data-count="0">
+      <button class="icon-btn cart-pip" aria-label="Cart" id="cartBtn" data-count="0" aria-expanded="false" aria-controls="drawer">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 6h2l2.7 12.5a2 2 0 0 0 2 1.5h8.6a2 2 0 0 0 2-1.5L22 9H6"/></svg>
       </button>
-      <button class="icon-btn burger" aria-label="Menu" onclick="toggleMenu()">
+      <button class="icon-btn burger" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobMenu" onclick="toggleMenu()">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
@@ -845,8 +847,8 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 </nav>
 
 <!-- Mobile menu -->
-<div class="mob-scrim" id="mobScrim" onclick="toggleMenu()"></div>
-<aside class="mob-menu" id="mobMenu" role="dialog" aria-modal="true">
+<div class="mob-scrim" id="mobScrim" onclick="toggleMenu()" aria-hidden="true"></div>
+<aside class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
   <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)">
     <a href="#/" onclick="toggleMenu()"><img src="https://vividhealthsa.co.za/wp-content/uploads/2023/09/Vivid-Logo_Black.png" alt="Vivid Health" style="height:30px"></a>
     <button class="icon-btn" onclick="toggleMenu()" aria-label="Close"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
@@ -871,7 +873,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 </aside>
 
 <!-- Search overlay -->
-<div class="search-overlay" id="searchOverlay">
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search products" aria-hidden="true">
   <div class="search-inner">
     <div style="display:flex;align-items:center;gap:14px;padding:0 0 24px;border-bottom:1px solid var(--line)">
       <svg width="22" height="22" fill="none" stroke="var(--ink-soft)" stroke-width="1.8" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
@@ -885,8 +887,8 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 <main id="main"><!-- view router renders here --></main>
 
 <!-- ─── Cart drawer ─── -->
-<div class="scrim" id="scrim" onclick="closeCart()"></div>
-<aside class="drawer" id="drawer" aria-label="Cart" role="dialog" aria-modal="true">
+<div class="scrim" id="scrim" onclick="closeCart()" aria-hidden="true"></div>
+<aside class="drawer" id="drawer" aria-label="Cart" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="drawer-head">
     <h3>Your basket</h3>
     <button class="icon-btn" onclick="closeCart()" aria-label="Close">
@@ -902,13 +904,13 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   <a href="https://wa.me/27713744910?text=Hi%2C%20I%27d%20like%20to%20speak%20to%20a%20Vivid%20Health%20consultant" target="_blank" rel="noopener" class="fab fab--wa" aria-label="WhatsApp a health consultant">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-  <button class="fab fab--chat" aria-label="Chat with us" onclick="openChat()">
+  <button class="fab fab--chat" id="chatBtn" aria-label="Chat with us" aria-expanded="false" aria-controls="chatWidget" onclick="openChat()">
     <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
   </button>
 </div>
 
 <!-- Chat widget — Vivid AI Health Consultant -->
-<div class="chat-widget" id="chatWidget">
+<div class="chat-widget" id="chatWidget" role="dialog" aria-label="Vivid AI Consultant" aria-hidden="true">
   <div class="chat-head">
     <div class="chat-head-avatar"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
     <div style="flex:1">
@@ -931,7 +933,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   </div>
   <div class="chat-foot">
     <input type="text" placeholder="Ask about a product, ingredient, or health goal..." class="chat-input" id="chatInput" onkeydown="if(event.key==='Enter'){sendChat(this)}">
-    <button onclick="sendChat($('#chatInput'))" class="chat-send">
+    <button onclick="sendChat($('#chatInput'))" class="chat-send" aria-label="Send chat message">
       <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
     </button>
   </div>
@@ -1002,7 +1004,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 <script>
 /* ───────────────────────────────────────────────
    Product catalogue — sourced from onelife.co.za/collections/vivid-health
-   Real ZAR prices, real Shopify CDN images. 55 SKUs.
+   Real ZAR prices, real Shopify CDN images. 52 SKUs.
    ─────────────────────────────────────────────── */
 const CDN = "https://onelife.co.za/cdn/shop/files/";
 const P = (file) => CDN + file;
@@ -1030,7 +1032,7 @@ const PRODUCTS = [
   {handle:"l-glutamine-500",name:"L-Glutamine",size:"500g powder",price:345.00,goal:"energy",form:"powder",bench:"Amino acid for gut and recovery",dose:"Pure L-Glutamine powder; 1 heaped teaspoon (~5g) twice daily",benefits:["Removes excess ammonia from the body","Supports immune system functioning","Brain function support","Digestive health and gut lining repair","Useful during physical stress, injury, or illness"],dosage:"Mix 1 heaped teaspoon with water or juice, twice daily, preferably at mealtime.",img:[P("IMG-5260.png"),P("IMG-5261.png"),WP+"2016/05/1-1.png"],diet:["vegan","vegetarian","sa-made"],stock:true,sku:"748927022803"},
   {handle:"l-lysine-60",name:"L-Lysine",size:"60 capsules",price:118.00,goal:"immunity",form:"capsule",bench:"Essential amino for immunity and skin",dose:"800mg L-Lysine per capsule",benefits:["Supports antibody, hormone, and enzyme production","Promotes collagen formation and tissue repair","Essential for growth and bone development","May help reduce elevated triglyceride levels","Helps combat cold sores and herpesviruses"],dosage:"Chronic conditions: 1 capsule three times daily. General support: 1 capsule daily.",img:[P("IMG-5242.png"),P("IMG-5241.png"),WP+"2016/05/5-1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000612818"},
   {handle:"buffered-c-300",name:"Buffered C",size:"300 capsules",price:428.49,goal:"immunity",form:"capsule",bench:"Non-acidic calcium ascorbate",dose:"960mg Calcium Ascorbate per capsule (788mg Vitamin C + 172mg Calcium)",benefits:["Powerful antioxidant","Fortifies immune function","Helps reduce high cortisol levels from prolonged stress","Non-acidic formulation, stomach-friendly","Family-size supply"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5210.png"),P("IMG-5209.png"),WP+"2023/10/7-2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"600000082009",hero:true},
-  {handle:"tranquil-60",name:"Tranquil",size:"60 capsules",price:130.00,goal:"stress",form:"capsule",bench:"Botanical calming and sleep blend",dose:"Per capsule: Hops 150mg, Valerian 100mg, Passion Flower 50mg, Skullcap Extract 50mg",benefits:["Helps relieve symptoms of mild anxiety and nervous tension","Supports everyday stress management","Promotes relaxation and restful sleep","Valerian's calming properties address restlessness","Non-habit-forming botanicals"],dosage:"Daily use: 1 capsule 2-3 times daily before meals. Sleep support: 1-2 capsules 30 minutes before bedtime.",img:[P("IMG-5229.png"),P("IMG-5228.png"),WP+"2023/10/1-2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000675028"},
+  {handle:"tranquil-60",name:"Tranquil",size:"60 capsules",price:130.00,goal:"stress",form:"capsule",bench:"Botanical calming and sleep blend",dose:"Per capsule: Hops 150mg, Valerian 100mg, Passion Flower 50mg, Skullcap Extract 50mg",benefits:["Helps relieve symptoms of mild anxiety and nervous tension","Supports everyday stress management","Promotes relaxation and restful sleep","Valerian's calming properties address restlessness","Non-habit-forming botanicals"],dosage:"Daily use: 1 capsule 2-3 times daily before meals. Sleep support: 1-2 capsules 30 minutes before bedtime.",img:[WP+"2023/10/1-2.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000675028"},
   {handle:"sage-60",name:"Sage",size:"60 capsules",price:120.61,goal:"women",form:"capsule",bench:"Hot flush and menopause support",dose:"440mg Sage Herb Extract 4:1 per capsule",benefits:["Reduces menopausal symptoms including hot flushes, irritability, night sweats","Clinical evidence supports improvement in mood, cognition and memory","Rich in vitamins and antioxidants supporting brain function","Antimicrobial properties","Traditional women's herb"],dosage:"Take 1-2 capsules twice daily with water or juice, or as directed by your healthcare practitioner.",img:[P("IMG-5286.png"),WP+"2023/10/1.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000820367"},
   {handle:"msm-90",name:"MSM",size:"90 capsules",price:170.78,goal:"joints",form:"capsule",bench:"Organic sulphur for joints and skin",dose:"810mg MSM (Methylsulfonylmethane) per capsule",benefits:["Contributes to structural component of cartilage and collagen","Anti-inflammatory and pain-relieving properties","May reduce oxidative stress","Supports immune function, recovery, and energy","Enhances joint flexibility and mobility"],dosage:"Take 1-3 capsules daily with water, preferably at mealtime, or as directed by your healthcare practitioner.",img:[P("IMG-5268.png"),WP+"2023/10/4.png"],diet:["gluten-free","sugar-free","vegetarian","sa-made"],stock:true,sku:"6000000033798"},
   {handle:"msm-500",name:"MSM",size:"500g powder",price:349.60,goal:"joints",form:"powder",bench:"Bulk MSM powder for active users",dose:"~3g MSM per scoop",benefits:["High-dose joint support","Flexible powder dosing","Better value per gram","Easy to add to drinks","Cartilage and skin building block"],dosage:"Mix 1 teaspoon (~3g) with water or juice 1-3 times daily, preferably at mealtime.",img:[P("IMG-5635.jpg")],diet:["gluten-free","sugar-free","sa-made"],stock:false,sku:"6000000033804"},
@@ -1510,15 +1512,41 @@ const GOALS = [
 ];
 
 /* ─── State ─── */
-const cart = JSON.parse(localStorage.getItem("vh_cart")||"[]");
-let activeRoute = "/";
-
 const fmtR = (n) => "R" + n.toLocaleString("en-ZA",{minimumFractionDigits:2,maximumFractionDigits:2});
 const findProduct = (h) => PRODUCTS.find(p=>p.handle===h);
 const findBundle = (h) => BUNDLES.find(b=>b.handle===h);
 const goalName = (id) => (GOALS.find(g=>g.id===id)||{}).name || "All";
 const $ = (s, el=document) => el.querySelector(s);
 const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[ch]));
+}
+function loadCart(){
+  try{
+    const parsed = JSON.parse(localStorage.getItem("vh_cart") || "[]");
+    return Array.isArray(parsed) ? parsed.filter(item => item && typeof item.handle === "string").map(item => ({
+      handle:item.handle,
+      qty:Math.max(1, parseInt(item.qty, 10) || 1),
+      bundle:!!item.bundle
+    })) : [];
+  }catch{
+    localStorage.removeItem("vh_cart");
+    return [];
+  }
+}
+function cleanCart(){
+  cart = cart.filter(item => item.bundle ? !!findBundle(item.handle) : !!findProduct(item.handle));
+}
+function sanitizeQty(qty){
+  return Math.max(1, Math.min(99, parseInt(qty, 10) || 1));
+}
+let cart = loadCart();
 
 /* ─── Router ─── */
 function parseHash(){
@@ -1527,13 +1555,13 @@ function parseHash(){
   const params = new URLSearchParams(qs||"");
   return {path, params};
 }
-function navigate(path){ location.hash = path; }
 function renderRoute(){
   const {path, params} = parseHash();
   const main = $("#main");
   main.innerHTML = "";
   main.classList.remove("fade-in"); void main.offsetWidth; main.classList.add("fade-in");
-  window.scrollTo({top:0,behavior:"instant"});
+  clearStickyATC();
+  window.scrollTo({top:0,behavior:"auto"});
   if (path === "/" || path === "") return renderHome(main);
   if (path === "/shop") return renderShop(main, params);
   if (path.startsWith("/product/")) return renderPDP(main, path.split("/")[2]);
@@ -1548,7 +1576,6 @@ window.addEventListener("hashchange", renderRoute);
 
 /* ─── HOME ─── */
 function renderHome(main){
-  const hero = findProduct("buffered-c-300") || PRODUCTS[3];
   const turmeric = findProduct("turmeric-300");
   const featuredHero = findProduct("turmeric-300");
   const featuredSmall = ["allergy-control-60","mullein-60","tranquil-60","msm-90"].map(findProduct).filter(Boolean);
@@ -1636,7 +1663,7 @@ function renderHome(main){
       <div class="editorial-img">
         <div class="lab">The Vivid Lab</div>
         <div class="stamp">Made<br><em>in SA</em></div>
-        <img src="${turmeric.img[0]}" alt="${turmeric.name}">
+        <img src="${turmeric.img[0]}" alt="${turmeric.name}" loading="lazy" decoding="async">
       </div>
       <div class="editorial-body">
         <div class="kicker">Our philosophy</div>
@@ -1719,7 +1746,7 @@ function renderHome(main){
           <a href="#/product/${b.handle}" class="bundle">
             <div class="bundle-media">
               <span class="bundle-tag">Save R${b.save}</span>
-              <img src="${b.img}" alt="${b.name}">
+              <img src="${b.img}" alt="${b.name}" loading="lazy" decoding="async">
             </div>
             <div class="bundle-body">
               <div class="bundle-name">${b.name}</div>
@@ -1783,7 +1810,7 @@ function renderHome(main){
       <div class="journal-feature">
         ${JOURNAL.slice(0,1).map(a=>`
           <a href="#/article/${a.handle}" class="article article--feature">
-            <div class="article-img"><img src="${a.hero}" alt=""></div>
+            <div class="article-img"><img src="${a.hero}" alt="" loading="lazy" decoding="async"></div>
             <div class="article-cat">${a.cat} · ${a.read}</div>
             <h3>${a.title}</h3>
             <p>${a.sub}</p>
@@ -1792,7 +1819,7 @@ function renderHome(main){
         `).join("")}
         ${JOURNAL.slice(1,3).map(a=>`
           <a href="#/article/${a.handle}" class="article">
-            <div class="article-img"><img src="${a.hero}" alt=""></div>
+            <div class="article-img"><img src="${a.hero}" alt="" loading="lazy" decoding="async"></div>
             <div class="article-cat">${a.cat} · ${a.read}</div>
             <h3>${a.title}</h3>
             <p>${a.sub}</p>
@@ -1838,8 +1865,8 @@ function cardHTML(p){
         ${sold?`<span class="pill pill--alert">Sold out</span>`:""}
         ${p.hero?`<span class="pill pill--dark">Best seller</span>`:""}
       </div>
-      <img src="${primaryImg}" alt="${p.name}" loading="lazy">
-      ${p.stock?`<button class="card-quickadd" aria-label="Quick add" onclick="event.preventDefault();event.stopPropagation();addToCart('${p.handle}')">
+      <img src="${primaryImg}" alt="${p.name}" loading="lazy" decoding="async">
+      ${p.stock?`<button class="card-quickadd" aria-label="Quick add ${p.name}" onclick="event.preventDefault();event.stopPropagation();addToCart('${p.handle}')">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       </button>`:""}
     </div>
@@ -1883,7 +1910,7 @@ function renderShop(main, params){
     ? "Pre-paired stacks built for an outcome. Save R110–R150 vs buying separately."
     : (goal
         ? `Vivid Health formulations for ${goalName(goal).toLowerCase()}. South African made, dose-stated, vegetable capsules where applicable.`
-        : "Browse the full Vivid Health range — 55 single-ingredient and combination formulations, all made in South Africa.");
+        : "Browse the full Vivid Health range — 52 single-ingredient and combination formulations, all made in South Africa.");
   const banner = headerBanner({goal, bundlesOnly});
 
   main.innerHTML = `
@@ -1940,7 +1967,7 @@ function renderShop(main, params){
             </select>
           </div>
         </div>
-        <div class="products-row products-row--3col">
+        <div class="products-row">
           ${list.length === 0
             ? `<div style="grid-column:1/-1;padding:64px 0;text-align:center;color:var(--ink-soft)"><p>No products match those filters.</p><a href="#/shop" class="btn btn--ghost" style="margin-top:16px">Reset</a></div>`
             : list.map(p=>p.bundle?bundleCardHTML(p):cardHTML(p)).join("")}
@@ -1954,7 +1981,7 @@ function bundleCardHTML(b){
   <a href="#/product/${b.handle}" class="card" data-goal="bundles">
     <div class="card-media">
       <div class="card-badge"><span class="pill pill--clay">Save R${b.save}</span></div>
-      <img src="${b.img[0]}" alt="${b.name}">
+      <img src="${b.img[0]}" alt="${b.name}" loading="lazy" decoding="async">
     </div>
     <div class="card-body">
       <div class="card-cat">Curated stack · ${b.includes.length} products</div>
@@ -1984,16 +2011,15 @@ function renderPDP(main, handle){
 }
 function renderProductPDP(main, p){
   const related = PRODUCTS.filter(x=>x.goal===p.goal && x.handle!==p.handle).slice(0,4);
-  const ingredientRows = (p.benefits || []).slice(0,4);
   main.innerHTML = `
   <div class="container pdp" data-goal="${p.goal}">
     <div class="crumb"><a href="#/">Home</a> · <a href="#/shop">Shop</a> · <a href="#/shop?goal=${p.goal}">${goalName(p.goal)}</a> · ${p.name}</div>
     <div class="pdp-grid">
       <div class="pdp-gallery">
         ${(()=>{ const imgs = imagesFor(p); return `
-        <div class="pdp-main-img" id="pdpMain"><img src="${imgs[0]}" alt="${p.name}"></div>
+        <div class="pdp-main-img" id="pdpMain"><img src="${imgs[0]}" alt="${p.name}" decoding="async"></div>
         <div class="pdp-thumbs">
-          ${imgs.slice(0,6).map((src,i)=>`<button class="pdp-thumb ${i===0?'active':''}" onclick="swapThumb(this,'${src}')"><img src="${src}" alt=""></button>`).join("")}
+          ${imgs.slice(0,6).map((src,i)=>`<button class="pdp-thumb ${i===0?'active':''}" type="button" aria-label="View ${p.name} image ${i+1}" onclick="swapThumb(this,'${src}')"><img src="${src}" alt="" loading="lazy" decoding="async"></button>`).join("")}
         </div>
         `; })()}
       </div>
@@ -2010,15 +2036,15 @@ function renderProductPDP(main, p){
 
         ${p.stock ? `
         <div class="sub-toggle">
-          <div class="sub-opt active" onclick="$$('.sub-opt').forEach(e=>e.classList.remove('active'));this.classList.add('active')">
+          <button class="sub-opt active" type="button" onclick="$$('.sub-opt').forEach(e=>e.classList.remove('active'));this.classList.add('active')">
             <div class="sub-label">One-time purchase</div>
             <div class="sub-desc">${fmtR(p.price)}</div>
-          </div>
-          <div class="sub-opt" onclick="$$('.sub-opt').forEach(e=>e.classList.remove('active'));this.classList.add('active')">
+          </button>
+          <button class="sub-opt" type="button" onclick="$$('.sub-opt').forEach(e=>e.classList.remove('active'));this.classList.add('active')">
             <span class="sub-save">Save 10%</span>
             <div class="sub-label">Subscribe</div>
             <div class="sub-desc">${fmtR(p.price * 0.9)} / delivery</div>
-          </div>
+          </button>
         </div>
         ` : ""}
 
@@ -2028,7 +2054,7 @@ function renderProductPDP(main, p){
         <div class="add-row">
           <div class="qty">
             <button onclick="qStep(-1)" aria-label="Decrease">−</button>
-            <input id="qty" type="text" value="1" aria-label="Quantity">
+            <input id="qty" type="number" min="1" max="99" inputmode="numeric" value="1" aria-label="Quantity">
             <button onclick="qStep(1)" aria-label="Increase">+</button>
           </div>
           ${p.stock
@@ -2050,20 +2076,20 @@ function renderProductPDP(main, p){
         </div>
 
         <div class="tabs">
-          <div class="tab-head">
-            <button class="active" onclick="setTab(this,'benefits')">Benefits</button>
-            <button onclick="setTab(this,'ingredients')">Ingredients & dose</button>
-            <button onclick="setTab(this,'how')">How to take</button>
-            <button onclick="setTab(this,'faq')">FAQ</button>
+          <div class="tab-head" role="tablist" aria-label="${p.name} details">
+            <button class="active" role="tab" aria-selected="true" aria-controls="tab-benefits" onclick="setTab(this,'benefits')">Benefits</button>
+            <button role="tab" aria-selected="false" aria-controls="tab-ingredients" onclick="setTab(this,'ingredients')">Ingredients & dose</button>
+            <button role="tab" aria-selected="false" aria-controls="tab-how" onclick="setTab(this,'how')">How to take</button>
+            <button role="tab" aria-selected="false" aria-controls="tab-faq" onclick="setTab(this,'faq')">FAQ</button>
           </div>
-          <div class="tab-body active" data-tab="benefits">
+          <div class="tab-body active" data-tab="benefits" id="tab-benefits" role="tabpanel">
             <h4>What ${p.name} is built for</h4>
             <p>${p.bench}. ${p.dose ? "Each capsule delivers " + p.dose + "." : ""} Formulated with vegetable capsules, sugar-free where indicated, manufactured in a SAHPRA-aligned facility in Centurion, South Africa.</p>
             <ul class="bullets" style="margin-top:20px">
               ${(p.benefits||[]).map(b=>`<li>${b}</li>`).join("")}
             </ul>
           </div>
-          <div class="tab-body" data-tab="ingredients">
+          <div class="tab-body" data-tab="ingredients" id="tab-ingredients" role="tabpanel">
             <table class="supp-facts">
               <caption>Supplement Facts — ${p.name} (${p.size})</caption>
               <tr><th>Active Ingredient</th><th>Amount per serving</th></tr>
@@ -2078,12 +2104,12 @@ function renderProductPDP(main, p){
               <strong>Manufactured:</strong> Centurion, South Africa in a SAHPRA-aligned facility. Facility also processes tree nuts and shellfish-derived ingredients.
             </div>
           </div>
-          <div class="tab-body" data-tab="how">
+          <div class="tab-body" data-tab="how" id="tab-how" role="tabpanel">
             <h4>Daily routine</h4>
             <p>${p.dosage || "Take 1–3 capsules daily with water, ideally with a meal, or as directed by a qualified healthcare practitioner. Start at the lower end of the range and titrate up. Best taken consistently for at least 6–8 weeks to assess effect."}</p>
             <p style="margin-top:14px;font-size:13px;color:var(--ink-soft)"><strong>Storage:</strong> Below 25°C, in a cool, dry place. Keep out of reach of children. Do not use if the safety seal is broken.</p>
           </div>
-          <div class="tab-body" data-tab="faq">
+          <div class="tab-body" data-tab="faq" id="tab-faq" role="tabpanel">
             <h4>Common questions</h4>
             <p><strong>Is ${p.name} safe in pregnancy or while breastfeeding?</strong><br>Consult your healthcare provider before use during pregnancy or while breastfeeding. Some botanicals are not recommended during these times.</p>
             <p style="margin-top:14px"><strong>Will it interact with my medication?</strong><br>If you take prescription medication, check with your pharmacist or doctor before starting any supplement — particularly anticoagulants, antidepressants, immunosuppressants, or diabetes medication.</p>
@@ -2112,7 +2138,7 @@ function renderBundlePDP(main, b){
     <div class="crumb"><a href="#/">Home</a> · <a href="#/shop?bundles=1">Bundles</a> · ${b.name}</div>
     <div class="pdp-grid">
       <div class="pdp-gallery">
-        <div class="pdp-main-img" style="background:linear-gradient(150deg, var(--cream), var(--bone))"><img src="${b.img}" alt="${b.name}"></div>
+        <div class="pdp-main-img" style="background:linear-gradient(150deg, var(--cream), var(--bone))"><img src="${b.img}" alt="${b.name}" decoding="async"></div>
       </div>
       <div>
         <div class="pdp-cat">Curated stack · ${items.length} products</div>
@@ -2125,9 +2151,9 @@ function renderBundlePDP(main, b){
         </div>
         <div class="add-row">
           <div class="qty">
-            <button onclick="qStep(-1)">−</button>
-            <input id="qty" type="text" value="1">
-            <button onclick="qStep(1)">+</button>
+            <button onclick="qStep(-1)" aria-label="Decrease">−</button>
+            <input id="qty" type="number" min="1" max="99" inputmode="numeric" value="1" aria-label="Quantity">
+            <button onclick="qStep(1)" aria-label="Increase">+</button>
           </div>
           <button class="btn btn--forest btn--block" onclick="addToCart('${b.handle}', parseInt(document.getElementById('qty').value)||1, true)">Add bundle — ${fmtR(b.price)}</button>
         </div>
@@ -2135,7 +2161,7 @@ function renderBundlePDP(main, b){
         <div class="products-row" style="grid-template-columns:1fr;gap:12px">
           ${items.map(p=>`
             <a href="#/product/${p.handle}" class="card" style="flex-direction:row;align-items:center">
-              <div class="card-media" style="flex:0 0 96px;aspect-ratio:1;border-radius:var(--r-lg) 0 0 var(--r-lg)"><img src="${p.img[0]}" alt=""></div>
+              <div class="card-media" style="flex:0 0 96px;aspect-ratio:1;border-radius:var(--r-lg) 0 0 var(--r-lg)"><img src="${imagesFor(p)[0]}" alt="" loading="lazy" decoding="async"></div>
               <div class="card-body" style="padding:14px 18px">
                 <div class="card-cat">${goalName(p.goal)}</div>
                 <div class="card-name" style="font-size:16px;min-height:auto">${p.name}</div>
@@ -2155,13 +2181,17 @@ function swapThumb(btn, src){
   $("#pdpMain img").src = src;
 }
 function setTab(btn, key){
-  $$(".tab-head button").forEach(b=>b.classList.remove("active"));
+  $$(".tab-head button").forEach(b=>{
+    b.classList.remove("active");
+    b.setAttribute("aria-selected", "false");
+  });
   btn.classList.add("active");
+  btn.setAttribute("aria-selected", "true");
   $$(".tab-body").forEach(b=>b.classList.toggle("active", b.dataset.tab===key));
 }
 function qStep(d){
   const i = $("#qty");
-  i.value = Math.max(1, (parseInt(i.value)||1) + d);
+  i.value = sanitizeQty((parseInt(i.value, 10)||1) + d);
 }
 
 /* ─── Other routes ─── */
@@ -2216,7 +2246,7 @@ function renderJournal(main){
     <div class="journal" style="grid-template-columns:repeat(2,1fr)">
       ${JOURNAL.map(a=>`
         <a href="#/article/${a.handle}" class="article" style="cursor:pointer">
-          <div class="article-img" style="aspect-ratio:16/10"><img src="${a.hero}" alt="" style="width:50%;height:100%;margin:auto;object-fit:contain"></div>
+          <div class="article-img" style="aspect-ratio:16/10"><img src="${a.hero}" alt="" loading="lazy" decoding="async" style="width:50%;height:100%;margin:auto;object-fit:contain"></div>
           <div class="article-cat">${a.cat} · ${a.read}</div>
           <h3>${a.title}</h3>
           <p>${a.sub}</p>
@@ -2337,7 +2367,7 @@ function renderArticle(main, handle){
       <div class="journal">
         ${otherArticles.map(oa=>`
           <a href="#/article/${oa.handle}" class="article">
-            <div class="article-img"><img src="${oa.hero}" alt=""></div>
+            <div class="article-img"><img src="${oa.hero}" alt="" loading="lazy" decoding="async"></div>
             <div class="article-cat">${oa.cat} · ${oa.read}</div>
             <h3>${oa.title}</h3>
             <span class="more">Read article →</span>
@@ -2363,7 +2393,7 @@ function renderAbout(main){
   </div></div>
   <div class="container" style="padding:48px 0 96px">
     <div class="split">
-      <div class="editorial-img"><div class="lab">Our story</div><img src="${findProduct('turmeric-300').img[0]}" alt=""></div>
+      <div class="editorial-img"><div class="lab">Our story</div><img src="${findProduct('turmeric-300').img[0]}" alt="" loading="lazy" decoding="async"></div>
       <div class="editorial-body">
         <div class="kicker">Why Vivid exists</div>
         <h2>Most "South African" supplements aren't.</h2>
@@ -2395,8 +2425,11 @@ function renderAbout(main){
 
 /* ─── Cart ─── */
 function addToCart(handle, qty=1, bundle=false){
+  const item = bundle ? findBundle(handle) : findProduct(handle);
+  if (!item || (!bundle && item.stock === false)) return;
+  qty = sanitizeQty(qty);
   const existing = cart.find(c=>c.handle===handle);
-  if (existing) existing.qty += qty;
+  if (existing) existing.qty = sanitizeQty(existing.qty + qty);
   else cart.push({handle, qty, bundle});
   saveCart();
   openCart();
@@ -2409,22 +2442,29 @@ function removeFromCart(handle){
 function updateQty(handle, qty){
   const c = cart.find(c=>c.handle===handle);
   if (!c) return;
-  c.qty = Math.max(1, qty|0);
+  c.qty = sanitizeQty(qty);
   saveCart(); renderCart();
 }
 function saveCart(){
+  cleanCart();
   localStorage.setItem("vh_cart", JSON.stringify(cart));
   const count = cart.reduce((s,c)=>s+c.qty,0);
-  $("#cartBtn").setAttribute("data-count", count);
+  const btn = $("#cartBtn");
+  btn.setAttribute("data-count", count);
+  btn.setAttribute("aria-label", count ? `Cart, ${count} item${count===1?"":"s"}` : "Cart");
 }
 function openCart(){
   $("#scrim").classList.add("open");
   $("#drawer").classList.add("open");
+  $("#drawer").setAttribute("aria-hidden", "false");
+  $("#cartBtn").setAttribute("aria-expanded", "true");
   renderCart();
 }
 function closeCart(){
   $("#scrim").classList.remove("open");
   $("#drawer").classList.remove("open");
+  $("#drawer").setAttribute("aria-hidden", "true");
+  $("#cartBtn").setAttribute("aria-expanded", "false");
 }
 function renderCart(){
   const body = $("#drawerBody");
@@ -2446,11 +2486,11 @@ function renderCart(){
           <div class="cart-item-meta">${c.bundle?(p.includes.length+" products"):p.size}</div>
           <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
             <div class="qty" style="height:30px">
-              <button style="width:28px;height:28px" onclick="updateQty('${c.handle}', ${c.qty-1})">−</button>
-              <input style="width:32px;height:28px" value="${c.qty}" onchange="updateQty('${c.handle}', this.value)">
-              <button style="width:28px;height:28px" onclick="updateQty('${c.handle}', ${c.qty+1})">+</button>
+              <button style="width:28px;height:28px" aria-label="Decrease ${p.name}" onclick="updateQty('${c.handle}', ${c.qty-1})">−</button>
+              <input style="width:32px;height:28px" type="number" min="1" max="99" inputmode="numeric" aria-label="Quantity for ${p.name}" value="${c.qty}" onchange="updateQty('${c.handle}', this.value)">
+              <button style="width:28px;height:28px" aria-label="Increase ${p.name}" onclick="updateQty('${c.handle}', ${c.qty+1})">+</button>
             </div>
-            <button onclick="removeFromCart('${c.handle}')" style="font-size:12px;color:var(--ink-soft);text-decoration:underline">Remove</button>
+            <button onclick="removeFromCart('${c.handle}')" aria-label="Remove ${p.name}" style="font-size:12px;color:var(--ink-soft);text-decoration:underline">Remove</button>
           </div>
         </div>
         <div class="cart-item-price">${fmtR(p.price * c.qty)}</div>
@@ -2478,7 +2518,7 @@ function renderCart(){
         <h5>You might also need</h5>
         ${upsells.map(u=>`
           <div class="cart-upsell-item">
-            <img src="${imagesFor(u)[0]}" alt="">
+            <img src="${imagesFor(u)[0]}" alt="" loading="lazy" decoding="async">
             <div>
               <div class="name">${u.name}</div>
               <div class="price">${fmtR(u.price)} · ${u.size}</div>
@@ -2501,21 +2541,32 @@ function renderCart(){
 $("#cartBtn").addEventListener("click", openCart);
 
 /* ─── Mobile menu ─── */
-function toggleMenu(){
-  $("#mobMenu").classList.toggle("open");
-  $("#mobScrim").classList.toggle("open");
+function toggleMenu(force){
+  const menu = $("#mobMenu");
+  const scrim = $("#mobScrim");
+  const open = typeof force === "boolean" ? force : !menu.classList.contains("open");
+  menu.classList.toggle("open", open);
+  scrim.classList.toggle("open", open);
+  menu.setAttribute("aria-hidden", String(!open));
+  $("#menuBtn").setAttribute("aria-expanded", String(open));
+  if (open) menu.querySelector("a,button")?.focus();
 }
 
 /* ─── Search overlay ─── */
 function openSearch(){
   const ov = $("#searchOverlay");
   ov.classList.add("open");
+  ov.setAttribute("aria-hidden", "false");
+  $("#searchBtn").setAttribute("aria-expanded", "true");
   setTimeout(()=>$("#searchInput").focus(), 100);
   liveSearch("");
 }
 function closeSearch(){
   $("#searchOverlay").classList.remove("open");
+  $("#searchOverlay").setAttribute("aria-hidden", "true");
+  $("#searchBtn").setAttribute("aria-expanded", "false");
   $("#searchInput").value = "";
+  $("#searchBtn").focus();
 }
 function liveSearch(q){
   const res = $("#searchResults");
@@ -2536,7 +2587,7 @@ function liveSearch(q){
     (p.benefits||[]).some(b=>b.toLowerCase().includes(term))
   ).slice(0,10);
   if (matches.length === 0){
-    res.innerHTML = `<div class="sr-empty">No products match "${q}". Try "magnesium", "gut", "sleep", or "allergy".</div>`;
+    res.innerHTML = `<div class="sr-empty">No products match "${escapeHTML(q)}". Try "magnesium", "gut", "sleep", or "allergy".</div>`;
     return;
   }
   res.innerHTML = matches.map(p=>`
@@ -2552,27 +2603,43 @@ function liveSearch(q){
 }
 document.addEventListener("keydown", e=>{
   if (e.key==="Escape" && $("#searchOverlay").classList.contains("open")) closeSearch();
+  if (e.key==="Escape" && $("#mobMenu").classList.contains("open")) toggleMenu(false);
+  if (e.key==="Escape" && $("#drawer").classList.contains("open")) closeCart();
+  if (e.key==="Escape" && $("#chatWidget").classList.contains("open")) closeChat();
   if ((e.metaKey||e.ctrlKey) && e.key==="k"){ e.preventDefault(); openSearch(); }
 });
 
 /* ─── Sticky mobile ATC ─── */
 let stickyEl = null;
+let stickyObserver = null;
+function clearStickyATC(){
+  if (stickyObserver){
+    stickyObserver.disconnect();
+    stickyObserver = null;
+  }
+  if (stickyEl){
+    stickyEl.remove();
+    stickyEl = null;
+  }
+}
 function initStickyATC(p){
-  if (stickyEl) stickyEl.remove();
-  stickyEl = document.createElement("div");
-  stickyEl.className = "sticky-atc";
-  stickyEl.innerHTML = `
+  clearStickyATC();
+  const el = document.createElement("div");
+  el.className = "sticky-atc";
+  el.innerHTML = `
     <span class="name">${p.name}</span>
     <span class="price">${fmtR(p.price)}</span>
     <button class="btn btn--forest" ${!p.stock?"disabled":""} onclick="addToCart('${p.handle}')">${p.stock?"Add":"Sold out"}</button>
   `;
-  document.body.appendChild(stickyEl);
+  document.body.appendChild(el);
+  stickyEl = el;
   const addRow = document.querySelector(".add-row");
   if (!addRow) return;
-  const io = new IntersectionObserver(([e])=>{
-    stickyEl.classList.toggle("visible", !e.isIntersecting);
+  stickyObserver = new IntersectionObserver(([e])=>{
+    if (stickyEl !== el || !el.isConnected) return;
+    el.classList.toggle("visible", !e.isIntersecting);
   },{threshold:0});
-  io.observe(addRow);
+  stickyObserver.observe(addRow);
 }
 
 /* ─── Quiz — find your formulation ─── */
@@ -2608,7 +2675,7 @@ function renderQuiz(main){
       <div class="container">
         <div class="crumb" style="color:var(--sage)"><a href="#/" style="color:var(--sage)">Home</a> · Find your formulation</div>
         <h1 style="color:var(--paper);font-size:clamp(36px,5vw,64px)">Find your<br><em>formulation.</em></h1>
-        <p style="color:rgba(244,236,219,.78);font-size:17px;margin-top:14px">Three questions. Personalised product recommendations from 55 Vivid formulations.</p>
+        <p style="color:rgba(244,236,219,.78);font-size:17px;margin-top:14px">Three questions. Personalised product recommendations from 52 Vivid formulations.</p>
       </div>
     </div>
     <div class="container quiz-overlay">
@@ -2617,16 +2684,16 @@ function renderQuiz(main){
         <div class="quiz-q">Q${step+1}. ${quiz.q}</div>
         <div class="quiz-opts">
           ${quiz.opts.map((o,i)=>`
-            <div class="quiz-opt" onclick="quizPick(${step},${i},'${o.goal||o.form||o.diet||''}')">
+            <button class="quiz-opt" type="button" onclick="quizPick(${step},${i})">
               <strong>${o.label}</strong>
               <span>${o.desc}</span>
-            </div>
+            </button>
           `).join("")}
         </div>
       </div>
     </div>`;
   }
-  window.quizPick = (s, idx, val)=>{
+  window.quizPick = (s, idx)=>{
     const q = QUIZ[s];
     const o = q.opts[idx];
     if (o.goal) answers.goal = o.goal;
@@ -2662,9 +2729,14 @@ function renderQuiz(main){
 /* ─── Chat widget — Vivid AI Consultant ─── */
 function openChat(){
   $("#chatWidget").classList.add("open");
+  $("#chatWidget").setAttribute("aria-hidden", "false");
+  $("#chatBtn").setAttribute("aria-expanded", "true");
+  $("#chatInput").focus();
 }
 function closeChat(){
   $("#chatWidget").classList.remove("open");
+  $("#chatWidget").setAttribute("aria-hidden", "true");
+  $("#chatBtn").setAttribute("aria-expanded", "false");
 }
 function sendChatQ(q){
   $("#chatInput").value = q;
@@ -2674,10 +2746,11 @@ function sendChat(input){
   const msg = input.value.trim();
   if (!msg) return;
   input.value = "";
+  const safeMsg = escapeHTML(msg);
   const body = $("#chatBody");
   const sugg = body.querySelector(".chat-suggestions");
   if (sugg) sugg.remove();
-  body.innerHTML += `<div class="chat-msg chat-msg--me"><p>${msg}</p></div>`;
+  body.innerHTML += `<div class="chat-msg chat-msg--me"><p>${safeMsg}</p></div>`;
   body.innerHTML += `<div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>`;
   body.scrollTop = body.scrollHeight;
   setTimeout(()=>{
@@ -2713,7 +2786,7 @@ function sendChat(input){
     } else if (term.includes("compare") || term.includes("difference") || term.includes("which")){
       reply = `I can help compare! Tell me which two products you're deciding between, or try our <a href="#/quiz" onclick="closeChat()" style="color:var(--clay);font-weight:600">product finder quiz</a> — three questions and I'll recommend the right formulation for your goals.`;
     } else {
-      reply = `I understand you're asking about "${msg}". Let me help:<br><br>` +
+      reply = `I understand you're asking about "${safeMsg}". Let me help:<br><br>` +
         `1. Try our <a href="#/quiz" onclick="closeChat()" style="color:var(--clay);font-weight:600">product finder quiz</a> (3 questions, personalised recommendations)<br>` +
         `2. Browse our <a href="#/ingredients" onclick="closeChat()" style="color:var(--clay);font-weight:600">ingredient library</a> for evidence-based info<br>` +
         `3. <a href="https://wa.me/27713744910" target="_blank" style="color:var(--clay);font-weight:600">WhatsApp a human consultant</a> for personalised advice<br><br>` +

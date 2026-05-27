@@ -59,10 +59,10 @@ theme/
 
 ## Catalogue import
 
-The 55 Vivid SKUs (with prices, images, and tags) are extracted into
+The 52 Vivid SKUs (with prices, images, and tags) are extracted into
 `vivid/data/products.json`. To bulk-import:
 
-1. Format that file as a Shopify product CSV (use `scripts/products-to-csv.js` — TODO).
+1. Format that file as a Shopify product CSV using the catalogue fields in `vivid/data/products.json`.
 2. Use Shopify Admin → Products → Import → CSV.
 3. Or, since these products already exist on `onelife.co.za`, duplicate them
    via the **Shopify Migration Tool** or a direct GraphQL Admin script.

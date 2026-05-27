@@ -5,14 +5,14 @@
       "settings": {
         "eyebrow": "Made in South Africa · Since 2023",
         "heading": "<p>Vivid by <em>nature.</em><br>Verified by science.</p>",
-        "lede": "Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Fifty-five formulations across gut, immunity, sleep, joints, and daily nutrition.",
+        "lede": "Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Fifty-two formulations across gut, immunity, sleep, joints, and daily nutrition.",
         "cta_primary_label": "Shop the range",
         "cta_primary_link": "/collections/all",
         "cta_secondary_label": "Browse ingredients",
         "cta_secondary_link": "/pages/ingredients"
       },
       "blocks": {
-        "s1": { "type": "stat", "settings": { "value": "55", "label": "Formulations" } },
+        "s1": { "type": "stat", "settings": { "value": "52", "label": "Formulations" } },
         "s2": { "type": "stat", "settings": { "value": "100%", "label": "SA Made" } },
         "s3": { "type": "stat", "settings": { "value": "3", "label": "Onelife stores" } }
       },
