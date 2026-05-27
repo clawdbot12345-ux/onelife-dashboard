@@ -220,11 +220,9 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 @media (max-width:480px){.products-row{grid-template-columns:1fr}}
 
 /* Hero featured mosaic — 1 large + 4 small */
-.products-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:var(--s-4)}
-@media (max-width:1100px){.products-mosaic{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:780px){.products-mosaic{grid-template-columns:repeat(2,1fr)}}
-.products-mosaic .card--feature{grid-column:span 2;grid-row:span 2}
-@media (max-width:780px){.products-mosaic .card--feature{grid-column:span 2;grid-row:auto}}
+.products-row{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:var(--s-4)}
+@media (max-width:1100px){.products-row{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:780px){.products-row{grid-template-columns:repeat(2,1fr)}}
 
 .card{
   border-radius:var(--r-lg);
@@ -269,11 +267,6 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 .card-form{font-size:11px;color:var(--ink-soft);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
 
 /* Feature card — bigger treatment */
-.card--feature .card-media{aspect-ratio:3/4}
-.card--feature .card-body{padding:var(--s-6) var(--s-5)}
-.card--feature .card-name{font-size:34px;line-height:1.02}
-.card--feature .card-bench{font-size:15px;line-height:1.5;min-height:auto}
-.card--feature .card-price{font-size:28px}
 
 /* ─── Editorial blocks ─── */
 .split{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s-7);align-items:center}
@@ -677,8 +670,6 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .card-quickadd{width:38px;height:38px}
   .card-badge{top:10px;left:10px}
   .pill{padding:4px 8px;font-size:9px}
-  .card--feature .card-name{font-size:22px}
-  .card--feature .card-body{padding:18px 16px}
   /* Goals */
   .goals{gap:8px;grid-template-columns:repeat(2,1fr)}
   .goal{min-height:160px;padding:18px;border-radius:var(--r-lg)}
@@ -788,8 +779,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .hero-stats{gap:14px}
   .hero-stat .num{font-size:24px}
   .products-row,.products-row--3col{grid-template-columns:1fr}
-  .products-mosaic{grid-template-columns:1fr}
-  .products-mosaic .card--feature{grid-column:1;grid-row:auto}
+  .products-row{grid-template-columns:1fr}
   .goals{grid-template-columns:1fr}
   .goal{min-height:140px}
   .foot-grid{grid-template-columns:1fr}
@@ -1140,7 +1130,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"6 min read",
     date:"May 2026",
-    hero:P("IMG-5210.png"),
+    hero:"assets/products/generated/buffered-c-300-lifestyle.jpg",
     related:["buffered-c-90","buffered-c-300","buffered-c-150g","advanced-buffered-c-300"],
     body:`
       <p>If you've ever taken a high dose of ordinary vitamin C and felt your stomach turn, you've met the central problem with ascorbic acid. The molecule itself is brilliant — humans can't make it, and we need it for everything from collagen synthesis to immune function to iron absorption. But ordinary ascorbic acid is, well, an acid. Drop a gram of it into a glass of water and the pH lands around 2.5 — close to stomach acid itself.</p>
@@ -1166,7 +1156,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"7 min read",
     date:"May 2026",
-    hero:P("10140-VividHealthLabels_BlackWalnut60_s_Front.png"),
+    hero:"assets/products/generated/black-walnut-60-lifestyle.jpg",
     related:["black-walnut-60","wormwood-60","clove-60"],
     body:`
       <p>The "parasite cleanse" is one of those wellness concepts that lives in the strange overlap between traditional herbalism with real pharmacological backing and Instagram nonsense involving photos of stringy bathroom contents. Let's separate them.</p>
@@ -1200,7 +1190,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"5 min read",
     date:"April 2026",
-    hero:P("IMG-5293.png"),
+    hero:"assets/products/generated/epsom-salt-1kg-lifestyle.jpg",
     related:["epsom-salt-1kg","colon-flush-120","bone-supreme-120"],
     body:`
       <p>Magnesium is one of the most-deficient minerals in modern diets and one of the most-confusing supplements to buy. "Magnesium" alone tells you almost nothing — what matters is what it's bonded to. The counter-ion changes the absorption, the side effects, and what the supplement is actually good for.</p>
@@ -1231,7 +1221,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"6 min read",
     date:"April 2026",
-    hero:P("IMG-5199.png"),
+    hero:"assets/products/generated/allergy-control-60-lifestyle.jpg",
     related:["allergy-control-60","quercetin-complex-60","buffered-c-90"],
     body:`
       <p>South African hay fever isn't seasonal in the European sense. Highveld grass pollens peak from August through November. Tree pollens dominate June through September. Mould and house dust trigger people year-round. For most Gauteng residents that means at least half the year is symptomatic, and the standard answer — first-generation antihistamines that make you drowsy, or second-generation ones that cost a fortune at retail — is a frustrating compromise.</p>
@@ -1260,7 +1250,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"5 min read",
     date:"March 2026",
-    hero:P("IMG-5192.png"),
+    hero:"assets/products/generated/mullein-60-lifestyle.jpg",
     related:["mullein-60","allergy-control-60"],
     body:`
       <p>Mullein (Verbascum thapsus) is a tall biennial with woolly grey-green leaves and a single yellow flower spike. It grows on roadsides across Europe and now naturalised across most of the world, including the highveld. If you've walked past it, you've probably ignored it. But it's been used continuously for respiratory complaints since at least Dioscorides, who recommended it in the first century AD.</p>
@@ -1285,7 +1275,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"6 min read",
     date:"March 2026",
-    hero:P("IMG-5333.png"),
+    hero:"assets/products/generated/turmeric-300-lifestyle.jpg",
     related:["turmeric-300","turmeric-plus-60","joint-relief-60"],
     body:`
       <p>Turmeric is the most-studied medicinal plant in the modern literature. PubMed has over 10,000 entries on curcumin — its active polyphenol — covering everything from osteoarthritis to depression to gut inflammation to cardiovascular health. The data is impressive enough that most integrative doctors include it in their go-to recommendations.</p>
@@ -1315,7 +1305,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"6 min read",
     date:"February 2026",
-    hero:P("IMG-5268.png"),
+    hero:"assets/products/generated/msm-90-lifestyle.jpg",
     related:["msm-90","msm-300","msm-150g","flexijoint-advanced-120"],
     body:`
       <p>Sulphur is the third most abundant mineral in the human body, after calcium and phosphorus. It sits in every cell, in the amino acids methionine and cysteine, in the antioxidant glutathione, in the structural proteins collagen and keratin, and in the connective tissue glycosaminoglycans that give cartilage its cushion. Yet most people have never thought about whether they're getting enough of it.</p>
@@ -1343,7 +1333,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"7 min read",
     date:"February 2026",
-    hero:P("IMG-5222.png"),
+    hero:"assets/products/generated/griffonia-5htp-60-lifestyle.jpg",
     related:["griffonia-5htp-60","tranquil-60","gaba-150g"],
     body:`
       <p>Serotonin is the neurotransmitter most associated with mood, sleep, and appetite regulation. Low serotonin activity is implicated in depression, anxiety, insomnia, and certain pain conditions. SSRIs — the most prescribed class of antidepressants — work by preventing serotonin from being reabsorbed after it's released, effectively increasing the amount available in the synaptic gap.</p>
@@ -1372,7 +1362,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"6 min read",
     date:"January 2026",
-    hero:P("IMG-5281.png"),
+    hero:"assets/products/generated/angus-castus-60-lifestyle.jpg",
     related:["angus-castus-60","maca-60","sage-60"],
     body:`
       <p>Vitex agnus-castus — chasteberry — is one of the few herbal medicines with a clear, well-characterised mechanism of action and a body of randomised controlled trial evidence that would satisfy most integrative doctors. It doesn't contain phytoestrogens. It doesn't directly supply hormones. It works on the pituitary gland, and the effect takes about 90 days to become clinically meaningful.</p>
@@ -1399,7 +1389,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"6 min read",
     date:"January 2026",
-    hero:P("10140-VividHealthLabels_ProstaCare60_s_Front.png"),
+    hero:"assets/products/generated/prosta-care-60-lifestyle.jpg",
     related:["prosta-care-60"],
     body:`
       <p>Benign prostatic hyperplasia — BPH — affects roughly half of men over 50 and around 90% of men over 80. The prostate enlarges gradually, compressing the urethra, producing the familiar constellation of symptoms: frequent urination, weak stream, nighttime waking, incomplete emptying. It's not dangerous in itself, but it's disruptive enough that most men eventually seek treatment.</p>
@@ -1425,7 +1415,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"5 min read",
     date:"December 2025",
-    hero:P("IMG-5263.png"),
+    hero:"assets/products/generated/coq10-60-lifestyle.jpg",
     related:["coq10-60","omega-oil-90","colest-control-60"],
     body:`
       <p>Coenzyme Q10 sits in the mitochondrial electron transport chain of every cell in the body. It's essential for aerobic energy production — the process that converts food into ATP, the molecule that powers everything your cells do. Tissues with the highest energy demands — heart muscle, liver, kidney, skeletal muscle — have the highest CoQ10 concentrations.</p>
@@ -1452,7 +1442,7 @@ const JOURNAL = [
     author:"Vivid Lab Team",
     read:"5 min read",
     date:"December 2025",
-    hero:P("IMG-5260.png"),
+    hero:"assets/products/generated/l-glutamine-500-lifestyle.jpg",
     related:["l-glutamine-500","d-ribose-150"],
     body:`
       <p>Glutamine is the most abundant free amino acid in the human body. It circulates in the blood at higher concentrations than any other amino acid, and skeletal muscle stores more of it than any other tissue. Under normal conditions, the body makes enough glutamine to meet its needs. Under stress — intense exercise, surgery, infection, critical illness, prolonged psychological stress — demand spikes dramatically, and endogenous production can't keep up.</p>
@@ -1531,7 +1521,7 @@ function renderHome(main){
 
   main.innerHTML = `
   <section class="hero hero--photo">
-    <div class="hero-photo" style="background-image:url('assets/products/wellness-kitchen.jpg')"></div>
+    <div class="hero-photo" style="background-image:url('assets/products/generated/turmeric-300-lifestyle.jpg')"></div>
     <div class="hero-scrim"></div>
     <div class="container hero-content">
       <div class="hero-eyebrow">Made in Centurion · Since 2023</div>
@@ -1599,8 +1589,8 @@ function renderHome(main){
         </div>
         <a href="#/shop" class="btn btn--ghost btn-arrow">See all 55</a>
       </div>
-      <div class="products-mosaic">
-        ${cardHTML(featuredHero, true)}
+      <div class="products-row">
+        ${cardHTML(featuredHero)}
         ${featuredSmall.map(p=>cardHTML(p)).join("")}
       </div>
     </div>
