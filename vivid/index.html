@@ -238,6 +238,7 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
   position:relative;aspect-ratio:4/5;
   display:grid;place-items:center;overflow:hidden;
   border-bottom:1px solid var(--line);
+  background:var(--bone);
 }
 .card-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.3,1);position:relative;z-index:1}
 .card:hover .card-media img{transform:scale(1.04)}
@@ -992,7 +993,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
       <span>Visa</span><span>Mastercard</span><span>Ozow</span><span>SnapScan</span><span>EFT</span>
     </div>
     <div class="foot-bottom">
-      <div>© <span id="yr"></span> Vivid Health (Pty) Ltd. All prices in ZAR, incl. VAT where applicable.</div>
+      <div>© <span id="yr"></span> Vivid Health (Pty) Ltd. All prices in ZAR, incl. VAT.</div>
       <div>Privacy · Terms · POPIA</div>
     </div>
   </div>
@@ -1560,13 +1561,13 @@ function renderHome(main){
     <div class="container hero-content">
       <div class="hero-eyebrow">Made in Centurion · Since 2023</div>
       <h1>Vivid by <em>nature.</em><br>Verified by science.</h1>
-      <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Six health categories. Fifty-five formulations.</p>
+      <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Six health categories. Fifty-two formulations.</p>
       <div class="hero-cta">
         <a href="#/shop" class="btn btn-arrow">Shop the range</a>
         <a href="#/quiz" class="btn btn--ghost">Find your formulation</a>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="num">55</div><div class="lbl">Formulations</div></div>
+        <div class="hero-stat"><div class="num">52</div><div class="lbl">Formulations</div></div>
         <div class="hero-stat"><div class="num">100%</div><div class="lbl">SA-made</div></div>
         <div class="hero-stat"><div class="num">3</div><div class="lbl">Retail stores</div></div>
       </div>
@@ -1621,7 +1622,7 @@ function renderHome(main){
           <div class="eyebrow">Most loved</div>
           <h2 style="margin-top:14px">The formulations the team <em>keeps reordering.</em></h2>
         </div>
-        <a href="#/shop" class="btn btn--ghost btn-arrow">See all 55</a>
+        <a href="#/shop" class="btn btn--ghost btn-arrow">See all 52</a>
       </div>
       <div class="products-row">
         ${cardHTML(featuredHero)}
@@ -1658,7 +1659,7 @@ function renderHome(main){
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-4);text-align:center" class="why-grid">
         <div style="padding:var(--s-6) var(--s-4);border:1px solid rgba(244,236,219,.12);border-radius:var(--r-lg);background:rgba(244,236,219,.04)">
-          <div style="font-family:var(--font-display);font-size:52px;color:var(--paper);line-height:1;font-variation-settings:'opsz' 144,'SOFT' 40">55</div>
+          <div style="font-family:var(--font-display);font-size:52px;color:var(--paper);line-height:1;font-variation-settings:'opsz' 144,'SOFT' 40">52</div>
           <div style="font-size:14px;color:rgba(244,236,219,.78);margin-top:10px;font-weight:500">Formulations</div>
           <div style="font-size:12px;color:rgba(244,236,219,.5);margin-top:6px;line-height:1.4">Single-ingredient and combination. No white-label imports.</div>
         </div>
@@ -1759,13 +1760,13 @@ function renderHome(main){
       <p class="lead" style="max-width:62ch;color:var(--ink-soft);font-size:17px;margin-bottom:40px">A growing reference of single ingredients, their evidence, typical doses, and which Vivid formulations contain them. Designed to be the cleanest supplement reference in South Africa.</p>
       <div class="ing-list">
         ${[
-          {h:"mullein",n:"Mullein",d:"Respiratory and bronchial herb. 360 mg per dose."},
-          {h:"msm",n:"MSM",d:"Organic sulphur. 810 mg per capsule. Cartilage and collagen cofactor."},
-          {h:"quercetin",n:"Quercetin",d:"Mast cell stabiliser. Pairs with vitamin C."},
-          {h:"astragalus",n:"Astragalus",d:"Adaptogenic immune modulator. Daily tonic herb."},
-          {h:"5-htp",n:"5-HTP",d:"Serotonin precursor from Griffonia seed."},
-          {h:"vitex",n:"Vitex",d:"Pituitary modulator. The cycle and PMS herb."},
-        ].map(i=>`<a href="#/ingredient/${i.h}" class="ing"><strong>${i.n}</strong><span>${i.d}</span></a>`).join("")}
+          {h:"mullein-60",n:"Mullein",d:"Respiratory and bronchial herb. 360 mg per dose."},
+          {h:"msm-90",n:"MSM",d:"Organic sulphur. 810 mg per capsule. Cartilage and collagen cofactor."},
+          {h:"quercetin-complex-60",n:"Quercetin",d:"Mast cell stabiliser. Pairs with vitamin C."},
+          {h:"astragalus-60",n:"Astragalus",d:"Adaptogenic immune modulator. Daily tonic herb."},
+          {h:"griffonia-5htp-60",n:"5-HTP",d:"Serotonin precursor from Griffonia seed."},
+          {h:"angus-castus-60",n:"Vitex",d:"Pituitary modulator. The cycle and PMS herb."},
+        ].map(i=>`<a href="#/product/${i.h}" class="ing"><strong>${i.n}</strong><span>${i.d}</span></a>`).join("")}
       </div>
     </div>
   </section>
@@ -1825,12 +1826,12 @@ function initReveal(){
   document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 }
 
-function cardHTML(p, feature=false){
+function cardHTML(p){
   const sold = !p.stock;
   const isVegan = (p.diet||[]).includes("vegan");
   const primaryImg = imagesFor(p)[0];
   return `
-  <a href="#/product/${p.handle}" class="card ${feature?'card--feature':''}" data-goal="${p.goal}" aria-label="${p.name}">
+  <a href="#/product/${p.handle}" class="card" data-goal="${p.goal}" aria-label="${p.name}">
     <div class="card-media">
       <div class="card-badge">
         ${isVegan?`<span class="pill pill--green">Vegan</span>`:""}
@@ -2288,7 +2289,7 @@ function renderArticle(main, handle){
 
     <div class="article-quiz-cta">
       <div style="font-family:var(--font-display);font-size:28px;color:var(--ink);line-height:1.15;margin-bottom:10px;font-variation-settings:'opsz' 96,'SOFT' 50">Not sure which one's right for you?</div>
-      <p style="font-size:15px;color:var(--ink-soft);margin-bottom:18px">Three questions. Personalised formulation recommendations from our full 55-product range.</p>
+      <p style="font-size:15px;color:var(--ink-soft);margin-bottom:18px">Three questions. Personalised formulation recommendations from our full 52-product range.</p>
       <a href="#/quiz" class="btn btn--forest btn-arrow">Find your formulation</a>
     </div>
   </article>
@@ -2318,7 +2319,7 @@ function renderArticle(main, handle){
         <div>
           <div style="font-family:var(--font-display);font-size:20px;color:var(--paper);margin-bottom:6px;font-variation-settings:'opsz' 96">Edenvale</div>
           <div style="font-size:13px;color:var(--sage)">East Rand</div>
-          <a href="tel:+27116093"; style="font-size:13px;color:rgba(244,236,219,.7);display:block;margin-top:8px">011 609 3000</a>
+          <a href="tel:+27116093000" style="font-size:13px;color:rgba(244,236,219,.7);display:block;margin-top:8px">011 609 3000</a>
         </div>
       </div>
       <div style="text-align:center;margin-top:28px">
@@ -2522,7 +2523,7 @@ function liveSearch(q){
   if (!term){
     const popular = ["turmeric","msm","allergy","gut","buffered c","sleep"];
     res.innerHTML = `
-      <div class="sr-empty">Search 55 formulations by ingredient, product name, or health goal.</div>
+      <div class="sr-empty">Search 52 formulations by ingredient, product name, or health goal.</div>
       <div class="sr-popular">${popular.map(t=>`<a href="#" onclick="event.preventDefault();document.getElementById('searchInput').value='${t}';liveSearch('${t}')">${t}</a>`).join("")}</div>
     `;
     return;
@@ -2651,7 +2652,7 @@ function renderQuiz(main){
       <div class="products-row">${results.map(p=>cardHTML(p)).join("")}</div>
       <div style="text-align:center;margin-top:48px">
         <a href="#/quiz" class="btn btn--ghost" style="margin-right:12px" onclick="event.preventDefault();step=0;answers={};draw()">Retake quiz</a>
-        <a href="#/shop" class="btn btn--forest btn-arrow">Browse all 55</a>
+        <a href="#/shop" class="btn btn--forest btn-arrow">Browse all 52</a>
       </div>
     </section>`;
   };
