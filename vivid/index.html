@@ -329,11 +329,11 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 /* ─── Product cards — per-goal palettes, layered ─── */
 .products-row{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:var(--s-4)}
 .products-row--3col{grid-template-columns:repeat(3,1fr)}
-.products-row--5col{grid-template-columns:repeat(5,1fr);gap:var(--s-3)}
-@media (max-width:1280px){.products-row--5col{grid-template-columns:repeat(4,1fr);gap:var(--s-4)}}
-@media (max-width:1100px){.products-row{grid-template-columns:repeat(3,1fr)}.products-row--5col{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:780px){.products-row{grid-template-columns:repeat(2,1fr)}.products-row--5col{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:480px){.products-row{grid-template-columns:1fr}.products-row--5col{grid-template-columns:1fr}}
+/* Featured = always-balanced 3-col grid for 6 products (2 rows × 3 desktop, 3 × 2 tablet, 6 × 1 mobile) */
+.products-row--featured{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1100px){.products-row{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:780px){.products-row{grid-template-columns:repeat(2,1fr)}.products-row--featured{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.products-row{grid-template-columns:1fr}.products-row--featured{grid-template-columns:1fr}}
 
 .card{
   border-radius:var(--r-lg);
@@ -2500,9 +2500,9 @@ window.addEventListener("hashchange", renderRoute);
 /* ─── HOME ─── */
 function renderHome(main){
   // Top sellers — ordered by Onelife.co.za collection feed (best-selling default sort)
-  // 1. Mullein  2. Clove  3. Turmeric  4. Cayenne  5. Black Walnut (in-stock subset)
-  const featuredHero = findProduct("turmeric-300");
-  const featuredSmall = ["mullein-60","clove-60","cayenne-300","black-walnut-60"].map(findProduct).filter(Boolean);
+  // 1. Mullein  2. Clove  3. Turmeric  4. Cayenne  5. Black Walnut  6. Wormwood (in-stock top 6)
+  // 6 products = always-balanced 3-col grid on desktop (2 rows × 3), 2-col on tablet, 1-col on mobile.
+  const featuredTop6 = ["mullein-60","clove-60","turmeric-300","cayenne-300","black-walnut-60","wormwood-60"].map(findProduct).filter(Boolean);
 
   main.innerHTML = `
   <section class="hero hero--photo">
@@ -2573,13 +2573,12 @@ function renderHome(main){
       <div class="section-head">
         <div>
           <div class="eyebrow">Top sellers · Onelife collection</div>
-          <h2 style="margin-top:14px">The five our customers <em>come back for.</em></h2>
+          <h2 style="margin-top:14px">The ones our customers <em>come back for.</em></h2>
         </div>
         <a href="#/shop" class="btn btn--ghost btn-arrow">See all 52</a>
       </div>
-      <div class="products-row products-row--5col">
-        ${cardHTML(featuredHero)}
-        ${featuredSmall.map(p=>cardHTML(p)).join("")}
+      <div class="products-row products-row--featured">
+        ${featuredTop6.map(p=>cardHTML(p)).join("")}
       </div>
     </div>
   </section>
