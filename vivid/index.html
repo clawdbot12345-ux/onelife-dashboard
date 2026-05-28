@@ -10,7 +10,7 @@
 <meta property="og:description" content="Science-backed herbal supplements. Vegetarian capsules. Made in South Africa." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231B3A2E'/%3E%3Cpath d='M18 18h8l6 22 6-22h8L36 48h-8L18 18z' fill='%23F4ECDB'/%3E%3C/svg%3E">
-<link rel="preload" as="image" href="assets/banners/banner-hero-kitchen.jpg">
+<link rel="preload" as="image" href="assets/lifestyle/onelife-prompts/onelife-vivid-health-hero-banner.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1421,7 +1421,7 @@ function imagesFor(p){
 }
 
 const BANNERS = {
-  home: "assets/banners/banner-hero-kitchen.jpg",
+  home: "assets/lifestyle/onelife-prompts/onelife-vivid-health-hero-banner.jpg",
   evening: "assets/banners/banner-hero-evening.jpg",
   about: "assets/banners/banner-about.jpg",
   journal: "assets/banners/banner-journal.jpg",
@@ -2482,15 +2482,17 @@ window.addEventListener("hashchange", renderRoute);
 
 /* ─── HOME ─── */
 function renderHome(main){
+  // Top sellers — ordered by Onelife.co.za collection feed (best-selling default sort)
+  // 1. Mullein  2. Clove  3. Turmeric  4. Cayenne  5. Black Walnut (in-stock subset)
   const featuredHero = findProduct("turmeric-300");
-  const featuredSmall = ["allergy-control-60","mullein-60","tranquil-60","msm-90"].map(findProduct).filter(Boolean);
+  const featuredSmall = ["mullein-60","clove-60","cayenne-300","black-walnut-60"].map(findProduct).filter(Boolean);
 
   main.innerHTML = `
   <section class="hero hero--photo">
     <div class="hero-photo" style="background-image:url('${BANNERS.home}')"></div>
     <div class="hero-scrim"></div>
     <div class="container hero-content">
-      <div class="hero-eyebrow">Made in Centurion · Family-founded, real doses</div>
+      <div class="hero-eyebrow">Botanical precision · Clinically dosed · South African</div>
       <h1>Vivid by <em>nature.</em><br>Verified by science.</h1>
       <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules.</p>
       <div class="hero-cta">
@@ -2553,8 +2555,8 @@ function renderHome(main){
     <div class="container">
       <div class="section-head">
         <div>
-          <div class="eyebrow">Most loved</div>
-          <h2 style="margin-top:14px">The five we <em>keep reordering.</em></h2>
+          <div class="eyebrow">Top sellers · Onelife collection</div>
+          <h2 style="margin-top:14px">The five our customers <em>come back for.</em></h2>
         </div>
         <a href="#/shop" class="btn btn--ghost btn-arrow">See all 52</a>
       </div>
