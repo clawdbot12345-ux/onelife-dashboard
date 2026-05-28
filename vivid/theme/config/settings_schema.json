@@ -10,15 +10,15 @@
   {
     "name": "Colors",
     "settings": [
-      { "type": "color", "id": "color_bone",        "label": "Bone (page surface)",   "default": "#F4EEE2" },
-      { "type": "color", "id": "color_paper",       "label": "Paper (background)",    "default": "#FBF7EE" },
-      { "type": "color", "id": "color_cream",       "label": "Cream (cards)",         "default": "#EEE5D2" },
-      { "type": "color", "id": "color_ink",         "label": "Ink (primary text)",    "default": "#0E1A14" },
-      { "type": "color", "id": "color_forest",      "label": "Forest (brand)",        "default": "#1F3D2E" },
-      { "type": "color", "id": "color_forest_deep", "label": "Forest deep",           "default": "#142A1E" },
-      { "type": "color", "id": "color_moss",        "label": "Moss",                  "default": "#466B4F" },
-      { "type": "color", "id": "color_sage",        "label": "Sage",                  "default": "#A8B89B" },
-      { "type": "color", "id": "color_clay",        "label": "Clay (CTA accent)",     "default": "#C3704B" }
+      { "type": "color", "id": "color_paper",       "label": "Paper (page background)",      "default": "#F4ECDB" },
+      { "type": "color", "id": "color_bone",        "label": "Bone (subtle surface)",        "default": "#E8DCC1" },
+      { "type": "color", "id": "color_cream",       "label": "Cream (cards)",                "default": "#E0D2B3" },
+      { "type": "color", "id": "color_ink",         "label": "Ink (primary text)",           "default": "#0B1610" },
+      { "type": "color", "id": "color_forest",      "label": "Forest (brand)",               "default": "#163A2C" },
+      { "type": "color", "id": "color_forest_deep", "label": "Forest deep",                  "default": "#0C2117" },
+      { "type": "color", "id": "color_moss",        "label": "Moss",                         "default": "#3F6048" },
+      { "type": "color", "id": "color_sage",        "label": "Sage",                         "default": "#A8BCA5" },
+      { "type": "color", "id": "color_clay",        "label": "Clay (CTA accent)",            "default": "#A04829" }
     ]
   },
   {

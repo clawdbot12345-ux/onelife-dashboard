@@ -1,10 +1,18 @@
-const $ = (s, el = document) => el.querySelector(s);
+/* Vivid Health theme — runtime behaviours.
+   Cart: real Shopify cart.js API
+   Sticky CTA: mirrors vivid/index.html .sticky-atc-- variants
+   Reveal: IntersectionObserver-driven section fade-in */
+
+const $  = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+
+/* ─── Shopify cart ─── */
 
 async function cartFetch() {
   const r = await fetch("/cart.js", { headers: { Accept: "application/json" } });
   return r.json();
 }
+
 async function cartAdd(id, qty = 1) {
   const r = await fetch("/cart/add.js", {
     method: "POST",
@@ -13,14 +21,16 @@ async function cartAdd(id, qty = 1) {
   });
   return r.json();
 }
-async function cartChange(id, qty) {
+
+async function cartChange(line, qty) {
   const r = await fetch("/cart/change.js", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({ id, quantity: qty }),
+    body: JSON.stringify({ line, quantity: qty }),
   });
   return r.json();
 }
+
 const formatR = (cents) =>
   "R" + (cents / 100).toLocaleString("en-ZA", { minimumFractionDigits: 2 });
 
@@ -32,11 +42,14 @@ function setPip(count) {
 async function openCart() {
   $("#scrim")?.classList.add("open");
   $("#drawer")?.classList.add("open");
+  $("#drawer")?.setAttribute("aria-hidden", "false");
   await renderCart();
 }
+
 function closeCart() {
   $("#scrim")?.classList.remove("open");
   $("#drawer")?.classList.remove("open");
+  $("#drawer")?.setAttribute("aria-hidden", "true");
 }
 
 async function renderCart() {
@@ -48,22 +61,22 @@ async function renderCart() {
   if (cart.item_count === 0) {
     body.innerHTML =
       '<div class="cart-empty"><p>Your basket is empty.</p><a href="/collections/all" class="btn btn--ghost" style="margin-top:18px" onclick="closeCart()">Browse the range</a></div>';
-    foot.innerHTML = "";
+    if (foot) foot.innerHTML = "";
     return;
   }
   body.innerHTML = cart.items
     .map(
-      (i) => `
+      (i, idx) => `
     <div class="cart-item">
-      <div class="cart-item-img"><img src="${i.image}" alt=""></div>
+      <div class="cart-item-img"><img src="${i.image}" alt="" loading="lazy"></div>
       <div>
         <div class="cart-item-name">${i.product_title}</div>
         <div class="cart-item-meta">${i.variant_title || ""}</div>
         <div style="display:flex;gap:8px;margin-top:8px">
           <div class="qty" style="height:30px">
-            <button onclick="cartChange(${i.key !== undefined ? `'${i.key}'` : i.id}, ${i.quantity - 1}).then(renderCart)">−</button>
-            <input value="${i.quantity}" readonly>
-            <button onclick="cartChange(${i.key !== undefined ? `'${i.key}'` : i.id}, ${i.quantity + 1}).then(renderCart)">+</button>
+            <button type="button" onclick="cartChange(${idx + 1}, ${i.quantity - 1}).then(renderCart)" aria-label="Decrease">−</button>
+            <input value="${i.quantity}" readonly aria-label="Quantity">
+            <button type="button" onclick="cartChange(${idx + 1}, ${i.quantity + 1}).then(renderCart)" aria-label="Increase">+</button>
           </div>
         </div>
       </div>
@@ -72,16 +85,100 @@ async function renderCart() {
     )
     .join("");
   const ship = cart.total_price >= 40000 ? 0 : 7900;
-  foot.innerHTML = `
-    <div class="cart-totals"><span>Subtotal</span><span>${formatR(cart.total_price)}</span></div>
-    <div class="cart-totals"><span>Shipping</span><span>${ship === 0 ? "Free over R400" : formatR(ship)}</span></div>
-    <div class="cart-totals total"><span>Total</span><span>${formatR(cart.total_price + ship)}</span></div>
-    <a class="btn btn--forest btn--block" href="/checkout">Checkout — ${formatR(cart.total_price + ship)}</a>
-  `;
+  const fillPct = Math.min(100, (cart.total_price / 40000) * 100);
+  const togo = Math.max(0, 40000 - cart.total_price);
+  const shipMsg =
+    togo === 0
+      ? `<div class="ship-msg"><strong>You've unlocked free shipping.</strong> Nice.</div>`
+      : `<div class="ship-msg">Spend <strong>${formatR(togo)}</strong> more for free shipping</div>`;
+  if (foot) {
+    foot.innerHTML = `
+      <div class="ship-bar"><div class="ship-bar-fill" style="width:${fillPct}%"></div></div>
+      ${shipMsg}
+      <div class="cart-totals"><span>Subtotal</span><span>${formatR(cart.total_price)}</span></div>
+      <div class="cart-totals"><span>Shipping</span><span>${ship === 0 ? "Free over R400" : formatR(ship)}</span></div>
+      <div class="cart-totals total"><span>Total</span><span>${formatR(cart.total_price + ship)}</span></div>
+      <a class="btn btn--forest btn--block" href="/checkout">Checkout — ${formatR(cart.total_price + ship)}</a>
+    `;
+  }
 }
 
+/* ─── Sticky mobile ATC / CTA ─── */
+
+let stickyEl = null;
+let stickyObserver = null;
+
+function clearSticky() {
+  if (stickyObserver) { stickyObserver.disconnect(); stickyObserver = null; }
+  if (stickyEl) { stickyEl.remove(); stickyEl = null; }
+}
+
+/* Product-context sticky (PDP). Variant id + price + Add button. */
+function initStickyProduct({ name, price, variantId, inStock }) {
+  clearSticky();
+  const el = document.createElement("div");
+  el.className = "sticky-atc";
+  el.innerHTML = `
+    <span class="name">${name}</span>
+    <span class="price">${price}</span>
+    <button class="btn btn--forest" type="button" ${inStock ? "" : "disabled"} data-variant-id="${variantId}" data-action="sticky-add">
+      ${inStock ? "Add" : "Sold out"}
+    </button>
+  `;
+  document.body.appendChild(el);
+  stickyEl = el;
+  const addRow = document.querySelector(".add-row");
+  if (!addRow) return;
+  stickyObserver = new IntersectionObserver(([e]) => {
+    if (stickyEl !== el || !el.isConnected) return;
+    el.classList.toggle("visible", !e.isIntersecting);
+  }, { threshold: 0 });
+  stickyObserver.observe(addRow);
+}
+
+/* CTA-context sticky (home, journal, about, etc.). Mirrors hero CTAs. */
+function initStickyCTA(triggerSelector, ctas) {
+  clearSticky();
+  const el = document.createElement("div");
+  el.className = "sticky-atc sticky-atc--cta";
+  el.innerHTML = ctas
+    .map((c) => `<a href="${c.href}" class="btn ${c.cls || ""}">${c.label}</a>`)
+    .join("");
+  document.body.appendChild(el);
+  stickyEl = el;
+  const trigger = document.querySelector(triggerSelector);
+  if (!trigger) return;
+  stickyObserver = new IntersectionObserver(([e]) => {
+    if (stickyEl !== el || !el.isConnected) return;
+    el.classList.toggle("visible", !e.isIntersecting);
+  }, { threshold: 0 });
+  stickyObserver.observe(trigger);
+}
+
+/* ─── Reveal-on-scroll for .reveal sections ─── */
+
+function initReveal() {
+  if (!("IntersectionObserver" in window)) {
+    $$(".reveal").forEach((el) => el.classList.add("in"));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -10% 0px" });
+  $$(".reveal").forEach((el) => io.observe(el));
+}
+
+/* ─── Boot ─── */
+
 document.addEventListener("DOMContentLoaded", async () => {
+  initReveal();
+
+  /* Cart open */
   $("#cartBtn")?.addEventListener("click", openCart);
+
+  /* PDP: add-to-cart from .js-add-to-cart, quantity stepper, tab switching, thumb switching */
   $$(".js-add-to-cart").forEach((b) =>
     b.addEventListener("click", async (e) => {
       e.preventDefault();
@@ -91,26 +188,64 @@ document.addEventListener("DOMContentLoaded", async () => {
       await openCart();
     })
   );
+
   $$(".js-qty-step").forEach((b) =>
     b.addEventListener("click", () => {
       const i = $("#qty");
+      if (!i) return;
       i.value = Math.max(1, (parseInt(i.value, 10) || 1) + parseInt(b.dataset.step, 10));
     })
   );
+
   $$(".js-tab").forEach((b) =>
     b.addEventListener("click", () => {
       $$(".js-tab").forEach((x) => x.classList.remove("active"));
       b.classList.add("active");
-      $$(".tab-body").forEach((x) => x.classList.toggle("active", x.dataset.tab === b.dataset.tab));
+      $$(".tab-body").forEach((x) =>
+        x.classList.toggle("active", x.dataset.tab === b.dataset.tab)
+      );
     })
   );
+
   $$(".js-thumb").forEach((t) =>
     t.addEventListener("click", () => {
       $$(".js-thumb").forEach((x) => x.classList.remove("active"));
       t.classList.add("active");
-      $("#pdpMainImg").src = t.dataset.src;
+      const main = $("#pdpMainImg");
+      if (main) main.src = t.dataset.src;
     })
   );
+
+  /* Sticky add-on for the sticky ATC button (CTA variant doesn't need this) */
+  document.body.addEventListener("click", async (e) => {
+    const btn = e.target.closest('[data-action="sticky-add"]');
+    if (!btn) return;
+    e.preventDefault();
+    await cartAdd(btn.dataset.variantId, 1);
+    await openCart();
+  });
+
+  /* Initial cart pip */
   const cart = await cartFetch();
   setPip(cart.item_count);
+
+  /* Page-level sticky CTA wiring.
+     Each template can declare data-sticky-cta on <body> to opt-in. */
+  const body = document.body;
+  if (body.dataset.stickyCta === "home") {
+    initStickyCTA(".hero-cta", [
+      { href: "/collections/all", label: "Shop the range",    cls: "btn--forest btn-arrow" },
+      { href: "/pages/quiz",       label: "Find my formulation", cls: "btn--ghost" },
+    ]);
+  }
 });
+
+/* Expose helpers for inline handlers and PDP template. */
+window.cartFetch = cartFetch;
+window.cartAdd = cartAdd;
+window.cartChange = cartChange;
+window.renderCart = renderCart;
+window.openCart = openCart;
+window.closeCart = closeCart;
+window.initStickyProduct = initStickyProduct;
+window.initStickyCTA = initStickyCTA;

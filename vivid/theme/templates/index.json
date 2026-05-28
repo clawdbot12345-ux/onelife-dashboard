@@ -5,38 +5,115 @@
       "settings": {
         "eyebrow": "Botanical precision · Clinically dosed · South African",
         "heading": "<p>Vivid by <em>nature.</em><br>Verified by science.</p>",
-        "lede": "Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Fifty-two formulations across gut, immunity, sleep, joints, and daily nutrition.",
+        "lede": "Plant-first formulations with the milligrams on the bottle — the way it should have always been. Blended in Centurion since 1996.",
         "cta_primary_label": "Shop the range",
         "cta_primary_link": "/collections/all",
-        "cta_secondary_label": "Browse ingredients",
-        "cta_secondary_link": "/pages/ingredients"
+        "cta_secondary_label": "Find your formulation",
+        "cta_secondary_link": "/pages/quiz"
       },
       "blocks": {
-        "s1": { "type": "stat", "settings": { "value": "52", "label": "Formulations" } },
-        "s2": { "type": "stat", "settings": { "value": "100%", "label": "SA Made" } },
-        "s3": { "type": "stat", "settings": { "value": "3", "label": "Onelife stores" } }
+        "stat1":  { "type": "stat",  "settings": { "value": "52",   "label": "Formulations" } },
+        "stat2":  { "type": "stat",  "settings": { "value": "3",    "label": "Onelife stores" } },
+        "stat3":  { "type": "stat",  "settings": { "value": "1996", "label": "Family-founded" } },
+        "stat4":  { "type": "stat",  "settings": { "value": "★ 4.8","label": "2,400+ reviews" } },
+        "trust1": { "type": "trust", "settings": { "icon": "stars",  "value": "4.8", "text": "· 2,400+ South African reviews" } },
+        "trust2": { "type": "trust", "settings": { "icon": "check",  "text": "Free shipping over R400" } },
+        "trust3": { "type": "trust", "settings": { "icon": "shield", "text": "30-day money-back" } }
       },
-      "block_order": ["s1", "s2", "s3"]
+      "block_order": ["stat1", "stat2", "stat3", "stat4", "trust1", "trust2", "trust3"]
     },
-    "trust": { "type": "trust-strip" },
+    "trust-band": {
+      "type": "trust-strip"
+    },
+    "why-vivid": {
+      "type": "why-vivid",
+      "settings": {
+        "eyebrow": "Why Vivid?",
+        "heading": "<p>Because the milligrams should be <em>on the label.</em></p>",
+        "lede": "The supplement aisle runs on proprietary blends, vague claims, and powders relabelled three times before they reach you. Vivid is what we wished existed when we started Onelife in 1996. Three things we'll never stop doing differently."
+      },
+      "blocks": {
+        "p1": { "type": "pillar", "settings": { "eyebrow": "The receipt", "heading": "<p>We put the dose <em>on the bottle.</em></p>", "body": "A \"proprietary blend\" is just a confession. Every Vivid label tells you the exact milligrams of every active. If a study used 810mg, ours has 810mg. The numbers are right there, where they belong." } },
+        "p2": { "type": "pillar", "settings": { "eyebrow": "The source",  "heading": "<p>Plants <em>first.</em> Always.</p>", "body": "Whole-plant extracts where they work. Standardised actives where they're needed. Vegetable capsules, every time. Nothing imported in bulk and relabelled with a South African flag." } },
+        "p3": { "type": "pillar", "settings": { "eyebrow": "The work",    "heading": "<p>One bottle, <em>one job.</em></p>",  "body": "Fifty-two formulations, fifty-two specific outcomes. No hero ingredients chasing a trend. No \"everything wellness.\" Built for the work, picked for the result you can actually feel." } }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
     "goals": {
       "type": "category-grid",
+      "settings": {
+        "eyebrow": "Shop by goal",
+        "heading": "<p>Pick the system <em>you're working on.</em></p>",
+        "lead": "Eight focused ranges. Tap one to see the formulations made for it."
+      },
       "blocks": {
-        "g1": { "type": "goal", "settings": { "name": "Gut Health", "tagline": "Cleanse, balance, restore", "icon_path": "M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z M12 9v6" } },
-        "g2": { "type": "goal", "settings": { "name": "Immunity", "tagline": "Daily defense, year-round", "icon_path": "M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z" } },
-        "g3": { "type": "goal", "settings": { "name": "Energy & Vitality", "tagline": "Cellular fuel", "icon_path": "M13 2L3 14h7l-1 8 10-12h-7z" } },
-        "g4": { "type": "goal", "settings": { "name": "Stress, Sleep & Mood", "tagline": "Calm without sedation", "icon_path": "M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z" } },
-        "g5": { "type": "goal", "settings": { "name": "Joints & Mobility", "tagline": "Move freely, age strongly", "icon_path": "M6 6l4 4-2 2-4-4 2-2zm12 12l-4-4 2-2 4 4-2 2zM10 14l4-4" } },
-        "g6": { "type": "goal", "settings": { "name": "Women's Health", "tagline": "Hormones, cycles, balance", "icon_path": "M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 0v8m-3-4h6" } },
-        "g7": { "type": "goal", "settings": { "name": "Men's Health", "tagline": "Prostate, vitality, focus", "icon_path": "M14 4h6v6M20 4L13 11m-7 9a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" } },
-        "g8": { "type": "goal", "settings": { "name": "Daily Nutrients", "tagline": "Vitamins, omegas, basics", "icon_path": "M12 2v20m-8-10h16" } }
+        "g1": { "type": "goal", "settings": { "goal_id": "gut",      "name": "Gut Health",            "label": "Gut Health",      "tagline": "Cleanse, balance, restore",     "icon_path": "M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z" } },
+        "g2": { "type": "goal", "settings": { "goal_id": "immunity", "name": "Immunity",              "label": "Immune Health",   "tagline": "Daily defense, year-round",     "icon_path": "M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z" } },
+        "g3": { "type": "goal", "settings": { "goal_id": "energy",   "name": "Energy & Vitality",     "label": "Nutrient Health", "tagline": "Cellular fuel, not stimulants", "icon_path": "M13 2L3 14h7l-1 8 10-12h-7z" } },
+        "g4": { "type": "goal", "settings": { "goal_id": "stress",   "name": "Stress, Sleep & Mood",  "label": "Mental Health",   "tagline": "Calm without sedation",         "icon_path": "M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z" } },
+        "g5": { "type": "goal", "settings": { "goal_id": "joints",   "name": "Joints & Mobility",     "label": "Physical Health", "tagline": "Move freely, age strongly",     "icon_path": "M6 6l4 4-2 2-4-4 2-2zm12 12l-4-4 2-2 4 4-2 2zM10 14l4-4" } },
+        "g6": { "type": "goal", "settings": { "goal_id": "women",    "name": "Women's Health",        "label": "Women's Health",  "tagline": "Hormones, cycles, balance",     "icon_path": "M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 0v8m-3-4h6" } },
+        "g7": { "type": "goal", "settings": { "goal_id": "men",      "name": "Men's Health",          "label": "Men's Health",    "tagline": "Prostate, vitality, focus",     "icon_path": "M14 4h6v6M20 4L13 11m-7 9a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" } },
+        "g8": { "type": "goal", "settings": { "goal_id": "daily",    "name": "Daily Nutrients",       "label": "Nutrient Health", "tagline": "Vitamins, omegas, basics",      "icon_path": "M12 2v20m-8-10h16" } }
       },
       "block_order": ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8"]
     },
-    "featured": { "type": "featured-products" },
-    "editorial": { "type": "editorial" },
-    "bundles": { "type": "bundle-row" },
-    "capture": { "type": "email-capture" }
+    "featured": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "Top sellers · Onelife collection",
+        "heading": "The ones our customers come back for.",
+        "cta_label": "See all 52",
+        "cta_link": "/collections/all",
+        "product_count": 6
+      }
+    },
+    "editorial": {
+      "type": "editorial",
+      "settings": {
+        "kicker": "Inside the Vivid Lab",
+        "image_label": "The Vivid Lab",
+        "heading": "We don't believe in fairy dusting.",
+        "body": "<p>Every Vivid formulation states the milligrams. If a study used 810mg of MSM, our MSM capsule has 810mg. If saw palmetto needs a 4:1 extract to do anything, that's what's in the bottle.</p><p><em>\"The dose makes the medicine. Everything else is marketing copy.\"</em></p>",
+        "cta_label": "Read our full story",
+        "cta_link": "/pages/about"
+      }
+    },
+    "founder": {
+      "type": "founder-cameo"
+    },
+    "bundles": {
+      "type": "bundle-row",
+      "settings": {
+        "eyebrow": "Curated stacks",
+        "heading": "Three stacks, built for outcomes.",
+        "lead": "We paired the formulations. Your body figures out the rest. R110–R150 less than buying separately."
+      }
+    },
+    "reviews": {
+      "type": "reviews-band"
+    },
+    "capture": {
+      "type": "email-capture",
+      "settings": {
+        "eyebrow": "Welcome 10%",
+        "heading": "<p>Get the <em>field notes</em>.</p>",
+        "body": "Monthly long-form on single ingredients, formulation choices, and what we're testing next. No discount alerts, no \"wellness trends\" — just the work. Subscribers get 10% off their first order.",
+        "cta_label": "Subscribe",
+        "tiny": "No spam · Unsubscribe in one click · POPIA-compliant"
+      }
+    }
   },
-  "order": ["hero", "trust", "goals", "featured", "editorial", "bundles", "capture"]
+  "order": [
+    "hero",
+    "trust-band",
+    "why-vivid",
+    "goals",
+    "featured",
+    "editorial",
+    "founder",
+    "bundles",
+    "reviews",
+    "capture"
+  ]
 }

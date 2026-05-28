@@ -1,0 +1,91 @@
+{%- comment -%}
+  Reviews band — social proof. Three testimonial cards as section blocks
+  so the merchant can edit them in the Theme Editor without code. Each
+  card carries a star rating, a quote, a customer/location, and a
+  product reference.
+  Source of truth: vivid/index.html .reviews-band block.
+
+  For programmatic review feeds (Judge.me, Klaviyo Reviews, etc.) — wire
+  this section to a metaobject or app embed later. For now: schema-driven.
+{%- endcomment -%}
+
+<section class="reviews-band reveal" aria-labelledby="reviews-band-heading">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        <h2 id="reviews-band-heading" style="margin-top:14px">{{ section.settings.heading }}</h2>
+      </div>
+      {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+        <a href="{{ section.settings.cta_link }}" class="btn btn--ghost btn-arrow">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.summary != blank or section.settings.show_summary -%}
+      <div class="reviews-summary-inline">
+        <span class="score">{{ section.settings.score | default: '4.8' }}</span>
+        <span class="stars-lg">★★★★★</span>
+        <span>{{ section.settings.summary }}</span>
+      </div>
+    {%- endif -%}
+
+    <div class="reviews-home-grid">
+      {%- for block in section.blocks -%}
+        <div class="review-card" {{ block.shopify_attributes }}>
+          <div class="stars">{%- for i in (1..block.settings.stars) -%}★{%- endfor -%}</div>
+          <p class="review-quote">{{ block.settings.quote }}</p>
+          <div class="review-meta">
+            <span><strong style="color:var(--ink)">{{ block.settings.author }}</strong>{%- if block.settings.location != blank -%} · {{ block.settings.location }}{%- endif -%}</span>
+            {%- if block.settings.product != blank -%}
+              <span class="review-product">{{ block.settings.product }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews band",
+  "tag": "section",
+  "class": "section-reviews-band",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",      "label": "Eyebrow",       "default": "Customer reviews · 4.8 / 5" },
+    { "type": "richtext", "id": "heading",      "label": "Heading",       "default": "<p>2,400+ South Africans, <em>one bottle at a time.</em></p>" },
+    { "type": "checkbox", "id": "show_summary", "label": "Show inline summary line", "default": true },
+    { "type": "text",     "id": "score",        "label": "Score",         "default": "4.8" },
+    { "type": "textarea", "id": "summary",      "label": "Summary text",  "default": "Verified reviews from across Centurion, Glen Village, Edenvale, and every postcode in between." },
+    { "type": "text",     "id": "cta_label",    "label": "CTA label",     "default": "Read all reviews" },
+    { "type": "url",      "id": "cta_link",     "label": "CTA link" }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review card",
+      "limit": 6,
+      "settings": [
+        { "type": "range",    "id": "stars",    "label": "Stars",   "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote",    "label": "Quote",   "default": "\"Finally, a brand that puts the actual milligrams on the label.\"" },
+        { "type": "text",     "id": "author",   "label": "Author",  "default": "Anele M." },
+        { "type": "text",     "id": "location", "label": "Location","default": "Centurion" },
+        { "type": "text",     "id": "product",  "label": "Product attribution", "default": "Buffered C" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews band",
+      "blocks": [
+        { "type": "review", "settings": { "quote": "\"Finally, a brand that puts the actual milligrams on the label. I switched my whole stack to Vivid after reading the Buffered C panel.\"", "author": "Anele M.", "location": "Centurion", "product": "Buffered C" } },
+        { "type": "review", "settings": { "quote": "\"Tranquil is the only sleep supplement that hasn't left me groggy in the morning. I sleep through, wake up clear.\"", "author": "Priya R.", "location": "Johannesburg", "product": "Tranquil" } },
+        { "type": "review", "settings": { "quote": "\"Six weeks on Flexijoint and my knees are quieter than they've been in years. The Vivid team checked in personally.\"", "author": "Marius J.", "location": "Edenvale", "product": "Flexijoint Advanced" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,65 +1,121 @@
-{%- assign hero_product = all_products[section.settings.hero_product] -%}
-<section class="hero">
-  <div class="hero-leaf"></div>
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">{{ section.settings.eyebrow }}</div>
-      <h1 style="margin-top:18px">{{ section.settings.heading }}</h1>
+{%- comment -%}
+  Hero — full-bleed photo background with overlaid headline, CTAs,
+  mini-stats row, and bottom trust strip. Mirrors vivid/index.html .hero.
+{%- endcomment -%}
+
+<section class="hero hero--photo" aria-labelledby="hero-heading">
+  {%- if section.settings.background_image != blank -%}
+    <div class="hero-photo" style="background-image:url('{{ section.settings.background_image | image_url: width: 2400 }}')"></div>
+  {%- else -%}
+    <div class="hero-photo" style="background-color:var(--forest-deep)"></div>
+  {%- endif -%}
+  <div class="hero-scrim"></div>
+  <div class="container hero-content">
+    {%- if section.settings.eyebrow != blank -%}
+      <div class="hero-eyebrow">{{ section.settings.eyebrow }}</div>
+    {%- endif -%}
+    <h1 id="hero-heading">{{ section.settings.heading }}</h1>
+    {%- if section.settings.lede != blank -%}
       <p class="hero-lede">{{ section.settings.lede }}</p>
-      <div class="hero-cta">
-        <a href="{{ section.settings.cta_primary_link }}" class="btn btn--forest btn-arrow">{{ section.settings.cta_primary_label }}</a>
-        <a href="{{ section.settings.cta_secondary_link }}" class="btn btn--ghost">{{ section.settings.cta_secondary_label }}</a>
-      </div>
-      <div class="hero-stats">
-        {%- for block in section.blocks -%}
-          <div class="hero-stat">
+    {%- endif -%}
+    <div class="hero-cta">
+      {%- if section.settings.cta_primary_label != blank -%}
+        <a href="{{ section.settings.cta_primary_link | default: '/collections/all' }}" class="btn btn-arrow">{{ section.settings.cta_primary_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.cta_secondary_label != blank -%}
+        <a href="{{ section.settings.cta_secondary_link | default: '/pages/quiz' }}" class="btn btn--ghost">{{ section.settings.cta_secondary_label }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- assign stats = section.blocks | where: 'type', 'stat' -%}
+    {%- if stats.size > 0 -%}
+      <div class="hero-mini">
+        {%- for block in stats -%}
+          <div class="hero-mini-cell" {{ block.shopify_attributes }}>
             <div class="num">{{ block.settings.value }}</div>
             <div class="lbl">{{ block.settings.label }}</div>
           </div>
         {%- endfor -%}
       </div>
-    </div>
-    {%- if hero_product != blank -%}
-      <a href="{{ hero_product.url }}" class="hero-image">
-        <span class="hero-badge">Hero · {{ hero_product.first_available_variant.title }}</span>
-        <img src="{{ hero_product.featured_image | image_url: width: 800 }}" alt="{{ hero_product.title }}" loading="eager" width="800" height="800">
-        <div class="hero-callout"><strong>{{ hero_product.title | split: ' - ' | last }}</strong>{{ hero_product.metafields.vivid.bench | default: hero_product.description | strip_html | truncate: 60 }}</div>
-      </a>
     {%- endif -%}
   </div>
+
+  {%- assign trust = section.blocks | where: 'type', 'trust' -%}
+  {%- if trust.size > 0 -%}
+    <div class="hero-trust">
+      <div class="container hero-trust-inner">
+        {%- for block in trust -%}
+          <span class="hero-trust-cell" {{ block.shopify_attributes }}>
+            {%- case block.settings.icon -%}
+              {%- when 'stars' -%}<span class="stars">★★★★★</span> <span class="num">{{ block.settings.value }}</span>
+              {%- when 'check' -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>
+              {%- when 'shield' -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            {%- endcase -%}
+            {{ block.settings.text }}
+          </span>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
 </section>
 
 {% schema %}
 {
   "name": "Hero",
+  "tag": "section",
+  "class": "section-hero",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Botanical precision · Clinically dosed · South African" },
-    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Vivid by <em>nature.</em><br>Verified by science.</p>" },
-    { "type": "textarea", "id": "lede", "label": "Lede", "default": "Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Fifty-two formulations across gut, immunity, sleep, joints, and daily nutrition." },
-    { "type": "text", "id": "cta_primary_label", "label": "Primary CTA label", "default": "Shop the range" },
-    { "type": "url", "id": "cta_primary_link", "label": "Primary CTA link" },
-    { "type": "text", "id": "cta_secondary_label", "label": "Secondary CTA label", "default": "Browse ingredients" },
-    { "type": "url", "id": "cta_secondary_link", "label": "Secondary CTA link" },
-    { "type": "product", "id": "hero_product", "label": "Hero product" }
+    { "type": "image_picker", "id": "background_image",    "label": "Background image (full-bleed)" },
+    { "type": "text",         "id": "eyebrow",             "label": "Eyebrow",
+      "default": "Botanical precision · Clinically dosed · South African" },
+    { "type": "richtext",     "id": "heading",             "label": "Heading",
+      "default": "<p>Vivid by <em>nature.</em><br>Verified by science.</p>" },
+    { "type": "textarea",     "id": "lede",                "label": "Lede",
+      "default": "Plant-first formulations with the milligrams on the bottle — the way it should have always been. Blended in Centurion since 1996." },
+    { "type": "text",         "id": "cta_primary_label",   "label": "Primary CTA label",   "default": "Shop the range" },
+    { "type": "url",          "id": "cta_primary_link",    "label": "Primary CTA link" },
+    { "type": "text",         "id": "cta_secondary_label", "label": "Secondary CTA label", "default": "Find your formulation" },
+    { "type": "url",          "id": "cta_secondary_link",  "label": "Secondary CTA link" }
   ],
   "blocks": [
     {
       "type": "stat",
-      "name": "Stat",
+      "name": "Mini stat",
+      "limit": 4,
       "settings": [
         { "type": "text", "id": "value", "label": "Value", "default": "52" },
         { "type": "text", "id": "label", "label": "Label", "default": "Formulations" }
       ]
+    },
+    {
+      "type": "trust",
+      "name": "Trust strip item",
+      "limit": 4,
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon",
+          "options": [
+            { "value": "stars",  "label": "Stars (with rating value)" },
+            { "value": "check",  "label": "Checkmark" },
+            { "value": "shield", "label": "Shield" }
+          ],
+          "default": "check" },
+        { "type": "text", "id": "value", "label": "Rating value (for Stars icon)", "default": "4.8" },
+        { "type": "text", "id": "text",  "label": "Text",
+          "default": "Free shipping over R400" }
+      ]
     }
   ],
-  "max_blocks": 4,
   "presets": [
     {
       "name": "Hero",
       "blocks": [
-        { "type": "stat", "settings": { "value": "52", "label": "Formulations" } },
-        { "type": "stat", "settings": { "value": "100%", "label": "SA Made" } },
-        { "type": "stat", "settings": { "value": "3", "label": "Onelife stores" } }
+        { "type": "stat",  "settings": { "value": "52",   "label": "Formulations" } },
+        { "type": "stat",  "settings": { "value": "3",    "label": "Onelife stores" } },
+        { "type": "stat",  "settings": { "value": "1996", "label": "Family-founded" } },
+        { "type": "stat",  "settings": { "value": "★ 4.8","label": "2,400+ reviews" } },
+        { "type": "trust", "settings": { "icon": "stars",  "value": "4.8", "text": "· 2,400+ South African reviews" } },
+        { "type": "trust", "settings": { "icon": "check",  "text": "Free shipping over R400" } },
+        { "type": "trust", "settings": { "icon": "shield", "text": "30-day money-back" } }
       ]
     }
   ]

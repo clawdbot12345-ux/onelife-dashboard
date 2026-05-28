@@ -1,24 +1,54 @@
-<a href="{{ product.url }}" class="card" aria-label="{{ product.title }}">
+{%- comment -%}
+  Product card — used by featured-products and main-collection-product-grid.
+
+  Per-goal palette is driven by a Shopify tag prefixed `goal:` (e.g.
+  `goal:stress`, `goal:gut`). The data-goal attribute lights up the
+  matching --g-*-bg color from the prototype.
+
+  Card category line tries to use product.metafields.vivid.category first
+  (a string set in admin like "Mental Health · capsule"), then falls back
+  to product.type.
+{%- endcomment -%}
+
+{%- assign goal_id = '' -%}
+{%- for tag in product.tags -%}
+  {%- if tag contains 'goal:' -%}
+    {%- assign goal_id = tag | remove: 'goal:' | strip -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign card_cat = product.metafields.vivid.category | default: product.type -%}
+{%- assign bench    = product.metafields.vivid.bench | default: product.description | strip_html | truncate: 80 -%}
+{%- assign size_lbl = product.metafields.vivid.size | default: product.first_available_variant.title -%}
+
+<a href="{{ product.url }}" class="card" data-goal="{{ goal_id }}" aria-label="{{ product.title }}">
   <div class="card-media">
     <div class="card-badge">
       {%- if product.tags contains 'vegan' -%}<span class="pill pill--green">Vegan</span>{%- endif -%}
       {%- unless product.available -%}<span class="pill pill--alert">Sold out</span>{%- endunless -%}
-      {%- if product.tags contains 'bestseller' -%}<span class="pill pill--clay">Best seller</span>{%- endif -%}
+      {%- if product.tags contains 'bestseller' -%}<span class="pill pill--dark">Best seller</span>{%- endif -%}
     </div>
-    <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy" width="600" height="600">
+    {{ product.featured_image | image_url: width: 600 | image_tag:
+        loading: 'lazy',
+        widths: '300,600,900,1200',
+        sizes: '(min-width: 1100px) 25vw, (min-width: 780px) 33vw, 50vw',
+        alt: product.title }}
     {%- if product.available -%}
-      <button class="card-quickadd js-add-to-cart" data-variant-id="{{ product.first_available_variant.id }}" aria-label="Quick add" onclick="event.preventDefault();">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      <button class="card-quickadd js-add-to-cart" type="button"
+        data-variant-id="{{ product.first_available_variant.id }}"
+        aria-label="Quick add {{ product.title }}"
+        onclick="event.preventDefault();event.stopPropagation();">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       </button>
     {%- endif -%}
   </div>
   <div class="card-body">
-    <div class="card-cat">{{ product.type }}</div>
+    {%- if card_cat != blank -%}<div class="card-cat">{{ card_cat }}</div>{%- endif -%}
     <div class="card-name">{{ product.title | split: ' - ' | last }}</div>
-    <div class="card-bench">{{ product.metafields.vivid.bench | default: product.description | strip_html | truncate: 80 }}</div>
+    {%- if bench != blank -%}<div class="card-bench">{{ bench }}</div>{%- endif -%}
     <div class="card-meta">
       <div class="card-price">{{ product.price | money }}</div>
-      <div class="card-form">{{ product.first_available_variant.title | default: '' }}</div>
+      {%- if size_lbl != blank -%}<div class="card-form">{{ size_lbl }}</div>{%- endif -%}
     </div>
   </div>
 </a>

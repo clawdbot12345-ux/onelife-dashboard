@@ -38,6 +38,16 @@
     :root {
       --font-display: {{ settings.font_display.family }}, {{ settings.font_display.fallback_families }};
       --font-sans: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+      {%- if settings.color_paper != blank %}--paper: {{ settings.color_paper }};{% endif -%}
+      {%- if settings.color_bone != blank %}--bone: {{ settings.color_bone }};{% endif -%}
+      {%- if settings.color_cream != blank %}--cream: {{ settings.color_cream }};{% endif -%}
+      {%- if settings.color_ink != blank %}--ink: {{ settings.color_ink }};{% endif -%}
+      {%- if settings.color_forest != blank %}--forest: {{ settings.color_forest }};{% endif -%}
+      {%- if settings.color_forest_deep != blank %}--forest-deep: {{ settings.color_forest_deep }};{% endif -%}
+      {%- if settings.color_moss != blank %}--moss: {{ settings.color_moss }};{% endif -%}
+      {%- if settings.color_sage != blank %}--sage: {{ settings.color_sage }};{% endif -%}
+      {%- if settings.color_clay != blank %}--clay: {{ settings.color_clay }};{% endif -%}
+      {%- if settings.container_max %}--container: {{ settings.container_max }}px;{% endif -%}
     }
   {% endstyle %}
 
@@ -45,16 +55,19 @@
 
   {{ content_for_header }}
 </head>
-<body class="template-{{ template.name }}">
+<body class="template-{{ template.name }}"
+  {%- if template.name == 'index' %} data-sticky-cta="home"{% endif -%}
+>
   <a class="skip" href="#main">Skip to content</a>
 
-  {% sections 'header-group' %}
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
 
   <main id="main" role="main">
     {{ content_for_layout }}
   </main>
 
-  {% sections 'footer-group' %}
+  {% section 'footer' %}
 
   {% render 'cart-drawer' %}
 
