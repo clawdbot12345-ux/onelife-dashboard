@@ -1,5 +1,5 @@
 {
-  "brief": "One Life Health lifestyle images generated from user-provided codex-image-prompts.md",
+  "brief": "One Life Health lifestyle images regenerated with stricter cinematic studio direction; corrected Vivid assets retained.",
   "count": 12,
   "images": [
     {
@@ -11,8 +11,9 @@
         720
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17646062f48190ad7c0ae4f4431811.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d6941ee48190aefd706270b9590b.png",
+      "constraints": "Regenerated per user QA: cinematic studio quality, clean negative space, no text/logos/typography, blank labels where applicable.",
+      "regeneration_note": "Regenerated studio pass: cleaner left linen negative space, blank labels, stronger directional light."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-free-delivery-hero-banner.jpg",
@@ -23,8 +24,9 @@
         720
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17649f417481908324130f44b21408.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d6da57488190b400f684d4660a6a.png",
+      "constraints": "Regenerated per user QA: cinematic studio quality, clean negative space, no text/logos/typography, blank labels where applicable.",
+      "regeneration_note": "Regenerated studio pass: cleaner marble negative space, blank labels, premium unboxing composition."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-vivid-health-hero-banner.jpg",
@@ -35,8 +37,10 @@
         720
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a176534a2c08190868a516977fdf749.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d4fd56a88190ab24019888ffe9d4.png",
+      "constraints": "Vivid-related prompt: actual Vivid-style product bottles; no overlay text/logos outside product labels.",
+      "correction_note": "Corrected Vivid Health homepage hero using actual Vivid-style white product bottles and category labels.",
+      "regeneration_note": "Kept corrected Vivid product version using actual Vivid-style white bottles and category-colored labels."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-consultation-hero-banner.jpg",
@@ -47,8 +51,9 @@
         720
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a176571d46c8190b15b701a5c708b0c.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d72518848190971cfbbe539bee81.png",
+      "constraints": "Regenerated per user QA: cinematic studio quality, clean negative space, no text/logos/typography, blank labels where applicable.",
+      "regeneration_note": "Regenerated studio pass: cinematic consultant scene, right-side dark negative space, blank bottles."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-brands-hero-banner.jpg",
@@ -59,8 +64,9 @@
         720
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a1765b0a04881908c3ec201e6c73096.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d76da1508190958ad8be645b8a19.png",
+      "constraints": "Regenerated per user QA: cinematic studio quality, clean negative space, no text/logos/typography, blank labels where applicable.",
+      "regeneration_note": "Regenerated studio pass: dramatic apothecary shelving, blank labels, left dark negative space."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-vivid-health-page-hero.jpg",
@@ -71,8 +77,10 @@
         600
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a1765ffe7e48190a2c88e5c6e9a5ef6.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d54b9c8881909af244fdba377117.png",
+      "constraints": "Vivid-related prompt: actual Vivid-style product bottles; no overlay text/logos outside product labels.",
+      "correction_note": "Corrected Vivid Health collection hero using actual Vivid-style white product bottles and category labels.",
+      "regeneration_note": "Kept corrected Vivid product version using actual Vivid-style white bottles and category-colored labels."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-brands-page-hero.jpg",
@@ -83,8 +91,9 @@
         500
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17664b679c8190819f83c8a3dfc2b9.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d7ba58fc8190ba0dad0b74d5b955.png",
+      "constraints": "Regenerated per user QA: cinematic studio quality, clean negative space, no text/logos/typography, blank labels where applicable.",
+      "regeneration_note": "Regenerated studio pass: page hero apothecary shelves, left dark negative space, blank labels."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-shop-page-hero.jpg",
@@ -95,8 +104,9 @@
         500
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17669242048190be05c3f4b03a8950.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d8134dc88190b5c942f644cbaa77.png",
+      "constraints": "Regenerated per user QA: cinematic studio quality, clean negative space, no text/logos/typography, blank labels where applicable.",
+      "regeneration_note": "Regenerated studio pass: organized supplement grid around clean center negative space, blank labels."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-product-page-lifestyle-strip.jpg",
@@ -107,8 +117,9 @@
         400
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a176723e33c8190aef26729c976d284.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d8735a588190bd6c360cc321fe12.png",
+      "constraints": "Regenerated per user QA: cinematic studio quality, clean negative space, no text/logos/typography, blank labels where applicable.",
+      "regeneration_note": "Regenerated studio pass: cinematic morning routine strip, blank labels, central calm band."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-immunity-hero.jpg",
@@ -119,8 +130,9 @@
         400
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17676772588190a6c7b344eaaa824e.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17d8c4fdec8190a39f6dfbe10ae487.png",
+      "constraints": "Regenerated per user QA: cinematic studio quality, clean negative space, no text/logos/typography, blank labels where applicable.",
+      "regeneration_note": "Regenerated studio pass: bright marble immunity flat-lay with clean right negative space."
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-gut-health-hero.jpg",
@@ -131,8 +143,10 @@
         400
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a1767aed0a88190b1e68abc4cdb306d.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17db9b23e4819084ace753ea9f906d.png",
+      "constraints": "Corrected per user QA: required collection-specific props are explicit and foreground-visible; no text/logos/typography.",
+      "regeneration_note": "Corrected to make kefir, kimchi, kombucha, probiotic capsules, mint/fennel, and probiotic powder unmistakable.",
+      "crop_anchor_y": 0.58
     },
     {
       "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-sleep-relaxation-hero.jpg",
@@ -143,8 +157,11 @@
         400
       ],
       "format": "jpg",
-      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a1767f5a9988190ba87cfff7c5eb1b9.png",
-      "constraints": "No baked-in text/logos requested; visual QA required before use."
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a17dbe557988190aa839a56a06da958.png",
+      "constraints": "Corrected per user QA: required collection-specific props are explicit and foreground-visible; no text/logos/typography.",
+      "regeneration_note": "Corrected to make magnesium capsules, chamomile tea, lavender, candle, blanket, and book unmistakable.",
+      "crop_anchor_y": 0.52
     }
-  ]
+  ],
+  "qa_status": "Pending final visual and dimension check after gut/sleep collection correction."
 }
