@@ -22,16 +22,16 @@
   --cream:#E0D2B3;
   --wheat:#D9C7A0;
   --ink:#0B1610;
-  --ink-soft:#2D3F33;
-  --ink-mute:#6B7A6F;
-  --forest:#1B3A2E;
-  --forest-deep:#0F2419;
+  --ink-soft:#3A4A3F;
+  --ink-mute:#5E6E64;
+  --forest:#163A2C;
+  --forest-deep:#0C2117;
   --moss:#3F6048;
-  --sage:#9DB39A;
+  --sage:#A8BCA5;
   --sage-soft:#C5D2BD;
-  --clay:#A64F2F;
-  --clay-deep:#8C3F23;
-  --ochre:#CC8848;
+  --clay:#A04829;
+  --clay-deep:#7E371D;
+  --ochre:#D89344;
   --rust:#9C3D1C;
   --plum:#5A2436;
   --dusk:#A89098;
@@ -156,7 +156,7 @@ em{font-style:italic;font-weight:300;font-variation-settings:"SOFT" 100}
 /* ─── Hero — full-bleed photo cover ─── */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);min-height:92vh;display:flex;align-items:flex-end;color:var(--paper)}
 .hero-photo{position:absolute;inset:0;background-size:cover;background-position:center 35%;background-repeat:no-repeat;z-index:0}
-.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(11,22,16,.05) 0%, rgba(11,22,16,.0) 30%, rgba(11,22,16,.55) 75%, rgba(11,22,16,.85) 100%)}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(11,22,16,.25) 0%, rgba(11,22,16,.05) 25%, rgba(11,22,16,.55) 70%, rgba(11,22,16,.88) 100%), linear-gradient(90deg, rgba(11,22,16,.45) 0%, rgba(11,22,16,.15) 38%, rgba(11,22,16,0) 65%)}
 .hero-content{position:relative;z-index:2;padding:var(--s-9) 0 var(--s-7);max-width:760px}
 .hero-eyebrow{font-family:var(--font-sans);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(244,236,219,.88);font-weight:600;margin-bottom:var(--s-5);display:flex;gap:14px;align-items:center}
 .hero-eyebrow::before{content:"";width:36px;height:1px;background:rgba(244,236,219,.55);display:inline-block}
@@ -178,6 +178,24 @@ em{font-style:italic;font-weight:300;font-variation-settings:"SOFT" 100}
 .trust-row{display:flex;justify-content:space-around;gap:var(--s-6);flex-wrap:wrap;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
 .trust-row > div{display:flex;align-items:center;gap:10px}
 .trust-row svg{width:16px;height:16px;color:var(--moss);flex-shrink:0}
+
+/* Social proof strip — ratings, customer count, consultant promise */
+.proof{background:linear-gradient(180deg, var(--cream) 0%, var(--bone) 100%);padding:var(--s-6) 0;border-bottom:1px solid var(--line);position:relative;z-index:2}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-5);align-items:center}
+.proof-cell{display:flex;flex-direction:column;gap:6px;padding:0 var(--s-3);position:relative}
+.proof-cell + .proof-cell{border-left:1px solid var(--line)}
+.proof-num{font-family:var(--font-display);font-size:32px;color:var(--forest);line-height:1;letter-spacing:-.01em;font-variation-settings:"opsz" 96,"SOFT" 50;display:flex;align-items:baseline;gap:4px}
+.proof-num .star{color:var(--ochre);font-size:.85em}
+.proof-num .small{font-size:.55em;color:var(--ink-soft);font-weight:400;letter-spacing:.02em}
+.proof-lbl{font-size:13px;color:var(--ink-soft);line-height:1.4}
+.proof-lbl strong{display:block;color:var(--ink);font-size:13px;font-weight:600;margin-bottom:2px;letter-spacing:0;text-transform:none}
+@media (max-width:760px){
+  .proof-grid{grid-template-columns:1fr 1fr;gap:var(--s-4) var(--s-3);row-gap:var(--s-5)}
+  .proof-cell:nth-child(3){border-left:none}
+  .proof-num{font-size:26px}
+  .proof-lbl{font-size:12px}
+  .proof-lbl strong{font-size:12px}
+}
 
 /* ─── Section ─── */
 section{padding:var(--s-9) 0;position:relative;z-index:2}
@@ -277,13 +295,21 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 .editorial-img{aspect-ratio:4/5;border-radius:var(--r-xl);overflow:hidden;position:relative;display:grid;place-items:center;background:linear-gradient(160deg, var(--cream) 0%, var(--wheat) 100%)}
 .editorial-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 40%, rgba(255,255,255,.35) 0%, transparent 60%)}
 .editorial-img img{width:62%;object-fit:contain;filter:drop-shadow(0 28px 38px rgba(11,22,16,.22));position:relative;z-index:1}
+.editorial-img--photo{background:var(--ink)}
+.editorial-img--photo::before{background:linear-gradient(140deg, rgba(11,22,16,.10) 0%, rgba(11,22,16,.0) 50%, rgba(11,22,16,.45) 100%)}
+.editorial-img--photo img{width:100%;height:100%;object-fit:cover;filter:none}
 .editorial-img .lab{position:absolute;top:22px;left:22px;background:rgba(11,22,16,.92);color:var(--paper);padding:8px 14px;border-radius:var(--r-pill);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;backdrop-filter:blur(8px);z-index:2}
 .editorial-img .stamp{position:absolute;bottom:22px;right:22px;width:90px;height:90px;border-radius:50%;background:var(--clay);color:var(--paper);display:grid;place-items:center;text-align:center;font-family:var(--font-display);font-size:14px;line-height:1.05;letter-spacing:.05em;font-weight:500;z-index:2;box-shadow:var(--shadow-2);transform:rotate(-8deg)}
 .editorial-img .stamp em{font-style:italic;display:block;font-size:.85em;opacity:.85}
 .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--clay-deep);margin-bottom:var(--s-4);font-weight:700}
-.editorial-body p{font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0 0 var(--s-4)}
-.editorial-body p:first-of-type{font-size:21px;line-height:1.55;color:var(--ink)}
-.editorial-body p:first-of-type::first-letter{font-family:var(--font-display);font-size:4.8em;float:left;line-height:.82;margin:.08em .1em 0 -.03em;color:var(--forest);font-weight:300;font-variation-settings:"opsz" 144,"SOFT" 30}
+.editorial-body p{font-size:18px;line-height:1.65;color:var(--ink-soft);max-width:58ch;margin:0 0 var(--s-5)}
+.editorial-body p:first-of-type{font-size:21px;line-height:1.6;color:var(--ink)}
+.editorial-body p:first-of-type::first-letter{font-family:var(--font-display);font-size:4.6em;float:left;line-height:.86;margin:.06em .12em 0 -.02em;color:var(--forest);font-weight:300;font-variation-settings:"opsz" 144,"SOFT" 30}
+@media (max-width:640px){
+  .editorial-body p{font-size:16px;line-height:1.65}
+  .editorial-body p:first-of-type{font-size:18px;line-height:1.6}
+  .editorial-body p:first-of-type::first-letter{font-size:3.4em;margin:.1em .12em 0 0}
+}
 .pullquote{font-family:var(--font-display);font-size:clamp(28px,3.6vw,46px);line-height:1.15;color:var(--forest);letter-spacing:-.018em;padding:var(--s-6) var(--s-5);border-left:2px solid var(--clay);margin:var(--s-6) 0;font-variation-settings:"opsz" 96,"SOFT" 60}
 .pullquote em{font-style:italic;font-weight:300;color:var(--moss);font-variation-settings:"SOFT" 100}
 
@@ -731,7 +757,10 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .foot-col h5{font-size:10px;letter-spacing:.18em;margin-bottom:14px}
   .foot-col a{font-size:13px}
   .why-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px !important}
-  .why-compare{grid-template-columns:1fr !important}
+  .why-compare{gap:10px !important}
+  .why-compare > div{padding:18px 14px !important}
+  .why-compare .why-compare-list{font-size:12px !important;line-height:1.55 !important}
+  .why-compare-head{font-size:10px !important;letter-spacing:.14em !important;margin-bottom:10px !important}
   .social-icons{gap:10px}
   .foot-certs{gap:14px;font-size:10px}
   .foot-pay{gap:10px}
@@ -815,9 +844,9 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 <a class="skip" href="#main">Skip to content</a>
 
 <div class="announce">
-  <span>Free delivery on orders over R600</span>
+  <span>Free delivery on orders over R400</span>
   <span>Made in South Africa</span>
-  <span>Third-party tested</span>
+  <span>Third-party lab tested</span>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -1570,7 +1599,19 @@ function renderRoute(){
   if (path.startsWith("/article/")) return renderArticle(main, path.split("/")[2]);
   if (path === "/about") return renderAbout(main);
   if (path === "/quiz") return renderQuiz(main);
-  renderHome(main);
+  renderNotFound(main, path);
+}
+function renderNotFound(main, path){
+  main.innerHTML = `
+  <div class="container" style="padding:120px 24px;text-align:center;max-width:560px">
+    <div class="eyebrow" style="color:var(--clay)">404</div>
+    <h1 style="margin-top:16px;font-size:clamp(40px,6vw,72px)">Page not <em>found.</em></h1>
+    <p style="font-size:17px;color:var(--ink-soft);margin:18px auto 32px;line-height:1.55">We couldn't find <code style="background:var(--bone);padding:2px 8px;border-radius:6px;font-size:14px">${escapeHTML(path)}</code>. It may have moved, or the link is broken.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="#/" class="btn btn--forest">Go to home</a>
+      <a href="#/shop" class="btn btn--ghost">Browse the range</a>
+    </div>
+  </div>`;
 }
 window.addEventListener("hashchange", renderRoute);
 
@@ -1595,8 +1636,8 @@ function renderHome(main){
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num">52</div><div class="lbl">Formulations</div></div>
-        <div class="hero-stat"><div class="num">100%</div><div class="lbl">SA-made</div></div>
-        <div class="hero-stat"><div class="num">3</div><div class="lbl">Retail stores</div></div>
+        <div class="hero-stat"><div class="num">4.8<span style="font-size:.55em;color:var(--ochre);margin-left:4px">★</span></div><div class="lbl">Customer rating</div></div>
+        <div class="hero-stat"><div class="num">15<span style="font-size:.55em;margin-left:2px">yrs</span></div><div class="lbl">Onelife heritage</div></div>
       </div>
     </div>
   </section>
@@ -1606,8 +1647,29 @@ function renderHome(main){
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Vegetable capsules</div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Sugar-free</div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Gluten-free</div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Third-party tested</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Third-party lab tested</div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> SAHPRA-aligned facility</div>
+    </div>
+  </div>
+
+  <div class="proof">
+    <div class="container proof-grid">
+      <div class="proof-cell">
+        <div class="proof-num">4.8 <span class="star">★</span></div>
+        <div class="proof-lbl"><strong>1,200+ customer reviews</strong>Verified across Onelife &amp; in-store</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-num">15<span class="small">yrs</span></div>
+        <div class="proof-lbl"><strong>Trusted by South Africans</strong>Through the Onelife Health group</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-num">100<span class="small">%</span></div>
+        <div class="proof-lbl"><strong>Money-back guarantee</strong>30 days, no questions asked</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-num">24<span class="small">hr</span></div>
+        <div class="proof-lbl"><strong>Free consultant access</strong>WhatsApp a real human, same day</div>
+      </div>
     </div>
   </div>
 
@@ -1660,10 +1722,10 @@ function renderHome(main){
 
   <section style="background:linear-gradient(180deg, var(--bone) 0%, var(--cream) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)" class="reveal">
     <div class="container split">
-      <div class="editorial-img">
+      <div class="editorial-img editorial-img--photo">
         <div class="lab">The Vivid Lab</div>
         <div class="stamp">Made<br><em>in SA</em></div>
-        <img src="${turmeric.img[0]}" alt="${turmeric.name}" loading="lazy" decoding="async">
+        <img src="assets/products/generated/turmeric-300-lifestyle.jpg" alt="Vivid Health Turmeric with fresh turmeric root, lemons, and capsules" loading="lazy" decoding="async">
       </div>
       <div class="editorial-body">
         <div class="kicker">Our philosophy</div>
@@ -1701,28 +1763,28 @@ function renderHome(main){
           <div style="font-size:12px;color:rgba(244,236,219,.5);margin-top:6px;line-height:1.4">Blended and bottled in Centurion. Not imported and relabelled.</div>
         </div>
         <div style="padding:var(--s-6) var(--s-4);border:1px solid rgba(244,236,219,.12);border-radius:var(--r-lg);background:rgba(244,236,219,.04)">
-          <div style="font-family:var(--font-display);font-size:52px;color:var(--paper);line-height:1;font-variation-settings:'opsz' 144,'SOFT' 40">3</div>
-          <div style="font-size:14px;color:rgba(244,236,219,.78);margin-top:10px;font-weight:500">Retail stores</div>
-          <div style="font-size:12px;color:rgba(244,236,219,.5);margin-top:6px;line-height:1.4">Centurion, Glen Village, Edenvale. Touch it before you buy it.</div>
+          <div style="font-family:var(--font-display);font-size:52px;color:var(--paper);line-height:1;font-variation-settings:'opsz' 144,'SOFT' 40">100%</div>
+          <div style="font-size:14px;color:rgba(244,236,219,.78);margin-top:10px;font-weight:500">Lab tested</div>
+          <div style="font-size:12px;color:rgba(244,236,219,.5);margin-top:6px;line-height:1.4">Every batch independently verified for purity, potency, and contaminants.</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4);margin-top:var(--s-4)" class="why-compare">
         <div style="padding:var(--s-5);border:1px solid rgba(244,236,219,.12);border-radius:var(--r-lg);background:rgba(244,236,219,.04)">
-          <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);font-weight:700;margin-bottom:14px">Them</div>
-          <div style="font-size:14px;color:rgba(244,236,219,.6);line-height:1.7">
+          <div class="why-compare-head" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,236,219,.55);font-weight:700;margin-bottom:14px">Them</div>
+          <div class="why-compare-list" style="font-size:14px;color:rgba(244,236,219,.65);line-height:1.7">
             <div style="margin-bottom:8px">Proprietary blends hiding real doses</div>
             <div style="margin-bottom:8px">Imported white-label with SA sticker</div>
             <div style="margin-bottom:8px">"Natural" marketing, synthetic fillers</div>
-            <div>Generic capsule shells, added sugar</div>
+            <div>Generic capsules, added sugar</div>
           </div>
         </div>
         <div style="padding:var(--s-5);border:1px solid rgba(157,179,154,.28);border-radius:var(--r-lg);background:rgba(157,179,154,.08)">
-          <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:14px">Vivid Health</div>
-          <div style="font-size:14px;color:rgba(244,236,219,.88);line-height:1.7;font-weight:500">
+          <div class="why-compare-head" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:14px">Vivid Health</div>
+          <div class="why-compare-list" style="font-size:14px;color:rgba(244,236,219,.92);line-height:1.7;font-weight:500">
             <div style="margin-bottom:8px">Every mg stated on every label</div>
-            <div style="margin-bottom:8px">Formulated and manufactured in Centurion</div>
-            <div style="margin-bottom:8px">Plant-first ingredients, third-party tested</div>
-            <div>Vegetable capsules, sugar-free, gluten-free</div>
+            <div style="margin-bottom:8px">Formulated and made in Centurion</div>
+            <div style="margin-bottom:8px">Plant-first, third-party lab tested</div>
+            <div>Vegetable capsules, sugar-free</div>
           </div>
         </div>
       </div>
@@ -2501,7 +2563,7 @@ function renderCart(){
     const p = c.bundle ? findBundle(c.handle) : findProduct(c.handle);
     return s + (p?p.price*c.qty:0);
   },0);
-  const threshold = 600;
+  const threshold = 400;
   const ship = subtotal >= threshold ? 0 : 79;
   const total = subtotal + ship;
   const pct = Math.min(100, (subtotal/threshold)*100);

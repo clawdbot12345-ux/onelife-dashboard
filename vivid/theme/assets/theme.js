@@ -71,10 +71,10 @@ async function renderCart() {
     </div>`
     )
     .join("");
-  const ship = cart.total_price >= 60000 ? 0 : 7900;
+  const ship = cart.total_price >= 40000 ? 0 : 7900;
   foot.innerHTML = `
     <div class="cart-totals"><span>Subtotal</span><span>${formatR(cart.total_price)}</span></div>
-    <div class="cart-totals"><span>Shipping</span><span>${ship === 0 ? "Free over R600" : formatR(ship)}</span></div>
+    <div class="cart-totals"><span>Shipping</span><span>${ship === 0 ? "Free over R400" : formatR(ship)}</span></div>
     <div class="cart-totals total"><span>Total</span><span>${formatR(cart.total_price + ship)}</span></div>
     <a class="btn btn--forest btn--block" href="/checkout">Checkout — ${formatR(cart.total_price + ship)}</a>
   `;
