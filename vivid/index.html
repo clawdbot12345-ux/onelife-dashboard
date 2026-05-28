@@ -522,6 +522,10 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .collection-head--banner p{color:rgba(244,236,219,.86);text-shadow:0 1px 12px rgba(0,0,0,.25)}
 .collection-head--banner .crumb{color:rgba(244,236,219,.7)}
 .collection-head--banner .crumb a{color:var(--sage-soft)}
+.collection-sublabel{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,236,219,.7);margin-top:var(--s-3);font-weight:600}
+.collection-sublabel strong{color:var(--ochre);font-weight:700}
+.collection-head:not(.collection-head--banner) .collection-sublabel{color:var(--ink-soft)}
+.collection-head:not(.collection-head--banner) .collection-sublabel strong{color:var(--clay)}
 .crumb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--s-5);font-weight:600}
 .crumb a{color:var(--forest);font-weight:700}
 
@@ -1088,26 +1092,26 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
     <div class="mega" id="megaShop" role="region" aria-label="Shop menu">
       <div class="mega-grid">
         <div class="mega-col">
-          <h6>Shop by category</h6>
+          <h6>Shop by goal</h6>
           <ul>
             <li><a href="#/shop?goal=gut" onclick="closeMega()">Gut Health <span class="count">5</span></a></li>
-            <li><a href="#/shop?goal=immunity" onclick="closeMega()">Immune Health <span class="count">10</span></a></li>
+            <li><a href="#/shop?goal=immunity" onclick="closeMega()">Immunity <span class="count">10</span></a></li>
             <li><a href="#/shop?goal=energy" onclick="closeMega()">Energy &amp; Vitality <span class="count">2</span></a></li>
-            <li><a href="#/shop?goal=stress" onclick="closeMega()">Mental Health <span class="count">4</span></a></li>
-            <li><a href="#/shop?goal=joints" onclick="closeMega()">Physical Health <span class="count">7</span></a></li>
+            <li><a href="#/shop?goal=stress" onclick="closeMega()">Stress, Sleep &amp; Mood <span class="count">4</span></a></li>
+            <li><a href="#/shop?goal=joints" onclick="closeMega()">Joints &amp; Mobility <span class="count">7</span></a></li>
             <li><a href="#/shop?goal=women" onclick="closeMega()">Women's Health <span class="count">3</span></a></li>
             <li><a href="#/shop?goal=men" onclick="closeMega()">Men's Health <span class="count">1</span></a></li>
-            <li><a href="#/shop?goal=daily" onclick="closeMega()">Nutrient Health <span class="count">20</span></a></li>
+            <li><a href="#/shop?goal=daily" onclick="closeMega()">Daily Nutrients <span class="count">20</span></a></li>
           </ul>
         </div>
         <div class="mega-col">
           <h6>Curated</h6>
           <ul>
             <li><a href="#/shop" onclick="closeMega()">All formulations <span class="count">52</span></a></li>
-            <li><a href="#/shop?picks=1" onclick="closeMega()">Vivid Picks <span class="count">8</span></a></li>
             <li><a href="#/shop?bundles=1" onclick="closeMega()">Bundles &amp; stacks <span class="count">3</span></a></li>
             <li><a href="#/product/buffered-c-300" onclick="closeMega()">Bestseller: Buffered C</a></li>
             <li><a href="#/product/turmeric-300" onclick="closeMega()">Bestseller: Turmeric</a></li>
+            <li><a href="#/product/tranquil-60" onclick="closeMega()">Trending: Tranquil</a></li>
           </ul>
         </div>
         <div class="mega-col">
@@ -1255,7 +1259,6 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
           <li><a href="#/shop?goal=gut">Gut health</a></li>
           <li><a href="#/shop?goal=immunity">Immunity</a></li>
           <li><a href="#/shop?goal=stress">Stress & sleep</a></li>
-          <li><a href="#/shop?picks=1">Vivid Picks</a></li>
           <li><a href="#/shop?bundles=1">Bundles</a></li>
         </ul>
       </div>
@@ -1816,19 +1819,19 @@ const JOURNAL = [
   },
 ];
 
+/* Each goal has a name (outcome-focused for marketing) and a label (the
+   category name printed on actual product bottles — shown as a subtitle
+   so customers can match the website to what's on the bottle). */
 const GOALS = [
-  {id:"gut",name:"Gut Health",desc:"Cleanse, balance, restore",icon:"M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z M12 9v6"},
-  {id:"immunity",name:"Immune Health",desc:"Daily defence, year-round",icon:"M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"},
-  {id:"energy",name:"Energy & Vitality",desc:"Cellular fuel, not stimulants",icon:"M13 2L3 14h7l-1 8 10-12h-7z"},
-  {id:"stress",name:"Mental Health",desc:"Calm, sleep, mental balance",icon:"M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"},
-  {id:"joints",name:"Physical Health",desc:"Joints, bones, mobility",icon:"M6 6l4 4-2 2-4-4 2-2zm12 12l-4-4 2-2 4 4-2 2zM10 14l4-4"},
-  {id:"women",name:"Women's Health",desc:"Hormones, cycles, balance",icon:"M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 0v8m-3-4h6"},
-  {id:"men",name:"Men's Health",desc:"Prostate, vitality, focus",icon:"M14 4h6v6M20 4L13 11m-7 9a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"},
-  {id:"daily",name:"Nutrient Health",desc:"Vitamins, omegas, daily basics",icon:"M12 2v20m-8-10h16"},
+  {id:"gut",name:"Gut Health",label:"Gut Health",desc:"Cleanse, balance, restore",icon:"M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z M12 9v6"},
+  {id:"immunity",name:"Immunity",label:"Immune Health",desc:"Daily defense, year-round",icon:"M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"},
+  {id:"energy",name:"Energy & Vitality",label:"Nutrient Health",desc:"Cellular fuel, not stimulants",icon:"M13 2L3 14h7l-1 8 10-12h-7z"},
+  {id:"stress",name:"Stress, Sleep & Mood",label:"Mental Health",desc:"Calm without sedation",icon:"M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"},
+  {id:"joints",name:"Joints & Mobility",label:"Physical Health",desc:"Move freely, age strongly",icon:"M6 6l4 4-2 2-4-4 2-2zm12 12l-4-4 2-2 4 4-2 2zM10 14l4-4"},
+  {id:"women",name:"Women's Health",label:"Women's Health",desc:"Hormones, cycles, balance",icon:"M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 0v8m-3-4h6"},
+  {id:"men",name:"Men's Health",label:"Men's Health",desc:"Prostate, vitality, focus",icon:"M14 4h6v6M20 4L13 11m-7 9a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"},
+  {id:"daily",name:"Daily Nutrients",label:"Nutrient Health",desc:"Vitamins, omegas, basics",icon:"M12 2v20m-8-10h16"},
 ];
-
-/* ─── Vivid Picks — curated favourites collection (matches the existing /portfolio-item/vivid-picks/ on vividhealthsa.co.za) ─── */
-const VIVID_PICKS = ["turmeric-300","buffered-c-300","mullein-60","tranquil-60","msm-90","l-glutamine-500","griffonia-5htp-60","flexijoint-advanced-120"];
 
 /* ─── State ─── */
 const fmtR = (n) => "R" + n.toLocaleString("en-ZA",{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -2589,7 +2592,7 @@ function renderHome(main){
             <div class="goal-shape"></div>
             <div class="goal-shape-2"></div>
             <div class="goal-content">
-              <div class="goal-tag">${PRODUCTS.filter(p=>p.goal===g.id).length} formulations</div>
+              <div class="goal-tag">${g.label !== g.name ? `${g.label} · ` : ""}${PRODUCTS.filter(p=>p.goal===g.id).length} formulations</div>
               <div><div class="goal-name">${g.name.replace(/&/g,'<em>&</em>')}</div></div>
               <div class="goal-meta">
                 <span>${g.desc}</span>
@@ -2773,33 +2776,25 @@ function cardHTML(p){
 function renderShop(main, params){
   const goal = params.get("goal");
   const bundlesOnly = params.get("bundles");
-  const picksOnly = params.get("picks");
   const sort = params.get("sort") || "featured";
 
-  let list;
-  if (bundlesOnly) {
-    list = [...BUNDLES.map(b=>({...b,bundle:true,goal:"bundles",img:[b.img],form:"stack"}))];
-  } else if (picksOnly) {
-    list = VIVID_PICKS.map(h=>findProduct(h)).filter(Boolean);
-  } else {
-    list = [...PRODUCTS];
-    if (goal) list = list.filter(p=>p.goal===goal);
-  }
+  let list = bundlesOnly ? [...BUNDLES.map(b=>({...b,bundle:true,goal:"bundles",img:[b.img],form:"stack"}))] : [...PRODUCTS];
+  if (goal && !bundlesOnly) list = list.filter(p=>p.goal===goal);
   if (sort === "price-asc") list.sort((a,b)=>a.price-b.price);
   if (sort === "price-desc") list.sort((a,b)=>b.price-a.price);
   if (sort === "name") list.sort((a,b)=>a.name.localeCompare(b.name));
 
-  const title = bundlesOnly ? "Bundles" : picksOnly ? "Vivid Picks" : (goal ? goalName(goal) : "All formulations");
+  const title = bundlesOnly ? "Bundles" : (goal ? goalName(goal) : "All formulations");
   const desc = bundlesOnly
     ? "Pre-paired stacks built for an outcome. Save R110–R150 vs buying separately."
-    : picksOnly
-      ? "Our curated favourites — eight formulations the Vivid team would put in their own bathroom cabinet, hand-picked from across the range."
-      : (goal
-          ? `Vivid Health formulations for ${goalName(goal).toLowerCase()}. South African made, dose-stated, vegetable capsules where applicable.`
-          : "Browse the full Vivid Health range — 52 single-ingredient and combination formulations, all made in South Africa.");
+    : (goal
+        ? `Vivid Health formulations for ${goalName(goal).toLowerCase()}. South African made, dose-stated, vegetable capsules where applicable.`
+        : "Browse the full Vivid Health range — 52 single-ingredient and combination formulations, all made in South Africa.");
   const banner = headerBanner({goal, bundlesOnly});
-  const crumbLast = bundlesOnly ? "Bundles" : picksOnly ? "Vivid Picks" : (goal ? goalName(goal) : "Shop");
+  const crumbLast = bundlesOnly ? "Bundles" : (goal ? goalName(goal) : "Shop");
 
+  const goalObj = goal ? GOALS.find(g=>g.id===goal) : null;
+  const subtitle = goalObj && goalObj.label !== goalObj.name ? `<div class="collection-sublabel">As labelled on the bottle: <strong>${goalObj.label}</strong></div>` : "";
   main.innerHTML = `
   <div class="collection-head collection-head--banner" style="--banner:url('${banner}')">
     <div class="collection-bg"></div>
@@ -2807,13 +2802,13 @@ function renderShop(main, params){
       <div class="crumb"><a href="#/">Home</a> · ${crumbLast}</div>
       <h1>${title}</h1>
       <p>${desc}</p>
+      ${subtitle}
     </div>
   </div>
   <div class="container">
     <div class="shop-toolbar">
-      <div class="chip-row" role="group" aria-label="Filter by category">
-        <button type="button" class="chip ${!goal&&!bundlesOnly&&!picksOnly?'is-active':''}" onclick="setFilter('goal','')">All <span class="chip-ct">${PRODUCTS.length}</span></button>
-        <button type="button" class="chip ${picksOnly?'is-active':''}" onclick="location.hash='/shop?picks=1'">Vivid Picks <span class="chip-ct">${VIVID_PICKS.length}</span></button>
+      <div class="chip-row" role="group" aria-label="Filter by goal">
+        <button type="button" class="chip ${!goal&&!bundlesOnly?'is-active':''}" onclick="setFilter('goal','')">All <span class="chip-ct">${PRODUCTS.length}</span></button>
         ${GOALS.map(g=>`<button type="button" class="chip ${goal===g.id?'is-active':''}" onclick="setFilter('goal','${g.id}')">${g.name} <span class="chip-ct">${PRODUCTS.filter(p=>p.goal===g.id).length}</span></button>`).join("")}
         <button type="button" class="chip ${bundlesOnly?'is-active':''}" onclick="location.hash='/shop?bundles=1'">Bundles <span class="chip-ct">${BUNDLES.length}</span></button>
       </div>
@@ -2827,7 +2822,7 @@ function renderShop(main, params){
         </select>
       </div>
     </div>
-    <div class="shop-meta"><span>${list.length} product${list.length===1?"":"s"}</span>${goal||bundlesOnly||picksOnly?`<a href="#/shop" class="shop-meta-clear">Clear filter ×</a>`:""}</div>
+    <div class="shop-meta"><span>${list.length} product${list.length===1?"":"s"}</span>${goal||bundlesOnly?`<a href="#/shop" class="shop-meta-clear">Clear filter ×</a>`:""}</div>
     <div class="products-row products-row--shop" style="padding-bottom:var(--s-9)">
       ${list.length === 0
         ? `<div style="grid-column:1/-1;padding:64px 0;text-align:center;color:var(--ink-soft)"><p>No products match that filter.</p><a href="#/shop" class="btn btn--ghost" style="margin-top:16px">Show all</a></div>`
