@@ -422,23 +422,33 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .crumb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--s-5);font-weight:600}
 .crumb a{color:var(--forest);font-weight:700}
 
-.collection-layout{display:grid;grid-template-columns:260px 1fr;gap:var(--s-7);padding:var(--s-7) 0 var(--s-9)}
-@media (max-width:900px){.collection-layout{grid-template-columns:1fr}}
-.filters{position:sticky;top:96px;align-self:start;height:max-content;border-right:1px solid var(--line);padding-right:var(--s-6)}
-@media (max-width:900px){.filters{position:static;border:0;padding:0;display:flex;gap:var(--s-3);flex-wrap:wrap;overflow:auto}}
-.filter-group{margin-bottom:var(--s-6)}
-.filter-group h5{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 var(--s-4);font-weight:700}
-.filter-opts{display:flex;flex-direction:column;gap:10px}
-@media (max-width:900px){.filter-opts{flex-direction:row;flex-wrap:wrap}}
-.filter-opts label{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer;color:var(--ink-soft);transition:.15s}
-.filter-opts label input{accent-color:var(--forest)}
-.filter-opts label:hover{color:var(--ink)}
-.filter-opts label .ct{margin-left:auto;font-size:11px;color:var(--ink-mute);font-variant-numeric:tabular-nums;font-weight:600}
+/* ─── Shop toolbar — single-select chip filter + sort ─── */
+.shop-toolbar{padding:var(--s-6) 0 var(--s-4);display:flex;align-items:center;gap:var(--s-5);position:sticky;top:60px;background:var(--paper);z-index:5;border-bottom:1px solid var(--line)}
+.chip-row{display:flex;gap:8px;flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;padding:4px 0;scrollbar-width:none}
+.chip-row::-webkit-scrollbar{display:none}
+.chip{padding:9px 16px;border-radius:999px;background:var(--paper);border:1.5px solid var(--line);font-size:13px;font-weight:500;color:var(--ink-soft);white-space:nowrap;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:6px;scroll-snap-align:start;font-family:inherit;line-height:1}
+.chip:hover{border-color:var(--moss);color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.chip.is-active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip-ct{font-size:11px;color:var(--ink-mute);font-variant-numeric:tabular-nums;font-weight:600}
+.chip.is-active .chip-ct{color:rgba(244,236,219,.6)}
+.shop-sort{display:flex;align-items:center;gap:8px;flex-shrink:0;font-size:13px;color:var(--ink-soft)}
+.shop-sort .sort-lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:700}
+.shop-sort select{background:var(--paper);border:1.5px solid var(--line);padding:9px 14px;border-radius:999px;font-size:13px;cursor:pointer;font-weight:500;color:var(--ink);font-family:inherit}
+.shop-meta{display:flex;justify-content:space-between;align-items:center;padding:var(--s-4) 0;font-size:13px;color:var(--ink-soft)}
+.shop-meta-clear{font-size:13px;color:var(--clay);font-weight:600;text-decoration:underline}
+.products-row--shop{padding-top:var(--s-3)}
 
-.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--s-6);gap:var(--s-4);flex-wrap:wrap;padding-bottom:var(--s-4);border-bottom:1px solid var(--line)}
-.toolbar-count{font-size:14px;color:var(--ink-soft);font-weight:500}
-.sort{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-soft)}
-.sort select{background:var(--paper);border:1px solid var(--line-strong);padding:10px 16px;border-radius:var(--r-pill);font-size:13px;cursor:pointer;font-weight:500}
+@media (max-width:780px){
+  .shop-toolbar{padding:14px 0 12px;gap:10px;flex-direction:column;align-items:stretch;top:54px}
+  .chip-row{margin:0 -16px;padding:0 16px 4px;width:calc(100% + 32px)}
+  .chip{padding:8px 14px;font-size:12px}
+  .shop-sort{justify-content:flex-end}
+  .shop-meta{padding:12px 0}
+}
+
+/* ─── Collection layout (legacy classes kept for non-shop collection pages) ─── */
+.collection-layout{display:grid;grid-template-columns:1fr;gap:var(--s-7);padding:var(--s-4) 0 var(--s-9)}
 
 /* ─── PDP ─── */
 .pdp{padding:var(--s-7) 0 var(--s-9)}
@@ -686,21 +696,40 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .policy-meta{font-size:13px;color:var(--ink-soft);padding-bottom:var(--s-4);border-bottom:1px solid var(--line);margin-bottom:var(--s-5)}
 
 /* ─── Quiz ─── */
-.quiz-overlay{padding:var(--s-9) 0}
+.quiz-head{background:var(--forest-deep);color:var(--paper);padding:var(--s-8) 0 var(--s-6);position:relative;overflow:hidden}
+.quiz-head::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%, rgba(157,179,154,.10) 0%, transparent 60%);pointer-events:none}
+.quiz-head .container{position:relative;z-index:1}
+.quiz-head .crumb{color:var(--sage);margin-bottom:var(--s-3)}
+.quiz-head .crumb a{color:var(--sage)}
+.quiz-head h1{color:var(--paper);font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-.02em}
+.quiz-head p{color:rgba(244,236,219,.78);font-size:17px;margin-top:12px;max-width:54ch;line-height:1.5}
+.quiz-overlay{padding:var(--s-7) 0 var(--s-8)}
 .quiz-box{max-width:780px;margin:0 auto}
-.quiz-q{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);line-height:1.08;margin-bottom:var(--s-6);letter-spacing:-.02em;font-variation-settings:"opsz" 96,"SOFT" 50}
+.quiz-q{font-family:var(--font-display);font-size:clamp(24px,4vw,42px);line-height:1.12;margin-bottom:var(--s-5);letter-spacing:-.02em;font-variation-settings:"opsz" 96,"SOFT" 50;color:var(--ink)}
 .quiz-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-3)}
-@media (max-width:600px){.quiz-opts{grid-template-columns:1fr}}
-.quiz-opt{padding:var(--s-5);border:1.5px solid var(--line);border-radius:var(--r-lg);cursor:pointer;transition:.15s;background:var(--paper);text-align:left;width:100%}
+@media (max-width:600px){.quiz-opts{grid-template-columns:1fr;gap:10px}}
+.quiz-opt{padding:var(--s-4) var(--s-5);border:1.5px solid var(--line);border-radius:var(--r-lg);cursor:pointer;transition:.15s;background:var(--paper);text-align:left;width:100%}
 .quiz-opt:hover{border-color:var(--moss);transform:translateY(-2px);box-shadow:var(--shadow-2)}
 .quiz-opt.selected{border-color:var(--forest);background:rgba(63,96,72,.06)}
-.quiz-opt strong{display:block;font-family:var(--font-display);font-size:20px;margin-bottom:6px;font-variation-settings:"opsz" 96}
+.quiz-opt strong{display:block;font-family:var(--font-display);font-size:19px;margin-bottom:4px;font-variation-settings:"opsz" 96;line-height:1.15}
 .quiz-opt span{font-size:13px;color:var(--ink-soft);line-height:1.4}
-.quiz-progress{display:flex;gap:6px;margin-bottom:var(--s-6)}
+.quiz-progress{display:flex;gap:6px;margin-bottom:var(--s-5)}
 .quiz-dot{width:100%;height:3px;border-radius:2px;background:var(--line)}
 .quiz-dot.done{background:var(--forest)}
 .quiz-dot.active{background:var(--clay)}
 .quiz-result{margin-top:var(--s-7)}
+@media (max-width:600px){
+  .quiz-head{padding:36px 0 24px}
+  .quiz-head h1{font-size:32px}
+  .quiz-head p{font-size:14px;margin-top:8px;line-height:1.45}
+  .quiz-head .crumb{font-size:10px;letter-spacing:.14em}
+  .quiz-overlay{padding:24px 0 56px}
+  .quiz-q{font-size:22px;margin-bottom:18px;line-height:1.2}
+  .quiz-opt{padding:14px 16px}
+  .quiz-opt strong{font-size:16px;margin-bottom:2px}
+  .quiz-opt span{font-size:12.5px;line-height:1.4}
+  .quiz-progress{margin-bottom:20px}
+}
 
 /* ─── Back-in-stock capture ─── */
 .bis-form{display:flex;gap:8px;margin-top:14px}
@@ -862,18 +891,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .collection-head{padding:56px 0 32px}
   .collection-head h1{font-size:48px;line-height:.98}
   .collection-head p{font-size:15px;margin-top:12px}
-  .collection-layout{grid-template-columns:1fr;gap:24px;padding:24px 0 56px}
-  .filters{padding:0;border:0;display:flex;gap:8px;flex-wrap:wrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .filter-group{margin-bottom:0;flex-shrink:0}
-  .filter-group h5{display:none}
-  .filter-opts{flex-direction:row;gap:6px}
-  .filter-opts label{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:12px;white-space:nowrap;cursor:pointer;position:relative;user-select:none}
-  .filter-opts label .ct{font-size:10px;margin-left:4px}
-  /* Visually hidden inputs that remain interactive — iOS Safari needs this to fire change events */
-  .filter-opts input[type=radio],.filter-opts input[type=checkbox]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;clip:rect(0 0 0 0);margin:-1px;padding:0;border:0;overflow:hidden}
-  .filter-opts label:has(:checked){background:var(--ink);color:var(--paper);border-color:var(--ink)}
-  .toolbar{margin-bottom:20px;padding-bottom:14px}
-  .toolbar-count{font-size:12px}
+  .collection-layout{gap:24px;padding:14px 0 56px}
   .products-row,.products-row--3col{grid-template-columns:repeat(2,1fr);gap:10px}
   .crumb{font-size:10px;letter-spacing:.14em}
   /* PDP */
@@ -2638,24 +2656,13 @@ function cardHTML(p){
 function renderShop(main, params){
   const goal = params.get("goal");
   const bundlesOnly = params.get("bundles");
-  const formFilter = params.get("form");
-  const inStockOnly = params.get("instock");
   const sort = params.get("sort") || "featured";
 
   let list = bundlesOnly ? [...BUNDLES.map(b=>({...b,bundle:true,goal:"bundles",img:[b.img],form:"stack"}))] : [...PRODUCTS];
   if (goal && !bundlesOnly) list = list.filter(p=>p.goal===goal);
-  if (formFilter) list = list.filter(p=>p.form===formFilter);
-  if (inStockOnly === "1") list = list.filter(p=>p.stock!==false);
   if (sort === "price-asc") list.sort((a,b)=>a.price-b.price);
   if (sort === "price-desc") list.sort((a,b)=>b.price-a.price);
   if (sort === "name") list.sort((a,b)=>a.name.localeCompare(b.name));
-
-  const counts = {
-    capsule: PRODUCTS.filter(p=>p.form==="capsule").length,
-    powder: PRODUCTS.filter(p=>p.form==="powder").length,
-    vegan: PRODUCTS.filter(p=>p.diet.includes("vegan")).length,
-    instock: PRODUCTS.filter(p=>p.stock).length,
-  };
 
   const title = bundlesOnly ? "Bundles" : (goal ? goalName(goal) : "All formulations");
   const desc = bundlesOnly
@@ -2675,56 +2682,27 @@ function renderShop(main, params){
     </div>
   </div>
   <div class="container">
-    <div class="collection-layout">
-      <aside class="filters">
-        <div class="filter-group">
-          <h5>Goal</h5>
-          <div class="filter-opts">
-            <label><input type="radio" name="goal" value="" ${!goal?"checked":""} onchange="setFilter('goal','')"> All <span class="ct">${PRODUCTS.length}</span></label>
-            ${GOALS.map(g=>`<label><input type="radio" name="goal" value="${g.id}" ${goal===g.id?"checked":""} onchange="setFilter('goal','${g.id}')"> ${g.name} <span class="ct">${PRODUCTS.filter(p=>p.goal===g.id).length}</span></label>`).join("")}
-          </div>
-        </div>
-        <div class="filter-group">
-          <h5>Form</h5>
-          <div class="filter-opts">
-            <label><input type="radio" name="form" value="" ${!formFilter?"checked":""} onchange="setFilter('form','')"> All</label>
-            <label><input type="radio" name="form" value="capsule" ${formFilter==='capsule'?"checked":""} onchange="setFilter('form','capsule')"> Capsule <span class="ct">${counts.capsule}</span></label>
-            <label><input type="radio" name="form" value="powder" ${formFilter==='powder'?"checked":""} onchange="setFilter('form','powder')"> Powder <span class="ct">${counts.powder}</span></label>
-          </div>
-        </div>
-        <div class="filter-group">
-          <h5>Availability</h5>
-          <div class="filter-opts">
-            <label><input type="checkbox" ${inStockOnly==='1'?"checked":""} onchange="setFilter('instock', this.checked?'1':'')"> In stock only <span class="ct">${counts.instock}</span></label>
-          </div>
-        </div>
-        <div class="filter-group">
-          <h5>Made for South Africa</h5>
-          <div class="filter-opts" style="font-size:12px;color:var(--ink-soft);line-height:1.55">
-            Every Vivid product is blended and bottled in Centurion. Stocked in Onelife Health stores across Gauteng.
-          </div>
-        </div>
-      </aside>
-
-      <div>
-        <div class="toolbar">
-          <div class="toolbar-count">${list.length} product${list.length===1?"":"s"}</div>
-          <div class="sort">
-            Sort by
-            <select onchange="setFilter('sort', this.value)">
-              <option value="featured" ${sort==='featured'?'selected':''}>Featured</option>
-              <option value="name" ${sort==='name'?'selected':''}>Name (A–Z)</option>
-              <option value="price-asc" ${sort==='price-asc'?'selected':''}>Price (low → high)</option>
-              <option value="price-desc" ${sort==='price-desc'?'selected':''}>Price (high → low)</option>
-            </select>
-          </div>
-        </div>
-        <div class="products-row">
-          ${list.length === 0
-            ? `<div style="grid-column:1/-1;padding:64px 0;text-align:center;color:var(--ink-soft)"><p>No products match those filters.</p><a href="#/shop" class="btn btn--ghost" style="margin-top:16px">Reset</a></div>`
-            : list.map(p=>p.bundle?bundleCardHTML(p):cardHTML(p)).join("")}
-        </div>
+    <div class="shop-toolbar">
+      <div class="chip-row" role="group" aria-label="Filter by goal">
+        <button type="button" class="chip ${!goal&&!bundlesOnly?'is-active':''}" onclick="setFilter('goal','')">All <span class="chip-ct">${PRODUCTS.length}</span></button>
+        ${GOALS.map(g=>`<button type="button" class="chip ${goal===g.id?'is-active':''}" onclick="setFilter('goal','${g.id}')">${g.name} <span class="chip-ct">${PRODUCTS.filter(p=>p.goal===g.id).length}</span></button>`).join("")}
+        <button type="button" class="chip ${bundlesOnly?'is-active':''}" onclick="location.hash='/shop?bundles=1'">Bundles <span class="chip-ct">${BUNDLES.length}</span></button>
       </div>
+      <div class="shop-sort">
+        <label for="sortSel" class="sort-lbl">Sort</label>
+        <select id="sortSel" onchange="setFilter('sort', this.value)">
+          <option value="featured" ${sort==='featured'?'selected':''}>Featured</option>
+          <option value="name" ${sort==='name'?'selected':''}>Name (A–Z)</option>
+          <option value="price-asc" ${sort==='price-asc'?'selected':''}>Price low → high</option>
+          <option value="price-desc" ${sort==='price-desc'?'selected':''}>Price high → low</option>
+        </select>
+      </div>
+    </div>
+    <div class="shop-meta"><span>${list.length} product${list.length===1?"":"s"}</span>${goal||bundlesOnly?`<a href="#/shop" class="shop-meta-clear">Clear filter ×</a>`:""}</div>
+    <div class="products-row products-row--shop" style="padding-bottom:var(--s-9)">
+      ${list.length === 0
+        ? `<div style="grid-column:1/-1;padding:64px 0;text-align:center;color:var(--ink-soft)"><p>No products match that filter.</p><a href="#/shop" class="btn btn--ghost" style="margin-top:16px">Show all</a></div>`
+        : list.map(p=>p.bundle?bundleCardHTML(p):cardHTML(p)).join("")}
     </div>
   </div>`;
 }
@@ -3423,11 +3401,11 @@ function renderQuiz(main){
   function draw(){
     const quiz = QUIZ[step];
     main.innerHTML = `
-    <div class="collection-head" style="background:var(--forest-deep)">
+    <div class="quiz-head">
       <div class="container">
-        <div class="crumb" style="color:var(--sage)"><a href="#/" style="color:var(--sage)">Home</a> · Find your formulation</div>
-        <h1 style="color:var(--paper);font-size:clamp(36px,5vw,64px)">Find your<br><em>formulation.</em></h1>
-        <p style="color:rgba(244,236,219,.78);font-size:17px;margin-top:14px">Three questions. Personalised product recommendations from 52 Vivid formulations.</p>
+        <div class="crumb"><a href="#/">Home</a> · Find your formulation</div>
+        <h1>Find your <em>formulation.</em></h1>
+        <p>Three questions. Personalised product recommendations from 52 Vivid formulations.</p>
       </div>
     </div>
     <div class="container quiz-overlay">
@@ -3460,11 +3438,11 @@ function renderQuiz(main){
     if (results.length === 0) results = PRODUCTS.filter(p=>p.goal===(answers.goal||"daily")).slice(0,4);
     results = results.slice(0,6);
     main.innerHTML = `
-    <div class="collection-head" style="background:var(--forest-deep)">
+    <div class="quiz-head">
       <div class="container">
-        <div class="crumb" style="color:var(--sage)"><a href="#/" style="color:var(--sage)">Home</a> · Your results</div>
-        <h1 style="color:var(--paper);font-size:clamp(36px,5vw,64px)">Your <em>formulations.</em></h1>
-        <p style="color:rgba(244,236,219,.78);font-size:17px;margin-top:14px">Based on your answers, we recommend these ${results.length} products from the Vivid range.</p>
+        <div class="crumb"><a href="#/">Home</a> · Your results</div>
+        <h1>Your <em>formulations.</em></h1>
+        <p>Based on your answers, we recommend these ${results.length} products from the Vivid range.</p>
       </div>
     </div>
     <section class="container" style="padding:48px 0 96px">
