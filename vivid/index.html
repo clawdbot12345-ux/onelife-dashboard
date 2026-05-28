@@ -329,9 +329,11 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 /* ─── Product cards — per-goal palettes, layered ─── */
 .products-row{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:var(--s-4)}
 .products-row--3col{grid-template-columns:repeat(3,1fr)}
-@media (max-width:1100px){.products-row{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:780px){.products-row{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:480px){.products-row{grid-template-columns:1fr}}
+.products-row--5col{grid-template-columns:repeat(5,1fr);gap:var(--s-3)}
+@media (max-width:1280px){.products-row--5col{grid-template-columns:repeat(4,1fr);gap:var(--s-4)}}
+@media (max-width:1100px){.products-row{grid-template-columns:repeat(3,1fr)}.products-row--5col{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:780px){.products-row{grid-template-columns:repeat(2,1fr)}.products-row--5col{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.products-row{grid-template-columns:1fr}.products-row--5col{grid-template-columns:1fr}}
 
 .card{
   border-radius:var(--r-lg);
@@ -443,7 +445,7 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 /* ─── Journal teaser editorial ─── */
 .journal{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5)}
 @media (max-width:900px){.journal{grid-template-columns:1fr}}
-.journal-feature{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:var(--s-5)}
+.journal-feature{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5);align-items:start}
 @media (max-width:900px){.journal-feature{grid-template-columns:1fr}}
 .article{display:flex;flex-direction:column;gap:var(--s-3);text-decoration:none;color:inherit;transition:.2s}
 .article:hover .article-img{transform:translateY(-3px);box-shadow:var(--shadow-2)}
@@ -455,8 +457,8 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 .article h3{font-size:24px;line-height:1.18;letter-spacing:-.01em;margin:6px 0;font-variation-settings:"opsz" 96,"SOFT" 40}
 .article p{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.5}
 .article .more{font-size:12px;color:var(--forest);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
-.article--feature .article-img{aspect-ratio:5/4;height:auto}
-.article--feature h3{font-size:34px;line-height:1.05}
+.article--feature .article-img{aspect-ratio:4/3}
+.article--feature h3{font-size:24px;line-height:1.18}
 
 /* ─── Email capture — botanical dark ─── */
 .capture{
@@ -696,13 +698,18 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .sticky-atc .btn{padding:12px 20px;font-size:13px}
 
 /* ─── Info pages (Stores, Contact, FAQ, Shipping, Returns, Reviews, Account, Policies) ─── */
-.info-hero{background:var(--forest);color:var(--paper);padding:var(--s-9) 0 var(--s-7);position:relative;overflow:hidden}
+.info-hero{background:var(--forest);color:var(--paper);padding:var(--s-9) 0 var(--s-7);position:relative;overflow:hidden;min-height:340px;display:flex;align-items:flex-end}
 .info-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%, rgba(157,179,154,.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(204,136,72,.10) 0%, transparent 50%);pointer-events:none}
-.info-hero .container{position:relative;z-index:1}
+.info-hero .container{position:relative;z-index:1;width:100%}
 .info-hero .crumb{color:rgba(244,236,219,.55);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:var(--s-4)}
 .info-hero .crumb a{color:var(--sage)}
 .info-hero h1{font-size:clamp(40px,6.5vw,84px);line-height:.96;letter-spacing:-.025em;color:var(--paper);margin-bottom:var(--s-4)}
 .info-hero .lede{font-size:18px;line-height:1.55;color:rgba(244,236,219,.78);max-width:62ch}
+/* Photo-backed variant for info pages */
+.info-hero--photo{background:var(--ink) center/cover no-repeat}
+.info-hero--photo::before{background:linear-gradient(90deg, rgba(11,22,16,.92) 0%, rgba(11,22,16,.78) 38%, rgba(11,22,16,.5) 72%, rgba(11,22,16,.25) 100%), linear-gradient(180deg, rgba(11,22,16,.3) 0%, rgba(11,22,16,0) 35%, rgba(11,22,16,.55) 100%)}
+.info-hero--photo h1{text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.info-hero--photo .lede{color:rgba(244,236,219,.92);text-shadow:0 1px 12px rgba(0,0,0,.25)}
 .info-body{padding:var(--s-8) 0 var(--s-9)}
 .info-body h2{font-family:var(--font-display);font-size:clamp(28px,3.5vw,40px);line-height:1.1;letter-spacing:-.02em;margin:var(--s-7) 0 var(--s-4);color:var(--ink);font-variation-settings:"opsz" 96, "SOFT" 50}
 .info-body h2:first-child{margin-top:0}
@@ -787,8 +794,8 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .policy-meta{font-size:13px;color:var(--ink-soft);padding-bottom:var(--s-4);border-bottom:1px solid var(--line);margin-bottom:var(--s-5)}
 
 /* ─── Quiz ─── */
-.quiz-head{background:var(--forest-deep);color:var(--paper);padding:var(--s-8) 0 var(--s-6);position:relative;overflow:hidden}
-.quiz-head::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%, rgba(157,179,154,.10) 0%, transparent 60%);pointer-events:none}
+.quiz-head{background:var(--forest-deep) center/cover no-repeat;color:var(--paper);padding:var(--s-8) 0 var(--s-6);position:relative;overflow:hidden}
+.quiz-head::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(11,22,16,.92) 0%, rgba(11,22,16,.78) 38%, rgba(11,22,16,.5) 72%, rgba(11,22,16,.25) 100%), linear-gradient(180deg, rgba(11,22,16,.3) 0%, rgba(11,22,16,0) 35%, rgba(11,22,16,.55) 100%);pointer-events:none}
 .quiz-head .container{position:relative;z-index:1}
 .quiz-head .crumb{color:var(--sage);margin-bottom:var(--s-3)}
 .quiz-head .crumb a{color:var(--sage)}
@@ -952,7 +959,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   /* Journal */
   .journal,.journal-feature{gap:24px;grid-template-columns:1fr}
   .article h3{font-size:20px}
-  .article--feature h3{font-size:28px}
+  .article--feature h3{font-size:20px}
   .article-cat{font-size:10px;letter-spacing:.14em}
   /* Capture */
   .capture{padding:64px 0}
@@ -1420,30 +1427,40 @@ function imagesFor(p){
   return p.img || [];
 }
 
+const LP = "assets/lifestyle/onelife-prompts/";
 const BANNERS = {
-  home: "assets/lifestyle/onelife-prompts/onelife-vivid-health-hero-banner.jpg",
+  home: LP+"onelife-vivid-health-hero-banner.jpg",
+  shop: LP+"onelife-vivid-health-page-hero.jpg",
   evening: "assets/banners/banner-hero-evening.jpg",
-  about: "assets/banners/banner-about.jpg",
-  journal: "assets/banners/banner-journal.jpg",
+  about: LP+"onelife-about-page-hero.jpg",
+  journal: LP+"onelife-blog-hero.jpg",
+  contact: LP+"onelife-contact-hero.jpg",
+  consultation: LP+"onelife-consultation-hero-banner.jpg",
+  quiz: LP+"onelife-quiz-hero-banner.jpg",
+  shipping: LP+"onelife-free-delivery-hero-banner.jpg",
+  stores: LP+"onelife-store-centurion-hero.jpg",
+  storeCenturion: LP+"onelife-store-centurion-hero.jpg",
+  storeEdenvale: LP+"onelife-store-edenvale-hero.jpg",
+  storeGlenVillage: LP+"onelife-brands-hero-banner.jpg",
   goals: {
-    immunity: "assets/banners/banner-immunity.jpg",
-    joints: "assets/banners/banner-joints.jpg",
-    stress: "assets/banners/banner-stress.jpg",
-    gut: "assets/banners/banner-gut.jpg",
-    women: "assets/banners/banner-women.jpg",
-    men: "assets/banners/banner-men.jpg",
-    energy: "assets/banners/banner-energy.jpg",
+    immunity: LP+"onelife-collection-immunity-hero.jpg",
+    joints: LP+"onelife-collection-joints-mobility-hero.jpg",
+    stress: LP+"onelife-collection-stress-mood-hero.jpg",
+    gut: LP+"onelife-collection-gut-health-hero.jpg",
+    women: LP+"onelife-collection-womens-health-hero.jpg",
+    men: LP+"onelife-collection-mens-health-hero.jpg",
+    energy: LP+"onelife-collection-energy-vitality-hero.jpg",
     daily: "assets/banners/banner-daily.jpg",
   },
   groups: {
-    bestsellers: "assets/banners/banner-group-bestsellers.jpg",
-    sleep: "assets/banners/banner-group-sleep.jpg",
+    bestsellers: LP+"onelife-vivid-health-page-hero.jpg",
+    sleep: LP+"onelife-collection-sleep-relaxation-hero.jpg",
     allergy: "assets/banners/banner-group-allergy.jpg",
   }
 };
 function headerBanner({goal=null, bundlesOnly=false, fallback="bestsellers"}={}){
   if (bundlesOnly) return BANNERS.groups[fallback] || BANNERS.groups.bestsellers;
-  return BANNERS.goals[goal] || BANNERS.groups[fallback] || BANNERS.home;
+  return BANNERS.goals[goal] || BANNERS.shop || BANNERS.home;
 }
 
 const JOURNAL = [
@@ -1917,7 +1934,7 @@ const STORES = [
 ];
 function renderStores(main){
   main.innerHTML = `
-  <div class="info-hero">
+  <div class="info-hero info-hero--photo" style="background-image:url('${BANNERS.stores}')">
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · Stores</div>
       <h1>Three doors. <em>One philosophy.</em></h1>
@@ -1930,7 +1947,7 @@ function renderStores(main){
     <div class="stores-grid">
       ${STORES.map(s=>`
         <div class="store-card">
-          <div class="store-card-media"><img src="assets/banners/banner-hero-evening.jpg" alt="${s.name} interior" loading="lazy"></div>
+          <div class="store-card-media"><img src="${BANNERS['store'+s.slug.split('-').map(w=>w[0].toUpperCase()+w.slice(1)).join('')] || BANNERS.evening}" alt="${s.name} interior" loading="lazy"></div>
           <div class="store-card-body">
             <h3>${s.name}</h3>
             <div class="store-addr">${s.addr.join("<br>")}<br><strong style="color:var(--ink)">${s.phone}</strong></div>
@@ -1985,7 +2002,7 @@ function renderStores(main){
 /* ─── CONTACT ─── */
 function renderContact(main){
   main.innerHTML = `
-  <div class="info-hero">
+  <div class="info-hero info-hero--photo" style="background-image:url('${BANNERS.contact}')">
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · Contact</div>
       <h1>Talk to a <em>real human.</em></h1>
@@ -2041,7 +2058,7 @@ function renderContact(main){
 /* ─── CONSULTATION ─── */
 function renderConsultation(main){
   main.innerHTML = `
-  <div class="info-hero">
+  <div class="info-hero info-hero--photo" style="background-image:url('${BANNERS.consultation}')">
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · Free consultation</div>
       <h1>A real consult, <em>at no cost.</em></h1>
@@ -2098,7 +2115,7 @@ function renderConsultation(main){
 /* ─── SHIPPING ─── */
 function renderShipping(main){
   main.innerHTML = `
-  <div class="info-hero">
+  <div class="info-hero info-hero--photo" style="background-image:url('${BANNERS.shipping}')">
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · <a href="#/faq">Help</a> · Delivery</div>
       <h1>Delivery <em>without the drama.</em></h1>
@@ -2157,7 +2174,7 @@ function renderShipping(main){
 /* ─── RETURNS ─── */
 function renderReturns(main){
   main.innerHTML = `
-  <div class="info-hero">
+  <div class="info-hero info-hero--photo" style="background-image:url('${BANNERS.shipping}')">
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · <a href="#/faq">Help</a> · Returns &amp; refunds</div>
       <h1>30 days. <em>No questions asked.</em></h1>
@@ -2235,7 +2252,7 @@ const FAQ_ITEMS = [
 function renderFAQ(main){
   const cats = [...new Set(FAQ_ITEMS.map(i=>i.cat))];
   main.innerHTML = `
-  <div class="info-hero">
+  <div class="info-hero info-hero--photo" style="background-image:url('${BANNERS.contact}')">
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · Frequently asked questions</div>
       <h1>Things people <em>actually ask.</em></h1>
@@ -2277,7 +2294,7 @@ function renderFAQ(main){
 /* ─── REVIEWS ─── */
 function renderReviews(main){
   main.innerHTML = `
-  <div class="info-hero">
+  <div class="info-hero info-hero--photo" style="background-image:url('${BANNERS.about}')">
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · Customer reviews</div>
       <h1>Real reviews, <em>not made-up ones.</em></h1>
@@ -2319,7 +2336,7 @@ function renderReviews(main){
 /* ─── ACCOUNT (placeholder for OAuth integration) ─── */
 function renderAccount(main){
   main.innerHTML = `
-  <div class="info-hero">
+  <div class="info-hero info-hero--photo" style="background-image:url('${BANNERS.contact}')">
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · My account</div>
       <h1>Your <em>account.</em></h1>
@@ -2560,7 +2577,7 @@ function renderHome(main){
         </div>
         <a href="#/shop" class="btn btn--ghost btn-arrow">See all 52</a>
       </div>
-      <div class="products-row">
+      <div class="products-row products-row--5col">
         ${cardHTML(featuredHero)}
         ${featuredSmall.map(p=>cardHTML(p)).join("")}
       </div>
@@ -3260,7 +3277,7 @@ function renderAbout(main){
       <div class="stores-grid">
         ${STORES.map(s=>`
           <a href="https://www.google.com/maps/search/${encodeURIComponent(s.name+' '+s.addr.join(' '))}" target="_blank" rel="noopener" class="store-card" style="text-decoration:none;color:inherit">
-            <div class="store-card-media"><img src="assets/banners/banner-hero-evening.jpg" alt="${s.name} interior" loading="lazy"></div>
+            <div class="store-card-media"><img src="${BANNERS['store'+s.slug.split('-').map(w=>w[0].toUpperCase()+w.slice(1)).join('')] || BANNERS.evening}" alt="${s.name} interior" loading="lazy"></div>
             <div class="store-card-body">
               <h3>${s.name}</h3>
               <div class="store-addr">${s.addr.slice(0,2).join("<br>")}<br><strong style="color:var(--ink)">${s.phone}</strong></div>
@@ -3550,7 +3567,7 @@ function renderQuiz(main){
   function draw(){
     const quiz = QUIZ[step];
     main.innerHTML = `
-    <div class="quiz-head">
+    <div class="quiz-head" style="background-image:url('${BANNERS.quiz}')">
       <div class="container">
         <div class="crumb"><a href="#/">Home</a> · Find your formulation</div>
         <h1>Find your <em>formulation.</em></h1>
@@ -3587,7 +3604,7 @@ function renderQuiz(main){
     if (results.length === 0) results = PRODUCTS.filter(p=>p.goal===(answers.goal||"daily")).slice(0,4);
     results = results.slice(0,6);
     main.innerHTML = `
-    <div class="quiz-head">
+    <div class="quiz-head" style="background-image:url('${BANNERS.quiz}')">
       <div class="container">
         <div class="crumb"><a href="#/">Home</a> · Your results</div>
         <h1>Your <em>formulations.</em></h1>
