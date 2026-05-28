@@ -427,10 +427,11 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 .bundle:nth-child(3){background:linear-gradient(160deg, var(--g-immunity-bg), #ABBFA0)}
 .bundle:nth-child(3) .bundle-name, .bundle:nth-child(3) .bundle-foot{color:var(--g-immunity-text)}
 
-.bundle-media{aspect-ratio:5/4;display:grid;place-items:center;position:relative;overflow:hidden}
-.bundle-media::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.35) 0%, transparent 60%)}
-.bundle-media::after{content:"";position:absolute;left:50%;bottom:12%;transform:translateX(-50%);width:70%;height:14px;background:radial-gradient(ellipse, rgba(11,22,16,.18) 0%, transparent 70%);filter:blur(8px)}
-.bundle-media img{width:72%;object-fit:contain;filter:drop-shadow(0 22px 32px rgba(11,22,16,.25));position:relative;z-index:1}
+.bundle-media{aspect-ratio:5/4;display:grid;place-items:center;position:relative;overflow:hidden;background:var(--bone)}
+.bundle-media::before{content:none}
+.bundle-media::after{content:none}
+.bundle-media img{width:100%;height:100%;object-fit:cover;filter:none;position:relative;z-index:1;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.bundle:hover .bundle-media img{transform:scale(1.04)}
 .bundle-tag{position:absolute;top:18px;right:18px;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:var(--r-pill);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;z-index:2}
 .bundle-body{padding:var(--s-6) var(--s-5);background:rgba(244,236,219,.65);backdrop-filter:blur(8px)}
 .bundle-name{font-family:var(--font-display);font-size:32px;line-height:1.02;letter-spacing:-.02em;margin-bottom:8px;font-variation-settings:"opsz" 96,"SOFT" 40}
@@ -446,9 +447,10 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 @media (max-width:900px){.journal-feature{grid-template-columns:1fr}}
 .article{display:flex;flex-direction:column;gap:var(--s-3);text-decoration:none;color:inherit;transition:.2s}
 .article:hover .article-img{transform:translateY(-3px);box-shadow:var(--shadow-2)}
-.article-img{aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;position:relative;background:linear-gradient(160deg, var(--bone), var(--wheat));display:grid;place-items:center;transition:transform .25s, box-shadow .25s;border:1px solid var(--line)}
-.article-img::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 50%, rgba(255,255,255,.3) 0%, transparent 60%)}
-.article-img img{width:55%;height:auto;max-height:75%;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(11,22,16,.18));position:relative;z-index:1;mix-blend-mode:multiply}
+.article-img{aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;position:relative;background:var(--bone);transition:transform .25s, box-shadow .25s;border:1px solid var(--line)}
+.article-img::before{content:none}
+.article-img img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1;filter:none;mix-blend-mode:normal;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.article:hover .article-img img{transform:scale(1.04)}
 .article-cat{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);font-weight:700}
 .article h3{font-size:24px;line-height:1.18;letter-spacing:-.01em;margin:6px 0;font-variation-settings:"opsz" 96,"SOFT" 40}
 .article p{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.5}
@@ -501,7 +503,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .collection-head h1{font-size:clamp(48px,7vw,112px);max-width:18ch;font-variation-settings:"opsz" 144,"SOFT" 30}
 .collection-head p{font-size:18px;color:var(--ink-soft);max-width:56ch;margin-top:var(--s-4);line-height:1.55}
 .collection-head--banner{min-height:380px;display:flex;align-items:flex-end;color:var(--paper);background:var(--ink)}
-.collection-head--banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(11,22,16,.82) 0%, rgba(11,22,16,.58) 38%, rgba(11,22,16,.20) 72%, rgba(11,22,16,.08) 100%);pointer-events:none}
+.collection-head--banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(11,22,16,.92) 0%, rgba(11,22,16,.78) 38%, rgba(11,22,16,.55) 72%, rgba(11,22,16,.38) 100%), linear-gradient(180deg, rgba(11,22,16,.35) 0%, rgba(11,22,16,0) 30%, rgba(11,22,16,.45) 100%);pointer-events:none}
 .collection-bg{position:absolute;inset:0;background-image:var(--banner);background-size:cover;background-position:center;z-index:0;transform:scale(1.01)}
 .collection-head--banner .container{position:relative;z-index:1}
 .collection-head--banner h1{color:var(--paper);text-shadow:0 2px 24px rgba(0,0,0,.35)}
@@ -2480,7 +2482,7 @@ function renderHome(main){
     <div class="hero-photo" style="background-image:url('${BANNERS.home}')"></div>
     <div class="hero-scrim"></div>
     <div class="container hero-content">
-      <div class="hero-eyebrow">Made in Centurion · By Onelife Health, since 1996</div>
+      <div class="hero-eyebrow">Made in Centurion · Family-founded, real doses</div>
       <h1>Vivid by <em>nature.</em><br>Verified by science.</h1>
       <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules.</p>
       <div class="hero-cta">
@@ -2500,8 +2502,8 @@ function renderHome(main){
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> SAHPRA-aligned facility</span>
       </div>
       <div class="proof-band-stats">
-        <div class="pb-stat"><div class="pb-num">1996</div><div class="pb-lbl">Onelife founded</div></div>
-        <div class="pb-stat"><div class="pb-num">3<span class="small">stores</span></div><div class="pb-lbl">Across Gauteng</div></div>
+        <div class="pb-stat"><div class="pb-num">Since 1996</div><div class="pb-lbl">Family-founded</div></div>
+        <div class="pb-stat"><div class="pb-num">3<span class="small">stores</span></div><div class="pb-lbl">Across Gauteng + online</div></div>
         <div class="pb-stat"><div class="pb-num">30<span class="small">day</span></div><div class="pb-lbl">Money-back guarantee</div></div>
         <div class="pb-stat"><div class="pb-num">R400<span class="small">+</span></div><div class="pb-lbl">Free delivery nationwide</div></div>
       </div>
@@ -3030,7 +3032,7 @@ function renderJournal(main){
     <div class="journal" style="grid-template-columns:repeat(2,1fr)">
       ${JOURNAL.map(a=>`
         <a href="#/article/${a.handle}" class="article" style="cursor:pointer">
-          <div class="article-img" style="aspect-ratio:16/10"><img src="${a.hero}" alt="" loading="lazy" decoding="async" style="width:50%;height:100%;margin:auto;object-fit:contain"></div>
+          <div class="article-img" style="aspect-ratio:16/10"><img src="${a.hero}" alt="" loading="lazy" decoding="async"></div>
           <div class="article-cat">${a.cat} · ${a.read}</div>
           <h3>${a.title}</h3>
           <p>${a.sub}</p>
@@ -3172,14 +3174,14 @@ function renderAbout(main){
     <div class="collection-bg"></div>
     <div class="container">
       <div class="crumb"><a href="#/">Home</a> · Our story</div>
-      <h1>Thirty years. <em style="font-style:italic;color:var(--sage-soft)">One family. One conviction.</em></h1>
-      <p>Premium supplements shouldn't be priced like a luxury. Vivid Health is what happens when a family-owned South African health retailer — three decades on the shop floor — finally builds the brand its customers kept asking for.</p>
+      <h1>It started with a sick child. <em style="font-style:italic;color:var(--sage-soft)">It became Vivid.</em></h1>
+      <p>Vivid Health was built by the same family that, thirty years ago, refused to give up on their son's health. What worked for their family became the work of a lifetime — and a brand made for every South African family that's ever felt priced out of premium nutrition.</p>
     </div>
   </div>
 
   <div class="container info-body" style="max-width:780px">
     <div class="policy-meta" style="border:0;padding:0;font-size:13px;color:var(--ink-soft);margin-bottom:8px;display:flex;gap:14px;flex-wrap:wrap">
-      <span>By the Onelife &amp; Vivid Health team</span>
+      <span>The Vivid Health team</span>
       <span>·</span>
       <span>Centurion, Gauteng</span>
       <span>·</span>
@@ -3187,18 +3189,20 @@ function renderAbout(main){
     </div>
 
     <h2 style="margin-top:48px">It started with a sick child.</h2>
-    <p>Onelife Health was founded in <strong>1996</strong>, after a South African family spent years watching their son cycle through one chronic illness after another — recurring infections, courses of antibiotics that worked for a while and then didn't, the kind of slow exhaustion that shapes a household. Out of options, they started reading. About herbal medicine. About the real role of nutrition. About what natural supplementation could do that conventional protocols hadn't.</p>
-    <p>When their son got better, they didn't keep what they'd learned to themselves. They opened a single store in Centurion and put what had worked for their family onto the shelves, so other families could find it too.</p>
-    <p>Thirty years later, Onelife is still family-owned, still South African, and still doing the same thing — except now from <strong>three stores across Gauteng</strong> and an online presence that serves every province. Over those years we've sat across the counter from tens of thousands of customers. We've learned what actually helps and what doesn't, what's marketing and what's medicine, what's worth recommending and what's worth quietly leaving on the shelf.</p>
+    <p>In the mid-90s, a South African family spent years watching their son cycle through one chronic illness after another — recurring infections, courses of antibiotics that worked for a while and then didn't, the slow exhaustion that shapes a household. Out of options, they started reading. About herbal medicine. About the real role of nutrition. About what natural supplementation could do that conventional protocols hadn't.</p>
+    <p>Their son got better. And they didn't keep what they'd learned to themselves.</p>
+    <p>In <strong>1996</strong>, that family opened their first health store in Centurion and put what had worked for their boy onto the shelves, so other families could find it too. Thirty years later, they're still in Centurion, still family-owned, and still doing the same thing — except now from three retail stores across Gauteng, an online presence that reaches every province, and a brand of their own: <strong>Vivid Health.</strong></p>
 
-    <h2>What the shop floor taught us.</h2>
-    <p>The thing about thirty years of face-to-face retail is that you can't hide from your customers. They come back. They tell you what worked and what didn't. They bring their elderly mothers and their pre-teen kids and their athlete cousins, and they ask you to help.</p>
-    <p>What we kept hearing — louder every year — was the same complaint: <em>"these brands are too expensive."</em> A premium multivitamin at R900. A quality magnesium at R650. An anti-inflammatory turmeric at R800. People on fixed incomes, parents of growing children, athletes on amateur budgets — exactly the people who'd benefit most — were being priced out of the category entirely.</p>
+    <h2>Why Vivid had to exist.</h2>
+    <p>For three decades, the family stood behind the counter and listened. They watched South African customers come in clutching bottles bought elsewhere — imported brands with smiling faces and R900 price tags — and ask the quiet question: <em>"is this actually doing anything?"</em></p>
+    <p>The honest answer was usually no. The dose was a tenth of what the research used. The "proprietary blend" was 80% rice flour. The R900 had bought a placebo dressed up in a beautiful bottle.</p>
     <p>And it wasn't even the brands' fault, really. Most of those bottles were imported from the US, UK, or Europe. By the time they hit a Gauteng shelf, the rand-dollar exchange rate, customs duties, import VAT, an offshore brand markup, and a local distributor markup had been stacked on top of a product that probably cost R150 to make. The shelf price was the math of the supply chain, not the value of the supplement.</p>
-    <p>The customers asked us, again and again, the obvious question. <strong>Why don't <em>you</em> make one?</strong></p>
+    <p>The people most likely to need real nutritional support — older South Africans on fixed incomes, parents of growing children, athletes on amateur budgets, families with a sick kid the way we'd had — were being priced out of the category entirely. They were taking nothing. Or worse, taking something that didn't work.</p>
+    <p>That was unacceptable. So we made Vivid.</p>
 
-    <h2>So we did.</h2>
-    <p>Vivid Health is the in-house brand we built in response. The brief, written on a whiteboard in the back of the Centurion store, is short:</p>
+    <h2>What Vivid is, in plain language.</h2>
+    <p>Vivid Health is what the family built when three decades of shop-floor experience came up against thirty years of being asked, again and again, the same question: <em>why don't you make one?</em> Vivid is our answer.</p>
+    <p>The brief, written on a whiteboard in the back of the Centurion store, is short:</p>
     <ol>
       <li><strong>Real doses.</strong> If a study used 810mg of MSM, our MSM capsule has 810mg. Not 200mg "for synergy." If saw palmetto needs a 4:1 extract to do anything for the prostate, that's what goes in the bottle. We will never hide a dose behind the words "proprietary blend."</li>
       <li><strong>Plant-first.</strong> Vegetable capsules — never gelatin. Sugar-free where it can be. Plant-source flow agents. The ingredient list on every bottle has to be something you'd happily read out to your doctor.</li>
@@ -3208,23 +3212,23 @@ function renderAbout(main){
     </ol>
 
     <h2>The people behind the bottles.</h2>
-    <p>Vivid formulations are developed in partnership with qualified South African health professionals — practising naturopaths, dietitians, and herbalists — who between them bring more than fifteen years of clinical and retail experience to every product decision.</p>
-    <p>Every formulation is tested on the shop floor first. A new product spends weeks or months being recommended in-store, in person, to real customers we know by name, before it ever goes onto the website. If it doesn't earn its place against the existing range, it doesn't ship. Our staff don't earn commission on what you buy, so the recommendation you walk out with is the one we genuinely think will help.</p>
+    <p>Vivid formulations are developed in partnership with qualified South African health professionals — practising naturopaths, dietitians, and herbalists — who between them bring more than fifteen years of clinical and retail experience to every product decision. Every formulation is tested on the shop floor first.</p>
+    <p>A new Vivid product spends weeks or months being recommended in person, by real consultants, to real customers we know by name, before it ever goes onto the website. If it doesn't earn its place against the existing range, it doesn't ship. Our consultants don't earn commission on what you buy, so the recommendation you walk out with is the one we genuinely think will help.</p>
 
     <h2>Why this matters to us.</h2>
-    <p>The people most likely to need real nutritional support are also the most likely to be priced out of the category entirely. Older South Africans on fixed incomes. Parents of growing children. People recovering from illness. Athletes on amateur budgets. They end up taking nothing, or taking something that doesn't work — and either way, their health pays the price.</p>
-    <p>We think that's wrong. By cutting out the import layers and selling through our own channels, we can offer the same dose-stated, lab-tested, plant-first formulations at half the price. <strong>Premium quality. Local price.</strong> That's the whole business.</p>
-    <p>It's also the conversation we wish we'd had with that first family thirty years ago — the one whose son got better when nothing else was working. They had to figure it out alone. Today, no South African family should have to.</p>
+    <p>It's personal. The family that started Vivid knows what it feels like to watch someone you love stay sick when the system has run out of answers. They know what it feels like to find something that finally works — and to realise the only reason it took so long is because nobody told you it existed, or because the version that did exist was priced like a luxury good you couldn't justify.</p>
+    <p>Vivid Health is the conversation we wish we'd had thirty years ago. Premium quality. Real doses. Local price. Available to anyone, anywhere in South Africa, for less than the cost of a takeaway dinner for two.</p>
+    <p>No South African family should have to figure this out alone. That's the entire business.</p>
 
-    <h2>Where we are, where we're going.</h2>
-    <p>Today, the Vivid Health range is <strong>52 single-ingredient and combination formulations</strong>, sold across our three Onelife stores and online at vividhealthsa.co.za. We ship free to anywhere in South Africa on orders over R400, with same-day delivery in Pretoria and the East Rand.</p>
+    <h2>Where Vivid is, where we're going.</h2>
+    <p>Today, the Vivid Health range is <strong>52 single-ingredient and combination formulations</strong>, sold direct on vividhealthsa.co.za and across the three Gauteng health stores the family runs. We ship free to anywhere in South Africa on orders over R400, with same-day delivery in Pretoria and the East Rand.</p>
     <p>In the year ahead we're working on a registered practitioner programme for naturopaths and biokineticists, cross-border delivery to Namibia and Botswana, an expanded powder range, and a quarterly print journal on the science of single ingredients.</p>
-    <p>We'll keep adding products only when there's a real reason to. We'll keep retiring SKUs that don't earn their place. We'll keep telling you, in plain language, what's in the bottle, what it does, and what it costs us to make. Nothing fancy. Just the work — same as we've done for the past thirty years.</p>
+    <p>We'll keep adding products only when there's a real reason to. We'll keep retiring SKUs that don't earn their place. We'll keep telling you, in plain language, what's in the bottle, what it does, and what it costs us to make. Nothing fancy. Just the work — same as we've done since 1996.</p>
 
     <div style="background:var(--bone);border-radius:var(--r-lg);padding:var(--s-6);margin:var(--s-7) 0;border-left:3px solid var(--clay)">
       <div class="kicker">A promise</div>
-      <p style="font-family:var(--font-display);font-size:24px;line-height:1.35;color:var(--ink);margin:14px 0 0;font-variation-settings:'opsz' 96, 'SOFT' 60;max-width:none">We will never put a product on the shelf that we wouldn't give to our own kids, parents, or partners. If we ever do, please tell us. We'll listen.</p>
-      <p style="font-size:14px;color:var(--ink-soft);margin-top:14px">— The Onelife family</p>
+      <p style="font-family:var(--font-display);font-size:24px;line-height:1.35;color:var(--ink);margin:14px 0 0;font-variation-settings:'opsz' 96, 'SOFT' 60;max-width:none">We will never put a product on the Vivid shelf that we wouldn't give to our own kids, parents, or partners. If we ever do, please tell us. We'll listen.</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-top:14px">— The family behind Vivid Health</p>
     </div>
 
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:var(--s-7)">
@@ -3238,7 +3242,7 @@ function renderAbout(main){
     <div class="container">
       <div class="section-head">
         <div>
-          <div class="eyebrow">Where to find us</div>
+          <div class="eyebrow">Where to buy Vivid in person</div>
           <h2 style="margin-top:14px">Three stores. <em>One online home.</em></h2>
         </div>
         <a href="#/stores" class="btn btn--ghost btn-arrow">Full store directory</a>
