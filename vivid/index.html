@@ -710,6 +710,16 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .sticky-atc .name{font-family:var(--font-display);font-size:16px;color:var(--ink);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sticky-atc .price{font-family:var(--font-display);font-size:18px;color:var(--ink);flex-shrink:0}
 .sticky-atc .btn{padding:12px 20px;font-size:13px}
+/* CTA variant — two buttons, no product context (home, shop, etc.) */
+.sticky-atc--cta{padding:10px 14px;gap:10px}
+.sticky-atc--cta .btn{flex:1;justify-content:center;padding:12px 14px;font-size:12.5px;letter-spacing:.04em;min-width:0;white-space:nowrap}
+.sticky-atc--cta .btn-arrow::after{font-size:13px}
+@media (max-width:380px){.sticky-atc--cta .btn{font-size:11.5px;padding:11px 10px}}
+/* Lift the WhatsApp/Chat FAB stack above the sticky bar when it's visible */
+@media (max-width:880px){
+  body:has(.sticky-atc.visible) .fab-stack{bottom:84px}
+  body:has(.sticky-atc.visible) .chat-widget{bottom:152px}
+}
 
 /* ─── Info pages (Stores, Contact, FAQ, Shipping, Returns, Reviews, Account, Policies) ─── */
 .info-hero{background:var(--forest);color:var(--paper);padding:var(--s-9) 0 var(--s-7);position:relative;overflow:hidden;min-height:340px;display:flex;align-items:flex-end}
@@ -2891,6 +2901,10 @@ function renderHome(main){
   </section>
   `;
   initReveal();
+  initStickyCTA(".hero-cta", [
+    {href:"#/shop", label:"Shop the range", cls:"btn--forest btn-arrow"},
+    {href:"#/quiz", label:"Find my formulation", cls:"btn--ghost"}
+  ]);
 }
 
 function initReveal(){
@@ -3736,6 +3750,24 @@ function initStickyATC(p){
     el.classList.toggle("visible", !e.isIntersecting);
   },{threshold:0});
   stickyObserver.observe(addRow);
+}
+/* Sticky CTA bar — pages without a product context (home, shop, journal, etc.)
+   Mirrors the hero CTAs so the primary actions stay reachable on mobile
+   once the user has scrolled past the hero. */
+function initStickyCTA(triggerSelector, ctas){
+  clearStickyATC();
+  const el = document.createElement("div");
+  el.className = "sticky-atc sticky-atc--cta";
+  el.innerHTML = ctas.map(c => `<a href="${c.href}" class="btn ${c.cls||''}">${c.label}</a>`).join("");
+  document.body.appendChild(el);
+  stickyEl = el;
+  const trigger = document.querySelector(triggerSelector);
+  if (!trigger) return;
+  stickyObserver = new IntersectionObserver(([e])=>{
+    if (stickyEl !== el || !el.isConnected) return;
+    el.classList.toggle("visible", !e.isIntersecting);
+  },{threshold:0});
+  stickyObserver.observe(trigger);
 }
 
 /* ─── Quiz — find your formulation ─── */
