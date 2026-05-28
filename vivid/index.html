@@ -241,6 +241,16 @@ em{font-style:italic;font-weight:300;font-variation-settings:"SOFT" 100}
   .pb-lbl{font-size:10.5px;letter-spacing:.04em}
 }
 
+/* ─── Brand pillars band (home only) — 3 explicit promises ─── */
+.pillars{padding:var(--s-8) 0 var(--s-7);background:var(--paper);border-bottom:1px solid var(--line)}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-7)}
+.pillar{position:relative;padding-top:var(--s-4)}
+.pillar::before{content:"";position:absolute;top:0;left:0;width:42px;height:2px;background:var(--clay)}
+.pillar-num{font-family:var(--font-display);font-size:13px;color:var(--clay);letter-spacing:.18em;margin-bottom:var(--s-4);font-weight:500;font-variation-settings:"opsz" 96}
+.pillar h3{font-family:var(--font-display);font-size:clamp(22px,2.4vw,30px);line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin:0 0 var(--s-3);font-variation-settings:"opsz" 96, "SOFT" 50}
+.pillar p{font-size:15px;line-height:1.55;color:var(--ink-soft);margin:0;max-width:32ch}
+@media (max-width:900px){.pillars-grid{grid-template-columns:1fr;gap:var(--s-5)}.pillars{padding:var(--s-6) 0 var(--s-5)}}
+
 /* ─── Vivid Lab editorial section — combined philosophy + proof ─── */
 .lab-section{position:relative;padding:var(--s-9) 0;color:var(--paper);overflow:hidden;isolation:isolate}
 .lab-bg{position:absolute;inset:0;background-size:cover;background-position:center right;background-repeat:no-repeat;z-index:-2}
@@ -1078,26 +1088,26 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
     <div class="mega" id="megaShop" role="region" aria-label="Shop menu">
       <div class="mega-grid">
         <div class="mega-col">
-          <h6>Shop by goal</h6>
+          <h6>Shop by category</h6>
           <ul>
             <li><a href="#/shop?goal=gut" onclick="closeMega()">Gut Health <span class="count">5</span></a></li>
-            <li><a href="#/shop?goal=immunity" onclick="closeMega()">Immunity <span class="count">10</span></a></li>
+            <li><a href="#/shop?goal=immunity" onclick="closeMega()">Immune Health <span class="count">10</span></a></li>
             <li><a href="#/shop?goal=energy" onclick="closeMega()">Energy &amp; Vitality <span class="count">2</span></a></li>
-            <li><a href="#/shop?goal=stress" onclick="closeMega()">Stress, Sleep &amp; Mood <span class="count">4</span></a></li>
-            <li><a href="#/shop?goal=joints" onclick="closeMega()">Joints &amp; Mobility <span class="count">7</span></a></li>
+            <li><a href="#/shop?goal=stress" onclick="closeMega()">Mental Health <span class="count">4</span></a></li>
+            <li><a href="#/shop?goal=joints" onclick="closeMega()">Physical Health <span class="count">7</span></a></li>
             <li><a href="#/shop?goal=women" onclick="closeMega()">Women's Health <span class="count">3</span></a></li>
             <li><a href="#/shop?goal=men" onclick="closeMega()">Men's Health <span class="count">1</span></a></li>
-            <li><a href="#/shop?goal=daily" onclick="closeMega()">Daily Nutrients <span class="count">20</span></a></li>
+            <li><a href="#/shop?goal=daily" onclick="closeMega()">Nutrient Health <span class="count">20</span></a></li>
           </ul>
         </div>
         <div class="mega-col">
           <h6>Curated</h6>
           <ul>
             <li><a href="#/shop" onclick="closeMega()">All formulations <span class="count">52</span></a></li>
+            <li><a href="#/shop?picks=1" onclick="closeMega()">Vivid Picks <span class="count">8</span></a></li>
             <li><a href="#/shop?bundles=1" onclick="closeMega()">Bundles &amp; stacks <span class="count">3</span></a></li>
             <li><a href="#/product/buffered-c-300" onclick="closeMega()">Bestseller: Buffered C</a></li>
             <li><a href="#/product/turmeric-300" onclick="closeMega()">Bestseller: Turmeric</a></li>
-            <li><a href="#/product/tranquil-60" onclick="closeMega()">Trending: Tranquil</a></li>
           </ul>
         </div>
         <div class="mega-col">
@@ -1245,6 +1255,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
           <li><a href="#/shop?goal=gut">Gut health</a></li>
           <li><a href="#/shop?goal=immunity">Immunity</a></li>
           <li><a href="#/shop?goal=stress">Stress & sleep</a></li>
+          <li><a href="#/shop?picks=1">Vivid Picks</a></li>
           <li><a href="#/shop?bundles=1">Bundles</a></li>
         </ul>
       </div>
@@ -1807,14 +1818,17 @@ const JOURNAL = [
 
 const GOALS = [
   {id:"gut",name:"Gut Health",desc:"Cleanse, balance, restore",icon:"M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z M12 9v6"},
-  {id:"immunity",name:"Immunity",desc:"Daily defense, year-round",icon:"M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"},
+  {id:"immunity",name:"Immune Health",desc:"Daily defence, year-round",icon:"M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"},
   {id:"energy",name:"Energy & Vitality",desc:"Cellular fuel, not stimulants",icon:"M13 2L3 14h7l-1 8 10-12h-7z"},
-  {id:"stress",name:"Stress, Sleep & Mood",desc:"Calm without sedation",icon:"M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"},
-  {id:"joints",name:"Joints & Mobility",desc:"Move freely, age strongly",icon:"M6 6l4 4-2 2-4-4 2-2zm12 12l-4-4 2-2 4 4-2 2zM10 14l4-4"},
+  {id:"stress",name:"Mental Health",desc:"Calm, sleep, mental balance",icon:"M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"},
+  {id:"joints",name:"Physical Health",desc:"Joints, bones, mobility",icon:"M6 6l4 4-2 2-4-4 2-2zm12 12l-4-4 2-2 4 4-2 2zM10 14l4-4"},
   {id:"women",name:"Women's Health",desc:"Hormones, cycles, balance",icon:"M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 0v8m-3-4h6"},
   {id:"men",name:"Men's Health",desc:"Prostate, vitality, focus",icon:"M14 4h6v6M20 4L13 11m-7 9a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"},
-  {id:"daily",name:"Daily Nutrients",desc:"Vitamins, omegas, basics",icon:"M12 2v20m-8-10h16"},
+  {id:"daily",name:"Nutrient Health",desc:"Vitamins, omegas, daily basics",icon:"M12 2v20m-8-10h16"},
 ];
+
+/* ─── Vivid Picks — curated favourites collection (matches the existing /portfolio-item/vivid-picks/ on vividhealthsa.co.za) ─── */
+const VIVID_PICKS = ["turmeric-300","buffered-c-300","mullein-60","tranquil-60","msm-90","l-glutamine-500","griffonia-5htp-60","flexijoint-advanced-120"];
 
 /* ─── State ─── */
 const fmtR = (n) => "R" + n.toLocaleString("en-ZA",{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -2537,6 +2551,27 @@ function renderHome(main){
     </div>
   </div>
 
+  <!-- Brand pillars — three explicit promises (carried over from vividhealthsa.co.za brand language) -->
+  <section class="pillars reveal">
+    <div class="container pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h3>Trusted Formulations</h3>
+        <p>Every Vivid formulation is dose-stated, third-party lab-tested, and built in a SAHPRA-aligned facility. No proprietary blends. No guessing what's inside.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h3>Transparent Ingredients</h3>
+        <p>Every milligram on every label, every time. If a study used 810mg of MSM, our MSM capsule has 810mg. The ingredient list is short, named, and honest.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <h3>Targeted Nourishment</h3>
+        <p>Plant-first formulations built for a specific outcome — immunity, mental health, joints, gut, daily nutrients. Picked for the work each ingredient actually does.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 1) SHOP BY GOAL — primary navigation as a visual grid -->
   <section class="reveal">
     <div class="container">
@@ -2738,35 +2773,47 @@ function cardHTML(p){
 function renderShop(main, params){
   const goal = params.get("goal");
   const bundlesOnly = params.get("bundles");
+  const picksOnly = params.get("picks");
   const sort = params.get("sort") || "featured";
 
-  let list = bundlesOnly ? [...BUNDLES.map(b=>({...b,bundle:true,goal:"bundles",img:[b.img],form:"stack"}))] : [...PRODUCTS];
-  if (goal && !bundlesOnly) list = list.filter(p=>p.goal===goal);
+  let list;
+  if (bundlesOnly) {
+    list = [...BUNDLES.map(b=>({...b,bundle:true,goal:"bundles",img:[b.img],form:"stack"}))];
+  } else if (picksOnly) {
+    list = VIVID_PICKS.map(h=>findProduct(h)).filter(Boolean);
+  } else {
+    list = [...PRODUCTS];
+    if (goal) list = list.filter(p=>p.goal===goal);
+  }
   if (sort === "price-asc") list.sort((a,b)=>a.price-b.price);
   if (sort === "price-desc") list.sort((a,b)=>b.price-a.price);
   if (sort === "name") list.sort((a,b)=>a.name.localeCompare(b.name));
 
-  const title = bundlesOnly ? "Bundles" : (goal ? goalName(goal) : "All formulations");
+  const title = bundlesOnly ? "Bundles" : picksOnly ? "Vivid Picks" : (goal ? goalName(goal) : "All formulations");
   const desc = bundlesOnly
     ? "Pre-paired stacks built for an outcome. Save R110–R150 vs buying separately."
-    : (goal
-        ? `Vivid Health formulations for ${goalName(goal).toLowerCase()}. South African made, dose-stated, vegetable capsules where applicable.`
-        : "Browse the full Vivid Health range — 52 single-ingredient and combination formulations, all made in South Africa.");
+    : picksOnly
+      ? "Our curated favourites — eight formulations the Vivid team would put in their own bathroom cabinet, hand-picked from across the range."
+      : (goal
+          ? `Vivid Health formulations for ${goalName(goal).toLowerCase()}. South African made, dose-stated, vegetable capsules where applicable.`
+          : "Browse the full Vivid Health range — 52 single-ingredient and combination formulations, all made in South Africa.");
   const banner = headerBanner({goal, bundlesOnly});
+  const crumbLast = bundlesOnly ? "Bundles" : picksOnly ? "Vivid Picks" : (goal ? goalName(goal) : "Shop");
 
   main.innerHTML = `
   <div class="collection-head collection-head--banner" style="--banner:url('${banner}')">
     <div class="collection-bg"></div>
     <div class="container">
-      <div class="crumb"><a href="#/">Home</a> · ${bundlesOnly?"Bundles":"Shop"}${goal?` · ${goalName(goal)}`:""}</div>
+      <div class="crumb"><a href="#/">Home</a> · ${crumbLast}</div>
       <h1>${title}</h1>
       <p>${desc}</p>
     </div>
   </div>
   <div class="container">
     <div class="shop-toolbar">
-      <div class="chip-row" role="group" aria-label="Filter by goal">
-        <button type="button" class="chip ${!goal&&!bundlesOnly?'is-active':''}" onclick="setFilter('goal','')">All <span class="chip-ct">${PRODUCTS.length}</span></button>
+      <div class="chip-row" role="group" aria-label="Filter by category">
+        <button type="button" class="chip ${!goal&&!bundlesOnly&&!picksOnly?'is-active':''}" onclick="setFilter('goal','')">All <span class="chip-ct">${PRODUCTS.length}</span></button>
+        <button type="button" class="chip ${picksOnly?'is-active':''}" onclick="location.hash='/shop?picks=1'">Vivid Picks <span class="chip-ct">${VIVID_PICKS.length}</span></button>
         ${GOALS.map(g=>`<button type="button" class="chip ${goal===g.id?'is-active':''}" onclick="setFilter('goal','${g.id}')">${g.name} <span class="chip-ct">${PRODUCTS.filter(p=>p.goal===g.id).length}</span></button>`).join("")}
         <button type="button" class="chip ${bundlesOnly?'is-active':''}" onclick="location.hash='/shop?bundles=1'">Bundles <span class="chip-ct">${BUNDLES.length}</span></button>
       </div>
@@ -2780,7 +2827,7 @@ function renderShop(main, params){
         </select>
       </div>
     </div>
-    <div class="shop-meta"><span>${list.length} product${list.length===1?"":"s"}</span>${goal||bundlesOnly?`<a href="#/shop" class="shop-meta-clear">Clear filter ×</a>`:""}</div>
+    <div class="shop-meta"><span>${list.length} product${list.length===1?"":"s"}</span>${goal||bundlesOnly||picksOnly?`<a href="#/shop" class="shop-meta-clear">Clear filter ×</a>`:""}</div>
     <div class="products-row products-row--shop" style="padding-bottom:var(--s-9)">
       ${list.length === 0
         ? `<div style="grid-column:1/-1;padding:64px 0;text-align:center;color:var(--ink-soft)"><p>No products match that filter.</p><a href="#/shop" class="btn btn--ghost" style="margin-top:16px">Show all</a></div>`
