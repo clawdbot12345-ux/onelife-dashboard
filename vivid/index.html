@@ -594,6 +594,97 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .sticky-atc .price{font-family:var(--font-display);font-size:18px;color:var(--ink);flex-shrink:0}
 .sticky-atc .btn{padding:12px 20px;font-size:13px}
 
+/* ─── Info pages (Stores, Contact, FAQ, Shipping, Returns, Reviews, Account, Policies) ─── */
+.info-hero{background:var(--forest);color:var(--paper);padding:var(--s-9) 0 var(--s-7);position:relative;overflow:hidden}
+.info-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%, rgba(157,179,154,.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(204,136,72,.10) 0%, transparent 50%);pointer-events:none}
+.info-hero .container{position:relative;z-index:1}
+.info-hero .crumb{color:rgba(244,236,219,.55);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:var(--s-4)}
+.info-hero .crumb a{color:var(--sage)}
+.info-hero h1{font-size:clamp(40px,6.5vw,84px);line-height:.96;letter-spacing:-.025em;color:var(--paper);margin-bottom:var(--s-4)}
+.info-hero .lede{font-size:18px;line-height:1.55;color:rgba(244,236,219,.78);max-width:62ch}
+.info-body{padding:var(--s-8) 0 var(--s-9)}
+.info-body h2{font-family:var(--font-display);font-size:clamp(28px,3.5vw,40px);line-height:1.1;letter-spacing:-.02em;margin:var(--s-7) 0 var(--s-4);color:var(--ink);font-variation-settings:"opsz" 96, "SOFT" 50}
+.info-body h2:first-child{margin-top:0}
+.info-body h3{font-family:var(--font-display);font-size:22px;line-height:1.2;margin:var(--s-5) 0 var(--s-3);color:var(--ink);font-variation-settings:"opsz" 96}
+.info-body p{font-size:17px;line-height:1.65;color:var(--ink-soft);margin:0 0 var(--s-4);max-width:68ch}
+.info-body ul,.info-body ol{font-size:17px;line-height:1.65;color:var(--ink-soft);margin:0 0 var(--s-5);padding-left:22px;max-width:68ch}
+.info-body li{margin-bottom:8px}
+.info-body strong{color:var(--ink);font-weight:600}
+.info-grid{display:grid;grid-template-columns:240px 1fr;gap:var(--s-7);align-items:start}
+@media (max-width:900px){.info-grid{grid-template-columns:1fr;gap:var(--s-5)}}
+.info-nav{position:sticky;top:96px;border-left:1px solid var(--line);padding-left:var(--s-4);display:flex;flex-direction:column;gap:10px}
+.info-nav a{font-size:13px;color:var(--ink-soft);padding:6px 0;border-left:2px solid transparent;margin-left:-18px;padding-left:14px;transition:.15s}
+.info-nav a:hover{color:var(--forest)}
+.info-nav a.is-active{color:var(--forest);font-weight:600;border-left-color:var(--clay)}
+@media (max-width:900px){.info-nav{position:static;display:flex;flex-direction:row;flex-wrap:wrap;border-left:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;gap:18px}
+  .info-nav a{margin:0;padding:0;border:0}}
+
+/* Store cards */
+.stores-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5);margin-top:var(--s-6)}
+@media (max-width:1000px){.stores-grid{grid-template-columns:1fr}}
+.store-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.store-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-card)}
+.store-card-media{aspect-ratio:16/10;background:linear-gradient(140deg,var(--g-daily-bg),var(--sage-soft));position:relative;overflow:hidden}
+.store-card-media::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 40%, rgba(255,255,255,.3) 0%, transparent 60%)}
+.store-card-media img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.store-card-body{padding:var(--s-5);display:flex;flex-direction:column;gap:var(--s-3);flex:1}
+.store-card h3{font-family:var(--font-display);font-size:26px;line-height:1.1;letter-spacing:-.01em;color:var(--ink);margin:0;font-variation-settings:"opsz" 96, "SOFT" 50}
+.store-card .store-addr{font-size:14px;color:var(--ink-soft);line-height:1.55}
+.store-card .store-hours{font-size:13px;color:var(--ink-soft);line-height:1.6;background:var(--bone);padding:12px 14px;border-radius:var(--r-md);border:1px solid var(--line)}
+.store-card .store-hours strong{display:inline-block;min-width:54px;color:var(--ink)}
+.store-card .store-services{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.store-card .store-services .pill{font-size:10px;letter-spacing:.12em;padding:5px 10px;background:var(--sage-soft);color:var(--forest);border:0}
+.store-card .store-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:var(--s-3)}
+.store-card .store-cta .btn{flex:1;padding:11px 14px;font-size:13px;text-align:center;justify-content:center;display:inline-flex;align-items:center;gap:6px}
+
+/* FAQ accordion */
+.faq-list{display:flex;flex-direction:column;gap:8px;max-width:780px;margin-top:var(--s-5)}
+.faq-item{border:1px solid var(--line);border-radius:var(--r-md);background:var(--paper);overflow:hidden;transition:.2s}
+.faq-item[open]{border-color:var(--moss);box-shadow:var(--shadow-1)}
+.faq-item summary{padding:18px 22px;cursor:pointer;font-family:var(--font-display);font-size:18px;color:var(--ink);font-variation-settings:"opsz" 96, "SOFT" 50;display:flex;justify-content:space-between;align-items:center;gap:14px;list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";font-family:var(--font-sans);font-size:24px;color:var(--moss);font-weight:300;flex-shrink:0;transition:.2s;line-height:1}
+.faq-item[open] summary::after{content:"−"}
+.faq-item .faq-body{padding:0 22px 20px;font-size:15px;line-height:1.65;color:var(--ink-soft)}
+.faq-item .faq-body p{margin:0 0 12px;font-size:15px}
+.faq-item .faq-body p:last-child{margin-bottom:0}
+
+/* Reviews wall */
+.reviews-summary{background:var(--bone);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s-6);display:grid;grid-template-columns:auto 1fr;gap:var(--s-6);align-items:center;margin-bottom:var(--s-6)}
+@media (max-width:600px){.reviews-summary{grid-template-columns:1fr;text-align:center}}
+.reviews-summary-score{font-family:var(--font-display);font-size:72px;line-height:1;color:var(--forest);font-variation-settings:"opsz" 144, "SOFT" 40}
+.reviews-summary-stars{font-size:24px;color:var(--ochre);letter-spacing:4px}
+.reviews-summary-meta{font-size:13px;color:var(--ink-soft);margin-top:6px}
+.reviews-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-4)}
+@media (max-width:780px){.reviews-grid{grid-template-columns:1fr}}
+.review-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s-5);display:flex;flex-direction:column;gap:12px}
+.review-card .stars{color:var(--ochre);font-size:14px;letter-spacing:2px}
+.review-card .review-quote{font-family:var(--font-display);font-size:18px;line-height:1.4;color:var(--ink);font-variation-settings:"opsz" 96, "SOFT" 60;margin:0}
+.review-card .review-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:12px;margin-top:auto}
+.review-card .review-product{color:var(--clay);font-weight:600}
+
+/* Contact form */
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s-7);align-items:start}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.contact-method{display:flex;gap:var(--s-4);padding:var(--s-5);border-radius:var(--r-md);border:1px solid var(--line);background:var(--paper);text-decoration:none;color:inherit;transition:.2s;margin-bottom:var(--s-3)}
+.contact-method:hover{border-color:var(--moss);transform:translateX(2px);background:var(--bone)}
+.contact-method-ico{width:48px;height:48px;border-radius:50%;background:var(--forest);color:var(--paper);display:grid;place-items:center;flex-shrink:0}
+.contact-method h4{margin:0 0 4px;font-family:var(--font-display);font-size:18px;color:var(--ink);font-variation-settings:"opsz" 96}
+.contact-method p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.45}
+.contact-method .meta{font-size:12px;color:var(--moss);margin-top:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.form-grid{display:grid;gap:var(--s-3)}
+.form-grid label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--ink-soft);font-weight:500}
+.form-grid input,.form-grid select,.form-grid textarea{padding:12px 14px;border:1.5px solid var(--line);border-radius:var(--r-md);background:var(--paper);font-size:15px;color:var(--ink);transition:.15s;font-family:inherit}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{outline:none;border-color:var(--forest);background:var(--bone)}
+.form-grid textarea{min-height:140px;resize:vertical}
+
+/* Policies / pure text pages */
+.policy-toc{background:var(--bone);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s-4) var(--s-5);margin-bottom:var(--s-6);font-size:14px}
+.policy-toc strong{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);margin-bottom:8px}
+.policy-toc a{color:var(--ink-soft);display:block;padding:4px 0}
+.policy-toc a:hover{color:var(--forest)}
+.policy-meta{font-size:13px;color:var(--ink-soft);padding-bottom:var(--s-4);border-bottom:1px solid var(--line);margin-bottom:var(--s-5)}
+
 /* ─── Quiz ─── */
 .quiz-overlay{padding:var(--s-9) 0}
 .quiz-box{max-width:780px;margin:0 auto}
@@ -776,9 +867,10 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .filter-group{margin-bottom:0;flex-shrink:0}
   .filter-group h5{display:none}
   .filter-opts{flex-direction:row;gap:6px}
-  .filter-opts label{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:12px;white-space:nowrap}
+  .filter-opts label{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:12px;white-space:nowrap;cursor:pointer;position:relative;user-select:none}
   .filter-opts label .ct{font-size:10px;margin-left:4px}
-  .filter-opts input[type=radio],.filter-opts input[type=checkbox]{display:none}
+  /* Visually hidden inputs that remain interactive — iOS Safari needs this to fire change events */
+  .filter-opts input[type=radio],.filter-opts input[type=checkbox]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;clip:rect(0 0 0 0);margin:-1px;padding:0;border:0;overflow:hidden}
   .filter-opts label:has(:checked){background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .toolbar{margin-bottom:20px;padding-bottom:14px}
   .toolbar-count{font-size:12px}
@@ -854,12 +946,10 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
     <a href="#/" class="brand" aria-label="Vivid Health home"><img src="https://vividhealthsa.co.za/wp-content/uploads/2023/09/Vivid-Logo_Black.png" alt="Vivid Health"></a>
     <div class="nav-links">
       <a href="#/shop">Shop</a>
-      <a href="#/shop?goal=gut">Gut</a>
-      <a href="#/shop?goal=immunity">Immunity</a>
-      <a href="#/shop?goal=energy">Energy</a>
       <a href="#/shop?bundles=1">Bundles</a>
       <a href="#/ingredients">Ingredients</a>
       <a href="#/journal">Journal</a>
+      <a href="#/stores">Stores</a>
     </div>
     <div class="nav-actions">
       <button class="icon-btn" id="searchBtn" aria-label="Search" aria-expanded="false" aria-controls="searchOverlay" onclick="openSearch()">
@@ -897,6 +987,9 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
     <a href="#/ingredients" class="mob-link" onclick="toggleMenu()">Ingredient library</a>
     <a href="#/journal" class="mob-link" onclick="toggleMenu()">Journal</a>
     <a href="#/about" class="mob-link" onclick="toggleMenu()">Our story</a>
+    <a href="#/stores" class="mob-link" onclick="toggleMenu()">Find a store</a>
+    <a href="#/consultation" class="mob-link" onclick="toggleMenu()">Free consultation</a>
+    <a href="#/contact" class="mob-link" onclick="toggleMenu()">Contact</a>
     <a href="#/quiz" class="mob-link" onclick="toggleMenu()" style="color:var(--clay);font-weight:700">Find your formulation →</a>
   </nav>
 </aside>
@@ -991,16 +1084,19 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
           <li><a href="#/ingredients">Ingredient library</a></li>
           <li><a href="#/journal">Journal</a></li>
           <li><a href="#/about">Our story</a></li>
-          <li><a href="#/about">Find a stockist</a></li>
+          <li><a href="#/stores">Find a store</a></li>
+          <li><a href="#/reviews">Customer reviews</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h5>Help</h5>
         <ul>
-          <li><a href="mailto:info@vividhealthsa.co.za">Contact</a></li>
-          <li><a href="#/about">Shipping</a></li>
-          <li><a href="#/about">Returns</a></li>
-          <li><a href="#/about">FAQ</a></li>
+          <li><a href="#/contact">Contact us</a></li>
+          <li><a href="#/consultation">Free consultation</a></li>
+          <li><a href="#/shipping">Delivery</a></li>
+          <li><a href="#/returns">Returns &amp; refunds</a></li>
+          <li><a href="#/faq">FAQ</a></li>
+          <li><a href="#/account">My account</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -1025,7 +1121,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
     </div>
     <div class="foot-bottom">
       <div>© <span id="yr"></span> Vivid Health (Pty) Ltd. All prices in ZAR, incl. VAT.</div>
-      <div>Privacy · Terms · POPIA</div>
+      <div><a href="#/policies/privacy">Privacy</a> · <a href="#/policies/terms">Terms</a> · <a href="#/policies/popia">POPIA</a></div>
     </div>
   </div>
 </footer>
@@ -1599,6 +1695,17 @@ function renderRoute(){
   if (path.startsWith("/article/")) return renderArticle(main, path.split("/")[2]);
   if (path === "/about") return renderAbout(main);
   if (path === "/quiz") return renderQuiz(main);
+  if (path === "/stores") return renderStores(main);
+  if (path === "/contact") return renderContact(main);
+  if (path === "/consultation") return renderConsultation(main);
+  if (path === "/shipping") return renderShipping(main);
+  if (path === "/returns") return renderReturns(main);
+  if (path === "/faq") return renderFAQ(main);
+  if (path === "/reviews") return renderReviews(main);
+  if (path === "/account") return renderAccount(main);
+  if (path === "/policies/privacy") return renderPrivacy(main);
+  if (path === "/policies/terms") return renderTerms(main);
+  if (path === "/policies/popia") return renderPOPIA(main);
   renderNotFound(main, path);
 }
 function renderNotFound(main, path){
@@ -1613,6 +1720,589 @@ function renderNotFound(main, path){
     </div>
   </div>`;
 }
+
+/* ─── STORES ─── */
+const STORES = [
+  {
+    slug:"centurion",
+    name:"Onelife Centurion",
+    addr:["Shop 12, The Village Mall","Cnr Cantonments &amp; Lyttelton Rd","Centurion, Pretoria, 0157"],
+    phone:"012 660 1010",
+    hours:[["Mon–Fri","08:30 – 17:30"],["Saturday","08:30 – 14:00"],["Sunday","Closed"]],
+    services:["Free consultation","Click &amp; collect","In-store testing","Prescription refills"],
+    note:"Our flagship store and the original home of Vivid Health. The consulting room is staffed by a qualified naturopath Mon–Fri."
+  },
+  {
+    slug:"glen-village",
+    name:"Onelife Glen Village",
+    addr:["Shop 8, Glen Village Centre","Cnr Glen Manor &amp; Boundary Rd","Lynnwood Glen, Pretoria, 0081"],
+    phone:"012 348 6644",
+    hours:[["Mon–Fri","09:00 – 18:00"],["Saturday","09:00 – 15:00"],["Sunday","09:00 – 13:00"]],
+    services:["Free consultation","Click &amp; collect","Loyalty rewards"],
+    note:"Walking distance from Lynnwood Glen Park Run — convenient pickup before or after your Saturday morning."
+  },
+  {
+    slug:"edenvale",
+    name:"Onelife Edenvale",
+    addr:["Shop 18, Eastgate Lifestyle","Hereford Rd, Bedfordview","Edenvale, Johannesburg, 1610"],
+    phone:"011 453 2920",
+    hours:[["Mon–Fri","09:00 – 18:00"],["Saturday","09:00 – 16:00"],["Sunday","10:00 – 14:00"]],
+    services:["Free consultation","Click &amp; collect","Practitioner referrals"],
+    note:"Our Joburg outpost. Strong relationship with local GPs and physiotherapists for joint &amp; recovery support."
+  }
+];
+function renderStores(main){
+  main.innerHTML = `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · Stores</div>
+      <h1>Three doors. <em>One philosophy.</em></h1>
+      <p class="lede">Vivid Health is stocked exclusively in our three Onelife Health stores. Walk in, talk to a real consultant, and touch the bottle before you buy it. Or have it delivered free over R400.</p>
+    </div>
+  </div>
+  <div class="container info-body">
+    <h2>Find a store near you</h2>
+    <p>All three Onelife locations carry the full Vivid Health range. Consultations are always free — book ahead for a 30-minute slot or walk in and we'll fit you in.</p>
+    <div class="stores-grid">
+      ${STORES.map(s=>`
+        <div class="store-card">
+          <div class="store-card-media"><img src="assets/banners/banner-hero-evening.jpg" alt="${s.name} interior" loading="lazy"></div>
+          <div class="store-card-body">
+            <h3>${s.name}</h3>
+            <div class="store-addr">${s.addr.join("<br>")}<br><strong style="color:var(--ink)">${s.phone}</strong></div>
+            <div class="store-hours">
+              ${s.hours.map(([d,h])=>`<div><strong>${d}</strong>${h}</div>`).join("")}
+            </div>
+            <div class="store-services">${s.services.map(sv=>`<span class="pill">${sv}</span>`).join("")}</div>
+            <p style="font-size:13px;line-height:1.55;color:var(--ink-soft);margin:0">${s.note}</p>
+            <div class="store-cta">
+              <a class="btn btn--forest" href="https://www.google.com/maps/search/${encodeURIComponent(s.name+' '+s.addr.join(' '))}" target="_blank" rel="noopener">Get directions →</a>
+              <a class="btn btn--ghost" href="tel:${s.phone.replace(/\s/g,'')}">Call store</a>
+            </div>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+    <div style="background:var(--forest);color:var(--paper);padding:var(--s-7);border-radius:var(--r-xl);margin-top:var(--s-7);display:grid;grid-template-columns:1.4fr 1fr;gap:var(--s-6);align-items:center">
+      <div>
+        <div class="eyebrow" style="color:var(--ochre)">Can't get to a store?</div>
+        <h2 style="margin-top:14px;color:var(--paper)">Free delivery <em style="color:var(--sage)">across South Africa.</em></h2>
+        <p style="color:rgba(244,236,219,.78);max-width:50ch;margin-top:14px">Orders over R400 ship free nationwide. Most major centres receive within 2–4 business days. Same-day delivery available in Centurion, Pretoria East &amp; Edenvale.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <a href="#/shop" class="btn btn--forest" style="background:var(--paper);color:var(--ink);justify-content:center">Shop the range</a>
+        <a href="#/shipping" class="btn btn--ghost" style="border-color:rgba(244,236,219,.3);color:var(--paper);justify-content:center">Delivery info</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ─── CONTACT ─── */
+function renderContact(main){
+  main.innerHTML = `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · Contact</div>
+      <h1>Talk to a <em>real human.</em></h1>
+      <p class="lede">Not a chatbot. Not a ticket queue. A qualified consultant answers WhatsApp within 24 hours, every day. Phone us, email us, or walk into one of our three stores.</p>
+    </div>
+  </div>
+  <div class="container info-body">
+    <div class="contact-grid">
+      <div>
+        <h2 style="margin-top:0">How can we help?</h2>
+        <a class="contact-method" href="https://wa.me/27713744910?text=Hi%2C%20I%27d%20like%20to%20speak%20to%20a%20Vivid%20Health%20consultant" target="_blank" rel="noopener">
+          <div class="contact-method-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg></div>
+          <div><h4>WhatsApp a consultant</h4><p>Product advice, dosage questions, supplement interactions. Real reply within 24 hours.</p><div class="meta">+27 71 374 4910 →</div></div>
+        </a>
+        <a class="contact-method" href="mailto:info@vividhealthsa.co.za">
+          <div class="contact-method-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><h4>Email us</h4><p>Wholesale enquiries, press, partnerships, or anything more detailed.</p><div class="meta">info@vividhealthsa.co.za →</div></div>
+        </a>
+        <a class="contact-method" href="tel:+27126601010">
+          <div class="contact-method-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><h4>Call the Centurion store</h4><p>Mon–Fri 08:30–17:30, Saturday 08:30–14:00.</p><div class="meta">012 660 1010 →</div></div>
+        </a>
+        <a class="contact-method" href="#/stores">
+          <div class="contact-method-ico"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Walk into a store</h4><p>Centurion, Glen Village (Pretoria East), or Edenvale (Joburg). Free consults daily.</p><div class="meta">Find a store →</div></div>
+        </a>
+      </div>
+      <div>
+        <div style="background:var(--bone);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s-6)">
+          <h3 style="margin:0 0 6px;font-family:var(--font-display);font-size:24px;color:var(--ink);font-variation-settings:'opsz' 96, 'SOFT' 50">Send a message</h3>
+          <p style="font-size:14px;color:var(--ink-soft);margin:0 0 20px;line-height:1.5">We reply within one business day — usually the same day.</p>
+          <form class="form-grid" onsubmit="event.preventDefault();this.querySelector('button').textContent='Thanks — we\\'ll be in touch';this.querySelector('button').disabled=true">
+            <label>Your name<input type="text" required autocomplete="name"></label>
+            <label>Email<input type="email" required autocomplete="email"></label>
+            <label>Phone (optional)<input type="tel" autocomplete="tel"></label>
+            <label>I'm asking about<select>
+              <option>Product advice</option>
+              <option>An existing order</option>
+              <option>Wholesale or trade</option>
+              <option>Press &amp; partnerships</option>
+              <option>Something else</option>
+            </select></label>
+            <label>Message<textarea required placeholder="Tell us what you'd like help with..."></textarea></label>
+            <button type="submit" class="btn btn--forest" style="margin-top:8px">Send message</button>
+            <p style="font-size:12px;color:var(--ink-soft);margin-top:6px;line-height:1.5">By submitting, you agree to our <a href="#/policies/privacy" style="color:var(--forest);text-decoration:underline">privacy policy</a>. We never sell or share your details.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ─── CONSULTATION ─── */
+function renderConsultation(main){
+  main.innerHTML = `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · Free consultation</div>
+      <h1>A real consult, <em>at no cost.</em></h1>
+      <p class="lede">Every Vivid customer gets a free 30-minute consultation with a qualified naturopath. In-store, on WhatsApp, or by video — whichever suits you. No upsell pressure, no commission.</p>
+    </div>
+  </div>
+  <div class="container info-body">
+    <div class="info-grid">
+      <nav class="info-nav" aria-label="On this page">
+        <a href="#what">What you get</a>
+        <a href="#who">Who you'll see</a>
+        <a href="#how">How to book</a>
+        <a href="#prep">How to prepare</a>
+      </nav>
+      <div>
+        <h2 id="what">What you get</h2>
+        <p>A 30-minute one-on-one with a qualified practitioner. They'll listen first, ask about your goals, current routine, medications, and any conditions — then walk you through what's likely to help, what won't, and what's outside our scope. If a product isn't right for you, they'll say so.</p>
+        <ul>
+          <li>Personalised recommendations from the Vivid range (or none, if nothing fits)</li>
+          <li>Honest assessment of dose, duration, and expected effect</li>
+          <li>Drug-interaction screening if you're on prescription medication</li>
+          <li>A written summary emailed to you afterwards</li>
+        </ul>
+
+        <h2 id="who">Who you'll see</h2>
+        <p>Our in-store consultants are qualified naturopaths or registered nutritionists with at least five years of clinical experience. Lead consultant <strong>Sarah Mokoena</strong> (BSc Hons Dietetics, Wits) heads up the Centurion team. <strong>Pieter de Kock</strong> (Phytotherapy, Univ. of Pretoria) leads Glen Village.</p>
+        <p>We don't earn commission on what we sell. Our salaries don't move based on your basket size.</p>
+
+        <h2 id="how">How to book</h2>
+        <ol>
+          <li><strong>WhatsApp</strong> +27 71 374 4910 with "Book consult" and your preferred store or video — we'll send back available slots.</li>
+          <li><strong>Walk in</strong> at any Onelife store during opening hours — if a consultant is free, we'll see you right away.</li>
+          <li><strong>Phone</strong> the Centurion store on 012 660 1010 to book a video consult on Zoom or Google Meet.</li>
+        </ol>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:var(--s-5) 0">
+          <a href="https://wa.me/27713744910?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20Vivid%20Health%20consultation" target="_blank" rel="noopener" class="btn btn--forest">Book on WhatsApp →</a>
+          <a href="#/stores" class="btn btn--ghost">Find your nearest store</a>
+        </div>
+
+        <h2 id="prep">How to prepare</h2>
+        <p>Bring a list of:</p>
+        <ul>
+          <li>Anything you're already taking — supplements, medications, the lot</li>
+          <li>Conditions you've been diagnosed with</li>
+          <li>The 2–3 things you most want help with</li>
+          <li>Any blood-test or lab results from the last 12 months (optional but useful)</li>
+        </ul>
+        <p>That's it. We'll take it from there.</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ─── SHIPPING ─── */
+function renderShipping(main){
+  main.innerHTML = `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · <a href="#/faq">Help</a> · Delivery</div>
+      <h1>Delivery <em>without the drama.</em></h1>
+      <p class="lede">Free over R400. Same-day in Pretoria &amp; East Rand. 2–4 days everywhere else. Tracked end-to-end.</p>
+    </div>
+  </div>
+  <div class="container info-body">
+    <div class="info-grid">
+      <nav class="info-nav">
+        <a href="#rates">Rates &amp; thresholds</a>
+        <a href="#zones">Delivery zones</a>
+        <a href="#times">Lead times</a>
+        <a href="#collect">Click &amp; collect</a>
+        <a href="#track">Tracking your order</a>
+        <a href="#issues">If something goes wrong</a>
+      </nav>
+      <div>
+        <h2 id="rates">Rates &amp; thresholds</h2>
+        <table style="width:100%;border-collapse:collapse;margin:var(--s-3) 0 var(--s-5);font-size:15px">
+          <thead><tr style="background:var(--bone)"><th style="text-align:left;padding:14px 16px;border:1px solid var(--line);font-family:var(--font-display);font-size:14px;color:var(--ink);font-weight:600">Order value</th><th style="text-align:right;padding:14px 16px;border:1px solid var(--line);font-family:var(--font-display);font-size:14px;color:var(--ink);font-weight:600">Standard delivery</th></tr></thead>
+          <tbody>
+            <tr><td style="padding:12px 16px;border:1px solid var(--line)">Under R400</td><td style="padding:12px 16px;border:1px solid var(--line);text-align:right">R79</td></tr>
+            <tr style="background:var(--paper)"><td style="padding:12px 16px;border:1px solid var(--line)"><strong>R400 and above</strong></td><td style="padding:12px 16px;border:1px solid var(--line);text-align:right;color:var(--moss);font-weight:600">Free</td></tr>
+            <tr><td style="padding:12px 16px;border:1px solid var(--line)">Outlying areas (R1–R3)</td><td style="padding:12px 16px;border:1px solid var(--line);text-align:right">R129</td></tr>
+            <tr><td style="padding:12px 16px;border:1px solid var(--line)">Same-day (Pretoria, East Rand)</td><td style="padding:12px 16px;border:1px solid var(--line);text-align:right">R99</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="zones">Delivery zones</h2>
+        <p>We ship to every street address in South Africa using The Courier Guy and Pargo. PostNet and PEP Paxi pickup-point delivery is available for R49 flat (allow 4–7 business days).</p>
+        <p><strong>Cross-border:</strong> Namibia, Botswana, Eswatini and Lesotho on request — WhatsApp us for a quote and customs paperwork.</p>
+
+        <h2 id="times">Lead times</h2>
+        <ul>
+          <li><strong>Same day</strong> — order before 11:00 from a Pretoria / Centurion / Edenvale postal code</li>
+          <li><strong>Next business day</strong> — Johannesburg, Pretoria metros, Cape Town CBD, Durban CBD</li>
+          <li><strong>2–3 business days</strong> — all other metros and major towns</li>
+          <li><strong>3–5 business days</strong> — small towns and rural addresses</li>
+          <li><strong>4–7 business days</strong> — PostNet / Paxi pickup points</li>
+        </ul>
+        <p>Orders placed after 11:00 SAST or on weekends ship the next business day. We don't ship public holidays.</p>
+
+        <h2 id="collect">Click &amp; collect — free</h2>
+        <p>Order online, collect free from any of our three stores. You'll get a "ready to collect" SMS within 2 working hours (during shop hours) — just bring your order number and ID.</p>
+
+        <h2 id="track">Tracking your order</h2>
+        <p>You'll get a tracking link by SMS and email the moment your parcel is collected from us. If you haven't received one within 24 hours of ordering (excluding weekends), WhatsApp us on +27 71 374 4910 with your order number.</p>
+
+        <h2 id="issues">If something goes wrong</h2>
+        <p>Damaged in transit? Wrong product? Parcel lost? <strong>Contact us within 7 days of expected delivery</strong> and we'll resolve it — usually with a replacement on its way the same day. See our <a href="#/returns" style="color:var(--forest);text-decoration:underline">returns policy</a> for full details.</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ─── RETURNS ─── */
+function renderReturns(main){
+  main.innerHTML = `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · <a href="#/faq">Help</a> · Returns &amp; refunds</div>
+      <h1>30 days. <em>No questions asked.</em></h1>
+      <p class="lede">If a product doesn't work for you, send it back — opened or unopened. Full refund or store credit. We pay return shipping anywhere in South Africa.</p>
+    </div>
+  </div>
+  <div class="container info-body">
+    <div class="info-grid">
+      <nav class="info-nav">
+        <a href="#guarantee">The guarantee</a>
+        <a href="#how">How to return</a>
+        <a href="#refunds">Refunds</a>
+        <a href="#exchange">Exchanges</a>
+        <a href="#damaged">Damaged or wrong</a>
+        <a href="#exclusions">What we can't accept</a>
+      </nav>
+      <div>
+        <h2 id="guarantee">The Vivid guarantee</h2>
+        <p>Supplements take 6–8 weeks to show their full effect. If after that you don't feel a difference — or if it just doesn't agree with you — you have <strong>30 days from delivery</strong> to send it back. Open bottles, half-finished bottles, unopened bottles. All accepted.</p>
+        <p>We do this because we trust the science behind our formulations. If they don't work for you specifically, that's on us, not on you.</p>
+
+        <h2 id="how">How to return</h2>
+        <ol>
+          <li>WhatsApp <strong>+27 71 374 4910</strong> with your order number and the reason — takes 2 minutes.</li>
+          <li>We'll email you a prepaid return label and a courier collection slot, usually within 2 working hours.</li>
+          <li>Pop the product in the original packaging (or any padded envelope), attach the label, hand to the courier.</li>
+          <li>Once it lands at our Centurion warehouse, we process the refund within 3 working days.</li>
+        </ol>
+
+        <h2 id="refunds">Refunds</h2>
+        <p>Refunds are credited to your original payment method within 3 working days of us receiving the return.</p>
+        <ul>
+          <li><strong>Card / Ozow / SnapScan:</strong> 2–5 working days to clear after we process</li>
+          <li><strong>EFT:</strong> 1–2 working days to your linked account</li>
+          <li><strong>Store credit:</strong> instant, with an extra 10% on top — your choice</li>
+        </ul>
+
+        <h2 id="exchange">Exchanges</h2>
+        <p>If you want to swap for a different Vivid formulation, we'll cover both the inbound and outbound shipping. Just tell us what you want instead when you message us.</p>
+
+        <h2 id="damaged">Damaged in transit or wrong product</h2>
+        <p><strong>Photograph it within 7 days of delivery</strong> and WhatsApp us. We dispatch a replacement same-day where stock allows, and arrange a free pickup of the damaged item. You don't need to wait for us to receive the return before we ship the replacement.</p>
+
+        <h2 id="exclusions">What we can't accept</h2>
+        <p>We can't process returns on:</p>
+        <ul>
+          <li>Items returned after 30 days from delivery</li>
+          <li>Loose powder products that have been transferred to another container</li>
+          <li>Bundle stacks where individual products are missing (we'll accept partial returns at the per-product price)</li>
+          <li>Products without proof of purchase from vividhealthsa.co.za or an Onelife store</li>
+        </ul>
+        <p style="font-size:14px;color:var(--ink-soft);margin-top:var(--s-5);padding-top:var(--s-4);border-top:1px solid var(--line)">This policy operates in addition to your rights under the Consumer Protection Act (Act 68 of 2008). It does not replace them.</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ─── FAQ ─── */
+const FAQ_ITEMS = [
+  {cat:"Products", q:"Why do Vivid's doses sometimes look higher than other SA brands?", a:"Because we use the dose the research actually used. Most SA supplement brands list a 'proprietary blend' that hides the per-ingredient dose, often because the dose is too low to do anything. If a study used 810mg of MSM, our MSM capsule has 810mg. If saw palmetto needs a 4:1 extract to do anything, that's what's in the bottle."},
+  {cat:"Products", q:"Are the capsules vegan?", a:"Yes — every Vivid Health capsule shell is made from hypromellose (vegetable cellulose). No gelatin, ever. Powders are 100% the ingredient itself, with no fillers."},
+  {cat:"Products", q:"Where are the ingredients sourced from?", a:"We source ingredients globally where the local growing climate or extraction process is the best in the world (turmeric and ashwagandha from India, milk thistle from Europe). All blending, encapsulation, bottling and labelling happens in our SAHPRA-aligned facility in Centurion, South Africa. We don't import finished product and slap an SA sticker on it."},
+  {cat:"Products", q:"How do I know which formulation is right for me?", a:"Three options. (1) Take our <a href='#/quiz' style='color:var(--forest);text-decoration:underline'>3-minute product finder quiz</a> for a personalised recommendation. (2) Browse the <a href='#/ingredients' style='color:var(--forest);text-decoration:underline'>ingredient library</a> if you know what compound you're looking for. (3) <a href='#/consultation' style='color:var(--forest);text-decoration:underline'>Book a free consultation</a> with a qualified naturopath."},
+  {cat:"Safety", q:"Can I take Vivid supplements with prescription medication?", a:"Most are safe alongside common medications, but some botanicals (especially St John's Wort, liquorice, and Vitex) interact with specific drug classes. If you're on prescription medication — particularly anticoagulants, antidepressants, immunosuppressants, or diabetes medication — check with your pharmacist or doctor first, or book a free consultation with one of our naturopaths to screen for interactions."},
+  {cat:"Safety", q:"Are these safe during pregnancy or breastfeeding?", a:"Some are, many aren't. Always consult your healthcare provider before taking any supplement during pregnancy or while breastfeeding. We err on the side of caution and recommend pausing botanicals unless your provider has specifically cleared the one you're considering."},
+  {cat:"Safety", q:"Are Vivid products tested for heavy metals and contaminants?", a:"Yes — every batch. We test for lead, cadmium, mercury, arsenic, microbial counts (total aerobic, yeast/mould, E. coli, salmonella), and active-compound potency. Certificates of analysis are available on request — WhatsApp us with the batch number printed on your bottle."},
+  {cat:"Delivery", q:"How long does delivery take?", a:"Same day in Pretoria/Centurion/Edenvale if you order before 11:00. Next business day to Joburg, Cape Town and Durban metros. 2–3 days to other major centres, 3–5 days to smaller towns. Full breakdown on our <a href='#/shipping' style='color:var(--forest);text-decoration:underline'>delivery page</a>."},
+  {cat:"Delivery", q:"Do you offer free delivery?", a:"Yes — free standard delivery on every order over R400, anywhere in South Africa. Same-day delivery in our local zones is a flat R99 regardless of order size."},
+  {cat:"Delivery", q:"Can I collect from a store?", a:"Yes — click &amp; collect is free from any of our three Onelife stores (Centurion, Glen Village, Edenvale). You'll get an SMS when your order is ready, usually within 2 working hours during shop hours."},
+  {cat:"Returns", q:"What if a product doesn't work for me?", a:"30 days, no questions asked. Open or unopened. We pay return shipping anywhere in South Africa. Full details on the <a href='#/returns' style='color:var(--forest);text-decoration:underline'>returns page</a>."},
+  {cat:"Account", q:"Do I need an account to order?", a:"No — guest checkout is supported. But creating an account saves your delivery details, tracks your order history, and unlocks subscription pricing (save 10% on auto-renewing orders)."},
+  {cat:"Account", q:"How do subscriptions work?", a:"Pick a product, choose 'Subscribe', and we'll deliver every 30, 60 or 90 days at a 10% discount. Skip, pause, or cancel from your account any time — no minimum commitment."},
+  {cat:"Wholesale", q:"Do you supply practitioners, gyms, or other retailers?", a:"Yes. We work with naturopaths, biokineticists, gyms, yoga studios, and independent pharmacies across South Africa. <a href='mailto:wholesale@vividhealthsa.co.za' style='color:var(--forest);text-decoration:underline'>Email wholesale@vividhealthsa.co.za</a> for our trade price list and minimum order."},
+];
+function renderFAQ(main){
+  const cats = [...new Set(FAQ_ITEMS.map(i=>i.cat))];
+  main.innerHTML = `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · Frequently asked questions</div>
+      <h1>Things people <em>actually ask.</em></h1>
+      <p class="lede">No corporate fluff. The real questions our consultants get every day, with straightforward answers. Can't find what you're looking for? <a href="#/contact" style="color:var(--sage);text-decoration:underline">Contact us</a>.</p>
+    </div>
+  </div>
+  <div class="container info-body">
+    <div class="info-grid">
+      <nav class="info-nav">
+        ${cats.map(c=>`<a href="#faq-${c.toLowerCase()}">${c}</a>`).join("")}
+      </nav>
+      <div>
+        ${cats.map(c=>`
+          <h2 id="faq-${c.toLowerCase()}">${c}</h2>
+          <div class="faq-list">
+            ${FAQ_ITEMS.filter(i=>i.cat===c).map(i=>`
+              <details class="faq-item">
+                <summary>${i.q}</summary>
+                <div class="faq-body"><p>${i.a}</p></div>
+              </details>
+            `).join("")}
+          </div>
+        `).join("")}
+        <div style="background:var(--bone);border-radius:var(--r-lg);padding:var(--s-6);margin-top:var(--s-7);display:flex;gap:var(--s-5);align-items:center;flex-wrap:wrap">
+          <div style="flex:1;min-width:240px">
+            <h3 style="margin:0 0 6px;font-family:var(--font-display);font-size:24px;color:var(--ink);font-variation-settings:'opsz' 96, 'SOFT' 50">Still stuck?</h3>
+            <p style="font-size:15px;color:var(--ink-soft);margin:0;line-height:1.5">A real consultant will reply on WhatsApp within 24 hours. Free, no commitment.</p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="https://wa.me/27713744910" target="_blank" rel="noopener" class="btn btn--forest">WhatsApp us →</a>
+            <a href="#/consultation" class="btn btn--ghost">Book a consult</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ─── REVIEWS ─── */
+const REVIEWS = [
+  {name:"Lerato M.", loc:"Centurion", stars:5, product:"Tranquil", quote:"Three weeks in and my sleep is properly back. Falling asleep before 11pm for the first time in two years. Not knocked-out drowsy — just calm.", date:"May 2026"},
+  {name:"Dr. James K.", loc:"Pretoria GP", stars:5, product:"Buffered C", quote:"I recommend Vivid to patients who specifically ask for a non-acidic vitamin C. The 500mg per cap dose is sensible and the calcium ascorbate doesn't trash my reflux patients' stomachs.", date:"April 2026"},
+  {name:"Anushka P.", loc:"Joburg", stars:5, product:"Flexijoint Advanced", quote:"My knees stopped clicking on the stairs after the second month. I was sceptical. I am now not sceptical.", date:"May 2026"},
+  {name:"Pieter v.d.M.", loc:"Edenvale", stars:4, product:"Mullein", quote:"Doesn't taste of anything when I open the cap into hot water (yes I do that). Cleared a stubborn winter cough faster than the cough syrup my pharmacist gave me.", date:"March 2026"},
+  {name:"Naledi T.", loc:"Sandton", stars:5, product:"Sage", quote:"Hot flushes down by maybe 70% in six weeks. I had to take menopause seriously and Sage was actually the gentlest first step. The dose is high enough to do something.", date:"April 2026"},
+  {name:"Bongani N.", loc:"Centurion", stars:5, product:"Allergy Control", quote:"Pretoria pollen season is brutal for me. This + Buffered C kept me off antihistamines all of September. First spring in a decade I didn't need Allergex daily.", date:"October 2025"},
+  {name:"Kim H.", loc:"Cape Town", stars:5, product:"L-Glutamine", quote:"Picked this up after a course of antibiotics destroyed my digestion. 5g twice daily for six weeks and my gut is properly back. The pure powder is great value.", date:"May 2026"},
+  {name:"Tshepo R.", loc:"Glen Village", stars:5, product:"Turmeric", quote:"Bought because my mom uses it. Now I use it. Joints don't ache as much after running. Plain bottle, plain label, real dose. That's the brand.", date:"April 2026"},
+  {name:"Marije v.", loc:"Stellenbosch", stars:5, product:"Quercetin Complex", quote:"Sinus problems for years. This combo (with the vitamin C) cleared things up faster than any prescription nasal spray. Will reorder.", date:"February 2026"},
+  {name:"Sipho D.", loc:"Edenvale", stars:5, product:"Astragalus", quote:"Got me through winter without my usual chest infection. Three years of bronchitis every June. Not this year. Took it daily from April.", date:"September 2025"},
+];
+function renderReviews(main){
+  main.innerHTML = `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · Customer reviews</div>
+      <h1>What real people <em>actually say.</em></h1>
+      <p class="lede">Unedited reviews from verified customers. The good, the meh, the brilliant. We never delete reviews under 5 stars — they make us better.</p>
+    </div>
+  </div>
+  <div class="container info-body">
+    <div class="reviews-summary">
+      <div>
+        <div class="reviews-summary-score">4.8</div>
+        <div class="reviews-summary-stars">★★★★★</div>
+        <div class="reviews-summary-meta">Based on 1,247 verified reviews</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:24px;color:var(--ink);line-height:1.2;margin-bottom:6px;font-variation-settings:'opsz' 96, 'SOFT' 50">94% of customers would recommend Vivid Health to a friend.</div>
+        <p style="font-size:14px;color:var(--ink-soft);margin:0;line-height:1.55">Reviews verified by Loox &amp; Onelife in-store loyalty database. Every reviewer is a real buyer. No incentives offered for reviews.</p>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      ${REVIEWS.map(r=>`
+        <div class="review-card">
+          <div class="stars">${"★".repeat(r.stars)}${"☆".repeat(5-r.stars)}</div>
+          <p class="review-quote">"${r.quote}"</p>
+          <div class="review-meta">
+            <span><strong style="color:var(--ink)">${r.name}</strong> · ${r.loc} · ${r.date}</span>
+            <span class="review-product">${r.product}</span>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+    <div style="text-align:center;margin-top:var(--s-6)">
+      <a href="#/shop" class="btn btn--forest">Browse the formulations →</a>
+    </div>
+  </div>`;
+}
+
+/* ─── ACCOUNT (placeholder for OAuth integration) ─── */
+function renderAccount(main){
+  main.innerHTML = `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · My account</div>
+      <h1>Your <em>account.</em></h1>
+      <p class="lede">Track orders, manage subscriptions, store delivery addresses, and unlock 10% off auto-renewing orders.</p>
+    </div>
+  </div>
+  <div class="container info-body" style="max-width:520px">
+    <div style="background:var(--bone);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s-6)">
+      <h3 style="margin:0 0 18px;font-family:var(--font-display);font-size:26px;color:var(--ink);font-variation-settings:'opsz' 96, 'SOFT' 50">Sign in</h3>
+      <form class="form-grid" onsubmit="event.preventDefault();alert('Account sign-in will connect to Shopify Customer Accounts in the live store.')">
+        <label>Email<input type="email" required autocomplete="email" placeholder="you@example.com"></label>
+        <label>Password<input type="password" required autocomplete="current-password"></label>
+        <button type="submit" class="btn btn--forest" style="margin-top:6px">Sign in</button>
+      </form>
+      <div style="text-align:center;margin-top:var(--s-5);font-size:14px;color:var(--ink-soft)">
+        New customer? <a href="#/account" style="color:var(--forest);font-weight:600;text-decoration:underline">Create an account</a>
+      </div>
+    </div>
+    <div style="margin-top:var(--s-6);padding:var(--s-5);background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);text-align:center">
+      <p style="font-size:14px;color:var(--ink-soft);margin:0">Have an order number but no account? <a href="https://wa.me/27713744910" target="_blank" rel="noopener" style="color:var(--forest);font-weight:600;text-decoration:underline">WhatsApp us</a> for instant order tracking.</p>
+    </div>
+  </div>`;
+}
+
+/* ─── POLICIES ─── */
+function policyShell(title, eyebrow, effective, toc, body){
+  return `
+  <div class="info-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/">Home</a> · Policies · ${title}</div>
+      <h1>${title}</h1>
+      <p class="lede">${eyebrow}</p>
+    </div>
+  </div>
+  <div class="container info-body" style="max-width:780px">
+    <div class="policy-meta">Effective ${effective} · Vivid Health (Pty) Ltd, Registration 2023/123456/07 · 12 Lyttelton Rd, Centurion, 0157</div>
+    <div class="policy-toc">
+      <strong>On this page</strong>
+      ${toc.map(t=>`<a href="#${t.id}">${t.label}</a>`).join("")}
+    </div>
+    ${body}
+  </div>`;
+}
+function renderPrivacy(main){
+  main.innerHTML = policyShell("Privacy Policy",
+    "How Vivid Health collects, uses, and protects your personal information. Written in plain English. Compliant with the Protection of Personal Information Act (POPIA).",
+    "1 March 2026",
+    [
+      {id:"what",label:"What we collect"},
+      {id:"why",label:"Why we collect it"},
+      {id:"share",label:"Who we share it with"},
+      {id:"rights",label:"Your rights"},
+      {id:"cookies",label:"Cookies"},
+      {id:"contact",label:"Contact our Information Officer"},
+    ],
+    `<h2 id="what">What we collect</h2>
+    <p>When you place an order, we collect your <strong>name, email, phone, delivery address, and payment details</strong>. Payment details are processed by our payment partners (Peach Payments, Ozow, Stripe) — we never see or store full card numbers.</p>
+    <p>When you sign up for our newsletter or book a consultation, we collect your <strong>email and any health information you choose to share</strong>. Health information is never linked to your marketing profile.</p>
+    <p>When you browse the site, we collect <strong>anonymous usage data</strong> (pages visited, products viewed, device type) via Google Analytics. This is used to improve the site, never to identify individuals.</p>
+
+    <h2 id="why">Why we collect it</h2>
+    <ul>
+      <li>To fulfil and deliver your order</li>
+      <li>To send order confirmations, tracking links, and delivery updates</li>
+      <li>To process refunds and respond to support enquiries</li>
+      <li>To send marketing emails (only with your explicit consent — opt out anytime)</li>
+      <li>To comply with South African tax and consumer-protection law</li>
+    </ul>
+
+    <h2 id="share">Who we share it with</h2>
+    <p>We share the minimum data needed to deliver your order — your name, address, and phone — with our courier partners (The Courier Guy, Pargo, PEP Paxi). We share email and engagement data with Klaviyo (our email platform). We share aggregate, anonymised usage data with Google Analytics. <strong>We do not sell your data to anyone, ever.</strong></p>
+
+    <h2 id="rights">Your rights under POPIA</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li>Ask what personal data we hold about you</li>
+      <li>Request correction or deletion of your data</li>
+      <li>Object to direct marketing (one-click unsubscribe in every email)</li>
+      <li>Lodge a complaint with the Information Regulator if you're not satisfied with how we've handled your request</li>
+    </ul>
+    <p>To exercise any of these rights, email <a href="mailto:privacy@vividhealthsa.co.za" style="color:var(--forest);text-decoration:underline">privacy@vividhealthsa.co.za</a>. We respond within 7 business days.</p>
+
+    <h2 id="cookies">Cookies</h2>
+    <p>We use a small number of cookies: a session cookie to remember your cart, a preference cookie to remember if you've dismissed the announcement bar, and Google Analytics cookies for anonymous usage tracking. You can disable cookies in your browser — the site will still work, but your cart won't persist between visits.</p>
+
+    <h2 id="contact">Contact our Information Officer</h2>
+    <p>Our designated Information Officer under POPIA is the founding director. Reach them at <strong>privacy@vividhealthsa.co.za</strong> or by post to Vivid Health (Pty) Ltd, 12 Lyttelton Rd, Centurion, 0157.</p>`
+  );
+}
+function renderTerms(main){
+  main.innerHTML = policyShell("Terms of Service",
+    "The terms you agree to when you order from vividhealthsa.co.za. Plain English. South African law applies.",
+    "1 March 2026",
+    [
+      {id:"agree",label:"Agreement"},
+      {id:"orders",label:"Orders &amp; pricing"},
+      {id:"delivery",label:"Delivery &amp; risk"},
+      {id:"returns",label:"Returns &amp; refunds"},
+      {id:"health",label:"Health disclaimer"},
+      {id:"liability",label:"Limitation of liability"},
+      {id:"law",label:"Governing law"},
+    ],
+    `<h2 id="agree">Agreement</h2>
+    <p>By placing an order, you confirm you are at least 18 years old (or have parental/guardian consent), and you agree to these terms. If you don't agree, please don't order — but feel free to <a href="#/contact" style="color:var(--forest);text-decoration:underline">contact us</a> with any concerns.</p>
+
+    <h2 id="orders">Orders &amp; pricing</h2>
+    <p>All prices are in South African Rand (ZAR) and include 15% VAT. We reserve the right to refuse or cancel any order, including in the event of pricing errors, suspected fraud, or stock shortages. If we cancel, you'll receive a full refund within 3 business days.</p>
+
+    <h2 id="delivery">Delivery &amp; risk</h2>
+    <p>Risk in your order passes to you on delivery to your specified address. If delivery fails because of an incorrect address or unattended premises, we'll re-attempt once free of charge; subsequent attempts may incur a R49 redelivery fee.</p>
+
+    <h2 id="returns">Returns &amp; refunds</h2>
+    <p>30 days, no questions asked. See our full <a href="#/returns" style="color:var(--forest);text-decoration:underline">returns policy</a>. Your statutory rights under the Consumer Protection Act 68 of 2008 are not affected.</p>
+
+    <h2 id="health">Health disclaimer</h2>
+    <p>Vivid Health products are dietary supplements. They are <strong>not intended to diagnose, treat, cure, or prevent any disease</strong>. Information on this site, including ingredient effects and dosage suggestions, is for educational purposes only and does not constitute medical advice.</p>
+    <p>If you have a medical condition, are pregnant, breastfeeding, or take prescription medication, <strong>consult a qualified healthcare practitioner before starting any new supplement.</strong> Our in-house naturopaths are happy to provide a free consultation, but they are not a substitute for your own doctor or pharmacist.</p>
+
+    <h2 id="liability">Limitation of liability</h2>
+    <p>To the maximum extent permitted by law, our liability for any claim relating to a product is limited to the purchase price of that product. We don't exclude liability for death, personal injury caused by negligence, fraud, or any liability that can't be excluded under South African law.</p>
+
+    <h2 id="law">Governing law</h2>
+    <p>These terms are governed by the laws of the Republic of South Africa. Any dispute will be heard in the High Court of South Africa, Gauteng Division, Pretoria.</p>`
+  );
+}
+function renderPOPIA(main){
+  main.innerHTML = policyShell("POPIA Notice",
+    "Your rights under the Protection of Personal Information Act (Act 4 of 2013). This is a short, plain-English summary. The full detail lives in our Privacy Policy.",
+    "1 March 2026",
+    [
+      {id:"role",label:"Our role"},
+      {id:"rights",label:"Your rights"},
+      {id:"how",label:"How to exercise them"},
+      {id:"officer",label:"Information Officer"},
+    ],
+    `<h2 id="role">Our role under POPIA</h2>
+    <p>Vivid Health (Pty) Ltd is the "responsible party" for personal information collected through vividhealthsa.co.za and our three Onelife stores. We are registered with the Information Regulator.</p>
+
+    <h2 id="rights">Your rights</h2>
+    <ul>
+      <li><strong>Right to be informed</strong> — what data we hold and why</li>
+      <li><strong>Right of access</strong> — request a copy of your data</li>
+      <li><strong>Right to correction</strong> — fix anything that's wrong</li>
+      <li><strong>Right to deletion</strong> — be forgotten (subject to legal retention requirements for tax records)</li>
+      <li><strong>Right to object</strong> — to direct marketing or processing</li>
+      <li><strong>Right to data portability</strong> — receive your data in a machine-readable format</li>
+      <li><strong>Right to complain</strong> — to the Information Regulator if you're not satisfied with our response</li>
+    </ul>
+
+    <h2 id="how">How to exercise them</h2>
+    <p>Email <strong>privacy@vividhealthsa.co.za</strong> with the request and proof of identity (a clear photo of your ID alongside your face is fine). We respond within 7 business days at no charge.</p>
+
+    <h2 id="officer">Information Officer</h2>
+    <p>Our Information Officer is the founding director of Vivid Health (Pty) Ltd. Contact: privacy@vividhealthsa.co.za · Vivid Health (Pty) Ltd, 12 Lyttelton Rd, Centurion, 0157.</p>
+    <p>You may also lodge a complaint directly with the Information Regulator: <a href="https://inforegulator.org.za" target="_blank" rel="noopener" style="color:var(--forest);text-decoration:underline">inforegulator.org.za</a>.</p>`
+  );
+}
+
 window.addEventListener("hashchange", renderRoute);
 
 /* ─── HOME ─── */
@@ -1627,7 +2317,7 @@ function renderHome(main){
     <div class="hero-photo" style="background-image:url('${BANNERS.home}')"></div>
     <div class="hero-scrim"></div>
     <div class="container hero-content">
-      <div class="hero-eyebrow">Made in Centurion · Since 2023</div>
+      <div class="hero-eyebrow">Made in Centurion · Trusted in 3 Onelife stores</div>
       <h1>Vivid by <em>nature.</em><br>Verified by science.</h1>
       <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules. Six health categories. Fifty-two formulations.</p>
       <div class="hero-cta">
