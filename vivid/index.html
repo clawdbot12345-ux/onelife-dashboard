@@ -427,7 +427,7 @@ section{padding:var(--s-9) 0;position:relative;z-index:2}
 .bundle:nth-child(3){background:linear-gradient(160deg, var(--g-immunity-bg), #ABBFA0)}
 .bundle:nth-child(3) .bundle-name, .bundle:nth-child(3) .bundle-foot{color:var(--g-immunity-text)}
 
-.bundle-media{aspect-ratio:5/4;display:grid;place-items:center;position:relative;overflow:hidden;background:var(--bone)}
+.bundle-media{aspect-ratio:3/2;display:grid;place-items:center;position:relative;overflow:hidden;background:var(--bone)}
 .bundle-media::before{content:none}
 .bundle-media::after{content:none}
 .bundle-media img{width:100%;height:100%;object-fit:cover;filter:none;position:relative;z-index:1;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
@@ -1021,7 +1021,15 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .hero-stats{gap:14px}
   .hero-stat .num{font-size:24px}
   .products-row,.products-row--3col{grid-template-columns:1fr}
-  .goals{grid-template-columns:1fr}
+  .goals{grid-template-columns:repeat(2,1fr);gap:8px}
+  .goal{min-height:130px}
+  .goal-content{padding:14px 14px 12px}
+  .goal-tag{font-size:9px;letter-spacing:.1em;margin-bottom:6px}
+  .goal-name{font-size:22px !important;line-height:1.05}
+  .goal-meta{font-size:10px;gap:6px}
+  .goal-meta span:first-child{display:none}
+  .goal-meta .arrow{width:24px;height:24px}
+  .goal-meta .arrow svg{width:11px;height:11px}
   .goal{min-height:140px}
   .foot-grid{grid-template-columns:1fr}
   .foot-grid > .foot-col:first-child{grid-column:1}
@@ -1347,8 +1355,8 @@ const PRODUCTS = [
 
 const BUNDLES = [
   {handle:"rest-focus",name:"Rest & Focus Stack",desc:"Sleep, calm, and mental clarity in one stack — Tranquil, Griffonia 5-HTP, GABA powder.",price:587.67,save:120,img:"assets/banners/banner-group-sleep.jpg",includes:["tranquil-60","griffonia-5htp-60","gaba-150g"]},
-  {handle:"bone-joint",name:"Bone & Joint Pack",desc:"Complete skeletal support — Bone Supreme, MSM, Flexijoint Advanced.",price:742.66,save:150,img:"assets/products/physical-trio.jpg",includes:["bone-supreme-120","msm-90","flexijoint-advanced-120"]},
-  {handle:"allergy-stack",name:"Allergy Stack",desc:"Allergy and immune support — Allergy Control, Quercetin Complex, Buffered C.",price:594.72,save:110,img:"assets/products/allergy-control-lavender.jpg",includes:["allergy-control-60","quercetin-complex-60","buffered-c-90"]},
+  {handle:"bone-joint",name:"Bone & Joint Pack",desc:"Complete skeletal support — Bone Supreme, MSM, Flexijoint Advanced.",price:742.66,save:150,img:"assets/banners/banner-joints.jpg",includes:["bone-supreme-120","msm-90","flexijoint-advanced-120"]},
+  {handle:"allergy-stack",name:"Allergy Stack",desc:"Allergy and immune support — Allergy Control, Quercetin Complex, Buffered C.",price:594.72,save:110,img:"assets/banners/banner-group-allergy.jpg",includes:["allergy-control-60","quercetin-complex-60","buffered-c-90"]},
 ];
 
 const HEROES = {
