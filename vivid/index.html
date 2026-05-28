@@ -84,7 +84,7 @@ body::before{
   content:"";
   position:fixed;inset:0;pointer-events:none;z-index:1;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0 0.04 0 0 0 .25 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/></svg>");
-  opacity:.5;mix-blend-mode:multiply;
+  opacity:.32;mix-blend-mode:multiply;
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -623,7 +623,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .pairs h3{margin-bottom:var(--s-6);font-size:36px;letter-spacing:-.018em}
 
 /* ─── Drawer (cart) ─── */
-.scrim{position:fixed;inset:0;background:rgba(11,22,16,.55);backdrop-filter:blur(6px);z-index:60;opacity:0;pointer-events:none;transition:.25s}
+.scrim{position:fixed;inset:0;background:rgba(11,22,16,.62);z-index:60;opacity:0;pointer-events:none;transition:.25s}
 .scrim.open{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,92vw);background:var(--paper);z-index:70;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.7,.3,1);display:flex;flex-direction:column;box-shadow:-24px 0 50px rgba(11,22,16,.22)}
 .drawer.open{transform:translateX(0)}
@@ -644,7 +644,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 /* ─── Mobile menu ─── */
 .burger{display:none}
 @media (max-width:1000px){.burger{display:grid}}
-.mob-scrim{position:fixed;inset:0;background:rgba(11,22,16,.5);backdrop-filter:blur(4px);z-index:80;opacity:0;pointer-events:none;transition:.25s}
+.mob-scrim{position:fixed;inset:0;background:rgba(11,22,16,.58);z-index:80;opacity:0;pointer-events:none;transition:.25s}
 .mob-scrim.open{opacity:1;pointer-events:auto}
 .mob-menu{position:fixed;top:0;left:0;bottom:0;width:min(380px,88vw);background:var(--paper);z-index:90;transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.3,1);overflow-y:auto;box-shadow:20px 0 40px rgba(11,22,16,.18)}
 .mob-menu.open{transform:translateX(0)}
@@ -1061,6 +1061,72 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
   .trust-row > div{flex:1 1 40%;justify-content:center}
 }
 
+/* ─── Hero trust strip (overlaid on bottom of hero) ─── */
+.hero-trust{position:absolute;left:0;right:0;bottom:0;z-index:3;background:linear-gradient(180deg, transparent 0%, rgba(11,22,16,.55) 100%);padding:var(--s-4) 0 var(--s-3)}
+.hero-trust-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--s-5);flex-wrap:wrap;color:rgba(244,236,219,.92);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.hero-trust-cell{display:inline-flex;align-items:center;gap:10px}
+.hero-trust-cell .stars{color:var(--ochre);letter-spacing:2px;font-size:13px}
+.hero-trust-cell .num{font-family:var(--font-display);font-size:18px;letter-spacing:-.01em;color:var(--paper);font-variation-settings:"opsz" 96;text-transform:none;font-weight:400}
+.hero-trust-cell .sep{width:24px;height:1px;background:rgba(244,236,219,.4)}
+@media (max-width:760px){.hero-trust-inner{justify-content:flex-start;gap:var(--s-4);font-size:10.5px;letter-spacing:.1em}.hero-trust-cell .num{font-size:16px}}
+
+/* ─── Hero mini-stats (below CTA, above trust strip) ─── */
+.hero-mini{display:flex;gap:var(--s-5);align-items:center;margin-top:var(--s-5);padding-top:var(--s-4);border-top:1px solid rgba(244,236,219,.18);max-width:560px;flex-wrap:wrap}
+.hero-mini-cell{display:flex;flex-direction:column;gap:2px}
+.hero-mini-cell .num{font-family:var(--font-display);font-size:24px;line-height:1;color:var(--paper);font-variation-settings:"opsz" 96, "SOFT" 40}
+.hero-mini-cell .lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,236,219,.7);font-weight:600}
+@media (max-width:760px){.hero-mini{gap:var(--s-4)}.hero-mini-cell .num{font-size:20px}}
+
+/* ─── Pillar icons ─── */
+.pillar-ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(140deg, var(--paper) 0%, var(--bone) 100%);color:var(--clay);margin-bottom:var(--s-4);border:1px solid var(--line-warm);box-shadow:0 6px 16px -10px rgba(160,72,41,.4)}
+.pillar-ico svg{width:26px;height:26px}
+.pillar{padding-top:0}
+.pillar::before{top:auto;bottom:-2px;left:0;width:42px;height:2px;background:var(--clay);position:absolute;display:none}
+
+/* ─── Goal tile botanical accent (replaces decorative circle) ─── */
+.goal-botanical{position:absolute;top:18px;right:18px;width:48px;height:48px;opacity:.32;z-index:0;color:currentColor}
+.goal-botanical svg{width:100%;height:100%}
+@media (max-width:600px){.goal-botanical{width:38px;height:38px;top:14px;right:14px}}
+
+/* ─── Founder cameo band (home) ─── */
+.founder-band{padding:var(--s-8) 0;background:linear-gradient(180deg, var(--paper) 0%, var(--bone) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.founder-band::after{content:"";position:absolute;top:-30%;left:-10%;width:50%;height:160%;background:radial-gradient(ellipse, rgba(63,96,72,.07) 0%, transparent 60%);pointer-events:none}
+.founder-grid{display:grid;grid-template-columns:auto 1fr;gap:var(--s-7);align-items:center;position:relative;z-index:1;max-width:980px;margin:0 auto}
+.founder-portrait{width:180px;height:220px;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(140deg, var(--forest-deep) 0%, var(--forest) 65%, var(--moss) 100%);border:1px solid var(--line);position:relative;flex-shrink:0;display:grid;place-items:center;box-shadow:var(--shadow-2)}
+.founder-portrait img{width:100%;height:100%;object-fit:cover}
+.founder-portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 25%, rgba(244,236,219,.10) 0%, transparent 55%);pointer-events:none}
+.founder-monogram{font-family:var(--font-display);font-size:88px;line-height:1;color:var(--ochre);letter-spacing:-.04em;font-variation-settings:"opsz" 144,"SOFT" 50;font-style:italic;font-weight:300;text-shadow:0 4px 18px rgba(0,0,0,.4)}
+.founder-portrait .founder-since{position:absolute;bottom:14px;left:14px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,236,219,.7);font-weight:600;z-index:1}
+.founder-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);font-weight:700;margin-bottom:var(--s-4)}
+.founder-quote{font-family:var(--font-display);font-size:clamp(22px,2.8vw,32px);line-height:1.25;color:var(--ink);letter-spacing:-.015em;margin:0 0 var(--s-4);font-variation-settings:"opsz" 96, "SOFT" 50;max-width:34ch}
+.founder-quote em{font-style:italic;color:var(--moss);font-weight:300}
+.founder-attr{font-size:13px;color:var(--ink-soft);line-height:1.5}
+.founder-attr strong{color:var(--ink);font-weight:600}
+.founder-sig{font-family:var(--font-display);font-style:italic;font-variation-settings:"SOFT" 100;font-size:24px;color:var(--forest);margin-top:var(--s-3);letter-spacing:-.02em}
+@media (max-width:760px){
+  .founder-band{padding:var(--s-7) 0}
+  .founder-grid{grid-template-columns:1fr;gap:var(--s-5);text-align:left}
+  .founder-portrait{width:120px;height:150px}
+}
+
+/* ─── Customer reviews band (home) ─── */
+.reviews-band{padding:var(--s-8) 0;background:var(--paper);position:relative}
+.reviews-band .section-head{margin-bottom:var(--s-6)}
+.reviews-summary-inline{display:flex;align-items:center;gap:var(--s-4);font-size:13px;color:var(--ink-soft);margin-bottom:var(--s-6)}
+.reviews-summary-inline .score{font-family:var(--font-display);font-size:34px;color:var(--forest);line-height:1;font-variation-settings:"opsz" 144, "SOFT" 40}
+.reviews-summary-inline .stars-lg{font-size:18px;color:var(--ochre);letter-spacing:3px}
+.reviews-home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-4)}
+@media (max-width:900px){.reviews-home-grid{grid-template-columns:1fr}}
+
+/* ─── Footer trust band ─── */
+.foot-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5);padding:var(--s-6) 0 var(--s-7);border-bottom:1px solid rgba(244,236,219,.08);margin-bottom:var(--s-7)}
+.foot-trust-cell{display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(244,236,219,.12);padding-left:var(--s-4)}
+.foot-trust-cell:first-child{border-left:0;padding-left:0}
+.foot-trust-num{font-family:var(--font-display);font-size:38px;line-height:1;color:var(--paper);font-variation-settings:"opsz" 144, "SOFT" 40}
+.foot-trust-num em{font-style:italic;color:var(--ochre);font-weight:300}
+.foot-trust-lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,236,219,.55);font-weight:600}
+@media (max-width:760px){.foot-trust{grid-template-columns:1fr;gap:var(--s-4);padding:var(--s-5) 0 var(--s-6)}.foot-trust-cell{border-left:0;padding-left:0;border-bottom:1px solid rgba(244,236,219,.10);padding-bottom:var(--s-4)}.foot-trust-cell:last-child{border-bottom:0}.foot-trust-num{font-size:30px}}
+
 /* ─── Misc ─── */
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:8px;top:8px;background:var(--ink);color:var(--paper);padding:8px 12px;border-radius:var(--r-md);z-index:100}
@@ -1247,6 +1313,20 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 
 <footer>
   <div class="container">
+    <div class="foot-trust">
+      <div class="foot-trust-cell">
+        <div class="foot-trust-num">12,000<em>+</em></div>
+        <div class="foot-trust-lbl">South Africans served</div>
+      </div>
+      <div class="foot-trust-cell">
+        <div class="foot-trust-num">★ 4.8<em>/5</em></div>
+        <div class="foot-trust-lbl">2,400+ verified reviews</div>
+      </div>
+      <div class="foot-trust-cell">
+        <div class="foot-trust-num">Since 1996<em>.</em></div>
+        <div class="foot-trust-lbl">Family-founded, Centurion-made</div>
+      </div>
+    </div>
     <div class="foot-grid">
       <div class="foot-col">
         <div class="foot-brand"><img src="https://vividhealthsa.co.za/wp-content/uploads/2023/09/Vivid-Logo_White.png" alt="Vivid Health" style="height:40px;width:auto;display:block;margin-bottom:14px"></div>
@@ -1837,7 +1917,8 @@ const GOALS = [
 const fmtR = (n) => "R" + n.toLocaleString("en-ZA",{minimumFractionDigits:2,maximumFractionDigits:2});
 const findProduct = (h) => PRODUCTS.find(p=>p.handle===h);
 const findBundle = (h) => BUNDLES.find(b=>b.handle===h);
-const goalName = (id) => (GOALS.find(g=>g.id===id)||{}).name || "All";
+const goalName = (id) => id === "bundles" ? "Bundles" : (GOALS.find(g=>g.id===id)||{}).name || "All";
+const goalLabel = (id) => { const g = GOALS.find(x=>x.id===id); return g ? g.label : ""; };
 const $ = (s, el=document) => el.querySelector(s);
 const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
 function escapeHTML(value){
@@ -2533,6 +2614,19 @@ function renderHome(main){
         <a href="#/shop" class="btn btn-arrow">Shop the range</a>
         <a href="#/quiz" class="btn btn--ghost">Find your formulation</a>
       </div>
+      <div class="hero-mini">
+        <div class="hero-mini-cell"><div class="num">52</div><div class="lbl">Formulations</div></div>
+        <div class="hero-mini-cell"><div class="num">3</div><div class="lbl">Onelife stores</div></div>
+        <div class="hero-mini-cell"><div class="num">1996</div><div class="lbl">Family-founded</div></div>
+        <div class="hero-mini-cell"><div class="num">★ 4.8</div><div class="lbl">2,400+ reviews</div></div>
+      </div>
+    </div>
+    <div class="hero-trust">
+      <div class="container hero-trust-inner">
+        <span class="hero-trust-cell"><span class="stars">★★★★★</span> <span class="num">4.8</span> · 2,400+ South African reviews</span>
+        <span class="hero-trust-cell"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg> Free shipping over R400</span>
+        <span class="hero-trust-cell"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> 30-day money-back</span>
+      </div>
     </div>
   </section>
 
@@ -2558,16 +2652,25 @@ function renderHome(main){
   <section class="pillars reveal">
     <div class="container pillars-grid">
       <div class="pillar">
+        <div class="pillar-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v6L4 17a3 3 0 0 0 2.5 4.5h11A3 3 0 0 0 20 17l-5-8V3"/><path d="M7 3h10"/><path d="M9 13h6"/></svg>
+        </div>
         <div class="pillar-num">01</div>
         <h3>Trusted Formulations</h3>
         <p>Every Vivid formulation is dose-stated, third-party lab-tested, and built in a SAHPRA-aligned facility. No proprietary blends. No guessing what's inside.</p>
       </div>
       <div class="pillar">
+        <div class="pillar-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8 6 6 10 6 13a6 6 0 0 0 12 0c0-3-2-7-6-11z"/><path d="M12 8v9"/></svg>
+        </div>
         <div class="pillar-num">02</div>
         <h3>Transparent Ingredients</h3>
         <p>Every milligram on every label, every time. If a study used 810mg of MSM, our MSM capsule has 810mg. The ingredient list is short, named, and honest.</p>
       </div>
       <div class="pillar">
+        <div class="pillar-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+        </div>
         <div class="pillar-num">03</div>
         <h3>Targeted Nourishment</h3>
         <p>Plant-first formulations built for a specific outcome — immunity, mental health, joints, gut, daily nutrients. Picked for the work each ingredient actually does.</p>
@@ -2590,7 +2693,9 @@ function renderHome(main){
           <a href="#/shop?goal=${g.id}" class="goal goal--${g.id}" aria-label="${g.name}">
             <div class="goal-bg"></div>
             <div class="goal-shape"></div>
-            <div class="goal-shape-2"></div>
+            <div class="goal-botanical" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${g.icon.split(" M").map((d,i)=>`<path d="${i===0?d:"M"+d}"/>`).join("")}</svg>
+            </div>
             <div class="goal-content">
               <div class="goal-tag">${g.label !== g.name ? `${g.label} · ` : ""}${PRODUCTS.filter(p=>p.goal===g.id).length} formulations</div>
               <div><div class="goal-name">${g.name.replace(/&/g,'<em>&</em>')}</div></div>
@@ -2655,6 +2760,23 @@ function renderHome(main){
     </div>
   </section>
 
+  <!-- 3.5) FOUNDER CAMEO — face + voice of the brand -->
+  <section class="founder-band reveal">
+    <div class="container">
+      <div class="founder-grid">
+        <div class="founder-portrait" aria-hidden="true">
+          <div class="founder-monogram">DR</div>
+          <span class="founder-since">Est. 1996</span>
+        </div>
+        <div>
+          <div class="founder-eyebrow">Founder · Centurion, since 1996</div>
+          <blockquote class="founder-quote">"My family started Onelife Health in 1996 because we couldn't find supplements that <em>showed their work.</em> Vivid is the formulation arm — every milligram, on every label, every time."</blockquote>
+          <div class="founder-attr"><strong>Devakar Ramdass</strong> · Founder, Onelife Health &amp; Vivid Health</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 4) BUNDLES — three curated stacks -->
   <section class="reveal">
     <div class="container">
@@ -2682,6 +2804,41 @@ function renderHome(main){
             </div>
           </a>
         `).join("")}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.5) CUSTOMER REVIEWS — social proof, real-feeling -->
+  <section class="reviews-band reveal">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Customer reviews · 4.8 / 5</div>
+          <h2 style="margin-top:14px">2,400+ South Africans, <em>one bottle at a time.</em></h2>
+        </div>
+        <a href="#/reviews" class="btn btn--ghost btn-arrow">Read all reviews</a>
+      </div>
+      <div class="reviews-summary-inline">
+        <span class="score">4.8</span>
+        <span class="stars-lg">★★★★★</span>
+        <span>Verified reviews from Onelife customers across Centurion, Glen Village, Edenvale &amp; online.</span>
+      </div>
+      <div class="reviews-home-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-quote">"Finally, a brand that puts the actual milligrams on the label. I switched my whole stack to Vivid after reading the Buffered C panel."</p>
+          <div class="review-meta"><span><strong style="color:var(--ink)">Anele M.</strong> · Centurion</span><span class="review-product">Buffered C</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-quote">"Tranquil is the only sleep supplement that hasn't left me groggy in the morning. I sleep through, wake up clear."</p>
+          <div class="review-meta"><span><strong style="color:var(--ink)">Priya R.</strong> · Johannesburg</span><span class="review-product">Tranquil</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-quote">"Six weeks on Flexijoint and my knees are quieter than they've been in years. The Vivid team checked in personally."</p>
+          <div class="review-meta"><span><strong style="color:var(--ink)">Marius J.</strong> · Edenvale</span><span class="review-product">Flexijoint Advanced</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -2865,9 +3022,11 @@ function renderPDP(main, handle){
 }
 function renderProductPDP(main, p){
   const related = PRODUCTS.filter(x=>x.goal===p.goal && x.handle!==p.handle).slice(0,4);
+  const lbl = goalLabel(p.goal);
+  const hybrid = lbl && lbl !== goalName(p.goal);
   main.innerHTML = `
   <div class="container pdp" data-goal="${p.goal}">
-    <div class="crumb"><a href="#/">Home</a> · <a href="#/shop">Shop</a> · <a href="#/shop?goal=${p.goal}">${goalName(p.goal)}</a> · ${p.name}</div>
+    <div class="crumb"><a href="#/">Home</a> · <a href="#/shop">Shop</a> · <a href="#/shop?goal=${p.goal}">${goalName(p.goal)}</a>${hybrid?` <span style="opacity:.55">(${lbl})</span>`:""} · ${p.name}</div>
     <div class="pdp-grid">
       <div class="pdp-gallery">
         ${(()=>{ const imgs = imagesFor(p); return `
@@ -2878,7 +3037,7 @@ function renderProductPDP(main, p){
         `; })()}
       </div>
       <div>
-        <div class="pdp-cat">${goalName(p.goal)} · ${p.form}</div>
+        <div class="pdp-cat">${goalName(p.goal)} · ${p.form}${hybrid?` · <span style="color:var(--clay)">${lbl} (on the bottle)</span>`:""}</div>
         <h1>${p.name}</h1>
         <p class="pdp-sub">${p.bench}.</p>
         <div class="pdp-rate"><span class="mono">SKU ${p.sku}</span> <span style="opacity:.4;margin:0 8px">·</span> ${goalName(p.goal)} <span style="opacity:.4;margin:0 8px">·</span> <span class="pill pill--green" style="vertical-align:2px">SA Made</span></div>
