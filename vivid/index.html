@@ -241,15 +241,27 @@ em{font-style:italic;font-weight:300;font-variation-settings:"SOFT" 100}
   .pb-lbl{font-size:10.5px;letter-spacing:.04em}
 }
 
-/* ─── Brand pillars band (home only) — 3 explicit promises ─── */
-.pillars{padding:var(--s-8) 0 var(--s-7);background:var(--paper);border-bottom:1px solid var(--line)}
-.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-7)}
-.pillar{position:relative;padding-top:var(--s-4)}
-.pillar::before{content:"";position:absolute;top:0;left:0;width:42px;height:2px;background:var(--clay)}
-.pillar-num{font-family:var(--font-display);font-size:13px;color:var(--clay);letter-spacing:.18em;margin-bottom:var(--s-4);font-weight:500;font-variation-settings:"opsz" 96}
-.pillar h3{font-family:var(--font-display);font-size:clamp(22px,2.4vw,30px);line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin:0 0 var(--s-3);font-variation-settings:"opsz" 96, "SOFT" 50}
-.pillar p{font-size:15px;line-height:1.55;color:var(--ink-soft);margin:0;max-width:32ch}
-@media (max-width:900px){.pillars-grid{grid-template-columns:1fr;gap:var(--s-5)}.pillars{padding:var(--s-6) 0 var(--s-5)}}
+/* ─── WHY VIVID — three explicit promises as editorial photo cards ─── */
+.why-vivid{padding:var(--s-9) 0;background:var(--paper);border-bottom:1px solid var(--line);position:relative}
+.why-vivid-head{max-width:780px;margin:0 auto var(--s-7);text-align:center}
+.why-vivid-head .eyebrow{color:var(--clay);margin-bottom:var(--s-4)}
+.why-vivid-head h2{font-size:clamp(38px,5.5vw,76px);line-height:1.0;letter-spacing:-.028em;margin:0 0 var(--s-5);font-variation-settings:"opsz" 144,"SOFT" 50}
+.why-vivid-head h2 em{color:var(--moss);font-style:italic;font-weight:300;font-variation-settings:"SOFT" 100}
+.why-vivid-head .why-lede{font-size:17px;line-height:1.6;color:var(--ink-soft);max-width:60ch;margin:0 auto}
+.why-vivid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-4)}
+.why-card{position:relative;aspect-ratio:3/4;border-radius:var(--r-xl);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--s-6);color:var(--paper);text-decoration:none;background:var(--ink);transition:transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s;isolation:isolate}
+.why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-3)}
+.why-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2;transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+.why-card:hover .why-card-bg{transform:scale(1.05)}
+.why-card-scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,22,16,.30) 0%, rgba(11,22,16,.10) 30%, rgba(11,22,16,.75) 72%, rgba(11,22,16,.96) 100%);z-index:-1}
+.why-card-num{position:absolute;top:var(--s-5);left:var(--s-6);font-family:var(--font-display);font-size:52px;line-height:.85;color:var(--ochre);font-style:italic;font-weight:300;font-variation-settings:"opsz" 144,"SOFT" 100;z-index:1;letter-spacing:-.05em}
+.why-card-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage-soft);font-weight:700;margin-bottom:var(--s-3);position:relative;padding-left:18px}
+.why-card-eyebrow::before{content:"";position:absolute;left:0;top:50%;width:12px;height:1px;background:var(--ochre)}
+.why-card-head{font-family:var(--font-display);font-size:clamp(26px,2.8vw,38px);line-height:1.02;letter-spacing:-.02em;margin:0 0 var(--s-4);color:var(--paper);font-variation-settings:"opsz" 144,"SOFT" 40;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.why-card-head em{font-style:italic;color:var(--sage);font-weight:300;font-variation-settings:"SOFT" 100}
+.why-card-body{font-size:14.5px;line-height:1.55;color:rgba(244,236,219,.88);margin:0;max-width:32ch}
+@media (max-width:900px){.why-vivid{padding:var(--s-7) 0}.why-vivid-cards{grid-template-columns:1fr;gap:var(--s-3)}.why-vivid-head{margin-bottom:var(--s-5)}}
+@media (max-width:600px){.why-card{aspect-ratio:4/5;padding:var(--s-5);min-height:380px}.why-card-num{font-size:42px;top:var(--s-4);left:var(--s-5)}.why-card-head{font-size:24px}.why-card-body{font-size:14px}}
 
 /* ─── Vivid Lab editorial section — combined philosophy + proof ─── */
 .lab-section{position:relative;padding:var(--s-9) 0;color:var(--paper);overflow:hidden;isolation:isolate}
@@ -1086,12 +1098,6 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .hero-mini-cell .num{font-family:var(--font-display);font-size:24px;line-height:1;color:var(--paper);font-variation-settings:"opsz" 96, "SOFT" 40}
 .hero-mini-cell .lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,236,219,.7);font-weight:600}
 @media (max-width:760px){.hero-mini{gap:var(--s-4)}.hero-mini-cell .num{font-size:20px}}
-
-/* ─── Pillar icons ─── */
-.pillar-ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(140deg, var(--paper) 0%, var(--bone) 100%);color:var(--clay);margin-bottom:var(--s-4);border:1px solid var(--line-warm);box-shadow:0 6px 16px -10px rgba(160,72,41,.4)}
-.pillar-ico svg{width:26px;height:26px}
-.pillar{padding-top:0}
-.pillar::before{top:auto;bottom:-2px;left:0;width:42px;height:2px;background:var(--clay);position:absolute;display:none}
 
 /* ─── Goal tile botanical accent (replaces decorative circle) ─── */
 .goal-botanical{position:absolute;top:18px;right:18px;width:48px;height:48px;opacity:.32;z-index:0;color:currentColor}
@@ -2619,7 +2625,7 @@ function renderHome(main){
     <div class="container hero-content">
       <div class="hero-eyebrow">Botanical precision · Clinically dosed · South African</div>
       <h1>Vivid by <em>nature.</em><br>Verified by science.</h1>
-      <p class="hero-lede">Plant-based supplements blended in Centurion. Real doses, transparent ingredients, vegetable capsules.</p>
+      <p class="hero-lede">Plant-first formulations with the milligrams on the bottle — the way it should have always been. Blended in Centurion since 1996.</p>
       <div class="hero-cta">
         <a href="#/shop" class="btn btn-arrow">Shop the range</a>
         <a href="#/quiz" class="btn btn--ghost">Find your formulation</a>
@@ -2658,32 +2664,41 @@ function renderHome(main){
     </div>
   </div>
 
-  <!-- Brand pillars — three explicit promises (carried over from vividhealthsa.co.za brand language) -->
-  <section class="pillars reveal">
-    <div class="container pillars-grid">
-      <div class="pillar">
-        <div class="pillar-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v6L4 17a3 3 0 0 0 2.5 4.5h11A3 3 0 0 0 20 17l-5-8V3"/><path d="M7 3h10"/><path d="M9 13h6"/></svg>
-        </div>
-        <div class="pillar-num">01</div>
-        <h3>Trusted Formulations</h3>
-        <p>Every Vivid formulation is dose-stated, third-party lab-tested, and built in a SAHPRA-aligned facility. No proprietary blends. No guessing what's inside.</p>
+  <!-- WHY VIVID — three explicit promises as editorial photo cards.
+       Imagery is currently placeholder from /assets/banners — swap with the
+       bespoke 3-shot brief in codex-pillars-prompt.md when ready. -->
+  <section class="why-vivid reveal">
+    <div class="container">
+      <div class="why-vivid-head">
+        <div class="eyebrow">Why Vivid?</div>
+        <h2>Because the milligrams should be <em>on the label.</em></h2>
+        <p class="why-lede">The supplement aisle runs on proprietary blends, vague claims, and powders relabelled three times before they reach you. Vivid is what we wished existed when we started Onelife in 1996. Three things we'll never stop doing differently.</p>
       </div>
-      <div class="pillar">
-        <div class="pillar-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8 6 6 10 6 13a6 6 0 0 0 12 0c0-3-2-7-6-11z"/><path d="M12 8v9"/></svg>
-        </div>
-        <div class="pillar-num">02</div>
-        <h3>Transparent Ingredients</h3>
-        <p>Every milligram on every label, every time. If a study used 810mg of MSM, our MSM capsule has 810mg. The ingredient list is short, named, and honest.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
-        </div>
-        <div class="pillar-num">03</div>
-        <h3>Targeted Nourishment</h3>
-        <p>Plant-first formulations built for a specific outcome — immunity, mental health, joints, gut, daily nutrients. Picked for the work each ingredient actually does.</p>
+      <div class="why-vivid-cards">
+        <article class="why-card" aria-label="The receipt: we put the dose on the bottle">
+          <div class="why-card-bg" style="background-image:url('assets/banners/banner-group-bestsellers.jpg')"></div>
+          <div class="why-card-scrim"></div>
+          <div class="why-card-num">01</div>
+          <div class="why-card-eyebrow">The receipt</div>
+          <h3 class="why-card-head">We put the dose <em>on the bottle.</em></h3>
+          <p class="why-card-body">A "proprietary blend" is just a confession. Every Vivid label tells you the exact milligrams of every active. If a study used 810mg, ours has 810mg. The numbers are right there, where they belong.</p>
+        </article>
+        <article class="why-card" aria-label="The source: plants first, always">
+          <div class="why-card-bg" style="background-image:url('assets/banners/banner-immunity.jpg')"></div>
+          <div class="why-card-scrim"></div>
+          <div class="why-card-num">02</div>
+          <div class="why-card-eyebrow">The source</div>
+          <h3 class="why-card-head">Plants <em>first.</em> Always.</h3>
+          <p class="why-card-body">Whole-plant extracts where they work. Standardised actives where they're needed. Vegetable capsules, every time. Nothing imported in bulk and relabelled with a South African flag.</p>
+        </article>
+        <article class="why-card" aria-label="The work: one bottle, one job">
+          <div class="why-card-bg" style="background-image:url('assets/banners/banner-hero-evening.jpg')"></div>
+          <div class="why-card-scrim"></div>
+          <div class="why-card-num">03</div>
+          <div class="why-card-eyebrow">The work</div>
+          <h3 class="why-card-head">One bottle, <em>one job.</em></h3>
+          <p class="why-card-body">Fifty-two formulations, fifty-two specific outcomes. No hero ingredients chasing a trend. No "everything wellness." Built for the work, picked for the result you can actually feel.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -2793,9 +2808,9 @@ function renderHome(main){
       <div class="section-head">
         <div>
           <div class="eyebrow">Curated stacks</div>
-          <h2 style="margin-top:14px">Three bundles, built for <em>outcomes.</em></h2>
+          <h2 style="margin-top:14px">Three stacks, built for <em>outcomes.</em></h2>
         </div>
-        <p class="lead">Pre-paired formulations. Save R110–R150 vs buying separately.</p>
+        <p class="lead">We paired the formulations. Your body figures out the rest. R110–R150 less than buying separately.</p>
       </div>
       <div class="bundles">
         ${BUNDLES.map(b=>`
@@ -2831,7 +2846,7 @@ function renderHome(main){
       <div class="reviews-summary-inline">
         <span class="score">4.8</span>
         <span class="stars-lg">★★★★★</span>
-        <span>Verified reviews from Onelife customers across Centurion, Glen Village, Edenvale &amp; online.</span>
+        <span>Verified reviews from across Centurion, Glen Village, Edenvale, and every postcode in between.</span>
       </div>
       <div class="reviews-home-grid">
         <div class="review-card">
@@ -2891,7 +2906,7 @@ function renderHome(main){
     <div class="capture-inner">
       <div class="eyebrow">Welcome 10%</div>
       <h2 style="margin-top:14px">Get the <em>field notes.</em></h2>
-      <p>Monthly long-form on single ingredients, formulation choices, and what we're testing next. Subscribers get 10% off their first order.</p>
+      <p>Monthly long-form on single ingredients, formulation choices, and what we're testing next. No discount alerts, no "wellness trends" — just the work. Subscribers get 10% off their first order.</p>
       <form class="capture-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';this.querySelector('input').value=''">
         <input type="email" placeholder="your@email.co.za" required aria-label="Email">
         <button class="btn btn--clay" type="submit">Subscribe</button>
