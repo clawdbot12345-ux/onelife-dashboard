@@ -78,6 +78,7 @@ Last updated: 2026-05-30
 - [done] `scripts/onelife_omni_export_fetch.py` added for SMB export fetches without printing credentials.
 - [done] `scripts/onelife_omni_http_report_fetch.py` added for the Omni web-server JSON report without hardcoding credentials.
 - [done] `.github/workflows/vivid-inventory-sync.yml` added for a daily 04:00 SAST sync and manual dispatch.
+- [blocked] The workflow file is prepared locally, but GitHub rejected pushing `.github/workflows/vivid-inventory-sync.yml` because the current GitHub OAuth token lacks the `workflow` scope.
 - [done] Workflow now supports the Omni HTTP JSON stock report or the older SMB export fallback.
 - [done] Workflow now supports Shopify's current Dev Dashboard client-credentials flow and still accepts a static `VIVID_SHOPIFY_ADMIN_TOKEN` if one is ever issued.
 - [done] Fresh Omni HTTP stock report fetched from `ANA_Stock Listing_CEN` on 2026-05-30.
@@ -98,7 +99,7 @@ Last updated: 2026-05-30
 - [pending] Add repo/local secrets for fallback paths only if needed:
   - HTTP components: `ONELIFE_OMNI_HTTP_HOST`, `ONELIFE_OMNI_HTTP_USER`, `ONELIFE_OMNI_HTTP_PASSWORD`, `ONELIFE_OMNI_COMPANY`
   - SMB: `ONELIFE_OMNI_SMB_HOST`, `ONELIFE_OMNI_SMB_SHARE`, `ONELIFE_OMNI_SMB_DOMAIN`, `ONELIFE_OMNI_SMB_USER`, `ONELIFE_OMNI_SMB_PASSWORD`
-- [pending] Run the GitHub Actions workflow once after the workflow/code changes are pushed to the target repo branch, then spot-check 5-10 SKUs.
+- [pending] Refresh GitHub auth with `workflow` scope, push `.github/workflows/vivid-inventory-sync.yml`, run the workflow once, then spot-check 5-10 SKUs.
 
 ## Klaviyo
 
@@ -135,7 +136,7 @@ Last updated: 2026-05-30
 
 - Payfast account verification review and successful checkout/test order.
 - Barley SKU mapping confirmation before publishing those two launch-hold products.
-- First remote GitHub Actions inventory workflow run and 5-10 SKU spot-check after the workflow/code changes are pushed.
+- Push the prepared GitHub Actions workflow after refreshing GitHub auth with `workflow` scope, then run the first remote inventory workflow and spot-check 5-10 SKUs.
 - Shopify privacy-policy automatic management could not be disabled through the current CLI auth because Shopify requires the extra `write_privacy_settings` scope.
 - Klaviyo branded sending domain verification, plus flow test sends.
 - Explicit approval to activate products and publish the Vivid theme.
