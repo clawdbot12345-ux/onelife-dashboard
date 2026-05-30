@@ -26,6 +26,8 @@ Last updated: 2026-05-30
 - [done] Added launch content templates for standard pages, contact, and quiz.
 - [done] Draft theme header/footer menus now use the Shopify navigation built for Vivid.
 - [done] Authenticated draft-preview QA passed for home, quiz, contact, and shipping/returns pages.
+- [done] Latest visual QA pass fixed duplicate Shopify section padding, Shopify rich-text heading spacing, missing product/bundle cards, goal collection links/counts, catalog filter spacing, mobile collection heading fit, and product/bundle/PDP image containment.
+- [done] Latest QA screenshots/contact sheets are in `screenshots/vivid-theme-qa/`.
 - [done] `shopify theme check` passes with 31 files and no offenses.
 - [pending] Theme remains unpublished until explicit launch approval.
 
@@ -37,7 +39,8 @@ Last updated: 2026-05-30
 - [done] 315 product media items are READY in Shopify: 52 packshots, 260 generated product assets, and 3 bundle images.
 - [done] Product SKUs resolved from public Onelife product data; no Onelife Admin token was used.
 - [done] Launch-hold tags applied to the 2 Barley products and 3 bundle placeholders.
-- [pending] Products remain draft until payment, inventory, and launch approvals are complete.
+- [done] Products were activated and published to the Online Store channel on 2026-05-30 so the password-protected draft preview can render real catalog, collection, and PDP pages.
+- [pending] Keep the store password-protected and the Vivid theme unpublished until payment, inventory, and launch approvals are complete.
 - [pending] Bundle products are placeholders; final bundle mechanics still need app/order-flow configuration.
 
 ## Collections
@@ -96,10 +99,11 @@ Last updated: 2026-05-30
 - [done] GitHub repo secrets `VIVID_SHOPIFY_CLIENT_ID` and `VIVID_SHOPIFY_CLIENT_SECRET` set for `clawdbot12345-ux/onelife-dashboard`.
 - [done] Shopify client-credentials token exchange tested successfully without printing the token; returned a 24-hour Admin API token for the requested inventory sync scopes.
 - [done] Local inventory dry run using client credentials on 2026-05-30 at 23:12 SAST reports `ok: true`, `changes: 0`, `allowedSkipped: 2`, and `blockingSkipped: 0`.
+- [done] GitHub workflow file `.github/workflows/vivid-inventory-sync.yml` was added to PR branch `claude/vivid-shopify-setup` via GitHub connector after CLI auth could not get `workflow` scope interactively.
 - [pending] Add repo/local secrets for fallback paths only if needed:
   - HTTP components: `ONELIFE_OMNI_HTTP_HOST`, `ONELIFE_OMNI_HTTP_USER`, `ONELIFE_OMNI_HTTP_PASSWORD`, `ONELIFE_OMNI_COMPANY`
   - SMB: `ONELIFE_OMNI_SMB_HOST`, `ONELIFE_OMNI_SMB_SHARE`, `ONELIFE_OMNI_SMB_DOMAIN`, `ONELIFE_OMNI_SMB_USER`, `ONELIFE_OMNI_SMB_PASSWORD`
-- [pending] Refresh GitHub auth with `workflow` scope, push `.github/workflows/vivid-inventory-sync.yml`, run the workflow once, then spot-check 5-10 SKUs.
+- [pending] Run the GitHub workflow once after PR merge/secret check, then spot-check 5-10 SKUs.
 
 ## Klaviyo
 
@@ -135,9 +139,9 @@ Last updated: 2026-05-30
 ## Final launch blockers
 
 - Payfast account verification review and successful checkout/test order.
-- Barley SKU mapping confirmation before publishing those two launch-hold products.
-- Push the prepared GitHub Actions workflow after refreshing GitHub auth with `workflow` scope, then run the first remote inventory workflow and spot-check 5-10 SKUs.
+- Barley SKU mapping confirmation before public launch; the two Barley products still carry launch-hold tags.
+- Run the first remote inventory workflow and spot-check 5-10 SKUs.
 - Shopify privacy-policy automatic management could not be disabled through the current CLI auth because Shopify requires the extra `write_privacy_settings` scope.
 - Klaviyo branded sending domain verification, plus flow test sends.
-- Explicit approval to activate products and publish the Vivid theme.
+- Explicit approval to publish the Vivid theme/remove password protection.
 - Explicit approval to cut over DNS.

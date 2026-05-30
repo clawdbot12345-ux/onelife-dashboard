@@ -35,7 +35,7 @@
               class: 'foot-brand-logo',
               style: 'height:42px;width:auto;display:block;margin-bottom:14px' }}
         {%- else -%}
-          <div style="font-family:var(--font-display);font-size:28px;color:var(--paper);margin-bottom:14px">{{ shop.name }}</div>
+          <div class="brand-wordmark" style="color:var(--paper);margin-bottom:14px"><span>VIVID</span><small>HEALTH</small></div>
         {%- endif -%}
         <p class="foot-lede">{{ section.settings.brand_lede }}</p>
         {%- if section.blocks.size > 0 -%}
@@ -98,6 +98,7 @@
     <div class="foot-bottom">
       <div>© {{ 'now' | date: '%Y' }} {{ shop.name }} (Pty) Ltd · All prices in ZAR · incl. 15% VAT</div>
       <div>
+        <a href="/pages/shipping-and-returns">Shipping & returns</a> ·
         <a href="/policies/privacy-policy">Privacy</a> ·
         <a href="/policies/terms-of-service">Terms</a> ·
         <a href="/pages/popia">POPIA</a>

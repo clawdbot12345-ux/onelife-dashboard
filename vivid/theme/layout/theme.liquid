@@ -31,10 +31,10 @@
 
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
-  {{ settings.font_display | font_face: font_display: 'swap' }}
-  {{ settings.font_body | font_face: font_display: 'swap' }}
-
   {% style %}
+    {{ settings.font_display | font_face: font_display: 'swap' }}
+    {{ settings.font_body | font_face: font_display: 'swap' }}
+
     :root {
       --font-display: {{ settings.font_display.family }}, {{ settings.font_display.fallback_families }};
       --font-sans: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};

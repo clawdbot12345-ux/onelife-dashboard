@@ -1,0 +1,44 @@
+<section class="quiz-head" style="background-image:url({{ 'banner-hero-kitchen.jpg' | asset_url }})">
+  <div class="container">
+    <div class="crumb"><a href="{{ routes.root_url }}">Home</a> / Find your formulation</div>
+    <h1>{{ section.settings.heading }}</h1>
+    <p>{{ section.settings.lede }}</p>
+  </div>
+</section>
+
+<section class="quiz-overlay">
+  <div class="container">
+    <div class="quiz-box">
+      <div class="quiz-progress" aria-hidden="true">
+        <span class="quiz-dot active"></span>
+        <span class="quiz-dot"></span>
+        <span class="quiz-dot"></span>
+      </div>
+      <div class="quiz-q">{{ section.settings.question }}</div>
+      <div class="quiz-opts">
+        <a class="quiz-opt" href="{{ routes.collections_url }}/gut"><strong>Gut health</strong><span>Cleanse, balance, and digestive support.</span></a>
+        <a class="quiz-opt" href="{{ routes.collections_url }}/immunity"><strong>Immunity</strong><span>Daily defence, allergies, and year-round support.</span></a>
+        <a class="quiz-opt" href="{{ routes.collections_url }}/energy"><strong>Energy and vitality</strong><span>Cellular fuel without stimulant theatre.</span></a>
+        <a class="quiz-opt" href="{{ routes.collections_url }}/stress"><strong>Stress, sleep and mood</strong><span>Calm, sleep, focus, and nervous-system support.</span></a>
+        <a class="quiz-opt" href="{{ routes.collections_url }}/joints"><strong>Joints and mobility</strong><span>Bone, cartilage, connective tissue, and movement.</span></a>
+        <a class="quiz-opt" href="{{ routes.collections_url }}/daily"><strong>Daily nutrients</strong><span>Vitamins, omegas, greens, minerals, and basics.</span></a>
+        <a class="quiz-opt" href="{{ routes.collections_url }}/women"><strong>Women's health</strong><span>Hormone, cycle, and women-specific support.</span></a>
+        <a class="quiz-opt" href="{{ routes.collections_url }}/men"><strong>Men's health</strong><span>Prostate, vitality, focus, and men-specific support.</span></a>
+      </div>
+      <div class="quiz-result">
+        <a class="btn btn--forest" href="{{ routes.collections_url }}/all-formulations">Browse all 52 formulations</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quiz page",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find your formulation." },
+    { "type": "textarea", "id": "lede", "label": "Lede", "default": "Start with the system you want to support. Each path takes you straight to the matching Vivid range." },
+    { "type": "text", "id": "question", "label": "Question", "default": "What are you working on first?" }
+  ]
+}
+{% endschema %}

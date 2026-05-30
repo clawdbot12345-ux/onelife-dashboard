@@ -60,7 +60,7 @@ async function renderCart() {
   if (!body) return;
   if (cart.item_count === 0) {
     body.innerHTML =
-      '<div class="cart-empty"><p>Your basket is empty.</p><a href="/collections/all" class="btn btn--ghost" style="margin-top:18px" onclick="closeCart()">Browse the range</a></div>';
+      '<div class="cart-empty"><p>Your basket is empty.</p><a href="/collections/all-formulations" class="btn btn--ghost" style="margin-top:18px" onclick="closeCart()">Browse the range</a></div>';
     if (foot) foot.innerHTML = "";
     return;
   }
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const body = document.body;
   if (body.dataset.stickyCta === "home") {
     initStickyCTA(".hero-cta", [
-      { href: "/collections/all", label: "Shop the range",    cls: "btn--forest btn-arrow" },
+      { href: "/collections/all-formulations", label: "Shop the range",    cls: "btn--forest btn-arrow" },
       { href: "/pages/quiz",       label: "Find my formulation", cls: "btn--ghost" },
     ]);
   }

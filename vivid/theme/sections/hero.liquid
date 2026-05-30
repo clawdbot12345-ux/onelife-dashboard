@@ -7,7 +7,7 @@
   {%- if section.settings.background_image != blank -%}
     <div class="hero-photo" style="background-image:url('{{ section.settings.background_image | image_url: width: 2400 }}')"></div>
   {%- else -%}
-    <div class="hero-photo" style="background-color:var(--forest-deep)"></div>
+    <div class="hero-photo" style="background-image:url('{{ 'banner-hero-kitchen.jpg' | asset_url }}')"></div>
   {%- endif -%}
   <div class="hero-scrim"></div>
   <div class="container hero-content">

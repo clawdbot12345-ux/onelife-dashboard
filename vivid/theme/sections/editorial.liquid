@@ -1,11 +1,13 @@
 <section style="background:var(--bone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container split">
-    {%- if section.settings.image != blank -%}
-      <div class="editorial-img">
-        <div class="lab">{{ section.settings.image_label }}</div>
+    <div class="editorial-img">
+      <div class="lab">{{ section.settings.image_label }}</div>
+      {%- if section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,800,1200,1600', sizes: '(min-width: 900px) 40vw, 90vw', alt: '' }}
-      </div>
-    {%- endif -%}
+      {%- else -%}
+        <img src="{{ 'house-brand-hero.jpg' | asset_url }}" loading="lazy" width="1248" height="832" alt="">
+      {%- endif -%}
+    </div>
     <div class="editorial-body">
       <div class="kicker">{{ section.settings.kicker }}</div>
       <h2>{{ section.settings.heading }}</h2>
