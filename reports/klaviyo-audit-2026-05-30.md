@@ -23,6 +23,25 @@
 
 ---
 
+## ✅ Changes applied in this session (2026-05-30)
+
+**Code (in this PR):**
+- **Refresh script hardened** (`scripts/refresh_dashboard.py`): added a **zero-write guard** (aborts instead of publishing all-zeros when the API fetch fails), **bumped the API revision** `2024-10-15 → 2025-07-15`, and added a **reachable-base calculation** so the dashboard now exposes the 768-vs-consented gap (`marketable_consented_estimate`, `engaged_90d`, `at_risk_60d`) and calls it out in the narrative.
+
+**Live Klaviyo account (safe / reversible — nothing sent):**
+- **Built a draft re-engagement campaign** — *"Re-Engagement — We Miss You (At-risk 60d) — DRAFT for review"* (campaign `01KSWBSGQWJ313VRDNDJZRTJ33`) targeting the **At-risk-60d segment (2,133 consented buyers who currently receive no campaigns)** — directly closing the 768-vs-2k reach gap.
+- **New on-brand template** *"OL — Re-Engagement — We Miss You"* (`Xt4xgS`): correct **"Onelife Health"** branding, single hero CTA, welcome-back free-delivery incentive, store footer, compliant unsubscribe, `{{ first_name }}` personalisation.
+- Left as a **Draft** (no send strategy) so you review/approve before it goes out — and so it can be **throttled** (recommend 25%/hr) to protect deliverability when sending to a long-dormant segment.
+
+**Requires you / the team (no API available, or outward-facing):**
+- Rotate/verify the GitHub Actions `KLAVIYO_API_KEY` secret + scopes (root cause of the zeros).
+- Set the **account default sender name to "Onelife Health"** (Settings → Account; can't be changed via API).
+- **Send/approve** the re-engagement draft (outward-facing — left for you).
+- Make **Engaged-90d + At-risk-60d** (or a new "Email Marketing Consent = subscribed" segment) the standard campaign audience instead of "Email List."
+- Archive the `[CODEX QA]` / test campaigns & lists (no archive/delete API exposed).
+
+---
+
 ## 1. Account snapshot (live)
 
 | Item | Value |
