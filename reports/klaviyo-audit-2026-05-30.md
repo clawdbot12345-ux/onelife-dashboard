@@ -9,7 +9,7 @@
 ## 0. TL;DR — the 10 things that matter
 
 1. **🔴 The dashboard everyone looks at shows all zeros.** `DASHBOARD_DATA.klaviyo` and the narratives read "0 subscribers, 0 opens, R0 revenue." The live account is healthy and active. The daily refresh is silently publishing zeros. **Fix first — you are flying blind.**
-2. **🟠 Your brand name is inconsistent in the inbox** — the "From" name flips between **"One Life Health"** and **"Onelife Health"**. Pick one (the domain is `onelife.co.za` → **"Onelife Health"**) and lock it everywhere.
+2. **🟠 Your brand name is inconsistent in the inbox** — the "From" name flips between **"One Life Health"** and **"Onelife Health"**. **Canonical (per owner): "One Life Health"** — lock it everywhere (senders, templates, flows, footers).
 3. **🟢 Flows are excellent and under-exploited.** Welcome flow: **54% open, ~24% conversion on email 1, R221 revenue/recipient.** Abandoned Checkout R19.77/recipient, Browse Abandonment R17.44/recipient.
 4. **🟡 Campaigns get great opens (~30%) but weak clicks (1–2%) and almost no direct conversions** (0–2 orders each). Content is strong; targeting and CTAs are the problem.
 5. **🟠 You're emailing the wrong (small) list.** Campaigns go to **"Email List" = 768 profiles**, but **"At-risk 60d" = 2,133 consented buyers** who aren't being reached. Thousands of opted-in customers are missing from your sends.
@@ -28,16 +28,16 @@
 **Code (in this PR):**
 - **Refresh script hardened** (`scripts/refresh_dashboard.py`): added a **zero-write guard** (aborts instead of publishing all-zeros when the API fetch fails), **bumped the API revision** `2024-10-15 → 2025-07-15`, and added a **reachable-base calculation** so the dashboard now exposes the 768-vs-consented gap (`marketable_consented_estimate`, `engaged_90d`, `at_risk_60d`) and calls it out in the narrative.
 
-**Live Klaviyo account (safe / reversible — nothing sent):**
-- **Built a draft re-engagement campaign** — *"Re-Engagement — We Miss You (At-risk 60d) — DRAFT for review"* (campaign `01KSWBSGQWJ313VRDNDJZRTJ33`) targeting the **At-risk-60d segment (2,133 consented buyers who currently receive no campaigns)** — directly closing the 768-vs-2k reach gap.
-- **New on-brand template** *"OL — Re-Engagement — We Miss You"* (`Xt4xgS`): correct **"Onelife Health"** branding, single hero CTA, welcome-back free-delivery incentive, store footer, compliant unsubscribe, `{{ first_name }}` personalisation.
-- Left as a **Draft** (no send strategy) so you review/approve before it goes out — and so it can be **throttled** (recommend 25%/hr) to protect deliverability when sending to a long-dormant segment.
+**Live Klaviyo account:**
+- **On-brand re-engagement template** `Xt4xgS` — correct **"One Life Health"** branding, single hero CTA, welcome-back free-delivery incentive, store footer, compliant unsubscribe, `{{ first_name }}` personalisation, plain-text version.
+- **Scheduled (throttled) win-back campaign** *"…SCHEDULED throttled [final]"* (`01KSWCT5HA3Q80PY3AXT6RE24J`) → audience **At-risk-60d (2,133 unreached consented buyers)**, **throttled 25%/hr**, pre-set for **2026-06-03 08:00 SAST**, sender **"One Life Health"**. Still shows as **Draft** — the MCP can't push the final "send" action, so it requires one approval click in the Klaviyo UI (nothing goes out automatically).
+- Two scaffold drafts (`01KSWBSGQ…` v1 wrong-brand, `01KSWCK98…` v2 unscheduled) are superseded — **delete both** so only the final remains (no duplicates).
 
 **Requires you / the team (no API available, or outward-facing):**
+- **Rebuild "Email List" to ~2k (UI):** in Klaviyo, open the **At-risk-60d** (and **Engaged-90d**) segment → bulk **"Add to list" → Email List**. ⚠️ **First** open the **"Welcome — One Life Health (Full Sequence)"** flow (and other *Added to List* flows) and either pause them or add a filter `Placed Order is at least once over all time` / `profile created before today` so existing customers are **not** re-welcomed. (Not done via API: the MCP can't enumerate segment members, can't bulk-add, and won't reveal which list the welcome flow triggers on — so doing it blind would risk welcoming 2,100 existing customers.)
+- **Approve the scheduled win-back** (`01KSWCT5HA3Q…`) in the UI and **delete v1 + v2**.
 - Rotate/verify the GitHub Actions `KLAVIYO_API_KEY` secret + scopes (root cause of the zeros).
-- Set the **account default sender name to "Onelife Health"** (Settings → Account; can't be changed via API).
-- **Send/approve** the re-engagement draft (outward-facing — left for you).
-- Make **Engaged-90d + At-risk-60d** (or a new "Email Marketing Consent = subscribed" segment) the standard campaign audience instead of "Email List."
+- Set the **account default sender name to "One Life Health"** (Settings → Account; not editable via API).
 - Archive the `[CODEX QA]` / test campaigns & lists (no archive/delete API exposed).
 
 ---
@@ -72,8 +72,8 @@
   4. Add a CI assertion / alert when a refresh produces a >50% drop in subscribers or revenue vs the prior committed value.
 
 ### 2.2 🟠 Brand-name inconsistency
-The "From" label and in-copy name alternate between **"One Life Health"** and **"Onelife Health"** across campaigns (and the subject of one even differs from its own from-label). The domain, logo, and footer use **"Onelife Health"** (one word). The "From" name is the single most-seen piece of brand in the inbox and a recognised driver of open rate and spam-folder trust.
-- **Action:** Standardise to **"Onelife Health"** everywhere — sender profiles, templates, flow messages, footers, alt text. Add it to a brand style note so future content doesn't drift.
+The "From" label and in-copy name alternate between **"One Life Health"** and **"Onelife Health"** across campaigns (and the subject of one even differs from its own from-label). The "From" name is the single most-seen piece of brand in the inbox and a recognised driver of open rate and spam-folder trust.
+- **Action:** Standardise to **"One Life Health"** (owner-confirmed canonical) everywhere — sender profiles, templates, flow messages, footers, alt text. Add it to a brand style note so future content doesn't drift.
 
 ### 2.3 🟠 Campaigns target the small list, not the consented base
 Every historical campaign's audience = **"Email List" (768)**. Meanwhile **2,133 consented buyers** sit in "At-risk 60d" (and the broader Engaged-90d segment is 802). Many buyers opt in at Shopify checkout but never land on "Email List," so they receive **flows but no campaigns** — which is partly *why* they drift to "at-risk."
