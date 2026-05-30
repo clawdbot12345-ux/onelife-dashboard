@@ -37,7 +37,7 @@ if not API_KEY:
 BASE = "https://a.klaviyo.com/api"
 HEADERS = {
     "accept": "application/vnd.api+json",
-    "revision": "2024-10-15",
+    "revision": "2025-07-15",
     "Authorization": f"Klaviyo-API-Key {API_KEY}",
 }
 
@@ -258,6 +258,24 @@ if segs:
         throttle()
 segments.sort(key=lambda x: x["size"], reverse=True)
 
+# ─── Reachable consented base ───
+# The "Email List" (Xrk5jD) is only a subset of marketable profiles: Shopify-synced
+# buyers who consent at checkout are subscribed in Klaviyo but never added to that list,
+# so campaigns sent only to "Email List" silently miss thousands of opted-in contacts.
+# Estimate the true reachable base from the (near-disjoint) engagement-tier segments.
+def _seg_size(*needles):
+    for s in segments:
+        name = (s.get("name") or "").lower()
+        if all(n in name for n in needles):
+            return s["size"]
+    return 0
+
+engaged_size = _seg_size("engaged", "90")
+atrisk_size = _seg_size("at-risk")
+# Engaged-90d (opened/clicked in 90d) and At-risk-60d (no open/click in 60d) are
+# mutually exclusive by definition, so summing them is a safe lower bound.
+marketable_consented = max(total_subscribers, engaged_size + atrisk_size)
+
 # ─── Build campaign list ───
 campaigns_real = []
 for r in campaign_reports:
@@ -336,6 +354,10 @@ klaviyo_data = {
     "_period_end": iso_end,
     "summary": {
         "total_subscribers": total_subscribers,
+        "email_list_profile_count": total_subscribers,
+        "marketable_consented_estimate": marketable_consented,
+        "engaged_90d": engaged_size,
+        "at_risk_60d": atrisk_size,
         "new_subscribers_30d": new_subs,
         "unsubscribes_30d": unsubs,
         "bounced_30d": bnc,
@@ -384,6 +406,20 @@ shopify_data = {
     "top_products": [],
     "_note": "Per-product data requires direct Shopify Admin API connection.",
 }
+
+# ─── Sanity guard ───
+# If every Klaviyo fetch came back empty, the run almost certainly failed (bad/expired
+# KLAVIYO_API_KEY secret, missing scopes, or a rejected API revision) rather than the
+# account genuinely being empty. Refuse to overwrite the dashboard with all-zeros —
+# fail loudly and keep the last good committed data instead.
+if total_subscribers == 0 and recv == 0 and not campaign_reports and not flow_reports:
+    print(
+        "ERROR: All Klaviyo metrics returned empty (subscribers, emails, campaign and "
+        "flow reports all zero). This indicates an API auth/permission/revision failure, "
+        "not an empty account. Refusing to overwrite index.html with zeros.",
+        file=sys.stderr,
+    )
+    sys.exit(1)
 
 # ─── Inject into index.html ───
 print("Updating index.html...", file=sys.stderr)
@@ -446,8 +482,17 @@ top_camp = sorted(campaigns_real, key=lambda c: c["revenue"], reverse=True)[0] i
 winback_size = next((seg["size"] for seg in segments if "Win-Back" in seg["name"]), 0)
 online_share = round((shopify_data["total_revenue_excl"] / (store_sales + shopify_data["total_revenue_excl"]) * 100), 1) if store_match else 0
 
+reach_gap_note = ""
+if marketable_consented > total_subscribers * 1.2:
+    reach_gap_note = (
+        f" **⚠️ Reach gap:** campaigns target the *Email List* (**{total_subscribers}** profiles), "
+        f"but **~{marketable_consented:,} consented contacts** are reachable "
+        f"(Engaged-90d {engaged_size:,} + At-risk-60d {atrisk_size:,}). "
+        f"Send campaigns to the consented segments, not just the list."
+    )
+
 klaviyo_narrative = (
-    f"**Live Klaviyo data — last 30 days.** You have **{total_subscribers} active email subscribers** with **{new_subs} new signups**. "
+    f"**Live Klaviyo data — last 30 days.** You have **{total_subscribers} active email subscribers** with **{new_subs} new signups**.{reach_gap_note} "
     f"You sent **{recv:,} emails**, got **{opens:,} opens ({open_rate_pct}% open rate)** and **{clicks} clicks ({click_rate_pct}% click rate)**. "
     f"Open rate is genuinely strong — industry avg for health supplements is 25-30%.\n\n"
     f"**Email-attributed revenue: R{total_email_rev:,.0f}** — R{total_flow_rev:,.0f} from flows, R{total_campaign_rev:,.0f} from campaigns. "
