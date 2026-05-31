@@ -28,8 +28,10 @@ Last updated: 2026-05-31
 - [done] Authenticated draft-preview QA passed for home, quiz, contact, and shipping/returns pages.
 - [done] Latest visual QA pass fixed duplicate Shopify section padding, Shopify rich-text heading spacing, missing product/bundle cards, goal collection links/counts, catalog filter spacing, mobile collection heading fit, and product/bundle/PDP image containment.
 - [done] Latest QA screenshots/contact sheets are in `screenshots/vivid-theme-qa/`.
-- [done] `shopify theme check` passes with 31 files and no offenses.
+- [done] `shopify theme check` passes with 33 files and no offenses.
 - [done] 2026-05-31 final PDP visual pass fixed the oversized packshot frame and invisible selected-variant text; patched theme was pushed to unpublished draft `148718944342`.
+- [done] 2026-05-31 cart QA fixed the missing `/cart` route, added a cart page, and changed drawer shipping estimate from R79 to R100 so it matches checkout.
+- [done] 2026-05-31 footer legal line now says Vivid Health is operated by Interlife Wholesalers (Pty) Ltd instead of implying Vivid Health is its own Pty Ltd.
 - [pending] Theme remains unpublished until explicit launch approval.
 
 ## Catalogue
@@ -65,6 +67,7 @@ Last updated: 2026-05-31
 - [done] Payfast app is installed on the Vivid Shopify store.
 - [done] Shopify payment provider `Payfast` is active with Test mode off.
 - [done] 2026-05-31 Payfast dashboard login works and still shows the Vivid account as pending verification.
+- [done] 2026-05-31 checkout smoke test passed up to the final Pay Now step: Wormwood added to basket, `/cart` rendered, checkout loaded, shipping rates showed R100/R150, Payfast appeared, and Pay Now was enabled. Pay Now was not clicked.
 - [done] Payfast registration was started as a Company account for `orders@vividhealthsa.co.za`.
 - [done] Payfast business, registered address, and banking details were completed from the supplied CIPC/VAT/business context and bank proof.
 - [done] Proof of banking details for Interlife/Vivid was supplied and staged locally as sensitive material at `credentials/vivid-payfast-bank-proof-interlife.pdf`.
@@ -136,6 +139,7 @@ Last updated: 2026-05-31
 - [done] Final Klaviyo flows-list check showed all 5 flows as `Draft`.
 - [blocked] Abandoned Checkout was not created because Klaviyo shows the recommendation as API-incomplete and with Live actions.
 - [pending] Latest UI recheck could not switch into the Vivid Klaviyo account without a Klaviyo login prompt, so sending-domain status and test sends still need a Vivid Klaviyo UI login.
+- [pending] 2026-05-31 UI recheck still lands on the Klaviyo login page for `switch_to=RLcBwa`; DNS records resolve, but Klaviyo UI verification/test sends remain blocked by login.
 - [pending] Send and review a Vivid test email from `info@vividhealthsa.co.za` before activating emails.
 - [pending] Send and review test emails before activating flows.
 

@@ -84,7 +84,7 @@ async function renderCart() {
     </div>`
     )
     .join("");
-  const ship = cart.total_price >= 40000 ? 0 : 7900;
+  const ship = cart.total_price >= 40000 ? 0 : 10000;
   const fillPct = Math.min(100, (cart.total_price / 40000) * 100);
   const togo = Math.max(0, 40000 - cart.total_price);
   const shipMsg =

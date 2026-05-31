@@ -1,0 +1,70 @@
+<section class="cart-page">
+  <div class="container">
+    <div class="page-head cart-page-head">
+      <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1>Your basket</h1>
+      <p>{{ section.settings.intro }}</p>
+    </div>
+
+    {% if cart.item_count == 0 %}
+      <div class="cart-page-empty">
+        <p>Your basket is empty.</p>
+        <a href="{{ routes.collections_url }}/all-formulations" class="btn btn--forest">Browse the range</a>
+      </div>
+    {% else %}
+      <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-page-grid">
+        <div class="cart-page-items">
+          {% for item in cart.items %}
+            <article class="cart-page-item">
+              <a href="{{ item.url }}" class="cart-page-img" aria-label="{{ item.product.title | escape }}">
+                {% if item.image %}
+                  {{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: item.product.title }}
+                {% endif %}
+              </a>
+              <div class="cart-page-info">
+                <a href="{{ item.url }}" class="cart-page-name">{{ item.product.title }}</a>
+                {% unless item.variant.title == 'Default Title' %}
+                  <div class="cart-page-meta">{{ item.variant.title }}</div>
+                {% endunless %}
+                {% if item.final_line_price < item.original_line_price %}
+                  <div class="cart-page-savings">Discount applied</div>
+                {% endif %}
+              </div>
+              <div class="cart-page-qty">
+                <label for="updates_{{ item.key | escape }}">Qty</label>
+                <input id="updates_{{ item.key | escape }}" name="updates[]" type="number" min="0" value="{{ item.quantity }}" inputmode="numeric">
+              </div>
+              <div class="cart-page-price">{{ item.final_line_price | money }}</div>
+            </article>
+          {% endfor %}
+        </div>
+
+        <aside class="cart-page-summary">
+          {% assign free_shipping_threshold = section.settings.free_shipping_threshold | times: 100 %}
+          {% assign amount_left = free_shipping_threshold | minus: cart.total_price %}
+          {% if amount_left > 0 %}
+            <div class="ship-msg">Spend <strong>{{ amount_left | money }}</strong> more for free shipping.</div>
+          {% else %}
+            <div class="ship-msg"><strong>Free shipping unlocked.</strong></div>
+          {% endif %}
+          <div class="cart-totals"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+          <div class="cart-page-note">Shipping, discounts, and payment options are confirmed at checkout.</div>
+          <button type="submit" name="update" class="btn btn--ghost btn--block">Update basket</button>
+          <button type="submit" name="checkout" class="btn btn--forest btn--block">Checkout</button>
+          <a href="{{ routes.collections_url }}/all-formulations" class="cart-page-continue">Continue shopping</a>
+        </aside>
+      </form>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Vivid Health" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "Review your formulations before checkout." },
+    { "type": "range", "id": "free_shipping_threshold", "label": "Free shipping threshold", "min": 100, "max": 1000, "step": 50, "default": 400 }
+  ]
+}
+{% endschema %}
