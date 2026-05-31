@@ -1,6 +1,24 @@
-<div class="collection-head">
+{%- assign banner_asset = blank -%}
+{%- case collection.handle -%}
+  {%- when 'gut' -%}{%- assign banner_asset = 'banner-gut.jpg' -%}
+  {%- when 'immunity' -%}{%- assign banner_asset = 'banner-immunity.jpg' -%}
+  {%- when 'energy' -%}{%- assign banner_asset = 'banner-energy.jpg' -%}
+  {%- when 'stress' -%}{%- assign banner_asset = 'banner-stress.jpg' -%}
+  {%- when 'joints' -%}{%- assign banner_asset = 'banner-joints.jpg' -%}
+  {%- when 'women' -%}{%- assign banner_asset = 'banner-women.jpg' -%}
+  {%- when 'men' -%}{%- assign banner_asset = 'banner-men.jpg' -%}
+  {%- when 'daily' -%}{%- assign banner_asset = 'banner-daily.jpg' -%}
+  {%- when 'all-formulations' -%}{%- assign banner_asset = 'banner-group-bestsellers.jpg' -%}
+  {%- when 'bestsellers' -%}{%- assign banner_asset = 'banner-group-bestsellers.jpg' -%}
+  {%- when 'bundles' -%}{%- assign banner_asset = 'banner-group-sleep.jpg' -%}
+{%- endcase -%}
+
+<div class="collection-head{% if banner_asset != blank %} collection-head--banner{% endif %}"{% if banner_asset != blank %} style="--banner:url('{{ banner_asset | asset_url }}')"{% endif %}>
+  {%- if banner_asset != blank -%}
+    <div class="collection-bg"></div>
+  {%- endif -%}
   <div class="container">
-    <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px"><a href="{{ routes.root_url }}" style="color:var(--forest);font-weight:600">Home</a> · {{ collection.title }}</div>
+    <div class="crumb" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px"><a href="{{ routes.root_url }}" style="font-weight:600">Home</a> · {{ collection.title }}</div>
     <h1>{{ collection.title }}</h1>
     {%- if collection.description != blank -%}
       <p style="font-size:17px;color:var(--ink-soft);max-width:54ch;margin-top:12px">{{ collection.description }}</p>
@@ -10,47 +28,49 @@
 
 <div class="container">
   {%- paginate collection.products by section.settings.products_per_page -%}
-  <div class="collection-layout">
-    <aside class="filters">
-      {%- for filter in collection.filters -%}
-        <div class="filter-group">
-          <h5>{{ filter.label }}</h5>
-          <div class="filter-opts">
+    <div class="shop-toolbar">
+      <div class="chip-row" aria-label="Filters">
+        <a href="{{ collection.url }}" class="chip{% unless collection.current_vendor or collection.current_type or current_tags %} is-active{% endunless %}">
+          All <span class="chip-ct">{{ collection.products_count }}</span>
+        </a>
+        {%- for filter in collection.filters -%}
+          {%- if filter.values.size > 0 -%}
             {%- for value in filter.values -%}
-              <label>
-                <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} onchange="window.location.href='{{ value.url_to_add }}'">
-                {{ value.label }} <span class="ct" style="margin-left:auto;font-size:11px;color:var(--ink-soft)">{{ value.count }}</span>
-              </label>
+              <a href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}" class="chip{% if value.active %} is-active{% endif %}">
+                {{ value.label }} <span class="chip-ct">{{ value.count }}</span>
+              </a>
             {%- endfor -%}
-          </div>
-        </div>
-      {%- endfor -%}
-    </aside>
-
-    <div>
-      <div class="toolbar">
-        <div style="font-size:13px;color:var(--ink-soft)">{{ collection.products_count }} products</div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:13px">
-          Sort by
-          <select onchange="window.location.href=this.value">
-            {%- for option in collection.sort_options -%}
-              <option value="?sort_by={{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
-            {%- endfor -%}
-          </select>
-        </div>
-      </div>
-      <div class="products-row" style="grid-template-columns:repeat(3,1fr)">
-        {%- for product in collection.products -%}
-          {% render 'product-card', product: product %}
+          {%- endif -%}
         {%- endfor -%}
       </div>
-      {%- if paginate.pages > 1 -%}
-        <div style="margin-top:48px;display:flex;justify-content:center;gap:8px">
-          {{ paginate | default_pagination }}
-        </div>
-      {%- endif -%}
+      <div class="shop-sort">
+        <span class="sort-lbl">Sort</span>
+        <select onchange="window.location.href=this.value">
+          {%- for option in collection.sort_options -%}
+            <option value="?sort_by={{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      </div>
     </div>
-  </div>
+    <div class="shop-meta">
+      <span>{{ collection.products_count }} products</span>
+      {%- for filter in collection.filters -%}
+        {%- if filter.active_values.size > 0 -%}
+          <a class="shop-meta-clear" href="{{ collection.url }}">Clear filters</a>
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="products-row products-row--shop products-row--3col">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+      <div style="margin-top:48px;display:flex;justify-content:center;gap:8px">
+        {{ paginate | default_pagination }}
+      </div>
+    {%- endif -%}
   {%- endpaginate -%}
 </div>
 

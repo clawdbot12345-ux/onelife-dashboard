@@ -38,7 +38,7 @@
       {%- unless product.has_only_default_variant -%}
         <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
           {%- for variant in product.variants -%}
-            <button class="opt {% if variant.id == current_variant.id %}active{% endif %}" style="padding:10px 16px;border:1.5px solid var(--line-strong);border-radius:var(--r-pill);font-size:13px;font-weight:500;background:var(--paper)" data-variant-id="{{ variant.id }}">
+            <button class="opt {% if variant.id == current_variant.id %}active{% endif %}" data-variant-id="{{ variant.id }}">
               {{ variant.title }} — {{ variant.price | money }}
             </button>
           {%- endfor -%}
@@ -96,7 +96,16 @@
     </div>
   </div>
 
-  {%- assign related_handle = product.type | handleize -%}
+  {%- assign related_handle = blank -%}
+  {%- for tag in product.tags -%}
+    {%- if tag contains 'goal:' -%}
+      {%- assign related_handle = tag | remove: 'goal:' | handleize -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if related_handle == blank -%}
+    {%- assign related_handle = product.type | handleize -%}
+  {%- endif -%}
   {%- assign related_collection = collections[related_handle] -%}
   {%- if related_collection != blank and related_collection.products.size > 0 -%}
     {%- assign related = related_collection.products -%}

@@ -22,7 +22,12 @@
           {%- if block.settings.image != blank -%}
             <div class="why-card-bg" style="background-image:url('{{ block.settings.image | image_url: width: 1200 }}')"></div>
           {%- else -%}
-            <div class="why-card-bg" style="background-color:var(--forest-deep)"></div>
+            {%- case forloop.index -%}
+              {%- when 1 -%}{%- assign fallback_image = 'banner-group-bestsellers.jpg' -%}
+              {%- when 2 -%}{%- assign fallback_image = 'banner-immunity.jpg' -%}
+              {%- else -%}{%- assign fallback_image = 'banner-hero-evening.jpg' -%}
+            {%- endcase -%}
+            <div class="why-card-bg" style="background-image:url('{{ fallback_image | asset_url }}')"></div>
           {%- endif -%}
           <div class="why-card-scrim"></div>
           <div class="why-card-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>

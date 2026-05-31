@@ -8,14 +8,31 @@
       <p class="lead">{{ section.settings.lead }}</p>
     </div>
     <div class="bundles">
-      {%- assign coll = collections[section.settings.collection] -%}
+      {%- assign coll = section.settings.collection -%}
+      {%- if coll == blank or coll.products_count == 0 -%}
+        {%- assign coll = collections['bundles'] -%}
+      {%- endif -%}
       {%- for product in coll.products limit: 3 -%}
         <a href="{{ product.url }}" class="bundle">
           <div class="bundle-media" style="background:radial-gradient(circle at 50% 40%,var(--paper),var(--cream) 80%)">
             {%- if product.metafields.vivid.save != blank -%}
               <span class="bundle-tag">Save R{{ product.metafields.vivid.save }}</span>
             {%- endif -%}
-            {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,600,900,1200', sizes: '(min-width: 880px) 33vw, 100vw', alt: product.title }}
+            {%- if product.featured_image != blank -%}
+              {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,600,900,1200', sizes: '(min-width: 880px) 33vw, 100vw', alt: product.title }}
+            {%- else -%}
+              {%- assign fallback_asset = 'physical-trio.jpg' -%}
+              {%- assign fallback_width = 1024 -%}
+              {%- assign fallback_height = 1536 -%}
+              {%- if product.handle contains 'allergy' -%}
+                {%- assign fallback_asset = 'banner-group-allergy.jpg' -%}
+                {%- assign fallback_width = 1920 -%}
+                {%- assign fallback_height = 1080 -%}
+              {%- elsif product.handle contains 'rest' or product.handle contains 'focus' -%}
+                {%- assign fallback_asset = 'griffonia-bedside.jpg' -%}
+              {%- endif -%}
+              <img src="{{ fallback_asset | asset_url }}" loading="lazy" width="{{ fallback_width }}" height="{{ fallback_height }}" alt="{{ product.title | escape }}">
+            {%- endif -%}
           </div>
           <div class="bundle-body">
             <div class="bundle-name">{{ product.title }}</div>
