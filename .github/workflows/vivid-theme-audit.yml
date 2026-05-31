@@ -21,6 +21,14 @@ on:
         description: "Storefront password (optional — enables 200-fetches of preview pages)"
         required: false
         default: ""
+  # Push trigger limited to this branch + this file, so future commits to
+  # other files don't accidentally re-run the audit. Lets me fire the audit
+  # remotely from a code-only context (no workflow_dispatch tool available).
+  push:
+    branches: [claude/vivid-theme-audit]
+    paths:
+      - .github/workflows/vivid-theme-audit.yml
+      - scripts/vivid-theme-audit.mjs
 
 permissions:
   contents: read
