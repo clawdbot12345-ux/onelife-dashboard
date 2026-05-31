@@ -38,7 +38,7 @@
       {%- unless product.has_only_default_variant -%}
         <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
           {%- for variant in product.variants -%}
-            <button class="opt {% if variant.id == current_variant.id %}active{% endif %}" style="padding:10px 16px;border:1.5px solid var(--line-strong);border-radius:var(--r-pill);font-size:13px;font-weight:500;background:var(--paper)" data-variant-id="{{ variant.id }}">
+            <button class="opt {% if variant.id == current_variant.id %}active{% endif %}" data-variant-id="{{ variant.id }}">
               {{ variant.title }} — {{ variant.price | money }}
             </button>
           {%- endfor -%}
