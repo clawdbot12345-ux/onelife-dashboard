@@ -1,0 +1,25 @@
+{%- comment -%}
+  Article card — used by main-blog and journal-teaser. Editorial layout,
+  hero image + category + read-time + title + summary + read-on cta.
+{%- endcomment -%}
+
+<a href="{{ article.url }}" class="article">
+  <div class="article-img">
+    {%- if article.image -%}
+      {{ article.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,600,900,1200', sizes: '(min-width: 900px) 33vw, 100vw', alt: article.title }}
+    {%- else -%}
+      <img src="{{ 'banner-journal.jpg' | asset_url }}" loading="lazy" alt="">
+    {%- endif -%}
+  </div>
+  <div class="article-cat">
+    {%- if article.tags.size > 0 -%}{{ article.tags | first }} · {% endif -%}
+    {{- article.content | strip_html | truncatewords_html: 100 | size | divided_by: 200 | plus: 1 -}} min read
+  </div>
+  <h3>{{ article.title }}</h3>
+  {%- if article.excerpt != blank -%}
+    <p>{{ article.excerpt | strip_html | truncate: 160 }}</p>
+  {%- elsif article.summary != blank -%}
+    <p>{{ article.summary | strip_html | truncate: 160 }}</p>
+  {%- endif -%}
+  <span class="more">Read article →</span>
+</a>

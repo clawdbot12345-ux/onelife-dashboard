@@ -1,0 +1,48 @@
+{%- comment -%}
+  Journal teaser — drop on home (or anywhere) to surface the latest N
+  articles. Reads from the blog handle set in settings (default: journal).
+{%- endcomment -%}
+
+{%- assign blog_handle = section.settings.blog | default: 'journal' -%}
+{%- assign blog_obj = blogs[blog_handle] -%}
+{%- if blog_obj == blank or blog_obj.articles.size == 0 -%}
+  {%- comment -%} Section silently hides if there's no blog or articles. {%- endcomment -%}
+{%- else -%}
+  <section class="reveal" style="background:{{ section.settings.bg_color | default: 'var(--bone)' }};border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}
+            <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+          {%- endif -%}
+          <h2 style="margin-top:14px">{{ section.settings.heading }}</h2>
+        </div>
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ blog_obj.url }}" class="btn btn--ghost btn-arrow">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+      </div>
+      <div class="journal-feature">
+        {%- for article in blog_obj.articles limit: section.settings.article_count -%}
+          {% render 'article-card', article: article %}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Journal teaser",
+  "tag": "section",
+  "class": "section-journal-teaser",
+  "settings": [
+    { "type": "text",     "id": "blog",          "label": "Blog handle",  "default": "journal" },
+    { "type": "text",     "id": "eyebrow",       "label": "Eyebrow",      "default": "The Journal" },
+    { "type": "richtext", "id": "heading",       "label": "Heading",      "default": "<p>Reading, <em>not marketing.</em></p>" },
+    { "type": "range",    "id": "article_count", "label": "Articles to show", "min": 2, "max": 6, "step": 1, "default": 3 },
+    { "type": "text",     "id": "cta_label",     "label": "CTA label",    "default": "All articles" },
+    { "type": "color",    "id": "bg_color",      "label": "Background",   "default": "#E8DCC1" }
+  ],
+  "presets": [{ "name": "Journal teaser" }]
+}
+{% endschema %}
