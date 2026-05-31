@@ -32,6 +32,7 @@ Last updated: 2026-05-31
 - [done] 2026-05-31 final PDP visual pass fixed the oversized packshot frame and invisible selected-variant text; patched theme was pushed to unpublished draft `148718944342`.
 - [done] 2026-05-31 cart QA fixed the missing `/cart` route, added a cart page, and changed drawer shipping estimate from R79 to R100 so it matches checkout.
 - [done] 2026-05-31 footer legal line now says Vivid Health is operated by Interlife Wholesalers (Pty) Ltd instead of implying Vivid Health is its own Pty Ltd.
+- [done] 2026-05-31 final storefront smoke passed for home, all formulations, bundles, Wormwood PDP, cart, quiz, contact, and shipping pages: no 404s, no Liquid errors, and no broken images.
 - [pending] Theme remains unpublished until explicit launch approval.
 
 ## Catalogue
