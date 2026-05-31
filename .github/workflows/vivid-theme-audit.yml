@@ -1,0 +1,96 @@
+name: Vivid theme audit
+
+# Manual-only. Read-only against the draft Vivid theme via the
+# "Vivid Claude Review" Shopify Dev Dashboard app (client credentials in
+# repo secrets). Produces a markdown audit report as a workflow artifact.
+#
+# This workflow never publishes a theme, never removes the storefront
+# password, and never touches DNS. The Shopify scopes on the app only
+# grant read access for products/inventory/locations/publications/content/
+# navigation/legal-policies/themes plus write_theme_code/write_themes.
+# write_theme_code is NOT exercised by this script.
+
+on:
+  workflow_dispatch:
+    inputs:
+      theme_id:
+        description: "Draft theme id to audit"
+        required: false
+        default: "148718944342"
+      storefront_password:
+        description: "Storefront password (optional — enables 200-fetches of preview pages)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Read-only theme audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SHOPIFY_STORE: ${{ secrets.VIVID_CLAUDE_REVIEW_STORE }}
+      SHOPIFY_API_VERSION: ${{ secrets.VIVID_CLAUDE_REVIEW_API_VERSION }}
+      SHOPIFY_CLIENT_ID: ${{ secrets.VIVID_CLAUDE_REVIEW_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.VIVID_CLAUDE_REVIEW_CLIENT_SECRET }}
+      VIVID_THEME_ID: ${{ inputs.theme_id }}
+      VIVID_STOREFRONT_PASSWORD: ${{ inputs.storefront_password }}
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verify required secrets are set
+        run: |
+          missing=()
+          for v in SHOPIFY_STORE SHOPIFY_API_VERSION SHOPIFY_CLIENT_ID SHOPIFY_CLIENT_SECRET; do
+            if [ -z "${!v}" ]; then missing+=("$v"); fi
+          done
+          if [ ${#missing[@]} -ne 0 ]; then
+            echo "Missing required repo secrets: ${missing[*]}"
+            echo "Expected VIVID_CLAUDE_REVIEW_STORE / _API_VERSION / _CLIENT_ID / _CLIENT_SECRET"
+            exit 1
+          fi
+          echo "All required secrets are set."
+
+      - name: Run audit
+        id: audit
+        # Continue past errors so we still upload the report — the script
+        # exits 1 when it finds errors. We re-fail the job at the end.
+        continue-on-error: true
+        run: node scripts/vivid-theme-audit.mjs
+
+      - name: Upload audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vivid-theme-audit-${{ github.run_number }}
+          path: output/vivid-theme-audit
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Summarize report in job log
+        if: always()
+        run: |
+          if [ -f output/vivid-theme-audit/report.md ]; then
+            {
+              echo '## Vivid theme audit report'
+              echo ''
+              cat output/vivid-theme-audit/report.md
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No report.md produced." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Re-fail if audit found errors
+        if: steps.audit.outcome == 'failure'
+        run: |
+          echo "::error::Audit reported errors — see workflow summary and artifact."
+          exit 1
