@@ -1,5 +1,73 @@
-{%- assign current_variant = product.selected_or_first_available_variant -%}
-<div class="container pdp">
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_goal_id = ''
+  for tag in product.tags
+    if tag contains 'goal:'
+      assign product_goal_id = tag | remove: 'goal:' | strip
+    endif
+  endfor
+  if product_goal_id == '' and product.handle contains 'bundle'
+    assign product_goal_id = 'bundles'
+  elsif product_goal_id == '' and product.handle contains 'pack'
+    assign product_goal_id = 'bundles'
+  endif
+
+  assign pdp_gallery_assets = ''
+  assign use_generated_first = false
+  case product.handle
+    when 'vivid-health-vivid-body-bone-supreme-120-capsules'
+      assign pdp_gallery_assets = 'bone-supreme-120-hero.jpg|bone-supreme.jpg|bone-supreme-influencer.jpg|bone-supreme-infographic.jpg|bone-supreme-them-vs-us.jpg'
+    when 'vivid-health-vivid-body-bone-supreme-500-capsules'
+      assign pdp_gallery_assets = 'bone-supreme-500-hero.jpg|bone-supreme.jpg|bone-supreme-influencer.jpg|bone-supreme-infographic.jpg|bone-supreme-them-vs-us.jpg'
+    when 'vivid-health-immune-allergy-control-60-capsules'
+      assign pdp_gallery_assets = 'allergy-control-60-hero.jpg|allergy-control-lavender.jpg|allergy-control-stone.jpg|allergy-control-infographic.jpg|banner-group-allergy.jpg'
+    when 'vivid-health-stay-vivid-griffonia-5-htp-60-capsules'
+      assign pdp_gallery_assets = 'griffonia-5htp-60-hero.jpg|griffonia-bedside.jpg|griffonia-moss.jpg|griffonia-before-after.jpg|banner-group-sleep.jpg'
+    when 'vivid-health-immune-liver-kidney-formula-90-capsules'
+      assign pdp_gallery_assets = 'liver-kidney-90-hero.jpg|liver-kidney.jpg|liver-kidney-influencer.jpg|banner-gut.jpg|banner-daily.jpg'
+    when 'vivid-health-woman-maca-60-capsules'
+      assign pdp_gallery_assets = 'maca-60-hero.jpg|maca.jpg|maca-lifestyle-model.jpg|banner-women.jpg|banner-hero-evening.jpg'
+    when 'vivid-health-vivid-body-flexijoint-advanced-120-capsules'
+      assign pdp_gallery_assets = 'flexijoint-advanced-120-hero.jpg|physical-trio.jpg|physical-trio-wide.jpg|bone-supreme-them-vs-us.jpg|banner-joints.jpg'
+    when 'vivid-rest-focus-stack-sleep-calm-and-mental-clarity-bundle'
+      assign pdp_gallery_assets = 'banner-group-sleep.jpg|griffonia-before-after.jpg|griffonia-bedside.jpg|clutter-to-calm.jpg|hero-group.jpg'
+    when 'vivid-bone-joint-pack-complete-skeletal-support-bundle'
+      assign pdp_gallery_assets = 'physical-trio-wide.jpg|bone-supreme-influencer.jpg|bone-supreme-them-vs-us.jpg|physical-trio.jpg|clutter-to-calm.jpg'
+    when 'vivid-allergy-stack-complete-allergy-support-bundle'
+      assign pdp_gallery_assets = 'banner-group-allergy.jpg|allergy-control-lavender.jpg|allergy-control-infographic.jpg|clutter-to-calm.jpg|hero-group.jpg'
+  endcase
+
+  if pdp_gallery_assets == blank
+    assign use_generated_first = true
+    case product_goal_id
+      when 'gut'
+        assign pdp_gallery_assets = 'banner-gut.jpg|wellness-kitchen.jpg|clutter-to-calm.jpg|scattered-to-sorted.jpg'
+      when 'immunity'
+        assign pdp_gallery_assets = 'banner-immunity.jpg|allergy-control-stone.jpg|allergy-control-infographic.jpg|banner-group-allergy.jpg'
+      when 'stress'
+        assign pdp_gallery_assets = 'banner-stress.jpg|griffonia-bedside.jpg|griffonia-before-after.jpg|banner-group-sleep.jpg'
+      when 'joints'
+        assign pdp_gallery_assets = 'banner-joints.jpg|physical-trio-wide.jpg|bone-supreme-them-vs-us.jpg|bone-supreme-influencer.jpg'
+      when 'women'
+        assign pdp_gallery_assets = 'banner-women.jpg|maca-lifestyle-model.jpg|maca.jpg|banner-hero-evening.jpg'
+      when 'men'
+        assign pdp_gallery_assets = 'banner-men.jpg|wellness-kitchen.jpg|banner-journal.jpg|clutter-to-calm.jpg'
+      when 'daily'
+        assign pdp_gallery_assets = 'banner-daily.jpg|wellness-kitchen.jpg|hero-group.jpg|clutter-to-calm.jpg'
+      when 'energy'
+        assign pdp_gallery_assets = 'banner-energy.jpg|wellness-kitchen.jpg|banner-hero-evening.jpg|clutter-to-calm.jpg'
+      else
+        assign pdp_gallery_assets = 'banner-journal.jpg|wellness-kitchen.jpg|hero-group.jpg|clutter-to-calm.jpg'
+    endcase
+  endif
+
+  assign pdp_gallery_asset_array = pdp_gallery_assets | split: '|'
+  assign first_pdp_asset = pdp_gallery_asset_array.first
+-%}
+{%- capture vivid_generated_src -%}{% render 'vivid-product-art', product: product, mode: 'src' %}{%- endcapture -%}
+{%- assign vivid_generated_src = vivid_generated_src | strip -%}
+
+<div class="container pdp" data-goal="{{ product_goal_id }}">
   <div class="crumb" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:24px">
     <a href="{{ routes.root_url }}" style="color:var(--forest);font-weight:600">Home</a> ·
     <a href="{{ routes.collections_url }}" style="color:var(--forest);font-weight:600">Shop</a> ·
@@ -8,28 +76,112 @@
   <div class="pdp-grid">
     <div class="pdp-gallery">
       <div class="pdp-main-img">
-        {{ product.featured_image | image_url: width: 1200 | image_tag: id: 'pdpMainImg', widths: '600,900,1200,1600', sizes: '(min-width: 880px) 50vw, 100vw', alt: product.title }}
+        {%- if use_generated_first and vivid_generated_src != blank -%}
+          {% render 'vivid-product-art',
+            product: product,
+            class: 'pdp-main-img__image',
+            loading: 'eager',
+            sizes: '(min-width: 880px) 50vw, 100vw',
+            width: 1200,
+            height: 1500,
+            image_width: 1200,
+            id: 'pdpMainImg',
+            alt: product.title %}
+        {%- elsif first_pdp_asset != blank -%}
+          <img
+            id="pdpMainImg"
+            src="{{ first_pdp_asset | asset_url }}"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            width="1200"
+            height="1500"
+            alt="{{ product.title | escape }}"
+            class="pdp-main-img__image vivid-art vivid-art--generated vivid-art--editorial"
+          >
+        {%- else -%}
+          {% render 'vivid-product-art',
+            product: product,
+            class: 'pdp-main-img__image',
+            loading: 'eager',
+            sizes: '(min-width: 880px) 50vw, 100vw',
+            width: 1200,
+            height: 1500,
+            image_width: 1200,
+            id: 'pdpMainImg',
+            alt: product.title %}
+        {%- endif -%}
       </div>
       <div class="pdp-thumbs">
-        {%- for img in product.images limit: 6 -%}
-          <button class="pdp-thumb js-thumb {% if forloop.first %}active{% endif %}" data-src="{{ img | image_url: width: 1200 }}">
-            {{ img | image_url: width: 200 | image_tag: loading: 'lazy', widths: '100,200,300', alt: '' }}
+        {%- assign gallery_limit = 5 -%}
+        {%- assign thumb_active_set = false -%}
+        {%- if use_generated_first and vivid_generated_src != blank -%}
+          <button class="pdp-thumb js-thumb active" data-src="{{ vivid_generated_src }}">
+            <img src="{{ vivid_generated_src }}" loading="lazy" width="200" height="250" alt="{{ product.title | escape }}">
           </button>
-        {%- endfor -%}
+          {%- assign gallery_limit = 4 -%}
+          {%- assign thumb_active_set = true -%}
+        {%- endif -%}
+        {%- if first_pdp_asset != blank -%}
+          {%- for gallery_asset in pdp_gallery_asset_array limit: gallery_limit -%}
+            <button class="pdp-thumb js-thumb{% if thumb_active_set == false and forloop.first %} active{% endif %}" data-src="{{ gallery_asset | asset_url }}">
+              <img src="{{ gallery_asset | asset_url }}" loading="lazy" width="200" height="250" alt="{{ product.title | escape }}">
+            </button>
+          {%- endfor -%}
+        {%- elsif vivid_generated_src == blank -%}
+          {%- for img in product.images limit: 6 -%}
+            <button class="pdp-thumb js-thumb {% if forloop.first %}active{% endif %}" data-src="{{ img | image_url: width: 1200 }}">
+              {{ img | image_url: width: 200 | image_tag: loading: 'lazy', widths: '100,200,300', alt: '' }}
+            </button>
+          {%- endfor -%}
+        {%- endif -%}
       </div>
     </div>
     <div>
+      {%- liquid
+        assign bottle_label = ''
+        case product_goal_id
+          when 'immunity'
+            assign bottle_label = 'Immune Health'
+          when 'energy'
+            assign bottle_label = 'Nutrient Health'
+          when 'stress'
+            assign bottle_label = 'Mental Health'
+          when 'joints'
+            assign bottle_label = 'Physical Health'
+          when 'daily'
+            assign bottle_label = 'Nutrient Health'
+        endcase
+        assign rating_count = product.metafields.vivid.rating_count.value | default: 0 | plus: 0
+        assign rating_value = product.metafields.vivid.rating_value.value
+        assign review_list = product.metafields.vivid.reviews_json.value
+        assign rating_round = rating_value | round
+      -%}
+
       <div class="pdp-cat" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);font-weight:600;margin-bottom:12px">
         {{ product.type }}
+        {%- if bottle_label != '' -%}
+          <span class="pdp-hybrid">On the bottle: <strong>{{ bottle_label }}</strong></span>
+        {%- endif -%}
       </div>
       <h1>{{ product.title | split: ' - ' | last }}</h1>
-      <p style="font-size:16px;color:var(--ink-soft);line-height:1.55;margin-bottom:24px;max-width:48ch">{{ product.metafields.vivid.bench | default: product.description | strip_html | truncate: 180 }}</p>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;font-size:13px;color:var(--ink-soft)">
-        <span style="color:var(--clay);letter-spacing:1px;font-size:14px">★★★★★</span> 4.8 · 47 reviews
+
+      {%- if rating_count > 0 -%}
+        <a href="#reviews" class="pdp-rating-row" aria-label="{{ rating_value }} out of 5 from {{ rating_count }} reviews">
+          <span class="stars" aria-hidden="true">{% for i in (1..5) %}{% if i <= rating_round %}★{% else %}☆{% endif %}{% endfor %}</span>
+          <span class="pdp-rating-text">{{ rating_value }} · {{ rating_count }} review{% if rating_count != 1 %}s{% endif %}</span>
+        </a>
+      {%- endif -%}
+
+      <p style="font-size:16px;color:var(--ink-soft);line-height:1.55;margin:16px 0 24px;max-width:48ch">{{ product.metafields.vivid.bench | default: product.description | strip_html | truncate: 180 }}</p>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;font-size:13px;color:var(--ink-soft);flex-wrap:wrap">
+        <span class="pill pill--green">Exact-dose label</span>
+        <span class="pill">Third-party tested</span>
+        <span class="pill">Made in Centurion</span>
       </div>
       <div class="pdp-price-row">
         <div class="pdp-price">{{ current_variant.price | money }}</div>
-        <div style="font-size:12px;color:var(--ink-soft)">incl. VAT</div>
+        <div class="pdp-price-tax">incl. VAT</div>
         {%- unless current_variant.available -%}
           <span class="pill pill--alert">Currently sold out</span>
         {%- endunless -%}
@@ -45,11 +197,37 @@
         </div>
       {%- endunless -%}
 
+      {%- comment -%} Subscribe & Save — wired to the real native selling-plan group {%- endcomment -%}
+      {%- assign sp_group = product.selling_plan_groups | first -%}
+      {%- if sp_group and current_variant.available -%}
+        {%- assign sub_price = current_variant.price | times: 0.9 -%}
+        <div class="sub-toggle" data-sub-toggle>
+          <button type="button" class="sub-opt active" data-purchase="onetime" data-selling-plan="">
+            <span class="sub-label">One-time</span>
+            <span class="sub-desc">{{ current_variant.price | money }}</span>
+          </button>
+          <button type="button" class="sub-opt" data-purchase="subscribe" data-selling-plan="{{ sp_group.selling_plans.first.id }}">
+            <span class="sub-save">Save 10%</span>
+            <span class="sub-label">Subscribe &amp; Save</span>
+            <span class="sub-desc">{{ sub_price | money }} / delivery</span>
+          </button>
+        </div>
+        <div class="sub-freq" data-sub-freq hidden>
+          <label for="subFreq">Deliver</label>
+          <select id="subFreq" data-sub-freq-select>
+            {%- for plan in sp_group.selling_plans -%}
+              <option value="{{ plan.id }}">{{ plan.options.first.value | default: plan.name }}</option>
+            {%- endfor -%}
+          </select>
+          <span class="sub-freq-note">Skip, pause, or cancel anytime.</span>
+        </div>
+      {%- endif -%}
+
       <div class="add-row">
         <div class="qty">
-          <button class="js-qty-step" data-step="-1">−</button>
-          <input id="qty" type="text" value="1">
-          <button class="js-qty-step" data-step="1">+</button>
+          <button class="js-qty-step" data-step="-1" aria-label="Decrease quantity">−</button>
+          <input id="qty" type="text" value="1" aria-label="Quantity">
+          <button class="js-qty-step" data-step="1" aria-label="Increase quantity">+</button>
         </div>
         <button class="btn btn--forest btn--block js-add-to-cart" data-variant-id="{{ current_variant.id }}" {% unless current_variant.available %}disabled{% endunless %}>
           {%- if current_variant.available -%}
@@ -59,6 +237,11 @@
           {%- endif -%}
         </button>
       </div>
+      {%- if current_variant.available -%}
+        <a class="pdp-buy-now" href="{{ routes.cart_url }}/{{ current_variant.id }}:1?checkout">
+          Fast checkout with one bottle
+        </a>
+      {%- endif -%}
 
       <ul class="bullets">
         {%- assign benefits = product.metafields.vivid.benefits.value -%}
@@ -69,10 +252,30 @@
         {%- endif -%}
       </ul>
 
+      {%- comment -%} Dose-stated comparison callout {%- endcomment -%}
+      <div class="pdp-compare" aria-label="How this compares">
+        <div class="pdp-compare-col pdp-compare-col--them">
+          <span class="pdp-compare-head">Typical supplement</span>
+          <ul>
+            <li>Proprietary blend — dose hidden</li>
+            <li>Often imported and relabelled</li>
+            <li>Email a foreign support desk</li>
+          </ul>
+        </div>
+        <div class="pdp-compare-col pdp-compare-col--us">
+          <span class="pdp-compare-head">This Vivid formula</span>
+          <ul>
+            <li>Exact active milligrams on the label</li>
+            <li>Made in Centurion, third-party tested</li>
+            <li>WhatsApp a Vivid naturopath, same day</li>
+          </ul>
+        </div>
+      </div>
+
       <div class="tabs">
         <div class="tab-head">
           <button class="js-tab active" data-tab="benefits">Benefits</button>
-          <button class="js-tab" data-tab="ingredients">Ingredients & dose</button>
+          <button class="js-tab" data-tab="ingredients">Ingredients &amp; dose</button>
           <button class="js-tab" data-tab="how">How to take</button>
           <button class="js-tab" data-tab="faq">FAQ</button>
         </div>
@@ -81,20 +284,54 @@
         </div>
         <div class="tab-body" data-tab="ingredients">
           <h4>Per dose</h4>
-          <p>{{ product.metafields.vivid.dose | default: 'See bottle for full ingredient breakdown.' }}</p>
+          <p>{{ product.metafields.vivid.dose | default: 'See bottle for the full ingredient breakdown. Every Vivid active ingredient is named with its exact milligrams on the label.' }}</p>
         </div>
         <div class="tab-body" data-tab="how">
           <h4>Daily routine</h4>
           <p>{{ product.metafields.vivid.how_to_take | default: 'Take 1–3 capsules daily with water, ideally with a meal, or as directed by a qualified healthcare practitioner.' }}</p>
-          <p style="margin-top:14px;font-size:13px;color:var(--ink-soft)"><strong>Storage:</strong> Below 25°C, in a cool, dry place.</p>
+          <p style="margin-top:14px;font-size:13px;color:var(--ink-soft)"><strong>Storage:</strong> Below 25°C, in a cool, dry place. Keep out of reach of children.</p>
         </div>
         <div class="tab-body" data-tab="faq">
           <h4>Common questions</h4>
-          <p><strong>Is this safe in pregnancy?</strong><br>Consult your healthcare provider before use during pregnancy or while breastfeeding.</p>
+          <p><strong>Is this safe in pregnancy or breastfeeding?</strong><br>Consult your healthcare provider before use during pregnancy or while breastfeeding. Some botanicals are not recommended during these periods.</p>
+          <p style="margin-top:14px"><strong>Will it interact with my medication?</strong><br>If you take prescription medication, check with your pharmacist or doctor first — particularly anticoagulants, antidepressants, immunosuppressants, or diabetes medication.</p>
+          <p style="margin-top:14px"><strong>How long until I notice a difference?</strong><br>Most botanical and nutrient supplements take 4–8 weeks of consistent daily use before the effect is clear.</p>
+          <p style="margin-top:14px"><strong>Is every batch tested?</strong><br>Yes. Every Vivid batch is independently tested for identity, potency, and heavy metals before release.</p>
         </div>
       </div>
     </div>
   </div>
+
+  {%- comment -%} ─── Reviews ─── {%- endcomment -%}
+  {%- if review_list != blank and review_list.size > 0 -%}
+    <div class="pdp-reviews" id="reviews">
+      <div class="pdp-reviews-head">
+        <div>
+          <div class="eyebrow">Customer reviews</div>
+          <h3 style="margin-top:10px">What people say about {{ product.title | split: ' - ' | last }}</h3>
+        </div>
+        <div class="pdp-reviews-agg">
+          <span class="stars stars--lg" aria-hidden="true">{% for i in (1..5) %}{% if i <= rating_round %}★{% else %}☆{% endif %}{% endfor %}</span>
+          <div class="pdp-reviews-agg-num"><strong>{{ rating_value }}</strong> · {{ rating_count }} review{% if rating_count != 1 %}s{% endif %}</div>
+        </div>
+      </div>
+      <div class="pdp-reviews-grid">
+        {%- for r in review_list -%}
+          <article class="review-item">
+            <div class="review-item-top">
+              <span class="stars" aria-hidden="true">{% for i in (1..5) %}{% if i <= r.rating %}★{% else %}☆{% endif %}{% endfor %}</span>
+              {%- if r.sample -%}<span class="review-sample" title="Sample review — replace with a verified customer review before launch">Sample</span>{%- endif -%}
+            </div>
+            {%- if r.title and r.title != blank -%}<h4 class="review-title">{{ r.title }}</h4>{%- endif -%}
+            <p class="review-body">{{ r.body }}</p>
+            <div class="review-meta">
+              <strong>{{ r.author }}</strong>{% if r.location and r.location != blank %} · {{ r.location }}{% endif %}{% if r.verified %} · <span class="review-verified">Verified buyer</span>{% endif %}
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
 
   {%- assign related_handle = blank -%}
   {%- for tag in product.tags -%}
@@ -126,6 +363,7 @@
   {%- endif -%}
 </div>
 
+{%- comment -%} ─── Product + AggregateRating + Review JSON-LD ─── {%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -140,7 +378,38 @@
     "priceCurrency": "ZAR",
     "price": {{ current_variant.price | money_without_currency | remove: ',' | json }},
     "availability": {{ current_variant.available | json | replace: 'true', '"https://schema.org/InStock"' | replace: 'false', '"https://schema.org/OutOfStock"' }}
-  }
+  }{% if rating_count > 0 %},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ rating_value | json }},
+    "reviewCount": {{ rating_count | json }},
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {%- for r in review_list -%}
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": {{ r.rating | json }}, "bestRating": "5" },
+      "author": { "@type": "Person", "name": {{ r.author | json }} },
+      "reviewBody": {{ r.body | json }}
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]{% endif %}
+}
+</script>
+
+{%- comment -%} ─── FAQ rich-result JSON-LD ─── {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is {{ product.title | split: ' - ' | last | escape }} safe in pregnancy or breastfeeding?", "acceptedAnswer": { "@type": "Answer", "text": "Consult your healthcare provider before use during pregnancy or while breastfeeding. Some botanicals are not recommended during these periods." } },
+    { "@type": "Question", "name": "Will it interact with my medication?", "acceptedAnswer": { "@type": "Answer", "text": "If you take prescription medication, check with your pharmacist or doctor first, particularly anticoagulants, antidepressants, immunosuppressants, or diabetes medication." } },
+    { "@type": "Question", "name": "How long until I notice a difference?", "acceptedAnswer": { "@type": "Answer", "text": "Most botanical and nutrient supplements take 4 to 8 weeks of consistent daily use before the effect is clear." } },
+    { "@type": "Question", "name": "Is every batch tested?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every Vivid batch is independently tested for identity, potency, and heavy metals before release." } }
+  ]
 }
 </script>
 
