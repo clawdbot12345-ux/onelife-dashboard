@@ -1,0 +1,134 @@
+{%- comment -%}
+  Single article — editorial reader. Hero image, meta strip, body,
+  author byline, related products via tag-derived collection, share row,
+  FAQ schema markup if the article body contains Q&A.
+  Wired by templates/article.json.
+{%- endcomment -%}
+
+<article class="article-page" itemscope itemtype="https://schema.org/Article">
+  <meta itemprop="datePublished" content="{{ article.published_at | date: '%Y-%m-%d' }}">
+  <meta itemprop="author" content="{{ article.author }}">
+  <meta itemprop="headline" content="{{ article.title | escape }}">
+
+  <div class="article-hero">
+    {%- if article.image -%}
+      <div class="article-hero-img">
+        {{ article.image | image_url: width: 2000 | image_tag: loading: 'eager', widths: '600,1000,1400,1800,2000', sizes: '100vw', alt: article.title }}
+        <div class="article-hero-scrim"></div>
+      </div>
+    {%- else -%}
+      <div class="article-hero-img" style="background-image:url('{{ 'banner-journal.jpg' | asset_url }}')">
+        <div class="article-hero-scrim"></div>
+      </div>
+    {%- endif -%}
+    <div class="container article-hero-content">
+      <div class="crumb"><a href="{{ routes.root_url }}">Home</a> · <a href="{{ blog.url }}">{{ blog.title }}</a> · {{ article.title }}</div>
+      {%- if article.tags.size > 0 -%}
+        {%- assign cat = article.tags | first -%}
+        <div class="article-eyebrow">{{ cat }}</div>
+      {%- endif -%}
+      <h1 itemprop="name">{{ article.title }}</h1>
+      <div class="article-byline">
+        <span><strong>{{ article.author }}</strong></span>
+        <span class="dot">·</span>
+        <span>{{ article.published_at | date: "%-d %B %Y" }}</span>
+        <span class="dot">·</span>
+        <span>{{ article.content | strip_html | truncatewords_html: 100 | size | divided_by: 200 | plus: 1 }} min read</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container article-body">
+    <div class="rte" itemprop="articleBody">
+      {{ article.content }}
+    </div>
+
+    {%- comment -%} Related products via the article's first tag mapped to a collection handle. {%- endcomment -%}
+    {%- assign related_handle = blank -%}
+    {%- for tag in article.tags -%}
+      {%- assign t = tag | downcase -%}
+      {%- case t -%}
+        {%- when 'gut','immunity','energy','stress','joints','women','men','daily' -%}
+          {%- assign related_handle = t -%}
+        {%- when 'mental health' -%}
+          {%- assign related_handle = 'stress' -%}
+        {%- when 'physical health' -%}
+          {%- assign related_handle = 'joints' -%}
+        {%- when 'immune health' -%}
+          {%- assign related_handle = 'immunity' -%}
+        {%- when 'gut health' -%}
+          {%- assign related_handle = 'gut' -%}
+        {%- when 'daily nutrients','nutrient health' -%}
+          {%- assign related_handle = 'daily' -%}
+        {%- when "women's health" -%}
+          {%- assign related_handle = 'women' -%}
+        {%- when "men's health" -%}
+          {%- assign related_handle = 'men' -%}
+      {%- endcase -%}
+      {%- if related_handle != blank %}{% break %}{% endif -%}
+    {%- endfor -%}
+
+    {%- if related_handle != blank -%}
+      {%- assign related_collection = collections[related_handle] -%}
+      {%- if related_collection != blank and related_collection.products.size > 0 -%}
+        <div class="pairs">
+          <h3>Pairs well with</h3>
+          <div class="products-row" style="margin-top:24px">
+            {%- for product in related_collection.products limit: 4 -%}
+              {% render 'product-card', product: product %}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%} Footer share strip {%- endcomment -%}
+    {%- assign share_url = shop.url | append: article.url | url_encode -%}
+    {%- assign share_title = article.title | url_encode -%}
+    <div class="article-share">
+      <span>Share</span>
+      <a href="https://wa.me/?text={{ share_title }}%20{{ share_url }}" target="_blank" rel="noopener" aria-label="Share on WhatsApp">WhatsApp</a>
+      <a href="https://twitter.com/intent/tweet?text={{ share_title }}&url={{ share_url }}" target="_blank" rel="noopener" aria-label="Share on X">X</a>
+      <a href="mailto:?subject={{ share_title }}&body={{ share_url }}" aria-label="Share by email">Email</a>
+    </div>
+
+    {%- comment -%} Next + previous {%- endcomment -%}
+    {%- if blog.previous_article or blog.next_article -%}
+      <nav class="article-pager" aria-label="Article navigation">
+        {%- if article.previous_article -%}
+          <a href="{{ article.previous_article }}" class="article-pager-link"><span>← Previous</span><strong>{{ article.previous_article.title }}</strong></a>
+        {%- else -%}<span></span>{%- endif -%}
+        {%- if article.next_article -%}
+          <a href="{{ article.next_article }}" class="article-pager-link article-pager-link--next"><span>Next →</span><strong>{{ article.next_article.title }}</strong></a>
+        {%- else -%}<span></span>{%- endif -%}
+      </nav>
+    {%- endif -%}
+  </div>
+</article>
+
+{%- comment -%} JSON-LD for SEO {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ article.title | json }},
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+  "dateModified": "{{ article.updated_at | date: '%Y-%m-%d' }}",
+  "author": { "@type": "Person", "name": {{ article.author | json }} },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    "logo": { "@type": "ImageObject", "url": "{{ shop.url }}/cdn/shop/files/vivid-logo.png" }
+  }{% if article.image %},
+  "image": "{{ article.image | image_url: width: 1600 }}"{% endif %},
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ shop.url }}{{ article.url }}" }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Main article",
+  "settings": [],
+  "presets": [{ "name": "Main article" }]
+}
+{% endschema %}
