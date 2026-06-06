@@ -116,7 +116,7 @@ Each guide currently ends with a short text paragraph linking to the matching co
   <div style="flex:1;">
     <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:6px;">Ready to shop?</div>
     <div style="font-size:18px;font-weight:700;margin-bottom:4px;">Browse the {Collection name} collection</div>
-    <div style="font-size:13px;opacity:.85;">Every product mentioned in this guide, curated by our pharmacists. STACK5 takes 5% off any stack.</div>
+    <div style="font-size:13px;opacity:.85;">Every product mentioned in this guide, curated by our consultants. STACK5 takes 5% off any stack.</div>
   </div>
   <div style="font-size:28px;">→</div>
 </a>
@@ -223,8 +223,8 @@ Build a recurring campaign series:
 
 **Subject line A/B test:**
 
-- **Variant A:** *"What 30 years on the pharmacy floor taught us about {topic}"*
-- **Variant B:** *"{Topic} supplements: a pharmacist's honest guide"*
+- **Variant A:** *"What 30 years on the apothecary floor taught us about {topic}"*
+- **Variant B:** *"{Topic} supplements: a health consultant's honest guide"*
 
 ---
 
