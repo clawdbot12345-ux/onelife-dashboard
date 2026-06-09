@@ -106,7 +106,17 @@ Showcases the consultant moat — the apothecary differentiator made human. Driv
 - Dark-green final WhatsApp CTA.
 - Main menu updated to include "Consultants" link.
 
-### 10. Build Your Own Stack page (`/pages/build-your-stack`)
+### 10. Vivid Health house brand story (`/pages/vivid-health-story`)
+The SA-made house range narrative — highest-margin category gets its own moat-building page.
+
+- **`snippets/vivid-health-page.liquid`** + `templates/page.vivid-health-story.json`.
+- Hero "The supplements our consultants use themselves" + Shop the range CTA.
+- "Why we built our own range" 4-card grid (real doses / SA-made / half import price / consultant-formulated).
+- 3 range families (Vivid Immune / Vivid Body / Stay Vivid) each linking into the collection.
+- Dark-green "What we won't do" section (no proprietary blends / no flashy claims / no marketing tax).
+- Stack & save CTA bridging to protocols + STACK5/10 codes.
+
+### 11. Build Your Own Stack page (`/pages/build-your-stack`)
 DIY alternative to the curated protocols. Self-serve with 3 discount tiers.
 
 - **`snippets/stack-builder-page.liquid`** + `templates/page.stack-builder.json` + page in main nav.
