@@ -5,54 +5,79 @@ Live state of the R300k push. All work on theme **GROWTH BUILD 2026-06 (18597186
 ## What's live in the growth theme
 
 ### 1. Homepage above-the-fold conversion pass
-Targets the 2,965 homepage sessions/30d that convert at 35→checkout. Two new sections injected directly under the hero, before category browse.
+Targets the 2,965 homepage sessions/30d that convert at 35→checkout. New sections injected directly under the hero.
 
 - **`snippets/homepage-trust-strip.liquid`** — 4-column trust bar: free delivery R400+, collect free in-store, free WhatsApp consult, 250+ trusted brands. Horizontal-scroll on mobile.
-- **`snippets/homepage-why-onelife.liquid`** — 3-pillar "Why One Life" block: consultants who know your name, three Gauteng stores with same-day pickup, 10k+ products / 250+ vetted brands. Apothecary moat made visible above the fold.
-- **`templates/index.json`** — new `trust` and `why` custom-liquid sections slotted between `hero` and `goals`.
+- **`snippets/homepage-why-onelife.liquid`** — 3-pillar "Why One Life" block: consultants who know your name, three Gauteng stores with same-day pickup, 10k+ products / 250+ vetted brands.
+- **`snippets/homepage-dispensary-promo.liquid`** — dark-green discovery strip linking to all 6 dispensary protocols.
+- **`templates/index.json`** — `trust`, `why`, `dispensary` custom-liquid sections slotted between `hero` and `goals`.
 
-### 2. PDP conversion kit (from prior session, confirmed live in theme)
-- Free-delivery progress nudge
-- Collect-in-store block (3 Gauteng stores)
-- WhatsApp consultant guarantee
-- "Pairs well with" basket builder targeting the 13k zero-converting commodity sessions
-- Product/Offer/AggregateRating + FAQ JSON-LD for GEO
+### 2. PDP conversion kit + review summary above title
+- Free-delivery progress nudge / collect-in-store / WhatsApp consultant guarantee (`snippets/pdp-conversion-kit.liquid`).
+- "Pairs well with" basket builder (`snippets/pdp-pairs-well.liquid`) targeting 13k zero-converting commodity sessions/mo.
+- Product/Offer/AggregateRating + FAQ JSON-LD (`snippets/seo-product-schema.liquid`).
+- **NEW: `snippets/pdp-review-summary.liquid`** — Judge.me-driven star rating + count, injected above the H1 via a `<template>` mover script inside the PDP conversion kit (no main-product.liquid edit needed — fail-closed on products without reviews).
 
-### 3. Dispensary Protocols — the AOV lever
-Consultant-signed supplement stacks. Unique to One Life in SA. Each protocol is a separate page on its own JSON template; all pages share one section with Ajax cart logic.
+### 3. Dispensary Protocols — six consultant-signed stacks (AOV lever)
+Reusable section + 6 protocol pages + hub + discount.
 
-- **`sections/dispensary-protocol.liquid`** — reusable section with block-driven product picker, signed-by avatar, "What we'd suggest" verdict block, stack list with consultant notes, sticky bundle total, Ajax add-all-to-cart that redirects through `/discount/CODE?redirect=/cart`.
-- **`templates/page.protocol-sleep-ritual.json`** + page `/pages/sleep-ritual` — NOW Magnesium Citrate + BioMax Shoden Ashwagandha + Good Health Deep Sleep.
-- **`templates/page.protocol-stress-reset.json`** + page `/pages/stress-reset` — Nutriherb Ashwagandha + Real Thing Tri-Mag + Vivid 5-HTP.
-- **`templates/page.protocol-winter-immunity.json`** + page `/pages/winter-immunity` — Vivid Immune Plus + Buffered C + Astragalus + PMR Kill-a-Germ.
-- **`templates/page.dispensary-protocols.json`** + page `/pages/dispensary-protocols` (hub).
-- **`snippets/dispensary-protocols-hub.liquid`** — 3-card hub landing.
+- **`sections/dispensary-protocol.liquid`** — section with block-driven product picker, signed-by avatar, verdict block, stack list with consultant notes, sticky bundle total, Ajax add-all that routes through `/discount/CODE?redirect=/cart`.
+- **`snippets/dispensary-protocols-hub.liquid`** + `templates/page.dispensary-protocols.json` + page `/pages/dispensary-protocols` — 6-card discovery hub.
+- 6 live protocol pages, each on its own template:
+  | Page | Stack (real in-stock SKUs) |
+  |---|---|
+  | `/pages/sleep-ritual` | NOW Magnesium Citrate · BioMax Shoden Ashwagandha · Good Health Deep Sleep |
+  | `/pages/stress-reset` | Nutriherb Ashwagandha · Real Thing Tri-Mag · Vivid 5-HTP |
+  | `/pages/winter-immunity` | Vivid Immune Plus · Vivid Buffered C · Vivid Astragalus · PMR Kill-a-Germ |
+  | `/pages/gut-reset` | Nutrilife Digestezyme · Vivid Wormwood · Real Thing Pro-Probiotic |
+  | `/pages/joint-care` | Beauty Gen Naked Collagen · Vivid MSM · Natroceutics Omega-3 |
+  | `/pages/daily-energy` | Eco Valley Magnesium 7/87 · Nattrend NATtritious · Vivid L-Glutamine |
+- **`DISPENSARY10`** discount — 10% off, R600 minimum, all customers, live now.
 
-**Discount code `DISPENSARY10`** — 10% off, R600 minimum, all customers, active 2026-06-09.
+### 4. Cart drawer payment trust strip
+- **`snippets/cart-payment-trust.liquid`** + edit to `snippets/cart-drawer.liquid` to render it below the checkout button.
+- Visual reassurance row: Visa, Mastercard, Apple Pay, Google Pay, Shop Pay, Payflex, PayJustNow, Ozow.
+- BNPL hint copy appears on baskets > R500 ("Or pay in 4 with Payflex / PayJustNow from R125…").
+- Trust line: "Encrypted Shopify checkout · your card details never touch our server".
+
+### 5. Commercial-intent collection landers (SEO + GEO)
+For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google queries.
+
+- **`sections/collection-commercial-lander.liquid`** — section with H1 override, lede, consultant verdict block, FAQ accordion with JSON-LD `FAQPage` schema.
+- 3 commercial smart collections + matching templates:
+  - `/collections/magnesium-supplements` → `collection.lander-magnesium.json` (rule: TYPE CONTAINS "Magnesium")
+  - `/collections/omega-3-supplements` → `collection.lander-omega-3.json` (rule: TYPE CONTAINS "Omega", ~35 products)
+  - `/collections/collagen-supplements` → `collection.lander-collagen.json` (rule: TYPE CONTAINS "Collagen", ~53 products)
+- Each template ships with consultant-written verdict + 4 FAQs each (form-literate Q's — "What kind of magnesium should I take", "EPA vs DHA", "Marine vs bovine collagen", etc.).
+
+### 6. Navigation
+- **Main menu**: "The Dispensary" added directly after Home → drives traffic to the bundle hub.
+- **Collections menu**: appended The Dispensary, Magnesium, Omega-3, Collagen.
 
 ## What still needs the merchant
 
 Cannot be done via API. Order of impact:
 
-1. **Settings → Payments → Shopify Payments → enable Shop Pay, Apple Pay, Google Pay** (30 min, biggest single conversion lever per analytics).
-2. **Install Payflex + PayJustNow** for BNPL (1–2 days KYC). BNPL lifts AOV and conversion 20–30% in SA health.
-3. **Install Appstle or Seal Subscriptions** — turn on subscribe-and-save on top 20 replenishables at 10–15% off + free delivery. Nobody major in SA offers this; ~R45k/mo recurring floor.
-4. **Add "Dispensary Protocols" to main nav** (header → menu editor → link to `/pages/dispensary-protocols`).
-5. **Preview the GROWTH BUILD theme and publish** when satisfied with the above-fold + protocol pages.
-6. **Set the 6 Klaviyo flows live** (templates already created with Precious byline; see Email tab in dashboard).
+1. **Settings → Payments → Shopify Payments → enable Shop Pay, Apple Pay, Google Pay** (30 min, biggest single conversion lever — fixes the 40% checkout completion).
+2. **Install Payflex + PayJustNow** for BNPL (1–2 days KYC).
+3. **Install Appstle or Seal Subscriptions** — top 20 replenishables at 10–15% off + free delivery. ~R45k/mo recurring floor.
+4. **Preview the GROWTH BUILD theme and publish** when satisfied.
+5. **Activate the 6 Klaviyo flows** (templates already created with Precious byline).
 
 ## Revenue bridge — updated
 
 | Lever | Status | Est. monthly |
 |---|---|---|
-| Homepage above-fold trust pass | shipped to growth theme | conversion +0.2–0.4pp |
-| PDP conversion kit on 13k zero-converting sessions | shipped to growth theme | +R70k |
-| Dispensary Protocols (3 pages live, +discount) | shipped to growth theme | +R25k AOV |
+| Homepage above-fold trust + Why + Dispensary promo | shipped | conversion +0.3–0.5pp |
+| PDP conversion kit on 13k zero-converting sessions | shipped | +R70k |
+| PDP review summary above title | shipped | +CR uplift on PDPs with reviews |
+| 6 Dispensary Protocols + DISPENSARY10 | shipped | +R25–35k AOV |
+| 3 commercial collection landers (mag / omega / collagen) | shipped | +R10k SEO compounding |
+| Cart drawer payment trust strip | shipped | checkout completion +1–2pp |
 | Klaviyo 6-flow build | templates created, need activation | +R35–45k |
 | Express checkout + BNPL | **needs merchant** | +R54k |
 | Subscriptions on top 20 replenishables | **needs merchant app** | +R45k |
-| SEO/GEO expansion (schema live, content compounding) | shipped | +R20k+ |
-| **Identified total** | | **~R250–260k incremental** |
+| **Identified total** | | **~R260–280k incremental** |
 
 R107k + identified levers ≈ **R300–360k/month within 2–3 quarters**.
 
@@ -60,10 +85,11 @@ R107k + identified levers ≈ **R300–360k/month within 2–3 quarters**.
 
 - **Theme ID:** 185971867958
 - **Name:** GROWTH BUILD 2026-06 (DO NOT PUBLISH)
-- **Live theme (untouched):** 185765396790 — Live Visual Fix 2026-06-07
+- **Live theme (untouched):** 185765396790
 - **Preview URL pattern:** `https://onelife-health-store.myshopify.com/?preview_theme_id=185971867958`
 - **Key URLs to QA:**
-  - Homepage `/` (new trust strip + why block above the fold)
-  - PDP — any product, e.g. `/products/now-magnesium-citrate-200-mg-100-tablets` (PDP kit)
-  - `/pages/dispensary-protocols` (hub)
-  - `/pages/sleep-ritual`, `/pages/stress-reset`, `/pages/winter-immunity` (protocols + Add full stack flow)
+  - Homepage `/` (trust strip + Why + Dispensary promo + tabs above the fold)
+  - PDP — e.g. `/products/now-magnesium-citrate-200-mg-100-tablets` (PDP kit + review summary above title)
+  - Cart drawer — open it (payment trust strip under checkout button)
+  - `/pages/dispensary-protocols` (hub) → 6 protocol pages → Add full stack flow
+  - `/collections/magnesium-supplements`, `/collections/omega-3-supplements`, `/collections/collagen-supplements` (commercial landers)
