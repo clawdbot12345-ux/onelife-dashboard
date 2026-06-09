@@ -118,7 +118,17 @@ The SA-made house range narrative — highest-margin category gets its own moat-
 - Dark-green "What we won't do" section (no proprietary blends / no flashy claims / no marketing tax).
 - Stack & save CTA bridging to protocols + STACK5/10 codes.
 
-### 11. Build Your Own Stack page (`/pages/build-your-stack`)
+### 11. Subscribe & Save early-access page (`/pages/subscribe-save`)
+Primer page that captures interest list now — converts to active acquisition surface when merchant installs subscription app.
+
+- **`snippets/subscribe-save-page.liquid`** + `templates/page.subscribe-save.json`.
+- "Subscribe to your daily stack. Save 10–15%, every order." hero with email capture form posting to Shopify contact form.
+- R50 voucher offer for early signups.
+- "How it'll work" 4-step grid (pick → cadence → save → flexible).
+- 6 "Most likely subscriptions" category cards (magnesium / omega-3 / D3+K2 / probiotics / collagen / Vivid).
+- Dark-green "While you wait" CTA bridging back to protocols + STACK5/10.
+
+### 12. Build Your Own Stack page (`/pages/build-your-stack`)
 DIY alternative to the curated protocols. Self-serve with 3 discount tiers.
 
 - **`snippets/stack-builder-page.liquid`** + `templates/page.stack-builder.json` + page in main nav.
