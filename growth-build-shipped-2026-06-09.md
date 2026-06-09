@@ -54,7 +54,7 @@ Reusable section + 6 protocol pages + hub + discount.
 For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google queries.
 
 - **`sections/collection-commercial-lander.liquid`** — section with H1 override, lede, consultant verdict block, FAQ accordion with JSON-LD `FAQPage` schema.
-- 16 commercial smart collections + matching templates:
+- 17 commercial smart collections + matching templates:
   - `/collections/magnesium-supplements` → `collection.lander-magnesium.json`
   - `/collections/omega-3-supplements` → `collection.lander-omega-3.json` (~35 products)
   - `/collections/collagen-supplements` → `collection.lander-collagen.json` (~53 products)
@@ -71,6 +71,7 @@ For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google quer
   - `/collections/tongkat-ali-amp-testosterone-support` → `collection.lander-tongkat-ali.json` (~13 products)
   - `/collections/vitamin-c-supplements` → `collection.lander-vitamin-c.json` (~35 products)
   - `/collections/turmeric-amp-curcumin` → `collection.lander-curcumin.json` (~16 products)
+  - `/collections/glutathione-supplements` → `collection.lander-glutathione.json` (~4 products)
 - Each template ships with consultant-written verdict + 4 FAQs each (form-literate Q's — "What kind of magnesium should I take", "EPA vs DHA", "Marine vs bovine collagen", "How long until probiotic kicks in", "Do I need K2 with my D3", "KSM-66 vs Shoden", "How much sodium do I need", "Do I need to load creatine", "Which zinc form").
 
 ### 6. Navigation + site chrome
