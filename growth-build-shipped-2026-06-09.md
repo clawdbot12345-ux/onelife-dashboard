@@ -158,7 +158,7 @@ Cannot be done via API. Order of impact:
 | Rotating announcement bar + pre-footer trust | shipped | +CR everywhere |
 | 5 commercial collection landers (mag / omega / collagen / probiotics / D) | shipped | +R15k SEO compounding |
 | Cart drawer payment trust strip | shipped | checkout completion +1–2pp |
-| Klaviyo 6-flow build | templates created, need activation | +R35–45k |
+| Klaviyo 8 flow templates ready | templates created, need activation | +R35–45k |
 | Express checkout + BNPL | **needs merchant** | +R54k |
 | Subscriptions on top 20 replenishables | **needs merchant app** | +R45k |
 | **Identified total** | | **~R260–280k incremental** |
