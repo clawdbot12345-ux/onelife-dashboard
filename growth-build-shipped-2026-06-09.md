@@ -74,7 +74,18 @@ For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google quer
 - **Announcement bar**: rotating 5-message strip (free delivery / 12 protocols / WhatsApp consult / supplement quiz / rewards) — auto-rotates at 5s.
 - **Pre-footer trust strip** (`snippets/pre-footer-trust.liquid`) — dark-green 4-column row on every page above the footer: free delivery, collect free in-store, free WhatsApp consult, encrypted checkout.
 
-### 7. Build Your Own Stack page (`/pages/build-your-stack`)
+### 7. About / Heritage rebuild (`/pages/about-us`)
+Existing About Us page now uses the new `about-heritage` template — single beautiful page that builds the apothecary moat for SA premium health.
+
+- **`snippets/about-heritage.liquid`** + `templates/page.about-heritage.json`, wired to the existing /pages/about-us via templateSuffix.
+- Hero: "The anti-Dis-Chem. For 30 years." + 4-stat counter (30+ years, 3 stores, 250+ brands, 10,000+ products).
+- 30-year story: opened in 1996 to sell what pharmacies wouldn't stock.
+- 3-pillar "What we do differently": free consultations, 15 protocols, 250 vetted brands.
+- 3-store grid with phone numbers and WhatsApp.
+- Brand tag cloud + link to full brand directory.
+- Dark-green final CTA: "Come find us — in person or on WhatsApp."
+
+### 8. Build Your Own Stack page (`/pages/build-your-stack`)
 DIY alternative to the curated protocols. Self-serve with 3 discount tiers.
 
 - **`snippets/stack-builder-page.liquid`** + `templates/page.stack-builder.json` + page in main nav.
