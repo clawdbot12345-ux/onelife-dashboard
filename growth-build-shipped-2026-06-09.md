@@ -95,7 +95,18 @@ B2B revenue unlock — completely untapped channel for the brand. Doctors, dieti
 - "Already a practitioner" WhatsApp CTA at the bottom.
 - Footer menu updated to include "Practitioner Pricing" link.
 
-### 9. Build Your Own Stack page (`/pages/build-your-stack`)
+### 9. Health Consultants page (`/pages/health-consultants`)
+Showcases the consultant moat — the apothecary differentiator made human. Drives WhatsApp consults and in-store visits.
+
+- **`snippets/health-consultants-page.liquid`** + `templates/page.health-consultants.json` + page in main nav.
+- Hero "Real consultants. Free, every time." with the apothecary moat tag.
+- 3-way "How to consult" grid (WhatsApp / walk in / take the quiz) each with CTA.
+- "What our consultants will (and won't) do" — 6 honest principles (will build custom stack / check interactions / suggest cheaper / tell you nothing's needed; won't diagnose / won't upsell).
+- "Why this matters" honesty paragraph.
+- Dark-green final WhatsApp CTA.
+- Main menu updated to include "Consultants" link.
+
+### 10. Build Your Own Stack page (`/pages/build-your-stack`)
 DIY alternative to the curated protocols. Self-serve with 3 discount tiers.
 
 - **`snippets/stack-builder-page.liquid`** + `templates/page.stack-builder.json` + page in main nav.
