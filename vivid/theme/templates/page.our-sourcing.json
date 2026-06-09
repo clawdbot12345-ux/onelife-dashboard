@@ -2,6 +2,26 @@
   "sections": {
     "main": {
       "type": "main-our-sourcing",
+      "blocks": {
+        "ashwa": { "type": "ingredient", "settings": { "name": "Ashwagandha (KSM-66)", "country": "India", "supplier": "Ixoreal Biomed", "form": "Root extract · 5% withanolides" } },
+        "mag-gly": { "type": "ingredient", "settings": { "name": "Magnesium glycinate", "country": "Germany", "supplier": "Albion / Balchem", "form": "Fully reacted bisglycinate" } },
+        "mag-cit": { "type": "ingredient", "settings": { "name": "Magnesium citrate", "country": "Germany", "supplier": "Jungbunzlauer", "form": "Tribasic, pharma grade" } },
+        "curcumin": { "type": "ingredient", "settings": { "name": "Curcumin (turmeric)", "country": "India", "supplier": "Sabinsa (C3 Complex)", "form": "95% curcuminoids + piperine" } },
+        "theanine": { "type": "ingredient", "settings": { "name": "L-theanine", "country": "Japan", "supplier": "Suntheanine (Taiyo)", "form": "Suntheanine®, 99% pure" } },
+        "5htp": { "type": "ingredient", "settings": { "name": "5-HTP (Griffonia)", "country": "Ghana", "supplier": "Sigma-tau", "form": "Seed extract · 99% 5-HTP" } },
+        "quercetin": { "type": "ingredient", "settings": { "name": "Quercetin", "country": "China", "supplier": "Sophora japonica", "form": "Bud extract · 95% quercetin dihydrate" } },
+        "vit-c": { "type": "ingredient", "settings": { "name": "Buffered Vitamin C", "country": "United Kingdom", "supplier": "DSM Quali-C®", "form": "Calcium ascorbate · pH-neutral" } },
+        "vit-d3": { "type": "ingredient", "settings": { "name": "Vitamin D3 (cholecalciferol)", "country": "Norway", "supplier": "DSM", "form": "Cholecalciferol from lanolin" } },
+        "omega3": { "type": "ingredient", "settings": { "name": "Omega-3 (EPA/DHA)", "country": "Peru", "supplier": "GC Rieber Oils", "form": "Anchovy/sardine · IFOS 5-star" } },
+        "mullein": { "type": "ingredient", "settings": { "name": "Mullein leaf", "country": "Bulgaria", "supplier": "Indena", "form": "Whole leaf · 4:1 extract" } },
+        "vitex": { "type": "ingredient", "settings": { "name": "Vitex (Chasteberry)", "country": "Albania", "supplier": "Frutarom", "form": "Fruit extract · 0.5% agnusides" } },
+        "saw": { "type": "ingredient", "settings": { "name": "Saw palmetto", "country": "USA (Florida)", "supplier": "Valensa", "form": "USPlus® · 85–95% fatty acids" } },
+        "coq10": { "type": "ingredient", "settings": { "name": "CoQ10 (ubiquinone)", "country": "Japan", "supplier": "Kaneka Q10®", "form": "Bio-identical, fermented" } },
+        "glutamine": { "type": "ingredient", "settings": { "name": "L-glutamine", "country": "Japan", "supplier": "Ajinomoto", "form": "Pharma-grade fermented" } },
+        "capsules": { "type": "ingredient", "settings": { "name": "Encapsulation", "country": "South Africa", "supplier": "Cnr Galway & Kilkenny, Centurion", "form": "Vegetable (HPMC) capsule shells" } },
+        "testing": { "type": "ingredient", "settings": { "name": "Independent batch testing", "country": "South Africa", "supplier": "ISO 17025-aligned SA laboratory", "form": "Identity · potency · heavy metals · microbial" } }
+      },
+      "block_order": ["ashwa","mag-gly","mag-cit","curcumin","theanine","5htp","quercetin","vit-c","vit-d3","omega3","mullein","vitex","saw","coq10","glutamine","capsules","testing"],
       "settings": {
         "updated_label": "June 2026"
       }

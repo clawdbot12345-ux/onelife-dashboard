@@ -1219,7 +1219,7 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .page-rte .cmp-table td{padding:12px 14px;border-bottom:1px solid rgba(31,61,46,.07);vertical-align:top}
 .page-rte .cmp-table tr:last-child td{border-bottom:0}
 .page-rte .cmp-table strong{color:var(--forest)}
-@media (max-width:680px){.page-rte .cmp-table{font-size:13px}.page-rte .cmp-table th,.page-rte .cmp-table td{padding:10px 8px}}
+@media (max-width:680px){.page-rte .cmp-table{font-size:13px;display:block;overflow-x:auto;white-space:nowrap}.page-rte .cmp-table th,.page-rte .cmp-table td{padding:10px 8px;white-space:normal;min-width:90px}}
 .page-rte .faq-block{margin:var(--s-3) 0 var(--s-5);max-width:720px}
 .page-rte .faq-item{border-top:1px solid rgba(31,61,46,.12);padding:14px 0}
 .page-rte .faq-item:last-child{border-bottom:1px solid rgba(31,61,46,.12)}
