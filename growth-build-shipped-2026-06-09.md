@@ -23,7 +23,7 @@ Reusable section + 6 protocol pages + hub + discount.
 
 - **`sections/dispensary-protocol.liquid`** — section with block-driven product picker, signed-by avatar, verdict block, stack list with consultant notes, sticky bundle total, Ajax add-all that routes through `/discount/CODE?redirect=/cart`.
 - **`snippets/dispensary-protocols-hub.liquid`** + `templates/page.dispensary-protocols.json` + page `/pages/dispensary-protocols` — 6-card discovery hub.
-- 15 live protocol pages, each on its own template:
+- 16 live protocol pages, each on its own template:
   | Page | Stack (real in-stock SKUs) |
   |---|---|
   | `/pages/sleep-ritual` | NOW Magnesium Citrate · BioMax Shoden Ashwagandha · Good Health Deep Sleep |
@@ -41,6 +41,7 @@ Reusable section + 6 protocol pages + hub + discount.
   | `/pages/skin-beauty` | Beauty Gen Naked Collagen · Vivid Buffered C · Vivid MSM |
   | `/pages/mood-lift` | Vivid 5-HTP · Vivid Omega Oil · Bio-Strath Syrup |
   | `/pages/healthy-ageing` | Vivid CoQ10 · Natroceutics Omega-3 · Neogenesis D3+K2 |
+  | `/pages/liver-detox` | Himalaya Liv.52 DS · BIOMAX Bio-Milk Thistle · Vivid Black Walnut |
 - **`DISPENSARY10`** discount — 10% off, R600 minimum, all customers, live now.
 
 ### 4. Cart drawer payment trust strip
@@ -53,7 +54,7 @@ Reusable section + 6 protocol pages + hub + discount.
 For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google queries.
 
 - **`sections/collection-commercial-lander.liquid`** — section with H1 override, lede, consultant verdict block, FAQ accordion with JSON-LD `FAQPage` schema.
-- 15 commercial smart collections + matching templates:
+- 16 commercial smart collections + matching templates:
   - `/collections/magnesium-supplements` → `collection.lander-magnesium.json`
   - `/collections/omega-3-supplements` → `collection.lander-omega-3.json` (~35 products)
   - `/collections/collagen-supplements` → `collection.lander-collagen.json` (~53 products)
@@ -69,6 +70,7 @@ For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google quer
   - `/collections/coq10-supplements` → `collection.lander-coq10.json` (~12 products)
   - `/collections/tongkat-ali-amp-testosterone-support` → `collection.lander-tongkat-ali.json` (~13 products)
   - `/collections/vitamin-c-supplements` → `collection.lander-vitamin-c.json` (~35 products)
+  - `/collections/turmeric-amp-curcumin` → `collection.lander-curcumin.json` (~16 products)
 - Each template ships with consultant-written verdict + 4 FAQs each (form-literate Q's — "What kind of magnesium should I take", "EPA vs DHA", "Marine vs bovine collagen", "How long until probiotic kicks in", "Do I need K2 with my D3", "KSM-66 vs Shoden", "How much sodium do I need", "Do I need to load creatine", "Which zinc form").
 
 ### 6. Navigation + site chrome
