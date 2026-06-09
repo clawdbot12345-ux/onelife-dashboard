@@ -23,7 +23,7 @@ Reusable section + 6 protocol pages + hub + discount.
 
 - **`sections/dispensary-protocol.liquid`** — section with block-driven product picker, signed-by avatar, verdict block, stack list with consultant notes, sticky bundle total, Ajax add-all that routes through `/discount/CODE?redirect=/cart`.
 - **`snippets/dispensary-protocols-hub.liquid`** + `templates/page.dispensary-protocols.json` + page `/pages/dispensary-protocols` — 6-card discovery hub.
-- 6 live protocol pages, each on its own template:
+- 8 live protocol pages, each on its own template:
   | Page | Stack (real in-stock SKUs) |
   |---|---|
   | `/pages/sleep-ritual` | NOW Magnesium Citrate · BioMax Shoden Ashwagandha · Good Health Deep Sleep |
@@ -32,6 +32,8 @@ Reusable section + 6 protocol pages + hub + discount.
   | `/pages/gut-reset` | Nutrilife Digestezyme · Vivid Wormwood · Real Thing Pro-Probiotic |
   | `/pages/joint-care` | Beauty Gen Naked Collagen · Vivid MSM · Natroceutics Omega-3 |
   | `/pages/daily-energy` | Eco Valley Magnesium 7/87 · Nattrend NATtritious · Vivid L-Glutamine |
+  | `/pages/brain-focus` | Vivid Omega Oil · Vivid CoQ10 · Bio-Strath Swiss heritage B-complex |
+  | `/pages/heart-health` | Natroceutics Omega-3 · Vivid CoQ10 · Oxygen Products Heart Health |
 - **`DISPENSARY10`** discount — 10% off, R600 minimum, all customers, live now.
 
 ### 4. Cart drawer payment trust strip
@@ -44,15 +46,17 @@ Reusable section + 6 protocol pages + hub + discount.
 For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google queries.
 
 - **`sections/collection-commercial-lander.liquid`** — section with H1 override, lede, consultant verdict block, FAQ accordion with JSON-LD `FAQPage` schema.
-- 3 commercial smart collections + matching templates:
-  - `/collections/magnesium-supplements` → `collection.lander-magnesium.json` (rule: TYPE CONTAINS "Magnesium")
-  - `/collections/omega-3-supplements` → `collection.lander-omega-3.json` (rule: TYPE CONTAINS "Omega", ~35 products)
-  - `/collections/collagen-supplements` → `collection.lander-collagen.json` (rule: TYPE CONTAINS "Collagen", ~53 products)
-- Each template ships with consultant-written verdict + 4 FAQs each (form-literate Q's — "What kind of magnesium should I take", "EPA vs DHA", "Marine vs bovine collagen", etc.).
+- 5 commercial smart collections + matching templates:
+  - `/collections/magnesium-supplements` → `collection.lander-magnesium.json`
+  - `/collections/omega-3-supplements` → `collection.lander-omega-3.json` (~35 products)
+  - `/collections/collagen-supplements` → `collection.lander-collagen.json` (~53 products)
+  - `/collections/probiotics` → `collection.lander-probiotics.json` (~100 products)
+  - `/collections/vitamin-d-supplements` → `collection.lander-vitamin-d.json` (~16 products)
+- Each template ships with consultant-written verdict + 4 FAQs each (form-literate Q's — "What kind of magnesium should I take", "EPA vs DHA", "Marine vs bovine collagen", "How long until probiotic kicks in", "Do I need K2 with my D3", etc.).
 
 ### 6. Navigation
 - **Main menu**: "The Dispensary" added directly after Home → drives traffic to the bundle hub.
-- **Collections menu**: appended The Dispensary, Magnesium, Omega-3, Collagen.
+- **Collections menu**: appended The Dispensary, Magnesium, Omega-3, Collagen, Probiotics, Vitamin D.
 
 ## What still needs the merchant
 
@@ -71,8 +75,8 @@ Cannot be done via API. Order of impact:
 | Homepage above-fold trust + Why + Dispensary promo | shipped | conversion +0.3–0.5pp |
 | PDP conversion kit on 13k zero-converting sessions | shipped | +R70k |
 | PDP review summary above title | shipped | +CR uplift on PDPs with reviews |
-| 6 Dispensary Protocols + DISPENSARY10 | shipped | +R25–35k AOV |
-| 3 commercial collection landers (mag / omega / collagen) | shipped | +R10k SEO compounding |
+| 8 Dispensary Protocols + DISPENSARY10 | shipped | +R30–40k AOV |
+| 5 commercial collection landers (mag / omega / collagen / probiotics / D) | shipped | +R15k SEO compounding |
 | Cart drawer payment trust strip | shipped | checkout completion +1–2pp |
 | Klaviyo 6-flow build | templates created, need activation | +R35–45k |
 | Express checkout + BNPL | **needs merchant** | +R54k |
