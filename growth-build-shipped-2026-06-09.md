@@ -85,7 +85,17 @@ Existing About Us page now uses the new `about-heritage` template — single bea
 - Brand tag cloud + link to full brand directory.
 - Dark-green final CTA: "Come find us — in person or on WhatsApp."
 
-### 8. Build Your Own Stack page (`/pages/build-your-stack`)
+### 8. Practitioner Pricing page (`/pages/practitioner-pricing`)
+B2B revenue unlock — completely untapped channel for the brand. Doctors, dieticians, naturopaths, biokineticists, beauty clinics, pharmacies, gyms.
+
+- **`snippets/practitioner-page.liquid`** + `templates/page.practitioner.json` + page in footer menu.
+- Hero "The apothecary, but for your practice." + 3 benefit cards (trade pricing on 10k+ SKUs, free dispensary education, fast Gauteng delivery).
+- 8 "Who qualifies" practitioner types with descriptions.
+- Trade pricing application form posting to /contact (Shopify's built-in contact form pipes to merchant email).
+- "Already a practitioner" WhatsApp CTA at the bottom.
+- Footer menu updated to include "Practitioner Pricing" link.
+
+### 9. Build Your Own Stack page (`/pages/build-your-stack`)
 DIY alternative to the curated protocols. Self-serve with 3 discount tiers.
 
 - **`snippets/stack-builder-page.liquid`** + `templates/page.stack-builder.json` + page in main nav.
