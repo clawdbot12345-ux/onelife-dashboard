@@ -50,19 +50,31 @@ Reusable section + 6 protocol pages + hub + discount.
 For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google queries.
 
 - **`sections/collection-commercial-lander.liquid`** — section with H1 override, lede, consultant verdict block, FAQ accordion with JSON-LD `FAQPage` schema.
-- 5 commercial smart collections + matching templates:
+- 9 commercial smart collections + matching templates:
   - `/collections/magnesium-supplements` → `collection.lander-magnesium.json`
   - `/collections/omega-3-supplements` → `collection.lander-omega-3.json` (~35 products)
   - `/collections/collagen-supplements` → `collection.lander-collagen.json` (~53 products)
   - `/collections/probiotics` → `collection.lander-probiotics.json` (~100 products)
   - `/collections/vitamin-d-supplements` → `collection.lander-vitamin-d.json` (~16 products)
-- Each template ships with consultant-written verdict + 4 FAQs each (form-literate Q's — "What kind of magnesium should I take", "EPA vs DHA", "Marine vs bovine collagen", "How long until probiotic kicks in", "Do I need K2 with my D3", etc.).
+  - `/collections/ashwagandha` → `collection.lander-ashwagandha.json`
+  - `/collections/electrolytes` → `collection.lander-electrolytes.json` (~7 products)
+  - `/collections/creatine` → `collection.lander-creatine.json` (~6 products)
+  - `/collections/zinc-supplements` → `collection.lander-zinc.json` (~19 products)
+- Each template ships with consultant-written verdict + 4 FAQs each (form-literate Q's — "What kind of magnesium should I take", "EPA vs DHA", "Marine vs bovine collagen", "How long until probiotic kicks in", "Do I need K2 with my D3", "KSM-66 vs Shoden", "How much sodium do I need", "Do I need to load creatine", "Which zinc form").
 
 ### 6. Navigation + site chrome
-- **Main menu**: "The Dispensary" added directly after Home → drives traffic to the bundle hub.
-- **Collections menu**: appended The Dispensary, Magnesium, Omega-3, Collagen, Probiotics, Vitamin D.
+- **Main menu**: "The Dispensary" + "Build Your Stack" added directly after Home → drives traffic to bundle/DIY discovery surfaces.
+- **Collections menu**: appended The Dispensary, plus 9 commercial lander collections (Magnesium, Omega-3, Collagen, Probiotics, Vitamin D, Ashwagandha, Electrolytes, Creatine, Zinc).
 - **Announcement bar**: rotating 5-message strip (free delivery / 12 protocols / WhatsApp consult / supplement quiz / rewards) — auto-rotates at 5s.
 - **Pre-footer trust strip** (`snippets/pre-footer-trust.liquid`) — dark-green 4-column row on every page above the footer: free delivery, collect free in-store, free WhatsApp consult, encrypted checkout.
+
+### 7. Build Your Own Stack page (`/pages/build-your-stack`)
+DIY alternative to the curated protocols. Self-serve with 3 discount tiers.
+
+- **`snippets/stack-builder-page.liquid`** + `templates/page.stack-builder.json` + page in main nav.
+- Three discount tiers explained: single bottle → free WhatsApp consult; 3–4 items → `STACK5` (5% off); 5+ items → `STACK10` (10% off).
+- "How it works" 4-step explainer + 6-card "Start from a goal" grid (protocols, quiz, WhatsApp, top supplements, Vivid Health, vit/min foundation).
+- **`STACK5`** (5%, min 3 items) and **`STACK10`** (10%, min 5 items) discount codes both live.
 
 ## What still needs the merchant
 
