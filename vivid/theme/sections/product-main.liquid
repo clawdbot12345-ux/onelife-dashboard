@@ -398,6 +398,55 @@
       </div>
     </div>
   {%- endif -%}
+
+  {%- comment -%} ─── Related reading from the journal — exact ingredient-tag match ─── {%- endcomment -%}
+  {%- liquid
+    assign ingr_whitelist = 'magnesium|ashwagandha|rhodiola|vitamin-c|vitamin-d|vitamin-k|omega|turmeric|curcumin|quercetin|5-htp|protein|collagen|mullein|saw-palmetto|vitex|coq10|msm|glutamine|berberine'
+    assign matchable = ''
+    for tag in product.tags
+      assign tagh = tag | downcase | handle
+      if ingr_whitelist contains tagh
+        assign matchable = matchable | append: '|' | append: tagh | append: '|'
+      endif
+    endfor
+    assign rr_count = 0
+  -%}
+  {%- assign journal = blogs['journal'] -%}
+  {%- if journal and matchable != '' and journal.articles.size > 0 -%}
+    {%- capture rr_html -%}
+      {%- for art in journal.articles -%}
+        {%- if rr_count >= 3 -%}{%- break -%}{%- endif -%}
+        {%- assign matched = false -%}
+        {%- assign eyebrow_tag = '' -%}
+        {%- for at in art.tags -%}
+          {%- assign ath = at | downcase | handle -%}
+          {%- assign needle = '|' | append: ath | append: '|' -%}
+          {%- if matchable contains needle -%}{%- assign matched = true -%}{%- endif -%}
+          {%- if at == 'comparison' or at == 'guide' or at == 'roundup' -%}
+            {%- if eyebrow_tag == '' -%}{%- assign eyebrow_tag = at -%}{%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if matched -%}
+          <a href="{{ art.url }}" class="pdp-rr-card">
+            {%- if eyebrow_tag != '' -%}<span class="pdp-rr-eyebrow">{{ eyebrow_tag }}</span>{%- endif -%}
+            <h4>{{ art.title }}</h4>
+            <p>{{ art.summary | default: art.excerpt | strip_html | truncate: 130 }}</p>
+            <span class="pdp-rr-read">Read article →</span>
+          </a>
+          {%- assign rr_count = rr_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if rr_count > 0 -%}
+      <div class="pdp-rr">
+        <div class="pdp-rr-head">
+          <span class="eyebrow">Related reading from the journal</span>
+          <h3>The science behind this formulation</h3>
+        </div>
+        <div class="pdp-rr-grid">{{ rr_html }}</div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
 </div>
 
 {%- comment -%} ─── Product + DietarySupplement + AggregateRating + Review JSON-LD ─── {%- endcomment -%}

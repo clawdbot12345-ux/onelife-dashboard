@@ -1265,3 +1265,17 @@ footer{background:var(--ink);color:var(--paper);padding:var(--s-10) 0 var(--s-5)
 .page-rte .member-card h3{font-family:var(--font-display);font-weight:500;font-size:20px;color:var(--ink);margin:0 0 8px;letter-spacing:-.01em}
 .page-rte .member-card p{margin:0;font-size:15px;line-height:1.55;color:var(--ink-soft)}
 @media (max-width:760px){.page-rte .member-grid{grid-template-columns:1fr;gap:14px}.page-rte .member-card{padding:20px 18px}.page-rte .member-num{font-size:36px}}
+
+/* PDP related reading from journal */
+.pdp-rr{margin-top:96px;padding-top:48px;border-top:1px solid rgba(31,61,46,.10)}
+.pdp-rr-head{margin-bottom:28px}
+.pdp-rr-head .eyebrow{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);font-weight:600;margin-bottom:10px}
+.pdp-rr-head h3{font-family:var(--font-display);font-weight:500;font-size:28px;color:var(--ink);margin:0;letter-spacing:-.01em}
+.pdp-rr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pdp-rr-card{display:flex;flex-direction:column;gap:8px;padding:22px;border:1px solid rgba(31,61,46,.12);border-radius:var(--r-md);text-decoration:none;color:var(--ink);background:var(--cream);transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+.pdp-rr-card:hover{transform:translateY(-1px);border-color:var(--forest);box-shadow:0 6px 20px -10px rgba(31,61,46,.18)}
+.pdp-rr-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);font-weight:600}
+.pdp-rr-card h4{font-family:var(--font-display);font-weight:500;font-size:18px;color:var(--ink);margin:4px 0 6px;letter-spacing:-.01em;line-height:1.3}
+.pdp-rr-card p{margin:0;font-size:14px;line-height:1.5;color:var(--ink-soft)}
+.pdp-rr-read{margin-top:auto;font-size:13px;color:var(--forest);font-weight:500;letter-spacing:.01em}
+@media (max-width:760px){.pdp-rr{margin-top:60px;padding-top:32px}.pdp-rr-head h3{font-size:22px}.pdp-rr-grid{grid-template-columns:1fr;gap:14px}.pdp-rr-card{padding:18px}}
