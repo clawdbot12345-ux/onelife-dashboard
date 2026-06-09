@@ -631,10 +631,10 @@ const DASHBOARD_DATA = {
   },
   "kpis": {
     "store_sales_30d_excl": 2056778.94,
-    "online_sales_30d_excl": 101344.33,
-    "combined_revenue_30d_excl": 2158123.27,
-    "online_orders_30d": 185,
-    "online_aov_excl": 547.81,
+    "online_sales_30d_excl": 99244.73,
+    "combined_revenue_30d_excl": 2156023.67,
+    "online_orders_30d": 180,
+    "online_aov_excl": 551.36,
     "online_discount_rate_pct": 16.3,
     "total_skus_in_stock": 5686,
     "total_stock_value_cost": 3318456.4,
@@ -763,21 +763,17 @@ const DASHBOARD_DATA = {
   },
   "shopify": {
     "_source": "LIVE Klaviyo Shopify integration",
-    "_fetched_at": "2026-06-08T11:08:01.157503+00:00",
-    "total_orders": 185,
-    "total_revenue_excl": 101344.33,
-    "total_revenue_incl": 116545.98,
-    "aov_excl": 547.81,
-    "unique_customers_30d": 185,
-    "units_sold_30d": 527,
-    "checkouts_started_30d": 317,
-    "checkout_conversion_pct": 58.4,
+    "_fetched_at": "2026-06-09T09:55:00.051521+00:00",
+    "total_orders": 180,
+    "total_revenue_excl": 99244.73,
+    "total_revenue_incl": 114131.44,
+    "aov_excl": 551.36,
+    "unique_customers_30d": 180,
+    "units_sold_30d": 513,
+    "checkouts_started_30d": 312,
+    "checkout_conversion_pct": 57.7,
     "discount_rate_pct": 0,
     "daily": {
-      "2026-05-09": {
-        "orders": 7,
-        "revenue_excl": 3268.12
-      },
       "2026-05-10": {
         "orders": 5,
         "revenue_excl": 1583.14
@@ -895,6 +891,10 @@ const DASHBOARD_DATA = {
         "revenue_excl": 3525.08
       },
       "2026-06-08": {
+        "orders": 2,
+        "revenue_excl": 1168.52
+      },
+      "2026-06-09": {
         "orders": 0,
         "revenue_excl": 0.0
       }
@@ -904,29 +904,29 @@ const DASHBOARD_DATA = {
   },
   "klaviyo": {
     "_source": "LIVE Klaviyo API",
-    "_fetched_at": "2026-06-08T11:08:01.157368+00:00",
-    "_period_start": "2026-05-09T23:59:59",
-    "_period_end": "2026-06-08T23:59:59",
+    "_fetched_at": "2026-06-09T09:55:00.051441+00:00",
+    "_period_start": "2026-05-10T23:59:59",
+    "_period_end": "2026-06-09T23:59:59",
     "summary": {
       "total_subscribers": 3046,
       "email_list_profile_count": 3046,
       "marketable_consented_estimate": 3046,
-      "engaged_90d": 0,
-      "at_risk_60d": 0,
-      "new_subscribers_30d": 15,
+      "engaged_90d": 1441,
+      "at_risk_60d": 1466,
+      "new_subscribers_30d": 14,
       "unsubscribes_30d": 92,
       "bounced_30d": 164,
-      "avg_open_rate_pct": 51.72,
-      "avg_click_rate_pct": 4.27,
-      "avg_unsubscribe_rate_pct": 1.091,
+      "avg_open_rate_pct": 52.19,
+      "avg_click_rate_pct": 4.31,
+      "avg_unsubscribe_rate_pct": 1.09,
       "bounce_rate_pct": 1.94,
       "email_attributed_revenue_30d": 17303.45,
       "flow_revenue_30d": 11079.41,
       "campaign_revenue_30d": 6224.04,
       "total_campaigns_sent_30d": 26,
-      "total_emails_sent_30d": 8435,
-      "total_opens_30d": 4363,
-      "total_clicks_30d": 360
+      "total_emails_sent_30d": 8443,
+      "total_opens_30d": 4406,
+      "total_clicks_30d": 364
     },
     "flows": [
       {
@@ -934,13 +934,13 @@ const DASHBOARD_DATA = {
         "name": "Browse Abandonment v2",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 127,
-        "emails_sent_30d": 124,
-        "opens_30d": 80,
+        "recipients_30d": 129,
+        "emails_sent_30d": 126,
+        "opens_30d": 82,
         "clicks_30d": 9,
-        "open_rate_pct": 34.65,
-        "click_rate_pct": 7.09,
-        "conversion_rate_pct": 4.72,
+        "open_rate_pct": 34.88,
+        "click_rate_pct": 6.98,
+        "conversion_rate_pct": 4.65,
         "revenue_30d": 4154.13
       },
       {
@@ -948,13 +948,13 @@ const DASHBOARD_DATA = {
         "name": "PCOS Post-Purchase Flow",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 284,
-        "emails_sent_30d": 278,
-        "opens_30d": 150,
+        "recipients_30d": 281,
+        "emails_sent_30d": 275,
+        "opens_30d": 146,
         "clicks_30d": 4,
-        "open_rate_pct": 40.49,
-        "click_rate_pct": 1.06,
-        "conversion_rate_pct": 0.35,
+        "open_rate_pct": 39.15,
+        "click_rate_pct": 1.07,
+        "conversion_rate_pct": 0.36,
         "revenue_30d": 2670.0
       },
       {
@@ -962,13 +962,13 @@ const DASHBOARD_DATA = {
         "name": "Abandoned Checkout Reminder - Standard (Email & SMS)",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 154,
-        "emails_sent_30d": 150,
-        "opens_30d": 83,
+        "recipients_30d": 157,
+        "emails_sent_30d": 153,
+        "opens_30d": 81,
         "clicks_30d": 6,
-        "open_rate_pct": 37.01,
-        "click_rate_pct": 3.25,
-        "conversion_rate_pct": 2.6,
+        "open_rate_pct": 35.67,
+        "click_rate_pct": 3.18,
+        "conversion_rate_pct": 2.55,
         "revenue_30d": 2429.68
       },
       {
@@ -976,13 +976,13 @@ const DASHBOARD_DATA = {
         "name": "Welcome — One Life Health (Full Sequence)",
         "status": "live",
         "trigger_type": "Added to List",
-        "recipients_30d": 28,
-        "emails_sent_30d": 28,
-        "opens_30d": 38,
+        "recipients_30d": 27,
+        "emails_sent_30d": 27,
+        "opens_30d": 37,
         "clicks_30d": 6,
-        "open_rate_pct": 67.86,
-        "click_rate_pct": 17.86,
-        "conversion_rate_pct": 10.71,
+        "open_rate_pct": 66.67,
+        "click_rate_pct": 18.52,
+        "conversion_rate_pct": 11.11,
         "revenue_30d": 1825.6
       },
       {
@@ -1006,7 +1006,7 @@ const DASHBOARD_DATA = {
         "trigger_type": "Added to List",
         "recipients_30d": 4,
         "emails_sent_30d": 4,
-        "opens_30d": 7,
+        "opens_30d": 8,
         "clicks_30d": 1,
         "open_rate_pct": 50.0,
         "click_rate_pct": 25.0,
@@ -1018,12 +1018,12 @@ const DASHBOARD_DATA = {
         "name": "Post-Purchase Thank You + Cross-sell v3",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 168,
-        "emails_sent_30d": 165,
-        "opens_30d": 105,
-        "clicks_30d": 15,
-        "open_rate_pct": 41.07,
-        "click_rate_pct": 3.57,
+        "recipients_30d": 171,
+        "emails_sent_30d": 167,
+        "opens_30d": 108,
+        "clicks_30d": 16,
+        "open_rate_pct": 41.52,
+        "click_rate_pct": 4.09,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
       },
@@ -1032,11 +1032,11 @@ const DASHBOARD_DATA = {
         "name": "GLP-1 Education Drip",
         "status": "live",
         "trigger_type": "Added to List",
-        "recipients_30d": 3,
-        "emails_sent_30d": 3,
+        "recipients_30d": 2,
+        "emails_sent_30d": 2,
         "opens_30d": 2,
         "clicks_30d": 0,
-        "open_rate_pct": 66.67,
+        "open_rate_pct": 100.0,
         "click_rate_pct": 0.0,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
@@ -1088,12 +1088,12 @@ const DASHBOARD_DATA = {
         "name": "Replenishment Reminder (API-created)",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 177,
-        "emails_sent_30d": 173,
+        "recipients_30d": 181,
+        "emails_sent_30d": 177,
         "opens_30d": 82,
         "clicks_30d": 2,
-        "open_rate_pct": 36.72,
-        "click_rate_pct": 1.13,
+        "open_rate_pct": 35.91,
+        "click_rate_pct": 1.1,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
       },
@@ -1116,12 +1116,12 @@ const DASHBOARD_DATA = {
         "name": "Points Balance Nudge v3",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 125,
-        "emails_sent_30d": 123,
-        "opens_30d": 80,
-        "clicks_30d": 3,
-        "open_rate_pct": 40.8,
-        "click_rate_pct": 2.4,
+        "recipients_30d": 128,
+        "emails_sent_30d": 126,
+        "opens_30d": 81,
+        "clicks_30d": 4,
+        "open_rate_pct": 40.62,
+        "click_rate_pct": 3.12,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
       },
@@ -1132,9 +1132,9 @@ const DASHBOARD_DATA = {
         "trigger_type": "Added to List",
         "recipients_30d": 14,
         "emails_sent_30d": 14,
-        "opens_30d": 16,
+        "opens_30d": 15,
         "clicks_30d": 1,
-        "open_rate_pct": 64.29,
+        "open_rate_pct": 57.14,
         "click_rate_pct": 7.14,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
@@ -1189,10 +1189,10 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-06-05",
         "recipients": 1378,
-        "opens": 877,
-        "open_rate_pct": 52.12,
-        "clicks": 20,
-        "click_rate_pct": 1.39,
+        "opens": 904,
+        "open_rate_pct": 53.15,
+        "clicks": 22,
+        "click_rate_pct": 1.54,
         "conversions": 1,
         "revenue": 412.0,
         "unsubscribes": 27,
@@ -1204,8 +1204,8 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-06-03",
         "recipients": 3065,
-        "opens": 1223,
-        "open_rate_pct": 32.0,
+        "opens": 1251,
+        "open_rate_pct": 32.47,
         "clicks": 39,
         "click_rate_pct": 1.2,
         "conversions": 2,
@@ -1279,8 +1279,8 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-05-27",
         "recipients": 762,
-        "opens": 395,
-        "open_rate_pct": 39.47,
+        "opens": 401,
+        "open_rate_pct": 39.87,
         "clicks": 23,
         "click_rate_pct": 2.91,
         "conversions": 0,
@@ -1298,21 +1298,6 @@ const DASHBOARD_DATA = {
         "open_rate_pct": 50.0,
         "clicks": 1,
         "click_rate_pct": 50.0,
-        "conversions": 0,
-        "revenue": 0.0,
-        "unsubscribes": 0,
-        "delivery_rate_pct": 100.0
-      },
-      {
-        "id": "01KS5GGXFBPSAZP5RGEMKZJXYB",
-        "name": "[CODEX LINK QA] Post-Purchase Thank You + Cross-sell v3 action 106619052 2026-05-21 16:55:05 SAST",
-        "status": "Sent",
-        "sent_date": "2026-05-21",
-        "recipients": 3,
-        "opens": 2,
-        "open_rate_pct": 66.67,
-        "clicks": 0,
-        "click_rate_pct": 0.0,
         "conversions": 0,
         "revenue": 0.0,
         "unsubscribes": 0,
@@ -1394,21 +1379,6 @@ const DASHBOARD_DATA = {
         "delivery_rate_pct": 100.0
       },
       {
-        "id": "01KS5JM6K1MAHD4JNYQTEP8YEA",
-        "name": "[CODEX LINK QA] Replenishment Reminder (API-created) action 103841694 2026-05-21 17:31:50 SAST",
-        "status": "Sent",
-        "sent_date": "2026-05-21",
-        "recipients": 1,
-        "opens": 0,
-        "open_rate_pct": 0.0,
-        "clicks": 0,
-        "click_rate_pct": 0.0,
-        "conversions": 0,
-        "revenue": 0.0,
-        "unsubscribes": 0,
-        "delivery_rate_pct": 100.0
-      },
-      {
         "id": "01KS5JZ9AMWG8E92EDC89YV1YN",
         "name": "[CODEX LINK QA] Post-Purchase Thank You + Cross-sell v3 action 100378820 2026-05-21 17:37:53 SAST",
         "status": "Sent",
@@ -1418,6 +1388,51 @@ const DASHBOARD_DATA = {
         "open_rate_pct": 100.0,
         "clicks": 9,
         "click_rate_pct": 100.0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "unsubscribes": 0,
+        "delivery_rate_pct": 100.0
+      },
+      {
+        "id": "01KS5MAPZ79RWBZQ57T1SJSBSP",
+        "name": "[CODEX LINK QA] Replenishment Reminder (API-created) action 103841698 2026-05-21 18:01:36 SAST",
+        "status": "Sent",
+        "sent_date": "2026-05-21",
+        "recipients": 1,
+        "opens": 1,
+        "open_rate_pct": 100.0,
+        "clicks": 8,
+        "click_rate_pct": 100.0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "unsubscribes": 0,
+        "delivery_rate_pct": 100.0
+      },
+      {
+        "id": "01KS5GGXFBPSAZP5RGEMKZJXYB",
+        "name": "[CODEX LINK QA] Post-Purchase Thank You + Cross-sell v3 action 106619052 2026-05-21 16:55:05 SAST",
+        "status": "Sent",
+        "sent_date": "2026-05-21",
+        "recipients": 3,
+        "opens": 2,
+        "open_rate_pct": 66.67,
+        "clicks": 0,
+        "click_rate_pct": 0.0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "unsubscribes": 0,
+        "delivery_rate_pct": 100.0
+      },
+      {
+        "id": "01KS5JM6K1MAHD4JNYQTEP8YEA",
+        "name": "[CODEX LINK QA] Replenishment Reminder (API-created) action 103841694 2026-05-21 17:31:50 SAST",
+        "status": "Sent",
+        "sent_date": "2026-05-21",
+        "recipients": 1,
+        "opens": 0,
+        "open_rate_pct": 0.0,
+        "clicks": 0,
+        "click_rate_pct": 0.0,
         "conversions": 0,
         "revenue": 0.0,
         "unsubscribes": 0,
@@ -1463,21 +1478,6 @@ const DASHBOARD_DATA = {
         "open_rate_pct": 0.0,
         "clicks": 0,
         "click_rate_pct": 0.0,
-        "conversions": 0,
-        "revenue": 0.0,
-        "unsubscribes": 0,
-        "delivery_rate_pct": 100.0
-      },
-      {
-        "id": "01KS5MAPZ79RWBZQ57T1SJSBSP",
-        "name": "[CODEX LINK QA] Replenishment Reminder (API-created) action 103841698 2026-05-21 18:01:36 SAST",
-        "status": "Sent",
-        "sent_date": "2026-05-21",
-        "recipients": 1,
-        "opens": 1,
-        "open_rate_pct": 100.0,
-        "clicks": 8,
-        "click_rate_pct": 100.0,
         "conversions": 0,
         "revenue": 0.0,
         "unsubscribes": 0,
@@ -1574,10 +1574,60 @@ const DASHBOARD_DATA = {
         "delivery_rate_pct": 100.0
       }
     ],
-    "segments": [],
+    "segments": [
+      {
+        "id": "UQmNai",
+        "name": "At-risk 60d",
+        "size": 1466
+      },
+      {
+        "id": "S3MAsK",
+        "name": "Engaged 90d",
+        "size": 1441
+      },
+      {
+        "id": "RnHTNL",
+        "name": "Glen Village proximity",
+        "size": 296
+      },
+      {
+        "id": "S83cUp",
+        "name": "Parkview proximity",
+        "size": 266
+      },
+      {
+        "id": "TKAdBQ",
+        "name": "VIP (3+ Orders or R3000+ LTV)",
+        "size": 197
+      },
+      {
+        "id": "RCDiHM",
+        "name": "Buyer - Magnesium",
+        "size": 120
+      },
+      {
+        "id": "UeXRQX",
+        "name": "VIP / High LTV",
+        "size": 97
+      },
+      {
+        "id": "T7CaTr",
+        "name": "Buyer - Joint Mobility",
+        "size": 33
+      },
+      {
+        "id": "TZ66NM",
+        "name": "Engaged Browsers (No Purchase)",
+        "size": 31
+      },
+      {
+        "id": "QZACej",
+        "name": "GLP-1 / Metabolic",
+        "size": 2
+      }
+    ],
     "received_daily": {
-      "2026-05-09": 27.0,
-      "2026-05-10": 30.0,
+      "2026-05-10": 29.0,
       "2026-05-11": 24.0,
       "2026-05-12": 798.0,
       "2026-05-13": 32.0,
@@ -1605,11 +1655,11 @@ const DASHBOARD_DATA = {
       "2026-06-04": 1403.0,
       "2026-06-05": 36.0,
       "2026-06-06": 32.0,
-      "2026-06-07": 17.0,
-      "2026-06-08": 0.0
+      "2026-06-07": 39.0,
+      "2026-06-08": 14.0,
+      "2026-06-09": 0.0
     },
     "subscribed_daily": {
-      "2026-05-09": 1.0,
       "2026-05-10": 0.0,
       "2026-05-11": 1.0,
       "2026-05-12": 1.0,
@@ -1639,7 +1689,8 @@ const DASHBOARD_DATA = {
       "2026-06-05": 2.0,
       "2026-06-06": 0.0,
       "2026-06-07": 0.0,
-      "2026-06-08": 0.0
+      "2026-06-08": 0.0,
+      "2026-06-09": 0.0
     }
   },
   "categories": [
@@ -87265,9 +87316,9 @@ const NARRATIVES = {
   "overview": "The business generated **R2,118,822 excl VAT** over the last 30 days across 3 stores and Shopify.\n\n**Centurion dominates at 65% of store revenue** (R1,337,591), with 2,236 transactions at an average basket of R598. This is your engine — it's running well.\n\n**Edenvale (19%, R382,354)** is your second store but has the lowest average basket at R410 vs Centurion's R598. There's a R188 basket gap between your strongest and weakest store — that's a ranging and upsell problem, not a footfall problem.\n\n**Glen Village (16%, R336,834)** is the smallest but has a R461 avg basket — stronger than Edenvale per transaction. Fewer customers, but they're spending more per visit.\n\n**Online is 2.9% of combined revenue** — R62,043 from 92 orders at R674 AOV. The channel is small but the AOV is strong. Discount rate at 16.3% is elevated and needs watching.",
   "stock": "You have **R3,318,456 locked in stock at cost** — that money is either working for you or sitting idle.\n\n**The dead weight:** R142,746 is tied up in 50 products that keep getting reordered despite not moving. The worst offenders — MAG 7/87 60'S (10x orders, 86 units), 1L GUT RAWBIOTICS (4x, 55 units), FLORISH SPORE PROBIOTIC 60C (5x, 23 units) — are a PAR level problem. Someone is reordering on autopilot. Stop these until stock clears.\n\n**The opportunity:** 40 products have margin ≥40% and are well-stocked. These are your profit drivers sitting on the shelf. The top 5 average 49.5% margin. Put them front-of-shelf, run a staff push, and feature them online.\n\n**The risk:** 50 products are at ≤5 units. 50 of those are high-value (>R500 excl VAT each). If you sell one more unit and can't reorder fast, you lose the sale and the customer. Some of these have no PO ever placed — they're being forgotten.",
   "suppliers": "You placed **748 orders worth R4,016,315 excl VAT** since January. Overall fill rate is **92.0%** — meaning R319,332 in ordered stock has not arrived.\n\n**20 suppliers are below 80% fill rate** and together represent significant outstanding value. Your top 3 suppliers by spend are DS INTERNATIONAL (NOW) (R451,204, 69.2% fill), NATROCEUTICS SA (PTY) LTD (R333,568, 73.7% fill), and LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS (R242,098, 92.5% fill).\n\n**DSI at 69% fill on R451,204 ordered** is the biggest concern — that's your largest supplier and they're leaving R139,873 undelivered. Either they're backordering, shipping partial, or there's an admin issue on invoice matching.\n\n**40 suppliers are over-delivering** vs PO value — you're receiving more than you ordered. This is where surprise overstock comes from. Review GRV sign-off process.",
-  "online": "**Live Shopify data — last 30 days (via Klaviyo integration).** 185 orders generating **R101,344 excl VAT** (R116,546 incl VAT) from **185 unique customers**. AOV **R547.81 excl VAT**.\n\n**Checkout conversion:** 317 started → 185 completed = **58.4% conversion**. Strong bottom-of-funnel — bottleneck is traffic, not checkout.\n\n**Units sold:** 527 (2.8 per order avg).\n\n**Channel mix:** Online is **4.7% of combined revenue**. Health supplement benchmark is 15-20%. Strong email engagement (51.72% open) with modest online share = audience exists, gap is acquisition.",
+  "online": "**Live Shopify data — last 30 days (via Klaviyo integration).** 180 orders generating **R99,245 excl VAT** (R114,131 incl VAT) from **180 unique customers**. AOV **R551.36 excl VAT**.\n\n**Checkout conversion:** 312 started → 180 completed = **57.7% conversion**. Strong bottom-of-funnel — bottleneck is traffic, not checkout.\n\n**Units sold:** 513 (2.9 per order avg).\n\n**Channel mix:** Online is **4.6% of combined revenue**. Health supplement benchmark is 15-20%. Strong email engagement (52.19% open) with modest online share = audience exists, gap is acquisition.",
   "signals": "Three things need your attention today.\n\n**1. Reorder FIRE BOWL 200MM** — 50 high-value products are at ≤5 units with no or stale POs. Each one is a missed sale at full margin.\n\n**2. Stop reordering MAG 7/87 60'S** — you've ordered it 10 times this year and have 86 units on the shelf. Whoever controls the PAR levels needs to see this data.\n\n**3. DSI** — your largest supplier at R451,204 ordered is only delivering at 69.2%. Get on a call with them this week. Either the relationship needs managing or the ordering process needs fixing.",
-  "klaviyo": "**Live Klaviyo data — last 30 days.** You have **3046 active email subscribers** with **15 new signups**. You sent **8,435 emails**, got **4,363 opens (51.72% open rate)** and **360 clicks (4.27% click rate)**. Open rate is genuinely strong — industry avg for health supplements is 25-30%.\n\n**Email-attributed revenue: R17,303** — R11,079 from flows, R6,224 from campaigns. Flows are doing 64% of the work.\n\n**Top flow: 'Browse Abandonment v2'** — R4,154 from 127 recipients at 34.65% open rate.\n\n**Top campaign:** 'Best Menopause Supplements in South Africa | Segment: Engaged 90d' — R4,345 from 772 recipients.\n\n**Warning:** Bounce rate 1.94% (164 bounces) — clean the list if above 2%.\n\n**Biggest opportunity:** Win-Back segment has 0 profiles. 2-3% conversion × ~R500 AOV = potentially R0 in recoverable revenue."
+  "klaviyo": "**Live Klaviyo data — last 30 days.** You have **3046 active email subscribers** with **14 new signups**. You sent **8,443 emails**, got **4,406 opens (52.19% open rate)** and **364 clicks (4.31% click rate)**. Open rate is genuinely strong — industry avg for health supplements is 25-30%.\n\n**Email-attributed revenue: R17,303** — R11,079 from flows, R6,224 from campaigns. Flows are doing 64% of the work.\n\n**Top flow: 'Browse Abandonment v2'** — R4,154 from 129 recipients at 34.88% open rate.\n\n**Top campaign:** 'Best Menopause Supplements in South Africa | Segment: Engaged 90d' — R4,345 from 772 recipients.\n\n**Warning:** Bounce rate 1.94% (164 bounces) — clean the list if above 2%.\n\n**Biggest opportunity:** Win-Back segment has 0 profiles. 2-3% conversion × ~R500 AOV = potentially R0 in recoverable revenue."
 };
 
 // ============================================================
