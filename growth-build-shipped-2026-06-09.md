@@ -23,7 +23,7 @@ Reusable section + 6 protocol pages + hub + discount.
 
 - **`sections/dispensary-protocol.liquid`** — section with block-driven product picker, signed-by avatar, verdict block, stack list with consultant notes, sticky bundle total, Ajax add-all that routes through `/discount/CODE?redirect=/cart`.
 - **`snippets/dispensary-protocols-hub.liquid`** + `templates/page.dispensary-protocols.json` + page `/pages/dispensary-protocols` — 6-card discovery hub.
-- 12 live protocol pages, each on its own template:
+- 15 live protocol pages, each on its own template:
   | Page | Stack (real in-stock SKUs) |
   |---|---|
   | `/pages/sleep-ritual` | NOW Magnesium Citrate · BioMax Shoden Ashwagandha · Good Health Deep Sleep |
@@ -38,6 +38,9 @@ Reusable section + 6 protocol pages + hub + discount.
   | `/pages/mens-vitality` | Sfera Tongkat Ali · Metagenics Zinc Glycinate · PMR Prosta-Care Plus |
   | `/pages/weight-management` | Vivid Garcinia Cambogia · Vivid Cayenne · Vivid L-Glutamine |
   | `/pages/kids-foundation` | Bio-Strath Syrup · Zinplex Junior Sugar-Free · Zinplex Junior Magnesium · Panda Bear Chill Cocoballs |
+  | `/pages/skin-beauty` | Beauty Gen Naked Collagen · Vivid Buffered C · Vivid MSM |
+  | `/pages/mood-lift` | Vivid 5-HTP · Vivid Omega Oil · Bio-Strath Syrup |
+  | `/pages/healthy-ageing` | Vivid CoQ10 · Natroceutics Omega-3 · Neogenesis D3+K2 |
 - **`DISPENSARY10`** discount — 10% off, R600 minimum, all customers, live now.
 
 ### 4. Cart drawer payment trust strip
