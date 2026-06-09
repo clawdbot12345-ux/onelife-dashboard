@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "editorial": {
@@ -6,7 +15,7 @@
         "image_label": "Our story",
         "kicker": "Why Vivid exists",
         "heading": "Most \"South African\" supplements aren't.",
-        "body": "<p>The local market is full of imported white-label capsules with a SA sticker. The doses are often too low to do what the research says they should. The labels hide ingredients behind \"proprietary blends.\"</p><p>Vivid Health started because the team behind Onelife — three retail stores across Centurion, Glen Village, and Edenvale — kept being asked the same question: <em>which one actually works?</em> The honest answer was usually: none of these at this dose. So we built our own.</p>"
+        "body": "<p>The local market is full of imported white-label capsules with a SA sticker. The doses are often too low to do what the research says they should. The labels hide ingredients behind \"proprietary blends.\"</p><p>Vivid Health started with one simple shopper question: <em>which formula actually earns its place in my routine?</em> The answer should not require a microscope, a medical degree, or blind trust. So we built a range around visible milligrams, cleaner daily formats, and product pages that explain the formula before asking for the cart.</p>"
       }
     }
   },

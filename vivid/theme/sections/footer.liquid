@@ -26,17 +26,14 @@
 
     <div class="foot-grid">
       <div class="foot-col">
-        {%- if section.settings.logo_light != blank -%}
-          {{ section.settings.logo_light | image_url: width: 320 | image_tag:
-              loading: 'lazy',
-              widths: '160,320',
-              sizes: '160px',
-              alt: shop.name,
-              class: 'foot-brand-logo',
-              style: 'height:42px;width:auto;display:block;margin-bottom:14px' }}
-        {%- else -%}
-          <div style="font-family:var(--font-display);font-size:28px;color:var(--paper);margin-bottom:14px">{{ shop.name }}</div>
-        {%- endif -%}
+        <img
+          src="{{ 'vivid-logo-wordmark.svg' | asset_url }}"
+          class="foot-brand-logo foot-brand-logo--svg"
+          width="640"
+          height="200"
+          alt="{{ shop.name }}"
+          loading="lazy"
+        >
         <p class="foot-lede">{{ section.settings.brand_lede }}</p>
         {%- if section.blocks.size > 0 -%}
           {%- assign has_social = false -%}
@@ -96,8 +93,9 @@
     {%- endif -%}
 
     <div class="foot-bottom">
-      <div>© {{ 'now' | date: '%Y' }} {{ shop.name }} (Pty) Ltd · All prices in ZAR · incl. 15% VAT</div>
+      <div>© {{ 'now' | date: '%Y' }} {{ shop.name }} · Operated by Interlife Wholesalers (Pty) Ltd · All prices in ZAR · incl. 15% VAT</div>
       <div>
+        <a href="/pages/shipping-and-returns">Shipping & returns</a> ·
         <a href="/policies/privacy-policy">Privacy</a> ·
         <a href="/policies/terms-of-service">Terms</a> ·
         <a href="/pages/popia">POPIA</a>
@@ -119,8 +117,8 @@
     { "type": "checkbox", "id": "show_trust", "label": "Show trust band", "default": true },
     { "type": "text", "id": "trust_1_num", "label": "Trust 1 · number", "default": "12,000+" },
     { "type": "text", "id": "trust_1_lbl", "label": "Trust 1 · label",  "default": "South Africans served" },
-    { "type": "text", "id": "trust_2_num", "label": "Trust 2 · number", "default": "★ 4.8/5" },
-    { "type": "text", "id": "trust_2_lbl", "label": "Trust 2 · label",  "default": "2,400+ verified reviews" },
+    { "type": "text", "id": "trust_2_num", "label": "Trust 2 · number", "default": "0" },
+    { "type": "text", "id": "trust_2_lbl", "label": "Trust 2 · label",  "default": "proprietary blends" },
     { "type": "text", "id": "trust_3_num", "label": "Trust 3 · number", "default": "Since 1996." },
     { "type": "text", "id": "trust_3_lbl", "label": "Trust 3 · label",  "default": "Family-founded, Centurion-made" },
     { "type": "header",   "content": "Certifications" },

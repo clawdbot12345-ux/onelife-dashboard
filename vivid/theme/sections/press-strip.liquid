@@ -1,0 +1,41 @@
+{%- comment -%}
+  Credentials / press strip. Honest credential badges by default; swap in
+  real press logos (as block items) when earned.
+{%- endcomment -%}
+<section class="press-strip reveal" aria-label="{{ section.settings.label | default: 'Why people trust Vivid' }}">
+  <div class="container press-strip-inner">
+    <span class="press-strip-label">{{ section.settings.label | default: 'The Vivid standard' }}</span>
+    <div class="press-logos">
+      {%- if section.blocks.size > 0 -%}
+        {%- for b in section.blocks -%}
+          <span class="press-logo {% if b.settings.mono %}press-logo--mono{% endif %}">{{ b.settings.text }}</span>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Press / credentials",
+  "tag": "section",
+  "class": "section-press-strip",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "The Vivid standard" }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    { "type": "logo", "name": "Item", "settings": [
+      { "type": "text", "id": "text", "label": "Text", "default": "Made in South Africa" },
+      { "type": "checkbox", "id": "mono", "label": "Mono / uppercase style", "default": false }
+    ]}
+  ],
+  "presets": [ { "name": "Press / credentials", "blocks": [
+    { "type": "logo", "settings": { "text": "SAHPRA-aligned facility", "mono": true } },
+    { "type": "logo", "settings": { "text": "Third-party lab tested", "mono": true } },
+    { "type": "logo", "settings": { "text": "Family-founded · 1996", "mono": true } },
+    { "type": "logo", "settings": { "text": "3 Onelife stores", "mono": true } },
+    { "type": "logo", "settings": { "text": "POPIA compliant", "mono": true } }
+  ]}]
+}
+{% endschema %}

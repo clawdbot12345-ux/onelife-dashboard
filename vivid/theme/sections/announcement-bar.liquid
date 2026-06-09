@@ -2,13 +2,24 @@
   Announcement bar — dot-separated messages, forest-deep background.
 {%- endcomment -%}
 
-<div class="announce">
-  {%- for block in section.blocks -%}
-    {%- if block.settings.text != blank -%}
-      <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
-    {%- endif -%}
-  {%- endfor -%}
-</div>
+{%- liquid
+  assign has_announcement = false
+  for block in section.blocks
+    if block.settings.text != blank
+      assign has_announcement = true
+    endif
+  endfor
+-%}
+
+{%- if has_announcement -%}
+  <div class="announce">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.text != blank -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
 
 {% schema %}
 {
@@ -23,13 +34,6 @@
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "message", "settings": { "text": "Free delivery on orders over R400" } },
-      { "type": "message", "settings": { "text": "Made in South Africa" } },
-      { "type": "message", "settings": { "text": "Third-party lab tested" } }
-    ]
-  },
   "presets": [
     {
       "name": "Announcement bar",

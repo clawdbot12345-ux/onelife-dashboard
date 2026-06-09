@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-credentials",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_bone": "#F4EEE2",
@@ -9,7 +18,68 @@
     "color_moss": "#466B4F",
     "color_sage": "#A8B89B",
     "color_clay": "#C3704B",
-    "container_max": 1280
+    "container_max": 1280,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "shop": {
+            "type": "menu",
+            "settings": {
+              "heading": "Shop",
+              "menu": "vivid-footer-shop"
+            }
+          },
+          "goals": {
+            "type": "menu",
+            "settings": {
+              "heading": "Goals",
+              "menu": "vivid-footer-goals"
+            }
+          },
+          "support": {
+            "type": "menu",
+            "settings": {
+              "heading": "Support",
+              "menu": "vivid-footer-support"
+            }
+          },
+          "learn": {
+            "type": "menu",
+            "settings": {
+              "heading": "Learn",
+              "menu": "vivid-footer-learn"
+            }
+          }
+        },
+        "block_order": [
+          "shop",
+          "goals",
+          "support",
+          "learn"
+        ],
+        "settings": {
+          "brand_lede": "Plant-based supplements made in South Africa. Clear active doses, focused formulas, and delivery nationwide.",
+          "show_trust": true,
+          "trust_1_num": "52",
+          "trust_1_lbl": "Focused formulations",
+          "trust_2_num": "Free",
+          "trust_2_lbl": "Delivery over R400",
+          "trust_3_num": "0",
+          "trust_3_lbl": "Proprietary blends",
+          "show_certs": true,
+          "certs": "Made in South Africa, Vegetarian capsules, Clear active doses, VAT-inclusive pricing",
+          "show_pay": true,
+          "payment_methods": "Visa, Mastercard, Payfast, EFT"
+        }
+      }
+    }
   },
   "presets": {
     "Vivid Default": {

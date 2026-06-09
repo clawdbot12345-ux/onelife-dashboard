@@ -7,7 +7,7 @@
   {%- if section.settings.background_image != blank -%}
     <div class="hero-photo" style="background-image:url('{{ section.settings.background_image | image_url: width: 2400 }}')"></div>
   {%- else -%}
-    <div class="hero-photo" style="background-color:var(--forest-deep)"></div>
+    <div class="hero-photo" style="background-image:url('{{ 'banner-hero-kitchen.jpg' | asset_url }}')"></div>
   {%- endif -%}
   <div class="hero-scrim"></div>
   <div class="container hero-content">
@@ -67,11 +67,11 @@
   "settings": [
     { "type": "image_picker", "id": "background_image",    "label": "Background image (full-bleed)" },
     { "type": "text",         "id": "eyebrow",             "label": "Eyebrow",
-      "default": "Botanical precision · Clinically dosed · South African" },
+      "default": "Botanical precision · Exact-dose labels · South African" },
     { "type": "richtext",     "id": "heading",             "label": "Heading",
       "default": "<p>Vivid by <em>nature.</em><br>Verified by science.</p>" },
     { "type": "textarea",     "id": "lede",                "label": "Lede",
-      "default": "Plant-first formulations with the milligrams on the bottle — the way it should have always been. Blended in Centurion since 1996." },
+      "default": "Plant-first formulations with the milligrams on the bottle: clean daily support, built for South African routines." },
     { "type": "text",         "id": "cta_primary_label",   "label": "Primary CTA label",   "default": "Shop the range" },
     { "type": "url",          "id": "cta_primary_link",    "label": "Primary CTA link" },
     { "type": "text",         "id": "cta_secondary_label", "label": "Secondary CTA label", "default": "Find your formulation" },
@@ -99,7 +99,7 @@
             { "value": "shield", "label": "Shield" }
           ],
           "default": "check" },
-        { "type": "text", "id": "value", "label": "Rating value (for Stars icon)", "default": "4.8" },
+        { "type": "text", "id": "value", "label": "Rating value (for Stars icon)", "default": "0" },
         { "type": "text", "id": "text",  "label": "Text",
           "default": "Free shipping over R400" }
       ]
@@ -110,10 +110,10 @@
       "name": "Hero",
       "blocks": [
         { "type": "stat",  "settings": { "value": "52",   "label": "Formulations" } },
-        { "type": "stat",  "settings": { "value": "3",    "label": "Onelife stores" } },
-        { "type": "stat",  "settings": { "value": "1996", "label": "Family-founded" } },
-        { "type": "stat",  "settings": { "value": "★ 4.8","label": "2,400+ reviews" } },
-        { "type": "trust", "settings": { "icon": "stars",  "value": "4.8", "text": "· 2,400+ South African reviews" } },
+        { "type": "stat",  "settings": { "value": "8",    "label": "Goal-led systems" } },
+        { "type": "stat",  "settings": { "value": "0", "label": "proprietary blends" } },
+        { "type": "stat",  "settings": { "value": "10%", "label": "stack offer" } },
+        { "type": "trust", "settings": { "icon": "check", "text": "Exact active doses listed" } },
         { "type": "trust", "settings": { "icon": "check",  "text": "Free shipping over R400" } },
         { "type": "trust", "settings": { "icon": "shield", "text": "30-day money-back" } }
       ]

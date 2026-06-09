@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-our-sourcing",
+      "settings": {
+        "updated_label": "June 2026"
+      }
+    }
+  },
+  "order": ["main"]
+}

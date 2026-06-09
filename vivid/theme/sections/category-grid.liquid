@@ -21,9 +21,12 @@
     </div>
     <div class="goals">
       {%- for block in section.blocks -%}
-        {%- assign coll = collections[block.settings.collection] -%}
+        {%- assign coll = block.settings.collection -%}
+        {%- if coll == blank -%}
+          {%- assign coll = collections[block.settings.goal_id] -%}
+        {%- endif -%}
         {%- assign tile_url = coll.url | default: block.settings.fallback_url -%}
-        {%- assign count = coll.products_count -%}
+        {%- assign count = coll.products_count | default: 0 | plus: 0 -%}
         {%- assign show_label = false -%}
         {%- if block.settings.label != blank and block.settings.label != block.settings.name -%}
           {%- assign show_label = true -%}

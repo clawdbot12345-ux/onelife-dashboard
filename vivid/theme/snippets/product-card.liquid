@@ -16,23 +16,34 @@
     {%- assign goal_id = tag | remove: 'goal:' | strip -%}
   {%- endif -%}
 {%- endfor -%}
+{%- if goal_id == '' and product.handle contains 'bundle' -%}
+  {%- assign goal_id = 'bundles' -%}
+{%- elsif goal_id == '' and product.handle contains 'pack' -%}
+  {%- assign goal_id = 'bundles' -%}
+{%- endif -%}
 
 {%- assign card_cat = product.metafields.vivid.category | default: product.type -%}
 {%- assign bench    = product.metafields.vivid.bench | default: product.description | strip_html | truncate: 80 -%}
 {%- assign size_lbl = product.metafields.vivid.size | default: product.first_available_variant.title -%}
+{%- assign image_loading = image_loading | default: 'lazy' -%}
+{%- assign image_fetchpriority = image_fetchpriority | default: '' -%}
 
-<a href="{{ product.url }}" class="card" data-goal="{{ goal_id }}" aria-label="{{ product.title }}">
+<a href="{{ product.url }}" class="card" data-goal="{{ goal_id }}" data-title="{{ product.title | escape }}" data-price="{{ product.price }}" aria-label="{{ product.title }}">
   <div class="card-media">
     <div class="card-badge">
       {%- if product.tags contains 'vegan' -%}<span class="pill pill--green">Vegan</span>{%- endif -%}
       {%- unless product.available -%}<span class="pill pill--alert">Sold out</span>{%- endunless -%}
       {%- if product.tags contains 'bestseller' -%}<span class="pill pill--dark">Best seller</span>{%- endif -%}
     </div>
-    {{ product.featured_image | image_url: width: 600 | image_tag:
-        loading: 'lazy',
-        widths: '300,600,900,1200',
-        sizes: '(min-width: 1100px) 25vw, (min-width: 780px) 33vw, 50vw',
-        alt: product.title }}
+    {% render 'vivid-product-art',
+      product: product,
+      class: 'card-media__image',
+      loading: image_loading,
+      fetchpriority: image_fetchpriority,
+      sizes: '(min-width: 1100px) 25vw, (min-width: 780px) 33vw, 50vw',
+      width: 1200,
+      height: 1500,
+      image_width: 900 %}
     {%- if product.available -%}
       <button class="card-quickadd js-add-to-cart" type="button"
         data-variant-id="{{ product.first_available_variant.id }}"

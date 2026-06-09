@@ -1,0 +1,55 @@
+<section class="page-shell">
+  <div class="container">
+    {%- if page.handle contains 'consultation' -%}
+      <div class="consult-page-grid">
+        <div class="consult-page-media">
+          <img src="{{ 'bone-supreme-influencer.jpg' | asset_url }}" loading="eager" width="1280" height="720" alt="Vivid Health product consultation">
+        </div>
+        <div class="consult-page-copy">
+          <div class="eyebrow">Free consultation</div>
+          <h1>Ask before you combine.</h1>
+          <p>Use this when you are unsure about dose, timing, existing medication, or whether one bottle is enough. Send the goal, the products you already use, and the routine you are trying to build.</p>
+          <div class="consult-page-steps">
+            <span><strong>1</strong> Tell us the goal</span>
+            <span><strong>2</strong> Share current products</span>
+            <span><strong>3</strong> Get a cleaner starting route</span>
+          </div>
+          <a class="btn btn--forest btn-arrow" href="https://wa.me/27713744910?text=Hi%2C%20I%27d%20like%20a%20free%20Vivid%20Health%20consultation" target="_blank" rel="noopener">Start on WhatsApp</a>
+        </div>
+      </div>
+      {%- comment -%} Also render the page body so admin-authored content is visible. {%- endcomment -%}
+      {%- if page.content != blank -%}
+        <div class="rte page-rte" style="margin-top:48px">
+          {{ page.content }}
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      {%- liquid
+        assign eyebrow_label = section.settings.eyebrow
+        if page.handle contains 'ingredients-'
+          assign eyebrow_label = 'Ingredient guide'
+        elsif page.handle contains 'conditions-'
+          assign eyebrow_label = 'Goal guide'
+        elsif page.handle contains 'guide-'
+          assign eyebrow_label = 'Guide'
+        endif
+      -%}
+      <div class="page-head">
+        <div class="eyebrow">{{ eyebrow_label }}</div>
+        <h1>{{ page.title }}</h1>
+      </div>
+      <div class="rte page-rte">
+        {{ page.content }}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main page",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Vivid Health" }
+  ]
+}
+{% endschema %}
