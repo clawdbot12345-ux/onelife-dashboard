@@ -23,7 +23,7 @@ Reusable section + 6 protocol pages + hub + discount.
 
 - **`sections/dispensary-protocol.liquid`** — section with block-driven product picker, signed-by avatar, verdict block, stack list with consultant notes, sticky bundle total, Ajax add-all that routes through `/discount/CODE?redirect=/cart`.
 - **`snippets/dispensary-protocols-hub.liquid`** + `templates/page.dispensary-protocols.json` + page `/pages/dispensary-protocols` — 6-card discovery hub.
-- 8 live protocol pages, each on its own template:
+- 12 live protocol pages, each on its own template:
   | Page | Stack (real in-stock SKUs) |
   |---|---|
   | `/pages/sleep-ritual` | NOW Magnesium Citrate · BioMax Shoden Ashwagandha · Good Health Deep Sleep |
@@ -34,6 +34,10 @@ Reusable section + 6 protocol pages + hub + discount.
   | `/pages/daily-energy` | Eco Valley Magnesium 7/87 · Nattrend NATtritious · Vivid L-Glutamine |
   | `/pages/brain-focus` | Vivid Omega Oil · Vivid CoQ10 · Bio-Strath Swiss heritage B-complex |
   | `/pages/heart-health` | Natroceutics Omega-3 · Vivid CoQ10 · Oxygen Products Heart Health |
+  | `/pages/womens-hormonal` | Vivid Sage · Eco Valley Soft Iron · Altwell MenoSUPPORT |
+  | `/pages/mens-vitality` | Sfera Tongkat Ali · Metagenics Zinc Glycinate · PMR Prosta-Care Plus |
+  | `/pages/weight-management` | Vivid Garcinia Cambogia · Vivid Cayenne · Vivid L-Glutamine |
+  | `/pages/kids-foundation` | Bio-Strath Syrup · Zinplex Junior Sugar-Free · Zinplex Junior Magnesium · Panda Bear Chill Cocoballs |
 - **`DISPENSARY10`** discount — 10% off, R600 minimum, all customers, live now.
 
 ### 4. Cart drawer payment trust strip
@@ -54,9 +58,11 @@ For "buy magnesium south africa" / "best omega-3 SA" / "collagen SA" Google quer
   - `/collections/vitamin-d-supplements` → `collection.lander-vitamin-d.json` (~16 products)
 - Each template ships with consultant-written verdict + 4 FAQs each (form-literate Q's — "What kind of magnesium should I take", "EPA vs DHA", "Marine vs bovine collagen", "How long until probiotic kicks in", "Do I need K2 with my D3", etc.).
 
-### 6. Navigation
+### 6. Navigation + site chrome
 - **Main menu**: "The Dispensary" added directly after Home → drives traffic to the bundle hub.
 - **Collections menu**: appended The Dispensary, Magnesium, Omega-3, Collagen, Probiotics, Vitamin D.
+- **Announcement bar**: rotating 5-message strip (free delivery / 12 protocols / WhatsApp consult / supplement quiz / rewards) — auto-rotates at 5s.
+- **Pre-footer trust strip** (`snippets/pre-footer-trust.liquid`) — dark-green 4-column row on every page above the footer: free delivery, collect free in-store, free WhatsApp consult, encrypted checkout.
 
 ## What still needs the merchant
 
@@ -75,7 +81,8 @@ Cannot be done via API. Order of impact:
 | Homepage above-fold trust + Why + Dispensary promo | shipped | conversion +0.3–0.5pp |
 | PDP conversion kit on 13k zero-converting sessions | shipped | +R70k |
 | PDP review summary above title | shipped | +CR uplift on PDPs with reviews |
-| 8 Dispensary Protocols + DISPENSARY10 | shipped | +R30–40k AOV |
+| 12 Dispensary Protocols + DISPENSARY10 | shipped | +R35–50k AOV |
+| Rotating announcement bar + pre-footer trust | shipped | +CR everywhere |
 | 5 commercial collection landers (mag / omega / collagen / probiotics / D) | shipped | +R15k SEO compounding |
 | Cart drawer payment trust strip | shipped | checkout completion +1–2pp |
 | Klaviyo 6-flow build | templates created, need activation | +R35–45k |
