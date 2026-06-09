@@ -1,129 +1,252 @@
-# Vivid — World-Class Roadmap (synthesis)
+# Vivid Health — World-Class Roadmap
 
-The condensed plan tying together the 4 research streams. Each move maps to a phase, a measurable, and an owner status (T = theme, A = admin, M = marketing, O = owner). Status: ✓ done · ▢ in flight · ☐ pending.
+> The synthesis. How we go from "promising D2C draft" to **leading SA online health brand at R300k/month**.
+> Authoring date: 2026-06-09. Working draft theme: `149043052630` (live theme `148873674838` untouched).
 
 ---
 
-## North star
-Become **South Africa's category-defining online supplement brand** within 12 months. Hit **R300,000/month** online revenue by month 6 at a blended 3× ROAS.
+## 1. The thesis
 
-## Positioning — one line
-*"Plant-first. Exact mg on the bottle. Subscribed, delivered, explained."*
+**The South African online supplement category is structurally weak on six things every serious international DTC nails:**
 
-The three pillars Vivid will out-execute SA peers on:
-1. **Transparency** — exact mg, no proprietary blends, per-batch COAs, traceable sourcing (Ritual's Made Traceable applied to SA).
-2. **Personalisation** — 90-second quiz, named stacks, free expert chat, subscribe & save (HUM/Persona/AG1 fused).
-3. **Brand love** — editorial science aesthetic (Seed), goal-coloured collection IA (Olly), founder/expert voice (Goop's pattern, anonymised SA-1996 origin).
+1. Subscription / auto-replenish at scale
+2. Quiz-to-stack personalisation
+3. Exact-dose transparency (mg-per-Rand)
+4. TikTok as an organic channel
+5. Batch-level COAs
+6. Bundle UX
 
-## Differentiators with no SA equivalent (Vivid's wedge)
-| Move | Source pattern | Vivid play |
+Vivid is one brand sprint away from matching all six. The international benchmarks (Seed, Ritual, AG1, HUM, Wellbeing) have done the hard product work — we just copy the patterns that recur in 3+ of them, then layer two of our own moats:
+
+- **"Made Traceable"** — published per-ingredient supplier + country + standardisation (no SA brand does this)
+- **Anonymous 1996 founder origin** — the real Onelife story, retold for Vivid, no named face — credibility without ego
+
+Hit those, and Vivid is the brand the under-40 SA wellness buyer trusts over Solal and the brand they discover over Faithful to Nature.
+
+---
+
+## 2. Where we stand right now (post round 6)
+
+### Shipped to the new working draft (`149043052630`)
+
+**Trust & GEO infrastructure**
+- PDP JSON-LD now `Product` + `DietarySupplement` (with `activeIngredient`, `recommendedIntake`, `manufacturer`, `mpn`, returns + shipping) + `aggregateRating` + `review[]` + a separate `FAQPage` script — broader AI Overview surface than any SA competitor.
+- `/pages/our-sourcing` — the Ritual-style Made Traceable page. 17 ingredient rows (KSM-66 ex India, Albion/Balchem mag glycinate ex Germany, DSM Quali-C ex UK, Kaneka Q10 ex Japan, IFOS-grade omega ex Peru, Indena mullein ex Bulgaria, etc.) + ISO 17025 SA batch testing + the 4-stage testing card.
+- `/pages/the-team` — anonymous SA family page with belief panel, credential pills (HPCSA-registered clinical adviser, registered pharmacist, ISO-aligned SA lab), AboutPage schema.
+
+**Content backbone (E-E-A-T + AI Overviews)**
+- 8 ingredient pillar pages — magnesium glycinate, ashwagandha, l-theanine, vitamin D3, omega-3, curcumin, quercetin, 5-HTP
+- 4 condition hubs — sleep, stress, energy, immunity
+- 6 comparison journal articles — magnesium glycinate vs citrate vs oxide / ashwagandha vs rhodiola / best magnesium SA / whey vs plant protein / D3 vs D3+K2 / buffered vit C vs standard
+- Every page has SEO title + description metafields
+- New "Learn" footer column links all 12 guides
+
+**Catalog**
+- 3 new persona/seasonal bundle SKUs: **Highveld Hay-fever Stack** (R689), **Perimenopause Essentials** (R829), **Comrades Recovery Stack** (R599) — all ACTIVE on Online Store, in /collections/bundles
+- 11 SKUs tagged with primary ingredient so PDP↔journal cross-linking fires
+
+**Conversion**
+- PDP OOS UX rebuilt — back-in-stock email capture (Shopify contact form) + 3 in-stock alternatives. Closes the 35% dead-end on the catalog where the Onelife Omni sync flags OOS.
+- PDP "Related reading from the journal" — exact ingredient-tag match, surfaces the comparison articles inside the purchase decision.
+- `/pages/vivid-members` — subscription positioning page. Reframes the 10%-off selling plans as a Vivid Members benefit, with 4 perks (10% off / skip-swap-cancel / free shipping at R300 / early access to drops).
+
+**Mobile**
+- Sweep across 27 routes — 0 overflow. Comparison tables now `display:block; overflow-x:auto` in both page and article contexts.
+
+### Untouched but in plan
+- Quiz "Building your stack..." loading + richer result panel (current quiz works but is one step shy of Care/of-quality UX)
+- Klaviyo flows (Welcome 5 / Abandoned cart 3 / Post-purchase 5 / Winback 2) — wire once Klaviyo PRIVATE_API_KEY is verified
+- Seed-style PDP hero rebuild (capsule cutaway photography)
+- Real review collection to replace the 15 labelled samples
+- Bespoke photography across the new bundles and pillar pages
+- Practitioner portal (Pure Encapsulations-style B2B2C entry for dietitians and GPs)
+
+---
+
+## 3. What recurs across the international top brands
+
+| Pattern | AG1 | Ritual | Seed | Thorne | MaryRuth | Olly | HUM | Wellbeing | Persona | Bulletproof |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Subscribe-first pricing | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Free-shipping threshold | ✓ | ✓ | – | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Bundle ladder (2/4/6) | – | ✓ | ✓ | – | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Quiz primary acquisition | – | – | ✓ | ✓ | – | – | ✓ | – | ✓ | – |
+| Multi-axis IA | – | ✓ | – | ✓ | ✓ | ✓ | ✓ | ✓ | – | ✓ |
+| PDP trust badge stack | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | – | ✓ |
+| Reviews 1000+ above-fold | – | ✓ | ✓ | – | ✓ | – | ✓ | – | ✓ | ✓ |
+| 30–90 day money-back | ✓ | ✓ | ✓ | – | ✓ | – | – | – | ✓ | ✓ |
+| No-model hero photography | ✓ | ✓ | ✓ | ✓ | – | – | ✓ | – | – | – |
+| Founder/expert visible | ✓ | ✓ | ✓ | – | ✓ | – | ✓ | ✓ | ✓ | ✓ |
+| Welcome kit first order | ✓ | – | ✓ | – | – | – | – | – | – | – |
+| Editorial blog | ✓ | ✓ | ✓ | ✓ | ✓ | – | ✓ | – | ✓ | ✓ |
+
+**Vivid status vs each row:** subscribe-first ✓, threshold ✓ (R400→R300 for members), bundles ✓ (3 new + the 3 originals), quiz ✓, multi-axis IA ⚠ (goal-only — add format & life-stage), PDP badge stack ✓, reviews ⚠ (sample-flagged), 30-day money-back ✓, no-model hero ✓, expert visible ✓, welcome kit ✗ (post-launch), editorial blog ✓ (12 articles now).
+
+---
+
+## 4. The 6 differentiators Vivid is uniquely positioned to own
+
+| # | Differentiator | Status | Next action |
+|---|---|---|---|
+| 1 | Made Traceable supplier table | ✓ Shipped (`/pages/our-sourcing`) | Add scanned COA PDFs per ingredient batch; tag "Last batch: 2026-Q2" |
+| 2 | Single-SKU clarity at premium price | ✗ | Evaluate "Vivid Daily" — one all-in-one canister at R899/mo, AG1 positioning |
+| 3 | Format ownership | ✗ | Evaluate dissolvable strips ("Vivid Lift") or 7-day blister packs as SA category |
+| 4 | Free human expert post-purchase | ⚠ Free consultation page exists | Wire Klaviyo flow with named pharmacist responding within 24h |
+| 5 | Refillable jar + travel vial | ✗ | 2026-Q4 — physical product change, supplier work |
+| 6 | Forked practitioner / consumer entry | ✗ | Build `/pages/practitioners` with code request form |
+
+---
+
+## 5. SA market positioning
+
+| Tier | Price band (Vit C 1000mg / 60ct) | Players | Vivid play |
+|---|---|---|---|
+| Cheap | R80–R150 | Clicks house, Bettaway, Cipla | Don't compete |
+| Mid (our flagship) | R150–R280 | Biogen, Vital, NutriZen, The Real Thing | Match price, beat on UX/design/evidence/subscription |
+| Premium (Vivid Pro lane) | R280–R450 | Solal, Coyne, Solgar, Terranova | Compete on novel actives — chelates, methyl-B12, mag L-threonate, NMN |
+| Ultra-premium | R450+ | Solal complexes, grey-import Thorne | Optional 2027 lane via practitioner portal |
+
+**Sweet spot for the AOV strategy:** stack bundles at R599–R799 (we shipped 3) with 15% subscribe-and-save → AOV R650+ and LTV through auto-ship.
+
+---
+
+## 6. SEO + GEO prioritised actions (top 10)
+
+| # | Action | Status | Owner |
+|---|---|---|---|
+| 1 | DietarySupplement + Product + Offer + AggregateRating schema across all PDPs | ✓ Shipped | – |
+| 2 | 8 ingredient pillar pages, 1,500w+, FAQ schema | ✓ Shipped | – |
+| 3 | Credentialed founder/clinical reviewer page (E-E-A-T) | ✓ Shipped (`/pages/the-team`) | – |
+| 4 | Per-batch third-party COAs as linked PDFs on PDPs | ⏳ Owner — upload PDFs | Naadir |
+| 5 | `/pages/llms-txt` + `/llms-full.txt` for GEO | ✓ llms-txt exists; full pending | – |
+| 6 | 4 condition hub pages (Sleep, Stress, Energy, Immunity) | ✓ Shipped | – |
+| 7 | 6 comparison posts (AI Overview magnets) | ✓ Shipped | – |
+| 8 | Digital PR to 10 SA pubs | ✗ | Owner / PR retainer |
+| 9 | GBP optimization for 3 Onelife sister stores | ✗ | Owner |
+| 10 | Klaviyo review-collection flow @ day 14 | ⏳ Depends on Klaviyo key activation | Naadir |
+
+---
+
+## 7. Marketing & social — run to R300k MRR
+
+### Budget (Month-3+ at proven ROAS 3x = R100k ad spend / R300k revenue)
+
+| Channel | Monthly | % |
 |---|---|---|
-| **Traceable sourcing page** | Ritual *Made Traceable* | `/pages/our-sourcing` lists supplier name + manufacturing location for every ingredient — no SA brand does this |
-| **Subscribe-first pricing** | AG1, Ritual, Seed | Already wired — push 25% of revenue to subscription by month 6 |
-| **Quiz → personalised stack** | HUM, Persona, Care/of (cautious) | Already wired — cut to 6 questions, add "Building your stack…" load, free expert follow-up |
-| **Per-batch COAs** | Thorne, Seed | Upload PDFs as a metafield on each PDP |
-| **Goal-colour collection IA** | Olly | Sleep = indigo, Energy = ochre, etc., on collection cards |
-| **Format ownership** | Wellbeing's *Melts*, Seed's *ViaCap* | 2027 — explore liposomal or sachet line |
-| **Free RD chat** | HUM, Persona | Wire to existing free-consultation page |
-| **Practitioner portal** | Pure Encapsulations | 2026 H2 — pharmacist/dietitian sign-up + 25% wholesale tier |
+| Meta (FB+IG) | R60,000 | 60% |
+| Google (Search + Shopping + PMax) | R22,000 | 22% |
+| TikTok | R10,000 | 10% |
+| YouTube pre-roll | R5,000 | 5% |
+| Reserve / influencer | R3,000 | 3% |
 
-## Catalog reality
-- 55 SKUs (52 supplements + 3 bundles)
-- 36 in stock — **Onelife Omni stock sync gap is the #1 P0** (owner: O)
-- Mostly entry/mid price band (R0–R400). Sweet-spot bundles R599–R799 with 15% subscription = R650+ AOV.
-- Gaps vs international: no liposomal, no creatine for women SKU, no menopause stack, no Highveld hay-fever seasonal stack, no electrolyte sachet. **Formulation roadmap below.**
+### Organic targets (6 months)
 
-## Formulation roadmap (12-month)
-1. **Highveld Hayfever Stack** (existing quercetin + bromelain + nettle + vit C) — bundle for Sept push
-2. **Perimenopause Essentials** (existing vitex + adaptogens + magnesium + vit D) — bundle
-3. **Comrades Recovery Stack** (existing magnesium + creatine + curcumin + electrolytes) — bundle
-4. **NEW SKU — Vivid Daily** (single-scoop greens, AG1-style flagship) — H2 2026
-5. **NEW SKU — Magnesium L-threonate** (no SA player owns this) — Q3
-6. **NEW SKU — Creatine for women (3g micro-dosed daily)** — Q3
-7. **NEW SKU — Liposomal vitamin C** — Q4 (format wedge)
-8. **NEW SKU — Quercetin + Nettle hay-fever** — annualise for spring 2027
+| Platform | Cadence | 6-mo target |
+|---|---|---|
+| Instagram | 4 reels + 3 carousels + 2 stories / day | 0 → 12k |
+| TikTok | 1–2 / day | 0 → 18k |
+| YouTube Shorts | 5 / week | 4k subs |
+| Pinterest | 10 pins / day (Tailwind) | 50k MV |
+| LinkedIn (founder) | 4 / week | 5k |
 
-## Implementation phases
+### Influencer tiers
 
-### Phase 1 — Theme + IA shipping (this sprint, weeks 1–2)
-- ✓ Duplicate theme → `149043052630` (working draft)
-- ▢ DietarySupplement + Product + Offer + AggregateRating + Review schema on every PDP
-- ▢ Traceability page (`/pages/our-sourcing`) — Ritual-style
-- ▢ Credentialed founder/family page (`/pages/founder-family`) with Person schema — anonymous but credentialed
-- ▢ Goal-colour system on collection cards (Olly-inspired)
-- ▢ Bundle ladder pricing visual on PDP (1/2/4 with escalating discount)
-- ▢ Trust badge row on PDP — 4 icons (3rd-party tested · no proprietary blends · vegan · SAHPRA-aligned)
-- ▢ Free shipping threshold A/B (R400 → R450) — frontend gate
-- ▢ Quiz cut to 6 questions + "Building your stack…" load
+- **Nano (1–10k)**: gifted full stack + 15% affiliate → 30/month
+- **Micro (10–100k)**: gifted + R3–12k flat + affiliate → 4/month
+- **Macro (100k+)**: paid R25–150k → 1/quarter
 
-### Phase 2 — Content shipping (weeks 2–4)
-- ☐ 4 condition hub pages: `/conditions/sleep`, `/stress`, `/energy`, `/immunity`
-- ☐ 8 ingredient pillar pages: magnesium glycinate, ashwagandha, L-theanine, vit D3, omega-3, curcumin, quercetin, 5-HTP
-- ☐ 6 comparison blog posts: mag glycinate vs citrate; ashwa vs rhodiola; collagen marine vs bovine; whey vs plant SA; mag forms; vit D forms
-- ☐ Update `/pages/llms-txt` + add `/pages/llms-full`
-- ☐ Refresh `/pages/about` + `/pages/our-approach` with new positioning copy
+(SA shortlist of 20 in `research/marketing-playbook.md`)
 
-### Phase 3 — Marketing infra (weeks 2–6)
-- ☐ Klaviyo flows: welcome (5), abandoned cart (3), post-purchase education (5), winback (2)
-- ☐ WhatsApp opt-in at checkout (POPIA-compliant) + WATI/Bird hookup
-- ☐ Judge.me wired with day-21 review request + R50 voucher GWP
-- ☐ Referral programme (ReferralCandy or Friendbuy) — Give R75 / Get R75
-- ☐ Loyalty programme (Smile.io) — 1 pt/R1, bonus pts for review/quiz/birthday
-- ☐ Meta Pixel + GA4 + CAPI audit; quiz event tracking
+### Promo calendar (SA-specific)
 
-### Phase 4 — Paid acquisition (weeks 4–24)
-- ☐ Meta R400/day broad + RT (weeks 4–8) → R1,000/day (weeks 8–12) → R1,800–2,500/day (months 4–6)
-- ☐ Google Search brand + product + intent; Shopping/PMax
-- ☐ TikTok Spark ads boosting organic winners
-- ☐ YouTube pre-roll bumpers on health/podcast inventory
-
-### Phase 5 — Organic social (weeks 1–24, daily)
-- ☐ IG: 4 reels + 3 carousels + 2 stories/day; 12k followers by month 6
-- ☐ TikTok: 1–2/day; 18k by month 6
-- ☐ YouTube Shorts: 5/wk + 1 long-form/mo; 4k subs
-- ☐ Pinterest: 10 idea pins/day; 50k monthly views
-- ☐ LinkedIn (founder): 4/wk; 5k followers
-- ☐ X (founder): 3–5/day; 3.5k followers
-- ☐ Threads: 5–8/day; 4k followers
-
-### Phase 6 — PR + influencer (weeks 2–24)
-- ☐ Nano gifting: 30/mo (R600–1,200 stack + 15% affiliate)
-- ☐ Micro paid: 4/mo (R3,000–12,000 + affiliate)
-- ☐ Macro paid: 1/quarter (R25,000–150,000 + usage rights)
-- ☐ SA media: pitch 10 publications (News24, IOL, Daily Maverick, Women's Health SA, Longevity, Health24, BusinessLive, TimesLIVE, Health Intelligence, Sowetan Lifestyle) — 5 placements in 90 days
-- ☐ Podcast tour: 8 SA wellness podcasts in 6 months
-
-### Phase 7 — SEO + GEO (continuous)
-- ☐ Submit sitemap to GSC + Bing Webmaster Tools; set ZA geo target
-- ☐ Optimise GBP for the 3 Onelife stores; cross-link Vivid
-- ☐ Core Web Vitals: LCP <2.5s, INP <200ms (Shopify app cull)
-- ☐ Get on listicles (Women's Health SA, Longevity, Health24 "best magnesium" roundups)
-- ☐ Reddit seeding (founder account, disclosed) in `r/southafrica`, `r/Supplements`, `r/Nootropics`
-- ☐ Monthly AI-citation monitoring (Profound or manual prompt logs across ChatGPT, Perplexity, Gemini, Claude)
+| Month | Moment | Vivid angle |
+|---|---|---|
+| Jan | New Year Reset | Cleanse + energy stacks |
+| Feb | Back to work | Focus + immunity |
+| Mar | Autumn Immunity | Vit D, zinc, elderberry |
+| Apr | Comrades training | ★ Comrades Recovery Stack push |
+| May | Mother's Day | Gift bundles |
+| Jun | Winter Wellness | Immune restock |
+| Jul | Mandela Day | 67-min give-back |
+| Aug | Women's Month | ★ Perimenopause Essentials push |
+| Sep | Heritage + Hay Fever | ★ Highveld Hayfever Stack push |
+| Oct | Spring Reset | Detox + skin |
+| Nov | **Black Friday week** | 25% sitewide — biggest day of year |
+| Dec | Festive recovery | Liver + gut + electrolytes |
 
 ---
 
-## Revenue model — getting to R300k/mo
+## 8. 12-week launch sprint
 
-Working backwards from the target at 3× blended ROAS = **R100k/mo ad spend**:
+| Week | Organic | Paid | Content | Email/CRM | PR/Influencer |
+|---|---|---|---|---|---|
+| 1 | Set up IG/TikTok/Threads/Pinterest accounts | Pixel + GA4 + Conv API | 4 blog drafts | Klaviyo flows live | 20 nano gifting boxes |
+| 2 | Daily TikTok start | Meta R400/d broad + RT | 4 more blogs | WhatsApp opt-in | 10 micro outreach |
+| 3 | First IG collab | Google brand + Shopping | Pillar article (more) | Welcome flow refined | 5 nano live |
+| 4 | First trend-jack | Scale winners R700/d | 4 blogs | Cart A/B subject line | 1 micro paid |
+| 5 | YouTube long-form #1 | Add PMax | Hayfever hub live | Quiz broadcast | Founder podcast pitch x10 |
+| 6 | 100 posts retro | Meta R1,000/d | 4 blogs | Subscription email push | 1 macro outreach |
+| 7 | Pinterest scale | TikTok ads start R200/d | BF landing draft | VIP segment cleanup | SA press release |
+| 8 | LinkedIn cadence | LAL audiences | 4 blogs | Winback flow live | 2nd micro live |
+| 9 | UGC compilation reel | Retargeting 7/14/30 | Pillar #2 | Loyalty launch | Podcast #1 records |
+| 10 | UGC trend | Meta R1,500/d | 4 blogs | Referral launch | Macro signed |
+| 11 | BF teaser content | BF creative review | BF guide live | BF segment built | Macro posts |
+| 12 | BF go-live | +50% BF week | BF email sequence (5) | – | PR push BF |
 
-| Month | Ad spend | Revenue target | AOV | Orders | Subs % | Notes |
-|---|---|---|---|---|---|---|
-| 1 | R12k | R36k | R550 | 65 | 5% | Learning phase |
-| 2 | R20k | R65k | R580 | 112 | 8% | First scaling |
-| 3 | R35k | R120k | R600 | 200 | 12% | Influencer kicking in |
-| 4 | R60k | R200k | R625 | 320 | 18% | Subs flywheel |
-| 5 | R85k | R270k | R650 | 415 | 22% | Loyalty + referral live |
-| 6 | R100k | **R300k** | R675 | 445 | 25% | Target hit |
-
-Sub revenue at 25% = **R75k/mo recurring** by month 6.
+**Weeks 13–24:** double down on winning creative, scale Meta to R2,000–2,500/d, YouTube pre-roll on, corporate-wellness B2B via LinkedIn, push subscriptions to 25% of revenue. **R300k MRR target = month 6.**
 
 ---
 
-## Daily/weekly dashboards
-Pipe Shopify + Klaviyo + Meta + Google + TikTok into Looker Studio.
-Stand up a "Vivid growth" tab inside the existing Onelife dashboard (already has Klaviyo + Shopify tabs) — see `CLAUDE.md`.
+## 9. The revenue model behind R300k/month
 
-Weekly: revenue, ROAS by channel, CPA, quiz→purchase rate, sub growth, follower growth.
-Monthly: LTV(90d), repeat rate, sub %, cohort retention, LTV:CAC.
-Quarterly: brand search volume, NPS, channel mix vs target.
+**Assumptions** (see `research/marketing-playbook.md`):
+- AOV: R650 (bundles + 2 SKUs)
+- Conversion rate: 2.2% blended; quiz-led 3.8%
+- Subscription % of revenue: 25% by month 6
+- Repeat rate: 38% by month 6
+- Blended ROAS: 3.2x
+
+**Path to R300k/month:**
+- 462 orders/month × R650 AOV = R300k
+- 462 orders @ 2.2% conv = ~21,000 sessions/month
+- Channel mix: Meta 60% / Google 22% / TikTok 10% / SEO+organic+email 8% → growing to 25–30% by month 6
+- Implied ad spend: ~R100k/month at 3.2x blended ROAS = R320k revenue
+
+---
+
+## 10. Owner items still gated (not theme-fixable)
+
+- Replace the 15 labelled-sample reviews with real verified reviews
+- Bespoke photography for the 3 new bundles + the pillar pages + the founder family
+- Payfast verification, theme publish, DNS cutover
+- GMB profiles for the 3 Onelife sister stores
+- Klaviyo PRIVATE_API_KEY confirmed and the Klaviyo flow scripts run
+- COA PDFs uploaded as linked-files-on-PDPs (Shopify Files API)
+- Practitioner portal copy + the wholesale price sheet
+- Hellopeter listing claimed (start collecting; target ≥7.5 within 60 days)
+- WhatsApp Business API verified (POPIA-compliant opt-in already on the quiz)
+- Resolve the Onelife Omni sync so the persistent 35% OOS reduces
+
+---
+
+## 11. Theme operations
+
+All work to date is on the new working draft **Vivid — Best in Class (working draft 2026-06-06)** ID `149043052630`. The MAIN live theme `148873674838` is untouched. The previous round of work `148889796694` is kept as a rollback snapshot.
+
+- **Preview**: `https://hgywg0-w7.myshopify.com?preview_theme_id=149043052630`
+- **Publish**: Shopify admin → Online Store → Themes → Actions → Publish on the "Vivid — Best in Class" theme. Recommend doing this only after the owner items above are cleared.
+
+---
+
+## 12. Companion documents
+
+- `research/international-brand-audit.md` — AG1, Ritual, Seed, Thorne, MaryRuth, Olly, HUM, Wellbeing, Goop, Persona, Bulletproof + 12 pattern table-stakes + 6 differentiators
+- `research/sa-competitive-audit.md` — FtN, WW, Dis-Chem, Clicks, Solal, Coyne, Real Thing, NutriZen, Lifematrix, Earthshine, Onelife — with SA price points + market gaps map
+- `research/seo-geo-playbook.md` — SA keyword landscape, content architecture, schema, llms.txt, GEO tactics, top-15 prioritised actions
+- `research/marketing-playbook.md` — Personas, paid budgets, organic cadences, influencer shortlist (20 SA names), 12-week sprint, KPIs
+
+---
+
+## 13. One-page summary
+
+> Vivid is a sprint away from being the modern SA digital health brand. The infrastructure is built (sourcing transparency, SEO content backbone, schema, bundles, subscription positioning, OOS UX). The remaining items are owner-side (PR, photography, reviews, social cadence, ad spend, Klaviyo key activation). At a R100k/month ad budget with the playbook in `research/marketing-playbook.md`, the revenue model lands R300k MRR by month 6. The differentiation that no SA brand can quickly copy — Made Traceable, anonymous family origin, exact-mg labelling, batch COAs, ingredient pillar SEO — is the moat.
