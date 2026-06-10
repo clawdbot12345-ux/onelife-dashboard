@@ -291,3 +291,34 @@ with re-shoots:
 
 Remaining operational gaps (not theme-fixable): zero product reviews visible on
 PDPs, BNPL app not installed, subscriptions app not installed, homepage TTFB.
+
+---
+
+# Round 9 — the REAL 3-per-row bug found and killed + article coverage + homepage bands
+
+## ROOT CAUSE: the "3 products per row" mystery
+`onelife-fixes.css` (an earlier session) forces `.product-grid { gap: 20px !important }`
+while Dawn computes card widths assuming the 8px spacing variable. 4 × 25% + 3 × 20px
+= 103% → the 4th card wrapped on EVERY collection at EVERY desktop width. All previous
+width overrides failed because the overflow came from the gap. Fixed by computing widths
+for the 20px gap (4 × (25% − 15px) + 60px = 100%). **DOM-verified: 4 per row at 1440
+and 820; 5 per row ≥1500px.** Card buttons now also pin on `.ol-card-action` grids.
+
+## Article → stack coverage (measured, not claimed)
+Classified all 125 articles against the banner logic: was 92 specific / 33 generic.
+Extended the keyword map (vitamin C/D, allergy, mushrooms/lion's mane, shilajit,
+black seed, salts/electrolytes→energy, mother's day→women's, valentine→heart,
+protein/muscle→Build Your Stack, festive/new-year→Gut Reset). Now **116/125 specific**;
+the 9 generics are store-location/culture pages where the hub is correct.
+
+## Homepage section bands
+The apothecary online (mint) · health goals (white) · dietary preference (cream) ·
+featured categories (white) · top supplements (soft sky) · journal (white) — full-bleed
+tinted bands via section-wrapper selectors.
+
+## Floating buttons consolidated
+One floating action: WhatsApp. Chat bubble + Smile rewards launcher hidden via CSS
+(reversible); rewards remains in the Help menu.
+
+## Trust strip tiles
+Colour-tinted gradient tiles (honey/sky/mint/lilac) on the espresso band — verified.
