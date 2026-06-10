@@ -322,3 +322,51 @@ One floating action: WhatsApp. Chat bubble + Smile rewards launcher hidden via C
 
 ## Trust strip tiles
 Colour-tinted gradient tiles (honey/sky/mint/lilac) on the espresso band — verified.
+
+---
+
+# Round 10 — performance (mobile-first) + SEO/GEO verification
+
+## Device mix verified via Shopify analytics (last 30d)
+**78% mobile** (31,658), 21.6% desktop (8,756), 0.2% tablet — of 40,539 sessions.
+
+## Performance — measured with Playwright + CDP throttling (Fast-3G-ish, 4× CPU)
+| Page (mobile, throttled) | Before | After |
+|---|---|---|
+| Home: full load / requests / transfer | 8.7s / 184 / 307KB | **7.0s / 168 / 272KB** |
+| PDP: full load / requests / transfer | 13.8s / 298 / 955KB | **11.8s / 270 / 827KB** |
+| LCP home / PDP | 1.68s / 2.73s | 1.82s / 2.66s (within noise, healthy) |
+
+Fix shipped: **chatbot fully stubbed** (was hidden but still shipping ~23KB JS +
+5KB CSS + DOM + extra network calls on every page).
+Fix AVOIDED (would have been a regression): conditionally loading
+`onelife-desktop-article.css` — despite the name it carries 62 cart selectors
+and product-card styles; loading it only on articles would have broken the cart.
+Verified-fine: homepage tabs already lazy-load (1 fetch + cache, not 10);
+TTFB measured 270–410ms from test vantage (old 1.65s audit figure not reproduced).
+
+Remaining perf levers (owner decisions, not theme code):
+- PDP's ~270 requests are dominated by app embeds (Judge.me, analytics pixels).
+  Audit app embeds in theme settings; disable unused pixels (TikTok/Pinterest/Hotjar
+  were flagged in the May audit).
+- Homepage section count for server render time (content surgery, needs sign-off).
+
+## SEO/GEO state — verified on rendered pages
+- robots.txt: Shopify 2026 agentic-commerce ready — **UCP/MCP endpoints + agents.md**
+  exposed for AI shopping agents (GEO infrastructure handled at platform level).
+- Sitemap index live (incl. sitemap_agentic_discovery.xml).
+- Home: title/desc/canonical/og:image + JSON-LD: Organization, WebSite/SearchAction,
+  **HealthAndBeautyBusiness** (full LocalBusiness with geo, hours, contact).
+- Landers: unique titles/descriptions/canonicals + **FAQPage** schema rendering.
+- Articles: Article + Person (Precious) + WebPage schema. One nit found: article
+  title tag truncates oddly ("(2026)" cut: "Guide ( | One Life Health") — meta title
+  template length; minor.
+- 17 ingredient landers, 6 cornerstone guides, 125 voice-fixed articles, store
+  pages with LocalBusiness — the on-page layer is genuinely strong.
+
+Honest note on "ranked number 1": nobody can guarantee #1. On-page + technical +
+content are now top-tier; what moves rankings from here is OFF-page: reviews
+(Judge.me blitz), Google Business Profiles for the 3 stores, Merchant Center free
+listings (schema already done), and backlinks. GEO (AI answers) needs the FAQ
+schema (done), consistent entity data (done), and the UCP/MCP agent endpoints
+(already live via Shopify).
