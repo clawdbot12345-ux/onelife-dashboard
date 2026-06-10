@@ -177,3 +177,24 @@ backfill picks metafields on the top-20 trafficked articles + extend the keyword
   Organic/Non-GMO/Keto), full CSV change log, typo report for human review.
 - **Subscribe & Save:** owner to install app (recommended below), then selling plans
   get configured on repeat-purchase SKUs and the page flips from interest-list to live.
+
+---
+
+# Round 4 — premium design pass (Codex Vivid page as the bar)
+
+Adopted the Vivid-page design language across all custom surfaces:
+- **Serif display type** (Cormorant Garamond) on every hero H1 — hub, protocols,
+  landers, shop, brands, all narrative pages. Matches the homepage serif + Vivid page.
+- **Botanical photographic texture** layered under the dark-green gradient on the
+  hub / protocol / lander heroes (no more flat green boxes).
+- **Glass stat chips** on the Dispensary hub (Vivid-page pattern).
+- **Warm paper world**: theme scheme-1 background #FFFFFF → #FAF7F0, scheme-2 →
+  #F4EFE4; all custom pages aligned; white cards lift off the paper with soft
+  warm shadows. "ZAR" currency suffix disabled store-wide.
+- **Badge semantics fixed**: SA Made = SA-flag green (#007749) — plus a meaningful
+  palette (gluten free = wheat amber not RED, sugar free = blue, dairy free = sky,
+  organic = olive, keto = violet, non-GMO = teal). Applied to both badge systems.
+- **Add-to-cart alignment**: badges get a fixed 2-row zone, buttons pin to card
+  bottom full-width — rows now align across every grid.
+- **Menu**: "Guides & Journal" column added to The Apothecary mega menu
+  (Journal, GLP-1 guide, Magnesium guide, Quiz, Tag guide).
