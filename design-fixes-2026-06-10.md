@@ -240,3 +240,24 @@ Adopted the Vivid-page design language across all custom surfaces:
 - **Protocol pages**: each of the 17 heroes now tints the botanical photographic
   background in its own protocol colour (Sleep indigo, Immunity amber, Gut teal …)
   via per-handle Liquid tint map; the 4 trust tiles got individual colour accents.
+
+---
+
+# Round 7 — gold removed, 4-up tablet grids, button alignment, distinct tints, article→protocol cross-sell
+
+- **Trust strip**: honey-gold killed — now a deep espresso band with floating white
+  promise cards (premium pop, no green, no gold).
+- **Quiz CTAs** (Apothecary + Brands pages): washed amber replaced with the dark
+  botanical treatment — serif white heading, white button.
+- **Grids**: tablet/iPad-portrait now renders **4 products per row** everywhere
+  (collections, "Frequently Added", search) instead of 3 + dead space.
+- **Sold out / Add to cart alignment**: cards are now full flex columns — buttons
+  pin to the card bottom regardless of stars/badges above them.
+- **Colour duplication**: hub card tints and homepage protocol chips bumped from
+  near-identical 50-level pastels to clearly distinct 100–200-level tints
+  (the !important var overrides beat the inline styles).
+- **Article → protocol cross-sell (the missed opportunity)**: every article now
+  ends with a botanical CTA banner linking its matching consultant protocol —
+  GLP-1 guide → GLP-1 Companion stack, sleep/magnesium → Sleep Ritual,
+  immunity → Winter Immunity (Vivid-led), gut/detox → Gut Reset, etc., with a
+  Dispensary-hub default. 16-topic map in `article-guide-cta.liquid`.
