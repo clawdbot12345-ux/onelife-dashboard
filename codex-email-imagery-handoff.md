@@ -34,47 +34,74 @@ are viewed at ~600px wide on mobile — the subject must read at small size; no
 critical detail in outer 15% each side). Keep the top edge calm — the hero sits
 directly under a dark green header band.
 
-### The 7 heroes
+### The 7 heroes — copy-paste generation prompts
+Each block below is a complete, self-contained prompt for your image generator.
+Generate at 1200×600 (or 2400×1200 downscaled). After generating, QA against:
+no text/logos/labels, no AI artifacts on hands, subject readable at 600px wide.
 
-**A1 — Welcome #2 "Which stack is yours?" (template YdyAkd)**
-Overhead flat-lay on warm sage linen: four small product groupings arranged like a
-menu — (sleep) amber bottle + dried lavender, (immunity) green bottle + sliced
-citrus + ginger, (gut) white jar + kefir glass, (energy) amber bottle + coffee
-beans + cacao. A woman's hands mid-arrangement entering frame from below. Bright,
-optimistic morning light. Mood: "curated for me."
+**A1 — Welcome #2 (template YdyAkd)**
+PROMPT: "Photorealistic cinematic studio photograph, overhead flat-lay on warm
+sage-green linen: four small supplement groupings arranged like a tasting menu —
+an amber glass bottle with dried lavender sprigs; a dark green glass bottle with
+gold cap beside sliced orange and fresh ginger root; a sleek white jar next to a
+small glass of kefir; a second amber bottle with scattered coffee beans and cacao
+nibs. A Black woman's hands with neat natural nails entering frame from the
+bottom edge, mid-arrangement. All bottle labels blank/unbranded. Bright optimistic
+morning window light, soft shadows, shot on Phase One, f/4, magazine editorial
+quality. Landscape 2:1, subject centre-weighted, calm uncluttered top edge.
+No text, no logos, no typography anywhere."
 
-**A2 — Welcome #3 "Trust" (template Y9SA46)**
-Eye-level cinematic across an apothecary counter: a warm consultant's hands passing
-a single dark-green bottle to a customer's hands, walnut counter, blurred wooden
-shelving with bottles behind, warm tungsten + soft daylight mix, f/1.8. Faces soft
-or out of frame — the handover IS the story. Mood: thirty years of quiet expertise.
+**A2 — Welcome #3 (template Y9SA46)**
+PROMPT: "Photorealistic cinematic photograph, eye-level across a walnut apothecary
+counter: a warm-toned consultant's hands gently passing a single dark green glass
+supplement bottle with gold cap into a customer's open hands, faces out of frame,
+blurred wooden apothecary shelving stocked with amber bottles behind, warm
+tungsten light mixed with soft daylight, shallow depth of field f/1.8, Hasselblad
+look, editorial warmth, the handover is the story. Blank unbranded label.
+Landscape 2:1, centre-weighted. No text, no logos, no typography."
 
-**A3 — Post-Purchase #2 "Pairs well" (template RpUzMu)**
-Still life, 45°: two complementary bottles side by side on warm walnut — one dark
-green with gold cap, one amber — almost touching, soft single shadow, a sprig of
-rosemary bridging them. Golden-hour side light. Mood: things that belong together.
+**A3 — Post-Purchase #2 (template RpUzMu)**
+PROMPT: "Photorealistic still life, 45-degree angle: two complementary supplement
+bottles side by side almost touching on warm walnut wood — one dark green glass
+with gold cap, one amber glass — a single fresh rosemary sprig bridging the two
+caps, one soft unified shadow, golden-hour side light raking across the wood
+grain, Phase One macro clarity, premium editorial. Blank unbranded labels.
+Landscape 2:1, centred pair, generous calm margins. No text, no logos."
 
-**A4 — Winback 90d "Your shelf misses you" (template YatQ6s)**
-A nearly-empty amber supplement bottle on a sunlit windowsill, a few capsules left
-visible through the glass, sheer linen curtain catching late-afternoon golden
-light, soft bokeh garden beyond. Nostalgic, warm, gentle — NOT sad. Mood: it's
-been a while.
+**A4 — Winback 90d (template YatQ6s)**
+PROMPT: "Photorealistic cinematic photograph: a nearly-empty amber glass
+supplement bottle standing on a white-painted wooden windowsill, five or six
+golden capsules visible through the glass at the bottom, sheer linen curtain
+catching late-afternoon golden light, soft out-of-focus green garden beyond the
+window, dust motes in the light beam, nostalgic and warm — NOT melancholic.
+f/2, Hasselblad. Blank unbranded label. Landscape 2:1, bottle slightly
+left-of-centre with glowing window light filling the frame. No text, no logos."
 
-**A5 — Winback 120d "Should we stop?" (template XkbgCw)**
-Minimal and calm: one dark-green bottle alone on a clean oak floating shelf against
-a warm cream wall, perfectly centred, soft diffuse daylight, generous breathing
-room all around. Quietly dignified, zero pressure. Mood: the door stays open.
+**A5 — Winback 120d (template XkbgCw)**
+PROMPT: "Photorealistic minimal still life: one dark green glass supplement
+bottle with gold cap, perfectly centred on a clean light-oak floating shelf
+against a warm cream plaster wall, soft diffuse daylight from the left, gentle
+shadow, enormous calm negative space all around, quiet dignified mood, premium
+gallery aesthetic, Phase One sharpness. Blank unbranded label. Landscape 2:1.
+No text, no logos, no other objects."
 
-**A6 — Back in Stock "It's back" (template V8B7p5)**
-A hand placing a dark-green gold-capped bottle front-and-centre on an apothecary
-shelf between other bottles, slight motion energy, shallow focus on the placed
-bottle, warm shop lighting with shelf glow. Mood: just landed, won't sit long.
+**A6 — Back in Stock (template V8B7p5)**
+PROMPT: "Photorealistic cinematic photograph: a hand placing a dark green glass
+supplement bottle with gold cap front-and-centre into a gap on a warm wooden
+apothecary shelf, flanked by slightly out-of-focus amber and white bottles,
+subtle motion energy in the gesture, shallow focus locked on the placed bottle,
+warm shop lighting with a soft shelf glow, editorial retail warmth, f/2.2.
+All labels blank/unbranded. Landscape 2:1, hero bottle centred.
+No text, no logos, no typography."
 
-**A7 — Abandoned Cart #3 "Second opinion" (template TtqJqR)**
-Lifestyle over-shoulder: a phone held in a hand showing a blurred-out chat screen
-(NO readable text/UI), beside it on the kitchen counter a small open kraft basket
-with three unbranded supplement bottles, morning kitchen light, marble surface.
-Mood: just ask us first.
+**A7 — Abandoned Cart #3 (template TtqJqR)**
+PROMPT: "Photorealistic lifestyle photograph, over-the-shoulder: a hand holding
+a smartphone showing a softly blurred green-and-white chat interface (completely
+unreadable, no legible UI or text), beside it on a white marble kitchen counter
+a small open kraft-paper basket holding three unbranded supplement bottles (dark
+green, amber, white), fresh morning kitchen light, shallow depth keeping phone
+and basket in focus, warm domestic editorial mood, f/2.8. Landscape 2:1,
+phone left-of-centre, basket right. No readable text anywhere, no logos."
 
 ### Insertion
 Upload each via Klaviyo image upload, then update each template's HTML: insert one
@@ -140,7 +167,11 @@ brief matters as much as fixing this.
 3. Quiz pipeline: on quiz completion, push answers as Klaviyo profile properties
    (goal, etc.) + subscribe with consent checkbox; create a "Quiz Results" flow
    triggered on the Blog Quiz Result metric sending their matched protocol.
-4. Flag for owner decision (do NOT change unilaterally): main list is double
-   opt-in. Either optimize the confirmation email (2026 design, clear CTA) or
-   owner approves single opt-in + sunset policy per POPIA appetite.
+4. OWNER HAS DECIDED — execute: switch the main Email List (Xrk5jD) to
+   **single opt-in** (Klaviyo → Lists & Segments → Email List → Settings →
+   Consent → Single opt-in). Also switch the content lists (Vivid Health TeSYf6,
+   PCOS Interest WFPXyc) to single opt-in. KEEP the Text Messaging List (S44qNc)
+   double opt-in — SMS compliance. Compensate with hygiene: confirm the Sunset
+   Unengaged flow is live and feeding suppressions, so single opt-in never rots
+   deliverability.
 Success metric: ≥1,000 net new subscribers/month within 30 days of launch.
