@@ -219,3 +219,24 @@ Adopted the Vivid-page design language across all custom surfaces:
 - **Dispensary homepage promo v2**: botanical photographic background, serif
   heading, and emoji-led pastel protocol chips (🌙 Sleep, 🛡️ Immunity, 🌿 Gut,
   ⚡ Energy, 🧠 Focus, 🌸 Women, 💪 GLP-1 …) — each in its own accent colour.
+
+---
+
+# Round 6 — Vivid stack removal, empty cart, honey band, 17 distinct colours, per-protocol heroes
+
+- **Brands page v4**: featured rows now skip any product titled "stack"/"bundle" —
+  the old Vivid Allergy Stack (stale R594 marketing image vs R654 live price) is
+  gone from the Vivid row; next real product fills the slot, rows stay 4-up.
+- **Empty cart**: one-click "Empty cart" control in the cart drawer header
+  (confirm dialog → /cart/clear.js → drawer re-renders). Injected via the global
+  helper so it survives cart section re-renders.
+- **Trust strip**: honey-gold gradient band (no green) — white promise cards now
+  pop against it.
+- **Dispensary hub**: 17 protocol cards now have 17 DISTINCT colours
+  (position-based: forest, indigo, violet, amber, teal, sky, orange, fuchsia,
+  rose, pink, slate, lime, cyan, blush, blue, gold, emerald) — no neighbouring
+  duplicates. Homepage chips: Healthy Ageing moved to gold (was clashing with
+  Hormonal pink).
+- **Protocol pages**: each of the 17 heroes now tints the botanical photographic
+  background in its own protocol colour (Sleep indigo, Immunity amber, Gut teal …)
+  via per-handle Liquid tint map; the 4 trust tiles got individual colour accents.
