@@ -154,3 +154,26 @@ The dynamic product-pick cards only render on articles with the
 `apothecary.picks` metafield (the 2026 cornerstone guides). Recommended next:
 backfill picks metafields on the top-20 trafficked articles + extend the keyword map
 (ashwagandha, creatine, iron, zinc, menopause, detox, joints, kids).
+
+---
+
+# Round 3 — same day (Apothecary in menu, marquee colour, image uniformity, blog all-articles, tagging)
+
+- **Menu:** top-level "Shop" renamed **The Apothecary** (→ /pages/shop) — the brand
+  identity now leads the nav. "Help & Stores" shortened to "Help" for one-row fit.
+- **Brands marquee v2:** grey text → coloured pill chips cycling 6 palette accents;
+  Vivid Health chip in solid forest with shadow.
+- **Product image uniformity (no-cost pass):** `mix-blend-mode: multiply` + warm
+  uniform tile (#f7f4ed) + contain/padding applied to all product imagery (Dawn cards,
+  Apothecary/shop grids, brands grids, protocol items, cart, blog picks). Melts
+  mismatched white supplier backgrounds into one consistent shelf look. Evaluate this
+  before paying for batch background removal.
+- **Blog picks — ALL articles:** `article-guide-picks.liquid` v2 now derives 3
+  shoppable consultant picks from the article topic when no metafield exists
+  (17 topic maps + consultant-favourites default, real handles, OOS auto-skip).
+  Every one of the 125 articles now has product cards + add-to-cart.
+- **Tagging:** background agent auditing the full active catalogue; ADD-only fixes
+  with title-level evidence (Vegan/Vegetarian/Gluten Free/Sugar Free/Dairy Free/
+  Organic/Non-GMO/Keto), full CSV change log, typo report for human review.
+- **Subscribe & Save:** owner to install app (recommended below), then selling plans
+  get configured on repeat-purchase SKUs and the page flips from interest-list to live.
