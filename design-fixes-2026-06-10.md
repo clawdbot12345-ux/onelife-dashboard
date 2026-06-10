@@ -370,3 +370,15 @@ content are now top-tier; what moves rankings from here is OFF-page: reviews
 listings (schema already done), and backlinks. GEO (AI answers) needs the FAQ
 schema (done), consistent entity data (done), and the UCP/MCP agent endpoints
 (already live via Shopify).
+
+---
+
+# 🚀 LAUNCHED — 2026-06-10
+
+Owner published **GROWTH BUILD 2026-06 — LAUNCH READY** as the MAIN theme.
+Previous live theme ("Live Visual Fix 2026-06-07") retained in library as rollback.
+
+Live-site verification sweep (real domain, no preview): **11/11 PASS**
+- GROWTH theme serving · Apothecary menu · 4 trust tiles · single promo bar
+- Dispensary chips + coloured marquee · GLP-1 bundle R2,050.03 (sane)
+- Collection grid 4-per-row · article picks + protocol banner · add-to-cart works
