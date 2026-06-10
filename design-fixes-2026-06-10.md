@@ -198,3 +198,24 @@ Adopted the Vivid-page design language across all custom surfaces:
   bottom full-width — rows now align across every grid.
 - **Menu**: "Guides & Journal" column added to The Apothecary mega menu
   (Journal, GLP-1 guide, Magnesium guide, Quiz, Tag guide).
+
+---
+
+# Round 5 — brands page live data, homepage colour bands, product-page tags
+
+- **Brands page v3**: featured brand sections now render LIVE from each brand's
+  collection in Liquid — 4 in-stock products each (fixes Willow's 2-product row),
+  uncropped `image_url` images on warm tiles (fixes the horrible centre-cropped
+  shots), serif brand headings, 20 featured brands. Static data blob deleted.
+- **Product page**: dietary tag badges moved from below the trust tiles up to
+  directly under the price (templates/product.json block order).
+- **Marquee v3**: deep forest gradient band; coloured chips pop on dark; Vivid
+  chip inverted white with green ring.
+- **Trust strip v2**: warm cream gradient band, each promise in a white card with
+  its own coloured icon chip (delivery amber, collect SA-green, WhatsApp green,
+  brands indigo).
+- **Why One Life v2**: serif lede; three cards with coloured top borders + icon
+  chips (green / amber / indigo) and matching link colours.
+- **Dispensary homepage promo v2**: botanical photographic background, serif
+  heading, and emoji-led pastel protocol chips (🌙 Sleep, 🛡️ Immunity, 🌿 Gut,
+  ⚡ Energy, 🧠 Focus, 🌸 Women, 💪 GLP-1 …) — each in its own accent colour.
