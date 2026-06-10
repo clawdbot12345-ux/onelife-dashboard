@@ -261,3 +261,33 @@ Adopted the Vivid-page design language across all custom surfaces:
   GLP-1 guide → GLP-1 Companion stack, sleep/magnesium → Sleep Ritual,
   immunity → Winter Immunity (Vivid-led), gut/detox → Gut Reset, etc., with a
   Dispensary-hub default. 16-topic map in `article-guide-cta.liquid`.
+
+---
+
+# Round 8 — self-run visual audit (Playwright sweep of the full site)
+
+Stood up a Chromium/Playwright rig in the dev environment driving the real
+draft-theme preview (cookie-primed). Swept 20 pages × desktop + 8 × mobile,
+56 full-page screenshots, reviewed personally. Findings → fixes, all verified
+with re-shoots:
+
+1. **Trust strip tiles**: now colour-tinted gradient cards (honey/sky/mint/lilac)
+   with white icon chips on the espresso band.
+2. **Invisible text bug** (owner-reported + reproduced): article stylesheet
+   force-paints h3 dark, making the protocol banner headline unreadable —
+   replaced with hard-white styled <p>. Verified white in re-shoot.
+3. **Duplicate delivery messaging on every page**: permanent espresso
+   delivery-promise-bar + announcement slide 1 said the same thing stacked.
+   Removed the redundant announcement slide (rotation now leads with the
+   Dispensary). Verified single bar in re-shoot.
+4. **Lander heroes were 17 identical green blocks**: added per-collection tint
+   map to collection-commercial-lander.liquid (magnesium indigo, collagen pink,
+   vitamin D gold, probiotics teal, zinc slate, …). Verified indigo magnesium
+   lander in re-shoot.
+5. Verified working as designed: Apothecary colour tiles, Dispensary hub
+   (botanical + glass chips + serif), per-protocol hero tints (Sleep = indigo),
+   brands page live products, article picks + protocol banner, quiz dark hero,
+   cart serif empty state, About/Vivid photo heroes with glass stat chips.
+
+Remaining operational gaps (not theme-fixable): zero product reviews visible on
+PDPs, BNPL app not installed, subscriptions app not installed, homepage TTFB.
