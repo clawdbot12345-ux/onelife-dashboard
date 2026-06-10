@@ -1,0 +1,220 @@
+{
+  "brief": "One Life Health additional lifestyle image prompts round 2",
+  "count": 16,
+  "images": [
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-energy-vitality-hero.jpg",
+      "title": "Energy & Vitality collection hero",
+      "use": "/collections/energy-vitality",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a181471e1788190a7edef8813808e67.png",
+      "required_visuals": "smoothie bowl, B-vitamin capsules, CoQ10 bottle, ginger, lemon, running shoes",
+      "constraints": "Corrected per visual QA: required props visible after 1920x400 crop; cinematic studio quality; no text/logos/typography.",
+      "correction_note": "Corrected: running shoes, smoothie bowl, B-vitamin capsules, CoQ10 bottle, ginger and lemon visible."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-stress-mood-hero.jpg",
+      "title": "Stress & Mood collection hero",
+      "use": "/collections/stress-mood",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a18091f0ddc8190987aa48ab6fc9a2e.png",
+      "required_visuals": "ashwagandha, holy basil, green tea, journal, magnesium capsules, lavender",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-joints-mobility-hero.jpg",
+      "title": "Joints & Mobility collection hero",
+      "use": "/collections/joints-mobility",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a1814f205688190be0b7cd4502c7ed6.png",
+      "required_visuals": "yoga mat, omega-3 capsules, turmeric, ginger, collagen powder, water bottle, foam roller",
+      "constraints": "Corrected per visual QA: required props visible after 1920x400 crop; cinematic studio quality; no text/logos/typography.",
+      "correction_note": "Corrected: wooden foam roller, yoga mat, omega-3, turmeric, ginger, collagen powder and water bottle visible."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-skin-hair-nails-hero.jpg",
+      "title": "Skin, Hair & Nails collection hero",
+      "use": "/collections/skin-hair-nails",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a181575d858819084157df1ddc13102.png",
+      "required_visuals": "collagen powder, biotin capsules, rose petals, pearl bracelet, cucumber, face roller, silk",
+      "constraints": "Corrected per visual QA: required props visible after 1920x400 crop; cinematic studio quality; no text/logos/typography.",
+      "correction_note": "Corrected: pearl bracelet, collagen powder, biotin capsules, cucumber, rose petals, face roller and silk visible."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-weight-management-hero.jpg",
+      "title": "Weight Management collection hero",
+      "use": "/collections/weight-management",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a180ac65d508190944589c510789d96.png",
+      "required_visuals": "green smoothie, kale, avocado, lemon, green tea capsules, measuring tape, almonds",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-heart-cardiovascular-hero.jpg",
+      "title": "Heart Cardiovascular collection hero",
+      "use": "/collections/heart-cardiovascular",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a18160cfa1081909c38ceb616d788ef.png",
+      "required_visuals": "omega-3 bottle, salmon, nuts, dark chocolate, blueberries, rosemary",
+      "constraints": "Corrected per visual QA: required props visible after 1920x400 crop; cinematic studio quality; no text/logos/typography.",
+      "correction_note": "Corrected: dark chocolate, blueberries, salmon, nuts, omega-3 bottle and rosemary visible."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-womens-health-hero.jpg",
+      "title": "Women's Health collection hero",
+      "use": "/collections/womens-health",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a180b9d6a148190bf9fc3452c623a35.png",
+      "required_visuals": "rose supplement bottles, peonies, roses, journal, magnesium capsules, primrose oil, gold chain",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-mens-health-hero.jpg",
+      "title": "Men's Health collection hero",
+      "use": "/collections/mens-health",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a180c08dd888190bd3b15c8549d2a14.png",
+      "required_visuals": "amber bottles, leather watch, razor, sage, shaving bowl, fountain pen, saw palmetto berries",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-collection-sport-hero.jpg",
+      "title": "Sports Nutrition collection hero",
+      "use": "/collections/sport",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a18170dcb8481909a7eb9653c07a3e1.png",
+      "required_visuals": "protein scoop, dumbbells, shaker, banana, creatine capsules, towel, stopwatch",
+      "constraints": "Corrected per visual QA: required props visible after 1920x400 crop; cinematic studio quality; no text/logos/typography.",
+      "correction_note": "Corrected: stopwatch, dumbbells, shaker, banana, creatine capsules, protein scoop and towel visible."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-about-page-hero.jpg",
+      "title": "About page hero",
+      "use": "/pages/about-us",
+      "size": [
+        1920,
+        600
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a180ccf7e9081908592ff3b5d47bdc6.png",
+      "required_visuals": "person arranging supplement bottles, health store shelves, vintage scales, dried herbs",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-store-centurion-hero.jpg",
+      "title": "Centurion store hero",
+      "use": "/pages/centurion",
+      "size": [
+        1920,
+        500
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a180df4e46c819089925577c11b6fe7.png",
+      "required_visuals": "premium store interior, supplement shelves, consultation counter, succulent, clipboard",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-store-glen-village-hero.jpg",
+      "title": "Glen Village store hero",
+      "use": "/pages/glen-village",
+      "size": [
+        1920,
+        500
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a180ece13e8819086bd005eb5ac8aa2.png",
+      "required_visuals": "warm shop interior, armchairs, plant, product shelves",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-store-edenvale-hero.jpg",
+      "title": "Edenvale store hero",
+      "use": "/pages/edenvale",
+      "size": [
+        1920,
+        500
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a180f5c7bcc8190ad5cecc8a17ff041.png",
+      "required_visuals": "window display, blank supplement bottles, botanicals, blank chalkboard",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-store-locator-hero.jpg",
+      "title": "Store Locator hero",
+      "use": "/pages/store-locator",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a180fe3ccbc81909296722694801521.png",
+      "required_visuals": "abstract Gauteng map, three pins, bottles, compass, sage, ruler",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-blog-hero.jpg",
+      "title": "Blog / Health Hub hero",
+      "use": "/blogs/health-wellness-hub",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a181060c3688190a9735721f2504915.png",
+      "required_visuals": "editorial desk, magazine, glasses, tea, eucalyptus, journal, bottles",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    },
+    {
+      "file": "vivid/assets/lifestyle/onelife-prompts/onelife-contact-hero.jpg",
+      "title": "Contact page hero",
+      "use": "/pages/contact",
+      "size": [
+        1920,
+        400
+      ],
+      "format": "jpg",
+      "source_png": "/Users/naadir/.codex/generated_images/019e63b0-fd84-7ca0-af67-d4d7e21eb994/ig_0e491d18d6850f15016a18117b48448190835e9c3d51b91a55.png",
+      "required_visuals": "consultant hands, phone, blank notepad, plant, tea, clean wood space",
+      "constraints": "Cinematic studio quality; no text/logos/typography; blank labels where products appear; clean negative space for HTML overlay."
+    }
+  ],
+  "qa_status": "Pending final full-sheet visual and dimension check after correction pass."
+}
