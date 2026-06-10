@@ -38,7 +38,7 @@ GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-pro-image-preview")
 SEND_OFFSET_DAYS = int(os.environ.get("SEND_OFFSET_DAYS", "2"))
 AUTO_SCHEDULE = os.environ.get("AUTO_SCHEDULE", "true").lower() == "true"
 
-EMAIL_LIST_ID = "Xrk5jD"  # Onelife main Email List
+EMAIL_LIST_ID = "S3MAsK"  # Engaged 90d segment (audit 2026-06-10: full-list sends drove 1-2% unsubs; Engaged 90d gets +16pts open and real revenue)
 BLOG_ID = "120011424054"
 
 if not (KLAVIYO_KEY and SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET):

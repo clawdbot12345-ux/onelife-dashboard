@@ -497,7 +497,7 @@ def publish_to_klaviyo(fm, blog_url):
 
     # Create campaign
     send_offset = int(fm.get("send_offset_days", 2))
-    list_id = fm.get("campaign_segment", "Xrk5jD")
+    list_id = fm.get("campaign_segment", "S3MAsK")  # default: Engaged 90d, not full list (audit 2026-06-10)
     campaign_body = {
         "data": {
             "type": "campaign",
