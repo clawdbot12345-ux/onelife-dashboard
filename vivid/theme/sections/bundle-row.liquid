@@ -62,7 +62,7 @@
             <p class="bundle-desc">{{ bundle_desc }}</p>
             <div class="bundle-foot">
               <span>
-                <span class="bundle-price">{{ product.price | money }}</span>
+                <span class="bundle-price">{{ product.price | money_without_trailing_zeros }}</span>
                 <span class="bundle-save">Save {{ bundle_save }}</span>
               </span>
               <span class="btn btn--ghost bundle-cta">Shop this stack</span>
@@ -82,7 +82,7 @@
             <p class="bundle-desc">Seasonal calm, immune support and histamine-aware daily structure in one clean three-formula stack.</p>
             <div class="bundle-foot">
               <span>
-                <span class="bundle-price">{{ 59472 | money }}</span>
+                <span class="bundle-price">{{ 59472 | money_without_trailing_zeros }}</span>
                 <span class="bundle-save">Save R110</span>
               </span>
               <span class="btn btn--ghost bundle-cta">Shop this stack</span>
@@ -100,7 +100,7 @@
             <p class="bundle-desc">Bone, joint and connective-tissue support for stronger structure, smoother movement and daily resilience.</p>
             <div class="bundle-foot">
               <span>
-                <span class="bundle-price">{{ 74266 | money }}</span>
+                <span class="bundle-price">{{ 74266 | money_without_trailing_zeros }}</span>
                 <span class="bundle-save">Save R150</span>
               </span>
               <span class="btn btn--ghost bundle-cta">Shop this stack</span>
@@ -118,7 +118,7 @@
             <p class="bundle-desc">A measured night routine for calmer evenings, deeper wind-down and sharper next-day focus.</p>
             <div class="bundle-foot">
               <span>
-                <span class="bundle-price">{{ 58767 | money }}</span>
+                <span class="bundle-price">{{ 58767 | money_without_trailing_zeros }}</span>
                 <span class="bundle-save">Save R110</span>
               </span>
               <span class="btn btn--ghost bundle-cta">Shop this stack</span>

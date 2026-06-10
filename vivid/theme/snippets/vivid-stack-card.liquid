@@ -37,7 +37,7 @@
     <div class="card-name">{{ stack_title }}</div>
     <div class="card-bench">{{ stack_copy }}</div>
     <div class="card-meta">
-      <div class="card-price">{{ stack_price | money }}</div>
+      <div class="card-price">{{ stack_price | money_without_trailing_zeros }}</div>
       <div class="card-form">{{ stack_size }}</div>
     </div>
   </div>

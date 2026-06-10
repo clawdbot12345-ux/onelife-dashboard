@@ -866,6 +866,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
   );
 
+  /* PDP: variant pills — sync price, add-to-cart target, and buy-now link */
+  $$(".opt[data-variant-id]").forEach((b) =>
+    b.addEventListener("click", () => {
+      $$(".opt[data-variant-id]").forEach((x) => x.classList.remove("active"));
+      b.classList.add("active");
+      const price = b.dataset.price;
+      const vid = b.dataset.variantId;
+      const available = b.dataset.available !== "false";
+      const priceEl = $(".pdp-price");
+      if (priceEl && price) priceEl.textContent = price;
+      const atc = $(".js-add-to-cart");
+      if (atc) {
+        atc.dataset.variantId = vid;
+        atc.disabled = !available;
+        atc.textContent = available ? `Add to basket — ${price}` : "Notify me when back";
+      }
+      const bn = $(".pdp-buy-now");
+      if (bn && vid) bn.href = `/cart/${vid}:1?checkout`;
+      try {
+        const u = new URL(location.href);
+        u.searchParams.set("variant", vid);
+        history.replaceState(null, "", u);
+      } catch (_) {}
+    })
+  );
+
   $$(".js-qty-step").forEach((b) =>
     b.addEventListener("click", () => {
       const i = $("#qty");

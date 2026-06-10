@@ -180,7 +180,7 @@
         <span class="pill">Made in Centurion</span>
       </div>
       <div class="pdp-price-row">
-        <div class="pdp-price">{{ current_variant.price | money }}</div>
+        <div class="pdp-price">{{ current_variant.price | money_without_trailing_zeros }}</div>
         <div class="pdp-price-tax">incl. VAT</div>
         {%- unless current_variant.available -%}
           <span class="pill pill--alert">Currently sold out</span>
@@ -190,8 +190,8 @@
       {%- unless product.has_only_default_variant -%}
         <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
           {%- for variant in product.variants -%}
-            <button class="opt {% if variant.id == current_variant.id %}active{% endif %}" data-variant-id="{{ variant.id }}">
-              {{ variant.title }} — {{ variant.price | money }}
+            <button class="opt {% if variant.id == current_variant.id %}active{% endif %}" data-variant-id="{{ variant.id }}" data-price="{{ variant.price | money_without_trailing_zeros }}" data-available="{{ variant.available }}">
+              {{ variant.title }} — {{ variant.price | money_without_trailing_zeros }}
             </button>
           {%- endfor -%}
         </div>
@@ -204,12 +204,12 @@
         <div class="sub-toggle" data-sub-toggle>
           <button type="button" class="sub-opt active" data-purchase="onetime" data-selling-plan="">
             <span class="sub-label">One-time</span>
-            <span class="sub-desc">{{ current_variant.price | money }}</span>
+            <span class="sub-desc">{{ current_variant.price | money_without_trailing_zeros }}</span>
           </button>
           <button type="button" class="sub-opt" data-purchase="subscribe" data-selling-plan="{{ sp_group.selling_plans.first.id }}">
             <span class="sub-save">Save 10%</span>
             <span class="sub-label">Subscribe &amp; Save</span>
-            <span class="sub-desc">{{ sub_price | money }} / delivery</span>
+            <span class="sub-desc">{{ sub_price | money_without_trailing_zeros }} / delivery</span>
           </button>
         </div>
         <div class="sub-freq" data-sub-freq hidden>
@@ -231,7 +231,7 @@
         </div>
         <button class="btn btn--forest btn--block js-add-to-cart" data-variant-id="{{ current_variant.id }}" {% unless current_variant.available %}disabled{% endunless %}>
           {%- if current_variant.available -%}
-            Add to basket — {{ current_variant.price | money }}
+            Add to basket — {{ current_variant.price | money_without_trailing_zeros }}
           {%- else -%}
             Notify me when back
           {%- endif -%}

@@ -24,8 +24,22 @@
         </div>
       {%- endif -%}
     {%- else -%}
+      {%- liquid
+        assign page_eyebrow = section.settings.eyebrow
+        if page.handle contains 'ingredients-'
+          assign page_eyebrow = 'Ingredient guide'
+        elsif page.handle contains 'conditions-'
+          assign page_eyebrow = 'Condition guide'
+        elsif page.handle contains 'guide-'
+          assign page_eyebrow = 'Field guide'
+        elsif page.handle == 'our-sourcing'
+          assign page_eyebrow = 'Made traceable'
+        elsif page.handle == 'vivid-members'
+          assign page_eyebrow = 'Membership'
+        endif
+      -%}
       <div class="page-head">
-        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <div class="eyebrow">{{ page_eyebrow }}</div>
         <h1>{{ page.title }}</h1>
       </div>
       <div class="rte page-rte">

@@ -42,7 +42,8 @@
               {%- endif -%}
             </span>
             <span class="journal-card-copy">
-              <em>{{ article.published_at | date: '%b %d, %Y' }}</em>
+              {%- assign jb_words = article.content | strip_html | split: ' ' | size -%}
+              <em>{{ jb_words | divided_by: 200 | at_least: 1 }} min read</em>
               <strong>{{ article.title }}</strong>
               <small>{{ article.excerpt_or_content | strip_html | truncate: 104 }}</small>
             </span>

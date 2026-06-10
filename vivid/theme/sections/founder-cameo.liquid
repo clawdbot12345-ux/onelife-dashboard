@@ -11,7 +11,7 @@
           {{ section.settings.image | image_url: width: 900 | image_tag:
               loading: 'lazy', widths: '400,700,900', sizes: '(min-width:900px) 40vw, 90vw', alt: 'Vivid Health origin' }}
         {%- else -%}
-          <img src="{{ section.settings.fallback_asset | default: 'wellness-kitchen.jpg' | asset_url }}" loading="lazy" width="900" height="1200" alt="">
+          <img src="{{ section.settings.fallback_asset | default: 'griffonia-moss.jpg' | asset_url }}" loading="lazy" width="900" height="1200" alt="A Vivid Health bottle photographed on wet forest moss">
         {%- endif -%}
         {%- if section.settings.since != blank -%}
           <span class="founder-since">{{ section.settings.since }}</span>
@@ -46,7 +46,7 @@
   "class": "section-founder-cameo",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Story image" },
-    { "type": "text", "id": "fallback_asset", "label": "Fallback asset filename", "default": "wellness-kitchen.jpg" },
+    { "type": "text", "id": "fallback_asset", "label": "Fallback asset filename", "default": "griffonia-moss.jpg" },
     { "type": "text", "id": "since", "label": "Since-tag on image", "default": "Est. 1996" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our story · Since 1996" },
     { "type": "text", "id": "headline", "label": "Headline", "default": "It started with a sick child." },

@@ -58,7 +58,7 @@
     <div class="card-name">{{ product.title | split: ' - ' | last }}</div>
     {%- if bench != blank -%}<div class="card-bench">{{ bench }}</div>{%- endif -%}
     <div class="card-meta">
-      <div class="card-price">{{ product.price | money }}</div>
+      <div class="card-price">{{ product.price | money_without_trailing_zeros }}</div>
       {%- if size_lbl != blank -%}<div class="card-form">{{ size_lbl }}</div>{%- endif -%}
     </div>
   </div>
