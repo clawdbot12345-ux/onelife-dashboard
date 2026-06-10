@@ -99,8 +99,59 @@ R1m in 8 weeks is not a credible promise from anyone.
 - **Quiz funnels:** price-before-recommendation sequencing tanked one
   supplement funnel's conversion 30% — keep quiz → recommendation → price order.
 
-### 4.2 Other streams (intl winners, SA loyalty economics, WhatsApp commerce,
-subscriptions, B2B/retail-media) — being appended as research completes.
+### 4.2 Subscriptions (sourced)
+- Health & wellness = highest-AOV subscription vertical (Recharge: $63 AOV,
+  $332/yr per subscriber, 4.75 products each — vendor data).
+- Churn norms: 5–8%/mo typical, <3% best-in-class; ~20–40% of churn is FAILED
+  PAYMENTS → dunning + card-updater is the cheapest retention money in the game.
+- Discount structure: 10–15%, escalating/delayed beats big first-order discounts
+  ("3rd month free" > "20% off now" — front-loading trains people to leave).
+- Skip/pause/swap in the cancel flow saves 9.6–25% of cancellers.
+- **Care/of post-mortem (shut down 2024 despite Bayer's $225m):** quizzes
+  acquire but don't retain; personalization raised COGS; retention came from
+  habit-framing + pre-shipment flexibility (Ritual >R250m gross 2024) instead.
+- SA gap confirmed: FTN and Wellness Warehouse run NO real subscribe-&-save —
+  the niche is open. (SA-specific risk: debit-order failure rates → dunning matters more here.)
+
+### 4.3 WhatsApp commerce SA (sourced, de-hyped)
+- Reach: 93–96% of SA internet users. Marketing template ~R0.68/message.
+- **The "98% open rate" is a myth** (conflates delivery with reads). Real:
+  60–68% reads, 15–25% CTR — still 3× email opens and 5–10× email clicks.
+- Best documented SA case: Builders Warehouse post-purchase WhatsApp journey —
+  70% engagement, 27% service-attach (vendor-claimed, brand-endorsed).
+- Dis-Chem runs WhatsApp service since 2022 (no published numbers) — the
+  health-retail precedent exists; nobody has nailed SELLING through it.
+- Payment is the weak link: 90% of SA WhatsApp sellers settle via EFT/invoice;
+  bridge = Ozow/Payfast payment links in-chat.
+- One Life play: opt-in post-purchase journeys + replenishment nudges +
+  consult-to-cart with payment links — Precious is already the WhatsApp brand.
+
+### 4.4 Alternative revenue lines (sourced) — the outside-the-box section
+1. **Retail media-lite** — sell placement to supplement brands: sponsored slots
+   in emails/site + paid end-caps in stores. Precedent at scale: Shoprite
+   Rainmaker R647m (+36.8% — audited); Dis-Chem Media exists in this exact
+   channel. 70–90% margins. A 3-store chain version = brand packages
+   (R10–30k/mo per brand: homepage slot + email feature + end-cap).
+2. **Practitioner channel** — Fullscript crossed $1B revenue on practitioner
+   dispensing; Thorne did ~53% of sales through professionals (SEC-audited).
+   One Life's practitioner page exists; mechanic = referral codes with a
+   15–25% practitioner split. Massively underexploited in SA.
+3. **Vivid wholesale** — private label runs 25–30pts higher margin; SA contract
+   manufacturers (MJ Labs, SA-Labs) at MOQs from 250–1,000 units; second step =
+   wholesale Vivid to independent pharmacies/gyms at 40–50% GM.
+4. **Paid membership "One Life+"** — TakealotMORE anchors SA at R39–99/mo;
+   NO paid tier exists in SA health retail (Dis-Chem's is free). McKinsey:
+   paid-loyalty members 60% more likely to increase spend. Construct: R79–99/mo
+   = member pricing + free delivery + quarterly consult credit.
+5. **In-store diagnostics** — H&B × Randox model (10,000+ tests in 14 stores,
+   drives supplement attach). SA analogue: partner Lancet/Ampath screening days.
+6. **Corporate wellness** — SA market $317–464m; pursue opportunistically
+   (employer gifting, wellness-day pop-ups), not as a division.
+AVOID (evidence-based): full marketplace (Boots shelved theirs), capital-heavy
+IV/wellness studios (Restore closed 18 sites in 2024).
+
+### 4.5 Remaining streams (intl winners detail, SA loyalty economics) —
+appended on completion.
 
 ## 5. 90-day calendar
 **Weeks 1–2:** BNPL+Ozow installs · review blitz launch · Codex Parts E+B
