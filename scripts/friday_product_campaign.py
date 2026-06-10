@@ -226,11 +226,11 @@ def build_email_html(product, campaign_type, product_url, campaign_slug):
 <p style="margin:0 0 18px;line-height:1.7;">{description_text}</p>
 <p style="margin:0 0 18px;font-size:22px;font-weight:700;color:#1B5E20;">{price}</p>
 <a href="{cta_url}" style="display:inline-block;background:#1B5E20;color:#fff;text-decoration:none;padding:12px 24px;border-radius:6px;font-weight:700;">Shop now →</a>
-<p style="margin:28px 0 0;font-size:13px;line-height:1.6;color:#6b7280;">Not sure if it's right for you? Pop into any of our stores in Centurion, Glen Village or Edenvale for a free 15-minute chat with one of our functional health coaches.</p>
+<p style="margin:28px 0 0;font-size:13px;line-height:1.6;color:#6b7280;">Not sure if it's right for you? Pop into any of our stores in Centurion, Glen Village or Edenvale for a free 15-minute chat with one of our health consultants.</p>
 </td></tr>
 <tr><td style="padding:18px 24px;background:#f9fafb;color:#6b7280;font-size:12px;line-height:1.6;">
 Onelife Health stores: Centurion | Glen Village, Faerie Glen | Edenvale<br/>
-Free delivery over R900 (Gauteng) | R1,400 (nationwide)<br/>
+Free delivery over R400 nationwide | Collect free in store<br/>
 <a href="{{{{ unsubscribe }}}}" style="color:#6b7280;">Unsubscribe</a>
 </td></tr>
 </table>
@@ -253,7 +253,7 @@ Shop now: {product_url}
 
 ---
 Onelife Health · Centurion · Glen Village · Edenvale
-Free delivery over R900 (Gauteng) | R1,400 (nationwide)
+Free delivery over R400 nationwide | Collect free in store
 """
 
 

@@ -32,7 +32,7 @@ Derived from the winning NAD+ & NMN campaign (R1,770 revenue, 35% open, 1.69% cl
   [Link at bottom: "Shop [category]" in green, no button]
 [Light gray footer with small text:]
   Onelife Health stores: Centurion | Glen Village, Faerie Glen | Edenvale
-  Free delivery over R900 (Gauteng) | R1,400 (nationwide)
+  Free delivery over R400 nationwide | Collect free in store
   Unsubscribe link (same gray color, underlined)
 ```
 

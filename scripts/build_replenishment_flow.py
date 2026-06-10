@@ -56,7 +56,7 @@ def make_html(title, preview, intro_p1, intro_p2, cta_label, cta_url, closing_li
 </td></tr>
 <tr><td style="padding:18px 24px;background:#f9fafb;color:#6b7280;font-size:12px;line-height:1.6;">
 Onelife Health stores: Centurion | Glen Village, Faerie Glen | Edenvale<br/>
-Free delivery over R900 (Gauteng) | R1,400 (nationwide)<br/>
+Free delivery over R400 nationwide | Collect free in store<br/>
 <a href="{{{{ unsubscribe }}}}" style="color:#6b7280;">Unsubscribe</a>
 </td></tr>
 </table>
@@ -78,7 +78,7 @@ def make_text(title, intro_p1, intro_p2, cta_label, cta_url, closing_line):
 
 ---
 Onelife Health · Centurion · Glen Village · Edenvale
-Free delivery over R900 (Gauteng) | R1,400 (nationwide)
+Free delivery over R400 nationwide | Collect free in store
 """
 
 # ─── Shop URL with UTM tracking ───
@@ -105,7 +105,7 @@ templates = [
         "intro_p1": "It's been about 50 days since your last order. If you went with a 60-day supply last time, this is the perfect window to reorder — so you don't end up with a gap.",
         "intro_p2": "Supplement consistency is where the real results come from. Most of the research-backed benefits only show up after 8-12 weeks of uninterrupted use. A short break resets the clock, and nobody wants to start over.",
         "cta_label": "Reorder now",
-        "closing_line": "Want to tweak what you're taking? Reply to this email or pop into our Centurion, Glen Village or Edenvale store for a free 15-minute chat with one of our functional health coaches.",
+        "closing_line": "Want to tweak what you're taking? Reply to this email or pop into our Centurion, Glen Village or Edenvale store for a free 15-minute chat with one of our health consultants.",
     },
     {
         "name": "Replenishment Flow — Email 3 (80 days)",
