@@ -241,6 +241,44 @@
         <a class="pdp-buy-now" href="{{ routes.cart_url }}/{{ current_variant.id }}:1?checkout">
           Fast checkout with one bottle
         </a>
+      {%- else -%}
+        <div class="pdp-bis">
+          <p class="pdp-bis-lede"><strong>This batch is sold out.</strong> The next one is in lab testing. Leave your email and we'll write the moment it ships.</p>
+          {% form 'contact' %}
+            <input type="hidden" name="contact[body]" value="Back in stock request: {{ product.title | escape }} ({{ product.handle }})">
+            <div class="pdp-bis-form">
+              <input type="email" name="contact[email]" required placeholder="your@email.co.za" aria-label="Email for back-in-stock alert">
+              <button type="submit" class="btn btn--forest">Notify me</button>
+            </div>
+            {% if form.posted_successfully? %}
+              <p class="pdp-bis-ok">Thanks — we'll be in touch the day the new batch lands.</p>
+            {% endif %}
+            {% if form.errors %}
+              <p class="pdp-bis-err">{{ form.errors | default_errors }}</p>
+            {% endif %}
+          {% endform %}
+        </div>
+        {%- assign alt_count = 0 -%}
+        {%- capture alt_html -%}
+          {%- for p in collections.bestsellers.products limit: 8 -%}
+            {%- if p.available and p.id != product.id and alt_count < 3 -%}
+              <a href="{{ p.url }}" class="pdp-alt">
+                {%- if p.featured_image -%}
+                  <img src="{{ p.featured_image | image_url: width: 240 }}" alt="" loading="lazy" width="120" height="120">
+                {%- endif -%}
+                <span class="pdp-alt-title">{{ p.title | split: ' - ' | last | truncate: 28 }}</span>
+                <span class="pdp-alt-price">{{ p.price | money_without_trailing_zeros }}</span>
+              </a>
+              {%- assign alt_count = alt_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- if alt_count > 0 -%}
+          <div class="pdp-alts">
+            <h4 class="pdp-alts-head">While you wait — in-stock favourites</h4>
+            <div class="pdp-alts-grid">{{ alt_html }}</div>
+          </div>
+        {%- endif -%}
       {%- endif -%}
 
       <ul class="bullets">
@@ -360,6 +398,50 @@
         {%- endfor -%}
       </div>
     </div>
+  {%- endif -%}
+
+  {%- comment -%} Related reading — exact ingredient-tag match against journal articles {%- endcomment -%}
+  {%- liquid
+    assign ingr_whitelist = '|magnesium|ashwagandha|rhodiola|vitamin-c|vitamin-d|vitamin-k|omega|turmeric|curcumin|quercetin|5-htp|protein|collagen|mullein|saw-palmetto|vitex|sage|maca|coq10|msm|glutamine|moringa|spirulina|greens|'
+    assign matchable = ''
+    for tag in product.tags
+      assign tagh = tag | handleize
+      assign needle = '|' | append: tagh | append: '|'
+      if ingr_whitelist contains needle
+        assign matchable = matchable | append: needle
+      endif
+    endfor
+    assign rr_count = 0
+  -%}
+  {%- if matchable != '' and blogs.journal.articles.size > 0 -%}
+    {%- capture rr_html -%}
+      {%- for art in blogs.journal.articles -%}
+        {%- if rr_count >= 3 -%}{%- break -%}{%- endif -%}
+        {%- assign matched = false -%}
+        {%- for at in art.tags -%}
+          {%- assign ath = at | handleize -%}
+          {%- assign aneedle = '|' | append: ath | append: '|' -%}
+          {%- if matchable contains aneedle -%}{%- assign matched = true -%}{%- break -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if matched -%}
+          <a href="{{ art.url }}" class="pdp-rr-card">
+            <h4>{{ art.title }}</h4>
+            <p>{{ art.excerpt_or_content | strip_html | truncate: 130 }}</p>
+            <span class="pdp-rr-read">Read article →</span>
+          </a>
+          {%- assign rr_count = rr_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if rr_count > 0 -%}
+      <div class="pdp-rr">
+        <div class="pdp-rr-head">
+          <span class="eyebrow">Related reading from the journal</span>
+          <h3>The science behind this formulation</h3>
+        </div>
+        <div class="pdp-rr-grid">{{ rr_html }}</div>
+      </div>
+    {%- endif -%}
   {%- endif -%}
 </div>
 

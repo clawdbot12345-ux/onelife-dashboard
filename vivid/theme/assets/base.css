@@ -546,6 +546,13 @@ section.shopify-section{padding:0}
 .capture h2{color:var(--paper);margin-bottom:var(--s-4);font-size:clamp(40px,5vw,72px)}
 .capture h2 p{margin:0;font-size:inherit;font-family:inherit;line-height:inherit;color:inherit}
 .hero h1 p{margin:0;font-size:inherit;font-family:inherit;line-height:inherit;color:inherit}
+
+/* PDP rewritten description elements */
+.tab-body .pdp-lede{font-family:var(--font-display);font-style:italic;font-size:19px;line-height:1.5;color:var(--forest);margin:0 0 18px;letter-spacing:-.01em}
+.tab-body h3{font-family:var(--font-display);font-weight:500;font-size:18px;color:var(--ink);margin:22px 0 8px;letter-spacing:-.01em}
+.tab-body p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px}
+.tab-body .pdp-note{font-size:13px;color:var(--ink-mute);border-top:1px solid rgba(31,61,46,.1);padding-top:14px;margin-top:20px}
+.tab-body a{color:var(--clay);text-decoration:underline;text-underline-offset:2px}
 .capture h2 em{font-style:italic;color:var(--sage);font-weight:300}
 .capture p{font-size:18px;color:rgba(244,236,219,.78);max-width:54ch;margin:0 auto var(--s-6);line-height:1.55}
 .capture-form{display:flex;gap:10px;max-width:540px;margin:0 auto}
