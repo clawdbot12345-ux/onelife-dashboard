@@ -68,7 +68,7 @@ Homepage HTML is 345KB — too many server-rendered sections. **Recommendations:
 **House voice (now consistent across all 125 articles):** conversational pain-point openers, "what we'd actually take" honesty, SA context, Precious byline, WhatsApp CTA, no competitor naming, "consultant" never "pharmacist".
 
 **Blog rewrite results (66 articles audited by 3 agents, June 2026):**
-- **62 rewritten/repaired**, 4 skipped as already on-voice (those 4 still lack CTA/byline — minor follow-up).
+- **66 of 66 fixed**: 62 rewritten/repaired + 4 already-on-voice articles given the standard WhatsApp CTA and Precious byline.
 - **Systemic defect found and fixed:** roughly half the older published articles were stored **truncated mid-sentence** (bulk-import size limit). All repaired — including one that cut off a suicide-prevention passage mid-sentence (completed with SADAG 0800 567 567).
 - **Legal catch:** a live **Dis-Chem product link** in the Mother's Day article — removed. Two third-party blog links also removed.
 - **Hygiene fixes:** expired Black Friday promo removed from a published page; 57KB of pasted theme HTML cleaned from Winter Drinks; rainbow heading spans removed; broken search URLs fixed (`collidal`→`colloidal`); "Onelife" → "One Life Health" normalized.
@@ -115,7 +115,7 @@ Homepage HTML is 345KB — too many server-rendered sections. **Recommendations:
 ## 8. What still needs eyes (honest gaps)
 
 - ~~Blog rewrite agents may not finish all 66 in one pass~~ ✅ DONE: 62/66 rewritten, 4 on-voice skips.
-- 4 skipped articles (Autism, Dad's Day, Omega-3 2023, Healthy New Year) still lack WhatsApp CTA + Precious byline — 10-minute follow-up batch.
+- ~~4 skipped articles still lack WhatsApp CTA + Precious byline~~ ✅ DONE: all 4 updated (Autism CTA written with extra sensitivity), draft status preserved.
 - The preview screenshots are reconstructions (Cloudflare blocks scripted access to the real preview URL) — pixel-true verification needs a human on the theme preview link.
 - Older articles' inline images weren't audited (only featured images were).
 - Homepage TTFB fix needs theme surgery (section reduction) — recommended but not executed this session to limit blast radius before merchant review.
