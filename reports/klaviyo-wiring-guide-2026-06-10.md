@@ -51,3 +51,20 @@ Verify all four exist in Shopify discounts and match these descriptions.
 A Klaviyo private API key was committed in `scripts/build_replenishment_flow.py`
 (it returns 401 now — appears rotated, good). Remove the hardcoded fallback from
 the script and keep keys only in env vars / GitHub secrets.
+
+---
+
+## Template IDs (all created 2026-06-10, verified brand-fact compliant)
+| Template | Klaviyo ID |
+|---|---|
+| [FLOW v2] Welcome #2 — Which stack is yours? | YdyAkd |
+| [FLOW v2] Welcome #3 — Why people trust the apothecary | Y9SA46 |
+| [FLOW v2] Post-Purchase #2 — Pairs well with your order | RpUzMu |
+| [FLOW] Winback 90d — Your shelf misses you | YatQ6s |
+| [FLOW] Winback 120d — Should we stop emailing? | XkbgCw |
+| [FLOW] Back in Stock — It's back | V8B7p5 |
+| [FLOW] Abandoned Cart #3 — A consultant can check your basket | TtqJqR |
+
+Compliance verified on all 7: R400 delivery promise, "health consultants",
+17 protocols, only real discount codes (FIRST10 / DISPENSARY10 / STACK5 / STACK10),
+Precious sign-off, UTM tagging, unsubscribe tag present.
