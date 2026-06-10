@@ -17,24 +17,68 @@ Claude cannot do — and you can — is **generate the cinematic imagery** and d
 - NEVER send to the full Email List; campaigns target segment "Engaged 90d" (S3MAsK)
 
 ## Part A — Cinematic hero images INTO the 7 new templates
-The new templates are deliberately image-light. Add one cinematic hero band each
-(1200×600, under the logo header, full-width, descriptive alt text). Match the
-established Onelife photography style you created for the site (warm botanical,
-amber-hour light, real hands/textures — see vivid/assets/lifestyle/onelife-prompts/
-manifest.json for the style language).
 
-| Template (Klaviyo ID) | Hero concept |
-|---|---|
-| Welcome #2 — Which stack is yours? (YdyAkd) | Overhead apothecary counter, 4 small product groupings on linen, morning light |
-| Welcome #3 — Trust (Y9SA46) | Storefront/consultation moment, consultant's hands passing a bottle across counter |
-| Post-Purchase #2 — Pairs well (RpUzMu) | Two complementary bottles side by side on warm wood, soft shadow |
-| Winback 90d (YatQ6s) | A nearly-empty supplement bottle on a windowsill, nostalgic golden light |
-| Winback 120d (XkbgCw) | Quiet minimal shelf with one bottle, calm and unpressured |
-| Back in Stock (V8B7p5) | Shelf being restocked, hand placing bottle front-and-centre |
-| Abandoned Cart #3 (TtqJqR) | Phone showing WhatsApp chat beside an open basket of supplements |
-Use Klaviyo's image upload, then update each template's HTML (keep ALL copy,
-facts, links and the {% unsubscribe %} tag exactly as-is — insert the hero <tr>
-only). Templates are CODE type.
+### Global art direction (same standard as the site set you built)
+**Quality:** Cinematic studio — Thorne Research meets Tom Ford advertising. Shot on
+Hasselblad/Phase One, shallow depth of field, dramatic but warm lighting, magazine
+editorial quality. Photorealistic, zero AI artifacts.
+**Hard rules:** NO text, logos, or typography in any image. Supplement bottles use
+blank/unbranded labels (dark green glass with gold caps, amber glass, sleek white
+jars). South African botanical props (moringa, rooibos, buchu, protea, turmeric).
+Materials: slate, marble, walnut, linen. Palette: dark forest greens, warm golds,
+charcoal, cream.
+**Email-specific:** 1200×600px landscape. Centre-weighted composition (email heroes
+are viewed at ~600px wide on mobile — the subject must read at small size; no
+critical detail in outer 15% each side). Keep the top edge calm — the hero sits
+directly under a dark green header band.
+
+### The 7 heroes
+
+**A1 — Welcome #2 "Which stack is yours?" (template YdyAkd)**
+Overhead flat-lay on warm sage linen: four small product groupings arranged like a
+menu — (sleep) amber bottle + dried lavender, (immunity) green bottle + sliced
+citrus + ginger, (gut) white jar + kefir glass, (energy) amber bottle + coffee
+beans + cacao. A woman's hands mid-arrangement entering frame from below. Bright,
+optimistic morning light. Mood: "curated for me."
+
+**A2 — Welcome #3 "Trust" (template Y9SA46)**
+Eye-level cinematic across an apothecary counter: a warm consultant's hands passing
+a single dark-green bottle to a customer's hands, walnut counter, blurred wooden
+shelving with bottles behind, warm tungsten + soft daylight mix, f/1.8. Faces soft
+or out of frame — the handover IS the story. Mood: thirty years of quiet expertise.
+
+**A3 — Post-Purchase #2 "Pairs well" (template RpUzMu)**
+Still life, 45°: two complementary bottles side by side on warm walnut — one dark
+green with gold cap, one amber — almost touching, soft single shadow, a sprig of
+rosemary bridging them. Golden-hour side light. Mood: things that belong together.
+
+**A4 — Winback 90d "Your shelf misses you" (template YatQ6s)**
+A nearly-empty amber supplement bottle on a sunlit windowsill, a few capsules left
+visible through the glass, sheer linen curtain catching late-afternoon golden
+light, soft bokeh garden beyond. Nostalgic, warm, gentle — NOT sad. Mood: it's
+been a while.
+
+**A5 — Winback 120d "Should we stop?" (template XkbgCw)**
+Minimal and calm: one dark-green bottle alone on a clean oak floating shelf against
+a warm cream wall, perfectly centred, soft diffuse daylight, generous breathing
+room all around. Quietly dignified, zero pressure. Mood: the door stays open.
+
+**A6 — Back in Stock "It's back" (template V8B7p5)**
+A hand placing a dark-green gold-capped bottle front-and-centre on an apothecary
+shelf between other bottles, slight motion energy, shallow focus on the placed
+bottle, warm shop lighting with shelf glow. Mood: just landed, won't sit long.
+
+**A7 — Abandoned Cart #3 "Second opinion" (template TtqJqR)**
+Lifestyle over-shoulder: a phone held in a hand showing a blurred-out chat screen
+(NO readable text/UI), beside it on the kitchen counter a small open kraft basket
+with three unbranded supplement bottles, morning kitchen light, marble surface.
+Mood: just ask us first.
+
+### Insertion
+Upload each via Klaviyo image upload, then update each template's HTML: insert one
+hero <tr> directly below the 4px accent-bar row —
+`<tr><td><img src="..." width="620" alt="<one-line scene description>" style="display:block;width:100%;height:auto;"/></td></tr>`
+Keep ALL copy, facts, links and the {% unsubscribe %} tag exactly as-is.
 
 ## Part B — Klaviyo wiring (15-min plan, fully specified)
 Execute reports/klaviyo-wiring-guide-2026-06-10.md exactly:
