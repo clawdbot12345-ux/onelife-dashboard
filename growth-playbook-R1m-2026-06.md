@@ -69,9 +69,38 @@ practitioner B2B channel activation (page is live, needs outreach).
 R1m in 8 weeks is not a credible promise from anyone.
 
 ## 4. Research findings (best-in-class, local + international)
-_Pending — research agent synthesizing H&B transformation, Dis-Chem/Clicks
-loyalty economics, SA checkout data, WhatsApp commerce cases, subscription
-benchmarks, retail-media/B2B plays. Will be merged on completion._
+
+### 4.1 Conversion & checkout levers (sourced, figures labeled)
+- **Baymard (50-study meta-average):** 70.2% cart abandonment is normal; among
+  checkout abandoners the top causes are surprise costs (39%), slow delivery
+  (21%), payment trust (19%), forced account creation (19%) — all addressable.
+  Large stores can recover ~35% more conversions through checkout design alone.
+- **Benchmarks (Littledata):** all-Shopify median ~1.4%; health/supplements
+  median 1.8–2.4%; top quartile 5%+. One Life at 0.48% = below all-Shopify
+  median → basic checkout/trust hygiene is the priority tier, exactly as the
+  funnel data showed.
+- **SA free-shipping norms:** Faithful to Nature R400 · Wellness Warehouse R400
+  · Clicks R350 (collect)/R650 (courier) · Dis-Chem ~R600. One Life's R400 is
+  correctly positioned; NRF data: 51% of shoppers ADD items to reach a
+  threshold → market the threshold harder in cart ("R86 away from free delivery").
+- **BNPL SA:** Payflex pricing ~4.85% + R4/txn; vendor-claims +30% AOV (RBC
+  independent estimate: BNPL lifts conversion 20–30%). PayJustNow fees
+  undisclosed — negotiate. Happy Pay (pay-in-2, ad-subsidised) raised $5M
+  in Mar 2026 — worth a meeting. SA BNPL market growing ~13.6%/yr.
+- **Reviews (Spiegel/Northwestern study):** product with 5 reviews = +270%
+  purchase likelihood vs zero; +380% for higher-priced items; benefit
+  concentrates in the FIRST 5 reviews → seed hero SKUs first, exactly the
+  review-blitz design.
+- **Supplement trust badges:** 77% of consumers prefer third-party-certified
+  supplements; 60% pay more for tested products → surface SAHPRA compliance +
+  brand certifications as PDP badges.
+- **Speed (Deloitte×Google):** 0.1s mobile speed improvement ≈ +8.4% retail
+  conversion (correlational) — validates the performance work shipped today.
+- **Quiz funnels:** price-before-recommendation sequencing tanked one
+  supplement funnel's conversion 30% — keep quiz → recommendation → price order.
+
+### 4.2 Other streams (intl winners, SA loyalty economics, WhatsApp commerce,
+subscriptions, B2B/retail-media) — being appended as research completes.
 
 ## 5. 90-day calendar
 **Weeks 1–2:** BNPL+Ozow installs · review blitz launch · Codex Parts E+B
