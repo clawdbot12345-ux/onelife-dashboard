@@ -123,3 +123,24 @@ review BEFORE overwriting — stage as additional images first.
 ## Report back
 Per part: done/blocked, IDs/URLs touched, screenshots of 2 finished email
 templates rendered, and the before/after contact sheet from Part D.
+
+## Part E — LIST GROWTH ENGINE (added after deep-dive; HIGHEST PRIORITY OF ALL)
+Measured reality: Klaviyo form views = 5 in 3 months, submissions = 0, new email
+subscribers down to 5/month — on 40,000 sessions/month. Nothing else in this
+brief matters as much as fixing this.
+1. Build a Klaviyo onsite form set (Klaviyo UI → Sign-up forms): mobile-first
+   popup (8s delay or 25% scroll, suppressed for existing profiles + 30d
+   re-display rule), teaser tab, and exit-intent variant. Offer: FIRST10 — 10%
+   off first order over R500. Style: match the 2026 design system (warm paper,
+   forest green, serif headline "Join the apothecary list"). Two fields max
+   (email; phone optional second step for future SMS).
+2. Wire the THEME's existing capture points to Klaviyo (they currently barely
+   feed it): footer newsletter, /#ol-community block, blog-email-capture snippet
+   → submit to Klaviyo client API (public key S86r7e) list Xrk5jD.
+3. Quiz pipeline: on quiz completion, push answers as Klaviyo profile properties
+   (goal, etc.) + subscribe with consent checkbox; create a "Quiz Results" flow
+   triggered on the Blog Quiz Result metric sending their matched protocol.
+4. Flag for owner decision (do NOT change unilaterally): main list is double
+   opt-in. Either optimize the confirmation email (2026 design, clear CTA) or
+   owner approves single opt-in + sunset policy per POPIA appetite.
+Success metric: ≥1,000 net new subscribers/month within 30 days of launch.

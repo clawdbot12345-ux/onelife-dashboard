@@ -89,3 +89,43 @@ Friday's already-generated Spotlight template (WQXytX) corrected (HTML + text).*
 
 Email should be R45–60k/mo within a quarter on current traffic — the Welcome
 flow proves the audience converts when the email deserves it.
+
+---
+
+# DEEP-DIVE ADDENDUM — the missing pillar (found on owner challenge)
+
+## 🔴 CRITICAL: the list growth engine is broken
+Measured via metric aggregates (event time, Africa/Johannesburg):
+- **Klaviyo form views: 5 total in 3 months. Form submissions: 0.** No effective
+  Klaviyo signup form is live on a site doing 40,000 sessions/month.
+- **"Subscribed to Email Marketing": Mar 44 → Apr 19 → Jun-to-date 5.**
+- Benchmark: 3–5% of sessions should convert to subscribers = **1,200–2,400/month
+  expected vs ~5–44 actual (~0.1%)**. The site's existing capture (custom popup,
+  footer newsletter, blog capture) is either not reaching Klaviyo or barely
+  converting.
+- All 5 lists are **double opt-in** — correct for POPIA caution, but it compounds
+  the leak (30–50% of signups never confirm). Decision needed: keep DOI with an
+  optimized confirmation email, or move main list to single opt-in + strict sunset.
+
+**Consequence:** the Welcome flow — the best asset in the account at R97/recipient
+— received only 174 people in 90 days. Fix capture to 1,000+/month and that flow
+alone projects to ~R30k+/month before anything else improves.
+
+## Other verified fundamentals
+- Account: ZAR, Africa/Johannesburg, sender info@onelife.co.za ✓. Dedicated
+  sending domain/DMARC not verifiable via API — check Settings → Domains in UI.
+- **SMS: zero usage.** Text Messaging List exists (double opt-in) but no SMS has
+  ever been sent; the "Email & SMS" cart flow contains no SMS step. SA supports
+  Klaviyo SMS; cart-recovery SMS is a top-3 revenue lever at these AOVs.
+- Quiz fires a "Blog Quiz Result" metric but no flow consumes it and quiz answers
+  aren't captured as profile properties → zero-party data being thrown away.
+- No A/B tests observed on any campaign or flow message in 90 days.
+
+## Honest final verdict
+After Codex completes the current brief (imagery + wiring): the program will be
+**top-decile for SA SMB — but not yet world-class.** World-class requires all
+three pillars: (1) list growth engine ← BROKEN, (2) full-cadence flows ← done
+after wiring, (3) design + segmentation discipline ← done after imagery.
+Remaining roadmap: signup forms (popup + embed + exit intent with FIRST10),
+opt-in decision, quiz→Klaviyo profile pipeline + quiz-results flow, SMS layer,
+dedicated sending domain check, A/B testing habit, forward campaign calendar.
