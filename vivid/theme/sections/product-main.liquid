@@ -229,55 +229,18 @@
           <input id="qty" type="text" value="1" aria-label="Quantity">
           <button class="js-qty-step" data-step="1" aria-label="Increase quantity">+</button>
         </div>
-        <button class="btn btn--forest btn--block js-add-to-cart" data-variant-id="{{ current_variant.id }}" {% unless current_variant.available %}disabled hidden{% endunless %}>
-          Add to basket — {{ current_variant.price | money }}
+        <button class="btn btn--forest btn--block js-add-to-cart" data-variant-id="{{ current_variant.id }}" {% unless current_variant.available %}disabled{% endunless %}>
+          {%- if current_variant.available -%}
+            Add to basket — {{ current_variant.price | money }}
+          {%- else -%}
+            Notify me when back
+          {%- endif -%}
         </button>
       </div>
       {%- if current_variant.available -%}
         <a class="pdp-buy-now" href="{{ routes.cart_url }}/{{ current_variant.id }}:1?checkout">
           Fast checkout with one bottle
         </a>
-      {%- else -%}
-        <div class="pdp-bis">
-          <p class="pdp-bis-lede"><strong>This batch is sold out.</strong> The next one is in lab testing. Leave your email and we'll write the moment it ships.</p>
-          {%- form 'contact', class: 'pdp-bis-form' -%}
-            <input type="hidden" name="contact[Back in stock request]" value="{{ product.title }} — {{ shop.url }}{{ product.url }}">
-            <input type="email" name="contact[email]" required placeholder="your@email.com" aria-label="Email for back-in-stock alert">
-            <button type="submit" class="btn btn--forest">Notify me</button>
-            {%- if form.posted_successfully? -%}
-              <p class="pdp-bis-ok">Thanks — we've got your email. We'll be in touch the day the new batch lands.</p>
-            {%- endif -%}
-            {%- if form.errors -%}
-              <p class="pdp-bis-err">{{ form.errors | default_errors }}</p>
-            {%- endif -%}
-          {%- endform -%}
-        </div>
-
-        {%- assign alt_collection = collections['bestsellers'] -%}
-        {%- assign alt_count = 0 -%}
-        {%- assign has_alts = false -%}
-        {%- for p in alt_collection.products limit: 8 -%}
-          {%- if p.available and p.id != product.id -%}{%- assign has_alts = true -%}{%- break -%}{%- endif -%}
-        {%- endfor -%}
-        {%- if has_alts -%}
-          <div class="pdp-alts">
-            <h4 class="pdp-alts-head">While you wait — in-stock favourites</h4>
-            <div class="pdp-alts-grid">
-              {%- for p in alt_collection.products limit: 8 -%}
-                {%- if p.available and p.id != product.id and alt_count < 3 -%}
-                  <a href="{{ p.url }}" class="pdp-alt">
-                    {%- if p.featured_image -%}
-                      <img src="{{ p.featured_image | image_url: width: 240 }}" alt="" loading="lazy" width="120" height="120">
-                    {%- endif -%}
-                    <span class="pdp-alt-title">{{ p.title | split: ' - ' | last | truncate: 28 }}</span>
-                    <span class="pdp-alt-price">{{ p.price | money }}</span>
-                  </a>
-                  {%- assign alt_count = alt_count | plus: 1 -%}
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
       {%- endif -%}
 
       <ul class="bullets">
@@ -398,102 +361,23 @@
       </div>
     </div>
   {%- endif -%}
-
-  {%- comment -%} ─── Related reading from the journal — exact ingredient-tag match ─── {%- endcomment -%}
-  {%- liquid
-    assign ingr_whitelist = 'magnesium|ashwagandha|rhodiola|vitamin-c|vitamin-d|vitamin-k|omega|turmeric|curcumin|quercetin|5-htp|protein|collagen|mullein|saw-palmetto|vitex|coq10|msm|glutamine|berberine'
-    assign matchable = ''
-    for tag in product.tags
-      assign tagh = tag | downcase | handle
-      if ingr_whitelist contains tagh
-        assign matchable = matchable | append: '|' | append: tagh | append: '|'
-      endif
-    endfor
-    assign rr_count = 0
-  -%}
-  {%- assign journal = blogs['journal'] -%}
-  {%- if journal and matchable != '' and journal.articles.size > 0 -%}
-    {%- capture rr_html -%}
-      {%- for art in journal.articles -%}
-        {%- if rr_count >= 3 -%}{%- break -%}{%- endif -%}
-        {%- assign matched = false -%}
-        {%- assign eyebrow_tag = '' -%}
-        {%- for at in art.tags -%}
-          {%- assign ath = at | downcase | handle -%}
-          {%- assign needle = '|' | append: ath | append: '|' -%}
-          {%- if matchable contains needle -%}{%- assign matched = true -%}{%- endif -%}
-          {%- if at == 'comparison' or at == 'guide' or at == 'roundup' -%}
-            {%- if eyebrow_tag == '' -%}{%- assign eyebrow_tag = at -%}{%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
-        {%- if matched -%}
-          <a href="{{ art.url }}" class="pdp-rr-card">
-            {%- if eyebrow_tag != '' -%}<span class="pdp-rr-eyebrow">{{ eyebrow_tag }}</span>{%- endif -%}
-            <h4>{{ art.title }}</h4>
-            <p>{{ art.summary | default: art.excerpt | strip_html | truncate: 130 }}</p>
-            <span class="pdp-rr-read">Read article →</span>
-          </a>
-          {%- assign rr_count = rr_count | plus: 1 -%}
-        {%- endif -%}
-      {%- endfor -%}
-    {%- endcapture -%}
-    {%- if rr_count > 0 -%}
-      <div class="pdp-rr">
-        <div class="pdp-rr-head">
-          <span class="eyebrow">Related reading from the journal</span>
-          <h3>The science behind this formulation</h3>
-        </div>
-        <div class="pdp-rr-grid">{{ rr_html }}</div>
-      </div>
-    {%- endif -%}
-  {%- endif -%}
 </div>
 
-{%- comment -%} ─── Product + DietarySupplement + AggregateRating + Review JSON-LD ─── {%- endcomment -%}
-{%- liquid
-  assign year_end = 'now' | date: '%Y' | plus: 1 | append: '-12-31'
-  assign category_label = 'Supplement'
-  if product.type != blank
-    assign category_label = product.type
-  endif
--%}
+{%- comment -%} ─── Product + AggregateRating + Review JSON-LD ─── {%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["Product", "DietarySupplement"],
+  "@type": "Product",
   "name": {{ product.title | json }},
   "description": {{ product.description | strip_html | json }},
   "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
-  "sku": {{ current_variant.sku | default: current_variant.id | json }},
-  "mpn": {{ current_variant.sku | default: current_variant.id | json }},
-  "category": {{ category_label | json }},
-  "brand": { "@type": "Brand", "name": "Vivid Health", "url": "https://vividhealth.co.za" },
-  "manufacturer": { "@type": "Organization", "name": "Vivid Health", "address": { "@type": "PostalAddress", "addressLocality": "Centurion", "addressCountry": "ZA" } },
-  "nonProprietaryName": {{ product.title | split: ' - ' | last | json }},
-  "activeIngredient": {{ product.title | split: ' - ' | last | json }},
-  "recommendedIntake": "As directed on label",
+  "brand": { "@type": "Brand", "name": "Vivid Health" },
   "offers": {
     "@type": "Offer",
     "url": {{ shop.url | append: product.url | json }},
     "priceCurrency": "ZAR",
     "price": {{ current_variant.price | money_without_currency | remove: ',' | json }},
-    "priceValidUntil": {{ year_end | json }},
-    "availability": {{ current_variant.available | json | replace: 'true', '"https://schema.org/InStock"' | replace: 'false', '"https://schema.org/OutOfStock"' }},
-    "itemCondition": "https://schema.org/NewCondition",
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "applicableCountry": "ZA",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-      "merchantReturnDays": 30,
-      "returnMethod": "https://schema.org/ReturnByMail",
-      "returnFees": "https://schema.org/FreeReturn"
-    },
-    "shippingDetails": {
-      "@type": "OfferShippingDetails",
-      "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "ZAR" },
-      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "ZA" },
-      "deliveryTime": { "@type": "ShippingDeliveryTime", "businessDays": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"] }, "transitTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 5, "unitCode": "DAY" } }
-    }
+    "availability": {{ current_variant.available | json | replace: 'true', '"https://schema.org/InStock"' | replace: 'false', '"https://schema.org/OutOfStock"' }}
   }{% if rating_count > 0 %},
   "aggregateRating": {
     "@type": "AggregateRating",

@@ -24,18 +24,8 @@
         </div>
       {%- endif -%}
     {%- else -%}
-      {%- liquid
-        assign eyebrow_label = section.settings.eyebrow
-        if page.handle contains 'ingredients-'
-          assign eyebrow_label = 'Ingredient guide'
-        elsif page.handle contains 'conditions-'
-          assign eyebrow_label = 'Goal guide'
-        elsif page.handle contains 'guide-'
-          assign eyebrow_label = 'Guide'
-        endif
-      -%}
       <div class="page-head">
-        <div class="eyebrow">{{ eyebrow_label }}</div>
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
         <h1>{{ page.title }}</h1>
       </div>
       <div class="rte page-rte">

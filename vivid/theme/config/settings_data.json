@@ -49,20 +49,12 @@
               "heading": "Support",
               "menu": "vivid-footer-support"
             }
-          },
-          "learn": {
-            "type": "menu",
-            "settings": {
-              "heading": "Learn",
-              "menu": "vivid-footer-learn"
-            }
           }
         },
         "block_order": [
           "shop",
           "goals",
-          "support",
-          "learn"
+          "support"
         ],
         "settings": {
           "brand_lede": "Plant-based supplements made in South Africa. Clear active doses, focused formulas, and delivery nationwide.",
