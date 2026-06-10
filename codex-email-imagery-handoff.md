@@ -1,5 +1,7 @@
 # CODEX HANDOFF — Email Imagery + Klaviyo Wiring + Photo Pipeline
-**From:** Claude session 2026-06-10 · **Repo context:** reports/klaviyo-audit-2026-06-10.md + reports/klaviyo-wiring-guide-2026-06-10.md
+**From:** Claude session 2026-06-10
+**Repo:** `clawdbot12345-ux/onelife-dashboard`, branch `claude/onelife-health-review-lwvi3-c3yry2`
+**Context files on that branch:** `reports/klaviyo-audit-2026-06-10.md` (the full audit) and `reports/klaviyo-wiring-guide-2026-06-10.md` (wiring steps + template-ID table)
 
 ## Mission
 Claude rebuilt the Klaviyo program today: full audit, 7 new templates in the 2026
@@ -81,7 +83,13 @@ hero <tr> directly below the 4px accent-bar row —
 Keep ALL copy, facts, links and the {% unsubscribe %} tag exactly as-is.
 
 ## Part B — Klaviyo wiring (15-min plan, fully specified)
-Execute reports/klaviyo-wiring-guide-2026-06-10.md exactly:
+**Where the referenced file lives:** GitHub repo `clawdbot12345-ux/onelife-dashboard`,
+branch `claude/onelife-health-review-lwvi3-c3yry2`, path
+`reports/klaviyo-wiring-guide-2026-06-10.md` (NOT yet on main — check out that
+branch or `git fetch origin claude/onelife-health-review-lwvi3-c3yry2` first).
+The owner may also paste the guide alongside this brief. Everything you need is
+ALSO summarised in the steps below — the guide adds template-ID tables and the
+security note, so read it if you have repo access, but these steps are complete:
 1. Welcome flow XZNrmz: Email 2 → YdyAkd, Email 3 → Y9SA46. First verify in
    Shopify which discount actually exists (WELCOME10 vs FIRST10) and align the
    template code box + flow coupon to reality.
