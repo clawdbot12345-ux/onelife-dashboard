@@ -63,14 +63,19 @@ Homepage HTML is 345KB — too many server-rendered sections. **Recommendations:
 3. Image audit: hero slideshow ships 5 slides of imagery on first paint. Lazy-load slides 2–5.
 4. Target: TTFB under 0.8s; aligns with the 83%-mobile audience on cellular connections.
 
-## 5. Brand voice state
+## 5. Brand voice state — COMPLETE
 
-**House voice (now consistent everywhere):** conversational pain-point openers, "what we'd actually take" honesty, SA context, Precious byline, WhatsApp CTA, no competitor naming, "consultant" never "pharmacist".
+**House voice (now consistent across all 125 articles):** conversational pain-point openers, "what we'd actually take" honesty, SA context, Precious byline, WhatsApp CTA, no competitor naming, "consultant" never "pharmacist".
 
-- 2026 cornerstone guides: already excellent (this voice came from them).
-- ~66 older articles (2023–2025): being rewritten by 3 agents now (ALL-CAPS titles, generic listicles, weak openers).
+**Blog rewrite results (66 articles audited by 3 agents, June 2026):**
+- **62 rewritten/repaired**, 4 skipped as already on-voice (those 4 still lack CTA/byline — minor follow-up).
+- **Systemic defect found and fixed:** roughly half the older published articles were stored **truncated mid-sentence** (bulk-import size limit). All repaired — including one that cut off a suicide-prevention passage mid-sentence (completed with SADAG 0800 567 567).
+- **Legal catch:** a live **Dis-Chem product link** in the Mother's Day article — removed. Two third-party blog links also removed.
+- **Hygiene fixes:** expired Black Friday promo removed from a published page; 57KB of pasted theme HTML cleaned from Winter Drinks; rainbow heading spans removed; broken search URLs fixed (`collidal`→`colloidal`); "Onelife" → "One Life Health" normalized.
+- **Honesty upgrades:** shaky claims ("92 minerals" sea moss, full-moon parasite cleanse timing, salt-lamp air purification, "nature's Ozempic") reframed with evidence-honest consultant language; "when it's not a supplement problem / see a doctor" sections added throughout; St John's Wort interaction warning added; malaria-prophylaxis caution added to the travel guide.
+- 2026 cornerstone guides: already excellent (the house voice came from them) — untouched.
 - All 21+ theme pages/snippets: swept 3× for competitor naming and aggressive framing — clean.
-- Featured images: all 122 have one, but ~20 older ones use screenshots ("Capture.png") or generic Unsplash. **Recommendation:** batch-replace the worst 20 with branded blog-series imagery (the `blog-XX` series style) — needs image generation or design resource.
+- Featured images: all 125 have one, but ~20 older ones use screenshots ("Capture.png") or generic Unsplash. **Recommendation:** batch-replace the worst 20 with branded blog-series imagery (the `blog-XX` series style) — needs image generation or design resource.
 
 ## 6. What got built in this sprint (cumulative)
 
@@ -109,7 +114,9 @@ Homepage HTML is 345KB — too many server-rendered sections. **Recommendations:
 
 ## 8. What still needs eyes (honest gaps)
 
-- Blog rewrite agents may not finish all 66 in one pass — check completion notifications and re-run stragglers.
+- ~~Blog rewrite agents may not finish all 66 in one pass~~ ✅ DONE: 62/66 rewritten, 4 on-voice skips.
+- 4 skipped articles (Autism, Dad's Day, Omega-3 2023, Healthy New Year) still lack WhatsApp CTA + Precious byline — 10-minute follow-up batch.
 - The preview screenshots are reconstructions (Cloudflare blocks scripted access to the real preview URL) — pixel-true verification needs a human on the theme preview link.
 - Older articles' inline images weren't audited (only featured images were).
 - Homepage TTFB fix needs theme surgery (section reduction) — recommended but not executed this session to limit blast radius before merchant review.
+- GLP-1 collection CMS copy has drifted bundle prices (R884 vs live R920) — recommend removing hardcoded prices from CMS copy.
