@@ -114,3 +114,43 @@ shows EFT demand. Once installed, re-add the badges to the cart trust strip.
 - Homepage TTFB reduction (section count) — unchanged from previous audit.
 - More colour-system variety across landers (amber/cream secondary established on shop page).
 - Replace ~20 older article hero images (needs image generation).
+
+---
+
+# Round 2 — same day (owner feedback on menu content, colour, blog CTAs, GLP-1)
+
+## Upload recovery
+The round-1 background upload only delivered 3 of 9 files (cart drawer, brands page,
+about hero). The remaining six (consultants/practitioner/vivid/subscribe/stack-builder
+heroes + grid CSS) were re-uploaded and verified this round.
+
+## Menu content v2 (world-class IA)
+`main-nav-2026` rebuilt as a true 3-level mega menu — 6 top-level items:
+- **Shop**: By Category (8) · By Health Goal (10) · Most Shopped (8 ingredients)
+- **The Dispensary**: Consultant Protocols (top 6 + "View all 17") · Do It Yourself
+  (Build Your Stack, Quiz, Subscribe & Save) — GLP-1 no longer floats redundantly
+- **Vivid Health**: Shop + Story
+- **Brands**: International (7) · South African (7) · "All 250+ brands A–Z"
+- **Learn**: 6 real buyer's guides (GLP-1, Magnesium, Collagen, Protein, Vit D, Gut) + Journal
+- **Help & Stores**: WhatsApp consult, consultants, contact, about, practitioner, rewards, delivery
+
+## Colour system (global)
+`assets/onelife-grid-fixes.css` (loaded site-wide via whatsapp-float) now carries a
+category accent palette: every health goal gets its own colour (immunity amber, sleep
+indigo, gut teal, energy orange, women pink, men slate, heart rose, …) applied to the
+Apothecary category tiles, Dispensary hub cards, brand filter chips and cart promo.
+Narrative pages got colour-coded benefit cards + warm amber CTA bands. Forest green
+remains the anchor for primary CTAs and trust.
+
+## GLP-1 Companion stack
+Added **Sport RX Protein Rx (Vanilla Caramel 800g)** as item 1 with a consultant note —
+protein is the most important muscle-preservation lever on a GLP-1 and was missing.
+Stack is now 5 products; verdict copy updated.
+
+## Blog product CTAs — finding
+NOT cut: `main-article.liquid` still renders the conversion kit (intro + footer) on
+every article, with topic-matched shop links for 9 topics and a generic fallback.
+The dynamic product-pick cards only render on articles with the
+`apothecary.picks` metafield (the 2026 cornerstone guides). Recommended next:
+backfill picks metafields on the top-20 trafficked articles + extend the keyword map
+(ashwagandha, creatine, iron, zinc, menopause, detox, joints, kids).
