@@ -8,9 +8,16 @@ each with its own generation prompt, exact filename, exact size, and exact
 upload destination.
 
 **Repo / branch:** `clawdbot12345-ux/onelife-dashboard` → `claude/onelife-health-review-lwvi3-c3yry2`
-**Theme to upload to:** the *unpublished* staging theme **"GROWTH BUILD 2026-06 — LAUNCH READY"**
-(`gid://shopify/OnlineStoreTheme/185971867958`) — same workflow as before; the
-owner publishes when ready. Do NOT write to the live theme.
+**Theme to upload to:** the *unpublished* theme **"GROWTH BUILD 2026-06 — MOBILE V10 (ready to publish)"**
+(`gid://shopify/OnlineStoreTheme/186009518390`) — a fresh duplicate of the live
+KLAVIYO REFRESH theme carrying Claude's v10 mobile fixes. The owner publishes
+fresh copies to bust Shopify's homepage cache, so ALWAYS upload to the newest
+unpublished "ready to publish" duplicate, never the live theme, never old
+backups. If the owner has already published this one, ask for (or create) a
+fresh duplicate of live first. ⚠️ After `themeDuplicate`, WAIT for the theme's
+`processing` flag to go false before upserting — writes during processing
+report success but get silently clobbered. Verify every upload by re-querying
+`checksumMd5`.
 
 ---
 
