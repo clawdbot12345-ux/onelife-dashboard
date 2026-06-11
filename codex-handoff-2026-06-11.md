@@ -61,7 +61,14 @@ Direct inspection confirms exactly what remains. Work this list:
 5. **Small copy fix while wiring:** template YdyAkd (Welcome #2) says
    "10% off bundled with DISPENSARY10" — add "(orders over R600)" to match
    the real code terms.
-6. Verified clean — do NOT change: all 7 templates' brand facts (R400
+6. **One-line theme fix while you're in the theme:** `sections/slideshow.liquid`
+   line ~142 hardcodes `data-autoplay="{% if template == 'index' %}false{% else %}…"`
+   (perf-pass leftover) which froze the homepage hero. Claude shipped a JS
+   shim in `snippets/whatsapp-float.liquid` that restores rotation; the
+   proper fix is changing that attribute to
+   `data-autoplay="{{ section.settings.auto_rotate }}"` and then DELETING
+   the rotate() shim block from whatsapp-float.liquid. Do both or neither.
+7. Verified clean — do NOT change: all 7 templates' brand facts (R400
    threshold, health consultants, 17 protocols, Precious sign-off), the
    STACK5/STACK10/FIRST10 terms as written, Friday template WQXytX, and
    Welcome Email 1.
