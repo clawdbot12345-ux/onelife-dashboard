@@ -31,6 +31,41 @@ descriptive titles. Verified 2026-06-11 via `codeDiscountNodeByCode`:
   sign-off is Precious.
 - Deliverable: confirmation of which flows/templates were wired, with flow IDs.
 
+### Task 1 addendum — verified findings (Claude audit of the live Klaviyo account, 2026-06-11)
+Direct inspection confirms exactly what remains. Work this list:
+
+1. **6 of the 7 design-system templates are NOT wired into any sending flow.**
+   Only Back in Stock (flow WT9YvU + template V8B7p5) is live. Welcome flow
+   XZNrmz (last updated 9 Mar), Abandoned VAjbpG (22 Feb), Post-Purchase
+   RpJP55 (5 May) and Win-Back 60 TGZYKa (5 May) are all still sending the
+   OLD emails. Wire per reports/klaviyo-wiring-guide-2026-06-10.md:
+   YdyAkd→Welcome #2, Y9SA46→Welcome #3, RpUzMu→Post-Purchase #2,
+   TtqJqR→Abandoned #3, YatQ6s→Winback 90d, XkbgCw→Winback 120d. Note there
+   is currently NO 90/120-day winback flow structure — extend Win-Back 60 v2
+   (TGZYKa) with 90d and 120d emails or build the new flow per the guide.
+   Welcome Email 1 stays untouched.
+2. **Single opt-in was never configured.** List Xrk5jD ("Email List") is
+   still `double_opt_in` — the owner explicitly requested single opt-in.
+   Toggle in the Klaviyo UI (not available via API): Audience → Lists &
+   Segments → Email List → Settings → Consent → single opt-in. Do the same
+   for content lists TeSYf6 (Vivid Health) and WFPXyc (PCOS Interest).
+   KEEP S44qNc (Text Messaging List) on double opt-in.
+3. **4 of the 7 email hero images are over 1MB** (winback-90 1.14MB,
+   post-purchase-02 1.13MB, welcome-02 1.16MB, welcome-03 1.10MB) — far too
+   heavy for email on SA mobile data. Re-export all 7 at ≤300KB, 1240px
+   wide, JPEG q80.
+4. **All 7 hero `src` URLs point at THEME assets** (`/cdn/shop/t/41/assets/…`).
+   If that draft theme is ever deleted, every email hero 404s forever. After
+   compressing (item 3), upload the images to Klaviyo's own image hosting
+   (or Shopify Files) and update the 7 templates' `src` to permanent URLs.
+5. **Small copy fix while wiring:** template YdyAkd (Welcome #2) says
+   "10% off bundled with DISPENSARY10" — add "(orders over R600)" to match
+   the real code terms.
+6. Verified clean — do NOT change: all 7 templates' brand facts (R400
+   threshold, health consultants, 17 protocols, Precious sign-off), the
+   STACK5/STACK10/FIRST10 terms as written, Friday template WQXytX, and
+   Welcome Email 1.
+
 ═══════════════════════════════════════════════════════════════════
 ## TASK 2 — SITEWIDE LIFESTYLE IMAGERY (45 images, the main job)
 ═══════════════════════════════════════════════════════════════════
