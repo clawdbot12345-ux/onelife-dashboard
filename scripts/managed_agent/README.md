@@ -30,7 +30,7 @@ The weekly agent cycle is triggered by GitHub Actions cron (`.github/workflows/m
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
-export KLAVIYO_API_KEY=pk_c3d588d7e95567d363e4772f227ea548ec
+export KLAVIYO_API_KEY=pk_...   # set from Klaviyo > Settings > API Keys (old key was rotated)
 python scripts/managed_agent/setup_agent.py
 ```
 

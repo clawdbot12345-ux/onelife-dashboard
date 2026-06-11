@@ -14,7 +14,7 @@ import json
 import sys
 import urllib.request
 
-API_KEY = os.environ.get("KLAVIYO_API_KEY", "pk_c3d588d7e95567d363e4772f227ea548ec")
+API_KEY = os.environ["KLAVIYO_API_KEY"]
 HEADERS = {
     "accept": "application/vnd.api+json",
     "revision": "2024-10-15",
