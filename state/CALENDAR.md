@@ -12,16 +12,18 @@ Last updated: 2026-06-12 · Strategy v1.0 approved — engine owns this calendar
 ---
 
 ## WEEK 1 — 15–21 Jun · Theme: **Winter Immunity** (SA winter peak)
-| Day | Item | Channel | Status |
-|---|---|---|---|
-| Sun 14 | VIP early access: Monday Hero (Vivid Buffered C 90s, 10% off) | Hub pack (creative/2026-06-14_whatsapp_week1-pack.md) | ✅ pack written |
-| Mon 15 | Monday Hero live: Vivid IMMUNE Buffered C 10% off | Klaviyo campaign (Engaged 90d) + socials🔒 + GBP copy | engine builds Mon AM |
-| Tue 16 | Blog digest (auto) + Carousel 1: "Always tired by 2pm?" (energy/iron/B12) | TikTok/IG🔒 | ✅ Codex brief queued |
-| Wed 17 | Vivid Day 1: "Made in-house" Vivid story + IMMUNE line spotlight; Hub exclusive angle | Hub pack + socials🔒 | ✅ in pack |
-| Thu 18 | Winter Immunity Stack bundle (Vivid Immune Plus + Buffered C + Black Seed Oil; value-framed, GP-checked) | email + Hub VIP variant | engine builds Wed |
-| Fri 19 | Product email (auto) + Proof post: staff expertise / real review | socials🔒/GBP copy | engine writes Fri AM |
-| Sat 20 | Carousel 2: "Winter sleep falling apart?" (glycine/magnesium) | TikTok/IG🔒 | ✅ Codex brief queued |
-| Sun 21 | Publish blog: content/queue/2026-06-vitamin-d-joburg-winter.md + W2 Hub drop + weekly sprint & report | blog + Hub | engine runs Sun |
+**RECONCILED 2026-06-12 with the approved June posting pack (`creative/templates/approved-final/june-2026/`) — Mon/Wed/Thu visuals and offers come from the pack; engine items wrap around them.**
+| Day | Item | Source |
+|---|---|---|
+| Sun 14 | VIP early access: Monday Hero (**Magnesium Night Reset** per approved pack) | Hub pack v2 (below) |
+| Mon 15 | Monday Hero live: Magnesium Night Reset | approved image `2026-06-15-magnesium-night-reset.png` + captions.md; Klaviyo campaign (Engaged 90d) |
+| Tue 16 | Blog digest (auto) + Carousel 1: "Always tired by 2pm?" (re-render pending) | codex-queue done brief |
+| Wed 17 | Vivid Day: **Joint Beauty Duo** | approved image `2026-06-17-joint-beauty-duo.png` |
+| Thu 18 | Bundle: **Creatine Recovery** | approved image `2026-06-18-creatine-recovery.png` |
+| Fri 19 | Product email (auto) + Proof post (needs real store photo — NEEDS #12) | |
+| Sat 20 | Carousel 2: "Winter sleep falling apart?" (re-render pending) | |
+| Sun 21 | Publish blog: vitamin-d-joburg-winter + W2 Hub drop + weekly sprint & report | |
+Weeks 2–4 Mon/Wed/Thu likewise follow the approved pack (22 Jun Kiddies Winter Shake / 24 Jun Junior Immune Gummies / 25 Jun Gut Reset Trio / 29 Jun Wind-Down Stack → July pack). Engine-added layers (Hub posts, carousels, blogs, emails, GBP copy) stay per the themes below.
 
 ## WEEK 2 — 22–28 Jun · Theme: **Sleep & Stress** (DOUBLE DOWN cluster)
 Mon Hero: PrimeSelf Magnesium Complex (10%) · Tue carousel: "Wired at 11pm, dead at 7am" (cortisol→magnesium/ashwagandha) + digest · Wed Vivid Day: STAY VIVID line (GABA, Griffonia 5-HTP, D-Ribose) · Thu bundle: Deep Sleep Stack (Glycine + Magnesium + 5-HTP) · Fri proof + weekend store push · Sat carousel: "3am wake-ups explained" · Sun blog: queue/2026-06-winter-immunity-stack.md + W3 drop.
