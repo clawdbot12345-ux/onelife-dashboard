@@ -37,6 +37,7 @@ jobs:
           KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          PUBLISH_LIVE: "true"  # automation publishes live; manual script runs stay draft
         run: |
           pip install pyyaml -q
           python3 scripts/publish_blog.py "${{ steps.pick.outputs.file }}"

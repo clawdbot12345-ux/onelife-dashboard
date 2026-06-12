@@ -47,4 +47,6 @@ jobs:
                honest "when NOT to bother" section per article.
             5. Open a pull request titled "Monthly Apothecary articles:
                <month>" with the 4 files and a one-line summary of each.
-          claude_args: "--allowedTools Bash(curl:*),Read,Write,Glob,Grep"
+          # Model is owner-controlled via repo variable ARTICLE_WRITER_MODEL
+          # (Settings -> Secrets and variables -> Actions -> Variables).
+          claude_args: "--model ${{ vars.ARTICLE_WRITER_MODEL || 'claude-opus-4-8' }} --allowedTools Bash(curl:*),Read,Write,Glob,Grep"
