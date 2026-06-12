@@ -190,10 +190,6 @@ Subscriptions API, so the gateway question decides everything:
    upload the image to Shopify admin → Content → Files (permanent
    `/cdn/shop/files/` URL) and update the JS to point there (on a theme
    duplicate, owner publishes).
-5. **THEME GOVERNANCE (new standing rule):** never delete a theme without
-   explicit owner approval in writing, and always keep at least the one
-   previously-live theme as instant rollback. You deleted 10 themes on
-   2026-06-12 without asking — no damage found, but do not repeat it.
 
 ═══════════════════════════════════════════════════════════════════
 ## OWNER-ONLY LIST (output this filled-in at the end of your run)
