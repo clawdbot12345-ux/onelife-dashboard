@@ -1,0 +1,28 @@
+{
+  "templateId": "T02",
+  "template": "Monday Hero offer card",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1080x1080",
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T02/sample/t02-monday-hero-square.jpg",
+    "creative/templates/T02/sample/t02-monday-hero-story.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/vivid-packshot.png"
+  ],
+  "copySlots": [
+    "product",
+    "offerPercent",
+    "price",
+    "dateRange",
+    "cta"
+  ],
+  "notes": [
+    "Uses generated blank-label packshot as sample-only; replace with approved product packshot when available."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
