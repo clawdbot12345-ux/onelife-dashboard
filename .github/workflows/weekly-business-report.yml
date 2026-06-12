@@ -1,0 +1,32 @@
+name: Weekly Business Report
+
+# Every Monday: Shopify own-attribution channel revenue, Klaviyo email
+# revenue, and the online P&L from data/business_config.yml — committed
+# to reports/weekly/. The autonomous analyst.
+
+on:
+  schedule:
+    - cron: "30 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate report
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: python3 scripts/weekly_business_report.py
+      - name: Commit report
+        run: |
+          git config user.name "onelife-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/weekly/
+          git diff --cached --quiet || git commit -m "chore: weekly business report"
+          git push
