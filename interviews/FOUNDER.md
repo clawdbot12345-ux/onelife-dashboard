@@ -71,3 +71,16 @@ Interpretation recorded:
 - **Q8 (answered): dream customer = women 35–50, upper-class, high-LSM household.** Given as one ICP across stores (per-store nuance can come later or from Omni basket data).
 - **Q10 (answered): "nothing really worked" historically.** The inflection: last 2 months — Claude/Codex involvement + **dropping the free-delivery threshold R900→R400** to match competitors. → LEARNINGS #12: shipping economics were the binding constraint all along; pricing/effort barriers beat creative every time. Treat threshold/shipping/checkout friction as first-class growth levers ahead of any new creative spend.
 
+### 2026-06-12 — Batch 4 (via chat, verbatim)
+> 1. Just no mentioning competitors in any of our ads. No pharmacy mentions.
+> 2. Not sure what's one life circle ?
+> 3. Yes
+> 4. Yes
+
+Interpretation recorded:
+- **Q7 (answered): RED LINES = never mention competitors in any ads; no pharmacy mentions.** Hard-wired into the compliance-checker gate.
+- **Q11 resolved: "One Life Circle" does not exist** — it was an assumption baked into the master prompt. No till-capture loyalty mechanic is live. The in-store→online retention bridge must be DESIGNED, not "fixed" — goes into STRATEGY.md. (Centurion extended-hours half of this question still unanswered — minor.)
+- **Q15 (answered): YES — approval gates confirmed as written + R5,000 month-1 envelope + standing approval for tests ≤R2,000 within it.** → `approvals/granted/phase0.flag`, `budget-month1.flag`.
+- **Q16 (answered): YES — daily pulse + Sunday weekly report, delivered via chat/repo** (Telegram later).
+- **Phase 0 status: COMPLETE** for all decision-bearing items. Still open as minor: Q4 (staff capacity hours/week), Q13 (per-store footfall patterns, Centurion extended hours), Q5 (top SKUs — Omni will answer better than memory).
+

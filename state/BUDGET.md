@@ -5,7 +5,7 @@ Last updated: 2026-06-12 (engine bootstrap)
 ## Approved budgets
 | Item | Amount | Status |
 |---|---|---|
-| Month-1 engine test envelope | **R5,000** | Offered by Naadir 2026-06-12; engine recommendation sent (below); awaiting final confirm + R2k/test standing approval |
+| Month-1 engine test envelope | **R5,000** | ✅ APPROVED 2026-06-12 (`approvals/granted/budget-month1.flag`) incl. standing approval for tests ≤R2,000 within it. Spend to date: R0 |
 
 **Hard GP% floor for any promotion: 25% (Naadir, 2026-06-12).** Compliance-checker and bundle math enforce this.
 

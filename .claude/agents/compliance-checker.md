@@ -13,6 +13,7 @@ Check every asset against these rules (full detail in `research/SA_MARKET.md` SA
 2. **Disclaimers**: health-claim-bearing assets must carry (or link to a page carrying): "This unregistered medicine has not been evaluated by the SAHPRA for its quality, safety or intended use." and "If symptoms persist, consult your healthcare practitioner."
 3. **Honesty**: no fake urgency, no fabricated reviews/testimonials, no invented statistics. Real urgency and real proof only.
 4. **Brand voice**: premium, knowledgeable, warm, South African without caricature. Reject hype.
-5. **Pricing/offers**: if an offer claims a discount, the maths must be right; if it breaches the GP% floor (see `state/BUDGET.md` once set) flag it.
+5. **Pricing/offers**: if an offer claims a discount, the maths must be right; if it breaches the 25% GP floor (Naadir, 2026-06-12) flag it.
+6. **Owner red lines (Naadir, 2026-06-12 — absolute):** NEVER mention a competitor in any ad or customer-facing asset. NO pharmacy mentions (no "Dis-Chem", "Clicks", no "unlike pharmacies…" framing, nothing). Comparative positioning must be implicit, never named.
 
 Verdict format: APPROVED / APPROVED WITH EDITS (list them) / REJECTED (cite the exact rule and the offending sentence). When in doubt, reject the aggressive version and propose the conservative rewrite.
