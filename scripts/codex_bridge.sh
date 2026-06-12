@@ -9,6 +9,17 @@ REPO_DIR="${REPO_DIR:-$HOME/onelife-dashboard}"
 BRANCH="${BRANCH:-claude/end-to-end-goal-tdcj0f}"   # switch to main after PR #16 merges
 QUEUE="codex-queue"
 DONE="$QUEUE/done"
+CODEX_BIN="${CODEX_BIN:-/opt/homebrew/bin/codex}"
+PYTHON_BIN="${PYTHON_BIN:-/opt/homebrew/bin/python3}"
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH:-}"
+
+mkdir -p "$HOME/.onelife"
+LOCK_DIR="$HOME/.onelife/codex_bridge.lock"
+if ! mkdir "$LOCK_DIR" 2>/dev/null; then
+  echo "[bridge] another run is active; exiting"
+  exit 0
+fi
+trap 'rmdir "$LOCK_DIR" 2>/dev/null || true' EXIT
 
 cd "$REPO_DIR"
 git fetch -q origin "$BRANCH"
@@ -21,14 +32,41 @@ for brief in "$QUEUE"/*.md; do
   name="$(basename "$brief")"
   # AUTONOMY-SETUP and README style files are not tasks
   [[ "$name" == *AUTONOMY-SETUP* ]] && continue
+  [[ "$name" == *.result.md ]] && continue
 
   echo "[bridge] picking up $name"
+  result="$DONE/${name%.md}.result.md"
 
-  # >>> CODEX: replace this block with your own invocation. Contract:
+  # >>> CODEX: task execution block. Contract:
   # - input: the brief file path ($brief)
   # - output: produced assets go to creative/ (use the campaign tag in the brief as folder/file prefix)
   # - on success: exit 0
-  codex exec --full-auto "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies (default: creative/). When done, summarise what you produced in a sibling file ${brief%.md}.result.md" || { echo "[bridge] codex failed on $name"; continue; }
+  if [[ -f scripts/codex_bridge_builtin.py ]]; then
+    set +e
+    "$PYTHON_BIN" scripts/codex_bridge_builtin.py "$brief" "$result"
+    builtin_status=$?
+    set -e
+    if [[ "$builtin_status" -eq 0 ]]; then
+      echo "[bridge] builtin completed $name"
+    elif [[ "$builtin_status" -eq 2 ]]; then
+      "$CODEX_BIN" exec \
+        --dangerously-bypass-approvals-and-sandbox \
+        -C "$REPO_DIR" \
+        -o "$result" \
+        "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. When done, summarize exactly what you produced." \
+        || { echo "[bridge] codex failed on $name"; continue; }
+    else
+      echo "[bridge] builtin failed on $name"
+      continue
+    fi
+  else
+    "$CODEX_BIN" exec \
+      --dangerously-bypass-approvals-and-sandbox \
+      -C "$REPO_DIR" \
+      -o "$result" \
+      "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. When done, summarize exactly what you produced." \
+      || { echo "[bridge] codex failed on $name"; continue; }
+  fi
   # <<< CODEX
 
   git mv "$brief" "$DONE/$name"
