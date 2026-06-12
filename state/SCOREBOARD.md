@@ -4,10 +4,10 @@ Last updated: 2026-06-12 (engine bootstrap)
 
 | Target | Metric | Baseline | Now | Goal | Deadline | Pace |
 |---|---|---|---|---|---|---|
-| T1 | Online total sales /mo | R70,433 (TTM avg) | R125,370 (30d incl VAT) ⚠ def. pending | R105,650* | 30 Sep 2026 | 🟢 at provisional target — see BASELINES decision |
-| T2 | Centurion revenue /mo | ⛔ no Omni | — | +20% | 31 Dec 2026 | unmeasurable |
-| T3 | GVS revenue /mo | ⛔ no Omni | — | +50% | 31 Dec 2026 | unmeasurable |
-| T4 | Edenvale revenue /mo | ⛔ no Omni | — | +60% | 31 Dec 2026 | unmeasurable |
+| T1 | Online total sales /mo | R70,433 (TTM avg) | R125,370 (30d incl VAT) | **R200,000 (Naadir 2026-06-12)** | 30 Sep 2026 (assumed — confirm) | 🟡 63% of target; needs ~3.1%/week compound |
+| T2 | Centurion revenue /mo | Omni access granted — ingestion being built | — | +20% | 31 Dec 2026 | ⏳ pipeline in progress |
+| T3 | GVS revenue /mo | Omni access granted — ingestion being built | — | +50% | 31 Dec 2026 | ⏳ pipeline in progress |
+| T4 | Edenvale revenue /mo | Omni access granted — ingestion being built | — | +60% | 31 Dec 2026 | ⏳ pipeline in progress |
 | T5 | WhatsApp Hub members | 410 (confirmed) | 410 | 1,000+ | continuous | 🔴 exclusivity mechanic not live; engine takeover proposed |
 
 *Pending baseline-definition decision (see BASELINES.md).

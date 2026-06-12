@@ -19,7 +19,7 @@ T2–T4 are BLOCKED on Omni ERP access. T5 partially measurable.
 | Returning-customer rate | 33.8% (Jun 25) → **15.7% (May 26)** — collapsing, confirmed | ShopifyQL |
 | Email % of online revenue (30d at pull) | 15.8% (R19.8k of R125k) | weekly business report 2026-06-12 |
 
-**T1 target definition (proposed, needs sign-off):** monthly online total sales ≥ **R105,650** (= TTM avg × 1.5) sustained for the full month of September 2026. Note: Apr 2026 (R100,969) and May 2026 (R107,185) already touch this level — propose Naadir either confirms this definition (engine defends + consolidates recent growth) or re-bases to "May 2026 × 1.5 = R160,778/mo", which is the honest stretch reading. **Decision needed.**
+**T1 target — SET BY NAADIR 2026-06-12: online store to R200,000/month** (supersedes the A/B options previously proposed). From the current ~R125k/30d run-rate that is **+60%**. Deadline assumption: 30 Sep 2026 per the master prompt's T1 — requires ~3.1% compound weekly growth for ~15 weeks. **Flag: aggressive but not absurd given Apr–May momentum (+45% in 2 months). If Naadir means "by year-end", pace relaxes to ~1.7%/week — confirm when convenient; engine paces against 30 Sep until told otherwise.**
 
 ## T2–T4 — Store revenue (Centurion +20%, GVS +50%, Edenvale +60%) by 31 Dec 2026
 
