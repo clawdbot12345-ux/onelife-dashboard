@@ -487,7 +487,7 @@ def photo_frame_card(size: tuple[int, int], title: str, subtitle: str, labels: l
 
 def render_stack_of_week() -> None:
     out = OUT / "stack-of-the-week"
-    img = grade_light(EXISTING / "template-library-10" / "template-09-performance-recovery-stack.png", SQUARE, True)
+    img = grade_light(BASE / "store-advisor.png", SQUARE, True)
     draw = ImageDraw.Draw(img, "RGBA")
     logo(draw, 52, 48)
     rounded(draw, (52, 150, 1028, 1028), 36, (255, 255, 255, 228), (255, 255, 255, 150), 2)
@@ -500,7 +500,7 @@ def render_stack_of_week() -> None:
         draw.text((128, y + 24), label, font=font(24, "black"), fill=GREEN)
         draw.text((470, y + 22), value, font=font(34, "black"), fill=INK)
         y += 118
-    draw_product_cluster(img, ["soft-iron", "b12", "glycine"], (540, 800), 290, GOLD)
+    draw_product_cluster(img, ["soft-iron", "b12", "glycine"], (540, 850), 250, GOLD)
     path = out / "stack-of-the-week-data-card-template.jpg"
     path.parent.mkdir(parents=True, exist_ok=True)
     img.convert("RGB").save(path, quality=94, subsampling=1)
