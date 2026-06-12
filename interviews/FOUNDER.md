@@ -44,3 +44,18 @@ Interpretation recorded:
 - **Q11 (partial): WhatsApp Hub = ~410 members, Mon/Wed/Thu cadence, badly run, NOT exclusive, owner unhappy.** Engine to propose takeover of Hub programming (VIP-exclusivity mechanic is the core fix). One Life Circle status still open.
 - **Q14 (answered): Parkview CANCELLED.** New prospect: **Green Gate Shopping Centre, Garsfontein Rd, Mooikloof (Pretoria East), opening April 2027** — 15,000m² GLA, 50 shops, anchors Checkers/Woolworths/**Dis-Chem** (direct competitor in-centre — strategic flag). Leasing: Melissa Botha, Dorpstraat Properties. Source: dorpstraat.net/project/green-gate-shopping-centre/
 
+### 2026-06-12 — Batch 2 (via chat, verbatim) + 3 screenshots
+> 1. Need vivid to be 500k plus in the short term. GP is 35%-40%, check Omni.
+> 2. Keep R400
+> 3. Marketing agency - but I'm cutting them from doing this now. I can give you all the logins for FB and Tim Tok insta etc. see attached handles
+> 4. No we never do any partnership with Edenvale
+
+Interpretation recorded:
+- **Q6 (answered): Vivid Health target = R500k+ revenue in the short term** (engine reads this as monthly Vivid revenue across stores+online — confirm). **Vivid GP = 35–40%**, exact figures to be verified in Omni. Vivid becomes a first-class scoreboard metric.
+- **Q3 (answered): free-shipping threshold stays at R400.** Engine defends Edenvale against Supplement World's R300 with collect-in-store + expertise, not a threshold war.
+- **Q9 (answered): socials currently run by the marketing agency — Naadir is CUTTING the agency from socials now.** Engine + Codex take over content production once logins arrive. Handles from screenshots:
+  - TikTok **@onelifehealthstore** — 10.6K followers, 13.1K likes, active (videos through late Jun 2026)
+  - Instagram **@one_life_health_supermarket** — 1,411 followers, 1,286 posts (the weak channel)
+  - Facebook **"One Life Health Supermarket"** — **24K followers**, 1.5K posts, 90% recommend (8 reviews), Shop 1-3 Galway Centre, 117 Galway Ave, Centurion
+- **Q12 (answered): NO Padel365/gym partnership at Edenvale — never happened.** Master-prompt assumption corrected; Edenvale plan must not depend on it.
+

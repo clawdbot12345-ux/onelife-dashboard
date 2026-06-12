@@ -30,8 +30,10 @@ T2–T4 are BLOCKED on Omni ERP access. T5 partially measurable.
 | Metric | Baseline (2026-06-12) | Source |
 |---|---|---|
 | WhatsApp Hub members | **410 (confirmed by Naadir 2026-06-12)** → target 1,000+ | interviews/FOUNDER.md. Cadence Mon/Wed/Thu but "terrible and not exclusive" — engine to take over programming |
-| Instagram followers | ~1.4K | research/COMPETITORS.md (vs FTN 118K, WW 51K) |
-| TikTok followers (@onelifehealthstore) | TBD — Naadir/pull | |
+| Facebook (One Life Health Supermarket) | **24,000 followers** — underused asset | Naadir screenshot 2026-06-12 |
+| TikTok (@onelifehealthstore) | **10,600 followers, 13.1K likes** — active | Naadir screenshot 2026-06-12 |
+| Instagram (@one_life_health_supermarket) | **1,411 followers** — the weak channel | Naadir screenshot 2026-06-12 |
+| Vivid Health revenue /mo | TBD from Omni — **owner target: R500k+/mo short term, GP 35–40%** | FOUNDER.md batch 2 |
 | Branded search volume | TBD — needs Search Console access | |
 | Klaviyo list size + growth rate | TBD — pull in Phase 2 completion | |
 | Google review count/rating per store ×4 | TBD — partial in COMPETITORS.md; needs GBP access | |

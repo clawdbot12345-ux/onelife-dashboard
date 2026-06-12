@@ -10,7 +10,8 @@ Last updated: 2026-06-12
 | 3 | **Baseline definition decision** (BASELINES.md: TTM-avg×1.5 = R105.6k/mo, already touched — or May-2026×1.5 = R160.8k/mo stretch?) | Whether T1 is "consolidate" or "grow 50% from current run-rate" | OPEN — re-asked with batch 2 |
 | 4 | **Budget**: confirm R5k month-1 plan per BUDGET.md recommendation + R2,000/test standing approval | Paid test relaunch | NEARLY DONE — Naadir offered R5k, engine recommendation sent, awaiting confirm |
 | 5 | **Owner checkout actions** (carried from prior sessions): enable Apple Pay/Google Pay/Shop Pay; install Payflex or PayJustNow | Checkout completion 40%→60%, est. +R54k/mo — single highest-ROI action available | OPEN (pre-existing) |
-| 6 | **Meta Business System User token** (pages + ads + Instagram) | Paid media via API, organic scheduling | OPEN |
+| 6 | **Social logins handover** (FB/TikTok/IG — Naadir confirmed he'll provide; agency being cut from socials). Hand to Codex/Mac Mini keychain, not the repo/chat. Meta System User token still the better long-term path for ads+API posting. | Engine-run content across FB 24K / TikTok 10.6K / IG | IN PROGRESS — Naadir to deliver |
+| 6b | **Omni probe execution**: either Naadir clicks Run workflow on "Omni ERP Probe" (Actions tab, branch `claude/end-to-end-goal-tdcj0f`, paste report URL) or Codex runs `codex-queue/2026-06-12_omni-pipeline-setup.md`. Cloud session cannot dispatch workflows (403) or reach port 59029. | T2–T4 baselines | OPEN — handoff written |
 | 7 | **Google Business Profile manager access** (all 4 stores) | Local discovery engine for T2–T4, basically free | OPEN |
 | 8 | **TikTok Business API** (or interim posting workflow) | Awareness engine distribution | OPEN |
 | 9 | **Search Console access** | Branded-search baseline for T5, SEO gap tracking | OPEN |

@@ -7,6 +7,7 @@
 > - Connected now: Shopify Admin MCP (live store), Klaviyo MCP (live account), GitHub MCP, web search. Pending: Omni ERP (blocks T2–T4 measurement), Meta/TikTok APIs, GBP access — see `state/NEEDS.md`.
 > - This repo already runs: 21 Klaviyo flows, Tue/Fri automated campaigns, blog pipeline, weekly business reports (`scripts/`). The engine extends these systems; it does not rebuild them.
 > - **AMENDMENT 2026-06-12 (Naadir): Parkview is CANCELLED.** All Parkview references below are superseded. Prospective 4th store: Green Gate Shopping Centre, Mooikloof (Apr 2027) — see `research/GREEN_GATE_MOOIKLOOF.md`. Confirmed in Phase 0: GP% floor 25%; WhatsApp Hub = 410 members.
+> - **AMENDMENT 2026-06-12 (Naadir, batch 2): T1 = R200k/mo online. Vivid target R500k+/mo (GP 35–40%). Free shipping stays R400. NO Padel365/Edenvale partnership (master-prompt assumption was wrong). Marketing agency is being cut from socials — engine takes over content with Codex once logins arrive.** Handles: TikTok @onelifehealthstore (10.6K) · IG @one_life_health_supermarket (1.4K) · FB "One Life Health Supermarket" (24K).
 
 > Architecture notes for Naadir are in the companion section at the end — they are NOT part of the prompt.
 
