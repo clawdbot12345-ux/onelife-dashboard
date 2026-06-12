@@ -1,0 +1,24 @@
+{
+  "templateId": "T10",
+  "template": "Back-in-stock alert",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1080x1080"
+  ],
+  "sampleFiles": [
+    "creative/templates/T10/sample/t10-back-in-stock-alert.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/back-in-stock.png"
+  ],
+  "copySlots": [
+    "product",
+    "restockLine",
+    "cta"
+  ],
+  "notes": [
+    "Product plus 'it's back' frame."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
