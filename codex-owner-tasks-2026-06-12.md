@@ -62,9 +62,13 @@ Actions):
 3. **"Tuesday Education Email"** → verify it logs a SKIP (the publisher
    already handled this article) — the skip IS the pass; a duplicate
    campaign is a fail.
-4. **"Friday Product Email"** → verify a "[AUTO] Friday …" campaign exists
-   in Klaviyo, design-system styled, S3MAsK audience, scheduled for the
-   coming Friday 09:00 SAST.
+4. **Workflow reconciliation (critical):** the default branch already has
+   a LEGACY Friday workflow ("Friday Product Campaign") which you ran on
+   2026-06-12 — after merging PR #10 there will be TWO Friday workflows
+   calling the same script = double emails. DELETE the legacy workflow
+   file from the default branch, keep "Friday Product Email". Then: a
+   Friday campaign is ALREADY scheduled for this week from your earlier
+   run — do NOT dispatch another one; verify next week's fires on cron.
 5. Let the scheduled sends GO OUT — do not cancel them. Report all
    campaign IDs, the live article URL, and screenshots of one rendered
    email preview from Klaviyo.
@@ -128,26 +132,25 @@ Configure ALL of the following in the Judge.me admin:
 8. **All-reviews page:** enable Judge.me's all-reviews page, add it to the
    footer Information menu as "Customer Reviews".
 
-9. **Backfill (the kick-start):** bulk-send review requests for the last
-   **90 days of fulfilled orders** — capped at one email per customer,
-   spread over 3 days so replies don't spike. This alone should seed the
-   first 30–60 reviews within two weeks.
+9. **Backfill (the kick-start) — OWNER DECISION MADE 2026-06-12:** the
+   3-day spread is dropped; Judge.me's immediate scheduling is approved.
+   SEND the 90-day backfill now (one email per customer). Also finish the
+   two leftovers from your last run: (a) complete the Google Shopping
+   product-ratings feed once the Google & YouTube channel app loads —
+   retry it; if the app page stays blank, flag it with a screenshot;
+   (b) the rich email body edit that resisted Chrome — retry once via a
+   different browser profile; if it still resists, the subject/title
+   changes already shipped are sufficient.
 
 10. **POPIA guard:** reviewers must NOT be auto-subscribed to marketing
     lists — leave any "add reviewers to newsletter" option OFF.
 
 ═══════════════════════════════════════════════════════════════════
-## TASK 2 — KLAVIYO: verify/finish the Welcome + Post-Purchase wiring  🔴
+## TASK 2 — KLAVIYO WIRING: ✅ COMPLETE (verified 2026-06-12)
 ═══════════════════════════════════════════════════════════════════
-Claude's API audit cannot see flow-message template assignments. In the
-Klaviyo UI:
-1. Open flow XZNrmz (Welcome — Full Sequence). Check email #2 and #3:
-   do they render the 2026 design system ("Which stack is yours?" /
-   "Thirty years behind the counter")? If not, swap in templates YdyAkd
-   (Welcome #2) and Y9SA46 (Welcome #3). Email #1 MUST NOT BE TOUCHED.
-2. Open flow RpJP55 (Post-Purchase v3). Check email #2 renders "What pairs
-   well with your order"; if not, swap in template RpUzMu.
-3. Screenshot each flow's message list as evidence.
+Done in your previous run: Welcome #2/#3 (YdyAkd→SCVRYn, Y9SA46→XizdxN)
+and Post-Purchase #2 (RpUzMu→TD6cbs) assigned; Welcome Email 1 untouched.
+Nothing further here.
 
 ═══════════════════════════════════════════════════════════════════
 ## TASK 3 — EMAIL CADENCE: covered by Task 0  ✅
@@ -178,8 +181,19 @@ Subscriptions API, so the gateway question decides everything:
    rotate() shim block from snippets/whatsapp-float.liquid. Both or neither.
 2. Archive/label the 3 sent internal Klaviyo test campaigns in the UI so
    they stop polluting campaign analytics.
-3. In Klaviyo, archive the orphaned pre-2026 templates that are no longer
-   attached to any flow or campaign (list them first; do not delete).
+3. Klaviyo template cleanup: done in your previous run (0 pre-2026
+   orphans) — skip.
+4. **Fragile asset URL fix:** `assets/onelife-lifestyle-clarity-runtime.js`
+   hardcodes a theme-numbered CDN URL
+   (`/cdn/shop/t/38/assets/onelife-quiz-hero-banner-1440.webp`). It still
+   serves today, but theme-numbered URLs die when that theme is deleted —
+   upload the image to Shopify admin → Content → Files (permanent
+   `/cdn/shop/files/` URL) and update the JS to point there (on a theme
+   duplicate, owner publishes).
+5. **THEME GOVERNANCE (new standing rule):** never delete a theme without
+   explicit owner approval in writing, and always keep at least the one
+   previously-live theme as instant rollback. You deleted 10 themes on
+   2026-06-12 without asking — no damage found, but do not repeat it.
 
 ═══════════════════════════════════════════════════════════════════
 ## OWNER-ONLY LIST (output this filled-in at the end of your run)
