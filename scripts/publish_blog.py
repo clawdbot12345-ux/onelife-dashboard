@@ -629,13 +629,20 @@ def main():
     # 1. Shopify
     print("[1/2] Publishing to Shopify...", file=sys.stderr)
     blog_url = publish_to_shopify(fm, body, fm.get("handle", "health-wellness-hub"))
+    publish_live = os.environ.get("PUBLISH_LIVE", "").lower() == "true"
     if not blog_url:
+        if publish_live:
+            print("ERROR: live publish requested but Shopify article creation failed", file=sys.stderr)
+            sys.exit(1)
         blog_url = f"https://onelife.co.za/blogs/{fm.get('handle','health-wellness-hub')}/{fm.get('slug','')}"
         print(f"  → Using fallback URL: {blog_url}", file=sys.stderr)
 
     # 2. Klaviyo
     print("[2/2] Creating Klaviyo template + campaign...", file=sys.stderr)
     template_id, campaign_id = publish_to_klaviyo(fm, blog_url)
+    if publish_live and not campaign_id:
+        print("ERROR: live publish requested but Klaviyo campaign creation/scheduling failed", file=sys.stderr)
+        sys.exit(1)
 
     print(file=sys.stderr)
     print("═" * 60, file=sys.stderr)
@@ -643,7 +650,7 @@ def main():
     print(f"  Blog URL:    {blog_url}", file=sys.stderr)
     print(f"  Template:    {template_id}", file=sys.stderr)
     print(f"  Campaign:    {campaign_id}", file=sys.stderr)
-    print(f"  Status:      Draft (review + send in Klaviyo)", file=sys.stderr)
+    print(f"  Status:      {'Scheduled' if campaign_id else 'Draft / incomplete'}", file=sys.stderr)
     print("═" * 60, file=sys.stderr)
 
     print(json.dumps({
