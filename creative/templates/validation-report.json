@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T19:50:14Z",
+  "generatedAt": "2026-06-12T20:33:44Z",
   "items": [
     {
       "file": "creative/templates/T01/sample/energy-carousel/slides/slide-01.jpg",
@@ -98,6 +98,14 @@
       "mode": "RGB"
     },
     {
+      "file": "creative/templates/T02/sample/t02-monday-hero-square-instore.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
       "file": "creative/templates/T02/sample/t02-monday-hero-square.jpg",
       "size": [
         1080,
@@ -106,7 +114,31 @@
       "mode": "RGB"
     },
     {
+      "file": "creative/templates/T02/sample/t02-monday-hero-square-online.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T02/sample/t02-monday-hero-story-instore.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
       "file": "creative/templates/T02/sample/t02-monday-hero-story.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T02/sample/t02-monday-hero-story-online.jpg",
       "size": [
         1080,
         1920

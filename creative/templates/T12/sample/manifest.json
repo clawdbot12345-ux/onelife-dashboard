@@ -1,7 +1,7 @@
 {
   "templateId": "T12",
   "template": "Seasonal campaign frame — SA winter",
-  "generatedAt": "2026-06-12T19:50:14Z",
+  "generatedAt": "2026-06-12T20:33:44Z",
   "sizes": [
     "overlay 1080x1920",
     "overlay 1080x1080"
@@ -11,7 +11,7 @@
     "creative/templates/T12/sample/t12-sa-winter-square-overlay.png",
     "creative/templates/T12/sample/t12-sa-winter-preview.jpg"
   ],
-  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
   "baseImages": [
     "creative/templates/_assets/generated-bases/bundle-stack.png"
   ],
