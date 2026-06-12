@@ -6,8 +6,7 @@ Last updated: 2026-06-12 · Strategy v1.0 approved — engine owns this calendar
 - Tue 09:00 — Education digest email · Fri 09:00 — Product feature email (both Engaged 90d) · 21 Klaviyo flows always-on.
 
 ## Channel reality flags
-- 🔒 FB/IG/TikTok posting BLOCKED until logins handed to Codex/Mac Mini (Naadir committed). Email + WhatsApp Hub packs + GBP-ready copy ship regardless.
-- 📵 WhatsApp Hub posting mechanism TBD: engine delivers ready-to-paste packs (`creative/`) until wired.
+- ✅ ALL POSTING VIA CODEX (browser/computer use) — WhatsApp, FB, IG, TikTok. Standing publish rights granted 2026-06-12 (`approvals/granted/publish-rights.flag`); operating contract + week-1 schedule: `codex-queue/2026-06-12_publishing-layer.md`. Every post logged to `creative/POST_LOG.md` with UTMs.
 - 💰 All offers: GP ≥25% floor; discounts >10% need Naadir approval (none scheduled below); Hub gets every offer 24–48h first — always.
 
 ---
