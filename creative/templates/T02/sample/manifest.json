@@ -1,28 +1,46 @@
 {
   "templateId": "T02",
   "template": "Monday Hero offer card",
-  "generatedAt": "2026-06-12T19:50:14Z",
+  "generatedAt": "2026-06-12T20:33:44Z",
   "sizes": [
     "1080x1080",
     "1080x1920"
   ],
   "sampleFiles": [
+    "creative/templates/T02/sample/t02-monday-hero-square-instore.jpg",
     "creative/templates/T02/sample/t02-monday-hero-square.jpg",
-    "creative/templates/T02/sample/t02-monday-hero-story.jpg"
+    "creative/templates/T02/sample/t02-monday-hero-square-online.jpg",
+    "creative/templates/T02/sample/t02-monday-hero-story-instore.jpg",
+    "creative/templates/T02/sample/t02-monday-hero-story.jpg",
+    "creative/templates/T02/sample/t02-monday-hero-story-online.jpg"
   ],
-  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
   "baseImages": [
-    "creative/templates/_assets/generated-bases/vivid-packshot.png"
+    "creative/templates/_assets/shopify-packshots/buffered-c-90-cutout.png"
   ],
   "copySlots": [
     "product",
     "offerPercent",
-    "price",
+    "wasPrice",
+    "nowPrice",
+    "saveBadge",
     "dateRange",
-    "cta"
+    "ctaVariant",
+    "disclaimer"
   ],
   "notes": [
-    "Uses generated blank-label packshot as sample-only; replace with approved product packshot when available."
+    "Week-1 Monday Hero sample: Vivid Buffered C 90s, 10% off, valid 15-21 Jun 2026.",
+    "Live Shopify price checked from public product data: WAS R170.77, NOW R153.69, SAVE R17.08 / 10%.",
+    "Includes both CTA variants: in-store and online. Legacy square/story filenames mirror the in-store CTA."
   ],
-  "secretScan": "No credentials, tokens, customer data, or account access material included."
+  "secretScan": "No credentials, tokens, customer data, or account access material included.",
+  "sourceProducts": [
+    {
+      "id": "buffered-c-90",
+      "title": "VIVID HEALTH - IMMUNE - Buffered C 90 Capsules",
+      "price": "R170.77",
+      "source": "https://onelife.co.za/products/vivid-health-immune-buffered-c-90-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5203.png?v=1695296559"
+    }
+  ]
 }
