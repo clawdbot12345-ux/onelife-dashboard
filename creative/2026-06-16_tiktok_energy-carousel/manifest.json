@@ -1,0 +1,54 @@
+{
+  "campaignTag": "2026-06-16_tiktok_energy-carousel",
+  "title": "Always tired by 2pm?",
+  "generatedAt": "2026-06-12T18:28:08Z",
+  "format": "6-slide TikTok/IG carousel",
+  "dimensions": {
+    "width": 1080,
+    "height": 1920
+  },
+  "slides": [
+    {
+      "index": 1,
+      "title": "Always tired by 2pm?",
+      "body": "It is not just winter laziness.",
+      "visualDirection": "woman desk 2pm",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-01.jpg"
+    },
+    {
+      "index": 2,
+      "title": "Coffee #3 is not working.",
+      "body": "The afternoon slump is running your diary.",
+      "visualDirection": "cold coffee to-do",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-02.jpg"
+    },
+    {
+      "index": 3,
+      "title": "Check the basics first.",
+      "body": "Iron and B12 help support oxygen transport and energy production.",
+      "visualDirection": "soft infographic",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-03.jpg"
+    },
+    {
+      "index": 4,
+      "title": "Ask in store.",
+      "body": "Gentle iron and B12 support can be matched to your routine.",
+      "visualDirection": "shelf product",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-04.jpg"
+    },
+    {
+      "index": 5,
+      "title": "Which one is you?",
+      "body": "2pm slump / wake up tired / coffee dependent",
+      "visualDirection": "poll",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-05.jpg"
+    },
+    {
+      "index": 6,
+      "title": "Talk to the team.",
+      "body": "Centurion, Glen Village, Edenvale or onelife.co.za.",
+      "visualDirection": "storefront product",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-06.jpg"
+    }
+  ]
+}
