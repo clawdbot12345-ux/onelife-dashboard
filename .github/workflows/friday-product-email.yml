@@ -1,0 +1,26 @@
+name: Friday Product Email
+
+# Creates + schedules the weekly product-feature campaign in Klaviyo.
+# Runs Wednesday 06:00 UTC; the script's SEND_OFFSET_DAYS=2 default makes
+# the campaign send Friday 09:00 SAST to the Engaged 90d segment (S3MAsK).
+# Product priority: new launch → 30d top seller → curated fallback.
+# Kill switch: repo variable EMAIL_AUTOMATION_ENABLED must equal 'true'.
+
+on:
+  schedule:
+    - cron: "0 6 * * 3"
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    if: vars.EMAIL_AUTOMATION_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create and schedule product campaign
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python3 scripts/friday_product_campaign.py
