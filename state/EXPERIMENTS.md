@@ -17,10 +17,11 @@ Format per entry:
 - Hypothesis: n/a — this is a measurement decision, logged here for traceability.
 - See BASELINES.md. Until decided, scoreboard pace for T1 is provisional.
 
-## EXP-002 — WhatsApp VIP early-access mechanic (status: RUNNING from 14 Jun)
-- Hypothesis: Hub-first offers (24h exclusivity) make the Hub worth joining → ≥15 net new members/week (vs ~flat at 410).
-- Target: T5 (Hub 410→1,000) · Lever: exclusivity + till phrase + reply triggers.
-- Metric: weekly member count (Naadir/staff report until instrumented). Kill: <5/wk after 3 weeks → mechanic insufficient, redesign hooks.
+## EXP-002 — WhatsApp Hub exclusivity mechanic (status: RUNNING from 14 Jun; v2 design from week 2)
+- v1 (wk 1): early access only — Naadir correctly flags this as weak ("one day earlier?"). Channel constraint logged: members can't reply in-channel → all CTAs = DM (071 374 4910) or till phrase.
+- v2 (wk 2, pending Naadir's nod): headline perk = **weekly HUB-ONLY deal on a proven popular product** (from Omni top sellers), redeemed via till phrase "HUB" or online code HUB10 (≤10% standing cap; or value-add gift to protect GP). Early access stays as secondary perk. Bespoke Hub ad (one image) per drop.
+- Why this also wins on measurement: unique code/till phrase = trackable joins AND redemptions, not just member count.
+- Metric: net new members/week + redemptions/week. Kill: <5 joins/wk after 3 weeks of v2.
 
 ## EXP-003 — Vivid Day revenue lift (status: RUNNING from 17 Jun)
 - Hypothesis: weekly Vivid spotlight lifts Wednesday Vivid sales ≥2× trailing-4-Wednesday average (online measurable now; in-store once Omni feeds).

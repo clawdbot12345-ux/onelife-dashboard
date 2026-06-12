@@ -5,11 +5,13 @@
 Posting: Sun 14 / Mon 15 / Wed 17 / Thu 18 Jun. Tone: warm, premium, SA-natural. VIP rule starts NOW: the Hub sees every offer before any other channel.
 
 ---
-## Sun 14 Jun, ~18:00 — VIP early access (before anyone else sees it)
-> 🌙 *VIP first look — Hub only until tomorrow*
+## Sun 14 Jun, ~18:00 — VIP first look
+> 🌙 *VIP first look — Hub sees it before anyone*
 > Winter wrecking your sleep? This week's Monday Hero is the **Magnesium Night Reset** — 10% off all week.
-> You get it tonight. Everyone else finds out tomorrow. Reply "SLEEP" and we'll set one aside at your store 🛒
+> You're seeing it tonight; everyone else finds out tomorrow. Want one set aside? DM us on 071 374 4910 with "SLEEP" + your store 🛒
 > Or order: onelife.co.za (free delivery over R400)
+
+*(v3 note: Hub members can't reply in-channel — all CTAs are DM/till-phrase based. From week 2 the Hub headline perk upgrades from early access to a weekly HUB-ONLY deal — proposal with Naadir.)*
 
 ## Mon 15 Jun, ~09:00 — deal live reminder (short)
 > Monday Hero is live everywhere now — but you knew last night 😉 Magnesium Night Reset, 10% off this week at Centurion, Glen Village, Edenvale & online.
