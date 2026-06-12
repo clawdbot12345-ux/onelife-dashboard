@@ -1,0 +1,28 @@
+{
+  "templateId": "T04",
+  "template": "Bundle/Stack card",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1080x1080",
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T04/sample/t04-bundle-stack-square.jpg",
+    "creative/templates/T04/sample/t04-bundle-stack-story.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/bundle-stack.png"
+  ],
+  "copySlots": [
+    "bundleName",
+    "itemNames",
+    "itemPrices",
+    "bundlePrice",
+    "dateRange"
+  ],
+  "notes": [
+    "2-3 product stack layout with per-item and bundle-price slots."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
