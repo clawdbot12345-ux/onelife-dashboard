@@ -2,7 +2,8 @@
 title: The 5pm Dark — What Short Winter Days Do to Your Mood
 slug: winter-mood-short-days-guide
 handle: health-wellness-hub
-excerpt: "I'm not sick, I'm just flat." We hear it every July. The winter dip is real and physiological — here's what honestly supports it, and the line where a supplement is the wrong answer.
+excerpt: >-
+  "I'm not sick, I'm just flat." We hear it every July. The winter dip is real and physiological — here's what honestly supports it, and the line where a supplement is the wrong answer.
 subject: "Feeling flat this winter? You're not imagining it"
 preview: The July dip is physiological — and there's an honest list for it.
 campaign_segment: S3MAsK

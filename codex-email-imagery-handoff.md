@@ -107,7 +107,7 @@ phone left-of-centre, basket right. No readable text anywhere, no logos."
 Upload each via Klaviyo image upload, then update each template's HTML: insert one
 hero <tr> directly below the 4px accent-bar row —
 `<tr><td><img src="..." width="620" alt="<one-line scene description>" style="display:block;width:100%;height:auto;"/></td></tr>`
-Keep ALL copy, facts, links and the {% unsubscribe %} tag exactly as-is.
+Keep ALL copy, facts, links and the {% raw %}{% unsubscribe %}{% endraw %} tag exactly as-is.
 
 ## Part B — Klaviyo wiring (15-min plan, fully specified)
 **Where the referenced file lives:** GitHub repo `clawdbot12345-ux/onelife-dashboard`,

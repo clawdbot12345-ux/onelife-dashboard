@@ -52,7 +52,7 @@ green header + logo, paragraphs, one CTA, grey footer.
 - **Wrong brand green** (#1B5E20 vs site #1b4332) and none of the new site design
   language (serif display, botanical, colour system).
 - No dynamic product feeds/recommendations blocks anywhere.
-- Inconsistent unsubscribe tags ({{ unsubscribe }} vs {% unsubscribe %}).
+- Inconsistent unsubscribe tags ({{ unsubscribe }} vs {% raw %}{% unsubscribe %}{% endraw %}).
 
 ### 🔴 FIXED TODAY — live factual errors in automated emails
 Three repo automation scripts (friday_product_campaign.py,

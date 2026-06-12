@@ -62,7 +62,7 @@ Direct inspection confirms exactly what remains. Work this list:
    "10% off bundled with DISPENSARY10" — add "(orders over R600)" to match
    the real code terms.
 6. **One-line theme fix while you're in the theme:** `sections/slideshow.liquid`
-   line ~142 hardcodes `data-autoplay="{% if template == 'index' %}false{% else %}…"`
+   line ~142 hardcodes `data-autoplay="{% raw %}{% if template == 'index' %}false{% else %}…{% endraw %}"`
    (perf-pass leftover) which froze the homepage hero. Claude shipped a JS
    shim in `snippets/whatsapp-float.liquid` that restores rotation; the
    proper fix is changing that attribute to

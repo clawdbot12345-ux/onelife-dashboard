@@ -175,8 +175,8 @@ Subscriptions API, so the gateway question decides everything:
 ## TASK 5 — HOUSEKEEPING (quick)  🟡
 ═══════════════════════════════════════════════════════════════════
 1. `sections/slideshow.liquid` on the next theme duplicate you make (Task 1
-   step 4): change line ~142 `data-autoplay="{% if template == 'index'
-   %}false{% else %}{{ section.settings.auto_rotate }}{% endif %}"` to
+   step 4): change line ~142 `data-autoplay="{% raw %}{% if template == 'index'
+   %}false{% else %}{{ section.settings.auto_rotate }}{% endif %}{% endraw %}"` to
    `data-autoplay="{{ section.settings.auto_rotate }}"`, then DELETE the
    rotate() shim block from snippets/whatsapp-float.liquid. Both or neither.
 2. Archive/label the 3 sent internal Klaviyo test campaigns in the UI so

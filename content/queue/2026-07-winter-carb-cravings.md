@@ -2,7 +2,8 @@
 title: Why Winter Makes You Crave Carbs After Dark
 slug: winter-carb-cravings-blood-sugar-guide
 handle: health-wellness-hub
-excerpt: "I'm fine all day — then the sun goes down." The 8pm winter craving is a blood-sugar rollercoaster with a timetable. Here's the honest way to take the edge off it.
+excerpt: >-
+  "I'm fine all day — then the sun goes down." The 8pm winter craving is a blood-sugar rollercoaster with a timetable. Here's the honest way to take the edge off it.
 subject: "Fine all day, raiding the cupboard by 8pm?"
 preview: The winter craving has a mechanism — and an honest fix.
 campaign_segment: S3MAsK

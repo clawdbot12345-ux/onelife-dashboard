@@ -31,7 +31,7 @@
 ## TASK 1 — Approve & send the scheduled win-back  ⭐ do first
 **Campaign:** `01KSWCT5HA3Q80PY3AXT6RE24J` — "Re-Engagement — We Miss You (At-risk 60d) — SCHEDULED throttled [final]".
 Already configured: audience **At-risk-60d** `UQmNai`, sender **"One Life Health"** `info@onelife.co.za`, template `Xt4xgS`, **throttle 25%/hr**, Smart Sending ON, scheduled **2026-06-03 08:00 SAST**. It is still a **Draft** (API can't push "send").
-**Do:** open it → verify the above → send a **test to an internal inbox** → check the `{% unsubscribe %}` link + `WELCOMEBACK` free-delivery offer copy → **Review & Send** (keep the 3 Jun schedule + throttle).
+**Do:** open it → verify the above → send a **test to an internal inbox** → check the `{% raw %}{% unsubscribe %}{% endraw %}` link + `WELCOMEBACK` free-delivery offer copy → **Review & Send** (keep the 3 Jun schedule + throttle).
 **Guardrails:** do NOT swap the audience to a list; do NOT remove unsubscribe; confirm recipient count ≈ 2,133 before confirming.
 
 ## TASK 2 — Delete the two scaffold drafts
