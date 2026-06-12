@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-06-12T20:33:44Z",
+  "source": "Public One Life Shopify product pages/CDN.",
+  "items": [
+    {
+      "id": "buffered-c-90",
+      "title": "VIVID HEALTH - IMMUNE - Buffered C 90 Capsules",
+      "handle": "vivid-health-immune-buffered-c-90-capsules",
+      "sku": "6100000000117",
+      "priceCents": 17077,
+      "price": "R170.77",
+      "sourceProductPage": "https://onelife.co.za/products/vivid-health-immune-buffered-c-90-capsules",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5203.png?v=1695296559",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/buffered-c-90-source.png",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/buffered-c-90-cutout.png",
+      "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    },
+    {
+      "id": "immune-plus",
+      "title": "VIVID HEALTH - IMMUNE - Immune Plus 60 Capsules",
+      "handle": "vivid-health-immune-immune-plus-60-capsules",
+      "sku": "6009802226087",
+      "priceCents": 12500,
+      "price": "R125",
+      "sourceProductPage": "https://onelife.co.za/products/vivid-health-immune-immune-plus-60-capsules",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5194.png?v=1695296146",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/immune-plus-source.png",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/immune-plus-cutout.png",
+      "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    },
+    {
+      "id": "astragalus",
+      "title": "VIVID HEALTH - IMMUNE - Astragalus 60 Capsules",
+      "handle": "vivid-health-immune-astragalus-60-capsules",
+      "sku": "6000000837402",
+      "priceCents": 16400,
+      "price": "R164",
+      "sourceProductPage": "https://onelife.co.za/products/vivid-health-immune-astragalus-60-capsules",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5196.png?v=1695296217",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/astragalus-source.png",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/astragalus-cutout.png",
+      "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    },
+    {
+      "id": "griffonia",
+      "title": "VIVID HEALTH - STAY VIVID - Griffonia (5-HTP) 60 Capsules",
+      "handle": "vivid-health-stay-vivid-griffonia-5-htp-60-capsules",
+      "sku": "6100000000711",
+      "priceCents": 27500,
+      "price": "R275",
+      "sourceProductPage": "https://onelife.co.za/products/vivid-health-stay-vivid-griffonia-5-htp-60-capsules",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5222.png?v=1695298472",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/griffonia-source.png",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/griffonia-cutout.png",
+      "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    },
+    {
+      "id": "black-seed-oil",
+      "title": "HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels",
+      "handle": "holistq-pure-cold-pressed-black-seed-oil-120-softgels",
+      "sku": "",
+      "priceCents": 49900,
+      "price": "R499",
+      "sourceProductPage": "https://onelife.co.za/products/holistq-pure-cold-pressed-black-seed-oil-120-softgels",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/71aneynGC2L._AC_SL1500_e71bfdf1-5220-425e-b3be-9c54b2de6187.jpg?v=1755072602",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/black-seed-oil-source.jpg",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/black-seed-oil-cutout.png",
+      "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    },
+    {
+      "id": "soft-iron",
+      "title": "ECO VALLEY NUTRITION - Soft Iron Boost - 60 Capsules",
+      "handle": "eco-valley-nutrition-soft-iron-boost-60-capsules",
+      "sku": "",
+      "priceCents": 23466,
+      "price": "R234.66",
+      "sourceProductPage": "https://onelife.co.za/products/eco-valley-nutrition-soft-iron-boost-60-capsules",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/F5F9E9BB-10D5-4E8C-901F-1D3C5D71EF2E.png?v=1692684402",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/soft-iron-source.png",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/soft-iron-cutout.png",
+      "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    },
+    {
+      "id": "b12",
+      "title": "WILLOW - Vitamin B12 - 30 Caps",
+      "handle": "willow-vitamin-b12-30-caps",
+      "sku": "",
+      "priceCents": 8900,
+      "price": "R89",
+      "sourceProductPage": "https://onelife.co.za/products/willow-vitamin-b12-30-caps",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0682/9136/3126/products/VitaminB12-30Caps.png?v=1679918709",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/b12-source.png",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/b12-cutout.png",
+      "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    },
+    {
+      "id": "glycine",
+      "title": "GOOD LIFE WELLNES - Glycine - 250G",
+      "handle": "verhaki-nutrition-glycine-250g-powder",
+      "sku": "",
+      "priceCents": 14562,
+      "price": "R145.62",
+      "sourceProductPage": "https://onelife.co.za/products/verhaki-nutrition-glycine-250g-powder",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/Glycine3.jpg?v=1772110032",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/glycine-source.jpg",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/glycine-cutout.png",
+      "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    }
+  ],
+  "secretScan": "No credentials, customer data, admin tokens, or private API material included."
+}

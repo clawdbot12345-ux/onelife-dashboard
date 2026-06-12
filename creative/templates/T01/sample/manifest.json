@@ -1,7 +1,7 @@
 {
   "templateId": "T01",
   "template": "Carousel master — 6 slide roles",
-  "generatedAt": "2026-06-12T19:50:14Z",
+  "generatedAt": "2026-06-12T20:33:44Z",
   "sizes": [
     "1080x1920"
   ],
@@ -19,7 +19,7 @@
     "creative/templates/T01/sample/sleep-carousel/slides/slide-05.jpg",
     "creative/templates/T01/sample/sleep-carousel/slides/slide-06.jpg"
   ],
-  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
   "baseImages": [
     "creative/templates/_assets/generated-bases/energy-desk.png",
     "creative/templates/_assets/generated-bases/coffee-desk.png",
@@ -31,7 +31,11 @@
     "creative/templates/_assets/generated-bases/sleep-window.png",
     "creative/templates/_assets/generated-bases/sleep-mechanism.png",
     "creative/templates/_assets/generated-bases/sleep-duo.png",
-    "creative/templates/_assets/generated-bases/sleep-poll.png"
+    "creative/templates/_assets/generated-bases/sleep-poll.png",
+    "creative/templates/_assets/shopify-packshots/soft-iron-cutout.png",
+    "creative/templates/_assets/shopify-packshots/b12-cutout.png",
+    "creative/templates/_assets/shopify-packshots/glycine-cutout.png",
+    "creative/templates/_assets/shopify-packshots/griffonia-cutout.png"
   ],
   "copySlots": [
     "hook",
@@ -46,7 +50,38 @@
   "notes": [
     "Includes full sample rerenders for both week-1 carousels.",
     "Production carousel folders were replaced with the same T01 sample render outputs.",
-    "Mechanism slides use clean diagram overlays on photographic backdrops."
+    "Mechanism/proof slides add real public Shopify packshot cutouts where product copy names products.",
+    "All slides include the mandatory product disclaimer footer."
   ],
-  "secretScan": "No credentials, tokens, customer data, or account access material included."
+  "secretScan": "No credentials, tokens, customer data, or account access material included.",
+  "sourceProducts": [
+    {
+      "id": "soft-iron",
+      "title": "ECO VALLEY NUTRITION - Soft Iron Boost - 60 Capsules",
+      "price": "R234.66",
+      "source": "https://onelife.co.za/products/eco-valley-nutrition-soft-iron-boost-60-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/F5F9E9BB-10D5-4E8C-901F-1D3C5D71EF2E.png?v=1692684402"
+    },
+    {
+      "id": "b12",
+      "title": "WILLOW - Vitamin B12 - 30 Caps",
+      "price": "R89.00",
+      "source": "https://onelife.co.za/products/willow-vitamin-b12-30-caps",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/products/VitaminB12-30Caps.png?v=1679918709"
+    },
+    {
+      "id": "glycine",
+      "title": "GOOD LIFE WELLNES - Glycine - 250G",
+      "price": "R145.62",
+      "source": "https://onelife.co.za/products/verhaki-nutrition-glycine-250g-powder",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/Glycine3.jpg?v=1772110032"
+    },
+    {
+      "id": "griffonia",
+      "title": "VIVID HEALTH - STAY VIVID - Griffonia (5-HTP) 60 Capsules",
+      "price": "R275.00",
+      "source": "https://onelife.co.za/products/vivid-health-stay-vivid-griffonia-5-htp-60-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5222.png?v=1695298472"
+    }
+  ]
 }
