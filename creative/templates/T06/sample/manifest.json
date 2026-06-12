@@ -1,0 +1,26 @@
+{
+  "templateId": "T06",
+  "template": "Community/poll story",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T06/sample/t06-community-poll-story.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/poll-desk.png"
+  ],
+  "copySlots": [
+    "question",
+    "option1",
+    "option2",
+    "option3",
+    "cta"
+  ],
+  "notes": [
+    "Question slot plus 2-3 option chips."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
