@@ -116,10 +116,16 @@ def fetch_latest_article():
             "published": published, "id": art_id}
 
 
-def already_sent(art_id):
+def already_sent(art_id, art_url=""):
     try:
         with open(STATE_PATH) as f:
-            return json.load(f).get("last_sent_id") == art_id
+            st = json.load(f)
+        if st.get("last_sent_id") == art_id:
+            return True
+        # The Monday publisher records last_sent_url after creating its own
+        # campaign for the article it just published — skip to avoid a
+        # duplicate Tuesday email for the same piece.
+        return bool(art_url) and st.get("last_sent_url", "").rstrip("/") == art_url.rstrip("/")
     except Exception:
         return False
 
@@ -198,7 +204,7 @@ def main():
     if not art:
         print("No article found in feed", file=sys.stderr)
         sys.exit(1)
-    if already_sent(art["id"]):
+    if already_sent(art["id"], art["url"]):
         print(f"Latest article already sent ({art['title']}) — skipping (no repeat sends)")
         return
     topic = topic_for(art["title"], art["summary"])

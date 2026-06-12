@@ -1,0 +1,58 @@
+name: Monday Blog Publish
+
+# Pops the oldest article from content/queue/, publishes it to the Shopify
+# blog AND creates its Klaviyo campaign (sends Tuesday 09:00 SAST via the
+# article's send_offset_days). Moves the file to content/published/ and
+# records the URL so the Tuesday digest never double-sends the same piece.
+# Kill switch: repo variable EMAIL_AUTOMATION_ENABLED must equal 'true'.
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: vars.EMAIL_AUTOMATION_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick oldest queued article
+        id: pick
+        run: |
+          FILE=$(ls content/queue/*.md 2>/dev/null | sort | head -1 || true)
+          if [ -z "$FILE" ]; then
+            echo "Queue is empty — nothing to publish. The Tuesday digest will also stay silent unless another article was published elsewhere."
+            echo "file=" >> "$GITHUB_OUTPUT"
+          else
+            echo "Publishing: $FILE"
+            echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish article + create campaign
+        if: steps.pick.outputs.file != ''
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          pip install pyyaml -q
+          python3 scripts/publish_blog.py "${{ steps.pick.outputs.file }}"
+      - name: Record state + archive the file
+        if: steps.pick.outputs.file != ''
+        run: |
+          mkdir -p content/published
+          SLUG=$(grep -m1 '^slug:' "${{ steps.pick.outputs.file }}" | sed 's/^slug:\s*//')
+          python3 - <<EOF
+          import json
+          json.dump({"last_sent_url": "https://onelife.co.za/blogs/health-wellness-hub/${SLUG}"},
+                    open("scripts/.digest_state.json", "w"))
+          EOF
+          git mv "${{ steps.pick.outputs.file }}" content/published/
+          git config user.name "onelife-bot"
+          git config user.email "bot@onelife.co.za"
+          git add scripts/.digest_state.json
+          git commit -m "chore: publish queued article $(basename ${{ steps.pick.outputs.file }})"
+          git push
