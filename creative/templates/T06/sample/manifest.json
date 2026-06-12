@@ -1,14 +1,14 @@
 {
   "templateId": "T06",
   "template": "Community/poll story",
-  "generatedAt": "2026-06-12T19:50:14Z",
+  "generatedAt": "2026-06-12T20:33:44Z",
   "sizes": [
     "1080x1920"
   ],
   "sampleFiles": [
     "creative/templates/T06/sample/t06-community-poll-story.jpg"
   ],
-  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
   "baseImages": [
     "creative/templates/_assets/generated-bases/poll-desk.png"
   ],
