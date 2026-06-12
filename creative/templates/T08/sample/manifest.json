@@ -1,0 +1,25 @@
+{
+  "templateId": "T08",
+  "template": "GBP offer post",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1200x900"
+  ],
+  "sampleFiles": [
+    "creative/templates/T08/sample/t08-gbp-offer-post.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/store-online.png"
+  ],
+  "copySlots": [
+    "storeName",
+    "offer",
+    "validDates",
+    "cta"
+  ],
+  "notes": [
+    "Per-store variant slots for Google Business Profile posts."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
