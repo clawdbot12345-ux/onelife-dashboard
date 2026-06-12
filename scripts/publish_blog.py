@@ -44,7 +44,8 @@ import re
 import sys
 import urllib.request
 import urllib.parse
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 # ─── Config ───
@@ -537,6 +538,9 @@ def publish_to_klaviyo(fm, blog_url):
 
     # Create campaign
     send_offset = int(fm.get("send_offset_days", 2))
+    send_at = (datetime.now(ZoneInfo("Africa/Johannesburg")) + timedelta(days=send_offset)).replace(
+        hour=9, minute=0, second=0, microsecond=0
+    )
     list_id = fm.get("campaign_segment", "S3MAsK")  # default: Engaged 90d, not full list (audit 2026-06-10)
     campaign_body = {
         "data": {
@@ -547,7 +551,7 @@ def publish_to_klaviyo(fm, blog_url):
                 "send_strategy": {
                     "method": "static",
                     "options_static": {
-                        "datetime": (datetime.now(timezone.utc) + timedelta(days=send_offset)).strftime("%Y-%m-%dT09:00:00+00:00"),
+                        "datetime": send_at.isoformat(),
                         "is_local": False,
                     }
                 },
