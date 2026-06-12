@@ -1,0 +1,41 @@
+{
+  "report": "Detailed Cashup",
+  "sourceCachePath": "tmp/omni-http-fetch/detailed-cashup.json",
+  "sourceCacheModifiedAt": "2026-06-06T13:07:40Z",
+  "topKey": "detailed_cashup",
+  "rows": 3,
+  "columns": [
+    "transaction_type",
+    "transaction_category",
+    "target_account_name",
+    "narrative",
+    "amount",
+    "reconciled"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "transaction_type": "Cash",
+      "transaction_category": "Receipt",
+      "target_account_name": "REDACTED",
+      "narrative": null,
+      "amount": 2450.1,
+      "reconciled": "Y"
+    },
+    {
+      "transaction_type": "Cash",
+      "transaction_category": "Receipt",
+      "target_account_name": "REDACTED",
+      "narrative": "REDACTED",
+      "amount": 531.6,
+      "reconciled": "Y"
+    },
+    {
+      "transaction_type": "Credit Card",
+      "transaction_category": "Receipt",
+      "target_account_name": "REDACTED",
+      "narrative": null,
+      "amount": 9092.62,
+      "reconciled": "Y"
+    }
+  ]
+}

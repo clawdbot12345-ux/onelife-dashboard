@@ -1,0 +1,39 @@
+{
+  "report": "OL_Busy Times_Yesterday",
+  "sourceCachePath": "tmp/omni-http-fetch/ol-busy-times-yesterday.json",
+  "sourceCacheModifiedAt": "2026-06-06T11:52:59Z",
+  "topKey": "ol_busy_times_yesterday",
+  "rows": 9,
+  "columns": [
+    "system_hour_of_day",
+    "count",
+    "value_excl_after_discount"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "system_hour_of_day": 9,
+      "count": 13,
+      "value_excl_after_discount": 6091.43
+    },
+    {
+      "system_hour_of_day": 10,
+      "count": 12,
+      "value_excl_after_discount": 4818.58
+    },
+    {
+      "system_hour_of_day": 11,
+      "count": 23,
+      "value_excl_after_discount": 15325.66
+    },
+    {
+      "system_hour_of_day": 12,
+      "count": 14,
+      "value_excl_after_discount": 12600.39
+    },
+    {
+      "system_hour_of_day": 13,
+      "count": 19,
+      "value_excl_after_discount": 4717.09
+    }
+  ]
+}

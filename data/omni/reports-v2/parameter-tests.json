@@ -1,0 +1,119 @@
+[
+  {
+    "label": "base",
+    "paramsTested": [],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  },
+  {
+    "label": "DateFrom_DateTo",
+    "paramsTested": [
+      "DateFrom",
+      "DateTo"
+    ],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  },
+  {
+    "label": "FromDate_ToDate",
+    "paramsTested": [
+      "FromDate",
+      "ToDate"
+    ],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  },
+  {
+    "label": "Branch_HO",
+    "paramsTested": [
+      "Branch"
+    ],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  },
+  {
+    "label": "Branch_EDN",
+    "paramsTested": [
+      "Branch"
+    ],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  },
+  {
+    "label": "Branch_GVS",
+    "paramsTested": [
+      "Branch"
+    ],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  },
+  {
+    "label": "CompanyBranchCode_HO",
+    "paramsTested": [
+      "CompanyBranchCode"
+    ],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  },
+  {
+    "label": "Warehouse_CEN",
+    "paramsTested": [
+      "Warehouse"
+    ],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  },
+  {
+    "label": "Period_2026_06",
+    "paramsTested": [
+      "Period"
+    ],
+    "status": 200,
+    "contentType": "application/json",
+    "bytes": 827,
+    "topKey": "sales_analysis_johann_custom",
+    "rows": 5,
+    "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+    "changedVsBase": false
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "report": "Sales Analysis GP% Report",
+  "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-gp-report.json",
+  "sourceCacheModifiedAt": "2026-06-06T16:19:59Z",
+  "topKey": "sales_analysis_gppercent_report",
+  "rows": 1,
+  "columns": [
+    "value_excl_after_discount",
+    "gross_profit"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "value_excl_after_discount": null,
+      "gross_profit": null
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "report": "Stock Price List with Supplier Price Comparison",
+  "sourceCachePath": "tmp/omni-http-fetch/stock-price-list-with-supplier-price-comparison.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:04:18Z",
+  "topKey": "stock_price_list_with_supplier_price_comparison",
+  "rows": 8432,
+  "columns": [
+    "stock_code",
+    "stock_description",
+    "excl_unit_selling_price",
+    "incl_unit_selling_price",
+    "last_supplier",
+    "last_supplier_s_name",
+    "last_sale_date",
+    "last_purchase_date"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "stock_code": "000000000000",
+      "stock_description": "<--- IN FRIDGE TO LEFT",
+      "excl_unit_selling_price": 0,
+      "incl_unit_selling_price": 0,
+      "last_supplier": null,
+      "last_supplier_s_name": null,
+      "last_sale_date": null,
+      "last_purchase_date": null
+    },
+    {
+      "stock_code": "00011145062",
+      "stock_description": "BATH MILK ALOE & BAMB 750ML",
+      "excl_unit_selling_price": 135,
+      "incl_unit_selling_price": 155.25,
+      "last_supplier": null,
+      "last_supplier_s_name": null,
+      "last_sale_date": null,
+      "last_purchase_date": null
+    },
+    {
+      "stock_code": "0033984000315",
+      "stock_description": "ACIDOPHILUS PLUS 120S",
+      "excl_unit_selling_price": 47.32,
+      "incl_unit_selling_price": 54.42,
+      "last_supplier": null,
+      "last_supplier_s_name": null,
+      "last_sale_date": null,
+      "last_purchase_date": null
+    },
+    {
+      "stock_code": "0097467299276",
+      "stock_description": "MULTI GOLD 60S ASS",
+      "excl_unit_selling_price": 518.26,
+      "incl_unit_selling_price": 596,
+      "last_supplier": "EARTHL",
+      "last_supplier_s_name": "EARTH LINKS",
+      "last_sale_date": "2025-01-03",
+      "last_purchase_date": "2024-06-18"
+    },
+    {
+      "stock_code": "0097467299993",
+      "stock_description": "DHA 90 CHEWS",
+      "excl_unit_selling_price": 691.31,
+      "incl_unit_selling_price": 795.01,
+      "last_supplier": "EARTHL",
+      "last_supplier_s_name": "EARTH LINKS",
+      "last_sale_date": "2025-09-16",
+      "last_purchase_date": "2023-09-23"
+    }
+  ]
+}

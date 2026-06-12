@@ -1,0 +1,39 @@
+{
+  "report": "Daily Turnover GVS",
+  "sourceCachePath": "tmp/omni-http-fetch/daily-turnover-gvs.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:14:46Z",
+  "topKey": "daily_turnover_gvs",
+  "rows": 9,
+  "columns": [
+    "document_date",
+    "value_excl_after_discount",
+    "gross_profit"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "document_date": "2026-06-01",
+      "value_excl_after_discount": 10934.53,
+      "gross_profit": 3477.02
+    },
+    {
+      "document_date": "2026-06-02",
+      "value_excl_after_discount": 11394.71,
+      "gross_profit": 3661.83
+    },
+    {
+      "document_date": "2026-06-03",
+      "value_excl_after_discount": 20978.18,
+      "gross_profit": 6711.42
+    },
+    {
+      "document_date": "2026-06-04",
+      "value_excl_after_discount": 13937.41,
+      "gross_profit": 4375.53
+    },
+    {
+      "document_date": "2026-06-05",
+      "value_excl_after_discount": 8138.57,
+      "gross_profit": 2736.44
+    }
+  ]
+}

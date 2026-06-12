@@ -1,0 +1,39 @@
+{
+  "report": "OL_Busy Times_MTD",
+  "sourceCachePath": "tmp/omni-http-fetch/ol-busy-times-mtd.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:07:10Z",
+  "topKey": "ol_busy_times_mtd",
+  "rows": 10,
+  "columns": [
+    "system_hour_of_day",
+    "count",
+    "value_excl_after_discount"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "system_hour_of_day": 9,
+      "count": 103,
+      "value_excl_after_discount": 54749.09
+    },
+    {
+      "system_hour_of_day": 10,
+      "count": 138,
+      "value_excl_after_discount": 86729.51
+    },
+    {
+      "system_hour_of_day": 11,
+      "count": 183,
+      "value_excl_after_discount": 117141.3
+    },
+    {
+      "system_hour_of_day": 12,
+      "count": 199,
+      "value_excl_after_discount": 119797.57
+    },
+    {
+      "system_hour_of_day": 13,
+      "count": 157,
+      "value_excl_after_discount": 74805.22
+    }
+  ]
+}
