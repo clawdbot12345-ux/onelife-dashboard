@@ -1,0 +1,19 @@
+# One Life Health — business economics (owner-maintained)
+# The weekly business report reads this file. Update when costs change.
+# All amounts MONTHLY, in ZAR.
+
+vat_rate: 0.15
+gross_margin: 0.33          # blended GP on ex-VAT revenue
+
+monthly_costs:
+  delivery: 17000            # courier spend (online orders)
+  agency_fee: 5500           # includes Meta square designs + copy
+  ad_spend:
+    google: 8000
+    meta: 2750
+    tiktok: 3250
+
+# Channel notes for the report
+# - 'google-free-listings' = Merchant Center free surfaces feed (utm medium=product_sync / sag_organic) — R0 media cost
+# - 'organic-search' = sourceType SEO — R0 media cost
+# - 'ai-assistants' = ChatGPT/Claude/Perplexity referrals (GEO) — R0 media cost
