@@ -59,3 +59,15 @@ Interpretation recorded:
   - Facebook **"One Life Health Supermarket"** — **24K followers**, 1.5K posts, 90% recommend (8 reviews), Shop 1-3 Galway Centre, 117 Galway Ave, Centurion
 - **Q12 (answered): NO Padel365/gym partnership at Edenvale — never happened.** Master-prompt assumption corrected; Edenvale plan must not depend on it.
 
+### 2026-06-12 — Batch 3 (via chat, verbatim)
+> 1. September/October for online target.
+> 2. Vivid combined in all sales channels
+> 3. I would say it's women aged 35-50 upper class with high lsm household
+> 4. I guess nothing really worked - revenue only has drastically improved in the last two months ever since I involved Claude and codex and dropped delivery from R900 to R400 to be in line with our competitors.
+
+Interpretation recorded:
+- **T1 deadline confirmed: R200k/mo online by September/October 2026.** Engine paces against 31 Oct 2026 (≈2.4% compound weekly growth from R125k), with September as the stretch.
+- **Vivid R500k+/mo = combined across all sales channels.** Confirmed.
+- **Q8 (answered): dream customer = women 35–50, upper-class, high-LSM household.** Given as one ICP across stores (per-store nuance can come later or from Omni basket data).
+- **Q10 (answered): "nothing really worked" historically.** The inflection: last 2 months — Claude/Codex involvement + **dropping the free-delivery threshold R900→R400** to match competitors. → LEARNINGS #12: shipping economics were the binding constraint all along; pricing/effort barriers beat creative every time. Treat threshold/shipping/checkout friction as first-class growth levers ahead of any new creative spend.
+

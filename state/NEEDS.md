@@ -5,7 +5,7 @@ Last updated: 2026-06-12
 | # | Ask | Unblocks | Status |
 |---|---|---|---|
 | 1 | **Omni ERP access** — ✅ GRANTED 2026-06-12 (web report server, read-only `analytic` user). Cloud sandbox can't reach port 59029 → ingestion runs via GitHub Actions (`omni-probe.yml`, then a scheduled sync). **Follow-ups:** (a) add repo secret `OMNI_REPORT_URL` so creds live nowhere visible, (b) recommend restricting/rotating that account later — it's exposed on a public IP. | T2–T4 baselines, GP% per SKU, product matrix | IN PROGRESS |
-| 1b | **T1 deadline confirm**: R200k/mo — by 30 Sep 2026 (engine's working assumption) or by year-end? | Pace math, escalation thresholds | OPEN |
+| 1b | ~~T1 deadline confirm~~ | — | ✅ RESOLVED 2026-06-12: Sep/Oct 2026 — engine paces to 31 Oct, Sep stretch |
 | 2 | **Phase 0 interview answers** (16 areas — see interviews/FOUNDER.md) | Strategy assumptions, approval-gate confirmation | IN PROGRESS — batch 1 answered 2026-06-12 (GP floor 25%, R5k envelope, Hub 410, Parkview→Green Gate); batch 2 sent |
 | 3 | **Baseline definition decision** (BASELINES.md: TTM-avg×1.5 = R105.6k/mo, already touched — or May-2026×1.5 = R160.8k/mo stretch?) | Whether T1 is "consolidate" or "grow 50% from current run-rate" | OPEN — re-asked with batch 2 |
 | 4 | **Budget**: confirm R5k month-1 plan per BUDGET.md recommendation + R2,000/test standing approval | Paid test relaunch | NEARLY DONE — Naadir offered R5k, engine recommendation sent, awaiting confirm |

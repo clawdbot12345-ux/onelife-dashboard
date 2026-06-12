@@ -4,7 +4,7 @@ Last updated: 2026-06-12 (engine bootstrap)
 
 | Target | Metric | Baseline | Now | Goal | Deadline | Pace |
 |---|---|---|---|---|---|---|
-| T1 | Online total sales /mo | R70,433 (TTM avg) | R125,370 (30d incl VAT) | **R200,000 (Naadir 2026-06-12)** | 30 Sep 2026 (assumed — confirm) | 🟡 63% of target; needs ~3.1%/week compound |
+| T1 | Online total sales /mo | R70,433 (TTM avg) | R125,370 (30d incl VAT) | **R200,000 (Naadir 2026-06-12)** | **31 Oct 2026 (Sep = stretch) — confirmed** | 🟡 63% of target; ~2.4%/week compound needed |
 | T2 | Centurion revenue /mo | Omni access granted — ingestion being built | — | +20% | 31 Dec 2026 | ⏳ pipeline in progress |
 | T3 | GVS revenue /mo | Omni access granted — ingestion being built | — | +50% | 31 Dec 2026 | ⏳ pipeline in progress |
 | T4 | Edenvale revenue /mo | Omni access granted — ingestion being built | — | +60% | 31 Dec 2026 | ⏳ pipeline in progress |
