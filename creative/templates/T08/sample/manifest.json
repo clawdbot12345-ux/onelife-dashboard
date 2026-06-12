@@ -1,25 +1,36 @@
 {
   "templateId": "T08",
   "template": "GBP offer post",
-  "generatedAt": "2026-06-12T19:50:14Z",
+  "generatedAt": "2026-06-12T20:33:44Z",
   "sizes": [
     "1200x900"
   ],
   "sampleFiles": [
     "creative/templates/T08/sample/t08-gbp-offer-post.jpg"
   ],
-  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
   "baseImages": [
-    "creative/templates/_assets/generated-bases/store-online.png"
+    "creative/templates/_assets/shopify-packshots/buffered-c-90-cutout.png"
   ],
   "copySlots": [
     "storeName",
     "offer",
     "validDates",
-    "cta"
+    "product",
+    "cta",
+    "disclaimer"
   ],
   "notes": [
-    "Per-store variant slots for Google Business Profile posts."
+    "Per-store variant slots for Google Business Profile posts, rendered in the cinematic product-offer style."
   ],
-  "secretScan": "No credentials, tokens, customer data, or account access material included."
+  "secretScan": "No credentials, tokens, customer data, or account access material included.",
+  "sourceProducts": [
+    {
+      "id": "buffered-c-90",
+      "title": "VIVID HEALTH - IMMUNE - Buffered C 90 Capsules",
+      "price": "R170.77",
+      "source": "https://onelife.co.za/products/vivid-health-immune-buffered-c-90-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5203.png?v=1695296559"
+    }
+  ]
 }
