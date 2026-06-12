@@ -17,6 +17,56 @@ nationwide; "health consultants" never coaches/pharmacists; 17 protocols;
 sign-off Precious. Verify every change after making it; report with evidence.
 
 ═══════════════════════════════════════════════════════════════════
+## TASK 0 — ACTIVATE + END-TO-END TEST THE AUTOMATION  🔴 DO FIRST
+═══════════════════════════════════════════════════════════════════
+GitHub only runs scheduled workflows from the DEFAULT branch. Nothing is
+live until the branch merges and the secrets exist. Then test the whole
+chain with manual dispatches, in this exact order.
+
+**0.1 Merge the branch.** Mark PR #10 (branch
+`claude/onelife-health-review-lwvi3-c3yry2`) ready-for-review and merge it
+to the default branch. It contains only additive docs, scripts and
+workflows — no theme or storefront code. If you lack merge rights, hand
+the owner the PR link as the single blocking action.
+
+**0.2 Secrets & variables** (GitHub → Settings → Secrets and variables →
+Actions):
+- Secrets: confirm `KLAVIYO_API_KEY`; add `SHOPIFY_CLIENT_ID`,
+  `SHOPIFY_CLIENT_SECRET`; add `ANTHROPIC_API_KEY` (the owner has the key
+  — if it isn't already set, output a one-line instruction telling the
+  owner exactly where to paste it; do not ask the owner to send the key
+  through chat).
+- Variables: `EMAIL_AUTOMATION_ENABLED` = `true`;
+  `ARTICLE_WRITER_MODEL` = the model id the owner specifies (they have
+  chosen their writer model; ask them for the exact id if unset).
+
+**0.3 The end-to-end test, in order (Actions tab → Run workflow):**
+1. **"Monthly Article Writer (Claude)"** → verify it opens a PR titled
+   "Monthly Apothecary articles: …" containing 4 new files in
+   content/queue/, products verified. LEAVE THE PR UNMERGED for the owner
+   to review — its existence is the pass.
+2. **"Monday Blog Publish"** → verify: (a) newest queue article is LIVE at
+   onelife.co.za/blogs/health-wellness-hub/<slug> with the topic banner
+   showing on-page AND as featured image in the blog listing; (b) a
+   Klaviyo campaign exists for it, design-system styled, audience S3MAsK,
+   scheduled next morning 09:00 SAST; (c) the repo got a bot commit moving
+   the file to content/published/ and updating scripts/.digest_state.json.
+3. **"Tuesday Education Email"** → verify it logs a SKIP (the publisher
+   already handled this article) — the skip IS the pass; a duplicate
+   campaign is a fail.
+4. **"Friday Product Email"** → verify a "[AUTO] Friday …" campaign exists
+   in Klaviyo, design-system styled, S3MAsK audience, scheduled for the
+   coming Friday 09:00 SAST.
+5. Let the scheduled sends GO OUT — do not cancel them. Report all
+   campaign IDs, the live article URL, and screenshots of one rendered
+   email preview from Klaviyo.
+
+The automation map after this task (the only human steps are starred):
+Claude writes monthly → *owner merges article PR* → Monday robot publishes
++ schedules Tuesday email → Wednesday robot schedules Friday email → flows
+run always-on → *owner glances at scheduled campaigns when curious*.
+
+═══════════════════════════════════════════════════════════════════
 ## TASK 1 — REVIEWS ENGINE: activate the dormant Judge.me install  🔴
 ═══════════════════════════════════════════════════════════════════
 Judge.me is ALREADY INSTALLED but dormant — PDPs show "No reviews" and no
@@ -92,21 +142,10 @@ Klaviyo UI:
 3. Screenshot each flow's message list as evidence.
 
 ═══════════════════════════════════════════════════════════════════
-## TASK 3 — SWITCH ON THE EMAIL CADENCE AUTOMATION  🔴
+## TASK 3 — EMAIL CADENCE: covered by Task 0  ✅
 ═══════════════════════════════════════════════════════════════════
-The repo now has two scheduled campaign generators (see
-email-cadence-system-2026.md):
-1. GitHub repo → Settings → Secrets and variables → Actions:
-   - Confirm secret `KLAVIYO_API_KEY` exists (used by daily-refresh).
-   - Add secrets `SHOPIFY_CLIENT_ID` and `SHOPIFY_CLIENT_SECRET` (the same
-     credentials you used for Shopify API work; if you don't hold them,
-     flag for owner).
-   - Add repository **variable** `EMAIL_AUTOMATION_ENABLED` = `true`.
-2. Actions tab → run "Tuesday Education Email" manually → verify a campaign
-   appears in Klaviyo named "[AUTO] Tuesday Digest — …", scheduled, audience
-   = segment S3MAsK only. Same for "Friday Product Email".
-3. Do NOT cancel the scheduled sends — they are the system working. Report
-   both campaign IDs and their scheduled times.
+Superseded — Task 0 activates and tests the full cadence (secrets,
+variables, and all four workflow dispatches). Nothing further here.
 
 ═══════════════════════════════════════════════════════════════════
 ## TASK 4 — SUBSCRIPTIONS GROUNDWORK (no app install yet)  🟡
