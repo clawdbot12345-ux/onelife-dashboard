@@ -1,0 +1,32 @@
+name: Tuesday Education Email
+
+# Creates + schedules the weekly Apothecary digest campaign in Klaviyo.
+# Runs Monday 06:00 UTC; the campaign sends Tuesday 09:00 SAST to the
+# Engaged 90d segment (S3MAsK) — never the full list.
+# Kill switch: repo variable EMAIL_AUTOMATION_ENABLED must equal 'true'.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    if: vars.EMAIL_AUTOMATION_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create and schedule digest campaign
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+        run: python3 scripts/tuesday_blog_digest.py
+      - name: Persist dedupe state
+        run: |
+          git config user.name "onelife-bot"
+          git config user.email "bot@onelife.co.za"
+          git add scripts/.digest_state.json || true
+          git diff --cached --quiet || git commit -m "chore: record sent digest article"
+          git push || true

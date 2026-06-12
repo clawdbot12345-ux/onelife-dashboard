@@ -1,0 +1,52 @@
+name: Monthly Article Writer (Claude)
+
+# On the 1st of each month, Claude writes 4 new Apothecary articles into
+# content/queue/ following content/HOUSE-STYLE.md, verifying every product
+# against the live store, and opens a PR for human review. Merging the PR
+# is the editorial sign-off — the Monday publisher then drains the queue
+# one article per week.
+# Requires secret: ANTHROPIC_API_KEY.
+
+on:
+  schedule:
+    - cron: "0 4 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    if: vars.EMAIL_AUTOMATION_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are writing for One Life Health's Apothecary blog. Read
+            content/HOUSE-STYLE.md and follow it exactly — voice (Precious,
+            30 years behind the Centurion counter), structure, brand facts,
+            and the frontmatter format from scripts/publish_blog.py.
+
+            Task: write 4 NEW articles into content/queue/ named
+            YYYY-MM-topic-slug.md.
+            1. First check content/published/ and content/queue/ and the
+               live blog feed (https://onelife.co.za/blogs/health-wellness-hub.atom)
+               so you never repeat a recent topic.
+            2. Choose seasonally relevant topics for South Africa for next
+               month (check the date), spread across different health goals.
+            3. Every product in frontmatter MUST be real, in stock, and
+               linkable: verify each URL returns 200 at
+               https://onelife.co.za/products/<handle> (use curl). Never
+               invent handles or prices — pull them from the product JSON
+               at <product-url>.json. 2–3 products per article.
+            4. Supplements "support", never "cure" or "treat". Include one
+               honest "when NOT to bother" section per article.
+            5. Open a pull request titled "Monthly Apothecary articles:
+               <month>" with the 4 files and a one-line summary of each.
+          # Model is owner-controlled via repo variable ARTICLE_WRITER_MODEL
+          # (Settings -> Secrets and variables -> Actions -> Variables).
+          claude_args: "--model ${{ vars.ARTICLE_WRITER_MODEL || 'claude-opus-4-8' }} --allowedTools Bash(curl:*),Read,Write,Glob,Grep"

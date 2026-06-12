@@ -201,6 +201,46 @@ def md_to_html(md_body):
     return '\n'.join(html_out)
 
 # ─── Shopify: publish blog article ───
+# ─── Topic banner (mirrors the theme's article keyword→topic map) ───
+TOPIC_KEYWORDS = [
+    ("magnesium", "magnesium"), ("omega", "omega3"), ("fish oil", "omega3"),
+    ("vitamin d", "vitamind"), ("ashwagandha", "ashwagandha"),
+    ("collagen", "collagen"), ("probiotic", "probiotics"), ("sleep", "sleep"),
+    ("insomnia", "sleep"), ("stress", "stress"), ("anxiety", "stress"),
+    ("immun", "immunity"), ("winter", "immunity"), ("gut", "gut"),
+    ("bloat", "gut"), ("glp-1", "glp1"), ("glp1", "glp1"), ("ozempic", "glp1"),
+    ("berberine", "glp1"), ("energy", "energy"), ("fatigue", "energy"),
+    ("joint", "joints"), ("arthrit", "joints"), ("skin", "skin"),
+    ("hair", "skin"), ("hormon", "hormones"), ("menopause", "hormones"),
+    ("pcos", "hormones"),
+]
+
+def topic_banner_url(fm):
+    """Find the current CDN URL of the matching topic banner by extracting
+    any banner URL from the newest live article, then swapping the slug."""
+    text = (fm.get("title", "") + " " + fm.get("excerpt", "")).lower()
+    topic = "general"
+    for kw, slug in TOPIC_KEYWORDS:
+        if kw in text:
+            topic = slug
+            break
+    try:
+        with urllib.request.urlopen("https://onelife.co.za/blogs/health-wellness-hub.atom", timeout=30) as r:
+            feed = r.read().decode("utf-8", errors="ignore")
+        m = re.search(r'<link[^>]*href="(https://onelife\.co\.za/blogs/[^"]+)"', feed)
+        if not m:
+            return None
+        with urllib.request.urlopen(m.group(1), timeout=30) as r:
+            html = r.read().decode("utf-8", errors="ignore")
+        m = re.search(r'src="([^"]*onelife-article-topic-)[a-z0-9]+(-1600\.webp)[^"]*"', html)
+        if not m:
+            return None
+        url = m.group(1) + topic + m.group(2)
+        return "https:" + url if url.startswith("//") else url
+    except Exception:
+        return None
+
+
 def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
     if not SHOPIFY_TOKEN:
         print("  ⚠ SHOPIFY_ADMIN_TOKEN not set — skipping Shopify publish", file=sys.stderr)
@@ -233,12 +273,12 @@ def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
         "article": {
             "title": fm.get("title"),
             # Default matches the existing Onelife blog convention
-            "author": fm.get("author", "Your Health Store Companion"),
+            "author": fm.get("author", "Precious — One Life Health Consultant"),
             "body_html": md_to_html(body_md),
             "handle": fm.get("slug"),
             "summary_html": fm.get("excerpt", ""),
             "tags": fm.get("tags", "wellness,supplements,evidence-based"),
-            "published": False,  # draft first for safety
+            "published": os.environ.get("PUBLISH_LIVE", "").lower() == "true",  # workflow publishes live; manual runs stay draft
         }
     }
     url = f"https://{SHOPIFY_STORE}/admin/api/{SHOPIFY_API_VERSION}/blogs/{blog_id}/articles.json"
@@ -261,20 +301,23 @@ def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
             print(f"  ✓ Shopify article created (draft): {article_id}", file=sys.stderr)
             print(f"    URL: {article_url}", file=sys.stderr)
 
-            # Auto-fetch and attach a hero image via Openverse
-            image_query = fm.get("image_query") or fm.get("tags", "").replace(",", " ") or fm.get("title", "")
+            # Attach the matching Apothecary topic banner as featured image
+            # (theme asset /t/NN/ paths change every publish, so the slug is
+            # swapped into a banner URL extracted from a live article at runtime)
             try:
-                from fetch_blog_image import fetch_and_attach
-                print(f"  → fetching image for query: {image_query[:60]}", file=sys.stderr)
-                ok, result = fetch_and_attach(article_id, image_query, alt_text=fm.get("title", ""))
-                if ok:
-                    print(f"  ✓ Image attached: {result}", file=sys.stderr)
-                else:
-                    print(f"  ⚠ Image skipped: {result}", file=sys.stderr)
-            except ImportError:
-                print(f"  ⚠ fetch_blog_image module not found — skipping image", file=sys.stderr)
+                banner = topic_banner_url(fm)
+                if banner:
+                    upd = {"article": {"id": article_id, "image": {"src": banner, "alt": fm.get("title", "")}}}
+                    u2 = f"https://{SHOPIFY_STORE}/admin/api/{SHOPIFY_API_VERSION}/blogs/{blog_id}/articles/{article_id}.json"
+                    r2 = urllib.request.Request(u2, data=json.dumps(upd).encode(),
+                        headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN,
+                                 "content-type": "application/json", "accept": "application/json"},
+                        method="PUT")
+                    with urllib.request.urlopen(r2, timeout=60):
+                        pass
+                    print(f"  ✓ Topic banner attached as featured image", file=sys.stderr)
             except Exception as e:
-                print(f"  ⚠ Image fetch failed: {e} — skipping", file=sys.stderr)
+                print(f"  ⚠ Banner attach failed: {e} — article has no featured image", file=sys.stderr)
 
             return article_url
     except urllib.error.HTTPError as e:
@@ -302,66 +345,63 @@ def klaviyo_post(path, body):
         return None
 
 def render_email_html(fm, blog_url, campaign_slug):
-    """Build email HTML matching Onelife's actual brand voice (NAD+ template style).
-
-    Style reference: the winning NAD+ campaign (R1,770 revenue) uses:
-    - Dark green #1B5E20 header with Onelife logo
-    - White content card
-    - Short H1 in dark green
-    - 2 short paragraphs of intro
-    - Green CTA button "Read the full guide →"
-    - Simple product list (no badges, no prices — just bold name + description)
-    - "Shop [category]" catch-all link
-    - Green footer with stores + delivery info
-    """
+    """2026 design system shell — matches the Klaviyo flow templates:
+    620px card on #f4f1ea, #1b4332 logo header + accent bar, topic banner
+    hero, Georgia serif h1, Precious voice, espresso footer + unsubscribe."""
     products = fm.get("products", []) or []
+    tints = [("#d8f3ea", "#0f766e"), ("#fdeac1", "#92400e"), ("#e7eaff", "#4338ca")]
     products_html = ""
     for i, p in enumerate(products):
         prod_url = utm_url(p.get("url", "#"), campaign_slug, f"product-{i+1}")
-        is_last = i == len(products) - 1
-        border = "" if is_last else "border-bottom:1px solid #e5e7eb;"
+        bg, accent = tints[i % len(tints)]
+        badge = p.get("badge", "")
+        badge_html = f'<p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:{accent};font-weight:bold;">{badge}</p>' if badge else ""
+        price = p.get("price", "")
+        price_html = f' <span style="color:{accent};font-weight:800;">· {price}</span>' if price else ""
         products_html += f'''
-<tr><td style="padding:14px 0;{border}"><a href="{prod_url}" style="color:#1B5E20;text-decoration:none;font-weight:700;">{p.get('name','')}</a><br/><span style="color:#4b5563;">{p.get('blurb','')}</span></td></tr>'''
+<tr><td style="padding:16px 16px 14px;background:{bg};border-radius:12px;">
+{badge_html}<p style="margin:0 0 6px;font-size:16px;font-weight:bold;color:#1a1a1a;"><a href="{prod_url}" style="color:#1a1a1a;text-decoration:none;">{p.get("name", "")}</a>{price_html}</p>
+<p style="margin:0;font-size:13px;line-height:1.5;color:#374151;">{p.get("blurb", "")} <a href="{prod_url}" style="color:{accent};font-weight:bold;">Shop →</a></p>
+</td></tr>
+<tr><td style="height:10px;font-size:0;">&nbsp;</td></tr>'''
 
     blog_cta = utm_url(blog_url, campaign_slug, "blog-cta")
-    shop_collection_url = fm.get("shop_collection_url", "https://onelife.co.za/collections/all")
-    shop_cta = utm_url(shop_collection_url, campaign_slug, "shop-collection")
-    shop_label = fm.get("shop_label", "Shop all supplements")
-    category_heading = fm.get("category_heading", "Top picks")
-    intro_p1 = fm.get("intro_p1", fm.get("excerpt", ""))
-    intro_p2 = fm.get("intro_p2", "")
+    intro = fm.get("intro_p1", fm.get("excerpt", ""))
+    banner = topic_banner_url(fm) or "https://d3k81ch9hvuctc.cloudfront.net/company/S86r7e/images/d45bbf5c-fb99-44cf-aa2b-d0a22e40dafd.jpeg"
+    hero_html = f'<tr><td><a href="{blog_cta}"><img alt="From The Apothecary journal" src="{banner}" style="display:block;width:100%;height:auto;" width="620"/></a></td></tr>'
 
     return f'''<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/></head>
-<body style="margin:0;padding:0;background:#f3f7f3;font-family:Arial,sans-serif;color:#1f2937;">
-<table cellpadding="0" cellspacing="0" role="presentation" style="background:#f3f7f3;padding:24px 0;" width="100%">
-<tr><td align="center">
-<table cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;background:#ffffff;border-radius:8px;overflow:hidden;" width="600">
-<tr><td style="background:#1B5E20;padding:18px 24px;text-align:center;">
-  <img alt="Onelife Health" src="https://onelife.co.za/cdn/shop/files/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png?v=1671450106" style="display:inline-block;max-width:180px;height:auto;" width="180"/>
-</td></tr>
-<tr><td style="padding:24px;">
-<p style="margin:0 0 10px;color:#4b5563;font-size:14px;">Preview text: {fm.get('preview','')}</p>
-<h1 style="margin:0 0 12px;font-size:25px;color:#1B5E20;">{fm.get('title','')}</h1>
-<p style="margin:0 0 12px;line-height:1.7;">{intro_p1}</p>
-{f'<p style="margin:0 0 18px;line-height:1.7;">{intro_p2}</p>' if intro_p2 else ''}
-<a href="{blog_cta}" style="display:inline-block;background:#1B5E20;color:#fff;text-decoration:none;padding:12px 20px;border-radius:6px;font-weight:700;">Read the full guide →</a>
-<h2 style="margin:28px 0 12px;font-size:20px;color:#1B5E20;">{category_heading}</h2>
-<table cellpadding="0" cellspacing="0" role="presentation" style="border-top:1px solid #e5e7eb;" width="100%">{products_html}
+<html><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>{fm.get("title", "")}</title></head>
+<body style="margin:0;padding:0;background:#f4f1ea;font-family:Arial,Helvetica,sans-serif;color:#374151;">
+<table cellpadding="0" cellspacing="0" role="presentation" style="background:#f4f1ea;padding:28px 0;" width="100%"><tr><td align="center">
+<table cellpadding="0" cellspacing="0" role="presentation" style="max-width:620px;background:#ffffff;border-radius:12px;overflow:hidden;" width="620">
+<tr><td style="background:#1b4332;padding:22px 40px;text-align:center;">
+<img alt="One Life Health" src="https://onelife.co.za/cdn/shop/files/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png?v=1671450106" style="display:block;margin:0 auto;max-width:130px;height:auto;" width="130"/></td></tr>
+<tr><td style="height:4px;background:#2d6a4f;font-size:0;line-height:0;">&nbsp;</td></tr>
+{hero_html}
+<tr><td style="padding:36px 40px 8px;">
+<p style="margin:0 0 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;font-weight:bold;">From the Apothecary journal</p>
+<h1 style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.2;color:#1b4332;font-weight:normal;">{fm.get("title", "")}</h1>
+<p style="margin:0 0 22px;font-size:15px;line-height:1.65;">Hi {{{{ first_name|default:'there' }}}} — Precious here. {intro}</p>
+<table cellpadding="0" cellspacing="0" role="presentation" width="100%"><tr><td align="center" style="padding:0 0 24px;">
+<a href="{blog_cta}" style="display:inline-block;background:#1b4332;color:#ffffff;padding:14px 30px;border-radius:10px;font-size:15px;font-weight:bold;text-decoration:none;">Read the full article →</a>
+</td></tr></table>
+<table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 0 14px;" width="100%">
+{products_html}
 </table>
-<p style="margin:18px 0 0;"><a href="{shop_cta}" style="color:#1B5E20;font-weight:700;text-decoration:none;">{shop_label}</a></p>
-</td></tr>
-<tr><td style="padding:18px 24px;background:#f9fafb;color:#6b7280;font-size:12px;line-height:1.6;">
-Onelife Health stores: Centurion | Glen Village, Faerie Glen | Edenvale<br/>
-Free delivery over R900 (Gauteng) | R1,400 (nationwide)<br/>
-<a href="{{{{ unsubscribe }}}}" style="color:#6b7280;">Unsubscribe</a>
-</td></tr>
-</table>
-</td></tr>
-</table>
-</body>
-</html>'''
+<table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 0 24px;" width="100%">
+<tr><td style="padding:16px 20px;background:#f1f5f1;border-radius:12px;text-align:center;">
+<p style="margin:0;font-size:13.5px;line-height:1.7;color:#374151;">🚚 Free delivery over R400 nationwide · 🏪 Collect free at Centurion, Glen Village or Edenvale</p>
+</td></tr></table>
+<p style="margin:0 0 6px;font-size:13.5px;line-height:1.6;color:#555;">Questions about anything in the article? <a href="https://wa.me/27713744910?text=Hi%20Precious%2C%20I%20read%20the%20article%20%E2%80%94%20quick%20question" style="color:#1b4332;font-weight:bold;">WhatsApp me</a> — free, no pressure.</p>
+<p style="margin:20px 0 4px;font-size:14px;">— Precious</p>
+<p style="margin:0 0 28px;font-size:12px;color:#888;">One Life Health Consultant · Centurion</p></td></tr>
+<tr><td style="background:#14291e;padding:20px 40px;text-align:center;">
+<p style="margin:0 0 4px;font-family:Georgia,serif;font-size:16px;color:#ffffff;">A real apothecary. Family-owned since 1996.</p>
+<p style="margin:0;font-size:11px;color:#9db8a8;">Centurion · Glen Village · Edenvale · Free delivery over R400 nationwide</p>
+<p style="margin:12px 0 0;font-size:11px;color:#9db8a8;">{{% unsubscribe 'Unsubscribe' %}} · <a href="https://onelife.co.za" style="color:#9db8a8;">onelife.co.za</a></p></td></tr>
+</table></td></tr></table></body></html>'''
+
 
 def render_email_text(fm, blog_url, campaign_slug):
     products = fm.get("products", []) or []
@@ -497,7 +537,7 @@ def publish_to_klaviyo(fm, blog_url):
 
     # Create campaign
     send_offset = int(fm.get("send_offset_days", 2))
-    list_id = fm.get("campaign_segment", "Xrk5jD")
+    list_id = fm.get("campaign_segment", "S3MAsK")  # default: Engaged 90d, not full list (audit 2026-06-10)
     campaign_body = {
         "data": {
             "type": "campaign",
@@ -520,9 +560,9 @@ def publish_to_klaviyo(fm, blog_url):
                             "content": {
                                 "subject": fm.get("subject", fm.get("title", "New from Onelife")),
                                 "preview_text": fm.get("preview", fm.get("excerpt", "")[:140]),
-                                "from_email": "info@onelife.co.za",
-                                "from_label": "Onelife Health",
-                                "reply_to_email": "info@onelife.co.za",
+                                "from_email": "hello@onelife.co.za",
+                                "from_label": "Precious at One Life Health",
+                                "reply_to_email": "hello@onelife.co.za",
                             }
                         }
                     }]
