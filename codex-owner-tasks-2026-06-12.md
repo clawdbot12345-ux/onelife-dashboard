@@ -3,9 +3,17 @@
 Repo: `clawdbot12345-ux/onelife-dashboard` · branch: `claude/onelife-health-review-lwvi3-c3yry2`
 Store: onelife.co.za (Shopify admin: onelifehealth.myshopify.com) · Klaviyo account S86r7e
 
-Mission: initiate every remaining revenue-blocking task that has been waiting
-on the owner. You have browser + admin access; do everything below except the
-clearly marked OWNER-ONLY steps, and produce the completion report at the end.
+Mission: the owner has authorized you to execute this file END TO END —
+do not stop to ask permission between tasks; only the clearly marked
+OWNER-ONLY steps are out of scope. You have browser + admin access on this
+machine. Produce the completion report at the end.
+
+ACCESS PROTOCOL: all GitHub steps (merging PR #10, secrets, variables,
+running workflows) happen on github.com in the browser and require an
+account with ADMIN rights on this repo. If you hit a login wall or a
+permissions error at any point, PAUSE and ask the owner to log into
+GitHub on this machine — then continue. Same rule for Shopify or Klaviyo
+sessions if they have expired.
 Work the tasks IN THIS ORDER — it is sorted by revenue impact.
 NOTE (owner decision 2026-06-12): payment gateways (Payflex/PayJustNow/Ozow)
 are DEFERRED — do not install or configure any payment provider in this run.
@@ -23,22 +31,22 @@ GitHub only runs scheduled workflows from the DEFAULT branch. Nothing is
 live until the branch merges and the secrets exist. Then test the whole
 chain with manual dispatches, in this exact order.
 
-**0.1 Merge the branch.** Mark PR #10 (branch
-`claude/onelife-health-review-lwvi3-c3yry2`) ready-for-review and merge it
-to the default branch. It contains only additive docs, scripts and
-workflows — no theme or storefront code. If you lack merge rights, hand
-the owner the PR link as the single blocking action.
+**0.1 Merge the branch.** PR #10 (branch
+`claude/onelife-health-review-lwvi3-c3yry2`) is already marked ready for
+review — merge it to the default branch. It contains only additive docs,
+scripts and workflows — no theme or storefront code. If GitHub blocks the
+merge, apply the ACCESS PROTOCOL above (ask the owner to log in), then
+merge.
 
 **0.2 Secrets & variables** (GitHub → Settings → Secrets and variables →
 Actions):
 - Secrets: confirm `KLAVIYO_API_KEY`; add `SHOPIFY_CLIENT_ID`,
-  `SHOPIFY_CLIENT_SECRET`; add `ANTHROPIC_API_KEY` (the owner has the key
-  — if it isn't already set, output a one-line instruction telling the
-  owner exactly where to paste it; do not ask the owner to send the key
-  through chat).
+  `SHOPIFY_CLIENT_SECRET`; add `ANTHROPIC_API_KEY` — the owner will hand
+  you the key directly; paste it into the GitHub secret field and never
+  echo it into logs, files, commits, or your report.
 - Variables: `EMAIL_AUTOMATION_ENABLED` = `true`;
-  `ARTICLE_WRITER_MODEL` = the model id the owner specifies (they have
-  chosen their writer model; ask them for the exact id if unset).
+  `ARTICLE_WRITER_MODEL` = the model id the owner gives you (they have
+  chosen their writer model).
 
 **0.3 The end-to-end test, in order (Actions tab → Run workflow):**
 1. **"Monthly Article Writer (Claude)"** → verify it opens a PR titled
