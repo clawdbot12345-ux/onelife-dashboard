@@ -9,7 +9,7 @@ Prerequisites tracking:
 - [ ] Phase 0 founder interview — `interviews/FOUNDER.md` (questions sent, awaiting answers)
 - [ ] Phase 2 baselines signed off — `approvals/granted/baselines.flag`
 - [ ] Phase 2 full-funnel audit doc (building on growth-plan-2026-06.md — most known issues already quantified and live-verified)
-- [ ] Phase 2 product matrix — `research/PRODUCT_MATRIX.md` (GP% column blocked on Omni)
+- [x] Phase 2 product matrix v0.1 — `research/PRODUCT_MATRIX.md` (2026-06-12, online-only; v1.0 when Omni GP%/store data joins)
 
 Required sections when written (per GROWTH_ENGINE.md):
 1. Positioning + one-sentence brand promise + messaging hierarchy
