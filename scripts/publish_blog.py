@@ -216,30 +216,23 @@ TOPIC_KEYWORDS = [
     ("pcos", "hormones"),
 ]
 
-def topic_banner_url(fm):
-    """Find the current CDN URL of the matching topic banner by extracting
-    any banner URL from the newest live article, then swapping the slug."""
+# Permanent Shopify Files URLs (uploaded 2026-06-12) — these survive theme
+# publishes and deletions, unlike /cdn/shop/t/NN/assets/ theme-asset URLs.
+BANNER_FILES_BASE = "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/onelife-article-topic-{slug}-1600.jpg"
+
+def topic_for(fm):
     text = (fm.get("title", "") + " " + fm.get("excerpt", "")).lower()
-    topic = "general"
     for kw, slug in TOPIC_KEYWORDS:
         if kw in text:
-            topic = slug
-            break
-    try:
-        with urllib.request.urlopen("https://onelife.co.za/blogs/health-wellness-hub.atom", timeout=30) as r:
-            feed = r.read().decode("utf-8", errors="ignore")
-        m = re.search(r'<link[^>]*href="(https://onelife\.co\.za/blogs/[^"]+)"', feed)
-        if not m:
-            return None
-        with urllib.request.urlopen(m.group(1), timeout=30) as r:
-            html = r.read().decode("utf-8", errors="ignore")
-        m = re.search(r'src="([^"]*onelife-article-topic-)[a-z0-9]+(-1600\.webp)[^"]*"', html)
-        if not m:
-            return None
-        url = m.group(1) + topic + m.group(2)
-        return "https:" + url if url.startswith("//") else url
-    except Exception:
-        return None
+            return slug
+    return "general"
+
+def topic_banner_url(fm):
+    """Resolve the article's hero banner. Primary: the permanent Files CDN
+    map (deterministic, can't fail). The old runtime page-scrape is gone —
+    it grabbed the feed's self-link instead of an article and silently
+    returned None, which shipped an imageless article on 2026-06-12."""
+    return BANNER_FILES_BASE.format(slug=topic_for(fm))
 
 
 def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
@@ -279,7 +272,7 @@ def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
             "handle": fm.get("slug"),
             "summary_html": fm.get("excerpt", ""),
             "tags": fm.get("tags", "wellness,supplements,evidence-based"),
-            "published": os.environ.get("PUBLISH_LIVE", "").lower() == "true",  # workflow publishes live; manual runs stay draft
+            "published": False,  # ALWAYS draft first; goes live only after the featured image is attached and verified
         }
     }
     url = f"https://{SHOPIFY_STORE}/admin/api/{SHOPIFY_API_VERSION}/blogs/{blog_id}/articles.json"
@@ -302,23 +295,31 @@ def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
             print(f"  ✓ Shopify article created (draft): {article_id}", file=sys.stderr)
             print(f"    URL: {article_url}", file=sys.stderr)
 
-            # Attach the matching Apothecary topic banner as featured image
-            # (theme asset /t/NN/ paths change every publish, so the slug is
-            # swapped into a banner URL extracted from a live article at runtime)
+            # HARD GATE (added after the 2026-06-12 imageless-article incident):
+            # attach the topic banner, VERIFY Shopify accepted it, and only
+            # then flip the article live. No image => stays draft => the
+            # workflow fails loudly and the queue file is NOT archived.
+            go_live = os.environ.get("PUBLISH_LIVE", "").lower() == "true"
+            banner = topic_banner_url(fm)
+            upd = {"article": {"id": article_id,
+                               "image": {"src": banner, "alt": fm.get("title", "")},
+                               "published": go_live}}
+            u2 = f"https://{SHOPIFY_STORE}/admin/api/{SHOPIFY_API_VERSION}/blogs/{blog_id}/articles/{article_id}.json"
+            r2 = urllib.request.Request(u2, data=json.dumps(upd).encode(),
+                headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN,
+                         "content-type": "application/json", "accept": "application/json"},
+                method="PUT")
             try:
-                banner = topic_banner_url(fm)
-                if banner:
-                    upd = {"article": {"id": article_id, "image": {"src": banner, "alt": fm.get("title", "")}}}
-                    u2 = f"https://{SHOPIFY_STORE}/admin/api/{SHOPIFY_API_VERSION}/blogs/{blog_id}/articles/{article_id}.json"
-                    r2 = urllib.request.Request(u2, data=json.dumps(upd).encode(),
-                        headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN,
-                                 "content-type": "application/json", "accept": "application/json"},
-                        method="PUT")
-                    with urllib.request.urlopen(r2, timeout=60):
-                        pass
-                    print(f"  ✓ Topic banner attached as featured image", file=sys.stderr)
-            except Exception as e:
-                print(f"  ⚠ Banner attach failed: {e} — article has no featured image", file=sys.stderr)
+                with urllib.request.urlopen(r2, timeout=90) as resp2:
+                    updated = json.loads(resp2.read())["article"]
+            except urllib.error.HTTPError as e:
+                print(f"  ✗ Image attach/publish failed {e.code}: {e.read().decode()[:300]}", file=sys.stderr)
+                sys.exit(1)
+            if not (updated.get("image") or {}).get("src"):
+                print("  ✗ Shopify did not retain the featured image — article left as DRAFT, aborting", file=sys.stderr)
+                sys.exit(1)
+            state = "LIVE" if updated.get("published_at") else "draft"
+            print(f"  ✓ Featured image verified ({topic_for(fm)} banner) — article is {state}", file=sys.stderr)
 
             return article_url
     except urllib.error.HTTPError as e:
