@@ -67,11 +67,14 @@ TOPIC_PROTOCOL = {
 BANNER_FALLBACK = "https://d3k81ch9hvuctc.cloudfront.net/company/S86r7e/images/d45bbf5c-fb99-44cf-aa2b-d0a22e40dafd.jpeg"  # apothecary counter (Klaviyo CDN, permanent)
 
 
+BANNER_FILES_BASE = "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/onelife-article-topic-{slug}-1600.jpg"
+
 def banner_for_article(url, topic):
-    """The topic banners live in THEME assets whose /t/NN/ path changes on
-    every publish — never hardcode it. Pull the banner src straight from
-    the rendered article page; fall back to og:image, then a permanent
-    Klaviyo-hosted hero."""
+    """Primary: permanent Shopify Files URL for the topic (deterministic).
+    Fallbacks: the article page's own banner/og:image, then the Klaviyo-
+    hosted apothecary hero."""
+    if topic:
+        return BANNER_FILES_BASE.format(slug=topic)
     try:
         with urllib.request.urlopen(url, timeout=30) as r:
             html = r.read().decode("utf-8", errors="ignore")
