@@ -6,7 +6,9 @@ Generated: 2026-06-12T20:33:44Z
 
 Use `creative/templates/approved-final/` as the canonical approved June/July visual reference set.
 
-The T02/T03/T04 sample folders and `creative/templates/existing/` are superseded renderer examples. They are not the approved final creative that was sent for June/July.
+`creative/templates/existing/` now contains the real production template/master library copied from the Mac Mini source folders on 2026-06-12. The previously committed renderer approximations were moved to `creative/templates/drafts-not-approved/`.
+
+The T02/T03/T04 sample folders are still superseded renderer examples. They are not the approved final creative that was sent for June/July.
 
 This library is a sample-review gate for the 12 standing social/email templates in `codex-queue/2026-06-12_design-system-templates.md`.
 

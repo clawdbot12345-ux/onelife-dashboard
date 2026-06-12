@@ -1,62 +1,57 @@
-# Existing Template Inventory
+# Real Production Template Library
 
 Generated: 2026-06-12
 
-Correction: this folder is not the approved final June/July template direction. It contains superseded Mon/Wed/Thu renderer samples that were mistakenly treated as canonical in an earlier handoff.
+This folder now contains the genuine One Life production template/master assets located on the Mac Mini. The previously committed renderer approximations were moved to `creative/templates/drafts-not-approved/`.
 
-Use `creative/templates/approved-final/` for the approved final June/July cinematic poster packs.
+No renders were created or modified for this task. Files were copied as-is from `/Users/naadir/Documents/New project/output/` except for this manifest.
 
-This folder is kept only so Claude/Codex can inspect old variable slots and renderer mechanics if needed.
+## Source Folders Searched
 
-No credentials, customer data, API tokens, account-access material, or private analytics exports are included.
+- `/Users/naadir/Documents/New project/output/onelife-10-template-library-previews-2026-06-01/`
+- `/Users/naadir/Documents/New project/output/onelife-template-family-previews-2026-06-01/`
+- `/Users/naadir/Documents/New project/output/onelife-imagegen-improve10x-2026-06-01/`
+- `/Users/naadir/Documents/New project/output/onelife-reference-locked-ads-2026-06-01/`
+- `/Users/naadir/Documents/New project/output/onelife-week-2026-06-01-telegram-ads/`
+- `/Users/naadir/Documents/New project/output/onelife-june-2026-telegram-ad-pack/`
+- `/Users/naadir/Documents/New project/output/onelife-june-2026-drive-team-pack/`
+- `/Users/naadir/Documents/New project/output/onelife-july-2026-cinematic-pack/`
 
 ## Inventory
 
-| Existing template | Purpose / day | T-number mapping | Sizes present | Sample files | Variable slots / parameters |
-|---|---|---|---|---|---|
-| Monday Hero | Weekly Monday offer hero for social and story placements | T02 Monday Hero offer card | 1080x1080, 1080x1920 | `monday-hero/t02-monday-hero-square.jpg`, `monday-hero/t02-monday-hero-story.jpg`, plus in-store and online CTA variants | product, packshot, offer percent, was price, now price, save amount, date range, CTA variant, campaign ribbon, footer store strip, disclaimer |
-| Wednesday Vivid | Vivid Day / Vivid Wednesday brand education and product spotlight | T03 Vivid Day | 1080x1080, 1080x1920 | `vivid-wednesday/t03-vivid-day-square.jpg`, `vivid-wednesday/t03-vivid-day-story.jpg` | story line, product trio, product names, product prices, Vivid theme colors, CTA, footer store strip, disclaimer |
-| Thursday Bundle | Thursday bundle / stack offer card | T04 Bundle/Stack card | 1080x1080, 1080x1920 | `thursday-bundle/t04-bundle-stack-square.jpg`, `thursday-bundle/t04-bundle-stack-story.jpg` | bundle name, 2-3 products, packshots, item prices, bundle price, date range, CTA, theme, footer store strip, disclaimer |
+| Folder | Contents | Source | Role |
+|---|---:|---|---|
+| `template-library-10/` | 10 template preview masters plus contact sheet | `onelife-10-template-library-previews-2026-06-01/` | Main 10-template production library |
+| `template-family-previews-5/` | 5 earlier family preview masters plus contact sheet | `onelife-template-family-previews-2026-06-01/` | Earlier Mon/Wed/Thu family preview set |
+| `imagegen-improve10x-reference-run/` | 5 high-resolution reference options plus contact sheet | `onelife-imagegen-improve10x-2026-06-01/` | Reference run matching the Digestezyme and Griffonia visual direction |
+| `reference-locked-family/` | 5 locked reference ads, source backgrounds, Digestezyme cutout, source product, contact sheet, manifest | `onelife-reference-locked-ads-2026-06-01/` | Literal locked Mon/Wed/Thu reference family |
 
-## Variant Files
+## Main 10 Template Masters
 
-### Monday Hero
+| File | Template role | Parameterized elements |
+|---|---|---|
+| `template-library-10/template-01-morning-digestive-ritual.png` | Monday offer / digestive single-product hero | product packshot, product name, pack size, support copy, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-02-seasonal-botanical-airway.png` | Vivid Wednesday / botanical single-product offer | Vivid product packshot, product name, pack size, support copy, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-03-evening-wind-down-stack.png` | Vivid Wednesday / evening stack | 2-product packshots, product names, routine badge, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-04-active-recovery-studio.png` | Thursday bundle / active recovery duo | 2-product packshots, bundle headline, product line, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-05-spa-night-mineral-ritual.png` | Monday offer / mineral reset single-product hero | product packshot, product name, mineral support copy, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-06-practitioner-counter.png` | Monday offer / practitioner counter single-product hero | product packshot, product name, pack size, practitioner/benefit copy, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-07-family-wellness-pantry.png` | Thursday bundle / family pantry duo | 2-product packshots, family routine copy, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-08-winter-immunity-kitchen.png` | Monday offer / winter immunity single-product hero | product packshot, product name, seasonal copy, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-09-performance-recovery-stack.png` | Thursday bundle / performance recovery stack | 2-product packshots, bundle headline, product line, was/now/save, valid dates, icons, CTA, footer |
+| `template-library-10/template-10-luxury-botanical-apothecary.png` | Vivid Wednesday / botanical apothecary duo | 2-product packshots, product line, routine badge, was/now/save, valid dates, icons, CTA, footer |
 
-- `monday-hero/t02-monday-hero-square.jpg`
-- `monday-hero/t02-monday-hero-square-instore.jpg`
-- `monday-hero/t02-monday-hero-square-online.jpg`
-- `monday-hero/t02-monday-hero-story.jpg`
-- `monday-hero/t02-monday-hero-story-instore.jpg`
-- `monday-hero/t02-monday-hero-story-online.jpg`
+## Locked Reference Family
 
-### Wednesday Vivid
+| File | Production role | Parameterized elements |
+|---|---|---|
+| `reference-locked-family/option-01-digestezyme-reference.png` | Monday offer single-product digestive ad | product image, headline, pack size, benefit copy, was/now/save, valid dates, icon row, CTA/footer |
+| `reference-locked-family/option-02-griffonia-reference.png` | Vivid Wednesday single-product calm ad | product image, headline, pack size, benefit copy, was/now/save, valid dates, icon row, CTA/footer |
+| `reference-locked-family/option-03-allergy-control-reference.png` | Monday offer / Vivid allergy product ad | product image, headline, pack size, benefit copy, was/now/save, valid dates, icon row, CTA/footer |
+| `reference-locked-family/option-04-magnesium-reference.png` | Thursday/Monday mineral single-product ad | product image, headline, pack size, benefit copy, was/now/save, valid dates, icon row, CTA/footer |
+| `reference-locked-family/option-05-mobility-duo-reference.png` | Thursday bundle mobility duo ad | 2-product packshots, bundle headline, benefit copy, was/now/save, valid dates, icon row, CTA/footer |
 
-- `vivid-wednesday/t03-vivid-day-square.jpg`
-- `vivid-wednesday/t03-vivid-day-story.jpg`
+## Files Intentionally Not Copied
 
-### Thursday Bundle
+Some source JSON planning files include branch-level stock, transfer flags, QA paths, or send logs. Those operational exports were not copied into the repo. The image masters, contact sheets, captions, and sanitized manifests are included.
 
-- `thursday-bundle/t04-bundle-stack-square.jpg`
-- `thursday-bundle/t04-bundle-stack-story.jpg`
-
-## T-Number Reconciliation
-
-Existing equivalents already represented here:
-
-- T02 = Monday Hero.
-- T03 = Wednesday Vivid / Vivid Day.
-- T04 = Thursday Bundle / Bundle Stack.
-
-No pre-existing equivalent in this handoff inventory:
-
-- T01 Carousel master.
-- T05 Proof/review.
-- T06 Community/poll story.
-- T07 Hub VIP recruit card.
-- T08 GBP offer post.
-- T09 Email hero header.
-- T10 Back-in-stock alert.
-- T11 Education quote/myth-bust card.
-- T12 Seasonal campaign overlay.
-
-Current repo note: the later design-system work now has sample folders for T01-T12 under `creative/templates/Txx/sample/`. This `existing/` folder is intentionally limited to the standing Mon/Wed/Thu family requested by the original reconciliation brief.

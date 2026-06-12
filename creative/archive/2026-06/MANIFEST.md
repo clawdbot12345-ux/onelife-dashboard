@@ -1,34 +1,48 @@
-# June 2026 Creative Archive
+# One Life June 2026 Real Production Archive
 
 Generated: 2026-06-12
 
-This archive contains representative June Mon/Wed/Thu ad outputs requested by `codex-queue/2026-06-12_share-existing-templates.md`. Assets were copied from the current rendered template samples because there are no separate dated Mon/Wed/Thu image folders in this checkout.
+This archive replaces the previously committed renderer approximations with genuine June 2026 production assets located on the Mac Mini. No new ads were rendered for this task.
 
-No credentials, customer data, API tokens, account-access material, or private analytics exports are included.
+The previous archive contents were moved to `creative/templates/drafts-not-approved/archive-2026-06-renderer-samples-2026-06-12/`.
 
-## Representative Assets
+## Inventory
 
-| Campaign slot | Date in week-1 package | T-number | Files |
+| Folder / file | Count | Source | Notes |
 |---|---:|---|---|
-| Monday Hero: Vivid Buffered C 90s, 10% off | 2026-06-15 | T02 | `monday-hero/t02-monday-hero-square.jpg`, `monday-hero/t02-monday-hero-square-instore.jpg`, `monday-hero/t02-monday-hero-square-online.jpg`, `monday-hero/t02-monday-hero-story.jpg`, `monday-hero/t02-monday-hero-story-instore.jpg`, `monday-hero/t02-monday-hero-story-online.jpg` |
-| Wednesday Vivid: Vivid Health in-house range | 2026-06-17 | T03 | `vivid-wednesday/t03-vivid-day-square.jpg`, `vivid-wednesday/t03-vivid-day-story.jpg` |
-| Thursday Bundle: winter immune stack | 2026-06-18 | T04 | `thursday-bundle/t04-bundle-stack-square.jpg`, `thursday-bundle/t04-bundle-stack-story.jpg` |
+| `01-approved-images/` | 12 PNGs | `/Users/naadir/Documents/New project/output/onelife-june-2026-drive-team-pack/01-approved-images/` | Approved June posting-pack images |
+| `01-08-june-run/` | 2 PNGs | `creative/templates/reference/` | Original 01-08 Jun Digestezyme and Griffonia reference ads named in the urgent brief |
+| `source-runs/onelife-week-2026-06-01-telegram-ads/` | 3 files | `/Users/naadir/Documents/New project/output/onelife-week-2026-06-01-telegram-ads/` | Week-of-01-Jun Telegram ad system outputs and contact sheet |
+| `source-runs/onelife-june-2026-telegram-ad-pack/` | 15 files | `/Users/naadir/Documents/New project/output/onelife-june-2026-telegram-ad-pack/` | Local locked-template batch image outputs, captions, contact sheet |
+| `source-runs/onelife-june-2026-cinematic-proof-redo/` | 4 files | `/Users/naadir/Documents/New project/output/onelife-june-2026-cinematic-proof-redo/` | Proof redo images and contact sheet |
+| `source-runs/onelife-june-2026-cinematic-rest/` | 10 files | `/Users/naadir/Documents/New project/output/onelife-june-2026-cinematic-rest/` | Remaining June cinematic images, captions, contact sheet, QA note |
+| `june-2026-approved-contact-sheet.jpg` | 1 | `/Users/naadir/Documents/New project/output/onelife-june-2026-drive-team-pack/` | Approved June contact sheet |
+| `june-2026-captions.md` and `.html` | 2 | `/Users/naadir/Documents/New project/output/onelife-june-2026-drive-team-pack/` | Approved June captions |
+| `june-2026-posting-pack-manifest.json` | 1 | `/Users/naadir/Documents/New project/output/onelife-june-2026-drive-team-pack/` | Posting manifest without branch-stock detail |
+| `june-2026-posting-tracker.csv` | 1 | `/Users/naadir/Documents/New project/output/onelife-june-2026-drive-team-pack/` | Posting tracker |
+| `One-Life-June-2026-Team-Posting-Pack.pptx` | 1 | `/Users/naadir/Documents/New project/output/onelife-june-2026-drive-team-pack/` | Team posting deck |
 
-## Publishing Notes Included
+## Approved Image Files
 
-- `publishing-notes/week1-publishing-package.md`
-- `publishing-notes/whatsapp-week1-pack.md`
+- `01-approved-images/2026-06-03-winter-defence-duo.png`
+- `01-approved-images/2026-06-04-mineral-balance-duo.png`
+- `01-approved-images/2026-06-08-morning-energy-duo.png`
+- `01-approved-images/2026-06-10-energy-foundation.png`
+- `01-approved-images/2026-06-11-griffonia-calm.png`
+- `01-approved-images/2026-06-15-magnesium-night-reset.png`
+- `01-approved-images/2026-06-17-joint-beauty-duo.png`
+- `01-approved-images/2026-06-18-creatine-recovery.png`
+- `01-approved-images/2026-06-22-kiddies-winter-shake-duo.png`
+- `01-approved-images/2026-06-24-junior-immune-gummies.png`
+- `01-approved-images/2026-06-25-gut-reset-trio.png`
+- `01-approved-images/2026-06-29-wind-down-stack.png`
 
-## Source Paths
+## 01-08 Jun Reference Run
 
-- `creative/templates/T02/sample/`
-- `creative/templates/T03/sample/`
-- `creative/templates/T04/sample/`
-- `creative/2026-06-14_week1-publishing-package.md`
-- `creative/2026-06-14_whatsapp_week1-pack.md`
+- `01-08-june-run/cinematic-monday-offer-digestezyme.png`
+- `01-08-june-run/cinematic-vivid-wednesday-griffonia.png`
 
-## Archive Count
+## Files Intentionally Not Copied
 
-- 10 rendered image files.
-- 2 publishing/copy package files.
+Raw source JSON plans/manifests containing branch-level stock, transfer flags, QA paths, or Telegram send logs were not copied to keep private operational data out of the archive.
 

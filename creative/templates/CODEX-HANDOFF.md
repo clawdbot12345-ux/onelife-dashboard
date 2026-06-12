@@ -10,7 +10,7 @@ Use these files as the approved visual direction. They are the final June/July c
 - July 2026 approved pack: `creative/templates/approved-final/july-2026/`
 - Three-template reference screenshot: `creative/templates/approved-final/reference/approved-three-template-screenshot.jpg`
 
-Important correction: do not use `creative/templates/existing/` or `creative/templates/T02/sample/`, `T03/sample/`, `T04/sample/` as final visual references. Those are superseded renderer samples kept only for mechanical layout/debug reference.
+Important correction: `creative/templates/existing/` is now the real production template/master library copied from the Mac Mini source folders on 2026-06-12. Do not use `creative/templates/drafts-not-approved/` or `creative/templates/T02/sample/`, `T03/sample/`, `T04/sample/` as final visual references; those are superseded renderer samples kept only for audit/mechanical layout/debug reference.
 
 ## Required Workflow
 
