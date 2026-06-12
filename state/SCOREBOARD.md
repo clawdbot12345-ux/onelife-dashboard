@@ -8,7 +8,7 @@ Last updated: 2026-06-12 (engine bootstrap)
 | T2 | Centurion revenue /mo | ⛔ no Omni | — | +20% | 31 Dec 2026 | unmeasurable |
 | T3 | GVS revenue /mo | ⛔ no Omni | — | +50% | 31 Dec 2026 | unmeasurable |
 | T4 | Edenvale revenue /mo | ⛔ no Omni | — | +60% | 31 Dec 2026 | unmeasurable |
-| T5 | WhatsApp Hub members | ~400 | ~400 | 1,000+ | continuous | 🔴 not yet instrumented |
+| T5 | WhatsApp Hub members | 410 (confirmed) | 410 | 1,000+ | continuous | 🔴 exclusivity mechanic not live; engine takeover proposed |
 
 *Pending baseline-definition decision (see BASELINES.md).
 

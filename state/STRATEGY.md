@@ -15,7 +15,7 @@ Required sections when written (per GROWTH_ENGINE.md):
 1. Positioning + one-sentence brand promise + messaging hierarchy
 2. Per-target arithmetic growth model (sum of contributions ≥ 125% of each target)
 3. Channel plan with budget ask, CAC/ROAS expectations, kill criteria
-4. Store-specific plans (Edenvale stretch / GVS / Centurion flagship / Parkview launch)
+4. Store-specific plans (Edenvale stretch / GVS / Centurion flagship — Parkview cancelled 2026-06-12; Green Gate Mooikloof Apr 2027 is a strategy-horizon item, note Dis-Chem anchors that centre)
 5. Content engine spec (research-validated pillars/hooks/formats)
 6. Measurement plan (KPI tree, UTM fix as prerequisite, weekly scoreboard format)
 

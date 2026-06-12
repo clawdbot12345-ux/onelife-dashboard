@@ -3,7 +3,14 @@
 Last updated: 2026-06-12 (engine bootstrap)
 
 ## Approved budgets
-**NONE approved through the engine yet.** No engine-initiated spend until Naadir approves a month-1 envelope (NEEDS.md #4).
+| Item | Amount | Status |
+|---|---|---|
+| Month-1 engine test envelope | **R5,000** | Offered by Naadir 2026-06-12; engine recommendation sent (below); awaiting final confirm + R2k/test standing approval |
+
+**Hard GP% floor for any promotion: 25% (Naadir, 2026-06-12).** Compliance-checker and bundle math enforce this.
+
+### Engine recommendation on budget size (sent 2026-06-12)
+R5,000/month is the RIGHT number for months 1–2 — not because more wouldn't help, but because nothing measurable currently earns above the 3.48 break-even ROAS, so new money would burn like the old money. Plan: 2 × R2,000 Meta local-radius tests (Centurion + Edenvale defence) + R1,000 reserve, 2-week cycles, kill at ROAS <1.5. The bigger lever is the EXISTING R19.5k/mo (ads+agency) producing ≤R6.3k revenue — recommend UTM enforcement first, then pause/restructure what can't prove itself. Scale to R15–20k/mo in months 2–3 ONLY into channels that prove ROAS >3.5 on a test.
 
 ## Pre-existing standing spend (from data/business_config.yml — owner-maintained)
 | Line | Monthly | Attributed return (30d to 2026-06-12) |

@@ -29,7 +29,7 @@ T2–T4 are BLOCKED on Omni ERP access. T5 partially measurable.
 
 | Metric | Baseline (2026-06-12) | Source |
 |---|---|---|
-| WhatsApp Hub members | ~400 (target 1,000+) | GROWTH_ENGINE.md / Naadir to confirm current count |
+| WhatsApp Hub members | **410 (confirmed by Naadir 2026-06-12)** → target 1,000+ | interviews/FOUNDER.md. Cadence Mon/Wed/Thu but "terrible and not exclusive" — engine to take over programming |
 | Instagram followers | ~1.4K | research/COMPETITORS.md (vs FTN 118K, WW 51K) |
 | TikTok followers (@onelifehealthstore) | TBD — Naadir/pull | |
 | Branded search volume | TBD — needs Search Console access | |

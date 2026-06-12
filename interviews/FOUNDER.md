@@ -31,4 +31,16 @@ Phase 0 completes when all 16 areas are answered AND Naadir confirms approval ga
 
 ---
 ## Answers log
-(append verbatim, dated)
+
+### 2026-06-12 — Batch 1 (via chat, verbatim)
+> 1. I'm happy with 25%.
+> 2. Im happy with 5k to start with. What is the amount you think will work?
+> 3. 400+ members like 410 I think, posting is suppose to be Monday Wednesday Thursday. But it's terrible and not exclusive - I'm not happy with how it's run.
+> 4. Parkview isn't happening anymore. We looking at a brand new centre opening in 2027 called Green Gate Shopping Centre - Dorpstraat Properties https://share.google/lArg4VBwd4zizi3A9 - feel free to reference this.
+
+Interpretation recorded:
+- **Q1 (partial): hard GP% floor for promotions = 25%.** Vivid vs third-party margin split still open.
+- **Q2 (partial): month-1 envelope = R5,000**, Naadir asked for the engine's recommendation (given — see state/BUDGET.md). Standing R2k/test approval still open.
+- **Q11 (partial): WhatsApp Hub = ~410 members, Mon/Wed/Thu cadence, badly run, NOT exclusive, owner unhappy.** Engine to propose takeover of Hub programming (VIP-exclusivity mechanic is the core fix). One Life Circle status still open.
+- **Q14 (answered): Parkview CANCELLED.** New prospect: **Green Gate Shopping Centre, Garsfontein Rd, Mooikloof (Pretoria East), opening April 2027** — 15,000m² GLA, 50 shops, anchors Checkers/Woolworths/**Dis-Chem** (direct competitor in-centre — strategic flag). Leasing: Melissa Botha, Dorpstraat Properties. Source: dorpstraat.net/project/green-gate-shopping-centre/
+
