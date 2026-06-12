@@ -7,6 +7,8 @@ Mission: initiate every remaining revenue-blocking task that has been waiting
 on the owner. You have browser + admin access; do everything below except the
 clearly marked OWNER-ONLY steps, and produce the completion report at the end.
 Work the tasks IN THIS ORDER — it is sorted by revenue impact.
+NOTE (owner decision 2026-06-12): payment gateways (Payflex/PayJustNow/Ozow)
+are DEFERRED — do not install or configure any payment provider in this run.
 
 Hard rules (unchanged): never write to the live theme (duplicate → edit →
 owner publishes); do NOT touch Klaviyo Welcome Email 1; never send to the
@@ -15,31 +17,7 @@ nationwide; "health consultants" never coaches/pharmacists; 17 protocols;
 sign-off Precious. Verify every change after making it; report with evidence.
 
 ═══════════════════════════════════════════════════════════════════
-## TASK 1 — CHECKOUT PAYMENTS: initiate Payflex, PayJustNow, Ozow  🔴 #1
-═══════════════════════════════════════════════════════════════════
-Payment failure causes ~52% of lost SA online sales; BNPL lifts conversion
-20–30% (vendor-claimed) and only 16% of SA retailers offer it. Current
-checkout: cards + Payfast only.
-
-1. Shopify admin → Settings → Payments. Document what is currently enabled
-   (screenshot).
-2. From the Shopify App Store / payment provider list, begin installation of:
-   - **Payflex** (BNPL, pay-in-4)
-   - **PayJustNow** (BNPL, pay-in-3)
-   - **Ozow** (instant EFT)
-3. Complete every step possible without legal signatures: create merchant
-   accounts with store details (One Life Health, onelife.co.za, support
-   email hello@onelife.co.za), install the apps, configure sandbox/test mode.
-4. ⚠️ OWNER-ONLY: each provider requires KYC/merchant agreement (company
-   registration docs, bank details, signed agreement). STOP at that step,
-   and output for the owner a precise list per provider: the exact dashboard
-   URL, what document is needed, and the single action required.
-5. Do NOT enable any gateway live on checkout until the owner confirms KYC
-   is approved. When approved, enable + place a R20 live test order through
-   each method, then refund it.
-
-═══════════════════════════════════════════════════════════════════
-## TASK 2 — REVIEWS ENGINE: activate the dormant Judge.me install  🔴 #2
+## TASK 1 — REVIEWS ENGINE: activate the dormant Judge.me install  🔴
 ═══════════════════════════════════════════════════════════════════
 Judge.me is ALREADY INSTALLED but dormant — PDPs show "No reviews" and no
 request emails go out. This is the #1 remaining trust gap. Evidence: first
@@ -101,7 +79,7 @@ Configure ALL of the following in the Judge.me admin:
     lists — leave any "add reviewers to newsletter" option OFF.
 
 ═══════════════════════════════════════════════════════════════════
-## TASK 3 — KLAVIYO: verify/finish the Welcome + Post-Purchase wiring  🟠
+## TASK 2 — KLAVIYO: verify/finish the Welcome + Post-Purchase wiring  🔴
 ═══════════════════════════════════════════════════════════════════
 Claude's API audit cannot see flow-message template assignments. In the
 Klaviyo UI:
@@ -114,7 +92,7 @@ Klaviyo UI:
 3. Screenshot each flow's message list as evidence.
 
 ═══════════════════════════════════════════════════════════════════
-## TASK 4 — SWITCH ON THE EMAIL CADENCE AUTOMATION  🟠
+## TASK 3 — SWITCH ON THE EMAIL CADENCE AUTOMATION  🔴
 ═══════════════════════════════════════════════════════════════════
 The repo now has two scheduled campaign generators (see
 email-cadence-system-2026.md):
@@ -131,7 +109,7 @@ email-cadence-system-2026.md):
    both campaign IDs and their scheduled times.
 
 ═══════════════════════════════════════════════════════════════════
-## TASK 5 — SUBSCRIPTIONS GROUNDWORK (no app install yet)  🟡
+## TASK 4 — SUBSCRIPTIONS GROUNDWORK (no app install yet)  🟡
 ═══════════════════════════════════════════════════════════════════
 Shopify Payments is unavailable in SA and PayFast does NOT support Shopify's
 Subscriptions API, so the gateway question decides everything:
@@ -144,9 +122,9 @@ Subscriptions API, so the gateway question decides everything:
    gateway, or the Klaviyo "reminder autoship" fallback that works today).
 
 ═══════════════════════════════════════════════════════════════════
-## TASK 6 — HOUSEKEEPING (quick)  🟡
+## TASK 5 — HOUSEKEEPING (quick)  🟡
 ═══════════════════════════════════════════════════════════════════
-1. `sections/slideshow.liquid` on the next theme duplicate you make (Task 2
+1. `sections/slideshow.liquid` on the next theme duplicate you make (Task 1
    step 4): change line ~142 `data-autoplay="{% if template == 'index'
    %}false{% else %}{{ section.settings.auto_rotate }}{% endif %}"` to
    `data-autoplay="{{ section.settings.auto_rotate }}"`, then DELETE the
@@ -159,13 +137,11 @@ Subscriptions API, so the gateway question decides everything:
 ═══════════════════════════════════════════════════════════════════
 ## OWNER-ONLY LIST (output this filled-in at the end of your run)
 ═══════════════════════════════════════════════════════════════════
-1. KYC/merchant agreements for Payflex / PayJustNow / Ozow — exact links +
-   documents needed (from Task 1).
-2. Publish the next theme duplicate once Tasks 2.4 + 6.1 land on it.
-3. Phone photo shoot at all 3 stores (storefront, counter, shelves, a
+1. Publish the next theme duplicate once Tasks 1.4 + 5.1 land on it.
+2. Phone photo shoot at all 3 stores (storefront, counter, shelves, a
    consultant mid-conversation) — for store pages + About. AI store photos
    are banned: they must be real.
-4. Any credential Codex could not access (flag precisely).
+3. Any credential Codex could not access (flag precisely).
 
 ## DELIVERABLE
 One report: per task — done/blocked, evidence (IDs, screenshots, URLs),
