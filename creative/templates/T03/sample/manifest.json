@@ -1,0 +1,28 @@
+{
+  "templateId": "T03",
+  "template": "Vivid Day",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1080x1080",
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T03/sample/t03-vivid-day-square.jpg",
+    "creative/templates/T03/sample/t03-vivid-day-story.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/vivid-trio.png"
+  ],
+  "copySlots": [
+    "story",
+    "product1",
+    "product2",
+    "product3",
+    "cta"
+  ],
+  "notes": [
+    "Vivid-branded frame with in-house story and product trio slots."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
