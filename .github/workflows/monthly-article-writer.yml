@@ -50,4 +50,4 @@ jobs:
                <month>" with the 4 files and a one-line summary of each.
           # Model is owner-controlled via repo variable ARTICLE_WRITER_MODEL
           # (Settings -> Secrets and variables -> Actions -> Variables).
-          claude_args: "--model ${{ vars.ARTICLE_WRITER_MODEL || 'claude-opus-4-8' }} --allowedTools Bash(curl:*),Read,Write,Glob,Grep"
+          claude_args: "--model ${{ vars.ARTICLE_WRITER_MODEL || 'claude-opus-4-8' }} --effort high --allowedTools Bash(curl:*),Read,Write,Glob,Grep"
