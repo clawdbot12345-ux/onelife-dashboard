@@ -2,6 +2,12 @@
 
 Generated: 2026-06-12T20:33:44Z
 
+## Corrected Canonical References
+
+Use `creative/templates/approved-final/` as the canonical approved June/July visual reference set.
+
+The T02/T03/T04 sample folders and `creative/templates/existing/` are superseded renderer examples. They are not the approved final creative that was sent for June/July.
+
 This library is a sample-review gate for the 12 standing social/email templates in `codex-queue/2026-06-12_design-system-templates.md`.
 
 ## Standing Brand Frame
@@ -19,9 +25,9 @@ This library is a sample-review gate for the 12 standing social/email templates 
 | ID | Template | Sample folder |
 |---|---|---|
 | T01 | Carousel master - 6 slide roles | `creative/templates/T01/sample/` |
-| T02 | Monday Hero offer card | `creative/templates/T02/sample/` |
-| T03 | Vivid Day | `creative/templates/T03/sample/` |
-| T04 | Bundle/Stack card | `creative/templates/T04/sample/` |
+| T02 | Monday Hero offer card | Superseded renderer sample; use `creative/templates/approved-final/` for approved final visual direction |
+| T03 | Vivid Day | Superseded renderer sample; use `creative/templates/approved-final/` for approved final visual direction |
+| T04 | Bundle/Stack card | Superseded renderer sample; use `creative/templates/approved-final/` for approved final visual direction |
 | T05 | Proof/review | `creative/templates/T05/sample/` |
 | T06 | Community/poll story | `creative/templates/T06/sample/` |
 | T07 | Hub VIP recruit card | `creative/templates/T07/sample/` |

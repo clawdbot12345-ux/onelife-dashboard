@@ -2,7 +2,11 @@
 
 Generated: 2026-06-12
 
-This folder is the handoff inventory requested in `codex-queue/2026-06-12_share-existing-templates.md`. It captures the pre-existing Mon/Wed/Thu render family so Claude can reconcile it with the T01-T12 design-system spec without rebuilding standing work.
+Correction: this folder is not the approved final June/July template direction. It contains superseded Mon/Wed/Thu renderer samples that were mistakenly treated as canonical in an earlier handoff.
+
+Use `creative/templates/approved-final/` for the approved final June/July cinematic poster packs.
+
+This folder is kept only so Claude/Codex can inspect old variable slots and renderer mechanics if needed.
 
 No credentials, customer data, API tokens, account-access material, or private analytics exports are included.
 
@@ -56,4 +60,3 @@ No pre-existing equivalent in this handoff inventory:
 - T12 Seasonal campaign overlay.
 
 Current repo note: the later design-system work now has sample folders for T01-T12 under `creative/templates/Txx/sample/`. This `existing/` folder is intentionally limited to the standing Mon/Wed/Thu family requested by the original reconciliation brief.
-
