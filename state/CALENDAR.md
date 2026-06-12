@@ -1,40 +1,31 @@
-# CALENDAR — rolling 4-week content & campaign calendar
+# CALENDAR — the One Life content system (4 weeks, franchise-based)
 
-Last updated: 2026-06-12 · Strategy v1.0 approved — engine owns this calendar. Always populated 4 weeks ahead.
+v3 2026-06-12 — DECIDED by the engine. Naadir reviews output, vetoes by exception. Mon/Wed/Thu offer visuals always come from the approved monthly packs.
 
-## Standing automation (runs regardless — do not duplicate)
-- Tue 09:00 — Education digest email · Fri 09:00 — Product feature email (both Engaged 90d) · 21 Klaviyo flows always-on.
+## The franchises (ownable shows, not generic posts)
+| Franchise | Day | What it is | Why nobody can copy it |
+|---|---|---|---|
+| **HERO DROP** | Mon | Approved-pack offer ad everywhere; Hub got it Sunday night + Hub-only redemption (till phrase "HUB" / code HUB10) | Speed + Hub mechanic |
+| **THE HONEST LABEL** | Tue | Carousel franchise: one trendy ingredient decoded — what it actually does, what it doesn't, who shouldn't bother. Brutal honesty inside SAHPRA lines. | Chains can't be honest (they must sell everything); honesty IS the premium positioning for a sceptical 35–50 customer |
+| **MADE BY US** | Wed | Vivid Day: in-house manufacturing story — the machines, the capsules, the person who packed it + pack ad | One Life owns a factory story no reseller has |
+| **STACK OF THE WEEK** | Thu | Bundle ad + "what your store actually buys": real Omni basket data turned into content ("Centurion's most re-bought trio this winter") | Competitors don't publish real data; we have Omni |
+| **ASK ONE LIFE** | Fri | Staff answer ONE real customer question (from DMs/till) on camera/card. Proof pillar + drives DMs (the Hub CTA loop) | The expertise moat, personified |
+| **SYMPTOM SATURDAY** | Sat | The proven symptom-first carousel engine (tired/sleep/gut/hormones) | Already validated format |
+| **SUNDAY SYSTEM** | Sun | Blog publishes + Hub gets Monday's drop early + weekly sprint & report | The cadence itself |
 
-## Channel reality flags
-- ⚠ POSTING VIA CODEX — rights granted, but TWO gates before anything publishes: (1) **account access**: Naadir must log Codex's Mac Mini browser into WhatsApp Web/FB/IG/TikTok (nothing can post until then — Sunday's Hub drop is manual paste otherwise); (2) **design review**: first sample of every template needs Naadir's approval (`codex-queue/2026-06-12_design-system-templates.md`). Week-1 carousels REJECTED in QA (vector placeholders, not image-model renders) — re-render in progress. Approved templates become standing.
-- 💰 All offers: GP ≥25% floor; discounts >10% need Naadir approval (none scheduled below); Hub gets every offer 24–48h first — always.
+## WEEK 1 — 15–21 Jun (transition week; carousels pending re-render)
+Mon 15 HERO DROP: Magnesium Night Reset (pack) · Tue 16 blog digest auto · Wed 17 MADE BY US: Joint Beauty Duo (pack) + first factory-story post (copy ready, photos = Codex brief) · Thu 18 STACK: Creatine Recovery (pack) · Fri 19 ASK ONE LIFE #1 (needs 1 store photo — runs text-only if none) · Sat 20 SYMPTOM SAT: sleep carousel (if re-render lands) · Sun 21 blog: vitamin-d-joburg-winter + W2 Hub drop + sprint.
 
----
+## WEEK 2 — 22–28 Jun
+Mon 22 HERO: Kiddies Winter Shake Duo (pack) + **Hub-only deal v2 launches** (Omni top-seller, code HUB10) · Tue 23 HONEST LABEL #1: "Collagen — what it can and can't do" · Wed 24 MADE BY US: Junior Immune Gummies (pack) + capsule-room story #2 · Thu 25 STACK: Gut Reset Trio (pack) + Omni data angle ("the winter gut trio GVS keeps re-buying") · Fri 26 ASK ONE LIFE #2 · Sat 27 SYMPTOM SAT: "Wired at 11pm, dead at 7am" · Sun 28 blog: winter-immunity-stack + sprint.
 
-## WEEK 1 — 15–21 Jun · Theme: **Winter Immunity** (SA winter peak)
-**RECONCILED 2026-06-12 with the approved June posting pack (`creative/templates/approved-final/june-2026/`) — Mon/Wed/Thu visuals and offers come from the pack; engine items wrap around them.**
-| Day | Item | Source |
-|---|---|---|
-| Sun 14 | VIP early access: Monday Hero (**Magnesium Night Reset** per approved pack) | Hub pack v2 (below) |
-| Mon 15 | Monday Hero live: Magnesium Night Reset | approved image `2026-06-15-magnesium-night-reset.png` + captions.md; Klaviyo campaign (Engaged 90d) |
-| Tue 16 | Blog digest (auto) + Carousel 1: "Always tired by 2pm?" (re-render pending) | codex-queue done brief |
-| Wed 17 | Vivid Day: **Joint Beauty Duo** | approved image `2026-06-17-joint-beauty-duo.png` |
-| Thu 18 | Bundle: **Creatine Recovery** | approved image `2026-06-18-creatine-recovery.png` |
-| Fri 19 | Product email (auto) + Proof post (needs real store photo — NEEDS #12) | |
-| Sat 20 | Carousel 2: "Winter sleep falling apart?" (re-render pending) | |
-| Sun 21 | Publish blog: vitamin-d-joburg-winter + W2 Hub drop + weekly sprint & report | |
-Weeks 2–4 Mon/Wed/Thu likewise follow the approved pack (22 Jun Kiddies Winter Shake / 24 Jun Junior Immune Gummies / 25 Jun Gut Reset Trio / 29 Jun Wind-Down Stack → July pack). Engine-added layers (Hub posts, carousels, blogs, emails, GBP copy) stay per the themes below.
+## WEEK 3 — 29 Jun–5 Jul
+Mon 29 HERO: Wind-Down Stack (pack) · Tue 30 HONEST LABEL #2: "Ashwagandha — hype vs evidence" · Wed 1 Jul MADE BY US + monthly strategy review runs · Thu 2 STACK: Zinc NAC Defence Bundle (July pack) · Fri 3 ASK ONE LIFE #3 · Sat 4 SYMPTOM SAT: "PCOS energy crashes" (flagship category) · Sun 5 blog: flu-recovery-honest-guide + sprint.
 
-## WEEK 2 — 22–28 Jun · Theme: **Sleep & Stress** (DOUBLE DOWN cluster)
-Mon Hero: PrimeSelf Magnesium Complex (10%) · Tue carousel: "Wired at 11pm, dead at 7am" (cortisol→magnesium/ashwagandha) + digest · Wed Vivid Day: STAY VIVID line (GABA, Griffonia 5-HTP, D-Ribose) · Thu bundle: Deep Sleep Stack (Glycine + Magnesium + 5-HTP) · Fri proof + weekend store push · Sat carousel: "3am wake-ups explained" · Sun blog: queue/2026-06-winter-immunity-stack.md + W3 drop.
+## WEEK 4 — 6–12 Jul
+Mon 6 HERO: Methyl Care Focus (July pack) · Tue 7 HONEST LABEL #3: "Magnesium types — glycinate vs citrate vs oxide" (links existing blog) · Wed 8 MADE BY US: Vivid Joint Ease Duo (pack) · Thu 9 STACK: Digestive Reset Bundle (pack) · Fri 10 ASK ONE LIFE #4 · Sat 11 SYMPTOM SAT: "Bloated by dinner?" · Sun 12 blog: winter-carb-cravings + sprint.
 
-## WEEK 3 — 29 Jun–5 Jul · Theme: **Women's hormonal health** (flagship category, #1 product)
-Mon Hero: Delfran Pcositol (10%) · Tue carousel: "PCOS energy crashes — what's actually happening" (symptom-first, SAHPRA-careful) + digest · Wed Vivid Day: WOMAN line (Angus Castus; ⚠ Maca out of stock — restock or exclude) · Thu bundle: Hormone Harmony duo (Pcositol + Vivid Angus Castus) · Fri proof: "ask the team" Q&A post · Sat carousel: "Tired, cold, gaining weight? Thyroid 101" (mechanism only, no disease claims) · Sun blog: queue/2026-07-flu-recovery-honest-guide.md + W4 drop.
-
-## WEEK 4 — 6–12 Jul · Theme: **Gut health & replenishment**
-Mon Hero: Florish Spore Probiotic (10%) · Tue carousel: "Bloated by dinner?" (gut → spore probiotics) + digest · Wed Vivid Day: GUT HEALTH line (Black Walnut, Clove, Colon Flush) · Thu bundle: Gut Reset Stack · Fri proof + GBP weekend push · Sat carousel: "Antibiotics in winter? Read this" (restore gut, careful claims) · Sun blogs: queue/2026-07-winter-carb-cravings.md + monthly strategy review (1 Jul retro folds in) + W5 planning.
-
-## Experiments running across the block (→ EXPERIMENTS.md)
-- EXP-002: VIP early-access mechanic — does Hub-first drop lift Hub joins ≥15/wk? (T5)
-- EXP-003: Vivid Day — Wednesday Vivid revenue vs trailing Wednesday average (T1b)
-- EXP-004: Meta local-radius tests ×2 — LAUNCH BLOCKED on UTM enforcement + login/token (T2/T4)
+## Standing rails
+- Tue/Fri Klaviyo emails: auto (existing) · 21 flows: auto · GBP: weekly offer post per store from pack + copy.
+- All offers ≤10% standing cap, GP≥25%, Hub first, DM-based CTAs (071 374 4910), SAHPRA language, no competitor/pharmacy mentions.
+- Experiments live: EXP-002 Hub v2 (joins + HUB10 redemptions), EXP-003 Vivid Day lift, EXP-005 franchise format performance (kill any franchise underperforming channel median after 4 weeks).
