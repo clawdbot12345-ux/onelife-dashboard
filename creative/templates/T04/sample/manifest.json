@@ -1,7 +1,7 @@
 {
   "templateId": "T04",
   "template": "Bundle/Stack card",
-  "generatedAt": "2026-06-12T20:33:44Z",
+  "generatedAt": "2026-06-12T21:30:13Z",
   "sizes": [
     "1080x1080",
     "1080x1920"
@@ -26,7 +26,10 @@
     "disclaimer"
   ],
   "notes": [
-    "Dark green/copper multi-product pedestal with real Shopify packshots and per-item/bundle price slots."
+    "Dark green/copper multi-product stack with real Shopify packshots and per-item/bundle price slots.",
+    "Black Seed Oil source is cropped to the bottle so the separate non-compliant promo placard is not composited.",
+    "Price table, product cluster, CTA, footer, and disclaimer are reflowed to avoid collisions.",
+    "Uses approved locked cinematic botanical background plates rather than flat procedural leaf blobs."
   ],
   "secretScan": "No credentials, tokens, customer data, or account access material included.",
   "sourceProducts": [

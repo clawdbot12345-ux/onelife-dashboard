@@ -20,13 +20,19 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageEnhance
 
 
 REPO = Path(__file__).resolve().parents[2]
 ROOT = REPO / "creative" / "templates"
 ASSET_DIR = ROOT / "_assets" / "generated-bases"
 PACKSHOT_DIR = ROOT / "_assets" / "shopify-packshots"
+REFERENCE_BG_DIR = ROOT / "existing" / "reference-locked-family" / "source-backgrounds"
+REFERENCE_BACKGROUNDS = {
+    "monday-offer": REFERENCE_BG_DIR / "option-01-digestezyme-reference-background.png",
+    "vivid-day": REFERENCE_BG_DIR / "option-02-griffonia-reference-background.png",
+    "bundle-stack": REFERENCE_BG_DIR / "option-05-mobility-duo-reference-background.png",
+}
 
 PRIMARY = (27, 94, 32)
 DEEP = (7, 46, 31)
@@ -326,8 +332,60 @@ def matte_packshot(src: Path, dst: Path, max_dim: int = 1800) -> None:
             min(cut.height, bbox[3] + pad),
         )
         cut = cut.crop(bbox)
+    cut = keep_primary_alpha_component(cut)
     dst.parent.mkdir(parents=True, exist_ok=True)
     cut.save(dst)
+
+
+def keep_primary_alpha_component(image: Image.Image, threshold: int = 10) -> Image.Image:
+    im = image.convert("RGBA")
+    alpha = np.array(im.getchannel("A"))
+    mask = alpha > threshold
+    if not mask.any():
+        return im
+
+    seen = np.zeros(mask.shape, dtype=bool)
+    best: list[tuple[int, int]] = []
+    ys, xs = np.nonzero(mask)
+    for sy, sx in zip(ys, xs):
+        if seen[sy, sx]:
+            continue
+        component: list[tuple[int, int]] = []
+        q: deque[tuple[int, int]] = deque([(int(sx), int(sy))])
+        seen[sy, sx] = True
+        while q:
+            x, y = q.popleft()
+            component.append((x, y))
+            for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if 0 <= nx < mask.shape[1] and 0 <= ny < mask.shape[0] and mask[ny, nx] and not seen[ny, nx]:
+                    seen[ny, nx] = True
+                    q.append((nx, ny))
+        if len(component) > len(best):
+            best = component
+
+    keep = np.zeros(mask.shape, dtype=bool)
+    for x, y in best:
+        keep[y, x] = True
+    alpha[~keep] = 0
+    im.putalpha(Image.fromarray(alpha, "L"))
+    bbox = im.getchannel("A").point(lambda a: 255 if a > threshold else 0).getbbox()
+    return im.crop(bbox) if bbox else im
+
+
+def matte_black_seed_oil(src: Path, dst: Path, max_dim: int = 1800) -> None:
+    """Use only the bottle from the public product image; omit the separate promo placard."""
+    im = Image.open(src).convert("RGB")
+    # The source image contains a large left-side marketing placard with comparative
+    # and relief copy. The bottle itself sits on the right, so crop to the bottle
+    # before matting rather than compositing the placard into the ad.
+    crop = im.crop((690, 0, im.width, min(im.height, 1430)))
+    tmp = dst.with_name(f"{dst.stem}-bottle-source.png")
+    crop.save(tmp)
+    matte_packshot(tmp, dst, max_dim=max_dim)
+    try:
+        tmp.unlink()
+    except FileNotFoundError:
+        pass
 
 
 def ensure_packshots() -> dict[str, Path]:
@@ -338,7 +396,10 @@ def ensure_packshots() -> dict[str, Path]:
         source_path = PACKSHOT_DIR / f"{key}-source{ext_for_url(product['image'])}"
         cutout_path = PACKSHOT_DIR / f"{key}-cutout.png"
         download_binary(product["image"], source_path)
-        matte_packshot(source_path, cutout_path)
+        if key == "black-seed-oil":
+            matte_black_seed_oil(source_path, cutout_path)
+        else:
+            matte_packshot(source_path, cutout_path)
         index[key] = cutout_path
         items.append(
             {
@@ -651,6 +712,34 @@ def cinematic_canvas(size: tuple[int, int], theme: str = "green", seed: str = "d
     return img
 
 
+def reference_plate_canvas(
+    size: tuple[int, int],
+    theme: str,
+    plate: str,
+    anchor: tuple[float, float] = (0.5, 0.5),
+) -> Image.Image:
+    pal = theme_palette(theme)
+    plate_path = REFERENCE_BACKGROUNDS.get(plate)
+    if not plate_path or not plate_path.exists():
+        return cinematic_canvas(size, theme, f"{plate}-{size[0]}x{size[1]}")
+
+    img = cover(plate_path, size, anchor)
+    img = ImageEnhance.Contrast(img).enhance(1.08)
+    img = ImageEnhance.Color(img).enhance(1.06).convert("RGBA")
+    w, h = size
+    layer = Image.new("RGBA", size, (0, 0, 0, 0))
+    px = layer.load()
+    for y in range(h):
+        v = y / max(1, h - 1)
+        for x in range(w):
+            t = x / max(1, w - 1)
+            left = int(112 * max(0, 1 - t * 1.45))
+            bottom = int(72 * max(0, (v - 0.62) / 0.38))
+            px[x, y] = pal["deep"] + (min(150, left + bottom),)
+    img.alpha_composite(layer)
+    return img
+
+
 def grade_lifestyle(base_path: Path, size: tuple[int, int], theme: str, seed: str) -> Image.Image:
     base = cover(base_path, size, (0.5, 0.5))
     img = cinematic_canvas(size, theme, seed, base)
@@ -739,11 +828,14 @@ def draw_price_block(
     tw, th = text_bbox(draw, now, f_now)
     draw.text((cx - tw / 2, y1 + int((y2 - y1) * 0.47)), now, font=f_now, fill=pal["textAccent"], stroke_width=1, stroke_fill=BLACK)
     save_h = int((y2 - y1) * 0.16)
-    save_w = int((x2 - x1) * 0.68)
+    save_w = int((x2 - x1) * 0.78)
     sy = y2 - int((y2 - y1) * 0.22)
     sx = cx - save_w // 2
     draw.rounded_rectangle((sx, sy, sx + save_w, sy + save_h), radius=save_h // 2, fill=(32, 133, 56, 242), outline=pal["accent"] + (210,), width=2)
     tw, th = text_bbox(draw, save, f_save)
+    while tw > save_w - 24 and f_save.size > 14:
+        f_save = get_font(f_save.size - 1, "black")
+        tw, th = text_bbox(draw, save, f_save)
     draw.text((cx - tw / 2, sy + (save_h - th) / 2 - 1), save, font=f_save, fill=WHITE)
 
 
@@ -785,15 +877,11 @@ def draw_roundels(draw: ImageDraw.ImageDraw, y: int, labels: list[str], w: int, 
     r = max(38, min(54, int(w * 0.048)))
     total_w = count * (r * 2) + (count - 1) * gap
     start = (w - total_w) // 2
-    f_icon = get_font(max(24, int(r * 0.62)), "black")
     f_label = get_font(max(12, int(r * 0.26)), "bold")
-    icons = ["+", "C", "Z", "✓", "5"]
     for i, label in enumerate(labels):
         cx = start + r + i * (2 * r + gap)
         draw.ellipse((cx - r, y - r, cx + r, y + r), fill=(7, 43, 30, 220), outline=pal["accent"] + (245,), width=3)
-        icon = icons[i % len(icons)]
-        tw, th = text_bbox(draw, icon, f_icon)
-        draw.text((cx - tw / 2, y - th / 2 - 3), icon, font=f_icon, fill=pal["accent2"])
+        draw_roundel_icon(draw, (cx, y), r, label, pal["accent2"])
         lines = wrap_lines(draw, label.upper(), f_label, int(r * 2.8))
         yy = y + r + 12
         for line in lines[:2]:
@@ -810,15 +898,11 @@ def draw_roundels_between(draw: ImageDraw.ImageDraw, y: int, labels: list[str], 
     r = max(34, min(50, int((available - gap * (count - 1)) / (count * 2))))
     total_w = count * (r * 2) + (count - 1) * gap
     start = x1 + (available - total_w) // 2
-    f_icon = get_font(max(22, int(r * 0.58)), "black")
     f_label = get_font(max(10, int(r * 0.24)), "bold")
-    icons = ["+", "C", "Z", "✓", "5"]
     for i, label in enumerate(labels):
         cx = start + r + i * (2 * r + gap)
         draw.ellipse((cx - r, y - r, cx + r, y + r), fill=(7, 43, 30, 220), outline=pal["accent"] + (245,), width=3)
-        icon = icons[i % len(icons)]
-        tw, th = text_bbox(draw, icon, f_icon)
-        draw.text((cx - tw / 2, y - th / 2 - 3), icon, font=f_icon, fill=pal["accent2"])
+        draw_roundel_icon(draw, (cx, y), r, label, pal["accent2"])
         lines = wrap_lines(draw, label.upper(), f_label, int(r * 2.7))
         yy = y + r + 10
         for line in lines[:2]:
@@ -837,13 +921,97 @@ def draw_cta_bar(draw: ImageDraw.ImageDraw, w: int, h: int, y: int, text: str, t
     cx = x1 + circle_r
     cy = y + bar_h // 2
     draw.ellipse((cx - circle_r, cy - circle_r, cx + circle_r, cy + circle_r), fill=(4, 45, 30, 238), outline=CREAM + (230,), width=3)
-    cart = "□"
-    cf = get_font(max(26, int(circle_r * 0.72)), "black")
-    tw, th = text_bbox(draw, cart, cf)
-    draw.text((cx - tw / 2, cy - th / 2 - 3), cart, font=cf, fill=pal["accent"])
+    draw_cart_icon(draw, (cx, cy), int(circle_r * 0.72), pal["accent"])
     f = get_font(max(26, int(bar_h * 0.39)), "black")
     tw, th = text_bbox(draw, text, f)
-    draw.text((x1 + circle_r * 2 + 22, y + (bar_h - th) / 2 - 1), text, font=f, fill=(5, 22, 14))
+    text_x = x1 + circle_r * 2 + 22
+    max_text_w = x2 - text_x - 24
+    while tw > max_text_w and f.size > 20:
+        f = get_font(f.size - 1, "black")
+        tw, th = text_bbox(draw, text, f)
+    draw.text((text_x, y + (bar_h - th) / 2 - 1), text, font=f, fill=(5, 22, 14))
+
+
+def cta_y_above_footer(w: int, h: int, gap: int | None = None) -> int:
+    footer_h = max(88, int(h * 0.074))
+    bar_h = max(68, int(h * 0.055))
+    circle_r = int(bar_h * 0.62)
+    clearance = int(bar_h * 0.5 + circle_r)
+    return h - footer_h - clearance - (gap if gap is not None else 0)
+
+
+def draw_cart_icon(draw: ImageDraw.ImageDraw, center: tuple[int, int], size: int, color: tuple[int, int, int]) -> None:
+    cx, cy = center
+    s = size
+    lw = max(3, s // 12)
+    basket = [
+        (cx - int(s * 0.33), cy - int(s * 0.10)),
+        (cx + int(s * 0.30), cy - int(s * 0.10)),
+        (cx + int(s * 0.20), cy + int(s * 0.23)),
+        (cx - int(s * 0.23), cy + int(s * 0.23)),
+    ]
+    draw.line((cx - int(s * 0.43), cy - int(s * 0.36), cx - int(s * 0.33), cy - int(s * 0.10)), fill=color, width=lw)
+    draw.line(basket + [basket[0]], fill=color, width=lw, joint="curve")
+    draw.line((cx - int(s * 0.20), cy, cx + int(s * 0.22), cy), fill=color, width=max(2, lw - 1))
+    for wx in (cx - int(s * 0.18), cx + int(s * 0.18)):
+        draw.ellipse((wx - lw, cy + int(s * 0.34) - lw, wx + lw, cy + int(s * 0.34) + lw), fill=color)
+
+
+def draw_roundel_icon(
+    draw: ImageDraw.ImageDraw,
+    center: tuple[int, int],
+    radius: int,
+    label: str,
+    color: tuple[int, int, int],
+) -> None:
+    cx, cy = center
+    key = label.lower()
+    s = int(radius * 0.92)
+    lw = max(3, radius // 12)
+
+    if "shield" in key or "support" in key or "immune" in key or "wellness" in key:
+        pts = [
+            (cx, cy - int(s * 0.42)),
+            (cx + int(s * 0.34), cy - int(s * 0.24)),
+            (cx + int(s * 0.26), cy + int(s * 0.24)),
+            (cx, cy + int(s * 0.44)),
+            (cx - int(s * 0.26), cy + int(s * 0.24)),
+            (cx - int(s * 0.34), cy - int(s * 0.24)),
+        ]
+        draw.line(pts + [pts[0]], fill=color, width=lw, joint="curve")
+        draw.line((cx, cy - int(s * 0.20), cx, cy + int(s * 0.18)), fill=color, width=lw)
+        draw.line((cx - int(s * 0.17), cy, cx + int(s * 0.17), cy), fill=color, width=lw)
+    elif "vitamin" in key or "caps" in key or "capsule" in key:
+        box = (cx - int(s * 0.42), cy - int(s * 0.18), cx + int(s * 0.42), cy + int(s * 0.18))
+        draw.rounded_rectangle(box, radius=int(s * 0.18), outline=color, width=lw)
+        draw.line((cx, cy - int(s * 0.17), cx, cy + int(s * 0.17)), fill=color, width=lw)
+    elif "gentle" in key or "made" in key or "leaf" in key:
+        draw.arc((cx - int(s * 0.45), cy - int(s * 0.36), cx + int(s * 0.26), cy + int(s * 0.36)), 290, 100, fill=color, width=lw)
+        draw.arc((cx - int(s * 0.24), cy - int(s * 0.36), cx + int(s * 0.45), cy + int(s * 0.36)), 80, 250, fill=color, width=lw)
+        draw.line((cx - int(s * 0.28), cy + int(s * 0.24), cx + int(s * 0.30), cy - int(s * 0.26)), fill=color, width=lw)
+    elif "routine" in key:
+        box = (cx - int(s * 0.35), cy - int(s * 0.35), cx + int(s * 0.35), cy + int(s * 0.35))
+        draw.arc(box, 35, 300, fill=color, width=lw)
+        draw.polygon(
+            [
+                (cx + int(s * 0.36), cy - int(s * 0.10)),
+                (cx + int(s * 0.46), cy + int(s * 0.06)),
+                (cx + int(s * 0.26), cy + int(s * 0.08)),
+            ],
+            fill=color,
+        )
+    elif "value" in key:
+        pts = [
+            (cx - int(s * 0.35), cy - int(s * 0.12)),
+            (cx - int(s * 0.08), cy - int(s * 0.38)),
+            (cx + int(s * 0.38), cy + int(s * 0.08)),
+            (cx + int(s * 0.10), cy + int(s * 0.36)),
+        ]
+        draw.line(pts + [pts[0]], fill=color, width=lw, joint="curve")
+        draw.ellipse((cx - int(s * 0.12), cy - int(s * 0.20), cx - int(s * 0.02), cy - int(s * 0.10)), outline=color, width=lw)
+    else:
+        draw.arc((cx - int(s * 0.38), cy - int(s * 0.38), cx + int(s * 0.38), cy + int(s * 0.38)), 90, 330, fill=color, width=lw)
+        draw.line((cx - int(s * 0.05), cy - int(s * 0.18), cx + int(s * 0.20), cy + int(s * 0.16)), fill=color, width=lw)
 
 
 def draw_cinematic_footer(draw: ImageDraw.ImageDraw, w: int, h: int) -> None:
@@ -1115,7 +1283,7 @@ def render_monday_hero(packshots: dict[str, Path], out: Path, size: tuple[int, i
     w, h = size
     theme = "green"
     pal = theme_palette(theme)
-    img = cinematic_canvas(size, theme, f"monday-hero-{cta}-{w}x{h}")
+    img = reference_plate_canvas(size, theme, "monday-offer", (0.56, 0.56))
     draw = ImageDraw.Draw(img, "RGBA")
     draw_cinematic_logo(draw, w, h)
     draw_campaign_ribbon(draw, w, h, "MONDAY OFFER", theme)
@@ -1130,9 +1298,8 @@ def render_monday_hero(packshots: dict[str, Path], out: Path, size: tuple[int, i
     title_end = draw_display_title(draw, (title_x, title_y), ("BUFFERED C", "90s"), int(w * (0.58 if is_story else 0.52)), theme, title_size)
     draw_capsule_pill(draw, (title_x, title_end + 22), "90 CAPSULES", w, theme)
 
-    product_h = int(h * 0.45) if is_story else int(h * 0.49)
-    product_center = (int(w * (0.70 if is_story else 0.72)), int(h * (0.53 if is_story else 0.54)))
-    draw_pedestal(draw, (product_center[0], int(product_center[1] + product_h * 0.46)), int(product_h * 0.78), theme)
+    product_h = int(h * 0.42) if is_story else int(h * 0.45)
+    product_center = (int(w * (0.72 if is_story else 0.74)), int(h * (0.52 if is_story else 0.53)))
     paste_packshot(img, packshots, "buffered-c-90", product_center, product_h)
 
     limited_y = int(h * (0.46 if is_story else 0.39))
@@ -1151,21 +1318,20 @@ def render_monday_hero(packshots: dict[str, Path], out: Path, size: tuple[int, i
             "SA-made Vivid",
         ]
     )
-    draw_star_bullets(draw, title_x, limited_y + int(h * 0.035), int(w * (0.47 if is_story else 0.43)), bullets, theme, max(20, int(w * (0.026 if is_story else 0.024))))
+    draw_star_bullets(draw, title_x, limited_y + int(h * 0.035), int(w * (0.42 if is_story else 0.43)), bullets, theme, max(20, int(w * (0.026 if is_story else 0.024))))
 
     was = SHOPIFY_PRODUCTS["buffered-c-90"]["priceCents"]
     now = discounted_cents(was, 10)
     save = was - now
     if is_story:
-        price_box = (int(w * 0.06), int(h * 0.62), int(w * 0.50), int(h * 0.80))
-        valid_box = (int(w * 0.08), int(h * 0.815), int(w * 0.48), int(h * 0.855))
-        roundel_y = int(h * 0.735)
-        cta_y = int(h * 0.865)
+        price_box = (int(w * 0.06), int(h * 0.61), int(w * 0.49), int(h * 0.79))
+        valid_box = (int(w * 0.08), int(h * 0.805), int(w * 0.47), int(h * 0.845))
+        roundel_y = int(h * 0.715)
     else:
-        price_box = (int(w * 0.06), int(h * 0.57), int(w * 0.48), int(h * 0.80))
-        valid_box = (int(w * 0.08), int(h * 0.815), int(w * 0.48), int(h * 0.86))
-        roundel_y = int(h * 0.78)
-        cta_y = int(h * 0.865)
+        price_box = (int(w * 0.06), int(h * 0.56), int(w * 0.47), int(h * 0.77))
+        valid_box = (int(w * 0.08), int(h * 0.79), int(w * 0.47), int(h * 0.835))
+        roundel_y = int(h * 0.72)
+    cta_y = cta_y_above_footer(w, h)
     draw_price_block(draw, price_box, format_money(was, True), format_money(now, True), f"SAVE {format_money(save, True)} / 10%", theme)
     draw_validity_bar(draw, valid_box, "VALID 15 JUN TO 21 JUN 2026", theme)
     draw_roundels_between(draw, roundel_y, ["Vitamin C", "Gentle", "90 caps", "Daily support"], int(w * 0.52), int(w * 0.94), theme)
@@ -1178,23 +1344,32 @@ def render_monday_hero(packshots: dict[str, Path], out: Path, size: tuple[int, i
 def draw_product_row_panel(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], rows: list[tuple[str, str]], theme: str, title: str = "LIVE PRODUCT SLOTS") -> None:
     pal = theme_palette(theme)
     x1, y1, x2, y2 = box
+    bh = y2 - y1
     draw.rounded_rectangle((x1, y1, x2, y2), radius=max(18, int((y2 - y1) * 0.08)), fill=CREAM + (234,), outline=pal["accent"] + (220,), width=3)
-    tf = get_font(max(18, int((y2 - y1) * 0.11)), "black")
-    draw.text((x1 + 28, y1 + 22), title, font=tf, fill=DEEP)
-    f = get_font(max(16, int((y2 - y1) * 0.085)), "bold")
-    yy = y1 + int((y2 - y1) * 0.32)
-    for name, price in rows:
+    tf = get_font(max(18, int(bh * 0.10)), "black")
+    title_y = y1 + max(14, int(bh * 0.12))
+    draw.text((x1 + 28, title_y), title, font=tf, fill=DEEP)
+    _, title_h = text_bbox(draw, title, tf)
+    f = get_font(max(16, int(bh * 0.083)), "bold")
+    _, row_h = text_bbox(draw, rows[0][0], f)
+    row_start_ratio = 0.38 if len(rows) > 3 else 0.42
+    row_step_ratio = 0.14 if len(rows) > 3 else 0.18
+    yy = max(y1 + int(bh * row_start_ratio), title_y + title_h + 10)
+    row_step = max(row_h + 5, int(bh * row_step_ratio))
+    for i, (name, price) in enumerate(rows):
         draw.text((x1 + 30, yy), name, font=f, fill=INK)
         tw, th = text_bbox(draw, price, f)
         draw.text((x2 - tw - 30, yy), price, font=f, fill=DEEP)
-        yy += int((y2 - y1) * 0.17)
-        draw.line((x1 + 28, yy - 10, x2 - 28, yy - 10), fill=(196, 171, 118, 120), width=1)
+        if i < len(rows) - 1:
+            line_y = yy + row_h + max(4, int(row_step * 0.2))
+            draw.line((x1 + 28, line_y, x2 - 28, line_y), fill=(196, 171, 118, 120), width=1)
+        yy += row_step
 
 
 def render_vivid_day_cinematic(packshots: dict[str, Path], out: Path, size: tuple[int, int]) -> None:
     w, h = size
     theme = "vivid"
-    img = cinematic_canvas(size, theme, f"vivid-day-{w}x{h}")
+    img = reference_plate_canvas(size, theme, "vivid-day", (0.50, 0.54))
     draw = ImageDraw.Draw(img, "RGBA")
     draw_cinematic_logo(draw, w, h)
     draw_campaign_ribbon(draw, w, h, "VIVID WEDNESDAY", theme)
@@ -1209,20 +1384,28 @@ def render_vivid_day_cinematic(packshots: dict[str, Path], out: Path, size: tupl
         "Vivid Health house range, SA made",
         "Ask the team which fits your routine",
     ]
-    draw_star_bullets(draw, title_x, int(h * (0.45 if is_story else 0.47)), int(w * 0.48), bullets, theme, max(20, int(w * 0.025)))
-    base_y = int(h * (0.69 if is_story else 0.65))
-    draw_pedestal(draw, (int(w * 0.68), base_y + 120), int(w * 0.45), theme)
-    paste_packshot(img, packshots, "immune-plus", (int(w * 0.56), base_y - 40), int(h * (0.25 if is_story else 0.30)), 0.8)
-    paste_packshot(img, packshots, "buffered-c-90", (int(w * 0.70), base_y - 80), int(h * (0.29 if is_story else 0.34)), 0.9)
-    paste_packshot(img, packshots, "astragalus", (int(w * 0.82), base_y - 30), int(h * (0.25 if is_story else 0.29)), 0.8)
+    bullet_end = draw_star_bullets(
+        draw,
+        title_x,
+        int(h * (0.45 if is_story else 0.47)),
+        int(w * (0.42 if is_story else 0.40)),
+        bullets,
+        theme,
+        max(19, int(w * (0.022 if is_story else 0.021))),
+    )
+    icon_y = max(int(h * (0.595 if is_story else 0.65)), bullet_end + int(w * 0.045))
+    draw_roundels_between(draw, icon_y, ["SA made", "Immune", "Routine", "Value"], int(w * 0.07), int(w * 0.47), theme)
+    base_y = int(h * (0.66 if is_story else 0.62))
+    paste_packshot(img, packshots, "immune-plus", (int(w * 0.61), base_y - int(h * 0.015)), int(h * (0.20 if is_story else 0.24)), 0.78)
+    paste_packshot(img, packshots, "buffered-c-90", (int(w * 0.75), base_y - int(h * 0.045)), int(h * (0.24 if is_story else 0.29)), 0.88)
+    paste_packshot(img, packshots, "astragalus", (int(w * 0.88), base_y), int(h * (0.20 if is_story else 0.24)), 0.78)
     rows = [
         ("Immune Plus", format_money(SHOPIFY_PRODUCTS["immune-plus"]["priceCents"])),
         ("Buffered C 90s", format_money(SHOPIFY_PRODUCTS["buffered-c-90"]["priceCents"], True)),
         ("Astragalus", format_money(SHOPIFY_PRODUCTS["astragalus"]["priceCents"])),
     ]
-    draw_product_row_panel(draw, (int(w * 0.07), int(h * 0.70), int(w * 0.51), int(h * 0.84)), rows, theme, "VIVID RANGE")
-    draw_roundels(draw, int(h * 0.84), ["SA made", "Immune", "Routine", "Value"], w, theme)
-    draw_cta_bar(draw, w, h, int(h * 0.885), "IN-STORE ONLY • WHILE STOCKS LAST", theme)
+    draw_product_row_panel(draw, (int(w * 0.07), int(h * (0.705 if is_story else 0.73)), int(w * 0.50), int(h * (0.815 if is_story else 0.835))), rows, theme, "VIVID RANGE")
+    draw_cta_bar(draw, w, h, cta_y_above_footer(w, h), "IN-STORE ONLY • WHILE STOCKS LAST", theme)
     draw_cinematic_footer(draw, w, h)
     out.parent.mkdir(parents=True, exist_ok=True)
     img.convert("RGB").save(out, quality=94, subsampling=1)
@@ -1231,7 +1414,7 @@ def render_vivid_day_cinematic(packshots: dict[str, Path], out: Path, size: tupl
 def render_bundle_cinematic(packshots: dict[str, Path], out: Path, size: tuple[int, int]) -> None:
     w, h = size
     theme = "copper"
-    img = cinematic_canvas(size, theme, f"bundle-{w}x{h}")
+    img = reference_plate_canvas(size, theme, "bundle-stack", (0.56, 0.56))
     draw = ImageDraw.Draw(img, "RGBA")
     draw_cinematic_logo(draw, w, h)
     draw_campaign_ribbon(draw, w, h, "THURSDAY BUNDLE", theme)
@@ -1244,20 +1427,19 @@ def render_bundle_cinematic(packshots: dict[str, Path], out: Path, size: tuple[i
         "Black Seed Oil stack slot",
         "Per-item and bundle price slots",
     ]
-    draw_star_bullets(draw, title_x, int(h * (0.43 if h > w else 0.47)), int(w * 0.47), bullets, theme, max(20, int(w * 0.024)))
-    base_y = int(h * (0.68 if h > w else 0.66))
-    draw_pedestal(draw, (int(w * 0.70), base_y + 135), int(w * 0.50), theme)
-    paste_packshot(img, packshots, "immune-plus", (int(w * 0.55), base_y - 10), int(h * (0.24 if h > w else 0.29)), 0.82)
-    paste_packshot(img, packshots, "buffered-c-90", (int(w * 0.70), base_y - 70), int(h * (0.29 if h > w else 0.34)), 0.9)
-    paste_packshot(img, packshots, "black-seed-oil", (int(w * 0.84), base_y + 5), int(h * (0.23 if h > w else 0.28)), 0.78)
+    draw_star_bullets(draw, title_x, int(h * (0.43 if h > w else 0.47)), int(w * 0.43), bullets, theme, max(20, int(w * 0.024)))
+    base_y = int(h * (0.655 if h > w else 0.63))
+    paste_packshot(img, packshots, "immune-plus", (int(w * 0.58), base_y - int(h * 0.005)), int(h * (0.20 if h > w else 0.24)), 0.80)
+    paste_packshot(img, packshots, "buffered-c-90", (int(w * 0.72), base_y - int(h * 0.04)), int(h * (0.24 if h > w else 0.285)), 0.88)
+    paste_packshot(img, packshots, "black-seed-oil", (int(w * 0.88), base_y + int(h * 0.012)), int(h * (0.19 if h > w else 0.23)), 0.72)
     rows = [
         ("Immune Plus", format_money(SHOPIFY_PRODUCTS["immune-plus"]["priceCents"])),
         ("Buffered C 90s", format_money(SHOPIFY_PRODUCTS["buffered-c-90"]["priceCents"], True)),
         ("Black Seed Oil", format_money(SHOPIFY_PRODUCTS["black-seed-oil"]["priceCents"])),
         ("Bundle price", "R___"),
     ]
-    draw_product_row_panel(draw, (int(w * 0.07), int(h * 0.68), int(w * 0.53), int(h * 0.86)), rows, theme, "PRICE SLOTS")
-    draw_cta_bar(draw, w, h, int(h * 0.885), "SHOP ONLINE • FREE DELIVERY OVER R400", theme)
+    draw_product_row_panel(draw, (int(w * 0.07), int(h * (0.675 if h > w else 0.67)), int(w * 0.53), int(h * (0.815 if h > w else 0.835))), rows, theme, "PRICE SLOTS")
+    draw_cta_bar(draw, w, h, cta_y_above_footer(w, h), "SHOP ONLINE • FREE DELIVERY OVER R400", theme)
     draw_cinematic_footer(draw, w, h)
     out.parent.mkdir(parents=True, exist_ok=True)
     img.convert("RGB").save(out, quality=94, subsampling=1)
