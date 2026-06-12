@@ -23,7 +23,6 @@ OUT = REPO / "creative" / "franchises"
 BASE = REPO / "creative" / "templates" / "_assets" / "generated-bases"
 PACK = REPO / "creative" / "templates" / "_assets" / "shopify-packshots"
 EXISTING = REPO / "creative" / "templates" / "existing"
-ARCHIVE = REPO / "creative" / "archive"
 
 STORY = (1080, 1920)
 SQUARE = (1080, 1080)
@@ -274,11 +273,12 @@ def product_image(product_id: str) -> Image.Image:
     return Image.open(path).convert("RGBA")
 
 
-def draw_product_cluster(img: Image.Image, ids: list[str], center: tuple[int, int], height: int, accent: tuple[int, int, int]) -> None:
+def draw_product_cluster(img: Image.Image, ids: list[str], center: tuple[int, int], height: int, accent: tuple[int, int, int], panel: bool = True) -> None:
     draw = ImageDraw.Draw(img, "RGBA")
     cx, cy = center
     width = min(820, 230 * len(ids) + 90)
-    rounded(draw, (cx - width // 2, cy + height // 2 - 42, cx + width // 2, cy + height // 2 + 34), 50, (255, 255, 255, 170), accent + (110,), 1)
+    if panel:
+        rounded(draw, (cx - width // 2, cy + height // 2 - 42, cx + width // 2, cy + height // 2 + 34), 50, (255, 255, 255, 170), accent + (110,), 1)
     spacing = 170 if len(ids) > 2 else 210
     start = cx - spacing * (len(ids) - 1) // 2
     for i, pid in enumerate(ids):
@@ -535,24 +535,34 @@ def render_ask_one_life() -> None:
 def render_hub_exclusive() -> None:
     out = OUT / "hub-exclusive"
     files = []
+    base = EXISTING / "reference-locked-family" / "source-backgrounds" / "option-05-mobility-duo-reference-background.png"
     for size, suffix in [(SQUARE, "square"), (STORY, "story")]:
         w, h = size
-        img = grade_dark(ARCHIVE / "2026-07" / "01-approved-images" / "2026-07-02-zinc-nac-defence-bundle.png", size)
+        img = grade_dark(base, size)
         draw = ImageDraw.Draw(img, "RGBA")
         logo(draw, 54, 52, dark=True)
         rounded(draw, (w - 378, 58, w - 54, 118), 20, (8, 14, 11, 226), GOLD + (230,), 2)
         draw.text((w - 342, 76), "HUB EXCLUSIVE", font=font(26, "black"), fill=GOLD)
-        title_y = 180 if h > w else 160
-        draw.text((72, title_y), "HUB-ONLY", font=font(72 if h > w else 56, "black"), fill=CREAM)
-        draw.text((72, title_y + (76 if h > w else 62)), "DEAL DROP", font=font(92 if h > w else 72, "black"), fill=GREEN_2)
-        rounded(draw, (72, title_y + (190 if h > w else 150), 530, title_y + (282 if h > w else 230)), 24, (0, 0, 0, 180), GOLD + (230,), 2)
-        draw.text((106, title_y + (216 if h > w else 172)), "CODE SLOT: HUB10", font=font(32 if h > w else 27, "black"), fill=GOLD)
-        draw_product_cluster(img, ["immune-plus", "buffered-c-90", "black-seed-oil"], (int(w * 0.68), int(h * 0.56)), int(h * (0.26 if h > w else 0.32)), GOLD)
-        price_box = (72, int(h * 0.63), int(w * 0.55), int(h * 0.80))
-        rounded(draw, price_box, 28, (0, 0, 0, 188), GOLD + (220,), 3)
-        draw.text((price_box[0] + 34, price_box[1] + 28), "WAS R___", font=font(28 if h > w else 24, "bold"), fill=(220, 211, 186))
-        draw.text((price_box[0] + 34, price_box[1] + 72), "NOW R___", font=font(62 if h > w else 48, "black"), fill=GREEN_2)
-        draw.text((price_box[0] + 36, price_box[1] + 142 if h > w else price_box[1] + 126), "SAVE ___ / HUB ONLY", font=font(25 if h > w else 21, "black"), fill=GOLD)
+        title_y = 206 if h > w else 170
+        draw.text((72, title_y), "HUB-ONLY", font=font(74 if h > w else 56, "black"), fill=CREAM)
+        draw.text((72, title_y + (78 if h > w else 62)), "DEAL DROP", font=font(96 if h > w else 74, "black"), fill=GREEN_2)
+        draw.line((74, title_y + (188 if h > w else 146), 264, title_y + (188 if h > w else 146)), fill=GOLD, width=5)
+        draw.line((288, title_y + (188 if h > w else 146), 474, title_y + (188 if h > w else 146)), fill=GREEN_2, width=5)
+        product_center = (int(w * (0.69 if h > w else 0.72)), int(h * (0.52 if h > w else 0.49)))
+        product_h = int(h * (0.21 if h > w else 0.25))
+        draw_product_cluster(img, ["immune-plus", "buffered-c-90", "black-seed-oil"], product_center, product_h, GOLD, panel=False)
+        price_box = (72, int(h * (0.63 if h > w else 0.60)), int(w * (0.61 if h > w else 0.58)), int(h * (0.78 if h > w else 0.79)))
+        rounded(draw, price_box, 28, (0, 0, 0, 204), GOLD + (230,), 3)
+        label_f = font(28 if h > w else 24, "black")
+        draw.text((price_box[0] + 34, price_box[1] + 26), "CODE HUB10", font=label_f, fill=GOLD)
+        draw.text((price_box[0] + 34, price_box[1] + (74 if h > w else 68)), "NOW R___", font=font(64 if h > w else 50, "black"), fill=GREEN_2)
+        draw.text((price_box[0] + 36, price_box[1] + (144 if h > w else 126)), "SAVE ___ / HUB ONLY", font=font(25 if h > w else 21, "black"), fill=CREAM)
+        cta_y = int(h * (0.81 if h > w else 0.82))
+        rounded(draw, (72, cta_y, w - 72, cta_y + 74), 26, GOLD + (235,), (255, 236, 179, 210), 2)
+        cta = "IN-STORE ONLY  •  WHILE STOCKS LAST"
+        cta_f = font(31 if h > w else 27, "black")
+        tw, th = text_box(draw, cta, cta_f)
+        draw.text(((w - tw) // 2, cta_y + (74 - th) // 2 - 2), cta, font=cta_f, fill=BLACK)
         footer(draw, w, h, dark=True)
         path = out / f"hub-exclusive-deal-template-{suffix}.jpg"
         path.parent.mkdir(parents=True, exist_ok=True)
