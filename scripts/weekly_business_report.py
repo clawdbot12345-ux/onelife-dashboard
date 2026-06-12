@@ -14,7 +14,8 @@ break-even ROAS. Built after the 2026-06-12 finding that Shopify journey
 data attributed ~0 orders to paid CPC while ads+agency cost R19.5k/mo.
 
 Environment:
-    KLAVIYO_API_KEY, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET
+    KLAVIYO_API_KEY, SHOPIFY_ADMIN_TOKEN
+    Optional fallback: SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET
 """
 import json
 import os
@@ -26,6 +27,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 KLAVIYO_KEY = os.environ.get("KLAVIYO_API_KEY")
+SHOPIFY_ADMIN_TOKEN = (os.environ.get("SHOPIFY_ADMIN_TOKEN")
+                       or os.environ.get("SHOPIFY_ADMIN_ACCESS_TOKEN")
+                       or os.environ.get("SHOPIFY_ACCESS_TOKEN"))
 SHOPIFY_CLIENT_ID = os.environ.get("SHOPIFY_CLIENT_ID")
 SHOPIFY_CLIENT_SECRET = os.environ.get("SHOPIFY_CLIENT_SECRET")
 SHOPIFY_STORE = "onelifehealth.myshopify.com"
@@ -33,8 +37,9 @@ API_VERSION = "2025-01"
 CONVERSION_METRIC = "WZAxyj"  # Placed Order
 DAYS = 30
 
-if not (KLAVIYO_KEY and SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET):
-    print("ERROR: KLAVIYO_API_KEY, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET required", file=sys.stderr)
+if not (KLAVIYO_KEY and (SHOPIFY_ADMIN_TOKEN or (SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET))):
+    print("ERROR: KLAVIYO_API_KEY and SHOPIFY_ADMIN_TOKEN required "
+          "(or SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET fallback)", file=sys.stderr)
     sys.exit(1)
 
 
@@ -65,6 +70,8 @@ def load_config():
 
 
 def shopify_token():
+    if SHOPIFY_ADMIN_TOKEN:
+        return SHOPIFY_ADMIN_TOKEN
     body = json.dumps({"client_id": SHOPIFY_CLIENT_ID, "client_secret": SHOPIFY_CLIENT_SECRET,
                        "grant_type": "client_credentials"}).encode()
     req = urllib.request.Request(f"https://{SHOPIFY_STORE}/admin/oauth/access_token",
