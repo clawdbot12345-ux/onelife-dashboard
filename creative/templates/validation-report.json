@@ -1,0 +1,253 @@
+{
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "items": [
+    {
+      "file": "creative/templates/T01/sample/energy-carousel/slides/slide-01.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/energy-carousel/slides/slide-02.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/energy-carousel/slides/slide-03.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/energy-carousel/slides/slide-04.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/energy-carousel/slides/slide-05.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/energy-carousel/slides/slide-06.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-01.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-02.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-03.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-04.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-05.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-06.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T02/sample/t02-monday-hero-square.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T02/sample/t02-monday-hero-story.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T03/sample/t03-vivid-day-square.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T03/sample/t03-vivid-day-story.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T04/sample/t04-bundle-stack-square.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T04/sample/t04-bundle-stack-story.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T05/sample/t05-proof-review-square.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T05/sample/t05-proof-review-story.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T06/sample/t06-community-poll-story.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T07/sample/t07-hub-vip-square.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T07/sample/t07-hub-vip-story.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T08/sample/t08-gbp-offer-post.jpg",
+      "size": [
+        1200,
+        900
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T09/sample/t09-email-hero-header.jpg",
+      "size": [
+        1200,
+        600
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T10/sample/t10-back-in-stock-alert.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T11/sample/t11-education-myth-bust-square.jpg",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T11/sample/t11-education-myth-bust-story.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "creative/templates/T12/sample/t12-sa-winter-story-overlay.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "file": "creative/templates/T12/sample/t12-sa-winter-square-overlay.png",
+      "size": [
+        1080,
+        1080
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "file": "creative/templates/T12/sample/t12-sa-winter-preview.jpg",
+      "size": [
+        1080,
+        1920
+      ],
+      "mode": "RGB"
+    }
+  ]
+}

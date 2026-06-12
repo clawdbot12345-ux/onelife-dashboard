@@ -1,0 +1,27 @@
+{
+  "templateId": "T12",
+  "template": "Seasonal campaign frame — SA winter",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "overlay 1080x1920",
+    "overlay 1080x1080"
+  ],
+  "sampleFiles": [
+    "creative/templates/T12/sample/t12-sa-winter-story-overlay.png",
+    "creative/templates/T12/sample/t12-sa-winter-square-overlay.png",
+    "creative/templates/T12/sample/t12-sa-winter-preview.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/bundle-stack.png"
+  ],
+  "copySlots": [
+    "season",
+    "accentColor",
+    "overlayOpacity"
+  ],
+  "notes": [
+    "Transparent seasonal accent layer for T01-T04 plus a rendered preview."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
