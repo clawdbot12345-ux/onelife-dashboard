@@ -1,7 +1,7 @@
 {
   "templateId": "T03",
   "template": "Vivid Day",
-  "generatedAt": "2026-06-12T19:50:14Z",
+  "generatedAt": "2026-06-12T20:33:44Z",
   "sizes": [
     "1080x1080",
     "1080x1920"
@@ -10,19 +10,46 @@
     "creative/templates/T03/sample/t03-vivid-day-square.jpg",
     "creative/templates/T03/sample/t03-vivid-day-story.jpg"
   ],
-  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
   "baseImages": [
-    "creative/templates/_assets/generated-bases/vivid-trio.png"
+    "creative/templates/_assets/shopify-packshots/immune-plus-cutout.png",
+    "creative/templates/_assets/shopify-packshots/buffered-c-90-cutout.png",
+    "creative/templates/_assets/shopify-packshots/astragalus-cutout.png"
   ],
   "copySlots": [
     "story",
     "product1",
     "product2",
     "product3",
-    "cta"
+    "priceSlots",
+    "cta",
+    "disclaimer"
   ],
   "notes": [
-    "Vivid-branded frame with in-house story and product trio slots."
+    "Vivid-branded blue/teal/gold frame with real Shopify packshot trio and in-house story/product slots."
   ],
-  "secretScan": "No credentials, tokens, customer data, or account access material included."
+  "secretScan": "No credentials, tokens, customer data, or account access material included.",
+  "sourceProducts": [
+    {
+      "id": "immune-plus",
+      "title": "VIVID HEALTH - IMMUNE - Immune Plus 60 Capsules",
+      "price": "R125.00",
+      "source": "https://onelife.co.za/products/vivid-health-immune-immune-plus-60-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5194.png?v=1695296146"
+    },
+    {
+      "id": "buffered-c-90",
+      "title": "VIVID HEALTH - IMMUNE - Buffered C 90 Capsules",
+      "price": "R170.77",
+      "source": "https://onelife.co.za/products/vivid-health-immune-buffered-c-90-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5203.png?v=1695296559"
+    },
+    {
+      "id": "astragalus",
+      "title": "VIVID HEALTH - IMMUNE - Astragalus 60 Capsules",
+      "price": "R164.00",
+      "source": "https://onelife.co.za/products/vivid-health-immune-astragalus-60-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5196.png?v=1695296217"
+    }
+  ]
 }
