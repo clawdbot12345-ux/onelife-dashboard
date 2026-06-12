@@ -1,0 +1,28 @@
+{
+  "templateId": "T05",
+  "template": "Proof/review",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1080x1080",
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T05/sample/t05-proof-review-square.jpg",
+    "creative/templates/T05/sample/t05-proof-review-story.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/store-advisor.png"
+  ],
+  "copySlots": [
+    "photo",
+    "quote",
+    "stars",
+    "store",
+    "cta"
+  ],
+  "notes": [
+    "Sample uses a visible real-photo slot. Do not publish with generated people presented as staff."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
