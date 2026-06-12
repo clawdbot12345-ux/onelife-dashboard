@@ -19,7 +19,7 @@ Last updated: 2026-06-12 (engine bootstrap)
 | Returning-customer rate | 15.7% (May) — falling | 30% | #1 structural problem |
 | AOV | R653 (30d) | R680+ | bundles/stack-builder |
 | Email % of revenue | 15.8% | 25% | flows rebuilt; campaigns automated Tue/Fri |
-| Vivid revenue /mo | TBD (Omni) | R500k+ short term (Naadir) | GP 35–40%; first-class metric once Omni feed live |
+| Vivid revenue /mo | **~R72k/mo** (R830k over the saved report period ≈ TTM; supplier code IL) | R500k+ (Naadir) | **GP 35.9% — owner's 35–40% VERIFIED.** Current share: 3.5% of sales (HO 4.2% / EDN 1.9% / GVS 2.0%). Target = ~7× — this is a 12–18 month build, flagged honestly |
 | Online net contribution | **−R524 (30d)** | positive | paid spend underwater — see BUDGET.md |
 | Checkout completion | 40% | 65% | express wallets/BNPL still pending (owner action) |
 

@@ -15,6 +15,7 @@ Built 2026-06-12 from live ShopifyQL (TTM Jun 2025–May 2026 + 90d velocity). *
 | **Omega-3** (Natroceutics R13.9k #2, Biomax R6.5k) | Two strong brands, replenishable | Replenishment flow emphasis + subscription candidate |
 | **Florish Spore Probiotic** (R10.5k TTM, steady 90d) | Premium, differentiated, gut-health trend | Education content; pair with GUT HEALTH Vivid line |
 | **Vivid WOMAN / STAY VIVID / VIVID BODY lines** | 35–40% GP, near-zero online base, owner mandate R500k+/mo | Vivid Day (Wed) becomes real: spotlight + value-vs-big-brands story + own-brand bundles. Biggest growth-per-rand lever in the matrix |
+| **Vivid proven heroes (Omni-verified 2026-06-12)**: Bone Supreme 120 (R63k, 7.6% of all Vivid), Flexijoint Advanced (R57k), Liver&Kidney Formula (37.8% GP), Prosta Care (39.3% GP), Buffered C 300 (41.7% GP) | These already sell in-store across all 3 branches — they're the Vivid Day lead products, not guesses | Joint-health duo (Bone Supreme + Flexijoint) = ready-made Vivid bundle; Buffered C = highest-GP hero, already week-1's Monday deal ✓ |
 | **Ceylon Cinnamon (Nattrend)** (R9.4k, 32 orders — highest order count in top 10) | High-frequency, low ticket | Basket-builder / free-shipping push item, not a hero |
 
 ## FIX (good product, bad presentation/stock/price)

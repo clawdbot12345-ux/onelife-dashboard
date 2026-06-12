@@ -42,7 +42,7 @@ Cross-check: company-wide `Monthly Turnover Analysis` shows R2.14M (FY period 01
 | Facebook (One Life Health Supermarket) | **24,000 followers** — underused asset | Naadir screenshot 2026-06-12 |
 | TikTok (@onelifehealthstore) | **10,600 followers, 13.1K likes** — active | Naadir screenshot 2026-06-12 |
 | Instagram (@one_life_health_supermarket) | **1,411 followers** — the weak channel | Naadir screenshot 2026-06-12 |
-| Vivid Health revenue /mo | TBD from Omni — **owner target: R500k+/mo short term, GP 35–40%** | FOUNDER.md batch 2 |
+| Vivid Health revenue | **R829,933 (GP 35.9%) over saved report period ≈ TTM → ~R72k/mo** vs owner target R500k+/mo. Shares: HO 4.2%, EDN 1.9%, GVS 2.0% | data/omni/reports-v2/vivid-summary.md (supplier IL = Interlife; period caveat noted in source) |
 | Branded search volume | TBD — needs Search Console access | |
 | Klaviyo list size + growth rate | TBD — pull in Phase 2 completion | |
 | Google review count/rating per store ×4 | TBD — partial in COMPETITORS.md; needs GBP access | |
