@@ -53,7 +53,7 @@ for brief in "$QUEUE"/*.md; do
         --dangerously-bypass-approvals-and-sandbox \
         -C "$REPO_DIR" \
         -o "$result" \
-        "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. Do not move or rename the brief; the bridge will move it after success. When done, summarize exactly what you produced." \
+        "Execute the task brief at $brief in this repo. For design or creative tasks, first read creative/templates/CODEX-HANDOFF.md and use the approved template samples instead of inventing a new look. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. Do not move or rename the brief; the bridge will move it after success. When done, summarize exactly what you produced." \
         || { echo "[bridge] codex failed on $name"; continue; }
     else
       echo "[bridge] builtin failed on $name"
@@ -64,7 +64,7 @@ for brief in "$QUEUE"/*.md; do
       --dangerously-bypass-approvals-and-sandbox \
       -C "$REPO_DIR" \
       -o "$result" \
-      "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. Do not move or rename the brief; the bridge will move it after success. When done, summarize exactly what you produced." \
+      "Execute the task brief at $brief in this repo. For design or creative tasks, first read creative/templates/CODEX-HANDOFF.md and use the approved template samples instead of inventing a new look. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. Do not move or rename the brief; the bridge will move it after success. When done, summarize exactly what you produced." \
       || { echo "[bridge] codex failed on $name"; continue; }
   fi
   # <<< CODEX
