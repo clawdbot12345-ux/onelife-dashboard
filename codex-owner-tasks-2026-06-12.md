@@ -39,28 +39,66 @@ checkout: cards + Payfast only.
    each method, then refund it.
 
 ═══════════════════════════════════════════════════════════════════
-## TASK 2 — REVIEWS ENGINE: Judge.me install + review-request emails  🔴 #2
+## TASK 2 — REVIEWS ENGINE: activate the dormant Judge.me install  🔴 #2
 ═══════════════════════════════════════════════════════════════════
-PDPs show "No reviews" — the #1 remaining trust gap. Evidence: first 5
-reviews = up to +270% purchase likelihood (Spiegel/Northwestern).
+Judge.me is ALREADY INSTALLED but dormant — PDPs show "No reviews" and no
+request emails go out. This is the #1 remaining trust gap. Evidence: first
+5 reviews = up to +270% purchase likelihood (Spiegel/Northwestern).
+Configure ALL of the following in the Judge.me admin:
 
-1. Install **Judge.me Product Reviews** from the Shopify App Store (Awesome
-   plan if a card is on file and the owner has pre-approved ~$15/mo; else
-   start Free plan and flag the upgrade).
-2. Configure: review request email at **14 days after fulfilment** (long
-   enough for supplements to be tried); sender name "Precious at One Life
-   Health"; reply-to hello@onelife.co.za. Match the email to the design
-   system: deep green #1b4332 header, cream background, sign-off "— Precious".
-3. Incentive (owner pre-approved): create a Shopify discount code
-   **REVIEW25** = R25 off next order, min purchase R250, one use per
-   customer; wire it as Judge.me's review-completion coupon.
-4. Theme widgets: on a DUPLICATE of the live theme (never live; name it
-   "GROWTH BUILD — REVIEWS <date> (ready to publish)"), add the Judge.me
-   star rating to product cards + PDP and the review widget below the
-   product description. Verify against the existing design system (cream
-   #faf7f0, green accents). Screenshot PDP before/after.
-5. Backfill: send review requests to the last 90 days of fulfilled orders
-   (Judge.me bulk request feature) — capped at one email per customer.
+1. **Plan check:** confirm which plan is active. The features below need
+   the Awesome plan (~$15/mo). If on Free, upgrade if a card is on file
+   (owner pre-approved); otherwise flag and configure what Free allows.
+
+2. **Review request email (the engine):**
+   - Trigger: **14 days after fulfilment** (supplements need trial time).
+   - Resend once after 7 days to non-openers. One request per order.
+   - Exclude refunded/cancelled orders.
+   - Sender "Precious at One Life Health", reply-to hello@onelife.co.za.
+   - Style to the design system: deep green #1b4332 header with the logo,
+     cream #f4f1ea background, Georgia serif heading, sign-off "— Precious".
+   - Copy direction: "How's the [product] treating you?" — ask for honest
+     feedback, mention the R25 thank-you, one tap per star.
+   - **Ask for photo reviews** in the email (photo reviews convert best).
+
+3. **Incentive (owner pre-approved):** create Shopify discount **REVIEW25**
+   = R25 off, min purchase R250, one use per customer, and wire it as the
+   Judge.me review-completion coupon (sent automatically after any review).
+
+4. **Widgets — on a DUPLICATE of the live theme** (name it "GROWTH BUILD —
+   REVIEWS <date> (ready to publish)"; never edit live):
+   - PDP: star badge under the product title (the theme already reserves
+     space — legacy CSS styles `[id*="judge_me_badge"]`; make it render),
+     full Review Widget below the description.
+   - Star ratings on product cards in collection grids.
+   - Match the design system: cream #faf7f0 backgrounds, #1b4332 accents,
+     no Judge.me branding colours. Screenshot PDP before/after.
+   - Prepare (hidden/disabled for now) a homepage "What customers say"
+     carousel section — Claude will switch it on once reviews ≥10.
+
+5. **Q&A:** enable Judge.me Questions & Answers on PDPs — supplements are
+   a question-heavy category. Route new-question notifications to
+   hello@onelife.co.za so a consultant answers (answers signed "Precious,
+   One Life Health Consultant").
+
+6. **Moderation & replies:** auto-publish ALL ratings (authenticity beats
+   curation), but set email notification on every ≤3-star review so the
+   team replies publicly within 48h as Precious.
+
+7. **SEO + Google:** enable Judge.me rich snippets (review stars in Google
+   results) and the **Google Shopping product ratings** integration — this
+   feeds star ratings into the Merchant Center free listings.
+
+8. **All-reviews page:** enable Judge.me's all-reviews page, add it to the
+   footer Information menu as "Customer Reviews".
+
+9. **Backfill (the kick-start):** bulk-send review requests for the last
+   **90 days of fulfilled orders** — capped at one email per customer,
+   spread over 3 days so replies don't spike. This alone should seed the
+   first 30–60 reviews within two weeks.
+
+10. **POPIA guard:** reviewers must NOT be auto-subscribed to marketing
+    lists — leave any "add reviewers to newsletter" option OFF.
 
 ═══════════════════════════════════════════════════════════════════
 ## TASK 3 — KLAVIYO: verify/finish the Welcome + Post-Purchase wiring  🟠
