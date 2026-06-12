@@ -105,6 +105,17 @@
       "sourceFile": "creative/templates/_assets/shopify-packshots/glycine-source.jpg",
       "cutoutFile": "creative/templates/_assets/shopify-packshots/glycine-cutout.png",
       "policy": "Public Shopify packshot; border-connected matte removed locally; label pixels are not redrawn."
+    },
+    {
+      "id": "primeself-magnesium",
+      "title": "PRIMESELF - Magnesium Complex - 60 Veg Capsules",
+      "handle": "primeself-magnesium-complex-60-veg-capsules",
+      "sku": "",
+      "sourceProductPage": "https://onelife.co.za/products/primeself-magnesium-complex-60-veg-capsules",
+      "sourceImage": "https://onelife.co.za/cdn/shop/files/MagComplex.webp?v=1739867354&width=1200",
+      "sourceFile": "creative/templates/_assets/shopify-packshots/primeself-magnesium-source.webp",
+      "cutoutFile": "creative/templates/_assets/shopify-packshots/primeself-magnesium-cutout.png",
+      "policy": "Public Shopify packshot; product-page matte removed locally; label pixels are not redrawn."
     }
   ],
   "secretScan": "No credentials, customer data, admin tokens, or private API material included."
