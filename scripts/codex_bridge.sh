@@ -53,7 +53,7 @@ for brief in "$QUEUE"/*.md; do
         --dangerously-bypass-approvals-and-sandbox \
         -C "$REPO_DIR" \
         -o "$result" \
-        "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. When done, summarize exactly what you produced." \
+        "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. Do not move or rename the brief; the bridge will move it after success. When done, summarize exactly what you produced." \
         || { echo "[bridge] codex failed on $name"; continue; }
     else
       echo "[bridge] builtin failed on $name"
@@ -64,14 +64,24 @@ for brief in "$QUEUE"/*.md; do
       --dangerously-bypass-approvals-and-sandbox \
       -C "$REPO_DIR" \
       -o "$result" \
-      "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. When done, summarize exactly what you produced." \
+      "Execute the task brief at $brief in this repo. Write all outputs to the locations the brief specifies, defaulting to creative/. Keep secrets out of outputs. Do not move or rename the brief; the bridge will move it after success. When done, summarize exactly what you produced." \
       || { echo "[bridge] codex failed on $name"; continue; }
   fi
   # <<< CODEX
 
-  git mv "$brief" "$DONE/$name"
+  if [[ -f "$brief" ]]; then
+    git mv "$brief" "$DONE/$name"
+  elif [[ -f "$DONE/$name" ]]; then
+    echo "[bridge] $name already moved to $DONE"
+  else
+    echo "[bridge] $name missing after task; skipping move"
+  fi
   git add -A
-  git commit -m "codex-bridge: completed $name" || true
+  if git diff --cached --quiet; then
+    echo "[bridge] no commit needed for $name"
+  else
+    git commit -m "codex-bridge: completed $name" || true
+  fi
 done
 
 # Omni daily sync (Mac Mini reaches port 59029; cloud cannot). No-op if creds file absent.

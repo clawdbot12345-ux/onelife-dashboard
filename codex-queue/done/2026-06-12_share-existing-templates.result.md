@@ -1,29 +1,17 @@
-# Result: Share Existing Templates
+Done and pushed to `origin/claude/end-to-end-goal-tdcj0f`.
 
-Executed the handoff brief from `codex-queue/2026-06-12_share-existing-templates.md`.
-
-Produced:
+Produced exactly:
 
 - `creative/templates/existing/MANIFEST.md`
-- `creative/templates/existing/monday-hero/` with 6 Monday Hero render variants.
-- `creative/templates/existing/vivid-wednesday/` with 2 Vivid Wednesday render variants.
-- `creative/templates/existing/thursday-bundle/` with 2 Thursday Bundle render variants.
+- `creative/templates/existing/monday-hero/`: 6 Monday Hero render variants
+- `creative/templates/existing/vivid-wednesday/`: 2 Vivid Wednesday render variants
+- `creative/templates/existing/thursday-bundle/`: 2 Thursday Bundle render variants
 - `creative/archive/2026-06/MANIFEST.md`
-- `creative/archive/2026-06/monday-hero/` with 6 June Monday Hero ad renders.
-- `creative/archive/2026-06/vivid-wednesday/` with 2 June Vivid Wednesday ad renders.
-- `creative/archive/2026-06/thursday-bundle/` with 2 June Thursday Bundle ad renders.
-- `creative/archive/2026-06/publishing-notes/` with the week-1 publishing package and WhatsApp pack.
-- `creative/archive/2026-07/MANIFEST.md`, documenting that no July ad render files exist in this checkout and that no placeholder July assets were generated.
+- `creative/archive/2026-06/`: 10 June Mon/Wed/Thu ad renders plus 2 publishing note files
+- `creative/archive/2026-07/MANIFEST.md`: documents that no July ad renders exist in this checkout; no placeholders were generated
+- `codex-queue/done/2026-06-12_share-existing-templates.md`
+- `codex-queue/done/2026-06-12_share-existing-templates.result.md`
 
-Template reconciliation:
+Validation: copied JPEGs are all under 500 KB, dimensions are 1080x1080 or 1080x1920, targeted secret-pattern scan found no credentials/tokens/private keys, and the working tree is clean.
 
-- Existing equivalents: T02 Monday Hero, T03 Vivid Day, T04 Bundle/Stack.
-- No pre-existing equivalent in this handoff inventory: T01, T05, T06, T07, T08, T09, T10, T11, T12.
-
-Validation:
-
-- 25 new handoff/archive files.
-- 20 copied JPEG renders, all at or below 500 KB.
-- Dimensions verified as 1080x1080 or 1080x1920.
-- Targeted secret-pattern scan found no credentials, private keys, API tokens, or password assignments in the new outputs.
-
+Commits: output commit `d3e0e76`; pushed branch head `36d8c1f`.
