@@ -18,5 +18,8 @@ Last updated: 2026-06-12
 | 10 | **WhatsApp Hub posting mechanism**: who posts today, and does the engine take over programming with a weekly content pack (Mon/Wed/Thu + VIP-exclusive early access)? Count confirmed: 410. | T5 — Hub is "terrible and not exclusive" per Naadir; fixing exclusivity is the whole growth mechanic | OPEN — proposed in batch 2 |
 | 11 | **Telegram gateway wiring** (approvals → flag files) | Async approval loop per GROWTH_ENGINE.md execution model | OPEN — chat works as interim |
 
+| 12 | **One real store/team photo** for Friday's proof post (19 Jun 15:00) — Codex correctly refuses staged/generated imagery for staff content. Any decent phone photo of the team/counter works; drop it to Codex or here. | Friday proof posts, ongoing proof pillar | OPEN — small but weekly recurring; a batch of 5–10 photos solves a month |
+| 13 | **One-time Business Manager + TikTok login on the Mac Mini browser** so Codex can self-provision the Meta System User token + TikTok API access. | API-based posting/ads (replaces browser automation), Meta test launch | OPEN |
+
 ## Resolved
-(none yet)
+(see ✅/~~struck~~ rows above)
