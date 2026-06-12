@@ -321,6 +321,32 @@ def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
             state = "LIVE" if updated.get("published_at") else "draft"
             print(f"  ✓ Featured image verified ({topic_for(fm)} banner) — article is {state}", file=sys.stderr)
 
+            # Write the article's on-page product picks from the SAME products
+            # chosen for the email (frontmatter), so the theme's
+            # article-guide-picks metafield path renders curated products
+            # instead of keyword-guessing. (2026-06-12: a sleep article's
+            # title contained "Winter" and the keyword fallback served
+            # immunity products.)
+            try:
+                picks = []
+                for p in (fm.get("products") or []):
+                    handle = (p.get("url", "").split("/products/")[-1].split("?")[0].strip("/"))
+                    if handle:
+                        picks.append({"handle": handle, "kicker": p.get("badge", "Consultant pick")})
+                if picks:
+                    mf = {"metafield": {"namespace": "apothecary", "key": "picks",
+                                        "type": "json", "value": json.dumps(picks)}}
+                    u3 = f"https://{SHOPIFY_STORE}/admin/api/{SHOPIFY_API_VERSION}/blogs/{blog_id}/articles/{article_id}/metafields.json"
+                    r3 = urllib.request.Request(u3, data=json.dumps(mf).encode(),
+                        headers={"X-Shopify-Access-Token": SHOPIFY_TOKEN,
+                                 "content-type": "application/json", "accept": "application/json"},
+                        method="POST")
+                    with urllib.request.urlopen(r3, timeout=60):
+                        pass
+                    print(f"  ✓ On-page picks metafield set ({len(picks)} products, same as email)", file=sys.stderr)
+            except Exception as e:
+                print(f"  ⚠ Picks metafield failed: {e} — theme falls back to topic picks", file=sys.stderr)
+
             return article_url
     except urllib.error.HTTPError as e:
         print(f"  ✗ Shopify article create failed {e.code}: {e.read().decode()[:500]}", file=sys.stderr)
