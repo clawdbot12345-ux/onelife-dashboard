@@ -384,11 +384,11 @@ def render_honest_label() -> None:
     out = OUT / "the-honest-label"
     ep = out / "ep-01-collagen"
     bases = [
-        EXISTING / "template-library-10" / "template-06-practitioner-counter.png",
-        EXISTING / "template-library-10" / "template-01-morning-digestive-ritual.png",
-        EXISTING / "imagegen-improve10x-reference-run" / "option-05-mobility-duo.png",
         BASE / "education-desk.png",
-        EXISTING / "template-library-10" / "template-10-luxury-botanical-apothecary.png",
+        BASE / "coffee-desk.png",
+        BASE / "supplement-mechanism.png",
+        BASE / "education-desk.png",
+        BASE / "store-advisor.png",
         BASE / "store-advisor.png",
     ]
     files = []
@@ -408,7 +408,7 @@ def render_honest_label() -> None:
         img.convert("RGB").save(path, quality=94, subsampling=1)
         files.append(path)
 
-    identity = editorial_card(SQUARE, EXISTING / "template-library-10" / "template-06-practitioner-counter.png", "Franchise identity", "THE HONEST LABEL", "Ingredient claims, translated without hype.", role="Tuesday franchise", accent=GREEN)
+    identity = editorial_card(SQUARE, BASE / "education-desk.png", "Franchise identity", "THE HONEST LABEL", "Ingredient claims, translated without hype.", role="Tuesday franchise", accent=GREEN)
     identity_path = out / "identity-card.jpg"
     identity_path.parent.mkdir(parents=True, exist_ok=True)
     identity.convert("RGB").save(identity_path, quality=94, subsampling=1)
