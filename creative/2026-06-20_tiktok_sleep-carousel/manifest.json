@@ -1,0 +1,54 @@
+{
+  "campaignTag": "2026-06-20_tiktok_sleep-carousel",
+  "title": "Winter sleep falling apart?",
+  "generatedAt": "2026-06-12T18:28:08Z",
+  "format": "6-slide TikTok/IG carousel",
+  "dimensions": {
+    "width": 1080,
+    "height": 1920
+  },
+  "slides": [
+    {
+      "index": 1,
+      "title": "Winter sleep falling apart?",
+      "body": "Asleep at 9, wide awake at 3.",
+      "visualDirection": "bed 3am",
+      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-01.jpg"
+    },
+    {
+      "index": 2,
+      "title": "Short days shift rhythm.",
+      "body": "The 3am wake-up can become a habit.",
+      "visualDirection": "window dark morning",
+      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-02.jpg"
+    },
+    {
+      "index": 3,
+      "title": "Start with calm basics.",
+      "body": "Magnesium contributes to normal nervous-system function.",
+      "visualDirection": "soft infographic sleep",
+      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-03.jpg"
+    },
+    {
+      "index": 4,
+      "title": "Evening routine support.",
+      "body": "Glycine is a calming amino acid used as evening winds down.",
+      "visualDirection": "product shelf",
+      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-04.jpg"
+    },
+    {
+      "index": 5,
+      "title": "What is your 3am brain doing?",
+      "body": "Replaying today / planning tomorrow / just awake",
+      "visualDirection": "poll sleep",
+      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-05.jpg"
+    },
+    {
+      "index": 6,
+      "title": "Ask before you buy blind.",
+      "body": "In store or online, free delivery over R400.",
+      "visualDirection": "storefront product",
+      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-06.jpg"
+    }
+  ]
+}
