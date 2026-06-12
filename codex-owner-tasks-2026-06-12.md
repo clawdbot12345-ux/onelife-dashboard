@@ -1,0 +1,134 @@
+# ONE LIFE HEALTH — CODEX HANDOFF 2026-06-12 (OWNER-TASK INITIATION)
+
+Repo: `clawdbot12345-ux/onelife-dashboard` · branch: `claude/onelife-health-review-lwvi3-c3yry2`
+Store: onelife.co.za (Shopify admin: onelifehealth.myshopify.com) · Klaviyo account S86r7e
+
+Mission: initiate every remaining revenue-blocking task that has been waiting
+on the owner. You have browser + admin access; do everything below except the
+clearly marked OWNER-ONLY steps, and produce the completion report at the end.
+Work the tasks IN THIS ORDER — it is sorted by revenue impact.
+
+Hard rules (unchanged): never write to the live theme (duplicate → edit →
+owner publishes); do NOT touch Klaviyo Welcome Email 1; never send to the
+full list (Engaged 90d segment S3MAsK only); free delivery threshold is R400
+nationwide; "health consultants" never coaches/pharmacists; 17 protocols;
+sign-off Precious. Verify every change after making it; report with evidence.
+
+═══════════════════════════════════════════════════════════════════
+## TASK 1 — CHECKOUT PAYMENTS: initiate Payflex, PayJustNow, Ozow  🔴 #1
+═══════════════════════════════════════════════════════════════════
+Payment failure causes ~52% of lost SA online sales; BNPL lifts conversion
+20–30% (vendor-claimed) and only 16% of SA retailers offer it. Current
+checkout: cards + Payfast only.
+
+1. Shopify admin → Settings → Payments. Document what is currently enabled
+   (screenshot).
+2. From the Shopify App Store / payment provider list, begin installation of:
+   - **Payflex** (BNPL, pay-in-4)
+   - **PayJustNow** (BNPL, pay-in-3)
+   - **Ozow** (instant EFT)
+3. Complete every step possible without legal signatures: create merchant
+   accounts with store details (One Life Health, onelife.co.za, support
+   email hello@onelife.co.za), install the apps, configure sandbox/test mode.
+4. ⚠️ OWNER-ONLY: each provider requires KYC/merchant agreement (company
+   registration docs, bank details, signed agreement). STOP at that step,
+   and output for the owner a precise list per provider: the exact dashboard
+   URL, what document is needed, and the single action required.
+5. Do NOT enable any gateway live on checkout until the owner confirms KYC
+   is approved. When approved, enable + place a R20 live test order through
+   each method, then refund it.
+
+═══════════════════════════════════════════════════════════════════
+## TASK 2 — REVIEWS ENGINE: Judge.me install + review-request emails  🔴 #2
+═══════════════════════════════════════════════════════════════════
+PDPs show "No reviews" — the #1 remaining trust gap. Evidence: first 5
+reviews = up to +270% purchase likelihood (Spiegel/Northwestern).
+
+1. Install **Judge.me Product Reviews** from the Shopify App Store (Awesome
+   plan if a card is on file and the owner has pre-approved ~$15/mo; else
+   start Free plan and flag the upgrade).
+2. Configure: review request email at **14 days after fulfilment** (long
+   enough for supplements to be tried); sender name "Precious at One Life
+   Health"; reply-to hello@onelife.co.za. Match the email to the design
+   system: deep green #1b4332 header, cream background, sign-off "— Precious".
+3. Incentive (owner pre-approved): create a Shopify discount code
+   **REVIEW25** = R25 off next order, min purchase R250, one use per
+   customer; wire it as Judge.me's review-completion coupon.
+4. Theme widgets: on a DUPLICATE of the live theme (never live; name it
+   "GROWTH BUILD — REVIEWS <date> (ready to publish)"), add the Judge.me
+   star rating to product cards + PDP and the review widget below the
+   product description. Verify against the existing design system (cream
+   #faf7f0, green accents). Screenshot PDP before/after.
+5. Backfill: send review requests to the last 90 days of fulfilled orders
+   (Judge.me bulk request feature) — capped at one email per customer.
+
+═══════════════════════════════════════════════════════════════════
+## TASK 3 — KLAVIYO: verify/finish the Welcome + Post-Purchase wiring  🟠
+═══════════════════════════════════════════════════════════════════
+Claude's API audit cannot see flow-message template assignments. In the
+Klaviyo UI:
+1. Open flow XZNrmz (Welcome — Full Sequence). Check email #2 and #3:
+   do they render the 2026 design system ("Which stack is yours?" /
+   "Thirty years behind the counter")? If not, swap in templates YdyAkd
+   (Welcome #2) and Y9SA46 (Welcome #3). Email #1 MUST NOT BE TOUCHED.
+2. Open flow RpJP55 (Post-Purchase v3). Check email #2 renders "What pairs
+   well with your order"; if not, swap in template RpUzMu.
+3. Screenshot each flow's message list as evidence.
+
+═══════════════════════════════════════════════════════════════════
+## TASK 4 — SWITCH ON THE EMAIL CADENCE AUTOMATION  🟠
+═══════════════════════════════════════════════════════════════════
+The repo now has two scheduled campaign generators (see
+email-cadence-system-2026.md):
+1. GitHub repo → Settings → Secrets and variables → Actions:
+   - Confirm secret `KLAVIYO_API_KEY` exists (used by daily-refresh).
+   - Add secrets `SHOPIFY_CLIENT_ID` and `SHOPIFY_CLIENT_SECRET` (the same
+     credentials you used for Shopify API work; if you don't hold them,
+     flag for owner).
+   - Add repository **variable** `EMAIL_AUTOMATION_ENABLED` = `true`.
+2. Actions tab → run "Tuesday Education Email" manually → verify a campaign
+   appears in Klaviyo named "[AUTO] Tuesday Digest — …", scheduled, audience
+   = segment S3MAsK only. Same for "Friday Product Email".
+3. Do NOT cancel the scheduled sends — they are the system working. Report
+   both campaign IDs and their scheduled times.
+
+═══════════════════════════════════════════════════════════════════
+## TASK 5 — SUBSCRIPTIONS GROUNDWORK (no app install yet)  🟡
+═══════════════════════════════════════════════════════════════════
+Shopify Payments is unavailable in SA and PayFast does NOT support Shopify's
+Subscriptions API, so the gateway question decides everything:
+1. Research + confirm (provider docs and/or support contact): does
+   **Paystack** support Shopify Subscriptions API recurring charges for SA
+   merchants? Does **Peach Payments**? Get a written/documented yes/no each.
+2. Draft (do not send) the owner's enquiry email to the viable provider(s)
+   requesting recurring-billing activation for onelife.co.za.
+3. Report the verdict + recommendation (Appstle vs Seal on the viable
+   gateway, or the Klaviyo "reminder autoship" fallback that works today).
+
+═══════════════════════════════════════════════════════════════════
+## TASK 6 — HOUSEKEEPING (quick)  🟡
+═══════════════════════════════════════════════════════════════════
+1. `sections/slideshow.liquid` on the next theme duplicate you make (Task 2
+   step 4): change line ~142 `data-autoplay="{% if template == 'index'
+   %}false{% else %}{{ section.settings.auto_rotate }}{% endif %}"` to
+   `data-autoplay="{{ section.settings.auto_rotate }}"`, then DELETE the
+   rotate() shim block from snippets/whatsapp-float.liquid. Both or neither.
+2. Archive/label the 3 sent internal Klaviyo test campaigns in the UI so
+   they stop polluting campaign analytics.
+3. In Klaviyo, archive the orphaned pre-2026 templates that are no longer
+   attached to any flow or campaign (list them first; do not delete).
+
+═══════════════════════════════════════════════════════════════════
+## OWNER-ONLY LIST (output this filled-in at the end of your run)
+═══════════════════════════════════════════════════════════════════
+1. KYC/merchant agreements for Payflex / PayJustNow / Ozow — exact links +
+   documents needed (from Task 1).
+2. Publish the next theme duplicate once Tasks 2.4 + 6.1 land on it.
+3. Phone photo shoot at all 3 stores (storefront, counter, shelves, a
+   consultant mid-conversation) — for store pages + About. AI store photos
+   are banned: they must be real.
+4. Any credential Codex could not access (flag precisely).
+
+## DELIVERABLE
+One report: per task — done/blocked, evidence (IDs, screenshots, URLs),
+and the filled-in owner-only list. Keep it under a page.
