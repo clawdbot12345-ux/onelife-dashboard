@@ -23,7 +23,16 @@ T2–T4 are BLOCKED on Omni ERP access. T5 partially measurable.
 
 ## T2–T4 — Store revenue (Centurion +20%, GVS +50%, Edenvale +60%) by 31 Dec 2026
 
-**BLOCKED: no Omni ERP access.** Cannot establish per-store TTM baselines. This is the #1 item in `state/NEEDS.md`. Even a nightly CSV export of per-store sales unblocks measurement.
+**UNBLOCKED 2026-06-12** via Omni reports (`data/omni/reports-v2/`, Codex catalog). Saved reports expose current-period data, not TTM — baselines locked on June 2026 run-rate (the honest available base; prior-FY periods requested as follow-up). All figures **excl VAT**.
+
+| Store | June 2026 run-rate (from dated Daily Turnover, 8–9 trading days) | GP% | Baseline /mo (locked) | Target /mo (31 Dec) |
+|---|---|---|---|---|
+| Centurion/HO* | ~R57.5k/trading day → R1.50–1.73M/mo | 33.8% | **R1.50M** | **R1.80M** (+20%) |
+| Edenvale | ~R13.0k/day → R338–390k/mo | 34.4% | **R360k** | **R576k** (+60%) |
+| Glen Village | ~R11.4k/day → R298–343k/mo | 32.4% | **R320k** | **R480k** (+50%) |
+
+*HO includes online fulfilment — the ~R109k/mo ex-VAT Shopify revenue sits inside HO's number; per-channel split within HO is a refinement task.
+Cross-check: company-wide `Monthly Turnover Analysis` shows R2.14M (FY period 01) / R2.04M (02) — consistent with branch sums. **Blended GP 33–34% confirmed against owner's business_config (0.33).** Whole business ≈ R2.0–2.1M/mo ex VAT → online is currently ~5% of revenue; Vivid's R500k+/mo target = ~24% of total revenue (Vivid current share: extraction task queued).
 
 ## T5 — Brand awareness (continuous)
 

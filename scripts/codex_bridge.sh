@@ -36,10 +36,10 @@ for brief in "$QUEUE"/*.md; do
   git commit -m "codex-bridge: completed $name" || true
 done
 
-# Omni sync (Mac Mini reaches port 59029; cloud cannot). No-op if creds file absent.
+# Omni daily sync (Mac Mini reaches port 59029; cloud cannot). No-op if creds file absent.
 if [[ -f "$HOME/.onelife/omni_url" ]]; then
-  OMNI_REPORT_URL="$(cat "$HOME/.onelife/omni_url")" python3 scripts/omni_probe.py || echo "[bridge] omni sync failed (non-fatal)"
-  git add -A data/omni && git commit -m "codex-bridge: omni sync" || true
+  OMNI_REPORT_URL="$(cat "$HOME/.onelife/omni_url")" python3 scripts/fetch_omni.py || echo "[bridge] omni sync failed (non-fatal)"
+  git add -A data/omni && git commit -m "codex-bridge: omni daily sync" || true
 fi
 
 git push -q origin "$BRANCH" || true
