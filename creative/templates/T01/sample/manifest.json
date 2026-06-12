@@ -1,0 +1,52 @@
+{
+  "templateId": "T01",
+  "template": "Carousel master — 6 slide roles",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T01/sample/energy-carousel/slides/slide-01.jpg",
+    "creative/templates/T01/sample/energy-carousel/slides/slide-02.jpg",
+    "creative/templates/T01/sample/energy-carousel/slides/slide-03.jpg",
+    "creative/templates/T01/sample/energy-carousel/slides/slide-04.jpg",
+    "creative/templates/T01/sample/energy-carousel/slides/slide-05.jpg",
+    "creative/templates/T01/sample/energy-carousel/slides/slide-06.jpg",
+    "creative/templates/T01/sample/sleep-carousel/slides/slide-01.jpg",
+    "creative/templates/T01/sample/sleep-carousel/slides/slide-02.jpg",
+    "creative/templates/T01/sample/sleep-carousel/slides/slide-03.jpg",
+    "creative/templates/T01/sample/sleep-carousel/slides/slide-04.jpg",
+    "creative/templates/T01/sample/sleep-carousel/slides/slide-05.jpg",
+    "creative/templates/T01/sample/sleep-carousel/slides/slide-06.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/energy-desk.png",
+    "creative/templates/_assets/generated-bases/coffee-desk.png",
+    "creative/templates/_assets/generated-bases/supplement-mechanism.png",
+    "creative/templates/_assets/generated-bases/store-advisor.png",
+    "creative/templates/_assets/generated-bases/poll-desk.png",
+    "creative/templates/_assets/generated-bases/store-online.png",
+    "creative/templates/_assets/generated-bases/sleep-3am.png",
+    "creative/templates/_assets/generated-bases/sleep-window.png",
+    "creative/templates/_assets/generated-bases/sleep-mechanism.png",
+    "creative/templates/_assets/generated-bases/sleep-duo.png",
+    "creative/templates/_assets/generated-bases/sleep-poll.png"
+  ],
+  "copySlots": [
+    "hook",
+    "pain",
+    "mechanism",
+    "proof",
+    "participation",
+    "cta",
+    "pager",
+    "footer"
+  ],
+  "notes": [
+    "Includes full sample rerenders for both week-1 carousels.",
+    "Production carousel folders were replaced with the same T01 sample render outputs.",
+    "Mechanism slides use clean diagram overlays on photographic backdrops."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}

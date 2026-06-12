@@ -17,7 +17,9 @@ Asleep early, awake at 3? Save this for your evening routine. Ask One Life about
 
 ## QA
 
-- 6 slide images rendered at 1080 x 1920.
-- Health claims kept to structure/function language from the brief.
+- Re-rendered with T01 carousel master.
+- Base layer is photorealistic image-model raster imagery, not vector placeholder art.
+- Text, logo chip, pager, and footer were composited after generation for crisp typography.
+- Health claims kept to the compliance-approved copy from the brief.
 - Caption includes the required general-health disclaimer.
 - No credentials or account logins are included.

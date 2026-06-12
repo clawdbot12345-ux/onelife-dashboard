@@ -15,42 +15,42 @@
       "role": "Hook",
       "copy": "Winter sleep falling apart? Asleep at 9, wide awake at 3.",
       "baseImage": "creative/templates/_assets/generated-bases/sleep-3am.png",
-      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-01.jpg"
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-01.jpg"
     },
     {
       "index": 2,
       "role": "Pain",
       "copy": "Short days scramble your rhythm — and the 3am wake-up becomes a habit.",
       "baseImage": "creative/templates/_assets/generated-bases/sleep-window.png",
-      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-02.jpg"
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-02.jpg"
     },
     {
       "index": 3,
       "role": "Mechanism",
       "copy": "Magnesium contributes to normal nervous-system function; glycine is the calming amino acid your body uses as evening winds down.",
       "baseImage": "creative/templates/_assets/generated-bases/sleep-mechanism.png",
-      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-03.jpg"
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-03.jpg"
     },
     {
       "index": 4,
       "role": "Proof",
       "copy": "Customer favourites: PrimeSelf Magnesium Complex and Good Life Glycine — ask the team which fits your evening routine.",
       "baseImage": "creative/templates/_assets/generated-bases/sleep-duo.png",
-      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-04.jpg"
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-04.jpg"
     },
     {
       "index": 5,
       "role": "Participation",
       "copy": "What's your 3am brain doing — replaying today, planning tomorrow, or just… awake? 👇",
       "baseImage": "creative/templates/_assets/generated-bases/sleep-poll.png",
-      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-05.jpg"
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-05.jpg"
     },
     {
       "index": 6,
       "role": "CTA",
       "copy": "In store at Centurion, Glen Village & Edenvale — or onelife.co.za, free delivery over R400.",
       "baseImage": "creative/templates/_assets/generated-bases/store-online.png",
-      "file": "creative/2026-06-20_tiktok_sleep-carousel/slides/slide-06.jpg"
+      "file": "creative/templates/T01/sample/sleep-carousel/slides/slide-06.jpg"
     }
   ]
 }
