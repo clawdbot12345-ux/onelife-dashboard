@@ -1,0 +1,25 @@
+{
+  "templateId": "T09",
+  "template": "Email hero header",
+  "generatedAt": "2026-06-12T19:50:14Z",
+  "sizes": [
+    "1200x600"
+  ],
+  "sampleFiles": [
+    "creative/templates/T09/sample/t09-email-hero-header.jpg"
+  ],
+  "baseLayerPolicy": "Image-model photorealistic raster base; deterministic text/logo/footer overlay.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/vivid-packshot.png"
+  ],
+  "copySlots": [
+    "headline",
+    "subhead",
+    "product",
+    "ctaContext"
+  ],
+  "notes": [
+    "One hero image only; body/product list remains in email HTML per existing email design system."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}
