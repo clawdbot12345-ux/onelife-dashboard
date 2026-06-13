@@ -23,6 +23,20 @@ products:
     url: https://onelife.co.za/products/willow-vitamin-e-advanced-30-capsule
     badge: THE BODYGUARD
     blurb: The antioxidant that protects the very fats your skin barrier is built from.
+faq:
+  - q: "Will collagen really help my skin, or is it hype?"
+    a: "The research on skin hydration and elasticity used around 10g of hydrolysed collagen daily over eight to twelve weeks. Buy it planning to finish the tub and judge it then — not after a week."
+  - q: "Cream or supplements for winter skin?"
+    a: "Both. Cream holds water at the surface; omega-3, collagen and vitamin E support the barrier from the inside. People who win this fight work from both sides — but fix the scalding shower first, because that is free."
+  - q: "When is dry skin not just winter dryness?"
+    a: "If your skin is cracked, bleeding, weeping or fiercely itchy in patches, that could be eczema or something else that needs a doctor's eyes, not our shelves. Please go and get it looked at."
+references:
+  - label: "NIH Office of Dietary Supplements — Omega-3 fatty acids fact sheet"
+    url: https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/
+  - label: "Examine.com — Collagen and skin"
+    url: https://examine.com/supplements/collagen/
+  - label: "NIH Office of Dietary Supplements — Vitamin E fact sheet"
+    url: https://ods.od.nih.gov/factsheets/VitaminE-HealthProfessional/
 ---
 
 A customer pulled up her sleeve at the counter last week to show me the white scratch lines on her forearm — "Look, I can write my name on myself." Every July it's the same parade: itchy shins, tight cheeks after washing, lips that crack by lunchtime. And almost everyone is fighting it with cream alone.

@@ -24,6 +24,20 @@ products:
     url: https://onelife.co.za/products/solgar-triple-strength-omega-3-950-mg-50-softgels
     badge: BRAIN FATS
     blurb: Concentrated EPA and DHA — the fats your brain is largely built from, one a day.
+faq:
+  - q: "Is feeling flat in winter the same as depression?"
+    a: "No. An ordinary winter dip lifts with light, movement and time. If low mood lasts more than two weeks, you have stopped enjoying things you love, or your sleep and appetite have changed sharply, that is depression territory — please speak to your GP or SADAG, not our shelves."
+  - q: "How long before saffron does anything?"
+    a: "The studies used standardised extracts around 28 to 30mg a day and showed their effect over four to six weeks, not four days. One capsule daily, judged at the end of the bottle."
+  - q: "Can I take saffron with antidepressants?"
+    a: "Talk to your doctor first. If you are on prescription antidepressants, do not add saffron alongside them on your own."
+references:
+  - label: "Examine.com — Saffron evidence summary"
+    url: https://examine.com/supplements/saffron/
+  - label: "NIH Office of Dietary Supplements — Omega-3 fatty acids fact sheet"
+    url: https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/
+  - label: "SADAG — South African Depression and Anxiety Group (free helplines)"
+    url: https://www.sadag.org
 ---
 
 There's a sentence I hear across this counter every single July, almost word for word: *"I'm not sick, Precious. I'm just... flat."* It's said apologetically, as if feeling grey in the greyest month needs a permission slip. It doesn't. July is Mental Illness Awareness Month in South Africa, so let's talk about the winter dip honestly — what it is, what supports it, and where the line is.

@@ -23,6 +23,20 @@ products:
     url: https://onelife.co.za/products/better-you-d1000-vitamin-d-oral-spray-15ml
     badge: NO PILLS
     blurb: A daily spray under the tongue — the easiest vitamin D habit to keep.
+faq:
+  - q: "When should I start taking echinacea?"
+    a: "Before you are sick, not after. The fresh-plant tinctures the better studies used work best taken through the season. Starting the day your throat already burns is like buying an umbrella in the rain — some help, but you are already wet."
+  - q: "Does vitamin C stop me getting colds?"
+    a: "No — it will not make you bulletproof. What the evidence supports is shorter, milder colds when taken daily through winter at an honest 1,000mg, not the 80mg hiding behind the flavouring in a fizzy sweet."
+  - q: "I already take a multivitamin — do I need more zinc and C?"
+    a: "Probably not. Doubling up does not build a fortress, it builds expensive urine and an upset stomach. Bring us what you take, or WhatsApp a photo of the labels, and we will tell you honestly what is missing — sometimes nothing."
+references:
+  - label: "Examine.com — Echinacea evidence summary"
+    url: https://examine.com/supplements/echinacea/
+  - label: "NIH Office of Dietary Supplements — Vitamin C fact sheet"
+    url: https://ods.od.nih.gov/factsheets/VitaminC-HealthProfessional/
+  - label: "NIH Office of Dietary Supplements — Vitamin D fact sheet"
+    url: https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/
 ---
 
 Every June it starts. Someone leans on the counter, already sniffing, and asks the same question: *"What must I take so I don't get what everyone at work has?"*

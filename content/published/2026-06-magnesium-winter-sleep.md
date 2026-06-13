@@ -18,6 +18,20 @@ products:
     url: https://onelife.co.za/products/your-wellbeing-magnesium-glycinate-plus-60-capsules
     badge: ABSORPTION BLEND
     blurb: Glycinate formulated for uptake — the one for people who tried magnesium and "felt nothing".
+faq:
+  - q: "Which form of magnesium is best for sleep?"
+    a: "Glycinate — magnesium bound to glycine, an amino acid that is itself calming. It absorbs well and is gentle on the stomach. The cheap supermarket version is usually oxide, which is poorly absorbed and mostly a laxative."
+  - q: "How long before magnesium helps my sleep?"
+    a: "Taken 30 to 60 minutes before bed, consistently, give it at least two to three weeks. This is a mineral you restore, not a sleeping pill you feel in twenty minutes."
+  - q: "What if I fall asleep fine but wake at 3am with my mind racing?"
+    a: "Magnesium helps the body but will not silence a stressed mind — that is more about your stress load than a mineral. And if you snore heavily and wake unrefreshed every day, please talk to a doctor about your sleep itself before buying anything."
+references:
+  - label: "NIH Office of Dietary Supplements — Magnesium fact sheet"
+    url: https://ods.od.nih.gov/factsheets/Magnesium-HealthProfessional/
+  - label: "Examine.com — Magnesium and sleep"
+    url: https://examine.com/supplements/magnesium/
+  - label: "Examine.com — Glycine evidence summary"
+    url: https://examine.com/supplements/glycine/
 ---
 
 A woman told me last week she sleeps with two blankets, a heater and a Jack Russell, and still finds herself staring at the ceiling at 3am. Winter, when sleep should be easiest, is when half the sleep complaints arrive at our counter.

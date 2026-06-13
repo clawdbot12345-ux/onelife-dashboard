@@ -1,0 +1,38 @@
+<!--
+  Onelife — Review Request email ("Precious", 2026 design system).
+  Fills the missing review-request flow gap (no such flow exists in Klaviyo).
+
+  HOW TO USE (Klaviyo UI — the MCP blocks programmatic flow/template writes):
+  1. Klaviyo → Templates → Create → Code editor → paste this HTML.
+  2. New Flow → trigger "Fulfilled Order" (or "Placed Order" + 10–14 day delay
+     so the product has been used). Filter: has not already reviewed.
+  3. Drop this template into the flow's email action.
+  4. The CTA uses {{ event.extra.review_url|default:'https://onelife.co.za/account' }}
+     — wire it to the Judge.me review link if you pass one on the event;
+     otherwise it falls back to the account/orders page.
+  Keep sends to engaged profiles; smart-sending on.
+-->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>How are you getting on?</title></head>
+<body style="margin:0;padding:0;background:#f4f1ea;font-family:Arial,Helvetica,sans-serif;color:#374151;">
+<table cellpadding="0" cellspacing="0" role="presentation" style="background:#f4f1ea;padding:28px 0;" width="100%"><tr><td align="center">
+<table cellpadding="0" cellspacing="0" role="presentation" style="max-width:620px;background:#ffffff;border-radius:12px;overflow:hidden;" width="620">
+<tr><td style="background:#1b4332;padding:22px 40px;text-align:center;">
+<img alt="One Life Health" src="https://onelife.co.za/cdn/shop/files/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png?v=1671450106" style="display:block;margin:0 auto;max-width:130px;height:auto;" width="130"/></td></tr>
+<tr><td style="height:4px;background:#2d6a4f;font-size:0;line-height:0;">&nbsp;</td></tr>
+<tr><td style="padding:36px 40px 8px;">
+<p style="margin:0 0 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;font-weight:bold;">A quick favour</p>
+<h1 style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.2;color:#1b4332;font-weight:normal;">How are you getting on?</h1>
+<p style="margin:0 0 16px;font-size:15px;line-height:1.65;">Hi {{ first_name|default:'there' }} — Precious here. A little while back you ordered from us, and I wanted to check in: how's it going?</p>
+<p style="margin:0 0 22px;font-size:15px;line-height:1.65;">If it's working for you — or even if it isn't — a quick honest review helps the next person standing where you were, and it genuinely helps a small family business. It takes about 30 seconds.</p>
+<table cellpadding="0" cellspacing="0" role="presentation" width="100%"><tr><td align="center" style="padding:0 0 24px;">
+<a href="{{ event.extra.review_url|default:'https://onelife.co.za/account' }}" style="display:inline-block;background:#1b4332;color:#ffffff;padding:14px 30px;border-radius:10px;font-size:15px;font-weight:bold;text-decoration:none;">Leave a quick review →</a>
+</td></tr></table>
+<p style="margin:0 0 6px;font-size:13.5px;line-height:1.6;color:#555;">And if something isn't right, just reply to this email — I read these myself.</p>
+<p style="margin:20px 0 4px;font-size:14px;">— Precious</p>
+<p style="margin:0 0 28px;font-size:12px;color:#888;">One Life Health Consultant · Centurion</p></td></tr>
+<tr><td style="background:#14291e;padding:20px 40px;text-align:center;">
+<p style="margin:0 0 4px;font-family:Georgia,serif;font-size:16px;color:#ffffff;">A real apothecary. Family-owned since 1996.</p>
+<p style="margin:0;font-size:11px;color:#9db8a8;">Centurion · Glen Village · Edenvale · Free delivery over R400 nationwide</p>
+<p style="margin:12px 0 0;font-size:11px;color:#9db8a8;">{% unsubscribe 'Unsubscribe' %} · <a href="https://onelife.co.za" style="color:#9db8a8;">onelife.co.za</a></p></td></tr>
+</table></td></tr></table></body></html>

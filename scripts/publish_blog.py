@@ -129,16 +129,16 @@ def parse_frontmatter_simple(md_content):
             kv = line[4:]
             if ':' in kv:
                 k, _, v = kv.partition(':')
-                current_obj[k.strip()] = v.strip()
+                current_obj[k.strip()] = _strip_quotes(v.strip())
         elif line.startswith('    '):
             kv = line[4:]
             if ':' in kv and current_obj is not None:
                 k, _, v = kv.partition(':')
-                current_obj[k.strip()] = v.strip()
+                current_obj[k.strip()] = _strip_quotes(v.strip())
         elif ':' in line and not line.startswith(' '):
             k, _, v = line.partition(':')
             k = k.strip()
-            v = v.strip()
+            v = _strip_quotes(v.strip())
             if not v:
                 current_key = k
                 current_list = None
@@ -148,6 +148,12 @@ def parse_frontmatter_simple(md_content):
                 current_key = None
                 current_list = None
     return fm, body
+
+def _strip_quotes(v):
+    """Strip a single pair of surrounding quotes from a simple-parsed value."""
+    if len(v) >= 2 and v[0] == v[-1] and v[0] in ("'", '"'):
+        return v[1:-1]
+    return v
 
 def parse(md_content):
     try:
@@ -162,41 +168,78 @@ def utm_url(url, campaign_slug, content_id):
     return f"{url}{sep}utm_source=klaviyo&utm_medium=email&utm_campaign={campaign_slug}&utm_content={content_id}"
 
 # ─── Markdown → HTML ───
+def _inline(text):
+    """Inline markdown → HTML: bold, italic, links."""
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', text)
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', text)
+    return text
+
+def _is_table_row(line):
+    s = line.strip()
+    return s.startswith('|') and s.count('|') >= 2
+
+def _is_table_divider(line):
+    s = line.strip().strip('|')
+    cells = [c.strip() for c in s.split('|')]
+    return bool(cells) and all(re.fullmatch(r':?-{2,}:?', c) for c in cells)
+
+def _split_row(line):
+    return [c.strip() for c in line.strip().strip('|').split('|')]
+
 def md_to_html(md_body):
-    """Minimal markdown to HTML converter — headings, bold, paragraphs, lists, links."""
+    """Minimal markdown → HTML — headings, bold, italics, links, lists, and
+    GitHub-style pipe tables (added 2026-06 so product-comparison and
+    dosing tables render instead of being dropped)."""
     html_out = []
     lines = md_body.split('\n')
     in_list = False
-    for line in lines:
+    i = 0
+    n = len(lines)
+    while i < n:
+        line = lines[i]
+        # Pipe table: a header row, a divider row, then 0+ body rows
+        if _is_table_row(line) and i + 1 < n and _is_table_divider(lines[i + 1]):
+            if in_list:
+                html_out.append('</ul>'); in_list = False
+            headers = _split_row(line)
+            i += 2  # skip header + divider
+            body_rows = []
+            while i < n and _is_table_row(lines[i]):
+                body_rows.append(_split_row(lines[i]))
+                i += 1
+            thead = ''.join(f'<th>{_inline(h)}</th>' for h in headers)
+            tbody = ''.join(
+                '<tr>' + ''.join(f'<td>{_inline(c)}</td>' for c in row) + '</tr>'
+                for row in body_rows
+            )
+            html_out.append(
+                f'<table class="apothecary-table"><thead><tr>{thead}</tr></thead>'
+                f'<tbody>{tbody}</tbody></table>'
+            )
+            continue
         # Headings
         if line.startswith('### '):
             if in_list: html_out.append('</ul>'); in_list = False
-            html_out.append(f'<h3>{line[4:].strip()}</h3>')
+            html_out.append(f'<h3>{_inline(line[4:].strip())}</h3>')
         elif line.startswith('## '):
             if in_list: html_out.append('</ul>'); in_list = False
-            html_out.append(f'<h2>{line[3:].strip()}</h2>')
+            html_out.append(f'<h2>{_inline(line[3:].strip())}</h2>')
         elif line.startswith('# '):
             if in_list: html_out.append('</ul>'); in_list = False
-            html_out.append(f'<h1>{line[2:].strip()}</h1>')
+            html_out.append(f'<h1>{_inline(line[2:].strip())}</h1>')
         elif line.startswith('- ') or line.startswith('* '):
             if not in_list: html_out.append('<ul>'); in_list = True
-            item = line[2:].strip()
-            item = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', item)
-            item = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', item)
-            html_out.append(f'<li>{item}</li>')
+            html_out.append(f'<li>{_inline(line[2:].strip())}</li>')
         elif line.strip() == '---':
             if in_list: html_out.append('</ul>'); in_list = False
             html_out.append('<hr>')
         elif not line.strip():
             if in_list: html_out.append('</ul>'); in_list = False
-            continue
         else:
             if in_list: html_out.append('</ul>'); in_list = False
-            para = line
-            para = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', para)
-            para = re.sub(r'\*(.+?)\*', r'<em>\1</em>', para)
-            para = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', para)
-            html_out.append(f'<p>{para}</p>')
+            html_out.append(f'<p>{_inline(line)}</p>')
+        i += 1
     if in_list:
         html_out.append('</ul>')
     return '\n'.join(html_out)
@@ -235,6 +278,119 @@ def topic_banner_url(fm):
     return BANNER_FILES_BASE.format(slug=topic_for(fm))
 
 
+def _esc(s):
+    """Escape text for safe HTML/JSON-LD embedding."""
+    return (str(s or "").replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
+
+def article_canonical_url(fm, blog_handle="health-wellness-hub"):
+    return f"https://onelife.co.za/blogs/{blog_handle}/{fm.get('slug','')}"
+
+def render_product_table(products):
+    """On-page comparison table built from the SAME frontmatter products the
+    email uses. Gives the article internal product links + a structured block
+    Google can lift into rich results, and answers the SEO audit's
+    'no comparison table / no product links' findings."""
+    products = products or []
+    if not products:
+        return ""
+    rows = ""
+    for p in products:
+        name = _esc(p.get("name", ""))
+        url = _esc(p.get("url", "#"))
+        price = _esc(p.get("price", ""))
+        badge = _esc(p.get("badge", ""))
+        blurb = _esc(p.get("blurb", ""))
+        best_for = f"<strong>{badge}</strong> — {blurb}" if badge else blurb
+        rows += (f'<tr><td><a href="{url}">{name}</a></td>'
+                 f'<td>{price}</td><td>{best_for}</td></tr>')
+    return ('<h2>How the picks compare</h2>\n'
+            '<table class="apothecary-table apothecary-compare">'
+            '<thead><tr><th>Product</th><th>Price</th><th>Best for</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table>')
+
+def render_faq_section(faq):
+    """Render a FAQ block. Pairs with the FAQPage JSON-LD so the same Q&As are
+    both human-readable and machine-readable."""
+    faq = faq or []
+    if not faq:
+        return ""
+    items = ""
+    for qa in faq:
+        q = _inline(_esc(qa.get("q", "")))
+        a = _inline(_esc(qa.get("a", "")))
+        items += f'<h3>{q}</h3>\n<p>{a}</p>\n'
+    return f'<h2>Frequently asked questions</h2>\n<div class="apothecary-faq">\n{items}</div>'
+
+def render_references(references):
+    """Render a numbered references list. External links get rel=nofollow."""
+    references = references or []
+    if not references:
+        return ""
+    items = ""
+    for ref in references:
+        if isinstance(ref, dict):
+            label = _esc(ref.get("label", ref.get("url", "")))
+            url = ref.get("url", "")
+        else:
+            label, url = _esc(ref), ""
+        if url:
+            items += (f'<li><a href="{_esc(url)}" rel="nofollow noopener" '
+                      f'target="_blank">{label}</a></li>')
+        else:
+            items += f'<li>{label}</li>'
+    return ('<h2>References</h2>\n'
+            f'<ol class="apothecary-references">{items}</ol>')
+
+def build_jsonld(fm, body_text, blog_handle="health-wellness-hub"):
+    """FAQPage + BreadcrumbList JSON-LD for the article body.
+
+    NOTE: the live theme's `snippets/seo-jsonld-article.liquid` already emits
+    the canonical Article schema in <head> for every blog post, so we do NOT
+    repeat a BlogPosting here (that would duplicate it). We only add what the
+    theme does not: a BreadcrumbList, and a FAQPage when the article ships an
+    `faq:` block. Answers the audit's 'missing FAQ schema' for articles."""
+    url = article_canonical_url(fm, blog_handle)
+    graph = [{
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://onelife.co.za"},
+            {"@type": "ListItem", "position": 2, "name": "Health & Wellness Hub",
+             "item": f"https://onelife.co.za/blogs/{blog_handle}"},
+            {"@type": "ListItem", "position": 3, "name": fm.get("title", ""), "item": url},
+        ],
+    }]
+    faq = fm.get("faq") or []
+    if faq:
+        graph.append({
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": qa.get("q", ""),
+                "acceptedAnswer": {"@type": "Answer", "text": qa.get("a", "")},
+            } for qa in faq],
+        })
+    payload = {"@context": "https://schema.org", "@graph": graph}
+    return ('<script type="application/ld+json">'
+            + json.dumps(payload, ensure_ascii=False)
+            + '</script>')
+
+def build_article_html(fm, body_md, blog_handle="health-wellness-hub"):
+    """Assemble the full article body Shopify stores: JSON-LD schema, the prose,
+    a product comparison table, an FAQ block and a references list. Everything
+    after the prose is generated from frontmatter, so an article only needs
+    `products`, `faq` and `references` keys to gain all four blocks."""
+    body_text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", md_to_html(body_md))).strip()
+    parts = [
+        build_jsonld(fm, body_text, blog_handle),
+        md_to_html(body_md),
+        render_product_table(fm.get("products")),
+        render_faq_section(fm.get("faq")),
+        render_references(fm.get("references")),
+    ]
+    return "\n".join(p for p in parts if p)
+
+
 def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
     if not SHOPIFY_TOKEN:
         print("  ⚠ SHOPIFY_ADMIN_TOKEN not set — skipping Shopify publish", file=sys.stderr)
@@ -268,7 +424,7 @@ def publish_to_shopify(fm, body_md, blog_handle="health-wellness-hub"):
             "title": fm.get("title"),
             # Default matches the existing Onelife blog convention
             "author": fm.get("author", "Precious — One Life Health Consultant"),
-            "body_html": md_to_html(body_md),
+            "body_html": build_article_html(fm, body_md, blog_handle),
             "handle": fm.get("slug"),
             "summary_html": fm.get("excerpt", ""),
             "tags": fm.get("tags", "wellness,supplements,evidence-based"),

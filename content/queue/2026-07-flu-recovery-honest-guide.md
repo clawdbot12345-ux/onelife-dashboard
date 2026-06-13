@@ -23,6 +23,20 @@ products:
     url: https://onelife.co.za/products/ultraflora-acute-care-probiotic-10-capsules
     badge: AFTER ANTIBIOTICS
     blurb: A ten-day course to support your gut flora after antibiotics knock it flat.
+faq:
+  - q: "I am already on day four — is it too late for zinc?"
+    a: "For shortening a cold, mostly yes. The studies started zinc lozenges within the first 24 hours and dissolved them slowly every few hours. Starting on day four is feeding the horse after it has bolted — save your money and rest."
+  - q: "Will any supplement kill the virus?"
+    a: "No. Nothing on our shelves kills a cold or flu virus — your own immune system does that. Supplements can support the worker and ease the week; anything promising more than that is selling you the label."
+  - q: "When should I see a doctor instead?"
+    a: "A fever above 39 degrees lasting more than three days, chest pain, shortness of breath, confusion, or flu in someone pregnant, elderly or living with a chronic condition means a doctor today — not a lozenge."
+references:
+  - label: "Examine.com — Zinc and the common cold"
+    url: https://examine.com/supplements/zinc/
+  - label: "NIH Office of Dietary Supplements — Zinc fact sheet"
+    url: https://ods.od.nih.gov/factsheets/Zinc-HealthProfessional/
+  - label: "NICD — National Institute for Communicable Diseases (influenza)"
+    url: https://www.nicd.ac.za
 ---
 
 Every July it happens at least once a day: someone shuffles in wrapped in a scarf, leans on the counter and croaks, *"Precious, give me the strongest thing you've got."* And every July I give the same disappointing, honest answer: by the time you sound like that, most of what we sell has missed its window.

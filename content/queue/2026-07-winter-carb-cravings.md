@@ -24,6 +24,20 @@ products:
     url: https://onelife.co.za/products/willow-gymnema-sylvestre-50-capsules
     badge: THE SUGAR MUTER
     blurb: The herb that literally turns down sweet taste — taken before your craving hour.
+faq:
+  - q: "Why do I only crave carbs at night in winter, not during the day?"
+    a: "The early dark pushes your brain to chase quick serotonin, the after-supper walk that used to steady your evening blood sugar disappears, and each refined-carb spike sets up the dip an hour later that reads as hunger. It is a timetable, not weak willpower."
+  - q: "When should I take gymnema for cravings?"
+    a: "About 20 to 30 minutes before your usual danger hour. It sits on your sweet-taste receptors and mutes them for a window, so the chocolate tastes flat and is easier to put down. It supports the habit change; it does not make the decision for you."
+  - q: "Are these safe if I am diabetic or on blood-sugar medication?"
+    a: "No. Chromium, cinnamon and gymnema all nudge the same system your medication already manages, and the combination is a conversation for your doctor, not a counter purchase. We will always rather send you to the consulting room first."
+references:
+  - label: "NIH Office of Dietary Supplements — Chromium fact sheet"
+    url: https://ods.od.nih.gov/factsheets/Chromium-HealthProfessional/
+  - label: "Examine.com — Psyllium evidence summary"
+    url: https://examine.com/supplements/psyllium/
+  - label: "Examine.com — Gymnema sylvestre evidence summary"
+    url: https://examine.com/supplements/gymnema-sylvestre/
 ---
 
 A regular of mine put it perfectly last week: *"Precious, I eat like a saint until the sun goes down. Then I stand in front of the cupboard like it owes me money."* It's July. The cupboard conversations have started. And after thirty years of watching this exact pattern arrive with the cold every year, I can tell you: it's not weak willpower. It's a rollercoaster with a timetable.
