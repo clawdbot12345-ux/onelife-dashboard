@@ -343,30 +343,15 @@ def render_references(references):
             f'<ol class="apothecary-references">{items}</ol>')
 
 def build_jsonld(fm, body_text, blog_handle="health-wellness-hub"):
-    """BlogPosting + (optional) FAQPage + BreadcrumbList JSON-LD, embedded in
-    the article body so search engines get structured data without a theme
-    change. Answers the audit's 'missing schema' finding."""
+    """FAQPage + BreadcrumbList JSON-LD for the article body.
+
+    NOTE: the live theme's `snippets/seo-jsonld-article.liquid` already emits
+    the canonical Article schema in <head> for every blog post, so we do NOT
+    repeat a BlogPosting here (that would duplicate it). We only add what the
+    theme does not: a BreadcrumbList, and a FAQPage when the article ships an
+    `faq:` block. Answers the audit's 'missing FAQ schema' for articles."""
     url = article_canonical_url(fm, blog_handle)
-    today = datetime.now().strftime("%Y-%m-%d")
-    author = fm.get("author", "Precious — One Life Health Consultant")
     graph = [{
-        "@type": "BlogPosting",
-        "@id": url + "#article",
-        "headline": fm.get("title", ""),
-        "description": fm.get("excerpt", ""),
-        "image": topic_banner_url(fm),
-        "datePublished": today,
-        "dateModified": today,
-        "author": {"@type": "Person", "name": author},
-        "publisher": {
-            "@type": "Organization",
-            "name": "One Life Health",
-            "logo": {"@type": "ImageObject",
-                     "url": "https://onelife.co.za/cdn/shop/files/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png"},
-        },
-        "mainEntityOfPage": {"@type": "WebPage", "@id": url},
-        "articleBody": body_text[:5000],
-    }, {
         "@type": "BreadcrumbList",
         "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://onelife.co.za"},

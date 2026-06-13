@@ -319,12 +319,14 @@ def check_article(article):
     if "<table" not in low_html:
         findings["issues"].append(("medium", "no_comparison_table",
                                    "No comparison/dosing table (rich-result + scannability opportunity)"))
-    if "application/ld+json" not in low_html:
-        findings["issues"].append(("high", "no_schema",
-                                   "No JSON-LD structured data (BlogPosting/FAQ/Breadcrumb) embedded"))
-    elif "faqpage" not in low_html and "frequently asked" not in low_html:
-        findings["issues"].append(("medium", "no_faq",
-                                   "No FAQ block/FAQPage schema (misses People-Also-Ask + voice search)"))
+    # NOTE: we deliberately do NOT flag missing Article JSON-LD here — the live
+    # theme (snippets/seo-jsonld-article.liquid) emits Article schema in <head>
+    # for every post, so a body-level check is a false positive. We only flag
+    # the on-page FAQ *content block* (theme adds no article FAQ), since that's
+    # what wins People-Also-Ask / voice and is sourced from the article body.
+    if "faqpage" not in low_html and "frequently asked" not in low_html:
+        findings["issues"].append(("low", "no_faq",
+                                   "No on-page FAQ block (misses People-Also-Ask + voice search)"))
     if "references" not in low_html and "<ol" not in low_html and "citation" not in low_html:
         findings["issues"].append(("low", "no_references",
                                    "No references/citations (weakens E-E-A-T for health content)"))
