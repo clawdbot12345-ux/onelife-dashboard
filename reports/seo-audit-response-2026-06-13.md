@@ -1,5 +1,32 @@
 # SEO Audit — Response to Codex Findings (2026-06-13)
 
+## Live execution log (2026-06-13, owner-authorised "do it all")
+Applied directly to the live store via the Admin API (owner client-credentials app):
+
+- **9 dietary/certification collection pages** got proper SEO descriptions
+  (Vegan, Vegetarian, Gluten Free, Sugar Free, Dairy Free, Keto, Organic,
+  Halaal, Kosher) — high-intent category pages that were blank. ✓ verified.
+- **109 placeholder product descriptions** ("contact us for more info") replaced
+  with honest, varied, POPIA/SAHPRA-safe copy generated from real attributes
+  (brand, format, dietary tags) + NAP/free-delivery + "check the label" note.
+  0 errors. ✓ The store's worst indexed-thin-content liability is cleared.
+- **Fresh full-catalog audit** saved: `reports/seo-audit-2026-06-13.{md,json}`.
+- **Corrected my own PR #18**: the theme already emits Article + Product + FAQ
+  JSON-LD (`seo-jsonld-article.liquid` / `seo-product-schema.liquid`), so the
+  pipeline no longer duplicates Article schema and the auditor no longer
+  false-flags "no_schema".
+- **Review-request email** written (`content/email/review-request-precious.html`)
+  to fill the missing review flow.
+
+Blocked from here (need owner / Klaviyo UI): Klaviyo *write* MCP tools
+(create template/flow) and the metrics API are gated on an approval the chat
+"yes" doesn't satisfy. So: review-flow assembly, SMS sender registration,
+signup-form (popup/embed) build, and the live signup/SMS numbers all need a
+Klaviyo-UI / browser pass. The 168 collection images need real assets.
+
+---
+
+
 Mapping each item from the Codex site/SEO audit to what shipped on branch
 `claude/seo-audit-findings`.
 
