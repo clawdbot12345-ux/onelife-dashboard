@@ -1,88 +1,68 @@
 # Onelife — Theme Fix Brief (Add-to-Cart Alignment + Theme Check Debt)
 
 **Date:** 2026-06-13
-**Store:** onelife.co.za · **Live theme:** 186035765558
+**Store:** onelife.co.za · **Live (MAIN) theme:** **186060112182** ("ONE LIFE
+HEALTH STORE — AUDIT FIXES 2026-06-13"). Note: the old handoffs referenced
+186035765558, but that is now unpublished — the current published theme is
+186060112182.
 **Why this is a separate doc:** the `onelife-dashboard` repo holds content,
 data and automation scripts — it does **not** contain the Shopify theme
-(`*.liquid`) source. Findings #3 and #4 from the Codex SEO/site audit live in
-the theme and must be applied there (Shopify CLI `shopify theme pull` against
-186035765558, or the theme code editor). This brief specifies the exact fix
-for each so it can be applied and browser-verified in one pass.
+(`*.liquid`) source. Findings #3 and #4 live in the theme.
 
 ---
 
-## FINDING #4 (visible bug) — "Add to cart" alignment is inconsistent
+## FINDING #4 (visible bug) — "Add to cart" alignment ✅ FIXED ON PREVIEW THEME
 
-### What's happening
-On the **Frequently Added** strip (and any product-card grid), the green
-**Add to cart** button sits at a different vertical position from card to card.
-Root cause is variable card content height, primarily the **dietary tag pills**
-row: a product tagged `Vegan · Gluten Free · Sugar Free · Dairy Free ·
-Vegetarian` wraps the pills onto two lines, while a 3-tag product stays on one
-line. Because the button follows content in normal flow, the taller card pushes
-its button down and the row of buttons no longer lines up. (Screenshots
-2026-06-13: Metagenics UltraFlora cards vs Viridian/Release_SCE cards.)
+### Status
+Root-caused, fixed, and **applied to an unpublished preview theme** ready to
+publish:
 
-### The fix (CSS — pin the button to the bottom of an equal-height card)
-The card needs to be a full-height flex column, the media/title/price/tags
-block grows to fill, and the button is pushed to the bottom with
-`margin-top:auto`. Add to the card's stylesheet (e.g. `assets/component-card.css`
-or the product-card section `{% stylesheet %}`), scoping to the real class
-names in the theme:
+- **Preview theme:** `186060964150` — "AUDIT FIXES 2026-06-13 — cart Add-to-cart
+  align (preview)" (an exact duplicate of live 186060112182 + this one fix).
+- **Preview URL (check on mobile):**
+  `https://onelife.co.za/cart?preview_theme_id=186060964150`
+- **To go live:** Shopify admin → Online Store → Themes → that theme →
+  **Actions → Publish**. (The Shopify MCP blocks writes to the live theme and
+  blocks publishing, so a human/Codex must click Publish.)
 
-```css
-/* Product card: equal height + bottom-pinned CTA */
-.card-wrapper,
-.product-card { height: 100%; }
+### Confirmed root cause (not what the first pass assumed)
+The "Frequently Added" block is the **cart page `upsell` section**
+(`templates/cart.json` → `featured-collection`, `title: "Frequently Added"`,
+`collection: top-health-supplements`, `swipe_on_mobile: true`). It renders
+`snippets/card-product.liquid` cards. With `quick_add: "standard"`, the visible
+button is the custom **`.ol-card-action`** block, which sits **inside
+`.card__information`**. The existing alignment CSS in `onelife-grid-fixes.css`
+sets `.card__information { flex: 0 0 auto }` and only pins `.quick-add`
+(`margin-top:auto`) — **not** `.ol-card-action`. So when one card's title wraps
+to 3 lines and another's to 2, the buttons land at different heights. (It was
+*not* primarily the dietary-pill rows — those are already clamped to 44px.)
 
-.card,
-.product-card__inner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* the content block between image and button grows to fill */
-.card__content,
-.product-card__info { flex: 1 1 auto; }
-
-/* tag pills: reserve room for up to two rows so 3-tag and 5-tag cards match */
-.product-card__tags,
-.card__badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  min-height: 3.25rem;        /* ≈ two pill rows; tune to the real pill height */
-  align-content: flex-start;
-}
-
-/* the CTA is pushed to the bottom of every card, so the row aligns */
-.card__cta,
-.product-card__add,
-.product-form__buttons { margin-top: auto; }
-```
-
-Also make the grid stretch its tracks so each card fills its row:
+### The fix that shipped (scoped to the cart template only)
+Appended to `assets/onelife-grid-fixes.css` on the preview theme — let
+`.card__information` grow and pin the action button to the bottom:
 
 ```css
-.product-grid,
-.grid--peek { align-items: stretch; }
-.product-grid > li,
-.grid__item { display: flex; }
+body.template-cart .product-card-wrapper .card__content { display: flex !important; flex-direction: column !important; }
+body.template-cart .product-card-wrapper .card__information { display: flex !important; flex-direction: column !important; flex: 1 1 auto !important; }
+body.template-cart .product-card-wrapper .ol-card-action,
+body.template-cart .product-card-wrapper .quick-add { margin-top: auto !important; }
 ```
 
-### How to verify (required before sign-off)
-1. Mobile + desktop user agents on the homepage **Frequently Added** strip and
-   on a collection page (e.g. `/collections/gut-health`).
-2. Confirm every **Add to cart** button in a row shares the same baseline,
-   including cards with 3 tags vs 5 tags, long vs short titles, and
-   `R xxx,xx` vs `R xx,xx` prices.
-3. Check the cart-drawer "Frequently Added" upsell specifically — that's the
-   strip in the audit screenshots.
+Scoped to `body.template-cart` so it can only affect the cart "Frequently Added"
+upsell — zero impact on collection/PDP/home. The body carries
+`template-{{ request.page_type | handle }}`, so `template-cart` is correct.
 
-> Use the real selector names from the theme (`shopify theme pull` then grep
-> the product-card section/snippet). The classes above are the common
-> Dawn-derived names; swap in whatever this theme actually uses.
+### Verify before publishing
+1. Open the preview URL above on a **mobile** viewport with ≥3 items in cart.
+2. Confirm every **Add to cart** button in the "Frequently Added" row shares the
+   same baseline — including 2-line vs 3-line titles and 3-tag vs 5-tag cards.
+3. Desktop `/cart` too. Then Publish 186060964150.
+
+### One-line revert (if ever needed)
+Delete the `body.template-cart …` block at the end of
+`assets/onelife-grid-fixes.css` (everything after the
+`/* ---- Cart "Frequently Added" upsell … */` comment), or just re-publish the
+prior theme 186060112182.
 
 ---
 

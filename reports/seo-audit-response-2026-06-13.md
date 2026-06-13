@@ -51,11 +51,26 @@ metric tracked and the cleanup verifiable week over week.
 Google Ads auto-tagging + GA4 link, Meta URL params. Those are platform-settings
 tasks, not repo changes.
 
+## 4. Add-to-cart alignment inconsistent ✅ FIXED ON PREVIEW THEME
+Root-caused and fixed on the live Shopify theme (current MAIN is **186060112182**,
+not the old 186035765558). The "Frequently Added" block is the cart page's
+`featured-collection` upsell; its `card-product` cards render the visible
+**Add to cart** as `.ol-card-action` *inside* `.card__information`, which the
+existing CSS left unpinned — so 2-line vs 3-line titles misaligned the buttons.
+
+Fix (scoped to `body.template-cart` only — zero impact elsewhere) applied to
+`assets/onelife-grid-fixes.css` on an unpublished duplicate:
+- **Preview theme `186060964150`** — verify on mobile at
+  `https://onelife.co.za/cart?preview_theme_id=186060964150`, then **Publish**
+  via Shopify admin. (The MCP blocks live-theme writes + publishing, so the
+  publish click is yours.)
+
+Details + exact CSS + one-line revert: `codex-theme-fixes-2026-06-13.md`.
+
 ## 3. Theme Check lint debt (email-signup-banner + header parser) ⏳ HANDOFF
-## 4. Add-to-cart alignment inconsistent ⏳ HANDOFF
-**Both live in the Shopify theme (186035765558), which is not in this repo.**
-Precise, apply-ready fixes (exact CSS for the equal-height/bottom-pinned CTA, and
-the Theme Check offense-by-offense checklist) are in
-`codex-theme-fixes-2026-06-13.md`. Editing the live production theme needs owner
-sign-off + browser verification, so it's staged as a brief rather than applied
-blind from here.
+Requires running `shopify theme check` (CLI), which isn't available in this
+remote environment, so I haven't blind-edited working header/banner Liquid.
+Codex flagged these as *old, unrelated* lint debt that *passed browser
+verification* — i.e. hygiene, not a live regression. The offense-by-offense
+checklist (UnusedAssign, parser-blocking script → add `defer`, deprecated
+`img_url`, etc.) is in `codex-theme-fixes-2026-06-13.md` for a CLI pass.
