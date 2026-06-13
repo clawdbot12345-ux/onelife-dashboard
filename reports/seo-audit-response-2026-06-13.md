@@ -15,6 +15,10 @@ Applied directly to the live store via the Admin API (owner client-credentials a
   JSON-LD (`seo-jsonld-article.liquid` / `seo-product-schema.liquid`), so the
   pipeline no longer duplicates Article schema and the auditor no longer
   false-flags "no_schema".
+- **18 top products** (every product featured in the blog campaigns) seeded with
+  `apothecary.faq` metafields from the vetted article FAQs — this lights up the
+  theme's existing FAQ accordion + FAQPage rich-result on those PDPs, with
+  topic-matched questions (magnesium product → "which form for sleep", etc.).
 - **Review-request email** written (`content/email/review-request-precious.html`)
   to fill the missing review flow.
 
