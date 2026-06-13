@@ -18,6 +18,20 @@ products:
     url: https://onelife.co.za/products/solgar-ester-c-plus-1000-mg-vitamin-c-30-tablets
     badge: PAIRS WELL
     blurb: The gentle, premium C to run alongside D through the cold months.
+faq:
+  - q: "We live in sunny South Africa — how can my vitamin D be low?"
+    a: "The winter sun sits low so the slice of light your skin needs weakens, the cold keeps you covered, and office hours mean the best sun of the day happens while you are indoors. Track an ordinary winter weekday and the skin-on-direct-sun count is often close to zero."
+  - q: "How much vitamin D should I take in winter?"
+    a: "For most adults a steady 1,000 IU of D3 daily through June, July and August is a sensible maintenance floor. People who test properly low often need more for a while — that is a conversation for your doctor and a blood test, not a guess at our counter."
+  - q: "Spray or capsule?"
+    a: "Whichever you will actually take sixty days in a row. We rate the oral spray because it lives by your toothbrush and needs no swallowing. If you take capsules, take them with your biggest meal — vitamin D is fat-soluble."
+references:
+  - label: "NIH Office of Dietary Supplements — Vitamin D fact sheet"
+    url: https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/
+  - label: "Examine.com — Vitamin D evidence summary"
+    url: https://examine.com/supplements/vitamin-d/
+  - label: "NIH Office of Dietary Supplements — Vitamin C fact sheet"
+    url: https://ods.od.nih.gov/factsheets/VitaminC-HealthProfessional/
 ---
 
 "But we live in South Africa!" — the most common thing said at our counter when a customer's doctor has just told them their vitamin D is low. Sunny SA, low sunshine vitamin. It sounds wrong. It's also one of the most ordinary findings in the country every winter.

@@ -190,13 +190,33 @@ def main():
 
     last = defaultdict(lambda: [0, 0.0])
     first = defaultdict(lambda: [0, 0.0])
+    # Attribution hygiene / GA4 join readiness: an order is reconcilable
+    # against a GA4 session only if its last click carries a UTM stamp or a
+    # deterministic paid/email/free-listing marker. Everything else lands in
+    # Shopify's direct/unknown/unclassified bucket and can't be joined. The
+    # 2026-06 audit put this at ~10%; we track it here so the attribution
+    # cleanup (UTM auto-tagging across Klaviyo/Google/Meta) is verifiable.
+    AMBIGUOUS = {"direct", "unknown", "other", "google-unclassified", "referral"}
+    JOINABLE_CLASSES = {"email-klaviyo", "google-paid", "meta-paid",
+                        "tiktok-paid", "other-paid", "google-free-listings"}
+    stamped_n = stamped_rev = 0
+    ambiguous_n = ambiguous_rev = 0
     for o in orders:
         amt = float(o["totalPriceSet"]["shopMoney"]["amount"])
         j = o.get("customerJourneySummary") or {}
-        last[classify(j.get("lastVisit"))][0] += 1
-        last[classify(j.get("lastVisit"))][1] += amt
+        lv = j.get("lastVisit")
+        last[classify(lv)][0] += 1
+        last[classify(lv)][1] += amt
         first[classify(j.get("firstVisit"))][0] += 1
         first[classify(j.get("firstVisit"))][1] += amt
+        utm = (lv or {}).get("utmParameters") or {}
+        cls = classify(lv)
+        if utm.get("source") or cls in JOINABLE_CLASSES:
+            stamped_n += 1; stamped_rev += amt
+        elif cls in AMBIGUOUS:
+            ambiguous_n += 1; ambiguous_rev += amt
+    readiness = stamped_n / max(n, 1) * 100
+    ambiguous_share = ambiguous_rev / max(total, 1) * 100
 
     flow_rev, _ = klaviyo_values("flow-values-report", since_dt.strftime("%Y-%m-%dT00:00:00Z"))
     camp_rev, _ = klaviyo_values("campaign-values-report", since_dt.strftime("%Y-%m-%dT00:00:00Z"))
@@ -223,6 +243,11 @@ def main():
         flags.append(f"🟠 Email is {email_rev / max(total, 1) * 100:.1f}% of revenue (target 25%).")
     if net < 0:
         flags.append(f"🔴 ONLINE NET CONTRIBUTION NEGATIVE: R{net:,.0f}.")
+    if readiness < 50:
+        flags.append(f"🟠 GA4 JOIN READINESS {readiness:.0f}%: only {stamped_n}/{n} orders carry a "
+                     f"UTM/click-id stamp. R{ambiguous_rev:,.0f} ({ambiguous_share:.0f}%) is in the "
+                     f"direct/unknown/unclassified bucket and can't be reconciled to GA4. "
+                     f"Finish the UTM cleanup (see codex-attribution-cleanup.md).")
 
     report = f"""# One Life Online — Weekly Business Report ({today})
 
@@ -248,6 +273,11 @@ Break-even ROAS (on incl-VAT revenue, before delivery/agency): **{breakeven_roas
 {table(first)}
 ## Email (Klaviyo, {DAYS}d)
 - Flows: R{flow_rev:,.0f} · Campaigns: R{camp_rev:,.0f} · Total: R{email_rev:,.0f} ({email_rev / max(total, 1) * 100:.1f}% of revenue; target 25%)
+
+## Attribution hygiene — GA4 join readiness
+- **{readiness:.0f}%** of orders ({stamped_n}/{n}) carry a UTM/click-id stamp that can be joined to a GA4 session (target ≥50%, ideally ≥70%).
+- Ambiguous / unreconcilable: {ambiguous_n} orders worth **R{ambiguous_rev:,.0f}** ({ambiguous_share:.1f}% of revenue) sit in direct/unknown/unclassified.
+- Lift this by completing the UTM cleanup (Klaviyo auto-tagging + Google auto-tagging + Meta URL params) — see `codex-attribution-cleanup.md`.
 
 ## Flags
 {chr(10).join(flags) if flags else '✅ No flags this week.'}

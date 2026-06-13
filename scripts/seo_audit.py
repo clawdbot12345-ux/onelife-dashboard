@@ -286,8 +286,13 @@ def check_article(article):
     elif len(title) > 70:
         findings["issues"].append(("low", "title_long", f"Title is {len(title)} chars (will truncate in SERP)"))
 
+    word_count = len(body_text.split())
     if not body_text or len(body_text) < 300:
         findings["issues"].append(("high", "body_thin", f"Thin content: {len(body_text)} chars (<300)"))
+    elif word_count < 600:
+        # The Apothecary house style targets 700–1,000 words; SEO long-form
+        # ranks better. Flag anything that lands short.
+        findings["issues"].append(("medium", "body_short", f"Short article: {word_count} words (target 700–1,000)"))
 
     if not summary:
         findings["issues"].append(("medium", "no_excerpt", "No summary/excerpt (hurts social share + SERP CTR)"))
@@ -302,6 +307,27 @@ def check_article(article):
 
     if not author:
         findings["issues"].append(("low", "no_author", "No author set"))
+
+    # ─── Content-block / structured-data checks (added 2026-06 after the SEO
+    # audit flagged the newest articles for missing product links, tables,
+    # FAQ, references and schema). These read the raw HTML, not the stripped
+    # text, because they look for structure the publish pipeline now emits. ───
+    low_html = body_html.lower()
+    if "/products/" not in low_html and "/collections/" not in low_html:
+        findings["issues"].append(("high", "no_internal_product_links",
+                                   "No product/collection links — article doesn't drive shopping or pass internal link equity"))
+    if "<table" not in low_html:
+        findings["issues"].append(("medium", "no_comparison_table",
+                                   "No comparison/dosing table (rich-result + scannability opportunity)"))
+    if "application/ld+json" not in low_html:
+        findings["issues"].append(("high", "no_schema",
+                                   "No JSON-LD structured data (BlogPosting/FAQ/Breadcrumb) embedded"))
+    elif "faqpage" not in low_html and "frequently asked" not in low_html:
+        findings["issues"].append(("medium", "no_faq",
+                                   "No FAQ block/FAQPage schema (misses People-Also-Ask + voice search)"))
+    if "references" not in low_html and "<ol" not in low_html and "citation" not in low_html:
+        findings["issues"].append(("low", "no_references",
+                                   "No references/citations (weakens E-E-A-T for health content)"))
 
     findings["issue_count"] = len(findings["issues"])
     return findings

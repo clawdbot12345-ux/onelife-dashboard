@@ -23,6 +23,20 @@ products:
     url: https://onelife.co.za/products/better-you-d1000-vitamin-d-oral-spray-15ml
     badge: 3-SECOND HABIT
     blurb: The winter vitamin most worth its R198 — if you take it daily.
+faq:
+  - q: "What is the single most common supplement mistake you see?"
+    a: "Buying the cure after the cold has already arrived. Half of winter's immune spending happens in the 48 hours after the throat starts burning, when most preventatives have missed their window. Build the small daily stack in June, not the emergency one in July."
+  - q: "How do I know if I am accidentally double-dosing?"
+    a: "Read the labels — the multivitamin, the immune blend and the lozenges often all carry zinc, and it adds up without anyone deciding to. Empty your supplement drawer onto our counter, or WhatsApp us photos of the labels. The check is free."
+  - q: "Why did magnesium do nothing for me?"
+    a: "Usually the form. Supermarket magnesium is often oxide — cheap, poorly absorbed, mostly a laxative. Glycinate absorbs well and is gentle. The right ingredient in the wrong form is the saddest waste on our shelves."
+references:
+  - label: "NIH Office of Dietary Supplements — Zinc fact sheet"
+    url: https://ods.od.nih.gov/factsheets/Zinc-HealthProfessional/
+  - label: "Examine.com — Magnesium forms and absorption"
+    url: https://examine.com/supplements/magnesium/
+  - label: "NIH Office of Dietary Supplements — Vitamin D fact sheet"
+    url: https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/
 ---
 
 We sell supplements for a living, so this article is slightly against our own interests. But after thirty years behind the counter, the thing that actually keeps people coming back isn't what we sell them — it's what we talk them out of. So here it is: the five ways we watch good money go to waste every single winter.
