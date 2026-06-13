@@ -51,21 +51,17 @@ metric tracked and the cleanup verifiable week over week.
 Google Ads auto-tagging + GA4 link, Meta URL params. Those are platform-settings
 tasks, not repo changes.
 
-## 4. Add-to-cart alignment inconsistent ✅ FIXED ON PREVIEW THEME
+## 4. Add-to-cart alignment inconsistent ✅ FIXED LIVE
 Root-caused and fixed on the live Shopify theme (current MAIN is **186060112182**,
 not the old 186035765558). The "Frequently Added" block is the cart page's
 `featured-collection` upsell; its `card-product` cards render the visible
 **Add to cart** as `.ol-card-action` *inside* `.card__information`, which the
 existing CSS left unpinned — so 2-line vs 3-line titles misaligned the buttons.
 
-Fix (scoped to `body.template-cart` only — zero impact elsewhere) applied to
-`assets/onelife-grid-fixes.css` on an unpublished duplicate:
-- **Preview theme `186060964150`** — verify on mobile at
-  `https://onelife.co.za/cart?preview_theme_id=186060964150`, then **Publish**
-  via Shopify admin. (The MCP blocks live-theme writes + publishing, so the
-  publish click is yours.)
-
-Details + exact CSS + one-line revert: `codex-theme-fixes-2026-06-13.md`.
+A `body.template-cart`-scoped rule (zero impact elsewhere) was appended to
+`assets/onelife-grid-fixes.css` and **applied directly to the live theme** via
+the Admin API (owner-supplied client-credentials app), verified live. Details +
+exact CSS + one-line revert: `codex-theme-fixes-2026-06-13.md`.
 
 ## 3. Theme Check lint debt (email-signup-banner + header parser) ⏳ HANDOFF
 Requires running `shopify theme check` (CLI), which isn't available in this

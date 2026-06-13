@@ -11,19 +11,17 @@ data and automation scripts — it does **not** contain the Shopify theme
 
 ---
 
-## FINDING #4 (visible bug) — "Add to cart" alignment ✅ FIXED ON PREVIEW THEME
+## FINDING #4 (visible bug) — "Add to cart" alignment ✅ FIXED LIVE
 
 ### Status
-Root-caused, fixed, and **applied to an unpublished preview theme** ready to
-publish:
+Root-caused, fixed, and **applied directly to the live theme 186060112182**
+(verified live 2026-06-13 via the Admin API — `assets/onelife-grid-fixes.css`,
+14490 bytes, cart-scoped block present). No publish/theme-swap needed — editing
+the published theme's asset is effective immediately.
 
-- **Preview theme:** `186060964150` — "AUDIT FIXES 2026-06-13 — cart Add-to-cart
-  align (preview)" (an exact duplicate of live 186060112182 + this one fix).
-- **Preview URL (check on mobile):**
-  `https://onelife.co.za/cart?preview_theme_id=186060964150`
-- **To go live:** Shopify admin → Online Store → Themes → that theme →
-  **Actions → Publish**. (The Shopify MCP blocks writes to the live theme and
-  blocks publishing, so a human/Codex must click Publish.)
+- An unpublished preview copy (`186060964150`) was also created during the work
+  and is now redundant — safe to delete (left in place pending owner OK, per the
+  no-theme-deletion rule).
 
 ### Confirmed root cause (not what the first pass assumed)
 The "Frequently Added" block is the **cart page `upsell` section**
