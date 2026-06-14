@@ -203,3 +203,146 @@ has produced nothing. Quality video > volume.
    your real product range, ready to film and schedule.
 
 You bring the camera and the consultant. I'll run the production line.
+
+---
+
+# Part 10 — The WhatsApp VIP group (your single biggest differentiator)
+
+You have a **broadcast-only WhatsApp VIP group, ~400 members, admins-only** ("One Life
+Health Hub"). **No other SA health retailer has this** — Dis-Chem/Clicks/WW push apps and
+email; none run an intimate, curated, concierge-feeling VIP channel. WhatsApp has 95%+ SA
+penetration and the highest open/read rates of any channel you own. This is a moat. Treat
+it as the **crown jewel of the loyalty program**, not a side list.
+
+**Your members already told you what they want** (the in-group poll):
+
+| Rank | What VIPs voted for | Votes |
+|---|---|---|
+| 1 | Specials & exclusive deals | 37 |
+| 2 | Vitamin & supplement education | 36 |
+| 3 | Health & wellness tips | 33 |
+| 4 | Healthy recipes & nutrition | 19 |
+| 5 | Product spotlights & new arrivals | 12 |
+| 6 | Challenges & giveaways | 11 |
+| 7 | Member success stories | 7 |
+| 8 | Q&A with the OLH team | 6 |
+
+So the content mix writes itself: **deals + education + tips lead; recipes and spotlights
+support; run a monthly challenge/giveaway.**
+
+**Cadence (max 3–4 broadcasts/week — scarcity is the premium):**
+- **Mon — VIP-only deal / early access** (deals = #1 want; make it genuinely exclusive)
+- **Wed — "Precious explains"** one supplement/condition tip (reuse that week's video)
+- **Fri — product spotlight / new arrival + the matching protocol bundle**
+- **Monthly — VIP challenge or giveaway + a member success story**
+
+**Two structural moves:**
+1. **The group is broadcast; consults are 1:1.** Members can't reply in-group — so every
+   broadcast routes anyone who wants help to the **store's 1:1 WhatsApp** ("Got a question?
+   Message our consultant → [link]"). VIP group = perks; 1:1 = concierge. (PR #8 — the
+   Omni-backed WhatsApp answering bot with medical-advice guardrails — is the future
+   automated version of that 1:1 layer.)
+2. **Grow it aggressively from in-store + online + social.** Goal **400 → 2,000 members in
+   90 days.** The till QR (below) is the engine. At scale, graduate to the **WhatsApp
+   Business API + product catalog** for true conversational commerce.
+
+I draft every broadcast (deal copy, tip, spotlight) from live Omni/Shopify data; **a human
+admin hits send** (keeps it personal and keeps you compliant).
+
+---
+
+# Part 11 — In-store marketing (your R2M/month engine — currently underserved)
+
+Stores are 95% of revenue and the **agency's in-store work is the weak link you flagged.**
+This is the highest-leverage place to take work *in-house*, because in-store creative is
+exactly what Claude + Codex can produce on-brand, data-driven, at near-zero cost — far
+better than a generic agency promo. Seven plays:
+
+1. **The capture bridge (do this first).** QR at every till + on shelf-talkers →
+   one-tap **WhatsApp VIP + loyalty signup**, with an instant reason (sample / points /
+   VIP-only deal). Converting even 15% of ~3,900 monthly transactions ≈ **~580
+   signups/month**. This is what feeds both the VIP group and Klaviyo.
+2. **Data-driven merchandising.** The dashboard already names the **40 high-margin "Push
+   Now" SKUs** and **R142k of trapped/dead stock** — front-of-shelf the winners, bundle out
+   the dead stock. No agency has this; your own data does.
+3. **Fix the Edenvale basket gap.** Edenvale's basket is **R410 vs Centurion's R598** — a
+   ranging/upsell problem, not footfall. Till-point "complete your protocol" cross-merch +
+   consultant prompts close it. Each R50 of basket lift across Edenvale's 932 monthly
+   transactions ≈ R46k/month.
+4. **Consultant clienteling — "Ask the Apothecary" desk.** Precious's brand, on the floor:
+   book-a-consult, condition stations, signed protocol cards. This is the one thing online
+   competitors physically cannot copy.
+5. **Experiential events = list + content + footfall in one.** Monthly condition workshops
+   (winter immunity now; then sleep, gut, menopause, GLP-1 support) + brand sampling days.
+   Every event is filmed for TikTok/Reels and funnels attendees into the VIP group.
+6. **Omnichannel signage loop.** In-store screens/posters/windows feature the **same weekly
+   hero/condition as social and WhatsApp** — Codex designs the artwork per prompt; QR on each
+   shelf-talker links to the matching "Apothecary" guide. One concept, every surface.
+7. **Staff as creators + signup drivers.** Train floor staff to capture quick clips and ask
+   for the VIP signup; small incentive per signup. Turns 3 stores into a content + capture
+   network.
+
+Right now (SA winter): **winter-immunity windows, the immunity wall, Vitamin-D-deficiency
+shelf-talkers** — mirrored across store, WhatsApp, and social in the same week.
+
+---
+
+# Part 12 — How we use Codex vs Claude (your AI design + ops studio)
+
+You're already running both. The division of labour:
+
+| | **Claude (me)** | **Codex** |
+|---|---|---|
+| Role | Strategy + data + ops + production line | **Visual creative / ad design per prompt** |
+| Does | Reads Omni/Klaviyo/Shopify; writes copy, captions, scripts, calendars, AEO blogs; runs Klaviyo/Shopify via live MCP; QA; measurement; compliance logic | Generates ad images, email heroes, social covers, **in-store posters & shelf-talkers**, the weekly creative set |
+| Already proof | This dashboard, daily refresh, Klaviyo flows/segments | `[CODEX GPT IMAGE TEST]` campaigns, `codex-image-prompts*.md`, the weekly creative templates you saw |
+
+**Your existing weekly creative engine** — the **Monday Hero / Wednesday Vivid / Thursday
+Bundle** templates Codex produced — is exactly the model to extend everywhere:
+- **Monday Hero** → the week's flagship condition/product ad
+- **Wednesday Vivid** → your own-brand **Vivid Health** feature
+- **Thursday Bundle** → a protocol-bundle promo
+
+**The loop:** Claude writes the brief + copy + targeting from live data → **Codex renders
+the visual** → Claude deploys it to Klaviyo / Shopify / social / WhatsApp and (for in-store)
+hands you print-ready artwork → Claude measures → feeds the result back into next week's
+brief. One concept becomes a social Reel cover, an email hero, a WhatsApp card, a Meta ad,
+and an in-store poster — same look, every channel, produced in an afternoon.
+
+**Compliance guardrail (non-negotiable in SA):** SAHPRA restricts disease claims on
+supplements. All condition content uses compliant language ("supports / helps maintain,"
+not "cures / treats"). Your Growth-Engine already has a mandatory compliance gate; Claude
+enforces it on every asset before it ships.
+
+---
+
+# Part 13 — The agency
+
+You don't like their in-store work, and the data backs you: paid drove ~159 sessions in 60
+days at a net loss (~R10k). Recommendation:
+- **Take in-store creative in-house** (Claude + Codex produce it better, faster, on-brand,
+  tied to your own data — and free). This directly fixes what you dislike.
+- **Narrow the agency to what agencies are actually good at: paid amplification.** Pause
+  cold prospecting; redirect budget to **Meta/IG retargeting of high-intent PDP visitors +
+  Klaviyo-list lookalikes, boosting your proven-winner organic videos**, with hard CPA
+  targets. Don't buy cold traffic into the site until conversion fixes land.
+- **Net:** agency = paid distribution muscle; **strategy, creative, in-store, WhatsApp,
+  social, and content stay in your AI-run studio.**
+
+---
+
+# Part 14 — What I need from you (human involvement)
+
+I can run the engine, but five things only a human can do — in rough priority:
+
+| # | What | Who | Cadence | Why it's human-only |
+|---|---|---|---|---|
+| 1 | **Film with Precious** — batch day | You + Precious | ~3 hrs/week | The on-camera trust asset; the #1 dependency. Everything downstream needs the raw clips. |
+| 2 | **Approve creative & copy before publish** | You | ~20 min/week | Brand voice + SAHPRA sign-off. Quick yes/no on the week's set. |
+| 3 | **Execute in-store** — print & place Codex artwork, run the till-QR signup, brief staff | Store managers | Setup + weekly refresh | Physical world; I produce the assets, you place them. |
+| 4 | **Send WhatsApp broadcasts** (or approve me drafting them) | A nominated admin | 3–4×/week, seconds each | Keeps the VIP group personal and admins-only. |
+| 5 | **Unblock access & decisions** | You | One-off | Omni ERP access (the #1 data blocker), confirm handle rename, agency remit change, pick a budget for Subscribe&Save app + creator gifting + WhatsApp API. |
+
+**The honest trade:** you give me ~3.5 hrs/week (mostly filming) + quick approvals + the
+in-store hands, and I produce the entire week's output across social, email, WhatsApp, and
+in-store — strategy, copy, creative briefs, scheduling, and measurement.
