@@ -125,6 +125,18 @@ def main():
             "daily_sales_excl": dict(sorted(daily.items())),
         }
 
+    # --- merge live MTD transactions + avg basket (engine_mtd_branch_transactions) ---
+    TX_OF = {"HO": "centurion", "EDN": "edenvale", "GVS": "glen_village"}
+    txp, _ = newest_for("engine-mtd-branch-transactions")
+    if txp is not None:
+        for r in rows_of(txp, next(iter(txp.keys()))):
+            sk = TX_OF.get(r.get("company_branch_code"))
+            if sk and sk in stores:
+                tc = r.get("transaction_count")
+                ab = r.get("average_basket_ex_vat")
+                stores[sk]["transaction_count"] = tc if tc else None
+                stores[sk]["avg_basket_excl"] = round(ab, 2) if ab else None
+
     period_start = min(all_dates)
     period_end = max(all_dates)
     days = len(all_dates)
@@ -210,10 +222,10 @@ def main():
         "branch_stock": branch_stock,
         "total_skus_in_stock_live": len(union_instock),
         "latest_transactions": latest_tx,
-        "note": "Store revenue + gross profit are live (month-to-date). Per-branch stock "
-                "(sell value) is live. Pending from Omni: per-SKU cost (for margins / "
-                "stock-at-cost), MTD transaction counts incl. HO (for basket), and PO/GRV "
-                "(for supplier fill rates).",
+        "note": "Live (month-to-date): store revenue, gross profit, transactions, avg basket, "
+                "and per-branch stock (sell value). Pending from Omni: a true per-SKU cost "
+                "report (only ~72% sales-derived cost coverage today) and GRV-by-supplier "
+                "(for fill rates).",
     }
     if '"omni_sync":' in html:
         html, _ = replace_block(html, "omni_sync", prov)
@@ -236,6 +248,21 @@ def main():
         return round(v / store_sales * 100) if store_sales else 0
     cen, gvs, edn = stores["centurion"], stores["glen_village"], stores["edenvale"]
     online_share = round(online / combined * 100, 1) if combined else 0
+    baskets = {k: stores[k]["avg_basket_excl"] for k in ("centurion", "glen_village", "edenvale")
+               if stores[k]["avg_basket_excl"]}
+    total_tx = sum(stores[k]["transaction_count"] or 0
+                   for k in ("centurion", "glen_village", "edenvale"))
+    if baskets and len(baskets) == 3:
+        gap = round(max(baskets.values()) - min(baskets.values()))
+        basket_line = (
+            f"**Live MTD transactions: {total_tx:,}** at a combined avg basket of "
+            f"**R{store_sales / total_tx:,.0f}** (Centurion R{cen['avg_basket_excl']:,.0f}, "
+            f"Glen Village R{gvs['avg_basket_excl']:,.0f}, Edenvale R{edn['avg_basket_excl']:,.0f}). "
+            f"The R{gap} basket gap between the strongest and weakest store is a ranging / "
+            f"upsell opportunity, not a footfall one."
+        )
+    else:
+        basket_line = "Per-store transactions / avg basket pending the Omni MTD count report."
     narrative = (
         f"**Live Omni data — month-to-date ({period_start} to {period_end}).** "
         f"The three stores generated **R{store_sales:,.0f} excl VAT** at a real gross "
@@ -244,9 +271,9 @@ def main():
         f"store revenue) at {cen['gross_margin_pct']}% GP. **Edenvale** R{edn['total_sales_excl']:,.0f} "
         f"({share(edn['total_sales_excl'])}%, {edn['gross_margin_pct']}% GP) and **Glen Village** "
         f"R{gvs['total_sales_excl']:,.0f} ({share(gvs['total_sales_excl'])}%, {gvs['gross_margin_pct']}% GP).\n\n"
-        f"**Online is {online_share}% of combined revenue** (R{online:,.0f}). Store transaction "
-        f"counts and avg basket are pending an Omni count report — GP margin is shown per "
-        f"store in the meantime."
+        f"**Online (trailing 30 days):** R{online:,.0f} — store figures here are "
+        f"month-to-date, so the two windows aren't directly comparable.\n\n"
+        + basket_line
     )
     escaped = json.dumps(narrative, ensure_ascii=False)[1:-1]
     html = re.sub(r'"overview":\s*"(?:[^"\\]|\\.)*"',
