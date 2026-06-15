@@ -626,29 +626,64 @@ const DASHBOARD_DATA = {
     "last_sync": "2026-06-15",
     "window": {
       "start": "2026-06-01",
-      "end": "2026-06-14",
-      "days": 14
+      "end": "2026-06-15",
+      "days": 15
     },
     "branches": {
-      "centurion": 687206.15,
-      "glen_village": 169637.73,
-      "edenvale": 174831.18
+      "centurion": 701213.25,
+      "glen_village": 170111.23,
+      "edenvale": 175262.49
     },
-    "note": "Store revenue + gross profit are live (month-to-date). Transaction count and avg basket pending an Omni count report."
+    "branch_stock": {
+      "centurion": {
+        "skus_in_stock": 5365,
+        "stockout_risk_le5": 4441,
+        "stock_value_sell_excl": 3457801.81
+      },
+      "glen_village": {
+        "skus_in_stock": 2215,
+        "stockout_risk_le5": 2166,
+        "stock_value_sell_excl": 1044740.41
+      },
+      "edenvale": {
+        "skus_in_stock": 2969,
+        "stockout_risk_le5": 2814,
+        "stock_value_sell_excl": 1532491.26
+      }
+    },
+    "total_skus_in_stock_live": 6019,
+    "latest_transactions": {
+      "HO": {
+        "date": "2026-06-14",
+        "transaction_count": 0,
+        "avg_basket_ex_vat": null
+      },
+      "EDN": {
+        "date": "2026-06-14",
+        "transaction_count": 24,
+        "avg_basket_ex_vat": 373.17
+      },
+      "GVS": {
+        "date": "2026-06-14",
+        "transaction_count": 16,
+        "avg_basket_ex_vat": 479.22
+      }
+    },
+    "note": "Store revenue + gross profit are live (month-to-date). Per-branch stock (sell value) is live. Pending from Omni: per-SKU cost (for margins / stock-at-cost), MTD transaction counts incl. HO (for basket), and PO/GRV (for supplier fill rates)."
   },
-  "generated_at": "2026-06-15T05:56:00.726241",
+  "generated_at": "2026-06-15T08:48:27.516390",
   "vat_note": "All monetary figures are EXCLUDING VAT (\u00f71.15)",
   "period": {
     "start": "2026-06-01",
-    "end": "2026-06-14",
-    "days": 14
+    "end": "2026-06-15",
+    "days": 15
   },
   "kpis": {
-    "store_sales_30d_excl": 1031675.06,
-    "store_gross_margin_pct": 33.6,
-    "store_gross_profit_excl": 346780.83,
+    "store_sales_30d_excl": 1046586.97,
+    "store_gross_margin_pct": 33.7,
+    "store_gross_profit_excl": 352405.57,
     "online_sales_30d_excl": 101630.83,
-    "combined_revenue_30d_excl": 1133305.89,
+    "combined_revenue_30d_excl": 1148217.8,
     "online_orders_30d": 182,
     "online_aov_excl": 558.41,
     "online_discount_rate_pct": 16.3,
@@ -662,13 +697,13 @@ const DASHBOARD_DATA = {
   },
   "stores": {
     "centurion": {
-      "total_sales_excl": 687206.15,
+      "total_sales_excl": 701213.25,
       "total_returns_excl": null,
-      "net_sales_excl": 687206.15,
+      "net_sales_excl": 701213.25,
       "transaction_count": null,
       "avg_basket_excl": null,
-      "gross_profit_excl": 230778.0,
-      "gross_margin_pct": 33.6,
+      "gross_profit_excl": 236105.61,
+      "gross_margin_pct": 33.7,
       "daily_sales_excl": {
         "2026-06-01": 64708.89,
         "2026-06-02": 46449.22,
@@ -681,16 +716,17 @@ const DASHBOARD_DATA = {
         "2026-06-10": 83542.88,
         "2026-06-11": 42103.45,
         "2026-06-12": 48475.04,
-        "2026-06-13": 53022.5
+        "2026-06-13": 53022.5,
+        "2026-06-15": 14007.1
       }
     },
     "glen_village": {
-      "total_sales_excl": 169637.73,
+      "total_sales_excl": 170111.23,
       "total_returns_excl": null,
-      "net_sales_excl": 169637.73,
+      "net_sales_excl": 170111.23,
       "transaction_count": null,
       "avg_basket_excl": null,
-      "gross_profit_excl": 56232.09,
+      "gross_profit_excl": 56375.59,
       "gross_margin_pct": 33.1,
       "daily_sales_excl": {
         "2026-06-01": 10934.53,
@@ -706,16 +742,17 @@ const DASHBOARD_DATA = {
         "2026-06-11": 11135.46,
         "2026-06-12": 6024.31,
         "2026-06-13": 13950.34,
-        "2026-06-14": 7667.5
+        "2026-06-14": 7667.5,
+        "2026-06-15": 473.5
       }
     },
     "edenvale": {
-      "total_sales_excl": 174831.18,
+      "total_sales_excl": 175262.49,
       "total_returns_excl": null,
-      "net_sales_excl": 174831.18,
+      "net_sales_excl": 175262.49,
       "transaction_count": null,
       "avg_basket_excl": null,
-      "gross_profit_excl": 59770.74,
+      "gross_profit_excl": 59924.37,
       "gross_margin_pct": 34.2,
       "daily_sales_excl": {
         "2026-06-01": 12704.95,
@@ -731,7 +768,8 @@ const DASHBOARD_DATA = {
         "2026-06-11": 10519.7,
         "2026-06-12": 8210.09,
         "2026-06-13": 13712.1,
-        "2026-06-14": 8956.0
+        "2026-06-14": 8956.0,
+        "2026-06-15": 431.31
       }
     }
   },
@@ -87386,7 +87424,7 @@ const DASHBOARD_DATA = {
 
 const NARRATIVES = {
   "generated_at": "2026-03-31",
-  "overview": "**Live Omni data — month-to-date (2026-06-01 to 2026-06-14).** The three stores generated **R1,031,675 excl VAT** at a real gross profit of **R346,781 (33.6% GP margin)**.\n\n**Centurion** leads with **R687,206** (67% of store revenue) at 33.6% GP. **Edenvale** R174,831 (17%, 34.2% GP) and **Glen Village** R169,638 (16%, 33.1% GP).\n\n**Online is 9.0% of combined revenue** (R101,631). Store transaction counts and avg basket are pending an Omni count report — GP margin is shown per store in the meantime.",
+  "overview": "**Live Omni data — month-to-date (2026-06-01 to 2026-06-15).** The three stores generated **R1,046,587 excl VAT** at a real gross profit of **R352,406 (33.7% GP margin)**.\n\n**Centurion** leads with **R701,213** (67% of store revenue) at 33.7% GP. **Edenvale** R175,262 (17%, 34.2% GP) and **Glen Village** R170,111 (16%, 33.1% GP).\n\n**Online is 8.9% of combined revenue** (R101,631). Store transaction counts and avg basket are pending an Omni count report — GP margin is shown per store in the meantime.",
   "stock": "You have **R3,318,456 locked in stock at cost** — that money is either working for you or sitting idle.\n\n**The dead weight:** R142,746 is tied up in 50 products that keep getting reordered despite not moving. The worst offenders — MAG 7/87 60'S (10x orders, 86 units), 1L GUT RAWBIOTICS (4x, 55 units), FLORISH SPORE PROBIOTIC 60C (5x, 23 units) — are a PAR level problem. Someone is reordering on autopilot. Stop these until stock clears.\n\n**The opportunity:** 40 products have margin ≥40% and are well-stocked. These are your profit drivers sitting on the shelf. The top 5 average 49.5% margin. Put them front-of-shelf, run a staff push, and feature them online.\n\n**The risk:** 50 products are at ≤5 units. 50 of those are high-value (>R500 excl VAT each). If you sell one more unit and can't reorder fast, you lose the sale and the customer. Some of these have no PO ever placed — they're being forgotten.",
   "suppliers": "You placed **748 orders worth R4,016,315 excl VAT** since January. Overall fill rate is **92.0%** — meaning R319,332 in ordered stock has not arrived.\n\n**20 suppliers are below 80% fill rate** and together represent significant outstanding value. Your top 3 suppliers by spend are DS INTERNATIONAL (NOW) (R451,204, 69.2% fill), NATROCEUTICS SA (PTY) LTD (R333,568, 73.7% fill), and LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS (R242,098, 92.5% fill).\n\n**DSI at 69% fill on R451,204 ordered** is the biggest concern — that's your largest supplier and they're leaving R139,873 undelivered. Either they're backordering, shipping partial, or there's an admin issue on invoice matching.\n\n**40 suppliers are over-delivering** vs PO value — you're receiving more than you ordered. This is where surprise overstock comes from. Review GRV sign-off process.",
   "online": "**Live Shopify data — last 30 days (via Klaviyo integration).** 182 orders generating **R101,631 excl VAT** (R116,875 incl VAT) from **182 unique customers**. AOV **R558.41 excl VAT**.\n\n**Checkout conversion:** 324 started → 182 completed = **56.2% conversion**. Strong bottom-of-funnel — bottleneck is traffic, not checkout.\n\n**Units sold:** 501 (2.8 per order avg).\n\n**Channel mix:** Online is **4.7% of combined revenue**. Health supplement benchmark is 15-20%. Strong email engagement (59.6% open) with modest online share = audience exists, gap is acquisition.",

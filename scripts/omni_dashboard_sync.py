@@ -170,14 +170,50 @@ def main():
                   rf'\1\n    "start": "{period_start}",\n    "end": "{period_end}",\n    "days": {days}\n  \2',
                   html, count=1)
 
+    # --- live per-branch stock summary (no cost in feed yet; sell value only) ---
+    STOCK = [("centurion", "ana-stock-listing-cen"), ("glen_village", "ana-stock-listing-gvs"),
+             ("edenvale", "ana-stock-listing-edn")]
+    branch_stock = {}
+    union_instock = set()
+    for store_key, slug in STOCK:
+        payload, _ = newest_for(slug)
+        if payload is None:
+            continue
+        rs = rows_of(payload, next(iter(payload.keys())) if isinstance(payload, dict) else "")
+        instock = [x for x in rs if (x.get("available") or 0) > 0]
+        for x in instock:
+            union_instock.add(x.get("stock_code"))
+        branch_stock[store_key] = {
+            "skus_in_stock": len(instock),
+            "stockout_risk_le5": sum(1 for x in rs if 0 < (x.get("available") or 0) <= 5),
+            "stock_value_sell_excl": round(
+                sum((x.get("available") or 0) * (x.get("selling_price_excl") or 0) for x in instock), 2),
+        }
+
+    # latest available per-branch transactions (single-day; HO may be 0 on no-sync days)
+    tx_payload, _ = newest_for("engine-daily-branch-transactions")
+    latest_tx = {}
+    if tx_payload is not None:
+        for r in rows_of(tx_payload, next(iter(tx_payload.keys()))):
+            latest_tx[r.get("company_branch_code")] = {
+                "date": r.get("document_date"),
+                "transaction_count": r.get("transaction_count"),
+                "avg_basket_ex_vat": r.get("average_basket_ex_vat"),
+            }
+
     # --- omni_sync provenance ---
     prov = {
         "source": "Omni Web Server (Daily Turnover reports)",
         "last_sync": last_sync,
         "window": {"start": period_start, "end": period_end, "days": days},
         "branches": {k: v["total_sales_excl"] for k, v in stores.items()},
-        "note": "Store revenue + gross profit are live (month-to-date). Transaction "
-                "count and avg basket pending an Omni count report.",
+        "branch_stock": branch_stock,
+        "total_skus_in_stock_live": len(union_instock),
+        "latest_transactions": latest_tx,
+        "note": "Store revenue + gross profit are live (month-to-date). Per-branch stock "
+                "(sell value) is live. Pending from Omni: per-SKU cost (for margins / "
+                "stock-at-cost), MTD transaction counts incl. HO (for basket), and PO/GRV "
+                "(for supplier fill rates).",
     }
     if '"omni_sync":' in html:
         html, _ = replace_block(html, "omni_sync", prov)
