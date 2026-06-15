@@ -209,12 +209,67 @@ def cost_lookup_from_sales(rows):
             "quantity_sold": round(quantity, 4),
             "value_excl_after_discount": round(value_excl, 2),
             "gross_profit": round(gross_profit, 2),
+            "cost_price": round(cost_excl / quantity, 2) if quantity else None,
             "average_cost_excl": round(cost_excl / quantity, 2) if quantity else None,
             "sales_margin_pct": round(gross_profit / value_excl * 100, 2) if value_excl else None,
             "source_report": "ANA_Most Popular Products GP",
+            "cost_source": "sales_gross_profit_average",
             "cost_basis": "sales_gross_profit_average",
         }
     return lookup
+
+
+def row_cost_price(row):
+    for field in ("cost_price", "cost_price_excl", "average_cost", "average_cost_excl"):
+        value = num(row.get(field))
+        if value:
+            return value
+    return None
+
+
+def cost_lookup_from_stock_reports(stock_sources):
+    grouped = {}
+    for report_name, rows in stock_sources.items():
+        for row in rows or []:
+            stock_code = row.get("stock_code")
+            cost_price = row_cost_price(row)
+            if blank(stock_code) or cost_price is None:
+                continue
+            bucket = grouped.setdefault(
+                stock_code,
+                {
+                    "stock_code": stock_code,
+                    "stock_description": row.get("stock_description"),
+                    "cost_values": [],
+                    "source_reports": set(),
+                },
+            )
+            bucket["cost_values"].append(cost_price)
+            bucket["source_reports"].add(report_name)
+    lookup = {}
+    for stock_code, row in grouped.items():
+        cost_price = round(sum(row["cost_values"]) / len(row["cost_values"]), 2)
+        lookup[stock_code] = {
+            "stock_code": stock_code,
+            "stock_description": row.get("stock_description"),
+            "cost_price": cost_price,
+            "average_cost_excl": cost_price,
+            "quantity_sold": None,
+            "value_excl_after_discount": None,
+            "gross_profit": None,
+            "sales_margin_pct": None,
+            "source_report": sorted(row["source_reports"]),
+            "cost_source": "omni_report",
+            "cost_basis": "omni_report_cost_price",
+            "cost_observation_count": len(row["cost_values"]),
+        }
+    return lookup
+
+
+def merge_cost_lookups(sales_cost_lookup, stock_cost_lookup):
+    merged = dict(sales_cost_lookup)
+    merged.update(stock_cost_lookup)
+    return merged
 
 
 def build_stock_cost_rows(cost_lookup):
@@ -227,12 +282,27 @@ def build_stock_listing_with_cost(stock_sources, cost_lookup):
         for row in stock_sources.get(report_name) or []:
             stock_code = row.get("stock_code")
             cost = cost_lookup.get(stock_code) if stock_code else None
+            real_row_cost = row_cost_price(row)
             available = num(row.get("available"))
             selling_price = num(row.get("selling_price_excl"))
-            average_cost = cost.get("average_cost_excl") if cost else None
+            if real_row_cost is not None:
+                cost_price = real_row_cost
+                cost_source = "omni_report"
+                cost_basis = "omni_report_cost_price"
+                cost_quantity_sold = None
+            elif cost:
+                cost_price = cost.get("cost_price") or cost.get("average_cost_excl")
+                cost_source = cost.get("cost_source") or cost.get("cost_basis")
+                cost_basis = cost.get("cost_basis")
+                cost_quantity_sold = cost.get("quantity_sold")
+            else:
+                cost_price = None
+                cost_source = "unavailable_from_current_omni_reports"
+                cost_basis = None
+                cost_quantity_sold = None
             margin_pct = None
-            if average_cost is not None and selling_price:
-                margin_pct = round((selling_price - average_cost) / selling_price * 100, 2)
+            if cost_price is not None and selling_price:
+                margin_pct = round((selling_price - cost_price) / selling_price * 100, 2)
             rows.append(
                 {
                     "company_branch_code": branch,
@@ -244,11 +314,13 @@ def build_stock_listing_with_cost(stock_sources, cost_lookup):
                     "stock_category": row.get("stock_category"),
                     "available": row.get("available"),
                     "selling_price_excl": row.get("selling_price_excl"),
-                    "average_cost_excl": average_cost,
-                    "stock_value_cost": round(available * average_cost, 2) if average_cost is not None else None,
+                    "cost_price": cost_price,
+                    "average_cost_excl": cost_price,
+                    "stock_value_cost": round(available * cost_price, 2) if cost_price is not None else None,
                     "gross_margin_pct_at_selling": margin_pct,
-                    "cost_source": cost.get("cost_basis") if cost else "unavailable_from_current_omni_reports",
-                    "cost_quantity_sold": cost.get("quantity_sold") if cost else None,
+                    "cost_source": cost_source,
+                    "cost_basis": cost_basis,
+                    "cost_quantity_sold": cost_quantity_sold,
                 }
             )
     return rows
@@ -466,7 +538,11 @@ def main():
                         turnover_history[key] = next_row
                         turnover_updates += 1
 
-    cost_lookup = cost_lookup_from_sales(report_rows.get("ANA_Most Popular Products GP") or [])
+    sales_cost_lookup = cost_lookup_from_sales(report_rows.get("ANA_Most Popular Products GP") or [])
+    stock_cost_lookup = cost_lookup_from_stock_reports(
+        {report_name: report_rows.get(report_name) for report_name in STOCK_LISTING_BRANCH}
+    )
+    cost_lookup = merge_cost_lookups(sales_cost_lookup, stock_cost_lookup)
     stock_cost_rows = build_stock_cost_rows(cost_lookup)
     write_daily(today, "Engine Stock Cost By SKU", {"engine_stock_cost_by_sku": stock_cost_rows})
     print(f"[fetch_omni] Engine Stock Cost By SKU: {len(stock_cost_rows)} rows")
