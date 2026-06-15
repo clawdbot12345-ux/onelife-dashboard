@@ -28,6 +28,7 @@ P0_REPORTS = [
     "Stock Valuation - Slow movers 6 Months",
     "OL_PO_Generator_V6",
     "Purchase Orders",
+    "ANA_Purchase analysis",
     "Stock Price List with Supplier Price Comparison",
     "Stock Reorder Report - Daily Material Requirements",
     "Supplier Payment Schedule",
@@ -138,6 +139,10 @@ def blank(value):
 
 def normalized_name(value):
     return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
+
+
+def normalized_code(value):
+    return str(value or "").strip().upper()
 
 
 def build_transaction_rows(transaction_sources, document_date, source_map):
@@ -327,6 +332,7 @@ def build_stock_listing_with_cost(stock_sources, cost_lookup):
 
 
 def add_supplier(master, supplier_code, supplier_name, source_report):
+    supplier_code = normalized_code(supplier_code)
     if blank(supplier_code) and blank(supplier_name):
         return
     name_key = f"name::{normalized_name(supplier_name)}" if not blank(supplier_name) else None
@@ -353,9 +359,13 @@ def add_supplier(master, supplier_code, supplier_name, source_report):
 
 def build_supplier_master(report_rows):
     master = {}
+    stock_supplier_codes = set()
     for report_name in STOCK_LISTING_BRANCH:
         for row in report_rows.get(report_name) or []:
-            add_supplier(master, row.get("supplier_#"), None, report_name)
+            supplier_code = normalized_code(row.get("supplier_#"))
+            if supplier_code:
+                stock_supplier_codes.add(supplier_code)
+            add_supplier(master, supplier_code, None, report_name)
     for report_name in ("Stock Price List with Supplier Price Comparison", "Stock Reorder Report - Daily Material Requirements"):
         for row in report_rows.get(report_name) or []:
             add_supplier(master, row.get("last_supplier"), row.get("last_supplier_s_name"), report_name)
@@ -363,64 +373,120 @@ def build_supplier_master(report_rows):
         add_supplier(master, row.get("supplier_#"), None, "Stock Valuation - Slow movers 6 Months")
     for row in report_rows.get("Purchase Orders") or []:
         add_supplier(master, row.get("supplier_account_no"), None, "Purchase Orders")
+    purchase_supplier_numbers = {}
+    for row in report_rows.get("ANA_Purchase analysis") or []:
+        account_no = normalized_code(row.get("supplier_account_no"))
+        if not account_no:
+            continue
+        add_supplier(master, account_no, row.get("supplier_name"), "ANA_Purchase analysis")
+        if not blank(row.get("supplier_#")):
+            purchase_supplier_numbers[account_no] = row.get("supplier_#")
     for row in report_rows.get("Supplier Payment Schedule") or []:
         add_supplier(master, None, row.get("supplier_name"), "Supplier Payment Schedule")
     rows = []
     for row in master.values():
+        supplier_code = normalized_code(row.get("supplier_#"))
+        linked_to_stock = bool(supplier_code and supplier_code in stock_supplier_codes)
         rows.append(
             {
-                "supplier_#": row.get("supplier_#"),
+                "supplier_account_no": supplier_code or None,
+                "supplier_#": supplier_code if linked_to_stock else None,
+                "purchase_supplier_#": purchase_supplier_numbers.get(supplier_code),
                 "supplier_name": row.get("supplier_name"),
+                "linked_to_stock": linked_to_stock,
                 "source_reports": sorted(row["source_reports"]),
             }
         )
-    return sorted(rows, key=lambda row: (row.get("supplier_#") or "", row.get("supplier_name") or ""))
+    return sorted(rows, key=lambda row: (row.get("supplier_account_no") or "", row.get("supplier_name") or ""))
 
 
-def build_supplier_po_grv(po_rows, payment_rows, supplier_master):
-    by_code = {
-        row.get("supplier_#"): row.get("supplier_name")
+def supplier_master_indexes(supplier_master):
+    by_account = {
+        normalized_code(row.get("supplier_account_no")): row
         for row in supplier_master
-        if row.get("supplier_#") and row.get("supplier_name")
+        if row.get("supplier_account_no")
     }
     by_name = {
-        normalized_name(row.get("supplier_name")): row.get("supplier_#")
+        normalized_name(row.get("supplier_name")): row
         for row in supplier_master
-        if row.get("supplier_name") and row.get("supplier_#")
+        if row.get("supplier_name")
     }
+    return by_account, by_name
+
+
+def build_supplier_po_grv(po_rows, purchase_rows, payment_rows, supplier_master):
+    by_account, by_name = supplier_master_indexes(supplier_master)
     rows_by_supplier = {}
-    for row in po_rows:
-        supplier_code = row.get("supplier_account_no")
-        key = supplier_code or "unknown"
+
+    def bucket_for(account_no, supplier_name=None):
+        account_no = normalized_code(account_no)
+        master_row = by_account.get(account_no) if account_no else None
+        key = account_no or f"name::{normalized_name(supplier_name)}"
         bucket = rows_by_supplier.setdefault(
             key,
             {
-                "supplier_#": supplier_code,
-                "supplier_name": by_code.get(supplier_code),
+                "supplier_account_no": account_no or None,
+                "supplier_#": master_row.get("supplier_#") if master_row else None,
+                "purchase_supplier_#": master_row.get("purchase_supplier_#") if master_row else None,
+                "supplier_name": supplier_name or (master_row.get("supplier_name") if master_row else None),
+                "linked_to_stock": bool(master_row.get("linked_to_stock")) if master_row else False,
                 "po_value_excl": 0.0,
+                "received_invoiced_value_excl": 0.0,
                 "grv_value_excl": None,
-                "fill_pct": None,
+                "fill_rate_proxy": None,
+                "fill_rate_proxy_basis": "ana_purchase_analysis_received_invoiced_div_purchase_orders_ordered",
                 "outstanding_excl": None,
                 "outstanding_incl": None,
                 "order_count": set(),
                 "ordered_qty": 0.0,
-                "source_reports": {"Purchase Orders"},
-                "coverage_note": "PO values are live from Purchase Orders; Omni did not expose a GRV-by-supplier report in the current catalog, so GRV/fill fields remain null.",
+                "source_reports": set(),
+                "coverage_note": "Fill rate is a proxy: ANA_Purchase analysis invoices + credit notes divided by Purchase Orders ordered value; it is not true GRV.",
             },
         )
+        if supplier_name and not bucket.get("supplier_name"):
+            bucket["supplier_name"] = supplier_name
+        return bucket
+
+    for row in po_rows:
+        bucket = bucket_for(row.get("supplier_account_no"))
         bucket["po_value_excl"] += num(row.get("value_excl_after_discount"))
         bucket["ordered_qty"] += num(row.get("ordered_qty"))
+        bucket["source_reports"].add("Purchase Orders")
         if row.get("reference"):
             bucket["order_count"].add(row.get("reference"))
+
+    for row in purchase_rows:
+        bucket = bucket_for(row.get("supplier_account_no"), row.get("supplier_name"))
+        bucket["received_invoiced_value_excl"] += num(row.get("value_excl_after_discount"))
+        bucket["source_reports"].add("ANA_Purchase analysis")
+
+    for row in payment_rows:
+        supplier_name = row.get("supplier_name")
+        master_row = by_name.get(normalized_name(supplier_name))
+        bucket = bucket_for(master_row.get("supplier_account_no") if master_row else None, supplier_name)
+        outstanding_incl = num(row.get("outstanding_incl"))
+        bucket["outstanding_excl"] = round(outstanding_incl / 1.15, 2) if outstanding_incl else 0
+        bucket["outstanding_incl"] = row.get("outstanding_incl")
+        bucket["source_reports"].add("Supplier Payment Schedule")
+
     rows = []
     for bucket in rows_by_supplier.values():
+        po_value_excl = round(bucket["po_value_excl"], 2)
+        received_value_excl = round(bucket["received_invoiced_value_excl"], 2)
+        fill_rate_proxy = round(received_value_excl / po_value_excl, 4) if po_value_excl else None
         rows.append(
             {
+                "supplier_account_no": bucket["supplier_account_no"],
                 "supplier_#": bucket["supplier_#"],
+                "purchase_supplier_#": bucket["purchase_supplier_#"],
                 "supplier_name": bucket["supplier_name"],
-                "po_value_excl": round(bucket["po_value_excl"], 2),
+                "linked_to_stock": bucket["linked_to_stock"],
+                "po_value_excl": po_value_excl,
+                "received_invoiced_value_excl": received_value_excl,
                 "grv_value_excl": bucket["grv_value_excl"],
-                "fill_pct": bucket["fill_pct"],
+                "fill_pct": None,
+                "fill_rate_proxy": fill_rate_proxy,
+                "fill_rate_proxy_basis": bucket["fill_rate_proxy_basis"],
                 "outstanding_excl": bucket["outstanding_excl"],
                 "outstanding_incl": bucket["outstanding_incl"],
                 "order_count": len(bucket["order_count"]),
@@ -429,25 +495,51 @@ def build_supplier_po_grv(po_rows, payment_rows, supplier_master):
                 "coverage_note": bucket["coverage_note"],
             }
         )
-    for row in payment_rows:
-        supplier_name = row.get("supplier_name")
-        outstanding_incl = num(row.get("outstanding_incl"))
-        rows.append(
+    return sorted(rows, key=lambda row: (row.get("supplier_account_no") or "", row.get("supplier_name") or ""))
+
+
+def build_supplier_purchase_coverage(purchase_rows, supplier_master):
+    by_account, _ = supplier_master_indexes(supplier_master)
+    grouped = {}
+    for row in purchase_rows:
+        account_no = normalized_code(row.get("supplier_account_no"))
+        if not account_no:
+            continue
+        bucket = grouped.setdefault(
+            account_no,
             {
-                "supplier_#": by_name.get(normalized_name(supplier_name)),
-                "supplier_name": supplier_name,
-                "po_value_excl": None,
-                "grv_value_excl": None,
-                "fill_pct": None,
-                "outstanding_excl": round(outstanding_incl / 1.15, 2) if outstanding_incl else 0,
-                "outstanding_incl": row.get("outstanding_incl"),
-                "order_count": None,
-                "ordered_qty": None,
-                "source_reports": ["Supplier Payment Schedule"],
-                "coverage_note": "Payables/outstanding is live from Supplier Payment Schedule; supplier code is only populated when it can be matched from supplier master names.",
-            }
+                "supplier_account_no": account_no,
+                "supplier_name": row.get("supplier_name"),
+                "purchase_value_excl": 0.0,
+                "linked_to_stock": bool((by_account.get(account_no) or {}).get("linked_to_stock")),
+            },
         )
-    return sorted(rows, key=lambda row: (row.get("supplier_#") or "", row.get("supplier_name") or ""))
+        bucket["purchase_value_excl"] += num(row.get("value_excl_after_discount"))
+    unlinked = [row for row in grouped.values() if not row["linked_to_stock"]]
+    linked = [row for row in grouped.values() if row["linked_to_stock"]]
+    return [
+        {
+            "source_report": "ANA_Purchase analysis",
+            "join_key": "normalized supplier_account_no == normalized stock supplier_#",
+            "supplier_count": len(grouped),
+            "linked_supplier_count": len(linked),
+            "linked_purchase_value_excl": round(sum(row["purchase_value_excl"] for row in linked), 2),
+            "unlinked_supplier_count": len(unlinked),
+            "unlinked_purchase_value_excl": round(sum(row["purchase_value_excl"] for row in unlinked), 2),
+            "unlinked_suppliers": sorted(
+                [
+                    {
+                        "supplier_account_no": row["supplier_account_no"],
+                        "supplier_name": row.get("supplier_name"),
+                        "purchase_value_excl": round(row["purchase_value_excl"], 2),
+                    }
+                    for row in unlinked
+                ],
+                key=lambda row: abs(row["purchase_value_excl"]),
+                reverse=True,
+            ),
+        }
+    ]
 
 
 def turnover_quality_audit(turnover_rows):
@@ -557,11 +649,19 @@ def main():
 
     supplier_po_grv_rows = build_supplier_po_grv(
         report_rows.get("Purchase Orders") or [],
+        report_rows.get("ANA_Purchase analysis") or [],
         report_rows.get("Supplier Payment Schedule") or [],
         supplier_master_rows,
     )
     write_daily(today, "Engine Supplier PO GRV", {"engine_supplier_po_grv": supplier_po_grv_rows})
     print(f"[fetch_omni] Engine Supplier PO GRV: {len(supplier_po_grv_rows)} rows")
+
+    supplier_purchase_coverage = build_supplier_purchase_coverage(
+        report_rows.get("ANA_Purchase analysis") or [],
+        supplier_master_rows,
+    )
+    write_daily(today, "Engine Supplier Purchase Coverage", {"engine_supplier_purchase_coverage": supplier_purchase_coverage})
+    print(f"[fetch_omni] Engine Supplier Purchase Coverage: {len(supplier_purchase_coverage)} rows")
 
     transaction_sources = {}
     for name in BRANCH_BUSY_YESTERDAY:
