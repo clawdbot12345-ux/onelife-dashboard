@@ -42,6 +42,9 @@ jobs:
       - name: Rebuild "What to Market" engine
         run: python scripts/build_what_to_market.py
 
+      - name: Rebuild "Actions for You" briefing
+        run: python scripts/build_actions.py
+
       - name: Set up Node (for PDF generation)
         uses: actions/setup-node@v4
         with:

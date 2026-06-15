@@ -194,6 +194,7 @@
 
 <div class="tabs" id="tabs">
   <div class="tab active" data-tab="overview">📊 Overview</div>
+  <div class="tab" data-tab="actions">🧭 Actions for You</div>
   <div class="tab" data-tab="products">📦 Products <span class="tab-count" id="prod-count">—</span></div>
   <div class="tab" data-tab="stock">🔍 Stock Intelligence</div>
   <div class="tab" data-tab="suppliers">🏭 Suppliers <span class="tab-count" id="sup-count">—</span></div>
@@ -622,8 +623,14 @@
       <div style="font-size:0.95rem;line-height:1.7;color:var(--muted);" id="wtm-basis"></div>
     </div>
     <div class="signal-section">
+      <div class="signal-section-title"><span>📈</span> Margin × demand map</div>
+      <div class="signal-narrative">Every dot is a product — far-right = high margin, higher up = sells more, bigger = more total profit. Top-right + big = your sweet spot.</div>
+      <div class="chart-container" style="height:300px;"><canvas id="wtmBubble"></canvas></div>
+    </div>
+    <div class="signal-section">
       <div class="signal-section-title"><span>🎯</span> Top products to market now</div>
       <div class="signal-narrative">Ranked from real 12-month sales + gross profit, gated by live stock and boosted for the current season. Each row tells you <strong>where to push it</strong>.</div>
+      <div id="wtm-filter" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;"></div>
       <div id="wtm-items" style="overflow-x:auto;"></div>
     </div>
     <div class="signal-section">
@@ -633,6 +640,15 @@
     </div>
   </div>
 
+  <!-- ACTIONS FOR YOU -->
+  <div class="tab-panel" id="tab-actions">
+    <div style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;">🧭 Actions for You — live executive briefing</div>
+      <div style="font-size:0.95rem;line-height:1.7;color:var(--muted);" id="actions-intro"></div>
+    </div>
+    <div id="actions-cards"></div>
+  </div>
+
 </div><!-- /content -->
 
 <script>
@@ -640,6 +656,72 @@
 // DATA
 // ============================================================
 const DASHBOARD_DATA = {
+  "actions_briefing": {
+    "generated_at": "2026-06-15T20:56:51.769209",
+    "intro": "Live executive briefing — generated from Omni store, sales, stock and supplier data. Each card: what's happening, what's coming, and the move to make.",
+    "cards": [
+      {
+        "priority": "high",
+        "kind": "Insight",
+        "icon": "🛒",
+        "accent": "#ef4444",
+        "title": "Edenvale basket is R224 below Centurion",
+        "story": "Edenvale averages **R395** per basket vs **R619** at Centurion — same shopper profile, fewer items per till. That's a ranging/upsell gap, not a footfall one.",
+        "action": "Till-point 'complete your protocol' upsell + consultant prompt at Edenvale.",
+        "impact": "+R23,900/mo at just +R50 basket × 478 transactions."
+      },
+      {
+        "priority": "high",
+        "kind": "Foresight",
+        "icon": "⏳",
+        "accent": "#f59e0b",
+        "title": "50 fast-sellers will stock out within ~3 weeks",
+        "story": "Top mover **MAG 7/87 60'S** and 49 others have under 21 days of cover at current pace. These carry **R755,550** of annual gross profit between them.",
+        "action": "Reorder these now — and don't feature them in marketing until stock is confirmed.",
+        "impact": "Protects ~R62,962/mo of GP from going to a competitor."
+      },
+      {
+        "priority": "med",
+        "kind": "Action",
+        "icon": "💎",
+        "accent": "#22c55e",
+        "title": "11 high-margin products are under-marketed",
+        "story": "e.g. **BAR PEANUT BRITTLE 50G** at **50% margin** — already selling, well stocked, but not a top seller. These are pure profit upside if you put marketing behind them.",
+        "action": "Feature in the 'What to Market' channels (online hero, VIP WhatsApp, front-of-shelf).",
+        "impact": "~R19,588/yr GP at a modest +30% lift on the top 8."
+      },
+      {
+        "priority": "med",
+        "kind": "Foresight",
+        "icon": "❄️",
+        "accent": "#3b82f6",
+        "title": "Winter demand window is open now",
+        "story": "273 in-stock products map to winter needs (immunity, sleep, joints, Vitamin D) — together a **R787,380/yr** GP base that peaks in the next 8–10 weeks.",
+        "action": "Pre-load the immunity/sleep content week (TikTok + VIP WhatsApp) and confirm reorders early.",
+        "impact": "Captures the seasonal peak instead of chasing it late."
+      },
+      {
+        "priority": "med",
+        "kind": "Insight",
+        "icon": "📣",
+        "accent": "#a855f7",
+        "title": "R262,200/yr of media spend isn't tied to results",
+        "story": "**DIGIWAZ MEDIA** shows ~R262,200 in purchases but isn't a stock supplier — it reads as media/agency spend, sitting outside any return tracking.",
+        "action": "Put this spend next to the sessions/revenue it drove (GA4 once wired) and renegotiate or reallocate.",
+        "impact": "Recovers/redeploys marketing budget against measured ROI."
+      },
+      {
+        "priority": "low",
+        "kind": "Hindsight",
+        "icon": "🏬",
+        "accent": "#64748b",
+        "title": "Centurion is 68% of store revenue",
+        "story": "Over the period, Centurion drove **R753,123** of R1,114,473. Healthy, but it concentrates risk and means the other two stores are the growth headroom.",
+        "action": "Localised offers + the basket-upsell play at the smaller stores (geo WhatsApp/email segments).",
+        "impact": "Diversifies revenue and lifts the two lower-basket stores."
+      }
+    ]
+  },
   "what_to_market": {
     "generated_at": "2026-06-15T20:44:21.846954",
     "basis": "12-month item sales + gross profit (Omni ANA_Most Popular Products GP) joined to live per-branch stock. Margin is realized GP (no cost column needed). Season: winter (SA, June).",
@@ -89568,14 +89650,13 @@ function initSignals() {
 // ============================================================
 // INIT ALL
 // ============================================================
-function initMarket() {
-  const w = DASHBOARD_DATA.what_to_market;
-  if (!w) return;
-  const basis = document.getElementById('wtm-basis');
-  if (basis) basis.textContent = w.basis + ' Scoring: ' + w.scoring;
+function mdBold(s) { return (s || '').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); }
+
+function wtmTable(list) {
   const condPill = c => c ? `<span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#2a2f4a;color:#9aa0c0;font-size:11px;margin-left:6px;">${c}</span>` : '';
   const branchChips = b => Object.entries(b).map(([k,v]) => `${k.slice(0,3)} ${v}`).join(' · ');
-  const table = (list) => `
+  const bar = m => `<div style="height:6px;border-radius:3px;margin-top:3px;background:#2a2f4a;"><div style="height:6px;border-radius:3px;width:${Math.min(m,100)}%;background:linear-gradient(90deg,#6c63ff,#22c55e);"></div></div>`;
+  return `
     <table style="width:100%;border-collapse:collapse;font-size:13px;">
       <thead><tr style="text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;">
         <th style="padding:8px;">#</th><th>Product</th><th style="text-align:right;">Margin</th><th style="text-align:right;">Sold/yr</th><th style="text-align:right;">GP/yr</th><th style="text-align:right;">In stock</th><th>Push via</th>
@@ -89584,21 +89665,83 @@ function initMarket() {
         <tr style="border-top:1px solid #2a2f4a;">
           <td style="padding:8px;color:var(--muted);">${i+1}</td>
           <td style="font-weight:600;max-width:280px;">${c.name}${condPill(c.condition)}</td>
-          <td style="text-align:right;" class="${c.margin_pct>=40?'color-pos':''}">${fmtPct(c.margin_pct)}</td>
+          <td style="text-align:right;min-width:70px;"><span class="${c.margin_pct>=40?'color-pos':''}">${fmtPct(c.margin_pct)}</span>${bar(c.margin_pct)}</td>
           <td style="text-align:right;font-variant-numeric:tabular-nums;">${fmtNum(c.units_12m)}</td>
           <td style="text-align:right;font-variant-numeric:tabular-nums;">${fmtR(c.gp_12m)}</td>
           <td style="text-align:right;font-variant-numeric:tabular-nums;">${fmtNum(c.avail_total)}<div style="font-size:10px;color:var(--muted);font-weight:400;">${branchChips(c.avail_by_branch)}</div></td>
           <td style="font-size:12px;color:var(--muted);max-width:220px;">${c.channel}</td>
         </tr>`).join('')}
       </tbody></table>`;
+}
+
+function initMarket() {
+  const w = DASHBOARD_DATA.what_to_market;
+  if (!w) return;
+  const basis = document.getElementById('wtm-basis');
+  if (basis) basis.textContent = w.basis + ' Scoring: ' + w.scoring;
   const it = document.getElementById('wtm-items');
   const gm = document.getElementById('wtm-gems');
-  if (it) it.innerHTML = table(w.items);
-  if (gm) gm.innerHTML = w.hidden_gems.length ? table(w.hidden_gems) : '<div class="signal-narrative">No gems flagged today.</div>';
+
+  // interactive condition filter
+  const conds = ['All', ...Array.from(new Set(w.items.map(c => c.condition).filter(Boolean)))];
+  const fc = document.getElementById('wtm-filter');
+  if (fc) {
+    fc.innerHTML = conds.map(c => `<button class="wtm-fbtn" data-c="${c}" style="cursor:pointer;border:none;border-radius:14px;padding:4px 12px;font-size:12px;color:#cfd3e6;background:${c==='All'?'#6c63ff':'#2a2f4a'};">${c}</button>`).join('');
+    fc.querySelectorAll('.wtm-fbtn').forEach(btn => btn.addEventListener('click', () => {
+      const c = btn.dataset.c;
+      if (it) it.innerHTML = wtmTable(c === 'All' ? w.items : w.items.filter(x => x.condition === c));
+      fc.querySelectorAll('.wtm-fbtn').forEach(b => b.style.background = '#2a2f4a');
+      btn.style.background = '#6c63ff';
+    }));
+  }
+  if (it) it.innerHTML = wtmTable(w.items);
+  if (gm) gm.innerHTML = w.hidden_gems.length ? wtmTable(w.hidden_gems) : '<div class="signal-narrative">No gems flagged today.</div>';
+
+  // margin × demand bubble map
+  const cv = document.getElementById('wtmBubble');
+  if (cv && window.Chart) {
+    new Chart(cv, {
+      type: 'bubble',
+      data: { datasets: [{
+        data: w.items.map(c => ({ x: c.margin_pct, y: c.units_12m, r: Math.max(5, Math.sqrt(c.gp_12m) / 11), _n: c.name })),
+        backgroundColor: w.items.map(c => c.margin_pct >= 40 ? 'rgba(34,197,94,.55)' : 'rgba(108,99,255,.5)'),
+        borderColor: w.items.map(c => c.margin_pct >= 40 ? '#22c55e' : '#6c63ff'),
+      }] },
+      options: {
+        plugins: { legend: { display: false }, tooltip: { callbacks: {
+          label: ctx => `${ctx.raw._n}: ${ctx.raw.x}% margin · ${fmtNum(ctx.raw.y)} sold/yr` } } },
+        scales: {
+          x: { title: { display: true, text: 'Gross margin %', color: '#9aa0c0' }, ticks: { color: '#9aa0c0' }, grid: { color: 'rgba(255,255,255,.06)' } },
+          y: { title: { display: true, text: 'Units sold / yr', color: '#9aa0c0' }, ticks: { color: '#9aa0c0' }, grid: { color: 'rgba(255,255,255,.06)' } }
+        }
+      }
+    });
+  }
+}
+
+function initActions() {
+  const b = DASHBOARD_DATA.actions_briefing;
+  if (!b) return;
+  const intro = document.getElementById('actions-intro');
+  if (intro) intro.textContent = b.intro;
+  const kindColor = { Insight: '#6c63ff', Foresight: '#f59e0b', Hindsight: '#64748b', Action: '#22c55e' };
+  document.getElementById('actions-cards').innerHTML = b.cards.map(c => `
+    <div style="background:#1e2235;border-left:4px solid ${c.accent};border-radius:0 10px 10px 0;padding:18px 20px;margin-bottom:14px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
+        <span style="font-size:20px;">${c.icon}</span>
+        <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${kindColor[c.kind]||'#9aa0c0'};border:1px solid ${kindColor[c.kind]||'#9aa0c0'};padding:2px 8px;border-radius:10px;">${c.kind}</span>
+        <span style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">${c.priority} priority</span>
+      </div>
+      <div style="font-size:1.05rem;font-weight:700;margin-bottom:6px;">${c.title}</div>
+      <div style="font-size:.92rem;line-height:1.6;color:#c7cce0;margin-bottom:10px;">${mdBold(c.story)}</div>
+      <div style="font-size:.9rem;margin-bottom:10px;"><span style="color:var(--muted);font-weight:600;">▶ Action:</span> ${mdBold(c.action)}</div>
+      <div style="display:inline-block;background:rgba(34,197,94,.12);color:#22c55e;font-weight:700;font-size:.85rem;padding:5px 12px;border-radius:8px;">📈 ${mdBold(c.impact)}</div>
+    </div>`).join('');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   initOverview();
+  initActions();
   initMarket();
   initProducts();
   initStock();
