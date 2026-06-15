@@ -201,6 +201,7 @@
   <div class="tab" data-tab="online">🌐 Online</div>
   <div class="tab" data-tab="klaviyo">📧 Email Marketing</div>
   <div class="tab" data-tab="signals">⚡ Signals</div>
+  <div class="tab" data-tab="market">🎯 What to Market</div>
 </div>
 
 <div class="content">
@@ -614,6 +615,24 @@
     </div>
   </div>
 
+  <!-- WHAT TO MARKET -->
+  <div class="tab-panel" id="tab-market">
+    <div style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;">🎯 What to Market — this week</div>
+      <div style="font-size:0.95rem;line-height:1.7;color:var(--muted);" id="wtm-basis"></div>
+    </div>
+    <div class="signal-section">
+      <div class="signal-section-title"><span>🎯</span> Top products to market now</div>
+      <div class="signal-narrative">Ranked from real 12-month sales + gross profit, gated by live stock and boosted for the current season. Each row tells you <strong>where to push it</strong>.</div>
+      <div id="wtm-items" style="overflow-x:auto;"></div>
+    </div>
+    <div class="signal-section">
+      <div class="signal-section-title"><span>💎</span> Hidden margin gems — proven demand, under-marketed</div>
+      <div class="signal-narrative">High margin, already selling, well stocked, but <strong>not yet a top seller</strong> — the biggest room to grow profit if you put marketing behind them.</div>
+      <div id="wtm-gems" style="overflow-x:auto;"></div>
+    </div>
+  </div>
+
 </div><!-- /content -->
 
 <script>
@@ -621,6 +640,642 @@
 // DATA
 // ============================================================
 const DASHBOARD_DATA = {
+  "what_to_market": {
+    "generated_at": "2026-06-15T20:44:21.846954",
+    "basis": "12-month item sales + gross profit (Omni ANA_Most Popular Products GP) joined to live per-branch stock. Margin is realized GP (no cost column needed). Season: winter (SA, June).",
+    "scoring": "0.35·margin + 0.30·demand + 0.20·GP contribution, gated by stock cover, +0.15 winter/condition boost.",
+    "items": [
+      {
+        "sku": "6009691544842",
+        "name": "MAGN GLYC 120C",
+        "supplier": "WILLOW",
+        "margin_pct": 41.3,
+        "units_12m": 460,
+        "gp_12m": 58085.73,
+        "value_12m": 140486.04,
+        "avail_total": 40,
+        "avail_by_branch": {
+          "Centurion": 28,
+          "Edenvale": 5,
+          "Glen Village": 7
+        },
+        "condition": "Sleep & calm",
+        "score": 0.8381,
+        "reason": "41% margin · 460 sold/yr · winter — Sleep & calm · 40 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "6009880073207",
+        "name": "PUREST OMEGA 3 60C",
+        "supplier": "COYNE",
+        "margin_pct": 38.0,
+        "units_12m": 219,
+        "gp_12m": 27080.47,
+        "value_12m": 71329.1,
+        "avail_total": 33,
+        "avail_by_branch": {
+          "Centurion": 24,
+          "Edenvale": 6,
+          "Glen Village": 3
+        },
+        "condition": "Joint & mobility",
+        "score": 0.6971,
+        "reason": "38% margin · 219 sold/yr · winter — Joint & mobility · 33 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Joint & mobility)"
+      },
+      {
+        "sku": "737186096137",
+        "name": "MAGNESIUM GLYCINATE 60VC",
+        "supplier": "PRIMES",
+        "margin_pct": 40.1,
+        "units_12m": 214,
+        "gp_12m": 18276.13,
+        "value_12m": 45523.44,
+        "avail_total": 24,
+        "avail_by_branch": {
+          "Centurion": 8,
+          "Edenvale": 12,
+          "Glen Village": 4
+        },
+        "condition": "Sleep & calm",
+        "score": 0.6853,
+        "reason": "40% margin · 214 sold/yr · winter — Sleep & calm · 24 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "737186096175",
+        "name": "MAGNESIUM COMPLEX 60VC",
+        "supplier": "PRIMES",
+        "margin_pct": 39.4,
+        "units_12m": 137,
+        "gp_12m": 22902.82,
+        "value_12m": 58130.1,
+        "avail_total": 24,
+        "avail_by_branch": {
+          "Centurion": 17,
+          "Edenvale": 4,
+          "Glen Village": 3
+        },
+        "condition": "Sleep & calm",
+        "score": 0.6772,
+        "reason": "39% margin · 137 sold/yr · winter — Sleep & calm · 24 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "6009544603146",
+        "name": "MAGN CITRATE 60C",
+        "supplier": "WILLOW",
+        "margin_pct": 48.3,
+        "units_12m": 77,
+        "gp_12m": 5564.35,
+        "value_12m": 11523.38,
+        "avail_total": 8,
+        "avail_by_branch": {
+          "Centurion": 1,
+          "Edenvale": 3,
+          "Glen Village": 4
+        },
+        "condition": "Sleep & calm",
+        "score": 0.6677,
+        "reason": "48% margin · 77 sold/yr · winter — Sleep & calm · 8 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "6009544628859",
+        "name": "MAGN/D3/K2 60C",
+        "supplier": "WILLOW",
+        "margin_pct": 48.7,
+        "units_12m": 59,
+        "gp_12m": 5795.25,
+        "value_12m": 11900.91,
+        "avail_total": 9,
+        "avail_by_branch": {
+          "Centurion": 2,
+          "Edenvale": 7,
+          "Glen Village": 0
+        },
+        "condition": "Sleep & calm",
+        "score": 0.6613,
+        "reason": "49% margin · 59 sold/yr · winter — Sleep & calm · 9 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "6009609003102",
+        "name": "RHODIOLA 60C",
+        "supplier": "NUG",
+        "margin_pct": 42.1,
+        "units_12m": 140,
+        "gp_12m": 9299.4,
+        "value_12m": 22115.0,
+        "avail_total": 15,
+        "avail_by_branch": {
+          "Centurion": 5,
+          "Edenvale": 6,
+          "Glen Village": 4
+        },
+        "condition": "Stress & adrenal",
+        "score": 0.6573,
+        "reason": "42% margin · 140 sold/yr · winter — Stress & adrenal · 15 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Stress & adrenal)"
+      },
+      {
+        "sku": "6009691546327",
+        "name": "RHODIOLA 50C",
+        "supplier": "WILLOW",
+        "margin_pct": 49.4,
+        "units_12m": 45,
+        "gp_12m": 4693.35,
+        "value_12m": 9495.98,
+        "avail_total": 12,
+        "avail_by_branch": {
+          "Centurion": 4,
+          "Edenvale": 3,
+          "Glen Village": 5
+        },
+        "condition": "Stress & adrenal",
+        "score": 0.653,
+        "reason": "49% margin · 45 sold/yr · winter — Stress & adrenal · 12 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Stress & adrenal)"
+      },
+      {
+        "sku": "733739003690",
+        "name": "SL VIT D-3 & K-2",
+        "supplier": "DSI",
+        "margin_pct": 34.9,
+        "units_12m": 185,
+        "gp_12m": 19815.43,
+        "value_12m": 56818.41,
+        "avail_total": 17,
+        "avail_by_branch": {
+          "Centurion": 5,
+          "Edenvale": 8,
+          "Glen Village": 4
+        },
+        "condition": "Vitamin D",
+        "score": 0.6479,
+        "reason": "35% margin · 185 sold/yr · winter — Vitamin D · 17 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Vitamin D)"
+      },
+      {
+        "sku": "6009609005922",
+        "name": "COPPER,SEL & ZINC COMPLEX 60T",
+        "supplier": "NUG",
+        "margin_pct": 42.3,
+        "units_12m": 123,
+        "gp_12m": 5077.11,
+        "value_12m": 12005.7,
+        "avail_total": 14,
+        "avail_by_branch": {
+          "Centurion": 9,
+          "Edenvale": 2,
+          "Glen Village": 3
+        },
+        "condition": "Immunity",
+        "score": 0.6416,
+        "reason": "42% margin · 123 sold/yr · winter — Immunity · 14 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Immunity)"
+      },
+      {
+        "sku": "6009691542299",
+        "name": "GLUC/MSM/CHON 100C",
+        "supplier": "WILLOW",
+        "margin_pct": 49.3,
+        "units_12m": 31,
+        "gp_12m": 4890.73,
+        "value_12m": 9929.03,
+        "avail_total": 6,
+        "avail_by_branch": {
+          "Centurion": 4,
+          "Edenvale": 0,
+          "Glen Village": 2
+        },
+        "condition": "Joint & mobility",
+        "score": 0.6393,
+        "reason": "49% margin · 31 sold/yr · winter — Joint & mobility · 6 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Joint & mobility)"
+      },
+      {
+        "sku": "6009691543623",
+        "name": "VIT K2 MCG 60C",
+        "supplier": "WILLOW",
+        "margin_pct": 48.0,
+        "units_12m": 311,
+        "gp_12m": 29948.63,
+        "value_12m": 62401.38,
+        "avail_total": 26,
+        "avail_by_branch": {
+          "Centurion": 13,
+          "Edenvale": 8,
+          "Glen Village": 5
+        },
+        "condition": null,
+        "score": 0.6385,
+        "reason": "48% margin · 311 sold/yr · 26 in stock",
+        "channel": "Feature in-store + online"
+      },
+      {
+        "sku": "755571023018",
+        "name": "MAGN GLYCINATE 120T",
+        "supplier": "AMIPRO",
+        "margin_pct": 36.0,
+        "units_12m": 102,
+        "gp_12m": 18954.15,
+        "value_12m": 52715.8,
+        "avail_total": 21,
+        "avail_by_branch": {
+          "Centurion": 11,
+          "Edenvale": 7,
+          "Glen Village": 3
+        },
+        "condition": "Sleep & calm",
+        "score": 0.631,
+        "reason": "36% margin · 102 sold/yr · winter — Sleep & calm · 21 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "6009609001160",
+        "name": "VALERIAN 60S",
+        "supplier": "NUG",
+        "margin_pct": 43.3,
+        "units_12m": 74,
+        "gp_12m": 3957.71,
+        "value_12m": 9141.41,
+        "avail_total": 7,
+        "avail_by_branch": {
+          "Centurion": 2,
+          "Edenvale": 2,
+          "Glen Village": 3
+        },
+        "condition": "Sleep & calm",
+        "score": 0.6265,
+        "reason": "43% margin · 74 sold/yr · winter — Sleep & calm · 7 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "6009544628422",
+        "name": "VIT D3 60CAPS",
+        "supplier": "WILLOW",
+        "margin_pct": 48.7,
+        "units_12m": 27,
+        "gp_12m": 1313.37,
+        "value_12m": 2698.47,
+        "avail_total": 5,
+        "avail_by_branch": {
+          "Centurion": 5,
+          "Edenvale": 0,
+          "Glen Village": 0
+        },
+        "condition": "Vitamin D",
+        "score": 0.6197,
+        "reason": "49% margin · 27 sold/yr · winter — Vitamin D · 5 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Vitamin D)"
+      },
+      {
+        "sku": "6009691549496",
+        "name": "OMEGA 3 1000MG 90S",
+        "supplier": "WILLOW",
+        "margin_pct": 48.5,
+        "units_12m": 24,
+        "gp_12m": 2649.76,
+        "value_12m": 5467.12,
+        "avail_total": 2,
+        "avail_by_branch": {
+          "Centurion": 2,
+          "Edenvale": 0,
+          "Glen Village": 0
+        },
+        "condition": "Joint & mobility",
+        "score": 0.6179,
+        "reason": "48% margin · 24 sold/yr · winter — Joint & mobility · 2 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Joint & mobility)"
+      },
+      {
+        "sku": "6009691547201",
+        "name": "ZINC/MAGN/B6 60C",
+        "supplier": "WILLOW",
+        "margin_pct": 49.5,
+        "units_12m": 20,
+        "gp_12m": 1728.8,
+        "value_12m": 3494.08,
+        "avail_total": 5,
+        "avail_by_branch": {
+          "Centurion": 2,
+          "Edenvale": 0,
+          "Glen Village": 3
+        },
+        "condition": "Immunity",
+        "score": 0.6157,
+        "reason": "50% margin · 20 sold/yr · winter — Immunity · 5 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Immunity)"
+      },
+      {
+        "sku": "781718398886",
+        "name": "NATURAL SLEEP 60VC",
+        "supplier": "PRIMES",
+        "margin_pct": 39.3,
+        "units_12m": 82,
+        "gp_12m": 8203.0,
+        "value_12m": 20878.0,
+        "avail_total": 15,
+        "avail_by_branch": {
+          "Centurion": 6,
+          "Edenvale": 5,
+          "Glen Village": 4
+        },
+        "condition": "Sleep & calm",
+        "score": 0.6147,
+        "reason": "39% margin · 82 sold/yr · winter — Sleep & calm · 15 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "6009609000132",
+        "name": "COLLAGEN 90s",
+        "supplier": "NUG",
+        "margin_pct": 43.1,
+        "units_12m": 54,
+        "gp_12m": 3960.92,
+        "value_12m": 9184.34,
+        "avail_total": 15,
+        "avail_by_branch": {
+          "Centurion": 8,
+          "Edenvale": 5,
+          "Glen Village": 2
+        },
+        "condition": "Joint & mobility",
+        "score": 0.6135,
+        "reason": "43% margin · 54 sold/yr · winter — Joint & mobility · 15 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Joint & mobility)"
+      },
+      {
+        "sku": "602697376989",
+        "name": "D3 & K2 8 PATCHES",
+        "supplier": "NG",
+        "margin_pct": 86.1,
+        "units_12m": 15,
+        "gp_12m": 1851.17,
+        "value_12m": 2149.82,
+        "avail_total": 5,
+        "avail_by_branch": {
+          "Centurion": 5,
+          "Edenvale": 0,
+          "Glen Village": 0
+        },
+        "condition": "Vitamin D",
+        "score": 0.6094,
+        "reason": "86% margin · 15 sold/yr · winter — Vitamin D · 5 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Vitamin D)"
+      },
+      {
+        "sku": "6009653890109",
+        "name": "HEART HEALTH 60 CAPS",
+        "supplier": "OP",
+        "margin_pct": 41.3,
+        "units_12m": 283,
+        "gp_12m": 37198.86,
+        "value_12m": 90089.74,
+        "avail_total": 48,
+        "avail_by_branch": {
+          "Centurion": 40,
+          "Edenvale": 3,
+          "Glen Village": 5
+        },
+        "condition": null,
+        "score": 0.6092,
+        "reason": "41% margin · 283 sold/yr · 48 in stock",
+        "channel": "Bundle & cross-sell (proven mover)"
+      },
+      {
+        "sku": "6009888578049",
+        "name": "MAGN TMC COMPLEX  60\"S",
+        "supplier": "NATRO",
+        "margin_pct": 31.2,
+        "units_12m": 172,
+        "gp_12m": 14507.89,
+        "value_12m": 46499.89,
+        "avail_total": 17,
+        "avail_by_branch": {
+          "Centurion": 7,
+          "Edenvale": 7,
+          "Glen Village": 3
+        },
+        "condition": "Sleep & calm",
+        "score": 0.6039,
+        "reason": "31% margin · 172 sold/yr · winter — Sleep & calm · 17 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Sleep & calm)"
+      },
+      {
+        "sku": "6009880267200",
+        "name": "ASHWAGANDHA 60C",
+        "supplier": "SFERA",
+        "margin_pct": 40.2,
+        "units_12m": 49,
+        "gp_12m": 5288.97,
+        "value_12m": 13147.39,
+        "avail_total": 7,
+        "avail_by_branch": {
+          "Centurion": 3,
+          "Edenvale": 2,
+          "Glen Village": 2
+        },
+        "condition": "Stress & adrenal",
+        "score": 0.5935,
+        "reason": "40% margin · 49 sold/yr · winter — Stress & adrenal · 7 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Stress & adrenal)"
+      },
+      {
+        "sku": "6000000800130",
+        "name": "MSM 150G",
+        "supplier": "IL",
+        "margin_pct": 39.1,
+        "units_12m": 67,
+        "gp_12m": 2854.52,
+        "value_12m": 7296.22,
+        "avail_total": 16,
+        "avail_by_branch": {
+          "Centurion": 14,
+          "Edenvale": 2,
+          "Glen Village": 0
+        },
+        "condition": "Joint & mobility",
+        "score": 0.5902,
+        "reason": "39% margin · 67 sold/yr · winter — Joint & mobility · 16 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Joint & mobility)"
+      },
+      {
+        "sku": "033984009400",
+        "name": "COD LIVER OIL",
+        "supplier": "SOL",
+        "margin_pct": 38.5,
+        "units_12m": 70,
+        "gp_12m": 3547.33,
+        "value_12m": 9220.33,
+        "avail_total": 17,
+        "avail_by_branch": {
+          "Centurion": 9,
+          "Edenvale": 5,
+          "Glen Village": 3
+        },
+        "condition": "Joint & mobility",
+        "score": 0.5897,
+        "reason": "38% margin · 70 sold/yr · winter — Joint & mobility · 17 in stock",
+        "channel": "TikTok/Reel + VIP WhatsApp (Joint & mobility)"
+      }
+    ],
+    "hidden_gems": [
+      {
+        "sku": "6009609796257",
+        "name": "BAR PEANUT BRITTLE 50G",
+        "supplier": "ALMANS",
+        "margin_pct": 49.8,
+        "units_12m": 235,
+        "gp_12m": 1284.45,
+        "value_12m": 2576.95,
+        "avail_total": 28,
+        "avail_by_branch": {
+          "Centurion": 28,
+          "Edenvale": 0,
+          "Glen Village": 0
+        },
+        "condition": null,
+        "score": 0.5572,
+        "reason": "50% margin · 235 sold/yr · 28 in stock",
+        "channel": "Feature in-store + online"
+      },
+      {
+        "sku": "6009704872023",
+        "name": "500ML CASTOR OIL",
+        "supplier": "ESCP",
+        "margin_pct": 44.9,
+        "units_12m": 241,
+        "gp_12m": 13387.94,
+        "value_12m": 29819.94,
+        "avail_total": 25,
+        "avail_by_branch": {
+          "Centurion": 19,
+          "Edenvale": 2,
+          "Glen Village": 4
+        },
+        "condition": null,
+        "score": 0.5591,
+        "reason": "45% margin · 241 sold/yr · 25 in stock",
+        "channel": "Feature in-store + online"
+      },
+      {
+        "sku": "700371611514",
+        "name": "B12 ENERGY PATCH",
+        "supplier": "NG",
+        "margin_pct": 55.9,
+        "units_12m": 69,
+        "gp_12m": 7231.19,
+        "value_12m": 12937.16,
+        "avail_total": 20,
+        "avail_by_branch": {
+          "Centurion": 7,
+          "Edenvale": 8,
+          "Glen Village": 5
+        },
+        "condition": "Energy",
+        "score": 0.5304,
+        "reason": "56% margin · 69 sold/yr · Energy · 20 in stock",
+        "channel": "Online hero + email segment (Energy)"
+      },
+      {
+        "sku": "606110048286",
+        "name": "450G MOBILITY COLL",
+        "supplier": "NN",
+        "margin_pct": 43.0,
+        "units_12m": 148,
+        "gp_12m": 31070.63,
+        "value_12m": 72300.0,
+        "avail_total": 23,
+        "avail_by_branch": {
+          "Centurion": 17,
+          "Edenvale": 1,
+          "Glen Village": 5
+        },
+        "condition": null,
+        "score": 0.5791,
+        "reason": "43% margin · 148 sold/yr · 23 in stock",
+        "channel": "Feature in-store + online"
+      },
+      {
+        "sku": "6000000698928",
+        "name": "2 EARCANDLES + 1 EARPIECE",
+        "supplier": "CP",
+        "margin_pct": 45.3,
+        "units_12m": 108,
+        "gp_12m": 1981.57,
+        "value_12m": 4374.57,
+        "avail_total": 93,
+        "avail_by_branch": {
+          "Centurion": 78,
+          "Edenvale": 11,
+          "Glen Village": 4
+        },
+        "condition": null,
+        "score": 0.4988,
+        "reason": "45% margin · 108 sold/yr · 93 in stock",
+        "channel": "Feature in-store + online"
+      },
+      {
+        "sku": "6009662080553",
+        "name": "BIO ZEST FOREST BERRIES 1LT",
+        "supplier": "ZT",
+        "margin_pct": 47.2,
+        "units_12m": 84,
+        "gp_12m": 2716.98,
+        "value_12m": 5760.3,
+        "avail_total": 21,
+        "avail_by_branch": {
+          "Centurion": 20,
+          "Edenvale": 0,
+          "Glen Village": 1
+        },
+        "condition": null,
+        "score": 0.5049,
+        "reason": "47% margin · 84 sold/yr · 21 in stock",
+        "channel": "Feature in-store + online"
+      },
+      {
+        "sku": "6009609008619",
+        "name": "L REUTERII 60C",
+        "supplier": "NUG",
+        "margin_pct": 43.0,
+        "units_12m": 112,
+        "gp_12m": 5381.75,
+        "value_12m": 12517.27,
+        "avail_total": 21,
+        "avail_by_branch": {
+          "Centurion": 14,
+          "Edenvale": 4,
+          "Glen Village": 3
+        },
+        "condition": null,
+        "score": 0.4939,
+        "reason": "43% margin · 112 sold/yr · 21 in stock",
+        "channel": "Feature in-store + online"
+      },
+      {
+        "sku": "6009662080515",
+        "name": "BIO ZEST ORANGE 1LT",
+        "supplier": "ZT",
+        "margin_pct": 47.1,
+        "units_12m": 69,
+        "gp_12m": 2239.94,
+        "value_12m": 4751.41,
+        "avail_total": 27,
+        "avail_by_branch": {
+          "Centurion": 27,
+          "Edenvale": 0,
+          "Glen Village": 0
+        },
+        "condition": null,
+        "score": 0.4955,
+        "reason": "47% margin · 69 sold/yr · 27 in stock",
+        "channel": "Feature in-store + online"
+      }
+    ]
+  },
   "omni_sync": {
     "source": "Omni Web Server (Daily Turnover reports)",
     "last_sync": "2026-06-15",
@@ -88913,8 +89568,38 @@ function initSignals() {
 // ============================================================
 // INIT ALL
 // ============================================================
+function initMarket() {
+  const w = DASHBOARD_DATA.what_to_market;
+  if (!w) return;
+  const basis = document.getElementById('wtm-basis');
+  if (basis) basis.textContent = w.basis + ' Scoring: ' + w.scoring;
+  const condPill = c => c ? `<span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#2a2f4a;color:#9aa0c0;font-size:11px;margin-left:6px;">${c}</span>` : '';
+  const branchChips = b => Object.entries(b).map(([k,v]) => `${k.slice(0,3)} ${v}`).join(' · ');
+  const table = (list) => `
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead><tr style="text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;">
+        <th style="padding:8px;">#</th><th>Product</th><th style="text-align:right;">Margin</th><th style="text-align:right;">Sold/yr</th><th style="text-align:right;">GP/yr</th><th style="text-align:right;">In stock</th><th>Push via</th>
+      </tr></thead><tbody>
+      ${list.map((c,i) => `
+        <tr style="border-top:1px solid #2a2f4a;">
+          <td style="padding:8px;color:var(--muted);">${i+1}</td>
+          <td style="font-weight:600;max-width:280px;">${c.name}${condPill(c.condition)}</td>
+          <td style="text-align:right;" class="${c.margin_pct>=40?'color-pos':''}">${fmtPct(c.margin_pct)}</td>
+          <td style="text-align:right;font-variant-numeric:tabular-nums;">${fmtNum(c.units_12m)}</td>
+          <td style="text-align:right;font-variant-numeric:tabular-nums;">${fmtR(c.gp_12m)}</td>
+          <td style="text-align:right;font-variant-numeric:tabular-nums;">${fmtNum(c.avail_total)}<div style="font-size:10px;color:var(--muted);font-weight:400;">${branchChips(c.avail_by_branch)}</div></td>
+          <td style="font-size:12px;color:var(--muted);max-width:220px;">${c.channel}</td>
+        </tr>`).join('')}
+      </tbody></table>`;
+  const it = document.getElementById('wtm-items');
+  const gm = document.getElementById('wtm-gems');
+  if (it) it.innerHTML = table(w.items);
+  if (gm) gm.innerHTML = w.hidden_gems.length ? table(w.hidden_gems) : '<div class="signal-narrative">No gems flagged today.</div>';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initOverview();
+  initMarket();
   initProducts();
   initStock();
   initSuppliers();

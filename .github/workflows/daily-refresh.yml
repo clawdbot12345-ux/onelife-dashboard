@@ -39,6 +39,9 @@ jobs:
       - name: Sync Omni store data into dashboard
         run: python scripts/omni_dashboard_sync.py
 
+      - name: Rebuild "What to Market" engine
+        run: python scripts/build_what_to_market.py
+
       - name: Set up Node (for PDF generation)
         uses: actions/setup-node@v4
         with:
