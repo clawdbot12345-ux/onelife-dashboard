@@ -1,0 +1,51 @@
+{
+  "report": "Supplier Profitability",
+  "sourceCachePath": "tmp/omni-http-fetch/supplier-profitability.json",
+  "sourceCacheModifiedAt": "2026-06-06T13:05:38Z",
+  "topKey": "supplier_profitability",
+  "rows": 4603,
+  "columns": [
+    "stock_code",
+    "stock_description",
+    "quantity",
+    "value_excl_after_discount",
+    "gross_profit"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "stock_code": "",
+      "stock_description": "BLACK SEED OIL 250 (LASTTIME)",
+      "quantity": 1,
+      "value_excl_after_discount": 0,
+      "gross_profit": 0
+    },
+    {
+      "stock_code": "",
+      "stock_description": "Hendra Massage",
+      "quantity": 0,
+      "value_excl_after_discount": 0,
+      "gross_profit": 0
+    },
+    {
+      "stock_code": "",
+      "stock_description": "LOYALTY POINTS = 10% DISCOUNT",
+      "quantity": 1,
+      "value_excl_after_discount": 0,
+      "gross_profit": 0
+    },
+    {
+      "stock_code": "033984000391",
+      "stock_description": "ADV MULTI BILL DOPH 60",
+      "quantity": 1,
+      "value_excl_after_discount": 424.64,
+      "gross_profit": 141.54
+    },
+    {
+      "stock_code": "033984000582",
+      "stock_description": "ALPHA LIPOIC ACID 200mg 50",
+      "quantity": 1,
+      "value_excl_after_discount": 261.87,
+      "gross_profit": 96.77
+    }
+  ]
+}

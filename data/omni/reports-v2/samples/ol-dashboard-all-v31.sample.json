@@ -1,0 +1,27 @@
+{
+  "report": "OL - DASHBOARD -ALL- V31",
+  "sourceCachePath": "tmp/omni-http-fetch/ol-dashboard-all-v31.json",
+  "sourceCacheModifiedAt": "2026-06-06T13:07:31Z",
+  "topKey": "ol___dashboard__all__v31",
+  "rows": 6,
+  "columns": [
+    "module"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "module": "Banking"
+    },
+    {
+      "module": "Customers"
+    },
+    {
+      "module": "Nominal Ledger"
+    },
+    {
+      "module": "Stock Items"
+    },
+    {
+      "module": "Suppliers"
+    }
+  ]
+}

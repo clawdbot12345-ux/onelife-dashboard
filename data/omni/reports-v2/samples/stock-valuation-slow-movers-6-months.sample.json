@@ -1,0 +1,57 @@
+{
+  "report": "Stock Valuation - Slow movers 6 Months",
+  "sourceCachePath": "tmp/omni-http-fetch/stock-valuation-slow-movers-6-months.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:03:58Z",
+  "topKey": "stock_valuation___slow_movers_6_months",
+  "rows": 1847,
+  "columns": [
+    "warehouse_code",
+    "supplier_#",
+    "last_moved",
+    "stock_code",
+    "stock_description",
+    "level"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "warehouse_code": "1",
+      "supplier_#": "ADAM",
+      "last_moved": "2024-05-08",
+      "stock_code": "6951083601353",
+      "stock_description": "WHITE TIGER BALM",
+      "level": 2
+    },
+    {
+      "warehouse_code": "1",
+      "supplier_#": "ADAM",
+      "last_moved": "2024-10-11",
+      "stock_code": "8908004743003",
+      "stock_description": "RED TIGER BALM 15G",
+      "level": 1
+    },
+    {
+      "warehouse_code": "1",
+      "supplier_#": "AETHER",
+      "last_moved": "2023-07-17",
+      "stock_code": "6000000001186",
+      "stock_description": "ELEUTHERO 30ML",
+      "level": 2
+    },
+    {
+      "warehouse_code": "1",
+      "supplier_#": "AETHER",
+      "last_moved": "2023-11-04",
+      "stock_code": "600000057997",
+      "stock_description": "ELEUTHERO 70G",
+      "level": 1
+    },
+    {
+      "warehouse_code": "1",
+      "supplier_#": "AETHER",
+      "last_moved": "2025-03-14",
+      "stock_code": "6009803969253",
+      "stock_description": "CANCER BUSH 30ML",
+      "level": 2
+    }
+  ]
+}

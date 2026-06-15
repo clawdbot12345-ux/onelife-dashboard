@@ -1,0 +1,69 @@
+{
+  "report": "Warehouse Transfer Analysis",
+  "sourceCachePath": "tmp/omni-http-fetch/warehouse-transfer-analysis.json",
+  "sourceCacheModifiedAt": "2026-06-06T13:07:14Z",
+  "topKey": "warehouse_transfer_analysis",
+  "rows": 915,
+  "columns": [
+    "source_warehouse_description",
+    "destination_warehouse",
+    "reference",
+    "stock_code",
+    "stock_description",
+    "delivered_qty",
+    "delivered_value_excl",
+    "internal_reference"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "source_warehouse_description": "Main Warehouse",
+      "destination_warehouse": "EDN",
+      "reference": "REDACTED",
+      "stock_code": "2000488500007",
+      "stock_description": "CAROB POWDER 150G",
+      "delivered_qty": 2,
+      "delivered_value_excl": 68.38,
+      "internal_reference": null
+    },
+    {
+      "source_warehouse_description": "Main Warehouse",
+      "destination_warehouse": "EDN",
+      "reference": "REDACTED",
+      "stock_code": "6002570841476",
+      "stock_description": "SCHWEDEN BITTER 100ML",
+      "delivered_qty": 2,
+      "delivered_value_excl": 224,
+      "internal_reference": null
+    },
+    {
+      "source_warehouse_description": "Main Warehouse",
+      "destination_warehouse": "EDN",
+      "reference": "REDACTED",
+      "stock_code": "6009880073283",
+      "stock_description": "VIT B CO LIPO 30C",
+      "delivered_qty": 4,
+      "delivered_value_excl": 666.68,
+      "internal_reference": null
+    },
+    {
+      "source_warehouse_description": "Main Warehouse",
+      "destination_warehouse": "EDN",
+      "reference": "REDACTED",
+      "stock_code": "0737186576646",
+      "stock_description": "PROT RX CHOCO 800G",
+      "delivered_qty": 3,
+      "delivered_value_excl": 818.19,
+      "internal_reference": "REDACTED"
+    },
+    {
+      "source_warehouse_description": "Main Warehouse",
+      "destination_warehouse": "EDN",
+      "reference": "REDACTED",
+      "stock_code": "0737186576684",
+      "stock_description": "PROT RX VAN CARA 800G",
+      "delivered_qty": 1,
+      "delivered_value_excl": 272.73,
+      "internal_reference": "REDACTED"
+    }
+  ]
+}

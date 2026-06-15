@@ -27,6 +27,18 @@ jobs:
           KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
         run: python scripts/refresh_dashboard.py
 
+      # Best-effort: pull fresh Omni store data if the runner can reach the
+      # report server. If it can't (server is on the store network), the sync
+      # step below still runs on the most recent committed exports.
+      - name: Fetch Omni store data (best-effort)
+        continue-on-error: true
+        env:
+          OMNI_REPORT_URL: ${{ secrets.OMNI_REPORT_URL }}
+        run: python scripts/fetch_omni.py
+
+      - name: Sync Omni store data into dashboard
+        run: python scripts/omni_dashboard_sync.py
+
       - name: Set up Node (for PDF generation)
         uses: actions/setup-node@v4
         with:
@@ -42,7 +54,7 @@ jobs:
         run: |
           git config user.name "onelife-dashboard-bot"
           git config user.email "bot@onelife.co.za"
-          git add index.html onelife-dashboard.pdf
+          git add index.html onelife-dashboard.pdf data/omni
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

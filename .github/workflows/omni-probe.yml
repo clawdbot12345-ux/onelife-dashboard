@@ -1,0 +1,39 @@
+name: Omni ERP Probe
+
+# Exploratory probe of the Omni report server. The cloud Claude sandbox cannot
+# reach port 59029, so probing/ingestion runs from Actions runners instead.
+# Prefer the OMNI_REPORT_URL repo secret; the dispatch input is a bootstrap
+# fallback (note: dispatch inputs are visible in run metadata to collaborators).
+
+on:
+  workflow_dispatch:
+    inputs:
+      report_url:
+        description: "Full Omni report URL incl. credentials (leave empty to use OMNI_REPORT_URL secret)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run probe
+        env:
+          OMNI_REPORT_URL: ${{ inputs.report_url || secrets.OMNI_REPORT_URL }}
+        run: python scripts/omni_probe.py
+      - name: Commit findings
+        run: |
+          git config user.name "omni-probe[bot]"
+          git config user.email "actions@github.com"
+          git add data/omni/probe
+          git diff --cached --quiet || git commit -m "Omni probe results [skip ci]"
+          git push

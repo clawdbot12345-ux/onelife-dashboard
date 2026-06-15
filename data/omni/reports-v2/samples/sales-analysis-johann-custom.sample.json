@@ -1,0 +1,51 @@
+{
+  "report": "Sales Analysis Johann Custom",
+  "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-johann-custom.json",
+  "sourceCacheModifiedAt": "2026-06-06T11:52:49Z",
+  "topKey": "sales_analysis_johann_custom",
+  "rows": 5,
+  "columns": [
+    "value_excl_before_discount",
+    "value_excl_after_discount",
+    "ext_discount_value",
+    "discount",
+    "discount_type"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "value_excl_before_discount": 110.7,
+      "value_excl_after_discount": 88.57,
+      "ext_discount_value": 25.46,
+      "discount": 20,
+      "discount_type": "Percent"
+    },
+    {
+      "value_excl_before_discount": 579.35,
+      "value_excl_after_discount": 469.26,
+      "ext_discount_value": 126.59,
+      "discount": 19,
+      "discount_type": "Percent"
+    },
+    {
+      "value_excl_before_discount": 1706.95,
+      "value_excl_after_discount": 1621.62,
+      "ext_discount_value": 98.15,
+      "discount": 5,
+      "discount_type": "Percent"
+    },
+    {
+      "value_excl_before_discount": 111404.59,
+      "value_excl_after_discount": 100263.89,
+      "ext_discount_value": 12811.77,
+      "discount": 10,
+      "discount_type": "Percent"
+    },
+    {
+      "value_excl_before_discount": 375005.09,
+      "value_excl_after_discount": 375005.09,
+      "ext_discount_value": 0,
+      "discount": 0,
+      "discount_type": "Percent"
+    }
+  ]
+}

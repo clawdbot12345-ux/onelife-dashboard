@@ -1,0 +1,1141 @@
+{
+  "generatedAt": "2026-06-12T18:13:08Z",
+  "basis": "Mac Mini cached full Omni HTTP extracts plus small live parameter tests; credentials were not written.",
+  "reportCountWithCachedJson": 38,
+  "meaningfulReports": 36,
+  "catalog": [
+    {
+      "report": "Daily Turnover One Life",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P0",
+      "uses": [
+        "dated_branch_sales"
+      ],
+      "note": "Centurion/HO dated daily sales and GP.",
+      "rows": 8,
+      "topKey": "daily_turnover_one_life",
+      "columns": [
+        "document_date",
+        "value_excl_after_discount",
+        "gross_profit"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/daily-turnover-cen.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:14:45Z",
+      "bytes": 847,
+      "sampleFile": "data/omni/reports-v2/samples/daily-turnover-one-life.sample.json"
+    },
+    {
+      "report": "Daily Turnover EDEN",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P0",
+      "uses": [
+        "dated_branch_sales"
+      ],
+      "note": "Edenvale dated daily sales and GP.",
+      "rows": 9,
+      "topKey": "daily_turnover_eden",
+      "columns": [
+        "document_date",
+        "value_excl_after_discount",
+        "gross_profit"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/daily-turnover-eden.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:14:46Z",
+      "bytes": 934,
+      "sampleFile": "data/omni/reports-v2/samples/daily-turnover-eden.sample.json"
+    },
+    {
+      "report": "Daily Turnover GVS",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P0",
+      "uses": [
+        "dated_branch_sales"
+      ],
+      "note": "Glen Village dated daily sales and GP.",
+      "rows": 9,
+      "topKey": "daily_turnover_gvs",
+      "columns": [
+        "document_date",
+        "value_excl_after_discount",
+        "gross_profit"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/daily-turnover-gvs.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:14:46Z",
+      "bytes": 927,
+      "sampleFile": "data/omni/reports-v2/samples/daily-turnover-gvs.sample.json"
+    },
+    {
+      "report": "ANA_Sales Analysis",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P0",
+      "uses": [
+        "item_branch_sales"
+      ],
+      "note": "Best immediate per-branch/per-item sales source; no document_date.",
+      "rows": 123869,
+      "topKey": "ana_sales_analysis",
+      "columns": [
+        "reference",
+        "stock_code",
+        "stock_description",
+        "quantity",
+        "value_excl_after_discount",
+        "value_excl_before_discount",
+        "company_branch_code",
+        "warehouse_code",
+        "supplier_#"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ana-sales-analysis.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:15:44Z",
+      "bytes": 33634104,
+      "sampleFile": "data/omni/reports-v2/samples/ana-sales-analysis.sample.json"
+    },
+    {
+      "report": "ANA_Stock Listing_CEN",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P0",
+      "uses": [
+        "branch_stock_on_hand"
+      ],
+      "note": "Centurion stock on hand by SKU.",
+      "rows": 8430,
+      "topKey": "ana_stock_listing_cen",
+      "columns": [
+        "stock_code",
+        "stock_description",
+        "bar_code",
+        "unit_of_measure",
+        "pack",
+        "selling_price_excl",
+        "available",
+        "product_group",
+        "stock_category",
+        "supplier_#"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ana-stock-listing-cen.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:15:56Z",
+      "bytes": 2273272,
+      "sampleFile": "data/omni/reports-v2/samples/ana-stock-listing-cen.sample.json"
+    },
+    {
+      "report": "ANA_Stock Listing_EDN",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P0",
+      "uses": [
+        "branch_stock_on_hand"
+      ],
+      "note": "Edenvale stock on hand by SKU.",
+      "rows": 8432,
+      "topKey": "ana_stock_listing_edn",
+      "columns": [
+        "stock_code",
+        "stock_description",
+        "bar_code",
+        "unit_of_measure",
+        "pack",
+        "selling_price_excl",
+        "available",
+        "product_group",
+        "stock_category",
+        "supplier_#"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ana-stock-listing-edn.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:16:04Z",
+      "bytes": 2273419,
+      "sampleFile": "data/omni/reports-v2/samples/ana-stock-listing-edn.sample.json"
+    },
+    {
+      "report": "ANA_Stock Listing_GVS",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P0",
+      "uses": [
+        "branch_stock_on_hand"
+      ],
+      "note": "Glen Village stock on hand by SKU.",
+      "rows": 8432,
+      "topKey": "ana_stock_listing_gvs",
+      "columns": [
+        "stock_code",
+        "stock_description",
+        "bar_code",
+        "unit_of_measure",
+        "pack",
+        "selling_price_excl",
+        "available",
+        "product_group",
+        "stock_category",
+        "supplier_#"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ana-stock-listing-gvs.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:16:12Z",
+      "bytes": 2273383,
+      "sampleFile": "data/omni/reports-v2/samples/ana-stock-listing-gvs.sample.json"
+    },
+    {
+      "report": "ANA_Most Popular Products GP",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P0",
+      "uses": [
+        "item_branch_gp_sales"
+      ],
+      "note": "Product/branch sales with gross profit.",
+      "rows": 11069,
+      "topKey": "ana_most_popular_products_gp",
+      "columns": [
+        "gross_profit",
+        "quantity",
+        "stock_code",
+        "company_branch_code",
+        "line_item_description",
+        "value_excl_after_discount",
+        "supplier_#"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ana-most-popular-products-gp.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:05:47Z",
+      "bytes": 2385127,
+      "sampleFile": "data/omni/reports-v2/samples/ana-most-popular-products-gp.sample.json"
+    },
+    {
+      "report": "OL_PO_Generator_V6",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "replenishment"
+      ],
+      "note": "Replenishment/order pressure by SKU.",
+      "rows": 8420,
+      "topKey": "ol_po_generator_v6",
+      "columns": [
+        "stock_code",
+        "stock_description",
+        "level",
+        "on_order",
+        "reserved",
+        "available",
+        "optimum_level",
+        "minimum_level",
+        "short",
+        "current_sales",
+        "movements_in",
+        "movements_out",
+        "stock_type",
+        "unit_of_measure"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ol-po-generator-v6.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:03:30Z",
+      "bytes": 2619039,
+      "sampleFile": "data/omni/reports-v2/samples/ol-po-generator-v6.sample.json"
+    },
+    {
+      "report": "Stock Valuation - Slow movers 6 Months",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "dead_stock"
+      ],
+      "note": "Slow mover and stock valuation context.",
+      "rows": 1847,
+      "topKey": "stock_valuation___slow_movers_6_months",
+      "columns": [
+        "warehouse_code",
+        "supplier_#",
+        "last_moved",
+        "stock_code",
+        "stock_description",
+        "level"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/stock-valuation-slow-movers-6-months.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:03:58Z",
+      "bytes": 313478,
+      "sampleFile": "data/omni/reports-v2/samples/stock-valuation-slow-movers-6-months.sample.json"
+    },
+    {
+      "report": "Stock Price List with Supplier Price Comparison",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "pricing_supplier_context"
+      ],
+      "note": "Price and supplier comparison fields.",
+      "rows": 8432,
+      "topKey": "stock_price_list_with_supplier_price_comparison",
+      "columns": [
+        "stock_code",
+        "stock_description",
+        "excl_unit_selling_price",
+        "incl_unit_selling_price",
+        "last_supplier",
+        "last_supplier_s_name",
+        "last_sale_date",
+        "last_purchase_date"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/stock-price-list-with-supplier-price-comparison.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:04:18Z",
+      "bytes": 2518079,
+      "sampleFile": "data/omni/reports-v2/samples/stock-price-list-with-supplier-price-comparison.sample.json"
+    },
+    {
+      "report": "Stock Export - wooCommerce - Levels Only",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "online_stock_levels"
+      ],
+      "note": "Online stock level feed by SKU.",
+      "rows": 8432,
+      "topKey": "stock_export___woocommerce___levels_only",
+      "columns": [
+        "stock_code",
+        "available"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/stock-export-woocommerce-levels-only.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:04:09Z",
+      "bytes": 435907,
+      "sampleFile": "data/omni/reports-v2/samples/stock-export-woocommerce-levels-only.sample.json"
+    },
+    {
+      "report": "Stock Turnover By Period - Columnar - with ave for last six months",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "stock_turnover_inventory"
+      ],
+      "note": "SKU stock, turnover and last movement context.",
+      "rows": 14058,
+      "topKey": "stock_turnover_by_period___columnar___with_ave_for_last_six_months",
+      "columns": [
+        "warehouse_code",
+        "warehouse_description",
+        "stock_code",
+        "stock_description",
+        "level",
+        "on_order",
+        "reserved",
+        "available",
+        "optimum_level",
+        "minimum_level",
+        "last_supplier",
+        "last_supplier_s_name",
+        "short",
+        "current_sales",
+        "movements_in",
+        "movements_out",
+        "stock_type",
+        "last_sale_date",
+        "last_purchase_date",
+        "last_moved"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/stock-turnover-by-period-columnar-with-ave-for-last-six-months.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:04:48Z",
+      "bytes": 7425893,
+      "sampleFile": "data/omni/reports-v2/samples/stock-turnover-by-period-columnar-with-ave-for-last-six-months.sample.json"
+    },
+    {
+      "report": "Sales Analysis - Cross Tab",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "dated_trend_sales"
+      ],
+      "note": "Document-date/week/product group trend source.",
+      "rows": 3668,
+      "topKey": "sales_analysis___cross_tab",
+      "columns": [
+        "period",
+        "customer_account",
+        "product_group_code",
+        "value_excl_after_discount",
+        "week_of_year",
+        "document_date"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-cross-tab.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:07:09Z",
+      "bytes": 673246,
+      "sampleFile": "data/omni/reports-v2/samples/sales-analysis-cross-tab.sample.json"
+    },
+    {
+      "report": "Monthly Turnover Analysis",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "monthly_trend_sales"
+      ],
+      "note": "Monthly financial period sales and GP.",
+      "rows": 4,
+      "topKey": "monthly_turnover_analysis",
+      "columns": [
+        "financial_year",
+        "period",
+        "count",
+        "value_excl_after_discount",
+        "gross_profit"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/monthly-turnover-analysis.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:07:18Z",
+      "bytes": 595,
+      "sampleFile": "data/omni/reports-v2/samples/monthly-turnover-analysis.sample.json"
+    },
+    {
+      "report": "OL_Busy Times_MTD",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "staffing_heatmap"
+      ],
+      "note": "All-branch/system busy hours MTD.",
+      "rows": 10,
+      "topKey": "ol_busy_times_mtd",
+      "columns": [
+        "system_hour_of_day",
+        "count",
+        "value_excl_after_discount"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ol-busy-times-mtd.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:07:10Z",
+      "bytes": 869,
+      "sampleFile": "data/omni/reports-v2/samples/ol-busy-times-mtd.sample.json"
+    },
+    {
+      "report": "OL_Busy Times_Yesterday",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "staffing_heatmap"
+      ],
+      "note": "All-branch/system busy hours yesterday.",
+      "rows": 9,
+      "topKey": "ol_busy_times_yesterday",
+      "columns": [
+        "system_hour_of_day",
+        "count",
+        "value_excl_after_discount"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ol-busy-times-yesterday.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:52:59Z",
+      "bytes": 778,
+      "sampleFile": "data/omni/reports-v2/samples/ol-busy-times-yesterday.sample.json"
+    },
+    {
+      "report": "OL_HO_Busy Times_MTD",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "branch_staffing_heatmap"
+      ],
+      "note": "HO/Centurion busy hours MTD.",
+      "rows": 9,
+      "topKey": "ol_ho_busy_times_mtd",
+      "columns": [
+        "system_hour_of_day",
+        "count",
+        "value_excl_after_discount"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ol-ho-busy-times-mtd.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:53:02Z",
+      "bytes": 781,
+      "sampleFile": "data/omni/reports-v2/samples/ol-ho-busy-times-mtd.sample.json"
+    },
+    {
+      "report": "OL_EDN_Busy Times_MTD",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "branch_staffing_heatmap"
+      ],
+      "note": "Edenvale busy hours MTD.",
+      "rows": 10,
+      "topKey": "ol_edn_busy_times_mtd",
+      "columns": [
+        "system_hour_of_day",
+        "count",
+        "value_excl_after_discount"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ol-edn-busy-times-mtd.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:53:02Z",
+      "bytes": 857,
+      "sampleFile": "data/omni/reports-v2/samples/ol-edn-busy-times-mtd.sample.json"
+    },
+    {
+      "report": "OL_GVS_Busy Times_MTD",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "branch_staffing_heatmap"
+      ],
+      "note": "Glen Village busy hours MTD.",
+      "rows": 9,
+      "topKey": "ol_gvs_busy_times_mtd",
+      "columns": [
+        "system_hour_of_day",
+        "count",
+        "value_excl_after_discount"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ol-gvs-busy-times-mtd.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:53:01Z",
+      "bytes": 774,
+      "sampleFile": "data/omni/reports-v2/samples/ol-gvs-busy-times-mtd.sample.json"
+    },
+    {
+      "report": "Daily Sales Analysis",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "dated_item_sales"
+      ],
+      "note": "Dated item/customer sales rows; redact customer fields before wider use.",
+      "rows": 222,
+      "topKey": "daily_sales_analysis",
+      "columns": [
+        "supplier_#",
+        "document_date",
+        "customer_name",
+        "bar_code",
+        "document_type",
+        "line_item_description",
+        "quantity",
+        "value_incl_after_discount"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/daily-sales-analysis.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:00:07Z",
+      "bytes": 56375,
+      "sampleFile": "data/omni/reports-v2/samples/daily-sales-analysis.sample.json"
+    },
+    {
+      "report": "Daily Turnover Analysis",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "dated_sales_reference"
+      ],
+      "note": "Generic daily turnover; do not use for branch totals.",
+      "rows": 491,
+      "topKey": "daily_turnover_analysis",
+      "columns": [
+        "document_date",
+        "value_excl_after_discount",
+        "gross_profit",
+        "count"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/daily-turnover-analysis.json",
+      "sourceCacheModifiedAt": "2026-06-09T16:00:07Z",
+      "bytes": 56132,
+      "sampleFile": "data/omni/reports-v2/samples/daily-turnover-analysis.sample.json"
+    },
+    {
+      "report": "Stock Reorder Report - Daily Material Requirements",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "replenishment_by_warehouse"
+      ],
+      "note": "Warehouse reorder/material requirements.",
+      "rows": 213,
+      "topKey": "stock_reorder_report___daily_material_requirements",
+      "columns": [
+        "warehouse_code",
+        "warehouse_description",
+        "stock_code",
+        "stock_description",
+        "level",
+        "on_order",
+        "reserved",
+        "available",
+        "optimum_level",
+        "minimum_level",
+        "last_supplier",
+        "last_supplier_s_name",
+        "lead_time",
+        "short",
+        "current_sales",
+        "movements_in",
+        "movements_out",
+        "stock_type",
+        "unit_of_measure",
+        "reorder_qty"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/stock-reorder-report-daily-material-requirements.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:53:15Z",
+      "bytes": 105902,
+      "sampleFile": "data/omni/reports-v2/samples/stock-reorder-report-daily-material-requirements.sample.json"
+    },
+    {
+      "report": "Stock Turnover Analysis",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "sku_turnover_gp"
+      ],
+      "note": "SKU quantity/sales/GP turnover by financial year.",
+      "rows": 4593,
+      "topKey": "stock_turnover_analysis",
+      "columns": [
+        "financial_year",
+        "stock_type",
+        "stock_code",
+        "stock_description",
+        "quantity",
+        "value_excl_after_discount",
+        "gross_profit"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/stock-turnover-analysis.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:53:31Z",
+      "bytes": 959894,
+      "sampleFile": "data/omni/reports-v2/samples/stock-turnover-analysis.sample.json"
+    },
+    {
+      "report": "Supplier Profitability",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "supplier_gp"
+      ],
+      "note": "Supplier/item profitability.",
+      "rows": 4603,
+      "topKey": "supplier_profitability",
+      "columns": [
+        "stock_code",
+        "stock_description",
+        "quantity",
+        "value_excl_after_discount",
+        "gross_profit"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/supplier-profitability.json",
+      "sourceCacheModifiedAt": "2026-06-06T13:05:38Z",
+      "bytes": 727164,
+      "sampleFile": "data/omni/reports-v2/samples/supplier-profitability.sample.json"
+    },
+    {
+      "report": "Supplier Profitability Summary",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "supplier_gp_summary"
+      ],
+      "note": "Very small aggregate supplier profitability summary.",
+      "rows": 1,
+      "topKey": "supplier_profitability_summary",
+      "columns": [
+        "quantity",
+        "value_excl_after_discount",
+        "gross_profit"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/supplier-profitability-summary.json",
+      "sourceCacheModifiedAt": "2026-06-06T13:05:53Z",
+      "bytes": 134,
+      "sampleFile": "data/omni/reports-v2/samples/supplier-profitability-summary.sample.json"
+    },
+    {
+      "report": "Stock Low GP Listing",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "margin_risk"
+      ],
+      "note": "Low-GP stock listing.",
+      "rows": 8432,
+      "topKey": "stock_low_gp_listing",
+      "columns": [
+        "supplier_#",
+        "stock_code",
+        "stock_description",
+        "level",
+        "selling_price_excl"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/stock-low-gp-listing.json",
+      "sourceCacheModifiedAt": "2026-06-06T13:07:13Z",
+      "bytes": 1230486,
+      "sampleFile": "data/omni/reports-v2/samples/stock-low-gp-listing.sample.json"
+    },
+    {
+      "report": "Warehouse Transfer Analysis",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P1",
+      "uses": [
+        "transfer_analysis"
+      ],
+      "note": "Inter-branch transfer rows by SKU.",
+      "rows": 915,
+      "topKey": "warehouse_transfer_analysis",
+      "columns": [
+        "source_warehouse_description",
+        "destination_warehouse",
+        "reference",
+        "stock_code",
+        "stock_description",
+        "delivered_qty",
+        "delivered_value_excl",
+        "internal_reference"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/warehouse-transfer-analysis.json",
+      "sourceCacheModifiedAt": "2026-06-06T13:07:14Z",
+      "bytes": 250699,
+      "sampleFile": "data/omni/reports-v2/samples/warehouse-transfer-analysis.sample.json"
+    },
+    {
+      "report": "OL - Cost Price Changes - Yesterday",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "cost_change_audit"
+      ],
+      "note": "Cost-price change audit.",
+      "rows": 328,
+      "topKey": "ol___cost_price_changes___yesterday",
+      "columns": [
+        "stock_code",
+        "stock_description",
+        "transaction_no",
+        "transaction_date",
+        "transaction_type",
+        "reference",
+        "processed_by"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ol-cost-price-changes-yesterday.json",
+      "sourceCacheModifiedAt": "2026-06-06T13:07:24Z",
+      "bytes": 74224,
+      "sampleFile": "data/omni/reports-v2/samples/ol-cost-price-changes-yesterday.sample.json"
+    },
+    {
+      "report": "Supplier Payment Schedule",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "payables_reference"
+      ],
+      "note": "Payables ageing; useful but not needed for T2-T4 baseline.",
+      "rows": 114,
+      "topKey": "supplier_payment_schedule",
+      "columns": [
+        "supplier_name",
+        "outstanding_incl",
+        "current",
+        "30_days",
+        "60_days",
+        "90_days",
+        "120_days_and_over",
+        "status",
+        "settlement_discount_allowed"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/supplier-payment-schedule.json",
+      "sourceCacheModifiedAt": "2026-06-06T13:07:26Z",
+      "bytes": 25432,
+      "sampleFile": "data/omni/reports-v2/samples/supplier-payment-schedule.sample.json"
+    },
+    {
+      "report": "Detailed Cashup",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "cashup_reference"
+      ],
+      "note": "Narrow cashup fallback.",
+      "rows": 3,
+      "topKey": "detailed_cashup",
+      "columns": [
+        "transaction_type",
+        "transaction_category",
+        "target_account_name",
+        "narrative",
+        "amount",
+        "reconciled"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/detailed-cashup.json",
+      "sourceCacheModifiedAt": "2026-06-06T13:07:40Z",
+      "bytes": 565,
+      "sampleFile": "data/omni/reports-v2/samples/detailed-cashup.sample.json"
+    },
+    {
+      "report": "OL - DASHBOARD -ALL- V31",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "dashboard_modules"
+      ],
+      "note": "Module/status aggregate only.",
+      "rows": 6,
+      "topKey": "ol___dashboard__all__v31",
+      "columns": [
+        "module"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/ol-dashboard-all-v31.json",
+      "sourceCacheModifiedAt": "2026-06-06T13:07:31Z",
+      "bytes": 200,
+      "sampleFile": "data/omni/reports-v2/samples/ol-dashboard-all-v31.sample.json"
+    },
+    {
+      "report": "Sales Analysis Johann Custom",
+      "ok": true,
+      "meaningful": false,
+      "priority": "ignore",
+      "uses": [
+        "aggregate_discount_bands"
+      ],
+      "note": "Connectivity proof only; no date/store/item dimensions.",
+      "rows": 5,
+      "topKey": "sales_analysis_johann_custom",
+      "columns": [
+        "value_excl_before_discount",
+        "value_excl_after_discount",
+        "ext_discount_value",
+        "discount",
+        "discount_type"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-johann-custom.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:52:49Z",
+      "bytes": 826,
+      "sampleFile": "data/omni/reports-v2/samples/sales-analysis-johann-custom.sample.json"
+    },
+    {
+      "report": "Sales Analysis",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "small_filtered_sales"
+      ],
+      "note": "Small product/period result from prior Vivid probe.",
+      "rows": 18,
+      "topKey": "sales_analysis",
+      "columns": [
+        "period",
+        "quantity",
+        "value_excl_after_discount",
+        "value_excl_before_discount"
+      ],
+      "sourceCachePath": "audit-output/vivid-omni-sales-analysis.json",
+      "sourceCacheModifiedAt": "2026-06-01T11:54:11Z",
+      "bytes": 2462,
+      "sampleFile": "data/omni/reports-v2/samples/sales-analysis.sample.json"
+    },
+    {
+      "report": "Sales Analysis Products",
+      "ok": true,
+      "meaningful": false,
+      "priority": "ignore",
+      "uses": [
+        "empty"
+      ],
+      "note": "Returned zero rows.",
+      "rows": 0,
+      "topKey": "sales_analysis_products",
+      "columns": [],
+      "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-products.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:52:49Z",
+      "bytes": 33,
+      "sampleFile": null
+    },
+    {
+      "report": "Sales Analysis QTY Per Product - OLSHOP",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "small_online_product_sales"
+      ],
+      "note": "Tiny online product/supplier sales extract.",
+      "rows": 18,
+      "topKey": "sales_analysis_qty_per_product___olshop",
+      "columns": [
+        "period",
+        "supplier_#",
+        "stock_description",
+        "quantity",
+        "value_excl_after_discount",
+        "gross_profit",
+        "selling_price_excl"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-qty-per-product-olshop.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:52:56Z",
+      "bytes": 3957,
+      "sampleFile": "data/omni/reports-v2/samples/sales-analysis-qty-per-product-olshop.sample.json"
+    },
+    {
+      "report": "Sales Analysis QTY Per Supplier",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "tiny_supplier_qty"
+      ],
+      "note": "Tiny supplier quantity aggregate.",
+      "rows": 1,
+      "topKey": "sales_analysis_qty_per_supplier",
+      "columns": [
+        "quantity",
+        "supplier_#"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-qty-per-supplier.json",
+      "sourceCacheModifiedAt": "2026-06-06T11:52:58Z",
+      "bytes": 84,
+      "sampleFile": "data/omni/reports-v2/samples/sales-analysis-qty-per-supplier.sample.json"
+    },
+    {
+      "report": "Sales Analysis GP% Report",
+      "ok": true,
+      "meaningful": true,
+      "priority": "P2",
+      "uses": [
+        "tiny_gp_summary"
+      ],
+      "note": "Single-row GP summary.",
+      "rows": 1,
+      "topKey": "sales_analysis_gppercent_report",
+      "columns": [
+        "value_excl_after_discount",
+        "gross_profit"
+      ],
+      "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-gp-report.json",
+      "sourceCacheModifiedAt": "2026-06-06T16:19:59Z",
+      "bytes": 101,
+      "sampleFile": "data/omni/reports-v2/samples/sales-analysis-gp-report.sample.json"
+    }
+  ],
+  "guessMisses": [
+    {
+      "report": "Sales by Branch",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Branch Sales",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Daily Sales",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Sales by Item",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Stock on Hand",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Stock Analysis",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "GP Analysis",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Sales Analysis Custom",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Sales Analysis Johann",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Engine Daily Branch Sales",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Engine Sales by Item",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Engine Stock on Hand",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Cashup Summary Totals",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Sales Analysis GP Report",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Daily Branch Sales",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Item Sales Analysis",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Branch Turnover",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Turnover by Branch",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    },
+    {
+      "report": "Stock Listing",
+      "status": "not_found_or_not_meaningful_in_prior_probe",
+      "note": "Name was part of v2 guess list; no cached successful JSON extract exists."
+    }
+  ],
+  "parameterTests": [
+    {
+      "label": "base",
+      "paramsTested": [],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    },
+    {
+      "label": "DateFrom_DateTo",
+      "paramsTested": [
+        "DateFrom",
+        "DateTo"
+      ],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    },
+    {
+      "label": "FromDate_ToDate",
+      "paramsTested": [
+        "FromDate",
+        "ToDate"
+      ],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    },
+    {
+      "label": "Branch_HO",
+      "paramsTested": [
+        "Branch"
+      ],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    },
+    {
+      "label": "Branch_EDN",
+      "paramsTested": [
+        "Branch"
+      ],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    },
+    {
+      "label": "Branch_GVS",
+      "paramsTested": [
+        "Branch"
+      ],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    },
+    {
+      "label": "CompanyBranchCode_HO",
+      "paramsTested": [
+        "CompanyBranchCode"
+      ],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    },
+    {
+      "label": "Warehouse_CEN",
+      "paramsTested": [
+        "Warehouse"
+      ],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    },
+    {
+      "label": "Period_2026_06",
+      "paramsTested": [
+        "Period"
+      ],
+      "status": 200,
+      "contentType": "application/json",
+      "bytes": 827,
+      "topKey": "sales_analysis_johann_custom",
+      "rows": 5,
+      "sha256": "f5a00be256a906b56f352086b2f4771d6bebd7d6011e8869428236c7c87e49db",
+      "changedVsBase": false
+    }
+  ]
+}

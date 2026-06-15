@@ -1,0 +1,81 @@
+{
+  "report": "ANA_Stock Listing_GVS",
+  "sourceCachePath": "tmp/omni-http-fetch/ana-stock-listing-gvs.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:16:12Z",
+  "topKey": "ana_stock_listing_gvs",
+  "rows": 8432,
+  "columns": [
+    "stock_code",
+    "stock_description",
+    "bar_code",
+    "unit_of_measure",
+    "pack",
+    "selling_price_excl",
+    "available",
+    "product_group",
+    "stock_category",
+    "supplier_#"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "stock_code": "000000000000",
+      "stock_description": "<--- IN FRIDGE TO LEFT",
+      "bar_code": "000000000000",
+      "unit_of_measure": "EA",
+      "pack": 1,
+      "selling_price_excl": 0,
+      "available": 0,
+      "product_group": "SHOP",
+      "stock_category": "OTH",
+      "supplier_#": "OLSHOP"
+    },
+    {
+      "stock_code": "00011145062",
+      "stock_description": "BATH MILK ALOE & BAMB 750ML",
+      "bar_code": "00011145062",
+      "unit_of_measure": "EA",
+      "pack": 1,
+      "selling_price_excl": 135,
+      "available": 0,
+      "product_group": "SHOP",
+      "stock_category": "VIT",
+      "supplier_#": "GP"
+    },
+    {
+      "stock_code": "0033984000315",
+      "stock_description": "ACIDOPHILUS PLUS 120S",
+      "bar_code": "0033984000315",
+      "unit_of_measure": "EA",
+      "pack": 1,
+      "selling_price_excl": 47.32,
+      "available": 0,
+      "product_group": "NON",
+      "stock_category": "VIT",
+      "supplier_#": "SOL"
+    },
+    {
+      "stock_code": "0097467299276",
+      "stock_description": "MULTI GOLD 60S ASS",
+      "bar_code": "097467299276",
+      "unit_of_measure": "EA",
+      "pack": 1,
+      "selling_price_excl": 518.26,
+      "available": 0,
+      "product_group": "SHOP",
+      "stock_category": "VIT",
+      "supplier_#": "EARTHL"
+    },
+    {
+      "stock_code": "0097467299993",
+      "stock_description": "DHA 90 CHEWS",
+      "bar_code": "097467299993",
+      "unit_of_measure": "EA",
+      "pack": 1,
+      "selling_price_excl": 691.31,
+      "available": 0,
+      "product_group": "SHOP",
+      "stock_category": "VIT",
+      "supplier_#": "EARTHL"
+    }
+  ]
+}

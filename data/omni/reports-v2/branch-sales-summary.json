@@ -1,0 +1,249 @@
+{
+  "generatedAt": "2026-06-12T18:13:08Z",
+  "branchSalesFromAnaSalesAnalysis": [
+    {
+      "source": "ANA_Sales Analysis",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "rows": 86212,
+      "quantity": 106245.05,
+      "valueExclAfterDiscount": 16182957.88,
+      "valueExclBeforeDiscount": 16654774.12,
+      "sharePct": 67.89
+    },
+    {
+      "source": "ANA_Sales Analysis",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "rows": 18914,
+      "quantity": 21439.0,
+      "valueExclAfterDiscount": 4143060.09,
+      "valueExclBeforeDiscount": 4234770.12,
+      "sharePct": 17.38
+    },
+    {
+      "source": "ANA_Sales Analysis",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "rows": 18743,
+      "quantity": 22148.0,
+      "valueExclAfterDiscount": 3509627.14,
+      "valueExclBeforeDiscount": 3580095.06,
+      "sharePct": 14.72
+    }
+  ],
+  "branchDailyTurnoverRows": [
+    {
+      "source": "Daily Turnover One Life",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "documentDate": "2026-06-01",
+      "valueExclAfterDiscount": 64708.89,
+      "grossProfit": 22547.65
+    },
+    {
+      "source": "Daily Turnover One Life",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "documentDate": "2026-06-02",
+      "valueExclAfterDiscount": 46449.22,
+      "grossProfit": 15695.16
+    },
+    {
+      "source": "Daily Turnover One Life",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "documentDate": "2026-06-03",
+      "valueExclAfterDiscount": 57733.27,
+      "grossProfit": 18325.06
+    },
+    {
+      "source": "Daily Turnover One Life",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "documentDate": "2026-06-04",
+      "valueExclAfterDiscount": 53710.97,
+      "grossProfit": 18090.35
+    },
+    {
+      "source": "Daily Turnover One Life",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "documentDate": "2026-06-05",
+      "valueExclAfterDiscount": 49796.41,
+      "grossProfit": 17366.18
+    },
+    {
+      "source": "Daily Turnover One Life",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "documentDate": "2026-06-06",
+      "valueExclAfterDiscount": 72772.05,
+      "grossProfit": 24815.27
+    },
+    {
+      "source": "Daily Turnover One Life",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "documentDate": "2026-06-08",
+      "valueExclAfterDiscount": 58245.59,
+      "grossProfit": 19511.05
+    },
+    {
+      "source": "Daily Turnover One Life",
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "documentDate": "2026-06-09",
+      "valueExclAfterDiscount": 56645.88,
+      "grossProfit": 19156.27
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-01",
+      "valueExclAfterDiscount": 12704.95,
+      "grossProfit": 4490.62
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-02",
+      "valueExclAfterDiscount": 11065.44,
+      "grossProfit": 3839.4
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-03",
+      "valueExclAfterDiscount": 15560.82,
+      "grossProfit": 5259.92
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-04",
+      "valueExclAfterDiscount": 12029.53,
+      "grossProfit": 4238.08
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-05",
+      "valueExclAfterDiscount": 10925.46,
+      "grossProfit": 3706.89
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-06",
+      "valueExclAfterDiscount": 15662.57,
+      "grossProfit": 5812.62
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-07",
+      "valueExclAfterDiscount": 20124.68,
+      "grossProfit": 6394.98
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-08",
+      "valueExclAfterDiscount": 11211.27,
+      "grossProfit": 3757.68
+    },
+    {
+      "source": "Daily Turnover EDEN",
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "documentDate": "2026-06-09",
+      "valueExclAfterDiscount": 7691.93,
+      "grossProfit": 2750.39
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-01",
+      "valueExclAfterDiscount": 10934.53,
+      "grossProfit": 3477.02
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-02",
+      "valueExclAfterDiscount": 11394.71,
+      "grossProfit": 3661.83
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-03",
+      "valueExclAfterDiscount": 20978.18,
+      "grossProfit": 6711.42
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-04",
+      "valueExclAfterDiscount": 13937.41,
+      "grossProfit": 4375.53
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-05",
+      "valueExclAfterDiscount": 8138.57,
+      "grossProfit": 2736.44
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-06",
+      "valueExclAfterDiscount": 7152.38,
+      "grossProfit": 2616
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-07",
+      "valueExclAfterDiscount": 9880.36,
+      "grossProfit": 3110.29
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-08",
+      "valueExclAfterDiscount": 11872.2,
+      "grossProfit": 3485.37
+    },
+    {
+      "source": "Daily Turnover GVS",
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "documentDate": "2026-06-09",
+      "valueExclAfterDiscount": 8738.18,
+      "grossProfit": 3226.54
+    }
+  ],
+  "caveats": [
+    "ANA_Sales Analysis includes branch and item dimensions but not document_date; treat it as the saved report default period.",
+    "Use Daily Turnover One Life / EDEN / GVS for dated branch trading. Do not use generic Daily Turnover Analysis for branch totals."
+  ]
+}

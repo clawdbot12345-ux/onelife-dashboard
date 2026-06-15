@@ -1,0 +1,69 @@
+{
+  "report": "Daily Sales Analysis",
+  "sourceCachePath": "tmp/omni-http-fetch/daily-sales-analysis.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:00:07Z",
+  "topKey": "daily_sales_analysis",
+  "rows": 222,
+  "columns": [
+    "supplier_#",
+    "document_date",
+    "customer_name",
+    "bar_code",
+    "document_type",
+    "line_item_description",
+    "quantity",
+    "value_incl_after_discount"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "supplier_#": "",
+      "document_date": "2026-06-08",
+      "customer_name": "REDACTED",
+      "bar_code": "",
+      "document_type": "POS Invoice",
+      "line_item_description": "Posgeld/Postage/Courier",
+      "quantity": 2,
+      "value_incl_after_discount": 205
+    },
+    {
+      "supplier_#": "AC",
+      "document_date": "2026-06-08",
+      "customer_name": "REDACTED",
+      "bar_code": "6009692950161",
+      "document_type": "POS Invoice",
+      "line_item_description": "AFRI CRANBERRY C 500ML",
+      "quantity": 2,
+      "value_incl_after_discount": 312.46
+    },
+    {
+      "supplier_#": "ADORE",
+      "document_date": "2026-06-08",
+      "customer_name": "REDACTED",
+      "bar_code": "6001651224696",
+      "document_type": "POS Invoice",
+      "line_item_description": "MACADAMIA NUT CHIPS 70g",
+      "quantity": 2,
+      "value_incl_after_discount": 72.42
+    },
+    {
+      "supplier_#": "ADORE",
+      "document_date": "2026-06-08",
+      "customer_name": "REDACTED",
+      "bar_code": "6009693240773",
+      "document_type": "POS Invoice",
+      "line_item_description": "GRN BANANA CRISPS 80G",
+      "quantity": 2,
+      "value_incl_after_discount": 72.52
+    },
+    {
+      "supplier_#": "AFRA",
+      "document_date": "2026-06-08",
+      "customer_name": "REDACTED",
+      "bar_code": "658325062618",
+      "document_type": "POS Invoice",
+      "line_item_description": "PELAFORCE GUM 90S",
+      "quantity": 2,
+      "value_incl_after_discount": 538
+    }
+  ]
+}
