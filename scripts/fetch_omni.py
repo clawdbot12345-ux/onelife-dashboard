@@ -225,7 +225,16 @@ def cost_lookup_from_sales(rows):
 
 
 def row_cost_price(row):
-    for field in ("cost_price", "cost_price_excl", "average_cost", "average_cost_excl"):
+    for field in (
+        "cost_price",
+        "unit_cost_price",
+        "costprice",
+        "unit_cost",
+        "cost_excl",
+        "cost_price_excl",
+        "average_cost",
+        "average_cost_excl",
+    ):
         value = num(row.get(field))
         if value:
             return value
@@ -265,7 +274,7 @@ def cost_lookup_from_stock_reports(stock_sources):
             "sales_margin_pct": None,
             "source_report": sorted(row["source_reports"]),
             "cost_source": "omni_report",
-            "cost_basis": "omni_report_cost_price",
+            "cost_basis": "latest",
             "cost_observation_count": len(row["cost_values"]),
         }
     return lookup
@@ -293,7 +302,7 @@ def build_stock_listing_with_cost(stock_sources, cost_lookup):
             if real_row_cost is not None:
                 cost_price = real_row_cost
                 cost_source = "omni_report"
-                cost_basis = "omni_report_cost_price"
+                cost_basis = "latest"
                 cost_quantity_sold = None
             elif cost:
                 cost_price = cost.get("cost_price") or cost.get("average_cost_excl")
