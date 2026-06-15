@@ -34,3 +34,18 @@ from 72% to ~100% with no further code changes.
 GRV / fill-rate is a separate gap (no goods-received report is exposed). If a
 GRV-by-supplier report can be added at the same time
 (`supplier_#, grv_value_excl` per period), the Suppliers tab fill-rate also goes live.
+
+## Optional 3rd report (for anomaly detection — nice to have)
+**`Engine Returns`** — returns / credit notes by branch and date:
+`document_date, company_branch_code, return_value_excl, reason (if available)`. Powers
+return-rate anomaly alerts and a true net-sales figure per store.
+
+---
+### The complete Omni ask (so IT builds it once)
+1. **Per-SKU average cost** (critical) — Report 1 above.
+2. **GRV by supplier** (fill rates) — see note above.
+3. **Returns by branch/date** (optional — anomaly detection).
+
+Everything else we need from Omni is already flowing (daily turnover + GP, per-branch stock,
+item sales + GP, purchase orders, payables, MTD transactions/busy-times, slow-movers,
+reorder requirements).

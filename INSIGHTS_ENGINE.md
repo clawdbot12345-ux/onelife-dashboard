@@ -61,3 +61,39 @@ retailer has.
    daily.
 5. **Foresights** — stockout/replenishment/demand-trend/churn models on the accumulating
    daily history.
+
+## What world-class looks like (researched, 2025/26) — the standard we build to
+Leading retail/marketing BI (Tableau+Einstein, Power BI+Copilot, Looker+Gemini, Improvado)
+converges on five things — and one anti-pattern:
+- **A few hero KPIs, not 30.** The #1 failure mode is a cluttered board nobody reads. Start
+  with 3–5 decision KPIs per view, drill-down on demand.
+- **Automated anomaly detection** — outliers flagged *without* hand-set rules (sales/margin
+  dips, conversion drops, stockouts on top sellers, return spikes, supplier-fill drops,
+  "spend without clicks", YoY drop >30%).
+- **Prescriptive, not just descriptive** — not "churn risk high" but "do X → est. +R/▲%".
+- **Omnichannel, real-time** — POS + online + marketing fused (real-time personalization
+  lifted AOV 259% in Adidas' 2025 case).
+- **Role-based + interactive** — filter by store/category/period; an exec view vs an ops view.
+
+**Retail KPIs we'll add** (beyond revenue): **GMROI**, **sell-through rate**, **inventory
+turnover**, sales-per-store/sqm, basket analysis, gross-margin-return, and customer
+**cohort/LTV** (from Shopify+Klaviyo). GMROI/turnover/sell-through need cost + GRV — the
+exact Omni reports now requested.
+
+## Data sources & coverage (do we have everything?)
+| Source | Covers | Status |
+|---|---|---|
+| **Omni** (in-store ERP) | store sales, GP, transactions/basket, per-branch stock, suppliers, POs, dead stock | ✅ live daily feed; **needs cost + GRV (+returns)** from Johann to be 100% |
+| **Shopify** | online orders, products, inventory, customers | ✅ reachable (Admin API / MCP); wire product-level online + cohort/LTV |
+| **Klaviyo** | email/SMS, flows, campaigns, segments, engagement | ✅ live |
+| **GA4** | web traffic, acquisition channel, on-site funnel, source/medium | ⏳ **need access** — a service account / Data API key (as a GitHub secret), or the BigQuery export |
+| **Social** (TikTok/IG/FB) | reach, followers, engagement | ⚠️ manual today; APIs later |
+| **External** | seasonality, SA holidays, weather, search trends | ➕ optional, layer in for demand foresight |
+
+### What's needed to "build everything"
+- **From Johann/IT (Omni):** the 3 reports in `codex-queue/2026-06-15_omni-cost-report-REQUEST.md`
+  (per-SKU cost ✅critical, GRV, returns). That completes the Omni side.
+- **From you:** **GA4 access** (service-account JSON / Data API, or BigQuery export) so we
+  wire web acquisition + funnel + true online attribution; and confirm **Shopify Admin API**
+  credentials for the automated daily pull (we have interactive access via MCP already).
+- **Already in hand:** Omni daily feed, Shopify (MCP), Klaviyo (live).
