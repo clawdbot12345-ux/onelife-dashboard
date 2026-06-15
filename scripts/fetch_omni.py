@@ -1,0 +1,546 @@
+#!/usr/bin/env python3
+"""Daily Omni sync — fetches the P0 report set (see data/omni/reports-v2/CATALOG.md)
+and maintains the cumulative per-branch daily turnover history that feeds
+SCOREBOARD T2–T4. Runs on the Mac Mini via codex_bridge.sh (or any host that
+can reach the Omni server). Env: OMNI_REPORT_URL (any valid report URL — only
+its origin + credentials are used).
+"""
+import csv
+import datetime
+import json
+import os
+import re
+import sys
+import urllib.parse
+import urllib.request
+
+P0_REPORTS = [
+    "Daily Turnover One Life",   # HO/Centurion, dated, with GP
+    "Daily Turnover EDEN",
+    "Daily Turnover GVS",
+    "ANA_Most Popular Products GP",
+    "Stock Export - wooCommerce - Levels Only",
+    "ANA_Stock Listing_CEN",
+    "ANA_Stock Listing_EDN",
+    "ANA_Stock Listing_GVS",
+    "Supplier Profitability",
+    "Stock Valuation",
+    "Stock Valuation - Slow movers 6 Months",
+    "OL_PO_Generator_V6",
+    "Purchase Orders",
+    "Stock Price List with Supplier Price Comparison",
+    "Stock Reorder Report - Daily Material Requirements",
+    "Supplier Payment Schedule",
+]
+BRANCH_OF = {"Daily Turnover One Life": "HO", "Daily Turnover EDEN": "EDN", "Daily Turnover GVS": "GVS"}
+STOCK_LISTING_BRANCH = {
+    "ANA_Stock Listing_CEN": "HO",
+    "ANA_Stock Listing_EDN": "EDN",
+    "ANA_Stock Listing_GVS": "GVS",
+}
+BRANCH_BUSY_YESTERDAY = {
+    "OL_HO_Busy Times_Yesterday": "HO",
+    "OL_EDN_Busy Times_Yesterday": "EDN",
+    "OL_GVS_Busy Times_Yesterday": "GVS",
+}
+BRANCH_BUSY_MTD = {
+    "OL_HO_Busy Times_MTD": "HO",
+    "OL_EDN_Busy Times_MTD": "EDN",
+    "OL_GVS_Busy Times_MTD": "GVS",
+}
+OUT = "data/omni/daily"
+HISTORY = "data/omni/daily_turnover_history.csv"
+TRANSACTION_HISTORY = "data/omni/daily_branch_transactions_history.csv"
+
+
+def slugify(name):
+    return re.sub(r"[^A-Za-z0-9]+", "-", name).strip("-").lower()
+
+
+def snake_slug(name):
+    return re.sub(r"[^A-Za-z0-9]+", "_", name).strip("_").lower()
+
+
+def report_url(origin, creds, name):
+    return f"{origin}/Report/{urllib.parse.quote(name)}?{creds}"
+
+
+def rows_from_payload(payload):
+    return next(iter(payload.values())) if isinstance(payload, dict) else []
+
+
+def fetch_report(origin, creds, name, timeout=240):
+    url = report_url(origin, creds, name)
+    with urllib.request.urlopen(urllib.request.Request(url), timeout=timeout) as r:
+        payload = json.loads(r.read())
+    rows = rows_from_payload(payload)
+    return payload, rows
+
+
+def write_daily(today, name, payload):
+    slug = slugify(name)
+    with open(f"{OUT}/{today}_{slug}.json", "w") as f:
+        json.dump(payload, f)
+    return f"{OUT}/{today}_{slug}.json"
+
+
+def read_seen_pairs(path, columns):
+    if not os.path.exists(path):
+        return set()
+    with open(path) as f:
+        return {tuple(r.get(column, "") for column in columns) for r in csv.DictReader(f)}
+
+
+def read_turnover_history(path):
+    if not os.path.exists(path):
+        return {}
+    with open(path) as f:
+        return {
+            (row.get("branch", ""), row.get("document_date", "")): [
+                row.get("branch", ""),
+                row.get("document_date", ""),
+                row.get("value_excl_after_discount", ""),
+                row.get("gross_profit", ""),
+            ]
+            for row in csv.DictReader(f)
+            if row.get("branch") and row.get("document_date")
+        }
+
+
+def csv_value(value):
+    return "" if value is None else str(value)
+
+
+def write_turnover_history(path, rows_by_key):
+    with open(path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["branch", "document_date", "value_excl_after_discount", "gross_profit"])
+        writer.writerows(sorted(rows_by_key.values(), key=lambda r: (r[1], r[0])))
+
+
+def ensure_csv(path, header):
+    if not os.path.exists(path):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", newline="") as f:
+            csv.writer(f).writerow(header)
+
+
+def num(value):
+    try:
+        return float(value or 0)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def blank(value):
+    return value is None or value == ""
+
+
+def normalized_name(value):
+    return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
+
+
+def build_transaction_rows(transaction_sources, document_date, source_map):
+    rows = []
+    for report_name, branch in source_map.items():
+        source_rows = transaction_sources.get(report_name) or []
+        transaction_count = sum(int(num(row.get("count"))) for row in source_rows)
+        value_excl = round(sum(num(row.get("value_excl_after_discount")) for row in source_rows), 2)
+        rows.append(
+            {
+                "document_date": document_date,
+                "company_branch_code": branch,
+                "transaction_count": transaction_count,
+                "value_excl_after_discount": value_excl,
+                "average_basket_ex_vat": round(value_excl / transaction_count, 2) if transaction_count else None,
+                "source_report": report_name,
+                "source_rows": len(source_rows),
+            }
+        )
+    return rows
+
+
+def build_mtd_transaction_rows(transaction_sources, today):
+    period_start = today.replace(day=1).isoformat()
+    period_end = today.isoformat()
+    rows = []
+    for row in build_transaction_rows(transaction_sources, period_end, BRANCH_BUSY_MTD):
+        row["period_start"] = period_start
+        row["period_end"] = period_end
+        row["snapshot_date"] = period_end
+        row["period_type"] = "month_to_date"
+        row.pop("document_date", None)
+        rows.append(row)
+    return rows
+
+
+def cost_lookup_from_sales(rows):
+    grouped = {}
+    for row in rows:
+        stock_code = row.get("stock_code")
+        quantity = num(row.get("quantity"))
+        if blank(stock_code) or not quantity:
+            continue
+        value_excl = num(row.get("value_excl_after_discount"))
+        gross_profit = num(row.get("gross_profit"))
+        cost_excl = value_excl - gross_profit
+        bucket = grouped.setdefault(
+            stock_code,
+            {
+                "stock_code": stock_code,
+                "stock_description": row.get("line_item_description") or row.get("stock_description"),
+                "quantity_sold": 0.0,
+                "value_excl_after_discount": 0.0,
+                "gross_profit": 0.0,
+            },
+        )
+        bucket["quantity_sold"] += quantity
+        bucket["value_excl_after_discount"] += value_excl
+        bucket["gross_profit"] += gross_profit
+    lookup = {}
+    for stock_code, row in grouped.items():
+        quantity = row["quantity_sold"]
+        value_excl = row["value_excl_after_discount"]
+        gross_profit = row["gross_profit"]
+        cost_excl = value_excl - gross_profit
+        lookup[stock_code] = {
+            "stock_code": stock_code,
+            "stock_description": row["stock_description"],
+            "quantity_sold": round(quantity, 4),
+            "value_excl_after_discount": round(value_excl, 2),
+            "gross_profit": round(gross_profit, 2),
+            "average_cost_excl": round(cost_excl / quantity, 2) if quantity else None,
+            "sales_margin_pct": round(gross_profit / value_excl * 100, 2) if value_excl else None,
+            "source_report": "ANA_Most Popular Products GP",
+            "cost_basis": "sales_gross_profit_average",
+        }
+    return lookup
+
+
+def build_stock_cost_rows(cost_lookup):
+    return sorted(cost_lookup.values(), key=lambda row: row["stock_code"])
+
+
+def build_stock_listing_with_cost(stock_sources, cost_lookup):
+    rows = []
+    for report_name, branch in STOCK_LISTING_BRANCH.items():
+        for row in stock_sources.get(report_name) or []:
+            stock_code = row.get("stock_code")
+            cost = cost_lookup.get(stock_code) if stock_code else None
+            available = num(row.get("available"))
+            selling_price = num(row.get("selling_price_excl"))
+            average_cost = cost.get("average_cost_excl") if cost else None
+            margin_pct = None
+            if average_cost is not None and selling_price:
+                margin_pct = round((selling_price - average_cost) / selling_price * 100, 2)
+            rows.append(
+                {
+                    "company_branch_code": branch,
+                    "source_report": report_name,
+                    "stock_code": stock_code,
+                    "stock_description": row.get("stock_description"),
+                    "supplier_#": row.get("supplier_#"),
+                    "product_group": row.get("product_group"),
+                    "stock_category": row.get("stock_category"),
+                    "available": row.get("available"),
+                    "selling_price_excl": row.get("selling_price_excl"),
+                    "average_cost_excl": average_cost,
+                    "stock_value_cost": round(available * average_cost, 2) if average_cost is not None else None,
+                    "gross_margin_pct_at_selling": margin_pct,
+                    "cost_source": cost.get("cost_basis") if cost else "unavailable_from_current_omni_reports",
+                    "cost_quantity_sold": cost.get("quantity_sold") if cost else None,
+                }
+            )
+    return rows
+
+
+def add_supplier(master, supplier_code, supplier_name, source_report):
+    if blank(supplier_code) and blank(supplier_name):
+        return
+    name_key = f"name::{normalized_name(supplier_name)}" if not blank(supplier_name) else None
+    if not blank(supplier_code):
+        key = supplier_code
+        if key not in master and name_key in master:
+            master[key] = master.pop(name_key)
+    else:
+        key = name_key
+        for existing_key, existing in master.items():
+            if normalized_name(existing.get("supplier_name")) == normalized_name(supplier_name):
+                key = existing_key
+                break
+    row = master.setdefault(
+        key,
+        {"supplier_#": supplier_code or None, "supplier_name": supplier_name or None, "source_reports": set()},
+    )
+    if blank(row.get("supplier_#")) and not blank(supplier_code):
+        row["supplier_#"] = supplier_code
+    if blank(row.get("supplier_name")) and not blank(supplier_name):
+        row["supplier_name"] = supplier_name
+    row["source_reports"].add(source_report)
+
+
+def build_supplier_master(report_rows):
+    master = {}
+    for report_name in STOCK_LISTING_BRANCH:
+        for row in report_rows.get(report_name) or []:
+            add_supplier(master, row.get("supplier_#"), None, report_name)
+    for report_name in ("Stock Price List with Supplier Price Comparison", "Stock Reorder Report - Daily Material Requirements"):
+        for row in report_rows.get(report_name) or []:
+            add_supplier(master, row.get("last_supplier"), row.get("last_supplier_s_name"), report_name)
+    for row in report_rows.get("Stock Valuation - Slow movers 6 Months") or []:
+        add_supplier(master, row.get("supplier_#"), None, "Stock Valuation - Slow movers 6 Months")
+    for row in report_rows.get("Purchase Orders") or []:
+        add_supplier(master, row.get("supplier_account_no"), None, "Purchase Orders")
+    for row in report_rows.get("Supplier Payment Schedule") or []:
+        add_supplier(master, None, row.get("supplier_name"), "Supplier Payment Schedule")
+    rows = []
+    for row in master.values():
+        rows.append(
+            {
+                "supplier_#": row.get("supplier_#"),
+                "supplier_name": row.get("supplier_name"),
+                "source_reports": sorted(row["source_reports"]),
+            }
+        )
+    return sorted(rows, key=lambda row: (row.get("supplier_#") or "", row.get("supplier_name") or ""))
+
+
+def build_supplier_po_grv(po_rows, payment_rows, supplier_master):
+    by_code = {
+        row.get("supplier_#"): row.get("supplier_name")
+        for row in supplier_master
+        if row.get("supplier_#") and row.get("supplier_name")
+    }
+    by_name = {
+        normalized_name(row.get("supplier_name")): row.get("supplier_#")
+        for row in supplier_master
+        if row.get("supplier_name") and row.get("supplier_#")
+    }
+    rows_by_supplier = {}
+    for row in po_rows:
+        supplier_code = row.get("supplier_account_no")
+        key = supplier_code or "unknown"
+        bucket = rows_by_supplier.setdefault(
+            key,
+            {
+                "supplier_#": supplier_code,
+                "supplier_name": by_code.get(supplier_code),
+                "po_value_excl": 0.0,
+                "grv_value_excl": None,
+                "fill_pct": None,
+                "outstanding_excl": None,
+                "outstanding_incl": None,
+                "order_count": set(),
+                "ordered_qty": 0.0,
+                "source_reports": {"Purchase Orders"},
+                "coverage_note": "PO values are live from Purchase Orders; Omni did not expose a GRV-by-supplier report in the current catalog, so GRV/fill fields remain null.",
+            },
+        )
+        bucket["po_value_excl"] += num(row.get("value_excl_after_discount"))
+        bucket["ordered_qty"] += num(row.get("ordered_qty"))
+        if row.get("reference"):
+            bucket["order_count"].add(row.get("reference"))
+    rows = []
+    for bucket in rows_by_supplier.values():
+        rows.append(
+            {
+                "supplier_#": bucket["supplier_#"],
+                "supplier_name": bucket["supplier_name"],
+                "po_value_excl": round(bucket["po_value_excl"], 2),
+                "grv_value_excl": bucket["grv_value_excl"],
+                "fill_pct": bucket["fill_pct"],
+                "outstanding_excl": bucket["outstanding_excl"],
+                "outstanding_incl": bucket["outstanding_incl"],
+                "order_count": len(bucket["order_count"]),
+                "ordered_qty": round(bucket["ordered_qty"], 4),
+                "source_reports": sorted(bucket["source_reports"]),
+                "coverage_note": bucket["coverage_note"],
+            }
+        )
+    for row in payment_rows:
+        supplier_name = row.get("supplier_name")
+        outstanding_incl = num(row.get("outstanding_incl"))
+        rows.append(
+            {
+                "supplier_#": by_name.get(normalized_name(supplier_name)),
+                "supplier_name": supplier_name,
+                "po_value_excl": None,
+                "grv_value_excl": None,
+                "fill_pct": None,
+                "outstanding_excl": round(outstanding_incl / 1.15, 2) if outstanding_incl else 0,
+                "outstanding_incl": row.get("outstanding_incl"),
+                "order_count": None,
+                "ordered_qty": None,
+                "source_reports": ["Supplier Payment Schedule"],
+                "coverage_note": "Payables/outstanding is live from Supplier Payment Schedule; supplier code is only populated when it can be matched from supplier master names.",
+            }
+        )
+    return sorted(rows, key=lambda row: (row.get("supplier_#") or "", row.get("supplier_name") or ""))
+
+
+def turnover_quality_audit(turnover_rows):
+    all_dates = sorted(
+        {
+            row.get("document_date")
+            for rows in turnover_rows.values()
+            for row in rows
+            if row.get("document_date")
+        }
+    )
+    branch_rows = {}
+    for report_name, branch in BRANCH_OF.items():
+        rows = turnover_rows.get(report_name) or []
+        dates = sorted(row.get("document_date") for row in rows if row.get("document_date"))
+        low_value_rows = [
+            {
+                "document_date": row.get("document_date"),
+                "value_excl_after_discount": row.get("value_excl_after_discount"),
+                "gross_profit": row.get("gross_profit"),
+            }
+            for row in rows
+            if num(row.get("value_excl_after_discount")) and num(row.get("value_excl_after_discount")) < 1000
+        ]
+        branch_rows[branch] = {
+            "source_report": report_name,
+            "row_count": len(rows),
+            "first_date": dates[0] if dates else None,
+            "latest_date": dates[-1] if dates else None,
+            "missing_vs_union": [date for date in all_dates if date not in set(dates)],
+            "low_value_rows_under_1000": low_value_rows,
+        }
+    return {
+        "turnover_quality_audit": [
+            {
+                "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                "union_dates": all_dates,
+                "branch_rows": branch_rows,
+                "scope_note": "Daily Turnover One Life is treated as HO/Centurion because the cataloged ANA branch source maps HO to Centurion/HO; the turnover feed does not expose warehouse/channel split.",
+            }
+        ]
+    }
+
+
+def main():
+    base = os.environ.get("OMNI_REPORT_URL", "").strip()
+    if not base:
+        sys.exit("FATAL: OMNI_REPORT_URL not set")
+    p = urllib.parse.urlparse(base)
+    origin, creds = f"{p.scheme}://{p.netloc}", p.query
+    today_date = datetime.date.today()
+    today = today_date.isoformat()
+    yesterday = (today_date - datetime.timedelta(days=1)).isoformat()
+    os.makedirs(OUT, exist_ok=True)
+
+    # load existing history keys to make appends idempotent
+    ensure_csv(HISTORY, ["branch", "document_date", "value_excl_after_discount", "gross_profit"])
+    turnover_history = read_turnover_history(HISTORY)
+    ensure_csv(TRANSACTION_HISTORY, ["branch", "document_date", "transaction_count", "value_excl_after_discount", "average_basket_ex_vat"])
+    seen_transactions = read_seen_pairs(TRANSACTION_HISTORY, ["branch", "document_date"])
+
+    turnover_updates = 0
+    new_transaction_rows = []
+    report_rows = {}
+    turnover_rows = {}
+    for name in P0_REPORTS:
+        try:
+            payload, rows = fetch_report(origin, creds, name)
+        except Exception as e:
+            print(f"[fetch_omni] {name}: FAILED {e}")
+            continue
+        report_rows[name] = rows
+        write_daily(today, name, payload)
+        print(f"[fetch_omni] {name}: {len(rows)} rows")
+        if name in BRANCH_OF:
+            turnover_rows[name] = rows
+            b = BRANCH_OF[name]
+            for row in rows:
+                key = (b, row.get("document_date", ""))
+                if key[1]:
+                    next_row = [
+                        b,
+                        csv_value(key[1]),
+                        csv_value(row.get("value_excl_after_discount", "")),
+                        csv_value(row.get("gross_profit", "")),
+                    ]
+                    if turnover_history.get(key) != next_row:
+                        turnover_history[key] = next_row
+                        turnover_updates += 1
+
+    cost_lookup = cost_lookup_from_sales(report_rows.get("ANA_Most Popular Products GP") or [])
+    stock_cost_rows = build_stock_cost_rows(cost_lookup)
+    write_daily(today, "Engine Stock Cost By SKU", {"engine_stock_cost_by_sku": stock_cost_rows})
+    print(f"[fetch_omni] Engine Stock Cost By SKU: {len(stock_cost_rows)} rows")
+
+    stock_with_cost_rows = build_stock_listing_with_cost(report_rows, cost_lookup)
+    write_daily(today, "Engine Stock Listing With Derived Cost", {"engine_stock_listing_with_derived_cost": stock_with_cost_rows})
+    print(f"[fetch_omni] Engine Stock Listing With Derived Cost: {len(stock_with_cost_rows)} rows")
+
+    supplier_master_rows = build_supplier_master(report_rows)
+    write_daily(today, "Engine Supplier Master", {"engine_supplier_master": supplier_master_rows})
+    print(f"[fetch_omni] Engine Supplier Master: {len(supplier_master_rows)} rows")
+
+    supplier_po_grv_rows = build_supplier_po_grv(
+        report_rows.get("Purchase Orders") or [],
+        report_rows.get("Supplier Payment Schedule") or [],
+        supplier_master_rows,
+    )
+    write_daily(today, "Engine Supplier PO GRV", {"engine_supplier_po_grv": supplier_po_grv_rows})
+    print(f"[fetch_omni] Engine Supplier PO GRV: {len(supplier_po_grv_rows)} rows")
+
+    transaction_sources = {}
+    for name in BRANCH_BUSY_YESTERDAY:
+        try:
+            payload, rows = fetch_report(origin, creds, name)
+        except Exception as e:
+            print(f"[fetch_omni] {name}: FAILED {e}")
+            payload, rows = {snake_slug(name): []}, []
+        write_daily(today, name, payload)
+        transaction_sources[name] = rows
+        print(f"[fetch_omni] {name}: {len(rows)} rows")
+
+    derived_rows = build_transaction_rows(transaction_sources, yesterday, BRANCH_BUSY_YESTERDAY)
+    write_daily(today, "Engine Daily Branch Transactions", {"engine_daily_branch_transactions": derived_rows})
+    print(f"[fetch_omni] Engine Daily Branch Transactions: {len(derived_rows)} rows for {yesterday}")
+    for row in derived_rows:
+        key = (row["company_branch_code"], row["document_date"])
+        if key not in seen_transactions:
+            new_transaction_rows.append(
+                [
+                    row["company_branch_code"],
+                    row["document_date"],
+                    row["transaction_count"],
+                    row["value_excl_after_discount"],
+                    row["average_basket_ex_vat"] if row["average_basket_ex_vat"] is not None else "",
+                ]
+            )
+            seen_transactions.add(key)
+
+    mtd_transaction_sources = {}
+    for name in BRANCH_BUSY_MTD:
+        try:
+            payload, rows = fetch_report(origin, creds, name)
+        except Exception as e:
+            print(f"[fetch_omni] {name}: FAILED {e}")
+            payload, rows = {snake_slug(name): []}, []
+        write_daily(today, name, payload)
+        mtd_transaction_sources[name] = rows
+        print(f"[fetch_omni] {name}: {len(rows)} rows")
+
+    mtd_rows = build_mtd_transaction_rows(mtd_transaction_sources, today_date)
+    write_daily(today, "Engine MTD Branch Transactions", {"engine_mtd_branch_transactions": mtd_rows})
+    print(f"[fetch_omni] Engine MTD Branch Transactions: {len(mtd_rows)} rows")
+
+    audit_payload = turnover_quality_audit(turnover_rows)
+    write_daily(today, "Turnover Quality Audit", audit_payload)
+
+    if turnover_updates:
+        write_turnover_history(HISTORY, turnover_history)
+    if new_transaction_rows:
+        with open(TRANSACTION_HISTORY, "a", newline="") as f:
+            csv.writer(f).writerows(sorted(new_transaction_rows, key=lambda r: (r[1], r[0])))
+    print(f"[fetch_omni] upserted {turnover_updates} turnover rows to {HISTORY}")
+    print(f"[fetch_omni] appended {len(new_transaction_rows)} new transaction rows to {TRANSACTION_HISTORY}")
+
+
+if __name__ == "__main__":
+    main()

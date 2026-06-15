@@ -1,0 +1,17 @@
+{
+  "report": "Sales Analysis QTY Per Supplier",
+  "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-qty-per-supplier.json",
+  "sourceCacheModifiedAt": "2026-06-06T11:52:58Z",
+  "topKey": "sales_analysis_qty_per_supplier",
+  "rows": 1,
+  "columns": [
+    "quantity",
+    "supplier_#"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "quantity": 82,
+      "supplier_#": "OLSHOP"
+    }
+  ]
+}

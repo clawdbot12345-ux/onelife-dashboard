@@ -1,0 +1,45 @@
+{
+  "report": "Daily Turnover Analysis",
+  "sourceCachePath": "tmp/omni-http-fetch/daily-turnover-analysis.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:00:07Z",
+  "topKey": "daily_turnover_analysis",
+  "rows": 491,
+  "columns": [
+    "document_date",
+    "value_excl_after_discount",
+    "gross_profit",
+    "count"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "document_date": "2025-02-01",
+      "value_excl_after_discount": 7665.17,
+      "gross_profit": 2625.78,
+      "count": 23
+    },
+    {
+      "document_date": "2025-02-02",
+      "value_excl_after_discount": 14475.38,
+      "gross_profit": 5010.22,
+      "count": 37
+    },
+    {
+      "document_date": "2025-02-03",
+      "value_excl_after_discount": 3833.18,
+      "gross_profit": 1564.09,
+      "count": 18
+    },
+    {
+      "document_date": "2025-02-04",
+      "value_excl_after_discount": 9639.91,
+      "gross_profit": 3366.77,
+      "count": 29
+    },
+    {
+      "document_date": "2025-02-05",
+      "value_excl_after_discount": 4450.21,
+      "gross_profit": 1600.65,
+      "count": 19
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "report": "OL - Cost Price Changes - Yesterday",
+  "sourceCachePath": "tmp/omni-http-fetch/ol-cost-price-changes-yesterday.json",
+  "sourceCacheModifiedAt": "2026-06-06T13:07:24Z",
+  "topKey": "ol___cost_price_changes___yesterday",
+  "rows": 328,
+  "columns": [
+    "stock_code",
+    "stock_description",
+    "transaction_no",
+    "transaction_date",
+    "transaction_type",
+    "reference",
+    "processed_by"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "stock_code": "0606110048040",
+      "stock_description": "50SUP PROT CHOC SACH 25G",
+      "transaction_no": "REDACTED",
+      "transaction_date": "2026-06-05",
+      "transaction_type": "Purchase",
+      "reference": "REDACTED",
+      "processed_by": "REDACTED"
+    },
+    {
+      "stock_code": "0700371693008",
+      "stock_description": "50ML LAMARIA",
+      "transaction_no": "REDACTED",
+      "transaction_date": "2026-06-05",
+      "transaction_type": "Purchase",
+      "reference": "REDACTED",
+      "processed_by": "REDACTED"
+    },
+    {
+      "stock_code": "070037169312",
+      "stock_description": "50ML PARASTIL",
+      "transaction_no": "REDACTED",
+      "transaction_date": "2026-06-05",
+      "transaction_type": "Purchase",
+      "reference": "REDACTED",
+      "processed_by": "REDACTED"
+    },
+    {
+      "stock_code": "0737186576547",
+      "stock_description": "BTY DRINK BLUEB 300ML",
+      "transaction_no": "REDACTED",
+      "transaction_date": "2026-06-05",
+      "transaction_type": "Purchase",
+      "reference": "REDACTED",
+      "processed_by": "REDACTED"
+    },
+    {
+      "stock_code": "0737186576554",
+      "stock_description": "BTY DRINK COCON 300ML",
+      "transaction_no": "REDACTED",
+      "transaction_date": "2026-06-05",
+      "transaction_type": "Purchase",
+      "reference": "REDACTED",
+      "processed_by": "REDACTED"
+    }
+  ]
+}

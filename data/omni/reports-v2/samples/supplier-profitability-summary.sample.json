@@ -1,0 +1,19 @@
+{
+  "report": "Supplier Profitability Summary",
+  "sourceCachePath": "tmp/omni-http-fetch/supplier-profitability-summary.json",
+  "sourceCacheModifiedAt": "2026-06-06T13:05:53Z",
+  "topKey": "supplier_profitability_summary",
+  "rows": 1,
+  "columns": [
+    "quantity",
+    "value_excl_after_discount",
+    "gross_profit"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "quantity": 42479.95,
+      "value_excl_after_discount": 6786617.3,
+      "gross_profit": 2292077.64
+    }
+  ]
+}

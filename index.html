@@ -610,8 +610,7 @@
       </div>
       <div id="online-gap-cards" class="signal-cards"></div>
       <div class="info-note">
-        <strong>⚠️ Branch-level stock split not yet available via Omni API</strong> — confirm branch stock tracking is enabled in Omni desktop settings.
-      </div>
+        <strong>✅ Branch-level data live via Omni</strong> — per-branch sales & GP syncing daily (last sync 2026-06-15). Per-branch stock listings available; wiring into the product table next.</div>
     </div>
   </div>
 
@@ -622,17 +621,69 @@
 // DATA
 // ============================================================
 const DASHBOARD_DATA = {
-  "generated_at": "2026-03-31T16:26:10.894186",
+  "omni_sync": {
+    "source": "Omni Web Server (Daily Turnover reports)",
+    "last_sync": "2026-06-15",
+    "window": {
+      "start": "2026-06-01",
+      "end": "2026-06-15",
+      "days": 15
+    },
+    "branches": {
+      "centurion": 728510.28,
+      "glen_village": 170714.56,
+      "edenvale": 182385.18
+    },
+    "branch_stock": {
+      "centurion": {
+        "skus_in_stock": 5358,
+        "stockout_risk_le5": 4439,
+        "stock_value_sell_excl": 3440710.9
+      },
+      "glen_village": {
+        "skus_in_stock": 2214,
+        "stockout_risk_le5": 2165,
+        "stock_value_sell_excl": 1044139.35
+      },
+      "edenvale": {
+        "skus_in_stock": 2965,
+        "stockout_risk_le5": 2811,
+        "stock_value_sell_excl": 1524747.93
+      }
+    },
+    "total_skus_in_stock_live": 6025,
+    "latest_transactions": {
+      "HO": {
+        "date": "2026-06-14",
+        "transaction_count": 0,
+        "avg_basket_ex_vat": null
+      },
+      "EDN": {
+        "date": "2026-06-14",
+        "transaction_count": 24,
+        "avg_basket_ex_vat": 373.17
+      },
+      "GVS": {
+        "date": "2026-06-14",
+        "transaction_count": 16,
+        "avg_basket_ex_vat": 479.22
+      }
+    },
+    "note": "Live (month-to-date): store revenue, gross profit, transactions, avg basket, and per-branch stock (sell value). Pending from Omni: a true per-SKU cost report (only ~72% sales-derived cost coverage today) and GRV-by-supplier (for fill rates)."
+  },
+  "generated_at": "2026-06-15T11:28:17.005808",
   "vat_note": "All monetary figures are EXCLUDING VAT (\u00f71.15)",
   "period": {
-    "start": "2026-03-01",
-    "end": "2026-03-31",
-    "days": 30
+    "start": "2026-06-01",
+    "end": "2026-06-15",
+    "days": 15
   },
   "kpis": {
-    "store_sales_30d_excl": 2056778.94,
+    "store_sales_30d_excl": 1081610.02,
+    "store_gross_margin_pct": 33.6,
+    "store_gross_profit_excl": 363705.12,
     "online_sales_30d_excl": 101630.83,
-    "combined_revenue_30d_excl": 2158409.77,
+    "combined_revenue_30d_excl": 1183240.85,
     "online_orders_30d": 182,
     "online_aov_excl": 558.41,
     "online_discount_rate_pct": 16.3,
@@ -646,118 +697,79 @@ const DASHBOARD_DATA = {
   },
   "stores": {
     "centurion": {
-      "total_sales_excl": 1337591.08,
-      "total_returns_excl": 5564.41,
-      "net_sales_excl": 1332026.67,
-      "transaction_count": 2236,
-      "avg_basket_excl": 598.21,
+      "total_sales_excl": 728510.28,
+      "total_returns_excl": null,
+      "net_sales_excl": 728510.28,
+      "transaction_count": 1193,
+      "avg_basket_excl": 623.31,
+      "gross_profit_excl": 245111.21,
+      "gross_margin_pct": 33.6,
       "daily_sales_excl": {
-        "2026-03-02": 50105.12,
-        "2026-03-03": 62640.82,
-        "2026-03-04": 67134.96,
-        "2026-03-05": 27380.08,
-        "2026-03-06": 36978.62,
-        "2026-03-07": 85085.64,
-        "2026-03-09": 49519.34,
-        "2026-03-10": 45638.97,
-        "2026-03-11": 64683.78,
-        "2026-03-12": 49786.58,
-        "2026-03-13": 49927.26,
-        "2026-03-14": 61779.77,
-        "2026-03-16": 38364.99,
-        "2026-03-17": 40282.3,
-        "2026-03-18": 43862.9,
-        "2026-03-19": 55823.63,
-        "2026-03-20": 36269.76,
-        "2026-03-21": 35158.68,
-        "2026-03-23": 37425.9,
-        "2026-03-24": 52197.51,
-        "2026-03-25": 45796.55,
-        "2026-03-26": 61134.19,
-        "2026-03-27": 52921.03,
-        "2026-03-28": 64942.99,
-        "2026-03-30": 57892.29,
-        "2026-03-31": 64857.41
+        "2026-06-01": 64708.89,
+        "2026-06-02": 46449.22,
+        "2026-06-03": 57733.27,
+        "2026-06-04": 53710.97,
+        "2026-06-05": 49796.41,
+        "2026-06-06": 72772.05,
+        "2026-06-08": 58245.59,
+        "2026-06-09": 56645.88,
+        "2026-06-10": 83542.88,
+        "2026-06-11": 42103.45,
+        "2026-06-12": 48475.04,
+        "2026-06-13": 53022.5,
+        "2026-06-15": 41304.13
       }
     },
     "glen_village": {
-      "total_sales_excl": 336833.81,
-      "total_returns_excl": 465.13,
-      "net_sales_excl": 336368.68,
-      "transaction_count": 730,
-      "avg_basket_excl": 461.42,
+      "total_sales_excl": 170714.56,
+      "total_returns_excl": null,
+      "net_sales_excl": 170714.56,
+      "transaction_count": 372,
+      "avg_basket_excl": 458.91,
+      "gross_profit_excl": 56601.78,
+      "gross_margin_pct": 33.2,
       "daily_sales_excl": {
-        "2026-03-01": 8606.45,
-        "2026-03-02": 6228.93,
-        "2026-03-03": 13948.01,
-        "2026-03-04": 21067.0,
-        "2026-03-05": 10590.79,
-        "2026-03-06": 13032.35,
-        "2026-03-07": 8117.31,
-        "2026-03-08": 6998.47,
-        "2026-03-09": 11001.73,
-        "2026-03-10": 10261.08,
-        "2026-03-11": 15220.99,
-        "2026-03-12": 12715.31,
-        "2026-03-13": 14546.97,
-        "2026-03-14": 9511.43,
-        "2026-03-15": 4325.94,
-        "2026-03-16": 10308.59,
-        "2026-03-17": 13817.37,
-        "2026-03-18": 16565.45,
-        "2026-03-19": 7169.09,
-        "2026-03-20": 10926.04,
-        "2026-03-21": 7316.46,
-        "2026-03-22": 2848.91,
-        "2026-03-23": 9809.77,
-        "2026-03-24": 13574.32,
-        "2026-03-25": 16848.16,
-        "2026-03-26": 11684.51,
-        "2026-03-27": 9113.28,
-        "2026-03-28": 9087.38,
-        "2026-03-29": 6606.97,
-        "2026-03-30": 12863.71,
-        "2026-03-31": 12121.03
+        "2026-06-01": 10934.53,
+        "2026-06-02": 11394.71,
+        "2026-06-03": 20978.18,
+        "2026-06-04": 13937.41,
+        "2026-06-05": 8138.57,
+        "2026-06-06": 7152.38,
+        "2026-06-07": 9880.36,
+        "2026-06-08": 11872.2,
+        "2026-06-09": 8738.18,
+        "2026-06-10": 27833.6,
+        "2026-06-11": 11135.46,
+        "2026-06-12": 6024.31,
+        "2026-06-13": 13950.34,
+        "2026-06-14": 7667.5,
+        "2026-06-15": 1076.83
       }
     },
     "edenvale": {
-      "total_sales_excl": 382354.05,
-      "total_returns_excl": 2680.3,
-      "net_sales_excl": 379673.75,
-      "transaction_count": 932,
-      "avg_basket_excl": 410.25,
+      "total_sales_excl": 182385.18,
+      "total_returns_excl": null,
+      "net_sales_excl": 182385.18,
+      "transaction_count": 460,
+      "avg_basket_excl": 396.49,
+      "gross_profit_excl": 61992.13,
+      "gross_margin_pct": 34.0,
       "daily_sales_excl": {
-        "2026-03-01": 12837.54,
-        "2026-03-02": 12900.92,
-        "2026-03-03": 13650.53,
-        "2026-03-04": 10752.39,
-        "2026-03-05": 13742.21,
-        "2026-03-06": 7055.97,
-        "2026-03-07": 14349.83,
-        "2026-03-08": 15350.8,
-        "2026-03-09": 11514.65,
-        "2026-03-10": 15507.37,
-        "2026-03-11": 17665.44,
-        "2026-03-12": 8291.66,
-        "2026-03-13": 12091.44,
-        "2026-03-14": 14468.22,
-        "2026-03-15": 12203.5,
-        "2026-03-16": 14362.41,
-        "2026-03-17": 10719.7,
-        "2026-03-18": 12160.46,
-        "2026-03-19": 11363.36,
-        "2026-03-20": 9196.57,
-        "2026-03-21": 11048.99,
-        "2026-03-22": 11323.84,
-        "2026-03-23": 12234.02,
-        "2026-03-24": 9097.65,
-        "2026-03-25": 11359.68,
-        "2026-03-26": 8546.43,
-        "2026-03-27": 15693.28,
-        "2026-03-28": 19932.98,
-        "2026-03-29": 14450.27,
-        "2026-03-30": 8523.0,
-        "2026-03-31": 9958.91
+        "2026-06-01": 12704.95,
+        "2026-06-02": 11065.44,
+        "2026-06-03": 15560.82,
+        "2026-06-04": 12029.53,
+        "2026-06-05": 10925.46,
+        "2026-06-06": 15662.57,
+        "2026-06-07": 20124.68,
+        "2026-06-08": 11211.27,
+        "2026-06-09": 7691.93,
+        "2026-06-10": 16456.64,
+        "2026-06-11": 10519.7,
+        "2026-06-12": 8210.09,
+        "2026-06-13": 13712.1,
+        "2026-06-14": 8956.0,
+        "2026-06-15": 7554.0
       }
     }
   },
@@ -87412,7 +87424,7 @@ const DASHBOARD_DATA = {
 
 const NARRATIVES = {
   "generated_at": "2026-03-31",
-  "overview": "The business generated **R2,118,822 excl VAT** over the last 30 days across 3 stores and Shopify.\n\n**Centurion dominates at 65% of store revenue** (R1,337,591), with 2,236 transactions at an average basket of R598. This is your engine — it's running well.\n\n**Edenvale (19%, R382,354)** is your second store but has the lowest average basket at R410 vs Centurion's R598. There's a R188 basket gap between your strongest and weakest store — that's a ranging and upsell problem, not a footfall problem.\n\n**Glen Village (16%, R336,834)** is the smallest but has a R461 avg basket — stronger than Edenvale per transaction. Fewer customers, but they're spending more per visit.\n\n**Online is 2.9% of combined revenue** — R62,043 from 92 orders at R674 AOV. The channel is small but the AOV is strong. Discount rate at 16.3% is elevated and needs watching.",
+  "overview": "**Live Omni data — month-to-date (2026-06-01 to 2026-06-15).** The three stores generated **R1,081,610 excl VAT** at a real gross profit of **R363,705 (33.6% GP margin)**.\n\n**Centurion** leads with **R728,510** (67% of store revenue) at 33.6% GP. **Edenvale** R182,385 (17%, 34.0% GP) and **Glen Village** R170,715 (16%, 33.2% GP).\n\n**Online (trailing 30 days):** R101,631 — store figures here are month-to-date, so the two windows aren't directly comparable.\n\n**Live MTD transactions: 2,025** at a combined avg basket of **R534** (Centurion R623, Glen Village R459, Edenvale R396). The R227 basket gap between the strongest and weakest store is a ranging / upsell opportunity, not a footfall one.",
   "stock": "You have **R3,318,456 locked in stock at cost** — that money is either working for you or sitting idle.\n\n**The dead weight:** R142,746 is tied up in 50 products that keep getting reordered despite not moving. The worst offenders — MAG 7/87 60'S (10x orders, 86 units), 1L GUT RAWBIOTICS (4x, 55 units), FLORISH SPORE PROBIOTIC 60C (5x, 23 units) — are a PAR level problem. Someone is reordering on autopilot. Stop these until stock clears.\n\n**The opportunity:** 40 products have margin ≥40% and are well-stocked. These are your profit drivers sitting on the shelf. The top 5 average 49.5% margin. Put them front-of-shelf, run a staff push, and feature them online.\n\n**The risk:** 50 products are at ≤5 units. 50 of those are high-value (>R500 excl VAT each). If you sell one more unit and can't reorder fast, you lose the sale and the customer. Some of these have no PO ever placed — they're being forgotten.",
   "suppliers": "You placed **748 orders worth R4,016,315 excl VAT** since January. Overall fill rate is **92.0%** — meaning R319,332 in ordered stock has not arrived.\n\n**20 suppliers are below 80% fill rate** and together represent significant outstanding value. Your top 3 suppliers by spend are DS INTERNATIONAL (NOW) (R451,204, 69.2% fill), NATROCEUTICS SA (PTY) LTD (R333,568, 73.7% fill), and LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS (R242,098, 92.5% fill).\n\n**DSI at 69% fill on R451,204 ordered** is the biggest concern — that's your largest supplier and they're leaving R139,873 undelivered. Either they're backordering, shipping partial, or there's an admin issue on invoice matching.\n\n**40 suppliers are over-delivering** vs PO value — you're receiving more than you ordered. This is where surprise overstock comes from. Review GRV sign-off process.",
   "online": "**Live Shopify data — last 30 days (via Klaviyo integration).** 182 orders generating **R101,631 excl VAT** (R116,875 incl VAT) from **182 unique customers**. AOV **R558.41 excl VAT**.\n\n**Checkout conversion:** 324 started → 182 completed = **56.2% conversion**. Strong bottom-of-funnel — bottleneck is traffic, not checkout.\n\n**Units sold:** 501 (2.8 per order avg).\n\n**Channel mix:** Online is **4.7% of combined revenue**. Health supplement benchmark is 15-20%. Strong email engagement (59.6% open) with modest online share = audience exists, gap is acquisition.",
@@ -87587,21 +87599,16 @@ function initOverview() {
   const p = DASHBOARD_DATA.period;
   document.getElementById('period-label').textContent = `${p.start} – ${p.end} (${p.days} days)`;
   
-  // Calc combined avg basket
-  const totalTx = stores.centurion.transaction_count + stores.glen_village.transaction_count + stores.edenvale.transaction_count;
-  const avgBasket = (
-    stores.centurion.avg_basket_excl * stores.centurion.transaction_count +
-    stores.glen_village.avg_basket_excl * stores.glen_village.transaction_count +
-    stores.edenvale.avg_basket_excl * stores.edenvale.transaction_count
-  ) / totalTx;
-  
+  // Live store gross profit from Omni. Transaction counts / avg basket are
+  // pending an Omni count report (see data/omni) — surfaced as GP instead.
+
   // 6 KPI cards
   const kpiCards = [
-    { label: 'Combined Revenue', value: fmtR(kpis.combined_revenue_30d_excl), sub: 'excl VAT · 30 days', cls: 'kpi-accent' },
+    { label: 'Combined Revenue', value: fmtR(kpis.combined_revenue_30d_excl), sub: 'excl VAT · live', cls: 'kpi-accent' },
     { label: 'Store Revenue', value: fmtR(kpis.store_sales_30d_excl), sub: 'excl VAT · all 3 stores', cls: 'kpi-pos' },
     { label: 'Online Revenue', value: fmtR(kpis.online_sales_30d_excl), sub: 'excl VAT · Shopify', cls: 'kpi-pos' },
-    { label: 'Avg Basket', value: fmtR(avgBasket, 2), sub: 'excl VAT · combined stores', cls: 'kpi-accent' },
-    { label: 'Avg Gross Margin', value: fmtPct(kpis.avg_gross_margin_pct), sub: 'across all stock', cls: 'kpi-pos' },
+    { label: 'Store Gross Profit', value: fmtR(kpis.store_gross_profit_excl), sub: 'excl VAT · live (Omni)', cls: 'kpi-accent' },
+    { label: 'Store GP Margin', value: fmtPct(kpis.store_gross_margin_pct), sub: 'on store sales · live', cls: 'kpi-pos' },
     { label: 'Stock Value @ Cost', value: fmtR(kpis.total_stock_value_cost), sub: 'excl VAT · all stores', cls: 'kpi-warn' },
   ];
   
@@ -87709,20 +87716,24 @@ function initOverview() {
     return `
       <div class="chart-card">
         <div class="chart-title">${si.label}</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
           <div style="text-align:center;">
             <div class="kpi-label">Revenue</div>
             <div style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;">${fmtR(s.net_sales_excl)}</div>
-            <div style="font-size:10px;color:var(--muted);">excl VAT</div>
+            <div style="font-size:10px;color:var(--muted);">excl VAT · MTD</div>
           </div>
           <div style="text-align:center;">
             <div class="kpi-label">Transactions</div>
-            <div style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;">${fmtNum(s.transaction_count)}</div>
+            <div style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;">${s.transaction_count == null ? '—' : fmtNum(s.transaction_count)}</div>
           </div>
           <div style="text-align:center;">
             <div class="kpi-label">Avg Basket</div>
-            <div style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;">${fmtR(s.avg_basket_excl)}</div>
+            <div style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;">${s.avg_basket_excl == null ? '—' : fmtR(s.avg_basket_excl)}</div>
             <div style="font-size:10px;color:var(--muted);">excl VAT</div>
+          </div>
+          <div style="text-align:center;">
+            <div class="kpi-label">GP Margin</div>
+            <div style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;">${fmtPct(s.gross_margin_pct)}</div>
           </div>
         </div>
         <div class="chart-container" style="height:140px;">

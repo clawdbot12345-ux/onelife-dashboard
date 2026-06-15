@@ -1,0 +1,57 @@
+{
+  "report": "Sales Analysis - Cross Tab",
+  "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-cross-tab.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:07:09Z",
+  "topKey": "sales_analysis___cross_tab",
+  "rows": 3668,
+  "columns": [
+    "period",
+    "customer_account",
+    "product_group_code",
+    "value_excl_after_discount",
+    "week_of_year",
+    "document_date"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "period": "2025-2026 01",
+      "customer_account": "REDACTED",
+      "product_group_code": "DELI",
+      "value_excl_after_discount": 45.22,
+      "week_of_year": 11,
+      "document_date": "2025-03-12"
+    },
+    {
+      "period": "2025-2026 01",
+      "customer_account": "REDACTED",
+      "product_group_code": "DELI",
+      "value_excl_after_discount": 45.22,
+      "week_of_year": 14,
+      "document_date": "2025-03-31"
+    },
+    {
+      "period": "2025-2026 01",
+      "customer_account": "REDACTED",
+      "product_group_code": "DELI",
+      "value_excl_after_discount": 85.92,
+      "week_of_year": 12,
+      "document_date": "2025-03-20"
+    },
+    {
+      "period": "2025-2026 01",
+      "customer_account": "REDACTED",
+      "product_group_code": "DELI",
+      "value_excl_after_discount": 240,
+      "week_of_year": 10,
+      "document_date": "2025-03-08"
+    },
+    {
+      "period": "2025-2026 01",
+      "customer_account": "REDACTED",
+      "product_group_code": "NON",
+      "value_excl_after_discount": 1934.95,
+      "week_of_year": 12,
+      "document_date": "2025-03-21"
+    }
+  ]
+}

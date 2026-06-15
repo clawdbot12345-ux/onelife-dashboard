@@ -1,0 +1,63 @@
+{
+  "report": "Stock Turnover Analysis",
+  "sourceCachePath": "tmp/omni-http-fetch/stock-turnover-analysis.json",
+  "sourceCacheModifiedAt": "2026-06-06T11:53:31Z",
+  "topKey": "stock_turnover_analysis",
+  "rows": 4593,
+  "columns": [
+    "financial_year",
+    "stock_type",
+    "stock_code",
+    "stock_description",
+    "quantity",
+    "value_excl_after_discount",
+    "gross_profit"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "financial_year": 2026,
+      "stock_type": "Product",
+      "stock_code": "033984000391",
+      "stock_description": "ADV MULTI BILL DOPH 60",
+      "quantity": 1,
+      "value_excl_after_discount": 424.64,
+      "gross_profit": 141.54
+    },
+    {
+      "financial_year": 2026,
+      "stock_type": "Product",
+      "stock_code": "033984000582",
+      "stock_description": "ALPHA LIPOIC ACID 200mg 50",
+      "quantity": 1,
+      "value_excl_after_discount": 261.87,
+      "gross_profit": 96.77
+    },
+    {
+      "financial_year": 2026,
+      "stock_type": "Product",
+      "stock_code": "033984000704",
+      "stock_description": "ASTAXANTHIN 5mg 30",
+      "quantity": 7,
+      "value_excl_after_discount": 1981.99,
+      "gross_profit": 742.24
+    },
+    {
+      "financial_year": 2026,
+      "stock_type": "Product",
+      "stock_code": "033984001008",
+      "stock_description": "AMINO 75 30",
+      "quantity": 5,
+      "value_excl_after_discount": 1041.38,
+      "gross_profit": 416.12
+    },
+    {
+      "financial_year": 2026,
+      "stock_type": "Product",
+      "stock_code": "033984004306",
+      "stock_description": "CALCIUM CITRATE 60",
+      "quantity": 1,
+      "value_excl_after_discount": 235.65,
+      "gross_profit": 94.45
+    }
+  ]
+}

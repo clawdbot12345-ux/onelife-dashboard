@@ -1,0 +1,44 @@
+{
+  "report": "Monthly Turnover Analysis",
+  "sourceCachePath": "tmp/omni-http-fetch/monthly-turnover-analysis.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:07:18Z",
+  "topKey": "monthly_turnover_analysis",
+  "rows": 4,
+  "columns": [
+    "financial_year",
+    "period",
+    "count",
+    "value_excl_after_discount",
+    "gross_profit"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "financial_year": 2026,
+      "period": "2026-2027 01",
+      "count": 4001,
+      "value_excl_after_discount": 2144985.2,
+      "gross_profit": 724410.73
+    },
+    {
+      "financial_year": 2026,
+      "period": "2026-2027 02",
+      "count": 3850,
+      "value_excl_after_discount": 2042010.17,
+      "gross_profit": 688607.66
+    },
+    {
+      "financial_year": 2026,
+      "period": "2026-2027 03",
+      "count": 3959,
+      "value_excl_after_discount": 2108538.91,
+      "gross_profit": 712752.89
+    },
+    {
+      "financial_year": 2026,
+      "period": "2026-2027 04",
+      "count": 1268,
+      "value_excl_after_discount": 680065.45,
+      "gross_profit": 229158.01
+    }
+  ]
+}

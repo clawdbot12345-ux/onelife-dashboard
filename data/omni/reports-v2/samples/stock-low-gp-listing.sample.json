@@ -1,0 +1,51 @@
+{
+  "report": "Stock Low GP Listing",
+  "sourceCachePath": "tmp/omni-http-fetch/stock-low-gp-listing.json",
+  "sourceCacheModifiedAt": "2026-06-06T13:07:13Z",
+  "topKey": "stock_low_gp_listing",
+  "rows": 8432,
+  "columns": [
+    "supplier_#",
+    "stock_code",
+    "stock_description",
+    "level",
+    "selling_price_excl"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "supplier_#": "",
+      "stock_code": "POSGELD",
+      "stock_description": "Posgeld/Postage/Courier",
+      "level": 0,
+      "selling_price_excl": 30
+    },
+    {
+      "supplier_#": "",
+      "stock_code": "TRANSPORT",
+      "stock_description": "Transport",
+      "level": 0,
+      "selling_price_excl": 0
+    },
+    {
+      "supplier_#": "32GI",
+      "stock_code": "5060221201353",
+      "stock_description": "SHAKER 32GI",
+      "level": 0,
+      "selling_price_excl": 101.25
+    },
+    {
+      "supplier_#": "32GI",
+      "stock_code": "6009614342074",
+      "stock_description": "RASPBERRY ENDURE 50G SACH",
+      "level": 15,
+      "selling_price_excl": 39.99
+    },
+    {
+      "supplier_#": "32GI",
+      "stock_code": "6009614342753",
+      "stock_description": "CHOC PLANT BASED PROTEIN 720G",
+      "level": 6,
+      "selling_price_excl": 460.86
+    }
+  ]
+}

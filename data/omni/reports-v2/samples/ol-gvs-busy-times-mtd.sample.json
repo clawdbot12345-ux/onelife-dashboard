@@ -1,0 +1,39 @@
+{
+  "report": "OL_GVS_Busy Times_MTD",
+  "sourceCachePath": "tmp/omni-http-fetch/ol-gvs-busy-times-mtd.json",
+  "sourceCacheModifiedAt": "2026-06-06T11:53:01Z",
+  "topKey": "ol_gvs_busy_times_mtd",
+  "rows": 9,
+  "columns": [
+    "system_hour_of_day",
+    "count",
+    "value_excl_after_discount"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "system_hour_of_day": 9,
+      "count": 12,
+      "value_excl_after_discount": 4911.97
+    },
+    {
+      "system_hour_of_day": 10,
+      "count": 17,
+      "value_excl_after_discount": 8918.8
+    },
+    {
+      "system_hour_of_day": 11,
+      "count": 21,
+      "value_excl_after_discount": 7755.17
+    },
+    {
+      "system_hour_of_day": 12,
+      "count": 24,
+      "value_excl_after_discount": 11806.45
+    },
+    {
+      "system_hour_of_day": 13,
+      "count": 30,
+      "value_excl_after_discount": 9795.78
+    }
+  ]
+}
