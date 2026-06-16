@@ -683,9 +683,11 @@ def publish_to_klaviyo(fm, blog_url):
 
     # ─── Stock verification ───
     # Filter out any products that are out of stock or below the minimum threshold.
-    # MIN_STOCK_THRESHOLD env var (default 3) protects against promoting products
-    # that might sell out between the email build and the actual send (typically 48h).
-    min_stock = int(os.environ.get("MIN_STOCK_THRESHOLD", "3"))
+    # MIN_STOCK_THRESHOLD env var (default 1) keeps out-of-stock products out
+    # of email while preserving the curated article picks. A higher default
+    # caused two-pick articles to send with one card when a valid secondary
+    # product had only 1-2 online units available.
+    min_stock = int(os.environ.get("MIN_STOCK_THRESHOLD", "1"))
     raw_products = fm.get("products", []) or []
     if raw_products:
         print(f"  → Stock check (min_stock={min_stock})...", file=sys.stderr)
