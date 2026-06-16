@@ -1,0 +1,27 @@
+name: Daily Pulse
+
+on:
+  schedule:
+    - cron: "30 4 * * *"   # 06:30 SAST daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  pulse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/end-to-end-goal-tdcj0f   # switch to main after PR #16 merges
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/daily_pulse.py
+      - run: |
+          git config user.name "daily-pulse[bot]"
+          git config user.email "actions@github.com"
+          git add reports/pulse
+          git diff --cached --quiet || git commit -m "Daily pulse [skip ci]"
+          git push

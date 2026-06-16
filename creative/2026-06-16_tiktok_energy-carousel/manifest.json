@@ -1,0 +1,56 @@
+{
+  "campaignTag": "2026-06-16_tiktok_energy-carousel",
+  "title": "Always tired by 2pm?",
+  "generatedAt": "2026-06-12T20:33:44Z",
+  "templateId": "T01",
+  "format": "6-slide TikTok/IG carousel",
+  "dimensions": {
+    "width": 1080,
+    "height": 1920
+  },
+  "baseLayerPolicy": "Photorealistic image-model raster base per slide; text/logo/footer composited after generation.",
+  "slides": [
+    {
+      "index": 1,
+      "role": "Hook",
+      "copy": "Always tired by 2pm? It's not just \"winter laziness\".",
+      "baseImage": "creative/templates/_assets/generated-bases/energy-desk.png",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-01.jpg"
+    },
+    {
+      "index": 2,
+      "role": "Pain",
+      "copy": "Coffee #3 isn't working. The afternoon slump is running your diary.",
+      "baseImage": "creative/templates/_assets/generated-bases/coffee-desk.png",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-02.jpg"
+    },
+    {
+      "index": 3,
+      "role": "Mechanism",
+      "copy": "Low iron and B12 are two of the most common reasons women feel flat — they carry oxygen and power your cells' energy production.",
+      "baseImage": "creative/templates/_assets/generated-bases/supplement-mechanism.png",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-03.jpg"
+    },
+    {
+      "index": 4,
+      "role": "Proof",
+      "copy": "Our team helps customers check the basics first — gentle iron (Eco Valley Soft Iron Boost) and B12 support, matched to you in store.",
+      "baseImage": "creative/templates/_assets/generated-bases/store-advisor.png",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-04.jpg"
+    },
+    {
+      "index": 5,
+      "role": "Participation",
+      "copy": "Which one's you: 😴 2pm slump / 🥱 wake up tired / ☕ coffee dependent? Tell us below.",
+      "baseImage": "creative/templates/_assets/generated-bases/poll-desk.png",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-05.jpg"
+    },
+    {
+      "index": 6,
+      "role": "CTA",
+      "copy": "Talk to the team at Centurion, Glen Village or Edenvale — or onelife.co.za (free delivery over R400).",
+      "baseImage": "creative/templates/_assets/generated-bases/store-online.png",
+      "file": "creative/2026-06-16_tiktok_energy-carousel/slides/slide-06.jpg"
+    }
+  ]
+}

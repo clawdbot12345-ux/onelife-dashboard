@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-06-12T20:33:44Z",
+  "sourcePolicy": "Photorealistic image-model base layers copied into the repo; all text/logo/footer overlays are composited locally.",
+  "items": [
+    {
+      "id": "energy-desk",
+      "file": "creative/templates/_assets/generated-bases/energy-desk.png",
+      "prompt": "Premium warm South African home-office desk, winter afternoon light, woman shown over-shoulder, no close-up face, no text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "coffee-desk",
+      "file": "creative/templates/_assets/generated-bases/coffee-desk.png",
+      "prompt": "Cold coffee, to-do list, laptop edge, warm winter home-office light, no people/faces, no readable writing.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "supplement-mechanism",
+      "file": "creative/templates/_assets/generated-bases/supplement-mechanism.png",
+      "prompt": "Blank-label supplements on elegant South African kitchen/home-office surface, negative space for educational diagram, no text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "store-advisor",
+      "file": "creative/templates/_assets/generated-bases/store-advisor.png",
+      "prompt": "Premium health-store interior, advisor/customer context shown without faces, blank-label bottles, no text/logos.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "poll-desk",
+      "file": "creative/templates/_assets/generated-bases/poll-desk.png",
+      "prompt": "Smartphone with blank social poll interface on warm desk, tea, notebook, no logos/text/faces.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "store-online",
+      "file": "creative/templates/_assets/generated-bases/store-online.png",
+      "prompt": "Premium South African health-store interior with laptop/tablet showing blank ecommerce page, no readable signage.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "sleep-3am",
+      "file": "creative/templates/_assets/generated-bases/sleep-3am.png",
+      "prompt": "Warm premium South African winter bedroom at 3am, bedside table and lamp, no people, no readable digits.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "sleep-window",
+      "file": "creative/templates/_assets/generated-bases/sleep-window.png",
+      "prompt": "Dark early winter morning bedroom/window detail, premium Gauteng home, no people/text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "sleep-mechanism",
+      "file": "creative/templates/_assets/generated-bases/sleep-mechanism.png",
+      "prompt": "Calm evening routine tabletop with blank-label supplements, chamomile, lavender, candle, no text/logos.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "sleep-duo",
+      "file": "creative/templates/_assets/generated-bases/sleep-duo.png",
+      "prompt": "Two blank-label supplement bottles on warm bedside table, premium evening routine scene, no text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "sleep-poll",
+      "file": "creative/templates/_assets/generated-bases/sleep-poll.png",
+      "prompt": "Late-night bedside smartphone with blank poll interface, warm lamp, journal, no logos/text/faces.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "vivid-packshot",
+      "file": "creative/templates/_assets/generated-bases/vivid-packshot.png",
+      "prompt": "Single white Vivid-style blank-label supplement bottle, vitamin C citrus, winter greenery, no text/logos.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "vivid-trio",
+      "file": "creative/templates/_assets/generated-bases/vivid-trio.png",
+      "prompt": "Three Vivid-style blank-label bottles on formulation bench, in-house production cues, no readable text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "bundle-stack",
+      "file": "creative/templates/_assets/generated-bases/bundle-stack.png",
+      "prompt": "Three-product winter immunity bundle stack, blank labels, citrus/ginger/black seed accents, no text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "back-in-stock",
+      "file": "creative/templates/_assets/generated-bases/back-in-stock.png",
+      "prompt": "Single blank-label bottle being placed back on elegant health-store shelf, hand visible, no face/text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "education-desk",
+      "file": "creative/templates/_assets/generated-bases/education-desk.png",
+      "prompt": "Evidence-first wellness desk background, open book, notebook, tea, blank-label supplements, no readable text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    },
+    {
+      "id": "vip-phone",
+      "file": "creative/templates/_assets/generated-bases/vip-phone.png",
+      "prompt": "Premium WhatsApp VIP recruit scene, smartphone with blank messaging-style screen and green bubbles, no readable text.",
+      "constraints": "No embedded text/logos; avoid close-up synthetic faces; suitable for One Life overlay templates."
+    }
+  ]
+}

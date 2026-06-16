@@ -22,6 +22,29 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Fetch GA4 daily feed best effort
+        timeout-minutes: 5
+        env:
+          GA4_SA_JSON: ${{ secrets.GA4_SA_JSON }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+        run: |
+          if [ -z "${GA4_SA_JSON:-}" ] || [ -z "${GA4_PROPERTY_ID:-}" ]; then
+            echo "::warning::GA4_SA_JSON or GA4_PROPERTY_ID secret is not set; skipping GA4 daily feed"
+          else
+            python scripts/fetch_ga4.py || echo "::warning::GA4 daily feed fetch failed"
+          fi
+
+      - name: Fetch Omni daily feed best effort
+        timeout-minutes: 15
+        env:
+          OMNI_REPORT_URL: ${{ secrets.OMNI_REPORT_URL }}
+        run: |
+          if [ -z "${OMNI_REPORT_URL:-}" ]; then
+            echo "::warning::OMNI_REPORT_URL secret is not set; skipping Omni daily feed"
+          else
+            python scripts/fetch_omni.py || echo "::warning::Omni daily feed fetch failed; Mac Mini bridge remains fallback"
+          fi
+
       - name: Fetch live data and update dashboard
         env:
           KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
@@ -42,7 +65,7 @@ jobs:
         run: |
           git config user.name "onelife-dashboard-bot"
           git config user.email "bot@onelife.co.za"
-          git add index.html onelife-dashboard.pdf
+          git add index.html onelife-dashboard.pdf data/omni/daily data/omni/daily_turnover_history.csv data/omni/daily_branch_transactions_history.csv data/ga4/daily data/ga4/ANALYSIS.md data/ga4/CHANNELS.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

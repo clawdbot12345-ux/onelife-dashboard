@@ -1,0 +1,63 @@
+{
+  "report": "ANA_Most Popular Products GP",
+  "sourceCachePath": "tmp/omni-http-fetch/ana-most-popular-products-gp.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:05:47Z",
+  "topKey": "ana_most_popular_products_gp",
+  "rows": 11069,
+  "columns": [
+    "gross_profit",
+    "quantity",
+    "stock_code",
+    "company_branch_code",
+    "line_item_description",
+    "value_excl_after_discount",
+    "supplier_#"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "gross_profit": 66742.93,
+      "quantity": 1014,
+      "stock_code": "658325088694",
+      "company_branch_code": "HO",
+      "line_item_description": "MAG 7/87 60'S",
+      "value_excl_after_discount": 187929.67,
+      "supplier_#": "EVN"
+    },
+    {
+      "gross_profit": 43582.55,
+      "quantity": 798,
+      "stock_code": "POSGELD",
+      "company_branch_code": "HO",
+      "line_item_description": "Posgeld/Postage/Courier",
+      "value_excl_after_discount": 67522.55,
+      "supplier_#": ""
+    },
+    {
+      "gross_profit": 41206.97,
+      "quantity": 331,
+      "stock_code": "6009691544842",
+      "company_branch_code": "HO",
+      "line_item_description": "MAGN GLYC 120C",
+      "value_excl_after_discount": 100499.37,
+      "supplier_#": "WILLOW"
+    },
+    {
+      "gross_profit": 39415.02,
+      "quantity": 315,
+      "stock_code": "733739003720",
+      "company_branch_code": "HO",
+      "line_item_description": "VIT D3 5000IU 120'S",
+      "value_excl_after_discount": 104604,
+      "supplier_#": "DSI"
+    },
+    {
+      "gross_profit": 35280.85,
+      "quantity": 288,
+      "stock_code": "6009888578087",
+      "company_branch_code": "HO",
+      "line_item_description": "OMEGA 3 Z+L   60\"S",
+      "value_excl_after_discount": 118512.85,
+      "supplier_#": "NATRO"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "franchise": "THE HONEST LABEL",
+  "generatedAt": "2026-06-12T21:53:01Z",
+  "direction": "One Life Hybrid / Light Editorial",
+  "identityCard": "creative/franchises/the-honest-label/identity-card.jpg",
+  "episode": {
+    "title": "Collagen — what it can and can't do",
+    "copyPolicy": "Slide copy rendered verbatim from codex-queue/03_2026-06-12_render-the-system.md.",
+    "captionDisclaimer": "Supplements support general health. If symptoms persist, consult your healthcare practitioner.",
+    "slides": [
+      {
+        "index": 1,
+        "copy": "THE HONEST LABEL · Ep 1: Collagen — \"Everyone's taking it. Should you?\"",
+        "file": "creative/franchises/the-honest-label/ep-01-collagen/slides/slide-01.jpg"
+      },
+      {
+        "index": 2,
+        "copy": "What you've heard: \"erases wrinkles, fixes joints, full stop.\"",
+        "file": "creative/franchises/the-honest-label/ep-01-collagen/slides/slide-02.jpg"
+      },
+      {
+        "index": 3,
+        "copy": "What it can support: skin elasticity and normal joint cartilage function get support from consistent daily collagen with vitamin C.*",
+        "file": "creative/franchises/the-honest-label/ep-01-collagen/slides/slide-03.jpg"
+      },
+      {
+        "index": 4,
+        "copy": "What it won't do: replace sleep, sunscreen or strength training — and results take 8–12 weeks, not days.",
+        "file": "creative/franchises/the-honest-label/ep-01-collagen/slides/slide-04.jpg"
+      },
+      {
+        "index": 5,
+        "copy": "Is it for you? Best fit: 35+, consistent for 3 months, paired with vitamin C. Ask the team to match the right type.",
+        "file": "creative/franchises/the-honest-label/ep-01-collagen/slides/slide-05.jpg"
+      },
+      {
+        "index": 6,
+        "copy": "CTA: The honest answer is always free — in store at Centurion, Glen Village & Edenvale · onelife.co.za",
+        "file": "creative/franchises/the-honest-label/ep-01-collagen/slides/slide-06.jpg"
+      }
+    ],
+    "contactSheet": "creative/franchises/the-honest-label/ep-01-collagen/contact-sheet.jpg"
+  }
+}

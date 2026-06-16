@@ -1,5 +1,7 @@
 # Onelife Health — Retail Intelligence Dashboard
 
+> **GROWTH ENGINE ACTIVE (2026-06-12):** This repo also hosts the One Life Growth Engine — an autonomous CMO agent. Master prompt: `GROWTH_ENGINE.md`. State: `state/` · Research: `research/` · Approvals: `approvals/{pending,granted}/` · Founder interview: `interviews/FOUNDER.md` · Subagents: `.claude/agents/`. Any session doing marketing/growth work must read `GROWTH_ENGINE.md` and the state files first, and write state back before finishing.
+
 ## Project Overview
 
 A self-contained retail intelligence dashboard for **Onelife Health**, a South African health retail chain with three physical stores (Centurion, Glen Village, Edenvale) and a Shopify online store.

@@ -1,0 +1,58 @@
+{
+  "templateId": "T04",
+  "template": "Bundle/Stack card",
+  "generatedAt": "2026-06-12T21:30:13Z",
+  "sizes": [
+    "1080x1080",
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T04/sample/t04-bundle-stack-square.jpg",
+    "creative/templates/T04/sample/t04-bundle-stack-story.jpg"
+  ],
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
+  "baseImages": [
+    "creative/templates/_assets/shopify-packshots/immune-plus-cutout.png",
+    "creative/templates/_assets/shopify-packshots/buffered-c-90-cutout.png",
+    "creative/templates/_assets/shopify-packshots/black-seed-oil-cutout.png"
+  ],
+  "copySlots": [
+    "bundleName",
+    "itemNames",
+    "itemPrices",
+    "bundlePrice",
+    "dateRange",
+    "cta",
+    "disclaimer"
+  ],
+  "notes": [
+    "Dark green/copper multi-product stack with real Shopify packshots and per-item/bundle price slots.",
+    "Black Seed Oil source is cropped to the bottle so the separate non-compliant promo placard is not composited.",
+    "Price table, product cluster, CTA, footer, and disclaimer are reflowed to avoid collisions.",
+    "Uses approved locked cinematic botanical background plates rather than flat procedural leaf blobs."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included.",
+  "sourceProducts": [
+    {
+      "id": "immune-plus",
+      "title": "VIVID HEALTH - IMMUNE - Immune Plus 60 Capsules",
+      "price": "R125.00",
+      "source": "https://onelife.co.za/products/vivid-health-immune-immune-plus-60-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5194.png?v=1695296146"
+    },
+    {
+      "id": "buffered-c-90",
+      "title": "VIVID HEALTH - IMMUNE - Buffered C 90 Capsules",
+      "price": "R170.77",
+      "source": "https://onelife.co.za/products/vivid-health-immune-buffered-c-90-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5203.png?v=1695296559"
+    },
+    {
+      "id": "black-seed-oil",
+      "title": "HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels",
+      "price": "R499.00",
+      "source": "https://onelife.co.za/products/holistq-pure-cold-pressed-black-seed-oil-120-softgels",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/71aneynGC2L._AC_SL1500_e71bfdf1-5220-425e-b3be-9c54b2de6187.jpg?v=1755072602"
+    }
+  ]
+}

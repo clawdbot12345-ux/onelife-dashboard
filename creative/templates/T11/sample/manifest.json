@@ -1,0 +1,27 @@
+{
+  "templateId": "T11",
+  "template": "Education quote/myth-bust card",
+  "generatedAt": "2026-06-12T20:33:44Z",
+  "sizes": [
+    "1080x1080",
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T11/sample/t11-education-myth-bust-square.jpg",
+    "creative/templates/T11/sample/t11-education-myth-bust-story.jpg"
+  ],
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/education-desk.png"
+  ],
+  "copySlots": [
+    "myth",
+    "truth",
+    "sourceNote",
+    "cta"
+  ],
+  "notes": [
+    "Text-led education layout for FB/IG posts."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}

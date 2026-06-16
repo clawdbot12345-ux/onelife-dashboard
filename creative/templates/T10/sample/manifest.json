@@ -1,0 +1,34 @@
+{
+  "templateId": "T10",
+  "template": "Back-in-stock alert",
+  "generatedAt": "2026-06-12T20:33:44Z",
+  "sizes": [
+    "1080x1080"
+  ],
+  "sampleFiles": [
+    "creative/templates/T10/sample/t10-back-in-stock-alert.jpg"
+  ],
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
+  "baseImages": [
+    "creative/templates/_assets/shopify-packshots/griffonia-cutout.png"
+  ],
+  "copySlots": [
+    "product",
+    "restockLine",
+    "cta",
+    "disclaimer"
+  ],
+  "notes": [
+    "Product plus 'it's back' frame with real Shopify packshot and blue Vivid Wednesday styling."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included.",
+  "sourceProducts": [
+    {
+      "id": "griffonia",
+      "title": "VIVID HEALTH - STAY VIVID - Griffonia (5-HTP) 60 Capsules",
+      "price": "R275.00",
+      "source": "https://onelife.co.za/products/vivid-health-stay-vivid-griffonia-5-htp-60-capsules",
+      "image": "https://cdn.shopify.com/s/files/1/0682/9136/3126/files/IMG-5222.png?v=1695298472"
+    }
+  ]
+}

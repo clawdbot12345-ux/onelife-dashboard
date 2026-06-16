@@ -1,0 +1,63 @@
+{
+  "report": "Sales Analysis QTY Per Product - OLSHOP",
+  "sourceCachePath": "tmp/omni-http-fetch/sales-analysis-qty-per-product-olshop.json",
+  "sourceCacheModifiedAt": "2026-06-06T11:52:56Z",
+  "topKey": "sales_analysis_qty_per_product___olshop",
+  "rows": 18,
+  "columns": [
+    "period",
+    "supplier_#",
+    "stock_description",
+    "quantity",
+    "value_excl_after_discount",
+    "gross_profit",
+    "selling_price_excl"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "period": "2022-2023 09",
+      "supplier_#": "OLSHOP",
+      "stock_description": "AO POMEGRANATE CONS DELI ADD ON",
+      "quantity": 1,
+      "value_excl_after_discount": 2.61,
+      "gross_profit": 2.39,
+      "selling_price_excl": 2.61
+    },
+    {
+      "period": "2022-2023 09",
+      "supplier_#": "OLSHOP",
+      "stock_description": "MILK ALMOND DELI 50ML",
+      "quantity": 3,
+      "value_excl_after_discount": 7.83,
+      "gross_profit": 4.23,
+      "selling_price_excl": 2.61
+    },
+    {
+      "period": "2022-2023 09",
+      "supplier_#": "OLSHOP",
+      "stock_description": "MILK COCONUT DELI 50ML",
+      "quantity": 1,
+      "value_excl_after_discount": 2.61,
+      "gross_profit": 0.51,
+      "selling_price_excl": 2.61
+    },
+    {
+      "period": "2022-2023 09",
+      "supplier_#": "OLSHOP",
+      "stock_description": "S BERRY BEAUTY SMOOTHIE 500ML",
+      "quantity": 30,
+      "value_excl_after_discount": 1297.79,
+      "gross_profit": 530.69,
+      "selling_price_excl": 45.22
+    },
+    {
+      "period": "2022-2023 09",
+      "supplier_#": "OLSHOP",
+      "stock_description": "S COCO KIDS SMOOTHIE 500ML",
+      "quantity": 5,
+      "value_excl_after_discount": 186.95,
+      "gross_profit": 91.25,
+      "selling_price_excl": 37.39
+    }
+  ]
+}

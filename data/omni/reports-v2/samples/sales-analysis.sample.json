@@ -1,0 +1,45 @@
+{
+  "report": "Sales Analysis",
+  "sourceCachePath": "audit-output/vivid-omni-sales-analysis.json",
+  "sourceCacheModifiedAt": "2026-06-01T11:54:11Z",
+  "topKey": "sales_analysis",
+  "rows": 18,
+  "columns": [
+    "period",
+    "quantity",
+    "value_excl_after_discount",
+    "value_excl_before_discount"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "period": "2024-2025 11",
+      "quantity": 10078,
+      "value_excl_after_discount": 1509428.46,
+      "value_excl_before_discount": 1556041.89
+    },
+    {
+      "period": "2024-2025 12",
+      "quantity": 10592.6,
+      "value_excl_after_discount": 1643618.16,
+      "value_excl_before_discount": 1691727.58
+    },
+    {
+      "period": "2025-2026 01",
+      "quantity": 12649.4,
+      "value_excl_after_discount": 1902630.92,
+      "value_excl_before_discount": 1956844.41
+    },
+    {
+      "period": "2025-2026 02",
+      "quantity": 11358.2,
+      "value_excl_after_discount": 1724560.43,
+      "value_excl_before_discount": 1775358.7
+    },
+    {
+      "period": "2025-2026 03",
+      "quantity": 12668,
+      "value_excl_after_discount": 1977817.48,
+      "value_excl_before_discount": 2036102.05
+    }
+  ]
+}

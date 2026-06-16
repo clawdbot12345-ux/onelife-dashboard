@@ -1,0 +1,55 @@
+{
+  "title": "Winter sleep falling apart?",
+  "franchise": "Symptom Saturday",
+  "generatedAt": "2026-06-12T21:51:52Z",
+  "direction": "One Life Hybrid / Light Editorial",
+  "dimensions": {
+    "width": 1080,
+    "height": 1920
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "Hook",
+      "copy": "Winter sleep falling apart? Asleep at 9, wide awake at 3.",
+      "baseImage": "creative/templates/_assets/generated-bases/sleep-3am.png",
+      "file": "creative/franchises/symptom-saturday/winter-sleep/slides/slide-01.jpg"
+    },
+    {
+      "index": 2,
+      "role": "Pain",
+      "copy": "Short days scramble your rhythm. The 3am wake-up becomes a habit.",
+      "baseImage": "creative/templates/_assets/generated-bases/sleep-window.png",
+      "file": "creative/franchises/symptom-saturday/winter-sleep/slides/slide-02.jpg"
+    },
+    {
+      "index": 3,
+      "role": "Mechanism",
+      "copy": "Evening wind-down basics Magnesium contributes to normal nervous-system function; glycine is the calming amino acid your body uses as evening winds down.",
+      "baseImage": "creative/templates/_assets/generated-bases/sleep-mechanism.png",
+      "file": "creative/franchises/symptom-saturday/winter-sleep/slides/slide-03.jpg"
+    },
+    {
+      "index": 4,
+      "role": "Proof",
+      "copy": "Customer favourites PrimeSelf Magnesium Complex and Good Life Glycine — ask the team which fits your evening routine.",
+      "baseImage": "creative/templates/_assets/generated-bases/sleep-duo.png",
+      "file": "creative/franchises/symptom-saturday/winter-sleep/slides/slide-04.jpg"
+    },
+    {
+      "index": 5,
+      "role": "Participation",
+      "copy": "What's your 3am brain doing?",
+      "baseImage": "creative/templates/_assets/generated-bases/sleep-poll.png",
+      "file": "creative/franchises/symptom-saturday/winter-sleep/slides/slide-05.jpg"
+    },
+    {
+      "index": 6,
+      "role": "CTA",
+      "copy": "In store or online. Centurion, Glen Village & Edenvale — or onelife.co.za, free delivery over R400.",
+      "baseImage": "creative/templates/_assets/generated-bases/store-online.png",
+      "file": "creative/franchises/symptom-saturday/winter-sleep/slides/slide-06.jpg"
+    }
+  ],
+  "captionDisclaimer": "Supplements support general health. If symptoms persist, consult your healthcare practitioner."
+}

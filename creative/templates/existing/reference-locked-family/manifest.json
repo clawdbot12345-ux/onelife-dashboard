@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-06-01",
+  "mode": "reference_locked_redo",
+  "canvas": [
+    1080,
+    1620
+  ],
+  "contact_sheet": "output/onelife-reference-locked-ads-2026-06-01/reference-locked-contact-sheet.png",
+  "outputs": [
+    "output/onelife-reference-locked-ads-2026-06-01/option-01-digestezyme-reference.png",
+    "output/onelife-reference-locked-ads-2026-06-01/option-02-griffonia-reference.png",
+    "output/onelife-reference-locked-ads-2026-06-01/option-03-allergy-control-reference.png",
+    "output/onelife-reference-locked-ads-2026-06-01/option-04-magnesium-reference.png",
+    "output/onelife-reference-locked-ads-2026-06-01/option-05-mobility-duo-reference.png"
+  ],
+  "notes": [
+    "Follows user reference layout literally: right product hero, left text stack, price block, icon row, CTA, footer.",
+    "No scheduling or automation changes made."
+  ]
+}

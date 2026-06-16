@@ -1,0 +1,28 @@
+{
+  "templateId": "T05",
+  "template": "Proof/review",
+  "generatedAt": "2026-06-12T20:33:44Z",
+  "sizes": [
+    "1080x1080",
+    "1080x1920"
+  ],
+  "sampleFiles": [
+    "creative/templates/T05/sample/t05-proof-review-square.jpg",
+    "creative/templates/T05/sample/t05-proof-review-story.jpg"
+  ],
+  "baseLayerPolicy": "Cinematic raster background with deterministic brand/text overlays; public Shopify packshots are composited after local matte extraction and labels are not redrawn.",
+  "baseImages": [
+    "creative/templates/_assets/generated-bases/store-advisor.png"
+  ],
+  "copySlots": [
+    "photo",
+    "quote",
+    "stars",
+    "store",
+    "cta"
+  ],
+  "notes": [
+    "Sample uses a visible real-photo slot. Do not publish with generated people presented as staff."
+  ],
+  "secretScan": "No credentials, tokens, customer data, or account access material included."
+}

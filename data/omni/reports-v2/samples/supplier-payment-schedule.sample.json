@@ -1,0 +1,75 @@
+{
+  "report": "Supplier Payment Schedule",
+  "sourceCachePath": "tmp/omni-http-fetch/supplier-payment-schedule.json",
+  "sourceCacheModifiedAt": "2026-06-06T13:07:26Z",
+  "topKey": "supplier_payment_schedule",
+  "rows": 114,
+  "columns": [
+    "supplier_name",
+    "outstanding_incl",
+    "current",
+    "30_days",
+    "60_days",
+    "90_days",
+    "120_days_and_over",
+    "status",
+    "settlement_discount_allowed"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "supplier_name": "(IMPERIAL) SOLGAR - EDEN PHARMA SA PRY LTD -  2126191",
+      "outstanding_incl": 43937.35,
+      "current": 0,
+      "30_days": 43937.35,
+      "60_days": 0,
+      "90_days": 0,
+      "120_days_and_over": 0,
+      "status": "",
+      "settlement_discount_allowed": 0
+    },
+    {
+      "supplier_name": "(ZENTIUM) EVA HOLDINGS (PTY) LTD",
+      "outstanding_incl": 6900,
+      "current": 0,
+      "30_days": 6900,
+      "60_days": 0,
+      "90_days": 0,
+      "120_days_and_over": 0,
+      "status": "",
+      "settlement_discount_allowed": 0
+    },
+    {
+      "supplier_name": "ADORE NATURE INTERNATIONAL (PTY) LTD",
+      "outstanding_incl": 0,
+      "current": 0,
+      "30_days": 0,
+      "60_days": 0,
+      "90_days": 0,
+      "120_days_and_over": 0,
+      "status": "",
+      "settlement_discount_allowed": 0
+    },
+    {
+      "supplier_name": "AETHER HERBALIST & APOTHECARY",
+      "outstanding_incl": -108.44,
+      "current": 0,
+      "30_days": 0,
+      "60_days": 0,
+      "90_days": 0,
+      "120_days_and_over": -108.44,
+      "status": "",
+      "settlement_discount_allowed": 0
+    },
+    {
+      "supplier_name": "AIM PRODUCTS (9846825)",
+      "outstanding_incl": 0,
+      "current": 0,
+      "30_days": 0,
+      "60_days": 0,
+      "90_days": 0,
+      "120_days_and_over": 0,
+      "status": "",
+      "settlement_discount_allowed": 0
+    }
+  ]
+}

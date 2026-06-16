@@ -1,0 +1,1026 @@
+{
+  "generatedAt": "2026-06-12T18:26:36Z",
+  "task": "Vivid Health revenue and GP extract",
+  "source": {
+    "primaryReport": "ANA_Most Popular Products GP",
+    "primaryTopKey": "ana_most_popular_products_gp",
+    "primarySourceCachePath": "tmp/omni-http-fetch/ana-most-popular-products-gp.json",
+    "primarySourceCacheModifiedAt": "2026-06-09T16:05:47Z",
+    "primaryRows": 11069,
+    "denominatorReport": "branch-sales-summary.json",
+    "denominatorSourceReport": "ANA_Sales Analysis",
+    "denominatorPath": "data/omni/reports-v2/branch-sales-summary.json",
+    "denominatorGeneratedAt": "2026-06-12T18:13:08Z",
+    "denominatorRows": 123869,
+    "denominatorValueExclAfterDiscount": 23835645.11,
+    "supportingReports": [
+      {
+        "report": "ANA_Sales Analysis",
+        "topKey": "ana_sales_analysis",
+        "sourceCachePath": "tmp/omni-http-fetch/ana-sales-analysis.json",
+        "sourceCacheModifiedAt": "2026-06-09T16:15:44Z",
+        "rows": 123869,
+        "purpose": "Verified supplier-code rows and branch denominator provenance; not used for GP totals."
+      },
+      {
+        "report": "Stock Price List with Supplier Price Comparison",
+        "sourceCachePath": "tmp/omni-http-fetch/stock-price-list-with-supplier-price-comparison.json",
+        "purpose": "Verified supplier code label for IL."
+      },
+      {
+        "report": "Shopify SEO audit product_findings",
+        "sourcePath": "reports/seo-audit-2026-06-01.json",
+        "purpose": "Cross-checked Vivid Health product titles against Omni IL descriptions."
+      }
+    ]
+  },
+  "period": {
+    "label": "saved default period",
+    "determinable": false,
+    "note": "ANA_Most Popular Products GP has no document_date or period field. The catalog marks these report extracts as saved default-period Omni reports, so this extract should not be interpreted as a calendar month without Omni report settings."
+  },
+  "vividIdentifier": {
+    "supplierCodeUsed": "IL",
+    "supplierName": "Interlife Distributors (INTERLIFE WHOLESALERS (PTY) LTD)",
+    "method": "No literal VIVID rows appeared in Omni GP or sales descriptions. Supplier code IL was used because the stock price list labels IL as Interlife Distributors and Shopify Vivid Health product titles map to the same Omni IL product descriptions/SKUs.",
+    "literalVividMatches": {
+      "anaMostPopularProductsGpRows": 0,
+      "anaSalesAnalysisRows": 0
+    },
+    "supplierCodeRowCounts": {
+      "anaMostPopularProductsGpRows": 188,
+      "anaSalesAnalysisRows": 4337,
+      "shopifyVividProductFindingsRows": 55
+    },
+    "verificationExamples": [
+      {
+        "shopifyTitle": "VIVID HEALTH - GUT HEALTH - Colon Flush 120 Capsules",
+        "stockCode": "6009689720135",
+        "omniDescription": "COLON FLUSH 120'S",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - IMMUNE - Buffered C 300 Capsules",
+        "stockCode": "600000082009",
+        "omniDescription": "BUFFERED C 300'S",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - VIVID BODY - Bone Supreme 120 Capsules",
+        "stockCode": "6000000822354",
+        "omniDescription": "BONE SUPREME 120'S",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - VIVID BODY - Flexijoint Advanced 120 Capsules",
+        "stockCode": "6000000719456",
+        "omniDescription": "FLEXIJOINT ADVANCED 120'S",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - VIVID BODY - MSM 500g",
+        "stockCode": "6000000155469",
+        "omniDescription": "MSM 500G",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - PHYSICAL HEALTH - L-Glutamine 500g",
+        "stockCode": "748927022803",
+        "omniDescription": "GLUTAMINE POWDER 500G",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - STAY VIVID - D-Ribose 150g",
+        "stockCode": "6000000820381",
+        "omniDescription": "D RIBOSE 150G",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - WOMAN - Maca 60 Capsules",
+        "stockCode": "6000000820046",
+        "omniDescription": "MACA 60'S",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - IMMUNE - Quercetin Complex 60S",
+        "stockCode": "6009689721224",
+        "omniDescription": "QUERCETIN COMPLEX 60S",
+        "supplierCode": "IL"
+      },
+      {
+        "shopifyTitle": "VIVID HEALTH - VIVID NOURISHMENT - Spirulina 250g",
+        "stockCode": "6000000820398",
+        "omniDescription": "SPIRULINA 250G",
+        "supplierCode": "IL"
+      }
+    ]
+  },
+  "overall": {
+    "rows": 188,
+    "skuCount": 70,
+    "descriptionCount": 75,
+    "quantity": 4642,
+    "valueExclAfterDiscount": 829933.35,
+    "grossProfit": 298102.92,
+    "gpPct": 35.92,
+    "salesSharePctVsBranchSummary": 3.48,
+    "branchSummaryTotalValueExclAfterDiscount": 23835645.11
+  },
+  "byBranch": [
+    {
+      "branchCode": "HO",
+      "branchName": "HO / Centurion",
+      "rows": 73,
+      "skuCount": 70,
+      "descriptionCount": 73,
+      "quantity": 3755,
+      "valueExclAfterDiscount": 679659.84,
+      "grossProfit": 243069.34,
+      "gpPct": 35.76,
+      "branchTotalValueExclAfterDiscount": 16182957.88,
+      "vividSharePctOfBranchSales": 4.2
+    },
+    {
+      "branchCode": "EDN",
+      "branchName": "Edenvale",
+      "rows": 62,
+      "skuCount": 59,
+      "descriptionCount": 62,
+      "quantity": 449,
+      "valueExclAfterDiscount": 79220.79,
+      "grossProfit": 29180.14,
+      "gpPct": 36.83,
+      "branchTotalValueExclAfterDiscount": 4143060.09,
+      "vividSharePctOfBranchSales": 1.91
+    },
+    {
+      "branchCode": "GVS",
+      "branchName": "Glen Village",
+      "rows": 53,
+      "skuCount": 52,
+      "descriptionCount": 53,
+      "quantity": 438,
+      "valueExclAfterDiscount": 71052.72,
+      "grossProfit": 25853.44,
+      "gpPct": 36.39,
+      "branchTotalValueExclAfterDiscount": 3509627.14,
+      "vividSharePctOfBranchSales": 2.02
+    }
+  ],
+  "top20ByRevenue": [
+    {
+      "rank": 1,
+      "stockCode": "6000000822354",
+      "description": "BONE SUPREME 120'S",
+      "descriptionVariants": [
+        "BONE SUPREME 120'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 203,
+      "valueExclAfterDiscount": 63294.37,
+      "grossProfit": 21829.37,
+      "gpPct": 34.49,
+      "vividRevenueSharePct": 7.63
+    },
+    {
+      "rank": 2,
+      "stockCode": "6000000719456",
+      "description": "FLEXIJOINT ADVANCED 120'S",
+      "descriptionVariants": [
+        "FLEXIJOINT ADVANCED 120'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 225,
+      "valueExclAfterDiscount": 56767.74,
+      "grossProfit": 20535.74,
+      "gpPct": 36.18,
+      "vividRevenueSharePct": 6.84
+    },
+    {
+      "rank": 3,
+      "stockCode": "748927022803",
+      "description": "GLUTAMINE POWDER 500G",
+      "descriptionVariants": [
+        "GLUTAMINE POWDER 500G"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 189,
+      "valueExclAfterDiscount": 50189.27,
+      "grossProfit": 15013.27,
+      "gpPct": 29.91,
+      "vividRevenueSharePct": 6.05
+    },
+    {
+      "rank": 4,
+      "stockCode": "6000000820374",
+      "description": "LIVER& KIDNEY FORMULA 90",
+      "descriptionVariants": [
+        "LIVER& KIDNEY FORMULA 90"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 219,
+      "valueExclAfterDiscount": 39986.38,
+      "grossProfit": 15126.38,
+      "gpPct": 37.83,
+      "vividRevenueSharePct": 4.82
+    },
+    {
+      "rank": 5,
+      "stockCode": "600000003399",
+      "description": "PRIME 1 900ML",
+      "descriptionVariants": [
+        "PRIME 1 900ML"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 113,
+      "valueExclAfterDiscount": 36529.26,
+      "grossProfit": 10829.26,
+      "gpPct": 29.65,
+      "vividRevenueSharePct": 4.4
+    },
+    {
+      "rank": 6,
+      "stockCode": "6000000791414",
+      "description": "PROSTA CARE 60'S",
+      "descriptionVariants": [
+        "PROSTA CARE 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 151,
+      "valueExclAfterDiscount": 33380.55,
+      "grossProfit": 13100.55,
+      "gpPct": 39.25,
+      "vividRevenueSharePct": 4.02
+    },
+    {
+      "rank": 7,
+      "stockCode": "6000000837402",
+      "description": "COLEST CONTROL 60",
+      "descriptionVariants": [
+        "COLEST CONTROL 60"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 170,
+      "valueExclAfterDiscount": 33006.39,
+      "grossProfit": 12285.39,
+      "gpPct": 37.22,
+      "vividRevenueSharePct": 3.98
+    },
+    {
+      "rank": 8,
+      "stockCode": "6009689721224",
+      "description": "QUERCETIN COMPLEX 60S",
+      "descriptionVariants": [
+        "QUERCETIN COMPLEX 60S"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 120,
+      "valueExclAfterDiscount": 28839.71,
+      "grossProfit": 10079.71,
+      "gpPct": 34.95,
+      "vividRevenueSharePct": 3.47
+    },
+    {
+      "rank": 9,
+      "stockCode": "6000000004675",
+      "description": "MULLEIN 60'S",
+      "descriptionVariants": [
+        "MULLEIN 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 214,
+      "valueExclAfterDiscount": 21741.59,
+      "grossProfit": 7377.59,
+      "gpPct": 33.93,
+      "vividRevenueSharePct": 2.62
+    },
+    {
+      "rank": 10,
+      "stockCode": "6000000155469",
+      "description": "MSM 500G",
+      "descriptionVariants": [
+        "MSM 500G"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 69,
+      "valueExclAfterDiscount": 18733.62,
+      "grossProfit": 6723.62,
+      "gpPct": 35.89,
+      "vividRevenueSharePct": 2.26
+    },
+    {
+      "rank": 11,
+      "stockCode": "6000000800154",
+      "description": "BONE SUPREME 500'S",
+      "descriptionVariants": [
+        "BONE SUPREME 500'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 1,
+      "branches": [
+        "HO"
+      ],
+      "quantity": 22,
+      "valueExclAfterDiscount": 18505.62,
+      "grossProfit": 4765.18,
+      "gpPct": 25.75,
+      "vividRevenueSharePct": 2.23
+    },
+    {
+      "rank": 12,
+      "stockCode": "600000082009",
+      "description": "BUFFERED C 300'S",
+      "descriptionVariants": [
+        "BUFFERED C 300'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 1,
+      "branches": [
+        "HO"
+      ],
+      "quantity": 48,
+      "valueExclAfterDiscount": 17993.14,
+      "grossProfit": 7498.14,
+      "gpPct": 41.67,
+      "vividRevenueSharePct": 2.17
+    },
+    {
+      "rank": 13,
+      "stockCode": "6009689720135",
+      "description": "COLON FLUSH 120'S",
+      "descriptionVariants": [
+        "COLON FLUSH 120'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 108,
+      "valueExclAfterDiscount": 17858.08,
+      "grossProfit": 6097.78,
+      "gpPct": 34.15,
+      "vividRevenueSharePct": 2.15
+    },
+    {
+      "rank": 14,
+      "stockCode": "6000000632540",
+      "description": "ADV BUFFERD C 90'S",
+      "descriptionVariants": [
+        "ADV BUFFERD C 90'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 110,
+      "valueExclAfterDiscount": 16869.31,
+      "grossProfit": 6278.65,
+      "gpPct": 37.22,
+      "vividRevenueSharePct": 2.03
+    },
+    {
+      "rank": 15,
+      "stockCode": "6000000033699",
+      "description": "CAYENNE 300'S",
+      "descriptionVariants": [
+        "CAYENNE 300'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 60,
+      "valueExclAfterDiscount": 16159.18,
+      "grossProfit": 6259.18,
+      "gpPct": 38.73,
+      "vividRevenueSharePct": 1.95
+    },
+    {
+      "rank": 16,
+      "stockCode": "6000000698836",
+      "description": "COENZYME Q10 60'S",
+      "descriptionVariants": [
+        "COENZYME Q10 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 50,
+      "valueExclAfterDiscount": 15041.29,
+      "grossProfit": 5596.29,
+      "gpPct": 37.21,
+      "vividRevenueSharePct": 1.81
+    },
+    {
+      "rank": 17,
+      "stockCode": "6000000034818",
+      "description": "ADV BUFFERD C 300'S",
+      "descriptionVariants": [
+        "ADV BUFFERD C 300'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 33,
+      "valueExclAfterDiscount": 13651.03,
+      "grossProfit": 4906.03,
+      "gpPct": 35.94,
+      "vividRevenueSharePct": 1.64
+    },
+    {
+      "rank": 18,
+      "stockCode": "6000000034573",
+      "description": "COLON FLUSH POWDER 135 G",
+      "descriptionVariants": [
+        "COLON FLUSH POWDER 135 G"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 124,
+      "valueExclAfterDiscount": 12881.83,
+      "grossProfit": 4965.83,
+      "gpPct": 38.55,
+      "vividRevenueSharePct": 1.55
+    },
+    {
+      "rank": 19,
+      "stockCode": "6000000675028",
+      "description": "TRANQUIL 60'S",
+      "descriptionVariants": [
+        "TRANQUIL 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 124,
+      "valueExclAfterDiscount": 12551.34,
+      "grossProfit": 4867.34,
+      "gpPct": 38.78,
+      "vividRevenueSharePct": 1.51
+    },
+    {
+      "rank": 20,
+      "stockCode": "600000018976",
+      "description": "BUFFERED C 500G",
+      "descriptionVariants": [
+        "BUFFERED C 500G"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 37,
+      "valueExclAfterDiscount": 12408.25,
+      "grossProfit": 4322.25,
+      "gpPct": 34.83,
+      "vividRevenueSharePct": 1.5
+    }
+  ],
+  "top20ByGrossProfit": [
+    {
+      "rank": 1,
+      "stockCode": "6000000822354",
+      "description": "BONE SUPREME 120'S",
+      "descriptionVariants": [
+        "BONE SUPREME 120'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 203,
+      "valueExclAfterDiscount": 63294.37,
+      "grossProfit": 21829.37,
+      "gpPct": 34.49,
+      "vividRevenueSharePct": 7.63
+    },
+    {
+      "rank": 2,
+      "stockCode": "6000000719456",
+      "description": "FLEXIJOINT ADVANCED 120'S",
+      "descriptionVariants": [
+        "FLEXIJOINT ADVANCED 120'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 225,
+      "valueExclAfterDiscount": 56767.74,
+      "grossProfit": 20535.74,
+      "gpPct": 36.18,
+      "vividRevenueSharePct": 6.84
+    },
+    {
+      "rank": 3,
+      "stockCode": "6000000820374",
+      "description": "LIVER& KIDNEY FORMULA 90",
+      "descriptionVariants": [
+        "LIVER& KIDNEY FORMULA 90"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 219,
+      "valueExclAfterDiscount": 39986.38,
+      "grossProfit": 15126.38,
+      "gpPct": 37.83,
+      "vividRevenueSharePct": 4.82
+    },
+    {
+      "rank": 4,
+      "stockCode": "748927022803",
+      "description": "GLUTAMINE POWDER 500G",
+      "descriptionVariants": [
+        "GLUTAMINE POWDER 500G"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 189,
+      "valueExclAfterDiscount": 50189.27,
+      "grossProfit": 15013.27,
+      "gpPct": 29.91,
+      "vividRevenueSharePct": 6.05
+    },
+    {
+      "rank": 5,
+      "stockCode": "6000000791414",
+      "description": "PROSTA CARE 60'S",
+      "descriptionVariants": [
+        "PROSTA CARE 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 151,
+      "valueExclAfterDiscount": 33380.55,
+      "grossProfit": 13100.55,
+      "gpPct": 39.25,
+      "vividRevenueSharePct": 4.02
+    },
+    {
+      "rank": 6,
+      "stockCode": "6000000837402",
+      "description": "COLEST CONTROL 60",
+      "descriptionVariants": [
+        "COLEST CONTROL 60"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 170,
+      "valueExclAfterDiscount": 33006.39,
+      "grossProfit": 12285.39,
+      "gpPct": 37.22,
+      "vividRevenueSharePct": 3.98
+    },
+    {
+      "rank": 7,
+      "stockCode": "600000003399",
+      "description": "PRIME 1 900ML",
+      "descriptionVariants": [
+        "PRIME 1 900ML"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 113,
+      "valueExclAfterDiscount": 36529.26,
+      "grossProfit": 10829.26,
+      "gpPct": 29.65,
+      "vividRevenueSharePct": 4.4
+    },
+    {
+      "rank": 8,
+      "stockCode": "6009689721224",
+      "description": "QUERCETIN COMPLEX 60S",
+      "descriptionVariants": [
+        "QUERCETIN COMPLEX 60S"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 120,
+      "valueExclAfterDiscount": 28839.71,
+      "grossProfit": 10079.71,
+      "gpPct": 34.95,
+      "vividRevenueSharePct": 3.47
+    },
+    {
+      "rank": 9,
+      "stockCode": "600000082009",
+      "description": "BUFFERED C 300'S",
+      "descriptionVariants": [
+        "BUFFERED C 300'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 1,
+      "branches": [
+        "HO"
+      ],
+      "quantity": 48,
+      "valueExclAfterDiscount": 17993.14,
+      "grossProfit": 7498.14,
+      "gpPct": 41.67,
+      "vividRevenueSharePct": 2.17
+    },
+    {
+      "rank": 10,
+      "stockCode": "6000000004675",
+      "description": "MULLEIN 60'S",
+      "descriptionVariants": [
+        "MULLEIN 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 214,
+      "valueExclAfterDiscount": 21741.59,
+      "grossProfit": 7377.59,
+      "gpPct": 33.93,
+      "vividRevenueSharePct": 2.62
+    },
+    {
+      "rank": 11,
+      "stockCode": "6000000155469",
+      "description": "MSM 500G",
+      "descriptionVariants": [
+        "MSM 500G"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 69,
+      "valueExclAfterDiscount": 18733.62,
+      "grossProfit": 6723.62,
+      "gpPct": 35.89,
+      "vividRevenueSharePct": 2.26
+    },
+    {
+      "rank": 12,
+      "stockCode": "6000000632540",
+      "description": "ADV BUFFERD C 90'S",
+      "descriptionVariants": [
+        "ADV BUFFERD C 90'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 110,
+      "valueExclAfterDiscount": 16869.31,
+      "grossProfit": 6278.65,
+      "gpPct": 37.22,
+      "vividRevenueSharePct": 2.03
+    },
+    {
+      "rank": 13,
+      "stockCode": "6000000033699",
+      "description": "CAYENNE 300'S",
+      "descriptionVariants": [
+        "CAYENNE 300'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 60,
+      "valueExclAfterDiscount": 16159.18,
+      "grossProfit": 6259.18,
+      "gpPct": 38.73,
+      "vividRevenueSharePct": 1.95
+    },
+    {
+      "rank": 14,
+      "stockCode": "6009689720135",
+      "description": "COLON FLUSH 120'S",
+      "descriptionVariants": [
+        "COLON FLUSH 120'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 108,
+      "valueExclAfterDiscount": 17858.08,
+      "grossProfit": 6097.78,
+      "gpPct": 34.15,
+      "vividRevenueSharePct": 2.15
+    },
+    {
+      "rank": 15,
+      "stockCode": "6000000031169",
+      "description": "MSM 300'S",
+      "descriptionVariants": [
+        "MSM 300'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 44,
+      "valueExclAfterDiscount": 12370.76,
+      "grossProfit": 5670.76,
+      "gpPct": 45.84,
+      "vividRevenueSharePct": 1.49
+    },
+    {
+      "rank": 16,
+      "stockCode": "6000000698836",
+      "description": "COENZYME Q10 60'S",
+      "descriptionVariants": [
+        "COENZYME Q10 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 50,
+      "valueExclAfterDiscount": 15041.29,
+      "grossProfit": 5596.29,
+      "gpPct": 37.21,
+      "vividRevenueSharePct": 1.81
+    },
+    {
+      "rank": 17,
+      "stockCode": "6000000820046",
+      "description": "MACA 60'S",
+      "descriptionVariants": [
+        "MACA 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 69,
+      "valueExclAfterDiscount": 11385.26,
+      "grossProfit": 5075.26,
+      "gpPct": 44.58,
+      "vividRevenueSharePct": 1.37
+    },
+    {
+      "rank": 18,
+      "stockCode": "6000000034573",
+      "description": "COLON FLUSH POWDER 135 G",
+      "descriptionVariants": [
+        "COLON FLUSH POWDER 135 G"
+      ],
+      "supplierCode": "IL",
+      "rows": 3,
+      "branches": [
+        "HO",
+        "EDN",
+        "GVS"
+      ],
+      "quantity": 124,
+      "valueExclAfterDiscount": 12881.83,
+      "grossProfit": 4965.83,
+      "gpPct": 38.55,
+      "vividRevenueSharePct": 1.55
+    },
+    {
+      "rank": 19,
+      "stockCode": "6000000034818",
+      "description": "ADV BUFFERD C 300'S",
+      "descriptionVariants": [
+        "ADV BUFFERD C 300'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 33,
+      "valueExclAfterDiscount": 13651.03,
+      "grossProfit": 4906.03,
+      "gpPct": 35.94,
+      "vividRevenueSharePct": 1.64
+    },
+    {
+      "rank": 20,
+      "stockCode": "6000000675028",
+      "description": "TRANQUIL 60'S",
+      "descriptionVariants": [
+        "TRANQUIL 60'S"
+      ],
+      "supplierCode": "IL",
+      "rows": 2,
+      "branches": [
+        "HO",
+        "EDN"
+      ],
+      "quantity": 124,
+      "valueExclAfterDiscount": 12551.34,
+      "grossProfit": 4867.34,
+      "gpPct": 38.78,
+      "vividRevenueSharePct": 1.51
+    }
+  ],
+  "reconciliation": {
+    "note": "Branch share denominators use data/omni/reports-v2/branch-sales-summary.json as requested. ANA_Most Popular Products GP reconciles exactly to EDN/GVS branch totals but is lower than ANA_Sales Analysis for HO; the share calculation therefore keeps the requested branch-sales-summary denominator.",
+    "anaMostPopularProductsGpTotals": {
+      "rows": 11069,
+      "valueExclAfterDiscount": 23441260.76,
+      "grossProfit": 7950700.19,
+      "byBranch": [
+        {
+          "branchCode": "HO",
+          "branchName": "HO / Centurion",
+          "rows": 5846,
+          "quantity": 103379.05,
+          "valueExclAfterDiscount": 15788573.53,
+          "grossProfit": 5337933.52,
+          "gpPct": 33.81
+        },
+        {
+          "branchCode": "EDN",
+          "branchName": "Edenvale",
+          "rows": 2905,
+          "quantity": 21439,
+          "valueExclAfterDiscount": 4143060.09,
+          "grossProfit": 1427480.18,
+          "gpPct": 34.45
+        },
+        {
+          "branchCode": "GVS",
+          "branchName": "Glen Village",
+          "rows": 2318,
+          "quantity": 22148,
+          "valueExclAfterDiscount": 3509627.14,
+          "grossProfit": 1185286.49,
+          "gpPct": 33.77
+        }
+      ]
+    },
+    "branchSalesSummaryTotals": [
+      {
+        "branchCode": "HO",
+        "branchName": "HO / Centurion",
+        "rows": 86212,
+        "quantity": 106245.05,
+        "valueExclAfterDiscount": 16182957.88,
+        "sharePct": 67.89
+      },
+      {
+        "branchCode": "EDN",
+        "branchName": "Edenvale",
+        "rows": 18914,
+        "quantity": 21439,
+        "valueExclAfterDiscount": 4143060.09,
+        "sharePct": 17.38
+      },
+      {
+        "branchCode": "GVS",
+        "branchName": "Glen Village",
+        "rows": 18743,
+        "quantity": 22148,
+        "valueExclAfterDiscount": 3509627.14,
+        "sharePct": 14.72
+      }
+    ]
+  },
+  "redaction": {
+    "customerFieldsIncluded": false,
+    "note": "Output is product/branch aggregate only. Transaction references and customer fields are omitted."
+  }
+}

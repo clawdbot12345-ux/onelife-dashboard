@@ -1,0 +1,39 @@
+{
+  "report": "Daily Turnover One Life",
+  "sourceCachePath": "tmp/omni-http-fetch/daily-turnover-cen.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:14:45Z",
+  "topKey": "daily_turnover_one_life",
+  "rows": 8,
+  "columns": [
+    "document_date",
+    "value_excl_after_discount",
+    "gross_profit"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "document_date": "2026-06-01",
+      "value_excl_after_discount": 64708.89,
+      "gross_profit": 22547.65
+    },
+    {
+      "document_date": "2026-06-02",
+      "value_excl_after_discount": 46449.22,
+      "gross_profit": 15695.16
+    },
+    {
+      "document_date": "2026-06-03",
+      "value_excl_after_discount": 57733.27,
+      "gross_profit": 18325.06
+    },
+    {
+      "document_date": "2026-06-04",
+      "value_excl_after_discount": 53710.97,
+      "gross_profit": 18090.35
+    },
+    {
+      "document_date": "2026-06-05",
+      "value_excl_after_discount": 49796.41,
+      "gross_profit": 17366.18
+    }
+  ]
+}

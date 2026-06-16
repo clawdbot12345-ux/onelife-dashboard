@@ -1,0 +1,75 @@
+{
+  "report": "ANA_Sales Analysis",
+  "sourceCachePath": "tmp/omni-http-fetch/ana-sales-analysis.json",
+  "sourceCacheModifiedAt": "2026-06-09T16:15:44Z",
+  "topKey": "ana_sales_analysis",
+  "rows": 123869,
+  "columns": [
+    "reference",
+    "stock_code",
+    "stock_description",
+    "quantity",
+    "value_excl_after_discount",
+    "value_excl_before_discount",
+    "company_branch_code",
+    "warehouse_code",
+    "supplier_#"
+  ],
+  "sampleRowsRedacted": [
+    {
+      "reference": "REDACTED",
+      "stock_code": "6000000820046",
+      "stock_description": "MACA 60'S",
+      "quantity": -1,
+      "value_excl_after_discount": -171.1,
+      "value_excl_before_discount": -171.1,
+      "company_branch_code": "HO",
+      "warehouse_code": "1",
+      "supplier_#": "IL"
+    },
+    {
+      "reference": "REDACTED",
+      "stock_code": "6009609008619",
+      "stock_description": "L REUTERII 60C",
+      "quantity": -1,
+      "value_excl_after_discount": -114.68,
+      "value_excl_before_discount": -114.68,
+      "company_branch_code": "HO",
+      "warehouse_code": "1",
+      "supplier_#": "NUG"
+    },
+    {
+      "reference": "REDACTED",
+      "stock_code": "6009689720135",
+      "stock_description": "COLON FLUSH 120'S",
+      "quantity": -1,
+      "value_excl_after_discount": -167.56,
+      "value_excl_before_discount": -167.56,
+      "company_branch_code": "HO",
+      "warehouse_code": "1",
+      "supplier_#": "IL"
+    },
+    {
+      "reference": "REDACTED",
+      "stock_code": "6009880596096",
+      "stock_description": "LIONS MANE 90CAPS",
+      "quantity": -1,
+      "value_excl_after_discount": -260.11,
+      "value_excl_before_discount": -260.11,
+      "company_branch_code": "HO",
+      "warehouse_code": "1",
+      "supplier_#": "SFS"
+    },
+    {
+      "reference": "REDACTED",
+      "stock_code": "POSGELD",
+      "stock_description": "Posgeld/Postage/Courier",
+      "quantity": -1,
+      "value_excl_after_discount": -65.22,
+      "value_excl_before_discount": -65.22,
+      "company_branch_code": "HO",
+      "warehouse_code": "1",
+      "supplier_#": ""
+    }
+  ]
+}
