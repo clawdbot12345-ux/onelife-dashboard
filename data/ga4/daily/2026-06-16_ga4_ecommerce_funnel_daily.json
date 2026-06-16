@@ -1,0 +1,904 @@
+{
+  "ga4_ecommerce_funnel_daily": [
+    {
+      "add_to_carts": 60,
+      "checkouts": 4,
+      "date": "2026-03-18",
+      "ecommerce_purchases": 3,
+      "items_viewed": 835,
+      "purchase_revenue": 3142.01,
+      "session_conversion_rate": 0.007924,
+      "sessions": 1262
+    },
+    {
+      "add_to_carts": 34,
+      "checkouts": 7,
+      "date": "2026-03-19",
+      "ecommerce_purchases": 0,
+      "items_viewed": 911,
+      "purchase_revenue": 0.0,
+      "session_conversion_rate": 0.002741,
+      "sessions": 1824
+    },
+    {
+      "add_to_carts": 32,
+      "checkouts": 3,
+      "date": "2026-03-20",
+      "ecommerce_purchases": 3,
+      "items_viewed": 752,
+      "purchase_revenue": 2121.41001,
+      "session_conversion_rate": 0.003177,
+      "sessions": 1574
+    },
+    {
+      "add_to_carts": 30,
+      "checkouts": 4,
+      "date": "2026-03-21",
+      "ecommerce_purchases": 2,
+      "items_viewed": 629,
+      "purchase_revenue": 752.979998,
+      "session_conversion_rate": 0.003679,
+      "sessions": 1359
+    },
+    {
+      "add_to_carts": 49,
+      "checkouts": 10,
+      "date": "2026-03-22",
+      "ecommerce_purchases": 5,
+      "items_viewed": 779,
+      "purchase_revenue": 3298.700013,
+      "session_conversion_rate": 0.003686,
+      "sessions": 1628
+    },
+    {
+      "add_to_carts": 48,
+      "checkouts": 9,
+      "date": "2026-03-23",
+      "ecommerce_purchases": 4,
+      "items_viewed": 928,
+      "purchase_revenue": 2277.970005,
+      "session_conversion_rate": 0.005996,
+      "sessions": 1501
+    },
+    {
+      "add_to_carts": 36,
+      "checkouts": 10,
+      "date": "2026-03-24",
+      "ecommerce_purchases": 2,
+      "items_viewed": 999,
+      "purchase_revenue": 2519.920001,
+      "session_conversion_rate": 0.006552,
+      "sessions": 1221
+    },
+    {
+      "add_to_carts": 13,
+      "checkouts": 7,
+      "date": "2026-03-25",
+      "ecommerce_purchases": 4,
+      "items_viewed": 923,
+      "purchase_revenue": 2084.110014,
+      "session_conversion_rate": 0.006803,
+      "sessions": 1176
+    },
+    {
+      "add_to_carts": 55,
+      "checkouts": 10,
+      "date": "2026-03-26",
+      "ecommerce_purchases": 6,
+      "items_viewed": 1009,
+      "purchase_revenue": 5459.550018,
+      "session_conversion_rate": 0.011755,
+      "sessions": 1191
+    },
+    {
+      "add_to_carts": 32,
+      "checkouts": 8,
+      "date": "2026-03-27",
+      "ecommerce_purchases": 4,
+      "items_viewed": 769,
+      "purchase_revenue": 2675.770003,
+      "session_conversion_rate": 0.004618,
+      "sessions": 1949
+    },
+    {
+      "add_to_carts": 14,
+      "checkouts": 5,
+      "date": "2026-03-28",
+      "ecommerce_purchases": 2,
+      "items_viewed": 850,
+      "purchase_revenue": 986.879997,
+      "session_conversion_rate": 0.002744,
+      "sessions": 1822
+    },
+    {
+      "add_to_carts": 53,
+      "checkouts": 5,
+      "date": "2026-03-29",
+      "ecommerce_purchases": 8,
+      "items_viewed": 1016,
+      "purchase_revenue": 4934.880005,
+      "session_conversion_rate": 0.004781,
+      "sessions": 3556
+    },
+    {
+      "add_to_carts": 41,
+      "checkouts": 8,
+      "date": "2026-03-30",
+      "ecommerce_purchases": 8,
+      "items_viewed": 886,
+      "purchase_revenue": 5213.310004,
+      "session_conversion_rate": 0.005261,
+      "sessions": 2091
+    },
+    {
+      "add_to_carts": 35,
+      "checkouts": 5,
+      "date": "2026-03-31",
+      "ecommerce_purchases": 1,
+      "items_viewed": 911,
+      "purchase_revenue": 459.000001,
+      "session_conversion_rate": 0.001773,
+      "sessions": 1128
+    },
+    {
+      "add_to_carts": 58,
+      "checkouts": 8,
+      "date": "2026-04-01",
+      "ecommerce_purchases": 6,
+      "items_viewed": 875,
+      "purchase_revenue": 2596.270004,
+      "session_conversion_rate": 0.013397,
+      "sessions": 1045
+    },
+    {
+      "add_to_carts": 46,
+      "checkouts": 15,
+      "date": "2026-04-02",
+      "ecommerce_purchases": 7,
+      "items_viewed": 1055,
+      "purchase_revenue": 4319.380009,
+      "session_conversion_rate": 0.011545,
+      "sessions": 1126
+    },
+    {
+      "add_to_carts": 42,
+      "checkouts": 11,
+      "date": "2026-04-03",
+      "ecommerce_purchases": 10,
+      "items_viewed": 830,
+      "purchase_revenue": 5267.150025,
+      "session_conversion_rate": 0.012931,
+      "sessions": 928
+    },
+    {
+      "add_to_carts": 20,
+      "checkouts": 6,
+      "date": "2026-04-04",
+      "ecommerce_purchases": 4,
+      "items_viewed": 883,
+      "purchase_revenue": 1601.070011,
+      "session_conversion_rate": 0.006018,
+      "sessions": 997
+    },
+    {
+      "add_to_carts": 19,
+      "checkouts": 5,
+      "date": "2026-04-05",
+      "ecommerce_purchases": 2,
+      "items_viewed": 572,
+      "purchase_revenue": 2784.059993,
+      "session_conversion_rate": 0.006545,
+      "sessions": 764
+    },
+    {
+      "add_to_carts": 32,
+      "checkouts": 15,
+      "date": "2026-04-06",
+      "ecommerce_purchases": 3,
+      "items_viewed": 1026,
+      "purchase_revenue": 1277.029992,
+      "session_conversion_rate": 0.007905,
+      "sessions": 1265
+    },
+    {
+      "add_to_carts": 44,
+      "checkouts": 13,
+      "date": "2026-04-07",
+      "ecommerce_purchases": 7,
+      "items_viewed": 1143,
+      "purchase_revenue": 4484.390015,
+      "session_conversion_rate": 0.010547,
+      "sessions": 1517
+    },
+    {
+      "add_to_carts": 46,
+      "checkouts": 17,
+      "date": "2026-04-08",
+      "ecommerce_purchases": 6,
+      "items_viewed": 1045,
+      "purchase_revenue": 4809.479997,
+      "session_conversion_rate": 0.010762,
+      "sessions": 1208
+    },
+    {
+      "add_to_carts": 42,
+      "checkouts": 12,
+      "date": "2026-04-09",
+      "ecommerce_purchases": 8,
+      "items_viewed": 791,
+      "purchase_revenue": 4602.74998,
+      "session_conversion_rate": 0.014286,
+      "sessions": 910
+    },
+    {
+      "add_to_carts": 29,
+      "checkouts": 6,
+      "date": "2026-04-10",
+      "ecommerce_purchases": 5,
+      "items_viewed": 838,
+      "purchase_revenue": 3576.360006,
+      "session_conversion_rate": 0.009534,
+      "sessions": 944
+    },
+    {
+      "add_to_carts": 25,
+      "checkouts": 11,
+      "date": "2026-04-11",
+      "ecommerce_purchases": 5,
+      "items_viewed": 722,
+      "purchase_revenue": 1835.149984,
+      "session_conversion_rate": 0.010067,
+      "sessions": 894
+    },
+    {
+      "add_to_carts": 45,
+      "checkouts": 10,
+      "date": "2026-04-12",
+      "ecommerce_purchases": 3,
+      "items_viewed": 1021,
+      "purchase_revenue": 368.54001,
+      "session_conversion_rate": 0.007847,
+      "sessions": 1147
+    },
+    {
+      "add_to_carts": 32,
+      "checkouts": 15,
+      "date": "2026-04-13",
+      "ecommerce_purchases": 8,
+      "items_viewed": 974,
+      "purchase_revenue": 3030.490018,
+      "session_conversion_rate": 0.010897,
+      "sessions": 1193
+    },
+    {
+      "add_to_carts": 67,
+      "checkouts": 20,
+      "date": "2026-04-14",
+      "ecommerce_purchases": 7,
+      "items_viewed": 1058,
+      "purchase_revenue": 2256.459982,
+      "session_conversion_rate": 0.005869,
+      "sessions": 2726
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-15",
+      "ecommerce_purchases": 5,
+      "items_viewed": 8,
+      "purchase_revenue": 2074.500015,
+      "session_conversion_rate": 0.000979,
+      "sessions": 5108
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-16",
+      "ecommerce_purchases": 7,
+      "items_viewed": 8,
+      "purchase_revenue": 4124.740001,
+      "session_conversion_rate": 0.001717,
+      "sessions": 4077
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-17",
+      "ecommerce_purchases": 3,
+      "items_viewed": 5,
+      "purchase_revenue": 1791.789998,
+      "session_conversion_rate": 0.000865,
+      "sessions": 3467
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-18",
+      "ecommerce_purchases": 4,
+      "items_viewed": 3,
+      "purchase_revenue": 3533.950012,
+      "session_conversion_rate": 0.00289,
+      "sessions": 1384
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-19",
+      "ecommerce_purchases": 9,
+      "items_viewed": 2,
+      "purchase_revenue": 5189.680006,
+      "session_conversion_rate": 0.009772,
+      "sessions": 921
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-20",
+      "ecommerce_purchases": 11,
+      "items_viewed": 4,
+      "purchase_revenue": 6848.510024,
+      "session_conversion_rate": 0.008814,
+      "sessions": 1248
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-21",
+      "ecommerce_purchases": 9,
+      "items_viewed": 5,
+      "purchase_revenue": 2009.789998,
+      "session_conversion_rate": 0.008326,
+      "sessions": 1081
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-22",
+      "ecommerce_purchases": 10,
+      "items_viewed": 0,
+      "purchase_revenue": 4538.110009,
+      "session_conversion_rate": 0.009479,
+      "sessions": 1055
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-23",
+      "ecommerce_purchases": 5,
+      "items_viewed": 4,
+      "purchase_revenue": 4843.319998,
+      "session_conversion_rate": 0.00497,
+      "sessions": 1006
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-24",
+      "ecommerce_purchases": 3,
+      "items_viewed": 1,
+      "purchase_revenue": 741.299996,
+      "session_conversion_rate": 0.003148,
+      "sessions": 953
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-25",
+      "ecommerce_purchases": 4,
+      "items_viewed": 1,
+      "purchase_revenue": 2215.470003,
+      "session_conversion_rate": 0.002996,
+      "sessions": 1335
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-26",
+      "ecommerce_purchases": 7,
+      "items_viewed": 1,
+      "purchase_revenue": 3250.540004,
+      "session_conversion_rate": 0.005733,
+      "sessions": 1221
+    },
+    {
+      "add_to_carts": 0,
+      "checkouts": 0,
+      "date": "2026-04-27",
+      "ecommerce_purchases": 2,
+      "items_viewed": 3,
+      "purchase_revenue": 405.939992,
+      "session_conversion_rate": 0.001453,
+      "sessions": 1376
+    },
+    {
+      "add_to_carts": 59,
+      "checkouts": 32,
+      "date": "2026-04-28",
+      "ecommerce_purchases": 16,
+      "items_viewed": 673,
+      "purchase_revenue": 7157.150011,
+      "session_conversion_rate": 0.023385,
+      "sessions": 1796
+    },
+    {
+      "add_to_carts": 109,
+      "checkouts": 38,
+      "date": "2026-04-29",
+      "ecommerce_purchases": 18,
+      "items_viewed": 1204,
+      "purchase_revenue": 13534.420024,
+      "session_conversion_rate": 0.024487,
+      "sessions": 1511
+    },
+    {
+      "add_to_carts": 67,
+      "checkouts": 22,
+      "date": "2026-04-30",
+      "ecommerce_purchases": 8,
+      "items_viewed": 1169,
+      "purchase_revenue": 2693.039991,
+      "session_conversion_rate": 0.01531,
+      "sessions": 1241
+    },
+    {
+      "add_to_carts": 51,
+      "checkouts": 6,
+      "date": "2026-05-01",
+      "ecommerce_purchases": 6,
+      "items_viewed": 1063,
+      "purchase_revenue": 2468.190005,
+      "session_conversion_rate": 0.008584,
+      "sessions": 1165
+    },
+    {
+      "add_to_carts": 50,
+      "checkouts": 7,
+      "date": "2026-05-02",
+      "ecommerce_purchases": 4,
+      "items_viewed": 1043,
+      "purchase_revenue": 2493.109996,
+      "session_conversion_rate": 0.013993,
+      "sessions": 1072
+    },
+    {
+      "add_to_carts": 49,
+      "checkouts": 15,
+      "date": "2026-05-03",
+      "ecommerce_purchases": 8,
+      "items_viewed": 1155,
+      "purchase_revenue": 4895.169994,
+      "session_conversion_rate": 0.007968,
+      "sessions": 1255
+    },
+    {
+      "add_to_carts": 74,
+      "checkouts": 14,
+      "date": "2026-05-04",
+      "ecommerce_purchases": 6,
+      "items_viewed": 1491,
+      "purchase_revenue": 4705.089994,
+      "session_conversion_rate": 0.005755,
+      "sessions": 2259
+    },
+    {
+      "add_to_carts": 83,
+      "checkouts": 11,
+      "date": "2026-05-05",
+      "ecommerce_purchases": 6,
+      "items_viewed": 1276,
+      "purchase_revenue": 5512.740008,
+      "session_conversion_rate": 0.00438,
+      "sessions": 3425
+    },
+    {
+      "add_to_carts": 55,
+      "checkouts": 11,
+      "date": "2026-05-06",
+      "ecommerce_purchases": 10,
+      "items_viewed": 1328,
+      "purchase_revenue": 8859.750002,
+      "session_conversion_rate": 0.005747,
+      "sessions": 2610
+    },
+    {
+      "add_to_carts": 46,
+      "checkouts": 7,
+      "date": "2026-05-07",
+      "ecommerce_purchases": 6,
+      "items_viewed": 1189,
+      "purchase_revenue": 4091.020001,
+      "session_conversion_rate": 0.007669,
+      "sessions": 1304
+    },
+    {
+      "add_to_carts": 59,
+      "checkouts": 18,
+      "date": "2026-05-08",
+      "ecommerce_purchases": 4,
+      "items_viewed": 1225,
+      "purchase_revenue": 1766.520006,
+      "session_conversion_rate": 0.005844,
+      "sessions": 1369
+    },
+    {
+      "add_to_carts": 41,
+      "checkouts": 5,
+      "date": "2026-05-09",
+      "ecommerce_purchases": 4,
+      "items_viewed": 1093,
+      "purchase_revenue": 2020.10999,
+      "session_conversion_rate": 0.005093,
+      "sessions": 1178
+    },
+    {
+      "add_to_carts": 64,
+      "checkouts": 6,
+      "date": "2026-05-10",
+      "ecommerce_purchases": 8,
+      "items_viewed": 919,
+      "purchase_revenue": 4156.959992,
+      "session_conversion_rate": 0.015198,
+      "sessions": 987
+    },
+    {
+      "add_to_carts": 72,
+      "checkouts": 8,
+      "date": "2026-05-11",
+      "ecommerce_purchases": 5,
+      "items_viewed": 1278,
+      "purchase_revenue": 1820.609996,
+      "session_conversion_rate": 0.00929,
+      "sessions": 1507
+    },
+    {
+      "add_to_carts": 49,
+      "checkouts": 8,
+      "date": "2026-05-12",
+      "ecommerce_purchases": 9,
+      "items_viewed": 1730,
+      "purchase_revenue": 8342.580012,
+      "session_conversion_rate": 0.006211,
+      "sessions": 1932
+    },
+    {
+      "add_to_carts": 92,
+      "checkouts": 15,
+      "date": "2026-05-13",
+      "ecommerce_purchases": 15,
+      "items_viewed": 1470,
+      "purchase_revenue": 10276.949979,
+      "session_conversion_rate": 0.012138,
+      "sessions": 1483
+    },
+    {
+      "add_to_carts": 48,
+      "checkouts": 6,
+      "date": "2026-05-14",
+      "ecommerce_purchases": 8,
+      "items_viewed": 1315,
+      "purchase_revenue": 3356.159988,
+      "session_conversion_rate": 0.007948,
+      "sessions": 1384
+    },
+    {
+      "add_to_carts": 115,
+      "checkouts": 22,
+      "date": "2026-05-15",
+      "ecommerce_purchases": 9,
+      "items_viewed": 1261,
+      "purchase_revenue": 7202.629979,
+      "session_conversion_rate": 0.015261,
+      "sessions": 1245
+    },
+    {
+      "add_to_carts": 32,
+      "checkouts": 9,
+      "date": "2026-05-16",
+      "ecommerce_purchases": 6,
+      "items_viewed": 1121,
+      "purchase_revenue": 3066.540011,
+      "session_conversion_rate": 0.011226,
+      "sessions": 1158
+    },
+    {
+      "add_to_carts": 49,
+      "checkouts": 10,
+      "date": "2026-05-17",
+      "ecommerce_purchases": 4,
+      "items_viewed": 1143,
+      "purchase_revenue": 2504.140005,
+      "session_conversion_rate": 0.007745,
+      "sessions": 1162
+    },
+    {
+      "add_to_carts": 60,
+      "checkouts": 13,
+      "date": "2026-05-18",
+      "ecommerce_purchases": 11,
+      "items_viewed": 1344,
+      "purchase_revenue": 5430.920003,
+      "session_conversion_rate": 0.007994,
+      "sessions": 1376
+    },
+    {
+      "add_to_carts": 37,
+      "checkouts": 6,
+      "date": "2026-05-19",
+      "ecommerce_purchases": 7,
+      "items_viewed": 1271,
+      "purchase_revenue": 3372.96997,
+      "session_conversion_rate": 0.006613,
+      "sessions": 1361
+    },
+    {
+      "add_to_carts": 47,
+      "checkouts": 9,
+      "date": "2026-05-20",
+      "ecommerce_purchases": 8,
+      "items_viewed": 1272,
+      "purchase_revenue": 6849.679994,
+      "session_conversion_rate": 0.011309,
+      "sessions": 1238
+    },
+    {
+      "add_to_carts": 42,
+      "checkouts": 9,
+      "date": "2026-05-21",
+      "ecommerce_purchases": 8,
+      "items_viewed": 1225,
+      "purchase_revenue": 3847.700018,
+      "session_conversion_rate": 0.011186,
+      "sessions": 1341
+    },
+    {
+      "add_to_carts": 60,
+      "checkouts": 11,
+      "date": "2026-05-22",
+      "ecommerce_purchases": 15,
+      "items_viewed": 1296,
+      "purchase_revenue": 8087.570011,
+      "session_conversion_rate": 0.013443,
+      "sessions": 1339
+    },
+    {
+      "add_to_carts": 57,
+      "checkouts": 12,
+      "date": "2026-05-23",
+      "ecommerce_purchases": 11,
+      "items_viewed": 1091,
+      "purchase_revenue": 10951.500048,
+      "session_conversion_rate": 0.010791,
+      "sessions": 1112
+    },
+    {
+      "add_to_carts": 32,
+      "checkouts": 5,
+      "date": "2026-05-24",
+      "ecommerce_purchases": 5,
+      "items_viewed": 1074,
+      "purchase_revenue": 5824.019989,
+      "session_conversion_rate": 0.00831,
+      "sessions": 1083
+    },
+    {
+      "add_to_carts": 45,
+      "checkouts": 11,
+      "date": "2026-05-25",
+      "ecommerce_purchases": 8,
+      "items_viewed": 1337,
+      "purchase_revenue": 5932.230004,
+      "session_conversion_rate": 0.007829,
+      "sessions": 1916
+    },
+    {
+      "add_to_carts": 61,
+      "checkouts": 13,
+      "date": "2026-05-26",
+      "ecommerce_purchases": 12,
+      "items_viewed": 1297,
+      "purchase_revenue": 7185.859984,
+      "session_conversion_rate": 0.014203,
+      "sessions": 1549
+    },
+    {
+      "add_to_carts": 86,
+      "checkouts": 16,
+      "date": "2026-05-27",
+      "ecommerce_purchases": 7,
+      "items_viewed": 1458,
+      "purchase_revenue": 3164.610002,
+      "session_conversion_rate": 0.013133,
+      "sessions": 1599
+    },
+    {
+      "add_to_carts": 46,
+      "checkouts": 8,
+      "date": "2026-05-28",
+      "ecommerce_purchases": 13,
+      "items_viewed": 1416,
+      "purchase_revenue": 7803.110022,
+      "session_conversion_rate": 0.010057,
+      "sessions": 1591
+    },
+    {
+      "add_to_carts": 30,
+      "checkouts": 9,
+      "date": "2026-05-29",
+      "ecommerce_purchases": 5,
+      "items_viewed": 1072,
+      "purchase_revenue": 1952.160027,
+      "session_conversion_rate": 0.009427,
+      "sessions": 1273
+    },
+    {
+      "add_to_carts": 33,
+      "checkouts": 4,
+      "date": "2026-05-30",
+      "ecommerce_purchases": 16,
+      "items_viewed": 976,
+      "purchase_revenue": 8003.970019,
+      "session_conversion_rate": 0.014111,
+      "sessions": 1063
+    },
+    {
+      "add_to_carts": 42,
+      "checkouts": 9,
+      "date": "2026-05-31",
+      "ecommerce_purchases": 6,
+      "items_viewed": 946,
+      "purchase_revenue": 2537.560022,
+      "session_conversion_rate": 0.010763,
+      "sessions": 1022
+    },
+    {
+      "add_to_carts": 50,
+      "checkouts": 11,
+      "date": "2026-06-01",
+      "ecommerce_purchases": 25,
+      "items_viewed": 1246,
+      "purchase_revenue": 14058.94003,
+      "session_conversion_rate": 0.01938,
+      "sessions": 1290
+    },
+    {
+      "add_to_carts": 66,
+      "checkouts": 15,
+      "date": "2026-06-02",
+      "ecommerce_purchases": 7,
+      "items_viewed": 1236,
+      "purchase_revenue": 3440.459988,
+      "session_conversion_rate": 0.012094,
+      "sessions": 1323
+    },
+    {
+      "add_to_carts": 36,
+      "checkouts": 6,
+      "date": "2026-06-03",
+      "ecommerce_purchases": 11,
+      "items_viewed": 989,
+      "purchase_revenue": 5293.039987,
+      "session_conversion_rate": 0.009717,
+      "sessions": 1132
+    },
+    {
+      "add_to_carts": 62,
+      "checkouts": 10,
+      "date": "2026-06-04",
+      "ecommerce_purchases": 17,
+      "items_viewed": 1009,
+      "purchase_revenue": 17331.219995,
+      "session_conversion_rate": 0.017331,
+      "sessions": 1154
+    },
+    {
+      "add_to_carts": 40,
+      "checkouts": 10,
+      "date": "2026-06-05",
+      "ecommerce_purchases": 13,
+      "items_viewed": 1026,
+      "purchase_revenue": 7720.239988,
+      "session_conversion_rate": 0.01371,
+      "sessions": 1167
+    },
+    {
+      "add_to_carts": 42,
+      "checkouts": 11,
+      "date": "2026-06-06",
+      "ecommerce_purchases": 8,
+      "items_viewed": 1028,
+      "purchase_revenue": 5784.18002,
+      "session_conversion_rate": 0.010821,
+      "sessions": 1109
+    },
+    {
+      "add_to_carts": 24,
+      "checkouts": 3,
+      "date": "2026-06-07",
+      "ecommerce_purchases": 10,
+      "items_viewed": 964,
+      "purchase_revenue": 5247.160002,
+      "session_conversion_rate": 0.01277,
+      "sessions": 1018
+    },
+    {
+      "add_to_carts": 63,
+      "checkouts": 12,
+      "date": "2026-06-08",
+      "ecommerce_purchases": 9,
+      "items_viewed": 1103,
+      "purchase_revenue": 7498.020006,
+      "session_conversion_rate": 0.014427,
+      "sessions": 1109
+    },
+    {
+      "add_to_carts": 46,
+      "checkouts": 9,
+      "date": "2026-06-09",
+      "ecommerce_purchases": 24,
+      "items_viewed": 1120,
+      "purchase_revenue": 12886.140008,
+      "session_conversion_rate": 0.026442,
+      "sessions": 1248
+    },
+    {
+      "add_to_carts": 58,
+      "checkouts": 13,
+      "date": "2026-06-10",
+      "ecommerce_purchases": 16,
+      "items_viewed": 1236,
+      "purchase_revenue": 14164.219973,
+      "session_conversion_rate": 0.011817,
+      "sessions": 1354
+    },
+    {
+      "add_to_carts": 58,
+      "checkouts": 16,
+      "date": "2026-06-11",
+      "ecommerce_purchases": 9,
+      "items_viewed": 1178,
+      "purchase_revenue": 8539.620006,
+      "session_conversion_rate": 0.014515,
+      "sessions": 1309
+    },
+    {
+      "add_to_carts": 25,
+      "checkouts": 8,
+      "date": "2026-06-12",
+      "ecommerce_purchases": 8,
+      "items_viewed": 927,
+      "purchase_revenue": 3699.11999,
+      "session_conversion_rate": 0.011696,
+      "sessions": 1026
+    },
+    {
+      "add_to_carts": 51,
+      "checkouts": 21,
+      "date": "2026-06-13",
+      "ecommerce_purchases": 17,
+      "items_viewed": 992,
+      "purchase_revenue": 8250.060001,
+      "session_conversion_rate": 0.027264,
+      "sessions": 1027
+    },
+    {
+      "add_to_carts": 44,
+      "checkouts": 4,
+      "date": "2026-06-14",
+      "ecommerce_purchases": 12,
+      "items_viewed": 826,
+      "purchase_revenue": 7273.879998,
+      "session_conversion_rate": 0.007769,
+      "sessions": 901
+    },
+    {
+      "add_to_carts": 40,
+      "checkouts": 6,
+      "date": "2026-06-15",
+      "ecommerce_purchases": 7,
+      "items_viewed": 832,
+      "purchase_revenue": 3325.250024,
+      "session_conversion_rate": 0.005587,
+      "sessions": 716
+    }
+  ]
+}

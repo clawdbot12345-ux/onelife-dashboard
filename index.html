@@ -500,6 +500,26 @@
         </table>
       </div>
     </div>
+
+    <!-- GA4 WEB ANALYTICS -->
+    <div class="signal-section" style="margin-top:20px;">
+      <div class="signal-section-title"><span>🌐</span> Web Analytics — GA4 <span id="ga4-window" style="font-size:11px;color:var(--muted);font-weight:400;"></span></div>
+      <div class="signal-narrative" id="ga4-note"></div>
+      <div class="kpi-grid" id="ga4-kpi-grid"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div class="chart-card"><div class="chart-title">Traffic by channel</div><div class="chart-container" style="height:260px;"><canvas id="ga4ChannelChart"></canvas></div></div>
+        <div class="chart-card"><div class="chart-title">Conversion funnel (90 days)</div><div class="chart-container" style="height:260px;"><canvas id="ga4FunnelChart"></canvas></div></div>
+      </div>
+      <div class="section-header" style="margin-top:16px;"><div class="section-title">🔥 High demand, low conversion — viewed online, barely bought</div></div>
+      <div class="signal-narrative">Heavy product-page views but almost no purchases — check online stock, price, or the product page. Big CRO / stock opportunities.</div>
+      <div id="ga4-vnb-table" style="overflow-x:auto;"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div><div class="section-title" style="margin-bottom:8px;">Top cities</div><div id="ga4-geo-table" style="overflow-x:auto;"></div></div>
+        <div><div class="section-title" style="margin-bottom:8px;">Devices</div><div id="ga4-devices-table" style="overflow-x:auto;"></div></div>
+      </div>
+      <div class="section-header" style="margin-top:16px;"><div class="section-title">Top online products (GA4)</div></div>
+      <div id="ga4-top-table" style="overflow-x:auto;"></div>
+    </div>
   </div>
 
   <!-- ===== KLAVIYO EMAIL MARKETING ===== -->
@@ -679,8 +699,418 @@
 // DATA
 // ============================================================
 const DASHBOARD_DATA = {
+  "ga4": {
+    "generated_at": "2026-06-16T08:30:29.569421",
+    "window": {
+      "start": "2026-03-18",
+      "end": "2026-06-15",
+      "days": 90
+    },
+    "revenue_note": "GA4 figures are web-analytics signals; revenue is GA4-attributed (incl VAT). Shopify/Omni remain the money ledger.",
+    "totals": {
+      "sessions": 131314,
+      "conversions": 1962.0
+    },
+    "channels": [
+      {
+        "channel": "Paid Search",
+        "sessions": 64870,
+        "users": 61156,
+        "new_users": 55267,
+        "conversions": 900.0,
+        "revenue_incl": 114573.0,
+        "conv_rate": 1.39
+      },
+      {
+        "channel": "Direct",
+        "sessions": 21630,
+        "users": 21332,
+        "new_users": 20954,
+        "conversions": 166.0,
+        "revenue_incl": 23846.0,
+        "conv_rate": 0.77
+      },
+      {
+        "channel": "Paid Social",
+        "sessions": 20436,
+        "users": 19383,
+        "new_users": 19446,
+        "conversions": 36.0,
+        "revenue_incl": 0.0,
+        "conv_rate": 0.18
+      },
+      {
+        "channel": "Organic Search",
+        "sessions": 10956,
+        "users": 10110,
+        "new_users": 8670,
+        "conversions": 259.0,
+        "revenue_incl": 54756.0,
+        "conv_rate": 2.36
+      },
+      {
+        "channel": "Unassigned",
+        "sessions": 8563,
+        "users": 8617,
+        "new_users": 2995,
+        "conversions": 429.0,
+        "revenue_incl": 204645.0,
+        "conv_rate": 5.01
+      },
+      {
+        "channel": "Cross-network",
+        "sessions": 1938,
+        "users": 1927,
+        "new_users": 1897,
+        "conversions": 57.0,
+        "revenue_incl": 10378.0,
+        "conv_rate": 2.94
+      },
+      {
+        "channel": "Organic Social",
+        "sessions": 1463,
+        "users": 1421,
+        "new_users": 1166,
+        "conversions": 10.0,
+        "revenue_incl": 1689.0,
+        "conv_rate": 0.68
+      },
+      {
+        "channel": "Email",
+        "sessions": 838,
+        "users": 682,
+        "new_users": 256,
+        "conversions": 75.0,
+        "revenue_incl": 7247.0,
+        "conv_rate": 8.95
+      },
+      {
+        "channel": "Referral",
+        "sessions": 394,
+        "users": 310,
+        "new_users": 220,
+        "conversions": 9.0,
+        "revenue_incl": 1174.0,
+        "conv_rate": 2.28
+      },
+      {
+        "channel": "Organic Shopping",
+        "sessions": 173,
+        "users": 138,
+        "new_users": 89,
+        "conversions": 19.0,
+        "revenue_incl": 1881.0,
+        "conv_rate": 10.98
+      },
+      {
+        "channel": "AI Assistant",
+        "sessions": 47,
+        "users": 45,
+        "new_users": 44,
+        "conversions": 2.0,
+        "revenue_incl": 2129.0,
+        "conv_rate": 4.26
+      },
+      {
+        "channel": "Organic Video",
+        "sessions": 3,
+        "users": 3,
+        "new_users": 3,
+        "conversions": 0.0,
+        "revenue_incl": 0.0,
+        "conv_rate": 0.0
+      },
+      {
+        "channel": "Paid Other",
+        "sessions": 3,
+        "users": 3,
+        "new_users": 3,
+        "conversions": 0.0,
+        "revenue_incl": 0.0,
+        "conv_rate": 0.0
+      }
+    ],
+    "funnel": {
+      "sessions": 130967,
+      "product_views": 82008,
+      "add_to_carts": 3726,
+      "checkouts": 819,
+      "purchases": 697,
+      "purchase_revenue_incl": 426681.0,
+      "conv_rate_pct": 0.53,
+      "cart_rate_pct": 2.8,
+      "checkout_rate_pct": 0.6
+    },
+    "top_products": [
+      {
+        "name": "DELFRAN - Pcositol - 30 Sachets",
+        "views": 195,
+        "add_to_carts": 28,
+        "purchased": 17,
+        "revenue_incl": 10802.0
+      },
+      {
+        "name": "HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels",
+        "views": 83,
+        "add_to_carts": 13,
+        "purchased": 16,
+        "revenue_incl": 7984.0
+      },
+      {
+        "name": "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+        "views": 39,
+        "add_to_carts": 10,
+        "purchased": 9,
+        "revenue_incl": 7889.0
+      },
+      {
+        "name": "GOOD LIFE WELLNES - Glycine - 250G",
+        "views": 120,
+        "add_to_carts": 9692,
+        "purchased": 51,
+        "revenue_incl": 7427.0
+      },
+      {
+        "name": "NATROCEUTICS® SA - Omega 3 Pure & Wild 60 Capsules",
+        "views": 56,
+        "add_to_carts": 19,
+        "purchased": 19,
+        "revenue_incl": 7163.0
+      },
+      {
+        "name": "Florish Spore Probiotic with Fulvic Acid - 60 Capsules",
+        "views": 130,
+        "add_to_carts": 40,
+        "purchased": 16,
+        "revenue_incl": 7041.0
+      },
+      {
+        "name": "PRIMESELF - Magnesium Complex - 60 Veg Capsules",
+        "views": 16,
+        "add_to_carts": 5,
+        "purchased": 12,
+        "revenue_incl": 6000.0
+      },
+      {
+        "name": "ALMANS - Brazil Nuts - 500g",
+        "views": 104,
+        "add_to_carts": 34,
+        "purchased": 28,
+        "revenue_incl": 5951.0
+      },
+      {
+        "name": "DELFRAN - Family Starter Pack",
+        "views": 98,
+        "add_to_carts": 7,
+        "purchased": 5,
+        "revenue_incl": 4975.0
+      },
+      {
+        "name": "ALTWELL - C19 Plus Immune Booster - 360g",
+        "views": 0,
+        "add_to_carts": 0,
+        "purchased": 8,
+        "revenue_incl": 4792.0
+      },
+      {
+        "name": "BIOMAX® - Purest Omega 3 - 60 Capsules",
+        "views": 62,
+        "add_to_carts": 9,
+        "purchased": 12,
+        "revenue_incl": 4428.0
+      },
+      {
+        "name": "DELFRAN - Naleo Spectrum Orange Flavour - 30 x 5g Scoops",
+        "views": 51,
+        "add_to_carts": 15,
+        "purchased": 7,
+        "revenue_incl": 4270.0
+      },
+      {
+        "name": "PMR NUTRITION - 5 HTP Plus - 60 Capsules",
+        "views": 22,
+        "add_to_carts": 7,
+        "purchased": 12,
+        "revenue_incl": 4196.0
+      },
+      {
+        "name": "NATTREND - Ceylon Cinnamon 200g",
+        "views": 343,
+        "add_to_carts": 48,
+        "purchased": 20,
+        "revenue_incl": 4162.0
+      },
+      {
+        "name": "DELFRAN - Naleo Spectrum - 30 x 5g Scoops",
+        "views": 48,
+        "add_to_carts": 21,
+        "purchased": 7,
+        "revenue_incl": 4145.0
+      }
+    ],
+    "viewed_not_bought": [
+      {
+        "name": "ZINPLEX - Zinplex Junior Syrup - Sugar Free - 60 Tablets",
+        "views": 4730,
+        "purchased": 4,
+        "conv_pct": 0.1
+      },
+      {
+        "name": "A.VOGEL - Multiforce® Alkaline Powder - 105g",
+        "views": 3620,
+        "purchased": 0,
+        "conv_pct": 0.0
+      },
+      {
+        "name": "A.VOGEL - Nephrosolid - 50ml",
+        "views": 2901,
+        "purchased": 0,
+        "conv_pct": 0.0
+      },
+      {
+        "name": "A.Vogel - Echinaforce® - 30ml",
+        "views": 2064,
+        "purchased": 0,
+        "conv_pct": 0.0
+      },
+      {
+        "name": "A.VOGEL - Menopause Formula - 30ml",
+        "views": 1739,
+        "purchased": 1,
+        "conv_pct": 0.1
+      },
+      {
+        "name": "TIM JAN - Natural Tonic - 375ml",
+        "views": 1718,
+        "purchased": 2,
+        "conv_pct": 0.1
+      },
+      {
+        "name": "A.VOGEL - Prostasan  - 30 Capsules",
+        "views": 1572,
+        "purchased": 1,
+        "conv_pct": 0.1
+      },
+      {
+        "name": "A.VOGEL - Circulation Formula - 30ml",
+        "views": 1488,
+        "purchased": 1,
+        "conv_pct": 0.1
+      },
+      {
+        "name": "IBEROGAST - Oral Liquid - 50ml",
+        "views": 1458,
+        "purchased": 0,
+        "conv_pct": 0.0
+      },
+      {
+        "name": "A.VOGEL - Neuroforce Formula - 30ml",
+        "views": 1384,
+        "purchased": 0,
+        "conv_pct": 0.0
+      }
+    ],
+    "geo": [
+      {
+        "city": "Cape Town",
+        "region": "Western Cape",
+        "sessions": 20228,
+        "conversions": 146.0,
+        "revenue_incl": 10605.0
+      },
+      {
+        "city": "Pretoria",
+        "region": "Gauteng",
+        "sessions": 19705,
+        "conversions": 288.0,
+        "revenue_incl": 13574.0
+      },
+      {
+        "city": "Johannesburg",
+        "region": "Gauteng",
+        "sessions": 9721,
+        "conversions": 120.0,
+        "revenue_incl": 8137.0
+      },
+      {
+        "city": "Durban",
+        "region": "KwaZulu-Natal",
+        "sessions": 6444,
+        "conversions": 64.0,
+        "revenue_incl": 1565.0
+      },
+      {
+        "city": "Singapore",
+        "region": "(not set)",
+        "sessions": 6356,
+        "conversions": 0.0,
+        "revenue_incl": 0.0
+      },
+      {
+        "city": "Soweto",
+        "region": "Gauteng",
+        "sessions": 4369,
+        "conversions": 48.0,
+        "revenue_incl": 1590.0
+      },
+      {
+        "city": "Sandton",
+        "region": "Gauteng",
+        "sessions": 2934,
+        "conversions": 34.0,
+        "revenue_incl": 1931.0
+      },
+      {
+        "city": "Benoni",
+        "region": "Gauteng",
+        "sessions": 2789,
+        "conversions": 47.0,
+        "revenue_incl": 4804.0
+      },
+      {
+        "city": "Centurion",
+        "region": "Gauteng",
+        "sessions": 2772,
+        "conversions": 99.0,
+        "revenue_incl": 12182.0
+      },
+      {
+        "city": "Gqeberha",
+        "region": "Eastern Cape",
+        "sessions": 1782,
+        "conversions": 12.0,
+        "revenue_incl": 1412.0
+      }
+    ],
+    "devices": [
+      {
+        "device": "mobile",
+        "sessions": 99638,
+        "conv_rate_pct": 0.78,
+        "revenue_incl": 168076.0
+      },
+      {
+        "device": "desktop",
+        "sessions": 30772,
+        "conv_rate_pct": 1.07,
+        "revenue_incl": 254669.0
+      },
+      {
+        "device": "tablet",
+        "sessions": 1555,
+        "conv_rate_pct": 0.51,
+        "revenue_incl": 3936.0
+      },
+      {
+        "device": "smart tv",
+        "sessions": 8,
+        "conv_rate_pct": 0.0,
+        "revenue_incl": 0.0
+      }
+    ]
+  },
   "stock_moves": {
-    "generated_at": "2026-06-16T05:51:12.596593",
+    "generated_at": "2026-06-16T08:30:30.521607",
     "cross_store_note": "Selling well at one store but out of stock at another — transfer or range it there.",
     "reorder_idle_note": "On order (being reordered) but not selling and still on the shelf — pause the reorder until it clears.",
     "cross_store": [
@@ -977,7 +1407,7 @@ const DASHBOARD_DATA = {
     ]
   },
   "actions_briefing": {
-    "generated_at": "2026-06-16T05:51:12.042810",
+    "generated_at": "2026-06-16T08:31:23.787075",
     "intro": "Live executive briefing — generated from Omni store, sales, stock and supplier data. Each card: what's happening, what's coming, and the move to make.",
     "cards": [
       {
@@ -999,6 +1429,26 @@ const DASHBOARD_DATA = {
         "story": "Top mover **MAG 7/87 60'S** and 49 others have under 21 days of cover at current pace. These carry **R754,832** of annual gross profit between them.",
         "action": "Reorder these now — and don't feature them in marketing until stock is confirmed.",
         "impact": "Protects ~R62,903/mo of GP from going to a competitor."
+      },
+      {
+        "priority": "high",
+        "kind": "Insight",
+        "icon": "💸",
+        "accent": "#ef4444",
+        "title": "Paid Social converts at 0.18% — near zero",
+        "story": "**20,436 paid-social sessions** converted at just **0.18%** vs **2.4%** on organic search. The traffic arrives but doesn't buy (ties to the untracked media spend).",
+        "action": "Audit the paid-social creative/targeting/landing pages before spending more — or shift budget to the channels that convert.",
+        "impact": "Stops spend on a channel that isn't paying back."
+      },
+      {
+        "priority": "high",
+        "kind": "Action",
+        "icon": "🔥",
+        "accent": "#f59e0b",
+        "title": "34 products get heavy views but almost no sales online",
+        "story": "**ZINPLEX - Zinplex Junior Syrup - Sugar Free - 60 Tablets** had **4,730 views** but only 4 purchases. That's demand you're losing at the page — usually out-of-stock online, price, or a weak product page.",
+        "action": "Check online stock + price + PDP for these; fix and feature them.",
+        "impact": "Recovers sales on already-proven online demand."
       },
       {
         "priority": "med",
@@ -1031,6 +1481,16 @@ const DASHBOARD_DATA = {
         "impact": "Recovers/redeploys marketing budget against measured ROI."
       },
       {
+        "priority": "med",
+        "kind": "Foresight",
+        "icon": "📍",
+        "accent": "#3b82f6",
+        "title": "Cape Town is a top online city with no store",
+        "story": "**Cape Town** drove **20,228 sessions** with no physical store nearby — pure online/delivery demand you're not converting in person.",
+        "action": "Run Cape Town-targeted online campaigns + delivery messaging; watch it as an expansion signal.",
+        "impact": "Turns unserved demand into online revenue."
+      },
+      {
         "priority": "low",
         "kind": "Hindsight",
         "icon": "🏬",
@@ -1043,7 +1503,7 @@ const DASHBOARD_DATA = {
     ]
   },
   "what_to_market": {
-    "generated_at": "2026-06-16T05:51:11.649576",
+    "generated_at": "2026-06-16T08:30:29.910252",
     "basis": "12-month item sales + gross profit (Omni ANA_Most Popular Products GP) joined to live per-branch stock. Margin is realized GP (no cost column needed). Season: winter (SA, June).",
     "scoring": "0.35·margin + 0.30·demand + 0.20·GP contribution, gated by stock cover, +0.15 winter/condition boost.",
     "items": [
@@ -108178,6 +108638,51 @@ function initStockMoves() {
   if (rt) rt.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:13px;">${th([['#'],['Product'],['On order','text-align:right;'],['On shelf','text-align:right;'],['Received','text-align:right;'],['Tied up (sell)','text-align:right;']])}<tbody>${ri}</tbody></table>`;
 }
 
+function initGA4() {
+  const g = DASHBOARD_DATA.ga4;
+  if (!g) return;
+  const w = document.getElementById('ga4-window');
+  if (w) w.textContent = `· ${g.window.start} to ${g.window.end} (${g.window.days}d)`;
+  const note = document.getElementById('ga4-note'); if (note) note.textContent = g.revenue_note;
+  const f = g.funnel;
+  const top = g.channels[0];
+  document.getElementById('ga4-kpi-grid').innerHTML = [
+    {l:'Sessions', v:fmtNum(f.sessions), s:`${g.window.days} days`, c:'kpi-accent'},
+    {l:'Site Conversion', v:fmtPct(f.conv_rate_pct), s:'session → purchase', c:f.conv_rate_pct<1?'kpi-warn':'kpi-pos'},
+    {l:'Add-to-cart Rate', v:fmtPct(f.cart_rate_pct), s:'of sessions', c:'kpi-accent'},
+    {l:'Top Channel', v:top?top.channel:'—', s:top?`${fmtNum(top.sessions)} sessions`:'', c:'kpi-pos'},
+  ].map(c=>`<div class="kpi-card ${c.c}"><div class="kpi-label">${c.l}</div><div class="kpi-value">${c.v}</div><div class="kpi-sub">${c.s}</div></div>`).join('');
+
+  if (window.Chart) {
+    const ch = g.channels.slice(0,8);
+    new Chart(document.getElementById('ga4ChannelChart'), {
+      type:'bar',
+      data:{labels:ch.map(c=>c.channel), datasets:[{data:ch.map(c=>c.sessions), backgroundColor:'rgba(108,99,255,.6)', borderColor:'#6c63ff'}]},
+      options:{indexAxis:'y', plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>` ${fmtNum(ctx.raw)} sessions · ${ch[ctx.dataIndex].conv_rate}% conv`}}},
+        scales:{x:{ticks:{color:'#9aa0c0'},grid:{color:'rgba(255,255,255,.06)'}}, y:{ticks:{color:'#9aa0c0'},grid:{display:false}}}}
+    });
+    const steps=[['Sessions',f.sessions],['Product views',f.product_views],['Add to cart',f.add_to_carts],['Checkout',f.checkouts],['Purchase',f.purchases]];
+    new Chart(document.getElementById('ga4FunnelChart'), {
+      type:'bar',
+      data:{labels:steps.map(s=>s[0]), datasets:[{data:steps.map(s=>s[1]), backgroundColor:['#6c63ff','#7c83ff','#f59e0b','#fb923c','#22c55e']}]},
+      options:{plugins:{legend:{display:false}}, scales:{x:{ticks:{color:'#9aa0c0'},grid:{display:false}}, y:{ticks:{color:'#9aa0c0'},grid:{color:'rgba(255,255,255,.06)'}}}}
+    });
+  }
+
+  const th = cols => `<thead><tr style="text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;">${cols.map(c=>`<th style="padding:8px;${c[1]||''}">${c[0]}</th>`).join('')}</tr></thead>`;
+  const tbl = (id, head, body) => { const el=document.getElementById(id); if(el) el.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:13px;">${th(head)}<tbody>${body}</tbody></table>`; };
+  const row = cells => `<tr style="border-top:1px solid #2a2f4a;">${cells.map((c,i)=>`<td style="padding:8px;${i>0?'text-align:right;font-variant-numeric:tabular-nums;':'font-weight:600;max-width:300px;'}">${c}</td>`).join('')}</tr>`;
+
+  tbl('ga4-vnb-table', [['Product'],['Views','text-align:right;'],['Bought','text-align:right;'],['Conv %','text-align:right;']],
+      g.viewed_not_bought.map(v=>row([v.name, fmtNum(v.views), fmtNum(v.purchased), `<span class="color-warn">${fmtPct(v.conv_pct)}</span>`])).join(''));
+  tbl('ga4-geo-table', [['City'],['Sessions','text-align:right;'],['GA4 rev (incl)','text-align:right;']],
+      g.geo.map(x=>row([x.city, fmtNum(x.sessions), fmtR(x.revenue_incl)])).join(''));
+  tbl('ga4-devices-table', [['Device'],['Sessions','text-align:right;'],['Conv %','text-align:right;']],
+      g.devices.map(x=>row([x.device, fmtNum(x.sessions), fmtPct(x.conv_rate_pct)])).join(''));
+  tbl('ga4-top-table', [['Product'],['Views','text-align:right;'],['Carts','text-align:right;'],['Bought','text-align:right;'],['GA4 rev (incl)','text-align:right;']],
+      g.top_products.map(p=>row([p.name, fmtNum(p.views), fmtNum(p.add_to_carts), fmtNum(p.purchased), fmtR(p.revenue_incl)])).join(''));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initOverview();
   initActions();
@@ -108190,6 +108695,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initKlaviyo();
   initSignals();
   initStockMoves();
+  initGA4();
 });
 
 // ============================================================

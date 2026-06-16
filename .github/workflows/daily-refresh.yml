@@ -45,6 +45,9 @@ jobs:
       - name: Rebuild "What to Market" engine
         run: python scripts/build_what_to_market.py
 
+      - name: Aggregate GA4 web analytics
+        run: python scripts/build_ga4.py
+
       - name: Rebuild "Actions for You" briefing
         run: python scripts/build_actions.py
 

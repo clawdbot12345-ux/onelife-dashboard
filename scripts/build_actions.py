@@ -12,6 +12,7 @@ import glob
 import json
 import math
 import os
+from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HTML = os.path.join(ROOT, "index.html")
@@ -26,6 +27,11 @@ def newest(slug):
     if not fs:
         return []
     return next(iter(json.load(open(fs[-1])).values()))
+
+
+def num(x):
+    try: return float(x)
+    except (TypeError, ValueError): return 0.0
 
 
 def main():
@@ -167,6 +173,70 @@ def main():
                      f"Healthy, but it concentrates risk and means the other two stores are the growth headroom.",
             "action": "Localised offers + the basket-upsell play at the smaller stores (geo WhatsApp/email segments).",
             "impact": "Diversifies revenue and lifts the two lower-basket stores.",
+        })
+
+    # --- GA4 web-acquisition cards ---
+    GA4 = os.path.join(ROOT, "data", "ga4", "daily")
+    def newest_ga4(slug):
+        fs = sorted(glob.glob(os.path.join(GA4, f"*_{slug}.json")))
+        return next(iter(json.load(open(fs[-1])).values())) if fs else []
+
+    acq = newest_ga4("ga4_acquisition_daily")
+    if acq:
+        ch = defaultdict(lambda: {"s": 0.0, "c": 0.0})
+        for r in acq:
+            if not r.get("include_in_acquisition"):
+                continue
+            g = ch[r.get("corrected_channel_group") or "Unassigned"]
+            g["s"] += num(r.get("sessions")); g["c"] += num(r.get("conversions"))
+        social = ch.get("Paid Social")
+        organic = ch.get("Organic Search")
+        if social and social["s"] > 2000:
+            sconv = social["c"] / social["s"] * 100
+            oconv = (organic["c"] / organic["s"] * 100) if organic and organic["s"] else 0
+            if sconv < 0.5 and sconv < oconv:
+                cards.append({
+                    "priority": "high", "kind": "Insight", "icon": "💸", "accent": "#ef4444",
+                    "title": f"Paid Social converts at {sconv:.2f}% — near zero",
+                    "story": f"**{int(social['s']):,} paid-social sessions** converted at just **{sconv:.2f}%** "
+                             f"vs **{oconv:.1f}%** on organic search. The traffic arrives but doesn't buy "
+                             f"(ties to the untracked media spend).",
+                    "action": "Audit the paid-social creative/targeting/landing pages before spending more — "
+                              "or shift budget to the channels that convert.",
+                    "impact": "Stops spend on a channel that isn't paying back.",
+                })
+
+    prods = newest_ga4("ga4_top_products")
+    vnb = [p for p in prods if num(p.get("items_viewed")) >= 300
+           and num(p.get("items_purchased")) <= num(p.get("items_viewed")) * 0.01]
+    vnb.sort(key=lambda p: -num(p.get("items_viewed")))
+    if vnb:
+        ex = vnb[0]
+        cards.append({
+            "priority": "high", "kind": "Action", "icon": "🔥", "accent": "#f59e0b",
+            "title": f"{len(vnb)} products get heavy views but almost no sales online",
+            "story": f"**{ex['item_name']}** had **{int(num(ex['items_viewed'])):,} views** but only "
+                     f"{int(num(ex['items_purchased']))} purchases. That's demand you're losing at the "
+                     f"page — usually out-of-stock online, price, or a weak product page.",
+            "action": "Check online stock + price + PDP for these; fix and feature them.",
+            "impact": "Recovers sales on already-proven online demand.",
+        })
+
+    geo = newest_ga4("ga4_geo")
+    STORE_CITIES = ("pretoria", "centurion", "edenvale", "johannesburg", "germiston")
+    nonstore = [r for r in geo if (r.get("city") or "").lower() not in ("", "(not set)")
+                and not any(s in (r.get("city") or "").lower() for s in STORE_CITIES)]
+    nonstore.sort(key=lambda r: -num(r.get("sessions")))
+    if nonstore and num(nonstore[0].get("sessions")) > 5000:
+        c0 = nonstore[0]
+        cards.append({
+            "priority": "med", "kind": "Foresight", "icon": "📍", "accent": "#3b82f6",
+            "title": f"{c0['city']} is a top online city with no store",
+            "story": f"**{c0['city']}** drove **{int(num(c0['sessions'])):,} sessions** with no physical "
+                     f"store nearby — pure online/delivery demand you're not converting in person.",
+            "action": f"Run {c0['city']}-targeted online campaigns + delivery messaging; watch it as an "
+                      f"expansion signal.",
+            "impact": "Turns unserved demand into online revenue.",
         })
 
     order = {"high": 0, "med": 1, "low": 2}

@@ -1,0 +1,28 @@
+{
+  "ga4_devices": [
+    {
+      "device_category": "desktop",
+      "purchase_revenue": 254669.410158,
+      "session_conversion_rate": 0.010692,
+      "sessions": 30772
+    },
+    {
+      "device_category": "mobile",
+      "purchase_revenue": 168075.980075,
+      "session_conversion_rate": 0.007778,
+      "sessions": 99638
+    },
+    {
+      "device_category": "tablet",
+      "purchase_revenue": 3935.610008,
+      "session_conversion_rate": 0.005145,
+      "sessions": 1555
+    },
+    {
+      "device_category": "smart tv",
+      "purchase_revenue": 0.0,
+      "session_conversion_rate": 0.0,
+      "sessions": 8
+    }
+  ]
+}
