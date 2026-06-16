@@ -60,7 +60,7 @@ jobs:
       - name: Set up Node (for PDF generation)
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install puppeteer
         run: npm install puppeteer@24
