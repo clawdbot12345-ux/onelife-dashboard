@@ -13,8 +13,8 @@
     --card: #1a1d2e;
     --card2: #20233a;
     --border: #2a2d45;
-    --accent: #6c63ff;
-    --accent2: #8b85ff;
+    --accent: #903090;
+    --accent2: #b85cb8;
     --pos: #22c55e;
     --warn: #f59e0b;
     --danger: #ef4444;
@@ -30,7 +30,7 @@
   .topbar-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; color: var(--text); }
   .logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
   .topbar-meta { font-size: 12px; color: var(--muted); }
-  .vat-badge { background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3); color: var(--accent2); padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .vat-badge { background: rgba(144,48,144,0.15); border: 1px solid rgba(144,48,144,0.3); color: var(--accent2); padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
 
   /* TABS */
   .tabs { display: flex; background: var(--card); border-bottom: 1px solid var(--border); padding: 0 24px; overflow-x: auto; gap: 0; position: sticky; top: 56px; z-index: 99; }
@@ -98,7 +98,7 @@
   .data-table th.sorted-desc .sort-icon::after { content: '▼'; opacity: 1; }
   .data-table th .sort-icon::after { content: '⬍'; }
   .data-table td { padding: 9px 14px; border-top: 1px solid var(--border); font-variant-numeric: tabular-nums; font-size: 13px; }
-  .data-table tr:hover td { background: rgba(108,99,255,0.04); }
+  .data-table tr:hover td { background: rgba(144,48,144,0.04); }
   .data-table .name-cell { max-width: 260px; }
   .data-table .name-cell span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
@@ -107,7 +107,7 @@
   .pill-green { background: rgba(34,197,94,.15); color: var(--pos); }
   .pill-amber { background: rgba(245,158,11,.15); color: var(--warn); }
   .pill-red { background: rgba(239,68,68,.15); color: var(--danger); }
-  .pill-blue { background: rgba(108,99,255,.15); color: var(--accent2); }
+  .pill-blue { background: rgba(144,48,144,.15); color: var(--accent2); }
 
   /* MARGIN DOTS */
   .mdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
@@ -136,7 +136,7 @@
   .signal-card-red { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.25); }
   .signal-card-amber { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.25); }
   .signal-card-green { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.25); }
-  .signal-card-blue { background: rgba(108,99,255,.08); border: 1px solid rgba(108,99,255,.25); }
+  .signal-card-blue { background: rgba(144,48,144,.08); border: 1px solid rgba(144,48,144,.25); }
   .signal-card-name { font-weight: 700; font-size: 13px; margin-bottom: 8px; }
   .signal-card-row { display: flex; justify-content: space-between; font-size: 12px; margin-top: 5px; }
   .signal-card-label { color: var(--muted); }
@@ -148,7 +148,7 @@
   .capital-label { font-size: 12px; color: var(--muted); }
 
   /* NOTE */
-  .info-note { background: rgba(108,99,255,.08); border: 1px solid rgba(108,99,255,.2); border-radius: 8px; padding: 12px 16px; font-size: 12px; color: var(--muted); margin-top: 16px; }
+  .info-note { background: rgba(144,48,144,.08); border: 1px solid rgba(144,48,144,.2); border-radius: 8px; padding: 12px 16px; font-size: 12px; color: var(--muted); margin-top: 16px; }
   .info-note strong { color: var(--accent2); }
 
   /* STORE COMPARE */
@@ -195,9 +195,9 @@
   .tab:hover { transform: translateY(-1px); }
   .wtm-fbtn { transition: background .15s ease, filter .15s ease; }
   .wtm-fbtn:hover { filter: brightness(1.18); }
-  .print-briefing-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; padding:12px 14px; background:rgba(108,99,255,.08); border:1px solid rgba(108,99,255,.22); border-radius:10px; }
-  .print-btn { cursor:pointer; border:1px solid rgba(139,133,255,.48); background:rgba(108,99,255,.18); color:var(--text); border-radius:8px; padding:8px 12px; font-size:12px; font-weight:700; }
-  .print-btn:hover { background:rgba(108,99,255,.28); }
+  .print-briefing-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; padding:12px 14px; background:rgba(144,48,144,.08); border:1px solid rgba(144,48,144,.22); border-radius:10px; }
+  .print-btn { cursor:pointer; border:1px solid rgba(184,92,184,.48); background:rgba(144,48,144,.18); color:var(--text); border-radius:8px; padding:8px 12px; font-size:12px; font-weight:700; }
+  .print-btn:hover { background:rgba(144,48,144,.28); }
   .action-card { background:#1e2235; border-left:4px solid var(--accent); border-radius:0 10px 10px 0; padding:18px 20px; margin-bottom:14px; break-inside:avoid; page-break-inside:avoid; }
   .action-card-title { font-size:1.05rem; font-weight:700; margin-bottom:6px; }
   .action-card-story { font-size:.92rem; line-height:1.6; color:#c7cce0; margin-bottom:10px; }
@@ -274,8 +274,8 @@
 
   <!-- ===== OVERVIEW ===== -->
   <div class="tab-panel active" id="tab-overview">
-<div id="narrative-tab-overview" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
-  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+<div id="narrative-tab-overview" style="background:#1e2235;border-left:3px solid #903090;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#903090;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
   <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-overview-text"></div>
 </div>
 
@@ -326,8 +326,8 @@
 
   <!-- ===== STOCK INTELLIGENCE ===== -->
   <div class="tab-panel" id="tab-stock">
-<div id="narrative-tab-stock" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
-  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+<div id="narrative-tab-stock" style="background:#1e2235;border-left:3px solid #903090;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#903090;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
   <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-stock-text"></div>
 </div>
 
@@ -421,8 +421,8 @@
 
   <!-- ===== SUPPLIERS ===== -->
   <div class="tab-panel" id="tab-suppliers">
-<div id="narrative-tab-suppliers" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
-  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+<div id="narrative-tab-suppliers" style="background:#1e2235;border-left:3px solid #903090;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#903090;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
   <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-suppliers-text"></div>
 </div>
 
@@ -491,8 +491,8 @@
 
   <!-- ===== ONLINE ===== -->
   <div class="tab-panel" id="tab-online">
-<div id="narrative-tab-online" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
-  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+<div id="narrative-tab-online" style="background:#1e2235;border-left:3px solid #903090;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#903090;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
   <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-online-text"></div>
 </div>
 
@@ -576,8 +576,8 @@
 
   <!-- ===== KLAVIYO EMAIL MARKETING ===== -->
   <div class="tab-panel" id="tab-klaviyo">
-<div id="narrative-tab-klaviyo" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
-  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Email Intelligence Summary</div>
+<div id="narrative-tab-klaviyo" style="background:#1e2235;border-left:3px solid #903090;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#903090;margin-bottom:12px;font-variant:small-caps;">Email Intelligence Summary</div>
   <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-klaviyo-text"></div>
 </div>
 
@@ -658,8 +658,8 @@
 
   <!-- ===== SIGNALS ===== -->
   <div class="tab-panel" id="tab-signals">
-<div id="narrative-tab-signals" style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
-  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
+<div id="narrative-tab-signals" style="background:#1e2235;border-left:3px solid #903090;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#903090;margin-bottom:12px;font-variant:small-caps;">Intelligence Summary</div>
   <div style="font-size:0.95rem;line-height:1.7;" id="narrative-tab-signals-text"></div>
 </div>
 
@@ -713,8 +713,8 @@
 
   <!-- WHAT TO MARKET -->
   <div class="tab-panel" id="tab-market">
-    <div style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;">🎯 What to Market — this week</div>
+    <div style="background:#1e2235;border-left:3px solid #903090;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#903090;margin-bottom:12px;">🎯 What to Market — this week</div>
       <div style="font-size:0.95rem;line-height:1.7;color:var(--muted);" id="wtm-basis"></div>
     </div>
     <div class="signal-section">
@@ -737,8 +737,8 @@
 
   <!-- ACTIONS FOR YOU -->
   <div class="tab-panel" id="tab-actions">
-    <div style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;">🧭 Actions for You — live executive briefing</div>
+    <div style="background:#1e2235;border-left:3px solid #903090;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#903090;margin-bottom:12px;">🧭 Actions for You — live executive briefing</div>
       <div style="font-size:0.95rem;line-height:1.7;color:var(--muted);" id="actions-intro"></div>
     </div>
     <div class="print-briefing-bar">
@@ -107258,7 +107258,7 @@ function fmtNum(n) {
   if (n == null || isNaN(n)) return '—';
   return Number(n).toLocaleString('en-ZA');
 }
-function sparkline(values, color='#6c63ff') {
+function sparkline(values, color='#903090') {
   const series = (values || []).map(v => Number(v) || 0).slice(-30);
   if (series.length < 2) return '';
   const width = 92, height = 28, pad = 2;
@@ -107447,7 +107447,7 @@ function initOverview() {
 
   // 6 KPI cards
   const kpiCards = [
-    { label: 'Combined Revenue', value: fmtR(kpis.combined_revenue_30d_excl), sub: 'excl VAT · live', cls: 'kpi-accent', trend: sparkline(combinedData, '#8b85ff') },
+    { label: 'Combined Revenue', value: fmtR(kpis.combined_revenue_30d_excl), sub: 'excl VAT · live', cls: 'kpi-accent', trend: sparkline(combinedData, '#b85cb8') },
     { label: 'Store Revenue', value: fmtR(kpis.store_sales_30d_excl), sub: 'excl VAT · all 3 stores', cls: 'kpi-pos', trend: sparkline(storeData, '#22c55e') },
     { label: 'Online Revenue', value: fmtR(kpis.online_sales_30d_excl), sub: 'excl VAT · Shopify', cls: 'kpi-pos', trend: sparkline(onlineData, '#22c55e') },
     { label: 'Store Gross Profit', value: fmtR(kpis.store_gross_profit_excl), sub: 'excl VAT · live (Omni)', cls: 'kpi-accent' },
@@ -107488,8 +107488,8 @@ function initOverview() {
         {
           label: 'Store Revenue excl VAT',
           data: storeData,
-          borderColor: '#6c63ff',
-          backgroundColor: 'rgba(108,99,255,0.1)',
+          borderColor: '#903090',
+          backgroundColor: 'rgba(144,48,144,0.1)',
           fill: true,
           tension: 0.3,
           borderWidth: 2,
@@ -107582,8 +107582,8 @@ function initOverview() {
         labels: sdates.map(d => d.slice(5)),
         datasets: [{
           data: sdates.map(d => s.daily_sales_excl[d]),
-          backgroundColor: 'rgba(108,99,255,0.5)',
-          borderColor: '#6c63ff',
+          backgroundColor: 'rgba(144,48,144,0.5)',
+          borderColor: '#903090',
           borderWidth: 1,
           borderRadius: 3,
         }]
@@ -107783,7 +107783,7 @@ function initSuppliers() {
 
   // Top 15 by outstanding value (colour by age)
   const top15 = [...suppliers].filter(s=>s.outstanding_excl>0).sort((a,b)=>b.outstanding_excl-a.outstanding_excl).slice(0,15);
-  const ageColor = d => d>30 ? 'rgba(239,68,68,0.75)' : d>14 ? 'rgba(245,158,11,0.75)' : 'rgba(108,99,255,0.65)';
+  const ageColor = d => d>30 ? 'rgba(239,68,68,0.75)' : d>14 ? 'rgba(245,158,11,0.75)' : 'rgba(144,48,144,0.65)';
   new Chart(document.getElementById('supChart'), {
     type: 'bar',
     data: {
@@ -108012,11 +108012,11 @@ function initOnline() {
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;">
       <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Channel Split</div>
       <div style="width:100%;height:24px;border-radius:12px;overflow:hidden;background:var(--card2);display:flex;">
-        <div style="width:${(storeRev/combinedRev*100).toFixed(1)}%;background:linear-gradient(90deg,#6c63ff,#8b85ff);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">${(storeRev/combinedRev*100).toFixed(1)}% Stores</div>
+        <div style="width:${(storeRev/combinedRev*100).toFixed(1)}%;background:linear-gradient(90deg,#903090,#b85cb8);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">${(storeRev/combinedRev*100).toFixed(1)}% Stores</div>
         <div style="width:${(totalRev/combinedRev*100).toFixed(1)}%;background:linear-gradient(90deg,#22c55e,#4ade80);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">${(totalRev/combinedRev*100).toFixed(1)}%</div>
       </div>
       <div style="display:flex;gap:20px;margin-top:12px;font-size:12px;color:var(--muted);">
-        <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#6c63ff;margin-right:4px;"></span>Stores ${fmtR(storeRev)}</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#903090;margin-right:4px;"></span>Stores ${fmtR(storeRev)}</span>
         <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:4px;"></span>Online ${fmtR(totalRev)}</span>
       </div>
     </div>
@@ -108040,8 +108040,8 @@ function initOnline() {
         {
           label: 'Revenue excl VAT',
           data: revData,
-          borderColor: '#6c63ff',
-          backgroundColor: 'rgba(108,99,255,0.1)',
+          borderColor: '#903090',
+          backgroundColor: 'rgba(144,48,144,0.1)',
           fill: true, tension: 0.3, borderWidth: 2,
           yAxisID: 'y',
         },
@@ -108093,7 +108093,7 @@ function initOnline() {
       datasets: [{
         label: 'Avg Revenue',
         data: dowAvgRev,
-        backgroundColor: dowAvgRev.map(v => v === Math.max(...dowAvgRev) ? '#22c55e' : 'rgba(108,99,255,0.6)'),
+        backgroundColor: dowAvgRev.map(v => v === Math.max(...dowAvgRev) ? '#22c55e' : 'rgba(144,48,144,0.6)'),
         borderRadius: 6,
         borderSkipped: false,
       }]
@@ -108125,7 +108125,7 @@ function initOnline() {
     donutLabels.push('All Other Products');
     const donutData = top10.map(p=>p.revenue_excl);
     donutData.push(restRev);
-    const donutColors = ['#6c63ff','#8b85ff','#a5a0ff','#22c55e','#4ade80','#f59e0b','#fbbf24','#ef4444','#f87171','#38bdf8','#475569'];
+    const donutColors = ['#903090','#b85cb8','#a5a0ff','#22c55e','#4ade80','#f59e0b','#fbbf24','#ef4444','#f87171','#38bdf8','#475569'];
 
     new Chart(donutCanvas, {
       type: 'doughnut',
@@ -108190,7 +108190,7 @@ function initOnline() {
         datasets: [{
           label: 'Revenue excl VAT',
           data: top10.map(p => p.revenue_excl),
-          backgroundColor: 'rgba(108,99,255,0.7)',
+          backgroundColor: 'rgba(144,48,144,0.7)',
           borderRadius: 4,
           borderSkipped: false,
         }]
@@ -108343,18 +108343,18 @@ function initKlaviyo() {
     </div>
     <div style="width:100%;height:20px;border-radius:10px;overflow:hidden;display:flex;background:var(--card2);">
       <div style="width:${(flowRev/onlineRev*100).toFixed(1)}%;background:linear-gradient(90deg,#22c55e,#4ade80);" title="Flow Revenue"></div>
-      <div style="width:${(campRev/onlineRev*100).toFixed(1)}%;background:linear-gradient(90deg,#6c63ff,#8b85ff);" title="Campaign Revenue"></div>
+      <div style="width:${(campRev/onlineRev*100).toFixed(1)}%;background:linear-gradient(90deg,#903090,#b85cb8);" title="Campaign Revenue"></div>
       <div style="width:${(nonEmailRev/onlineRev*100).toFixed(1)}%;background:var(--faint);" title="Non-Email Revenue"></div>
     </div>
     <div style="display:flex;gap:20px;margin-top:10px;font-size:11px;color:var(--muted);">
       <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:4px;"></span>Flows ${(flowRev/onlineRev*100).toFixed(1)}%</span>
-      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#6c63ff;margin-right:4px;"></span>Campaigns ${(campRev/onlineRev*100).toFixed(1)}%</span>
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#903090;margin-right:4px;"></span>Campaigns ${(campRev/onlineRev*100).toFixed(1)}%</span>
       <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--faint);margin-right:4px;"></span>Direct / Other ${(nonEmailRev/onlineRev*100).toFixed(1)}%</span>
     </div>
   `;
 
   // ─── Campaign Performance Chart (Bubble: x=open rate, y=revenue, size=recipients) ───
-  const campColors = ['#6c63ff','#8b85ff','#a5a0ff','#22c55e','#4ade80','#f59e0b'];
+  const campColors = ['#903090','#b85cb8','#a5a0ff','#22c55e','#4ade80','#f59e0b'];
   new Chart(document.getElementById('klaviyoCampaignChart'), {
     type: 'bubble',
     data: {
@@ -108389,7 +108389,7 @@ function initKlaviyo() {
       labels: liveFlows.map(f => f.name),
       datasets: [{
         data: liveFlows.map(f => f.revenue_30d),
-        backgroundColor: ['#22c55e','#6c63ff','#f59e0b','#38bdf8','#ef4444'],
+        backgroundColor: ['#22c55e','#903090','#f59e0b','#38bdf8','#ef4444'],
         borderColor: '#1a1d2e', borderWidth: 2,
       }]
     },
@@ -108429,10 +108429,10 @@ function initKlaviyo() {
       datasets: [{
         label: 'Subscribers',
         data: subValues,
-        borderColor: '#6c63ff',
-        backgroundColor: 'rgba(108,99,255,0.15)',
+        borderColor: '#903090',
+        backgroundColor: 'rgba(144,48,144,0.15)',
         fill: true, tension: 0.4, borderWidth: 2, pointRadius: 4,
-        pointBackgroundColor: '#6c63ff',
+        pointBackgroundColor: '#903090',
       }]
     },
     options: {
@@ -108449,7 +108449,7 @@ function initKlaviyo() {
   });
 
   // ─── Segment Bubble Chart ───
-  const segColors = ['#ef4444','#f59e0b','#22c55e','#6c63ff','#38bdf8','#a5a0ff'];
+  const segColors = ['#ef4444','#f59e0b','#22c55e','#903090','#38bdf8','#a5a0ff'];
   new Chart(document.getElementById('klaviyoSegmentChart'), {
     type: 'bubble',
     data: {
@@ -108747,7 +108747,7 @@ function mdBold(s) { return (s || '').replace(/\*\*(.+?)\*\*/g, '<strong>$1</str
 function wtmTable(list) {
   const condPill = c => c ? `<span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#2a2f4a;color:#9aa0c0;font-size:11px;margin-left:6px;">${c}</span>` : '';
   const branchChips = b => Object.entries(b).map(([k,v]) => `${k.slice(0,3)} ${v}`).join(' · ');
-  const bar = m => `<div style="height:6px;border-radius:3px;margin-top:3px;background:#2a2f4a;"><div style="height:6px;border-radius:3px;width:${Math.min(m,100)}%;background:linear-gradient(90deg,#6c63ff,#22c55e);"></div></div>`;
+  const bar = m => `<div style="height:6px;border-radius:3px;margin-top:3px;background:#2a2f4a;"><div style="height:6px;border-radius:3px;width:${Math.min(m,100)}%;background:linear-gradient(90deg,#903090,#22c55e);"></div></div>`;
   return `
     <table style="width:100%;border-collapse:collapse;font-size:13px;">
       <thead><tr style="text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;">
@@ -108778,12 +108778,12 @@ function initMarket() {
   const conds = ['All', ...Array.from(new Set(w.items.map(c => c.condition).filter(Boolean)))];
   const fc = document.getElementById('wtm-filter');
   if (fc) {
-    fc.innerHTML = conds.map(c => `<button class="wtm-fbtn" data-c="${c}" style="cursor:pointer;border:none;border-radius:14px;padding:4px 12px;font-size:12px;color:#cfd3e6;background:${c==='All'?'#6c63ff':'#2a2f4a'};">${c}</button>`).join('');
+    fc.innerHTML = conds.map(c => `<button class="wtm-fbtn" data-c="${c}" style="cursor:pointer;border:none;border-radius:14px;padding:4px 12px;font-size:12px;color:#cfd3e6;background:${c==='All'?'#903090':'#2a2f4a'};">${c}</button>`).join('');
     fc.querySelectorAll('.wtm-fbtn').forEach(btn => btn.addEventListener('click', () => {
       const c = btn.dataset.c;
       if (it) it.innerHTML = wtmTable(c === 'All' ? w.items : w.items.filter(x => x.condition === c));
       fc.querySelectorAll('.wtm-fbtn').forEach(b => b.style.background = '#2a2f4a');
-      btn.style.background = '#6c63ff';
+      btn.style.background = '#903090';
     }));
   }
   if (it) it.innerHTML = wtmTable(w.items);
@@ -108796,8 +108796,8 @@ function initMarket() {
       type: 'bubble',
       data: { datasets: [{
         data: w.items.map(c => ({ x: c.margin_pct, y: c.units_12m, r: Math.max(5, Math.sqrt(c.gp_12m) / 11), _n: c.name })),
-        backgroundColor: w.items.map(c => c.margin_pct >= 40 ? 'rgba(34,197,94,.55)' : 'rgba(108,99,255,.5)'),
-        borderColor: w.items.map(c => c.margin_pct >= 40 ? '#22c55e' : '#6c63ff'),
+        backgroundColor: w.items.map(c => c.margin_pct >= 40 ? 'rgba(34,197,94,.55)' : 'rgba(144,48,144,.5)'),
+        borderColor: w.items.map(c => c.margin_pct >= 40 ? '#22c55e' : '#903090'),
       }] },
       options: {
         plugins: { legend: { display: false }, tooltip: { callbacks: {
@@ -108816,7 +108816,7 @@ function initActions() {
   if (!b) return;
   const intro = document.getElementById('actions-intro');
   if (intro) intro.textContent = b.intro;
-  const kindColor = { Insight: '#6c63ff', Foresight: '#f59e0b', Hindsight: '#64748b', Action: '#22c55e' };
+  const kindColor = { Insight: '#903090', Foresight: '#f59e0b', Hindsight: '#64748b', Action: '#22c55e' };
   document.getElementById('actions-cards').innerHTML = b.cards.map(c => `
     <div class="action-card" style="border-left-color:${c.accent};">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
@@ -108892,14 +108892,14 @@ function initGA4() {
     const ch = g.channels.slice(0,8);
     new Chart(document.getElementById('ga4ChannelChart'), {
       type:'bar',
-      data:{labels:ch.map(c=>c.channel), datasets:[{data:ch.map(c=>c.sessions), backgroundColor:'rgba(108,99,255,.6)', borderColor:'#6c63ff'}]},
+      data:{labels:ch.map(c=>c.channel), datasets:[{data:ch.map(c=>c.sessions), backgroundColor:'rgba(144,48,144,.6)', borderColor:'#903090'}]},
       options:{indexAxis:'y', plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>` ${fmtNum(ctx.raw)} sessions · ${ch[ctx.dataIndex].conv_rate}% conv`}}},
         scales:{x:{ticks:{color:'#9aa0c0'},grid:{color:'rgba(255,255,255,.06)'}}, y:{ticks:{color:'#9aa0c0'},grid:{display:false}}}}
     });
     const steps=[['Sessions',f.sessions],['Product views',f.product_views],['Add to cart',f.add_to_carts],['Checkout',f.checkouts],['Purchase',f.purchases]];
     new Chart(document.getElementById('ga4FunnelChart'), {
       type:'bar',
-      data:{labels:steps.map(s=>s[0]), datasets:[{data:steps.map(s=>s[1]), backgroundColor:['#6c63ff','#7c83ff','#f59e0b','#fb923c','#22c55e']}]},
+      data:{labels:steps.map(s=>s[0]), datasets:[{data:steps.map(s=>s[1]), backgroundColor:['#903090','#7c83ff','#f59e0b','#fb923c','#22c55e']}]},
       options:{plugins:{legend:{display:false}}, scales:{x:{ticks:{color:'#9aa0c0'},grid:{display:false}}, y:{ticks:{color:'#9aa0c0'},grid:{color:'rgba(255,255,255,.06)'}}}}
     });
   }
