@@ -375,7 +375,7 @@
     <div class="kpi-grid" id="sup-kpi-grid"></div>
     <div class="chart-grid">
       <div class="chart-card chart-wide">
-        <div class="chart-title">Top 15 Suppliers by PO Value excl VAT</div>
+        <div class="chart-title">Top 15 Suppliers by Outstanding Value excl VAT</div>
         <div class="chart-container" style="height:400px;">
           <canvas id="supChart"></canvas>
         </div>
@@ -391,21 +391,19 @@
           <thead><tr>
             <th data-col="code">Code <span class="sort-icon"></span></th>
             <th data-col="name">Name <span class="sort-icon"></span></th>
-            <th data-col="orders">Orders <span class="sort-icon"></span></th>
-            <th data-col="po_qty">PO Qty <span class="sort-icon"></span></th>
-            <th data-col="po_value_excl">PO Value excl VAT <span class="sort-icon"></span></th>
-            <th data-col="grv_value_excl">GRV Value excl VAT <span class="sort-icon"></span></th>
-            <th data-col="fill_pct">Fill % <span class="sort-icon"></span></th>
-            <th data-col="skus">SKUs <span class="sort-icon"></span></th>
-            <th data-col="last_order">Last Order <span class="sort-icon"></span></th>
+            <th data-col="purchases_12m_excl">12-mo Purchases <span class="sort-icon"></span></th>
+            <th data-col="outstanding_excl">Outstanding <span class="sort-icon"></span></th>
+            <th data-col="outstanding_qty">Outst. Qty <span class="sort-icon"></span></th>
+            <th data-col="po_count">Open POs <span class="sort-icon"></span></th>
+            <th data-col="oldest_age_days">Oldest (days) <span class="sort-icon"></span></th>
           </tr></thead>
           <tbody id="sup-tbody"></tbody>
         </table>
       </div>
     </div>
     <div class="section-header">
-      <div class="section-title">⚠️ Problem Suppliers</div>
-      <div class="section-sub">Fill rate &lt;80% and PO value &gt;R5,000 excl VAT</div>
+      <div class="section-title">⚠️ Outstanding Order Watch-list</div>
+      <div class="section-sub">Biggest &amp; oldest undelivered orders</div>
     </div>
     <div id="prob-suppliers"></div>
   </div>
@@ -699,6 +697,14 @@
 // DATA
 // ============================================================
 const DASHBOARD_DATA = {
+  "supplier_health": {
+    "total_outstanding_excl": 179060.11,
+    "total_purchases_12m_excl": 18566551.81,
+    "supplier_count": 233,
+    "outstanding_supplier_count": 47,
+    "aged_outstanding_excl": 5670.23,
+    "aged_count": 4
+  },
   "ga4": {
     "generated_at": "2026-06-16T08:30:29.569421",
     "window": {
@@ -3421,1972 +3427,2101 @@ const DASHBOARD_DATA = {
   ],
   "suppliers": [
     {
-      "code": "DSI",
-      "name": "DS INTERNATIONAL (NOW)",
-      "orders": 19,
-      "po_qty": 1872,
-      "po_value_excl": 451203.83,
-      "grv_qty": 1270,
-      "grv_value_excl": 312080.33,
-      "fill_pct": 69.2,
-      "skus": 178,
-      "last_order": "2026-03-30"
-    },
-    {
-      "code": "NATRO",
-      "name": "NATROCEUTICS SA (PTY) LTD",
-      "orders": 29,
-      "po_qty": 1514,
-      "po_value_excl": 333567.7,
-      "grv_qty": 1111,
-      "grv_value_excl": 245967.5,
-      "fill_pct": 73.7,
-      "skus": 53,
-      "last_order": "2026-03-31"
-    },
-    {
-      "code": "WILLOW",
-      "name": "LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS",
-      "orders": 18,
-      "po_qty": 2016,
-      "po_value_excl": 242097.9,
-      "grv_qty": 1882,
-      "grv_value_excl": 223888.13,
-      "fill_pct": 92.5,
-      "skus": 234,
-      "last_order": "2026-03-29"
-    },
-    {
-      "code": "AMIPRO",
-      "name": "AMIPRO",
-      "orders": 13,
-      "po_qty": 654,
-      "po_value_excl": 209425.22,
-      "grv_qty": 353,
-      "grv_value_excl": 117538.06,
-      "fill_pct": 56.1,
-      "skus": 69,
-      "last_order": "2026-03-29"
-    },
-    {
-      "code": "NN",
-      "name": "WELL I AM",
-      "orders": 14,
-      "po_qty": 1937,
-      "po_value_excl": 182661.05,
-      "grv_qty": 1295,
-      "grv_value_excl": 138084.72,
-      "fill_pct": 75.6,
-      "skus": 69,
-      "last_order": "2026-03-31"
-    },
-    {
-      "code": "PRIMES",
-      "name": "PRIME HEALTH HOLDINGS",
-      "orders": 11,
-      "po_qty": 598,
-      "po_value_excl": 115004.46,
-      "grv_qty": 410,
-      "grv_value_excl": 76081.99,
-      "fill_pct": 66.2,
-      "skus": 44,
-      "last_order": "2026-03-31"
-    },
-    {
-      "code": "LOVE",
-      "name": "LOVE YOURSELF BREADZ",
-      "orders": 25,
-      "po_qty": 1969,
-      "po_value_excl": 114108.0,
-      "grv_qty": 2889,
-      "grv_value_excl": 162388.0,
-      "fill_pct": 142.3,
-      "skus": 49,
-      "last_order": "2026-03-27"
-    },
-    {
       "code": "VERHAKI",
       "name": "VERHAKI (PTY) LTD",
-      "orders": 17,
-      "po_qty": 648,
-      "po_value_excl": 107462.72,
-      "grv_qty": 579,
-      "grv_value_excl": 106676.99,
-      "fill_pct": 99.3,
-      "skus": 87,
-      "last_order": "2026-03-31"
-    },
-    {
-      "code": "NUG",
-      "name": "NUTRIGREEN(Pty) Ltd",
-      "orders": 16,
-      "po_qty": 1240,
-      "po_value_excl": 100619.88,
-      "grv_qty": 1059,
-      "grv_value_excl": 86153.45,
-      "fill_pct": 85.6,
-      "skus": 105,
-      "last_order": "2026-03-31"
-    },
-    {
-      "code": "EVN",
-      "name": "ECO VALLEY NUTRITION",
-      "orders": 14,
-      "po_qty": 730,
-      "po_value_excl": 91533.55,
-      "grv_qty": 903,
-      "grv_value_excl": 113011.51,
-      "fill_pct": 123.5,
-      "skus": 18,
-      "last_order": "2026-03-26"
-    },
-    {
-      "code": "NG",
-      "name": "NEOGENESIS HEALTH PRODUCTS (PTY) LDT",
-      "orders": 9,
-      "po_qty": 538,
-      "po_value_excl": 89710.02,
-      "grv_qty": 464,
-      "grv_value_excl": 82052.79,
-      "fill_pct": 91.5,
-      "skus": 64,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "PN",
-      "name": "PMR NUTRITION",
-      "orders": 7,
-      "po_qty": 675,
-      "po_value_excl": 85784.86,
-      "grv_qty": 559,
-      "grv_value_excl": 72437.56,
-      "fill_pct": 84.4,
-      "skus": 22,
-      "last_order": "2026-03-31"
-    },
-    {
-      "code": "GP",
-      "name": "GREEN PHARM SOUTH AFRICA (PTY) LTD",
-      "orders": 20,
-      "po_qty": 1031,
-      "po_value_excl": 84085.0,
-      "grv_qty": 985,
-      "grv_value_excl": 79895.0,
-      "fill_pct": 95.0,
-      "skus": 291,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "COYNE",
-      "name": "PHYTOCEUTICS  (coyne)",
-      "orders": 6,
-      "po_qty": 384,
-      "po_value_excl": 83305.67,
-      "grv_qty": 498,
-      "grv_value_excl": 106118.12,
-      "fill_pct": 127.4,
-      "skus": 57,
-      "last_order": "2026-03-25"
-    },
-    {
-      "code": "CHINA",
-      "name": "CHINAHERB (PTY) LTD",
-      "orders": 16,
-      "po_qty": 480,
-      "po_value_excl": 62856.0,
-      "grv_qty": 432,
-      "grv_value_excl": 56709.0,
-      "fill_pct": 90.2,
-      "skus": 56,
-      "last_order": "2026-03-25"
-    },
-    {
-      "code": "ESCP",
-      "name": "ESCENTIA PRODUCTS",
-      "orders": 8,
-      "po_qty": 848,
-      "po_value_excl": 62186.0,
-      "grv_qty": 652,
-      "grv_value_excl": 48410.0,
-      "fill_pct": 77.8,
-      "skus": 166,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "GENO",
-      "name": "GENOLOGIX DISTRIBUTORS PTY LTD",
-      "orders": 9,
-      "po_qty": 359,
-      "po_value_excl": 61071.39,
-      "grv_qty": 272,
-      "grv_value_excl": 46334.88,
-      "fill_pct": 75.9,
-      "skus": 44,
-      "last_order": "2026-03-18"
-    },
-    {
-      "code": "YW",
-      "name": "YOUR WELLBEING (PTY) LTD",
-      "orders": 16,
-      "po_qty": 304,
-      "po_value_excl": 55104.31,
-      "grv_qty": 274,
-      "grv_value_excl": 50266.39,
-      "fill_pct": 91.2,
-      "skus": 33,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "HAR",
-      "name": "Harrewyn Organics (HEALTHWELL) 21681",
-      "orders": 11,
-      "po_qty": 705,
-      "po_value_excl": 52584.03,
-      "grv_qty": 713,
-      "grv_value_excl": 39867.17,
-      "fill_pct": 75.8,
-      "skus": 90,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "PGER",
-      "name": "Pharma Germania",
-      "orders": 11,
-      "po_qty": 1089,
-      "po_value_excl": 49541.76,
-      "grv_qty": 917,
-      "grv_value_excl": 41394.93,
-      "fill_pct": 83.6,
-      "skus": 136,
-      "last_order": "2026-03-20"
-    },
-    {
-      "code": "TRTFC",
-      "name": "The Real Thing Food Supplements cc",
-      "orders": 4,
-      "po_qty": 225,
-      "po_value_excl": 44393.5,
-      "grv_qty": 252,
-      "grv_value_excl": 49712.0,
-      "fill_pct": 112.0,
-      "skus": 22,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "INF",
-      "name": "Infinity Therapeutics Africa (Pty) Ltd",
-      "orders": 11,
-      "po_qty": 146,
-      "po_value_excl": 43166.61,
-      "grv_qty": 79,
-      "grv_value_excl": 19841.01,
-      "fill_pct": 46.0,
-      "skus": 29,
-      "last_order": "2026-03-23"
-    },
-    {
-      "code": "CIMO",
-      "name": "CIMO DISTRIBUTION CC",
-      "orders": 6,
-      "po_qty": 415,
-      "po_value_excl": 39491.14,
-      "grv_qty": 481,
-      "grv_value_excl": 46300.23,
-      "fill_pct": 117.2,
-      "skus": 57,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "SOL",
-      "name": "Solgar C011175 (do not use)",
-      "orders": 4,
-      "po_qty": 238,
-      "po_value_excl": 37647.9,
-      "grv_qty": 171,
-      "grv_value_excl": 27140.98,
-      "fill_pct": 72.1,
-      "skus": 56,
-      "last_order": "2026-03-23"
-    },
-    {
-      "code": "HCW",
-      "name": "HEALTHSMART SOLUTIONS (HEALTH CONNECTION WHOLEFOODS)",
-      "orders": 6,
-      "po_qty": 577,
-      "po_value_excl": 31998.26,
-      "grv_qty": 698,
-      "grv_value_excl": 34029.9,
-      "fill_pct": 106.3,
-      "skus": 98,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "MEDFORD",
-      "name": "MEDFORD pharmaceuticals pty ltd",
-      "orders": 7,
-      "po_qty": 125,
-      "po_value_excl": 31782.3,
-      "grv_qty": 114,
-      "grv_value_excl": 29279.42,
-      "fill_pct": 92.1,
-      "skus": 11,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "ALTW",
-      "name": "ALTWELL (PTY) LTD",
-      "orders": 8,
-      "po_qty": 81,
-      "po_value_excl": 31756.75,
-      "grv_qty": 164,
-      "grv_value_excl": 53401.0,
-      "fill_pct": 168.2,
-      "skus": 21,
-      "last_order": "2026-03-26"
-    },
-    {
-      "code": "PROD",
-      "name": "PRO DISTRIBUTORS",
-      "orders": 4,
-      "po_qty": 125,
-      "po_value_excl": 29740.52,
-      "grv_qty": 126,
-      "grv_value_excl": 36768.02,
-      "fill_pct": 123.6,
-      "skus": 17,
-      "last_order": "2026-03-26"
-    },
-    {
-      "code": "SFS",
-      "name": "SOARING FREE SUPERFOODS",
-      "orders": 10,
-      "po_qty": 181,
-      "po_value_excl": 28802.05,
-      "grv_qty": 200,
-      "grv_value_excl": 32068.11,
-      "fill_pct": 111.3,
-      "skus": 39,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "GULL",
-      "name": "GULL LAB CC",
-      "orders": 4,
-      "po_qty": 401,
-      "po_value_excl": 26885.09,
-      "grv_qty": 372,
-      "grv_value_excl": 25090.26,
-      "fill_pct": 93.3,
-      "skus": 57,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "NH",
-      "name": "INOVO - REGENESIS HEALTH",
-      "orders": 5,
-      "po_qty": 100,
-      "po_value_excl": 26390.0,
-      "grv_qty": 100,
-      "grv_value_excl": 26390.0,
-      "fill_pct": 100.0,
-      "skus": 1,
-      "last_order": "2026-03-09"
+      "purchases_12m_excl": 443177.32,
+      "outstanding_excl": 12538.96,
+      "outstanding_qty": 65,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
       "code": "SFERA",
       "name": "SFERA BIO NUTRITION",
-      "orders": 4,
-      "po_qty": 128,
-      "po_value_excl": 25841.28,
-      "grv_qty": 135,
-      "grv_value_excl": 26486.56,
-      "fill_pct": 102.5,
-      "skus": 16,
-      "last_order": "2026-03-18"
+      "purchases_12m_excl": 130429.62,
+      "outstanding_excl": 10605.88,
+      "outstanding_qty": 45,
+      "po_count": 1,
+      "oldest_age_days": 6
+    },
+    {
+      "code": "LOVE",
+      "name": "LOVE YOURSELF BREADZ",
+      "purchases_12m_excl": 722204.0,
+      "outstanding_excl": 10305.0,
+      "outstanding_qty": 175,
+      "po_count": 3,
+      "oldest_age_days": 1
+    },
+    {
+      "code": "SOL",
+      "name": "Solgar C011175 (do not use)",
+      "purchases_12m_excl": 230862.04,
+      "outstanding_excl": 9284.55,
+      "outstanding_qty": 43,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
       "code": "EFM",
       "name": "EFFICIENT MICROBES (Pty) Ltd",
-      "orders": 4,
-      "po_qty": 121,
-      "po_value_excl": 23674.0,
-      "grv_qty": 126,
-      "grv_value_excl": 23674.08,
-      "fill_pct": 100.0,
-      "skus": 3,
-      "last_order": "2026-03-14"
+      "purchases_12m_excl": 87014.12,
+      "outstanding_excl": 8088.0,
+      "outstanding_qty": 42,
+      "po_count": 1,
+      "oldest_age_days": 5
     },
     {
-      "code": "NUM",
-      "name": "NUMESA",
-      "orders": 15,
-      "po_qty": 414,
-      "po_value_excl": 23479.71,
-      "grv_qty": 364,
-      "grv_value_excl": 20491.22,
-      "fill_pct": 87.3,
-      "skus": 25,
-      "last_order": "2026-03-29"
+      "code": "YW",
+      "name": "YOUR WELLBEING (PTY) LTD",
+      "purchases_12m_excl": 196877.07,
+      "outstanding_excl": 7773.46,
+      "outstanding_qty": 40,
+      "po_count": 2,
+      "oldest_age_days": 1
     },
     {
-      "code": "ALMANS",
-      "name": "ALMAN'S DRIED FRUIT & NUTS",
-      "orders": 4,
-      "po_qty": 578,
-      "po_value_excl": 23394.52,
-      "grv_qty": 608,
-      "grv_value_excl": 23853.52,
-      "fill_pct": 102.0,
-      "skus": 47,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "SG",
-      "name": "SILVERGENESIS TECHNOLOGIES CC",
-      "orders": 6,
-      "po_qty": 304,
-      "po_value_excl": 23031.86,
-      "grv_qty": 359,
-      "grv_value_excl": 28313.09,
-      "fill_pct": 122.9,
-      "skus": 7,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "EARTHL",
-      "name": "EARTH LINKS",
-      "orders": 7,
-      "po_qty": 142,
-      "po_value_excl": 22763.36,
-      "grv_qty": 78,
-      "grv_value_excl": 13604.6,
-      "fill_pct": 59.8,
-      "skus": 26,
-      "last_order": "2026-03-18"
-    },
-    {
-      "code": "FERO",
-      "name": "FEROXII NATURALS",
-      "orders": 12,
-      "po_qty": 153,
-      "po_value_excl": 22363.0,
-      "grv_qty": 275,
-      "grv_value_excl": 37963.0,
-      "fill_pct": 169.8,
-      "skus": 15,
-      "last_order": "2026-03-31"
-    },
-    {
-      "code": "OP",
-      "name": "OXYGEN PRODUCTS (THE 8TH ELEMENT)",
-      "orders": 2,
-      "po_qty": 120,
-      "po_value_excl": 21429.54,
-      "grv_qty": 131,
-      "grv_value_excl": 23457.45,
-      "fill_pct": 109.5,
-      "skus": 5,
-      "last_order": "2026-02-18"
-    },
-    {
-      "code": "BIC",
-      "name": "BAUMA INVESTMENTS CC",
-      "orders": 5,
-      "po_qty": 221,
-      "po_value_excl": 20729.42,
-      "grv_qty": 241,
-      "grv_value_excl": 22629.48,
-      "fill_pct": 109.2,
-      "skus": 11,
-      "last_order": "2026-03-23"
-    },
-    {
-      "code": "TOPMED",
-      "name": "TOPMED 102405",
-      "orders": 3,
-      "po_qty": 137,
-      "po_value_excl": 19887.62,
-      "grv_qty": 117,
-      "grv_value_excl": 17825.91,
-      "fill_pct": 89.6,
-      "skus": 23,
-      "last_order": "2026-03-17"
-    },
-    {
-      "code": "CANN",
-      "name": "CANNACO (PTY) LTD",
-      "orders": 3,
-      "po_qty": 140,
-      "po_value_excl": 19580.83,
-      "grv_qty": 140,
-      "grv_value_excl": 19599.09,
-      "fill_pct": 100.1,
-      "skus": 13,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "POTG",
-      "name": "Plants of the Gods (Pty) LTD",
-      "orders": 9,
-      "po_qty": 101,
-      "po_value_excl": 18520.63,
-      "grv_qty": 122,
-      "grv_value_excl": 23664.78,
-      "fill_pct": 127.8,
-      "skus": 24,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "DELF",
-      "name": "DELFRAN (PTY) LTD",
-      "orders": 5,
-      "po_qty": 57,
-      "po_value_excl": 18265.24,
-      "grv_qty": 98,
-      "grv_value_excl": 29162.45,
-      "fill_pct": 159.7,
-      "skus": 7,
-      "last_order": "2026-03-23"
-    },
-    {
-      "code": "K4H",
-      "name": "KEY 4 HEALTH cc",
-      "orders": 6,
-      "po_qty": 715,
-      "po_value_excl": 16799.84,
-      "grv_qty": 763,
-      "grv_value_excl": 17460.76,
-      "fill_pct": 103.9,
-      "skus": 81,
-      "last_order": "2026-03-18"
-    },
-    {
-      "code": "SON",
-      "name": "Something Natural CC",
-      "orders": 3,
-      "po_qty": 47,
-      "po_value_excl": 16620.57,
-      "grv_qty": 47,
-      "grv_value_excl": 16620.57,
-      "fill_pct": 100.0,
-      "skus": 5,
-      "last_order": "2026-03-03"
-    },
-    {
-      "code": "DOP",
-      "name": "DORATHIA'S PANTRY",
-      "orders": 3,
-      "po_qty": 169,
-      "po_value_excl": 14915.0,
-      "grv_qty": 273,
-      "grv_value_excl": 23825.0,
-      "fill_pct": 159.7,
-      "skus": 3,
-      "last_order": "2026-03-10"
-    },
-    {
-      "code": "GHP",
-      "name": "Good Health Products (Pty) Ltd",
-      "orders": 3,
-      "po_qty": 65,
-      "po_value_excl": 14769.33,
-      "grv_qty": 87,
-      "grv_value_excl": 18697.47,
-      "fill_pct": 126.6,
-      "skus": 30,
-      "last_order": "2026-03-04"
-    },
-    {
-      "code": "BARE",
-      "name": "AUTHENTIC YOU BY BARE",
-      "orders": 3,
-      "po_qty": 62,
-      "po_value_excl": 14742.6,
-      "grv_qty": 66,
-      "grv_value_excl": 15307.81,
-      "fill_pct": 103.8,
-      "skus": 7,
-      "last_order": "2026-03-20"
-    },
-    {
-      "code": "TC",
-      "name": "THE CATALYST T/A WINTA PRODUCTS",
-      "orders": 3,
-      "po_qty": 144,
-      "po_value_excl": 14665.0,
-      "grv_qty": 211,
-      "grv_value_excl": 21252.0,
-      "fill_pct": 144.9,
-      "skus": 16,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "ESY",
-      "name": "ESSENTIALLY YOUNG (PTY) LTD",
-      "orders": 5,
-      "po_qty": 178,
-      "po_value_excl": 14662.0,
-      "grv_qty": 180,
-      "grv_value_excl": 14242.0,
-      "fill_pct": 97.1,
-      "skus": 6,
-      "last_order": "2026-03-11"
-    },
-    {
-      "code": "AIM",
-      "name": "AIM PRODUCTS",
-      "orders": 4,
-      "po_qty": 34,
-      "po_value_excl": 14367.87,
-      "grv_qty": 44,
-      "grv_value_excl": 20042.1,
-      "fill_pct": 139.5,
-      "skus": 9,
-      "last_order": "2026-03-20"
-    },
-    {
-      "code": "VN",
-      "name": "Viridian (SA)",
-      "orders": 3,
-      "po_qty": 59,
-      "po_value_excl": 13373.88,
-      "grv_qty": 71,
-      "grv_value_excl": 15915.89,
-      "fill_pct": 119.0,
-      "skus": 20,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "FHS",
-      "name": "FORTIFOOD HEALTH SERVICES",
-      "orders": 3,
-      "po_qty": 117,
-      "po_value_excl": 13132.2,
-      "grv_qty": 117,
-      "grv_value_excl": 13205.7,
-      "fill_pct": 100.6,
-      "skus": 21,
-      "last_order": "2026-03-03"
-    },
-    {
-      "code": "ITB",
-      "name": "ITB DISTRIBUTION AND MARKETING",
-      "orders": 5,
-      "po_qty": 95,
-      "po_value_excl": 12928.89,
-      "grv_qty": 124,
-      "grv_value_excl": 16641.11,
-      "fill_pct": 128.7,
-      "skus": 28,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "TIBB",
-      "name": "TIBB HEALTH SCIENCES",
-      "orders": 2,
-      "po_qty": 63,
-      "po_value_excl": 12308.5,
-      "grv_qty": 138,
-      "grv_value_excl": 24038.74,
-      "fill_pct": 195.3,
-      "skus": 15,
-      "last_order": "2026-03-17"
-    },
-    {
-      "code": "COMED",
-      "name": "COMED HEALTH (ONE002) (-2.5%)",
-      "orders": 5,
-      "po_qty": 117,
-      "po_value_excl": 12237.26,
-      "grv_qty": 54,
-      "grv_value_excl": 3919.73,
-      "fill_pct": 32.0,
-      "skus": 30,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "TORUS",
-      "name": "TORUS HEALTH CARE",
-      "orders": 3,
-      "po_qty": 22,
-      "po_value_excl": 12121.16,
-      "grv_qty": 30,
-      "grv_value_excl": 14232.46,
-      "fill_pct": 117.4,
-      "skus": 7,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "PHAR",
-      "name": "PHARMED PHARMACEUTICALS PTY - J850712",
-      "orders": 3,
-      "po_qty": 102,
-      "po_value_excl": 12031.75,
-      "grv_qty": 161,
-      "grv_value_excl": 15406.48,
-      "fill_pct": 128.0,
-      "skus": 49,
-      "last_order": "2026-03-17"
-    },
-    {
-      "code": "EDEN",
-      "name": "SOLGAR - EDEN PHARMA SA PRY LTD",
-      "orders": 1,
-      "po_qty": 71,
-      "po_value_excl": 11945.7,
-      "grv_qty": 123,
-      "grv_value_excl": 19754.3,
-      "fill_pct": 165.4,
-      "skus": 42,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "NCH",
-      "name": "NATURES CHOICE",
-      "orders": 3,
-      "po_qty": 222,
-      "po_value_excl": 11329.32,
-      "grv_qty": 210,
-      "grv_value_excl": 11036.82,
-      "fill_pct": 97.4,
-      "skus": 29,
-      "last_order": "2026-03-03"
-    },
-    {
-      "code": "MH",
-      "name": "Medico Herbs",
-      "orders": 5,
-      "po_qty": 127,
-      "po_value_excl": 11309.39,
-      "grv_qty": 106,
-      "grv_value_excl": 9511.48,
-      "fill_pct": 84.1,
-      "skus": 30,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "UTI",
-      "name": "DSV HEALTHCARE (Solal)",
-      "orders": 2,
-      "po_qty": 56,
-      "po_value_excl": 10654.69,
-      "grv_qty": 89,
-      "grv_value_excl": 16640.05,
-      "fill_pct": 156.2,
-      "skus": 13,
-      "last_order": "2026-03-10"
-    },
-    {
-      "code": "ILG",
-      "name": "INVINCIBLE LIVING (PTY)LTD HEALTH SYNERGY",
-      "orders": 4,
-      "po_qty": 48,
-      "po_value_excl": 10532.36,
-      "grv_qty": 48,
-      "grv_value_excl": 10532.35,
-      "fill_pct": 100.0,
-      "skus": 6,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "LV",
-      "name": "LV NUTRITIONAL PRODUCTS PTY LTD",
-      "orders": 5,
-      "po_qty": 55,
-      "po_value_excl": 10228.36,
-      "grv_qty": 56,
-      "grv_value_excl": 11486.58,
-      "fill_pct": 112.3,
-      "skus": 12,
-      "last_order": "2026-03-04"
-    },
-    {
-      "code": "TBS",
-      "name": "TRUE BLUE SUPPLEMENTS",
-      "orders": 5,
-      "po_qty": 39,
-      "po_value_excl": 10210.0,
-      "grv_qty": 58,
-      "grv_value_excl": 15100.0,
-      "fill_pct": 147.9,
-      "skus": 3,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "CHSA",
-      "name": "Cili Health S.A. (Pty) Ltd (ONELIF)",
-      "orders": 3,
-      "po_qty": 50,
-      "po_value_excl": 10098.95,
-      "grv_qty": 67,
-      "grv_value_excl": 13743.96,
-      "fill_pct": 136.1,
-      "skus": 10,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "NC",
-      "name": "NATURES COLOURS SA",
-      "orders": 3,
-      "po_qty": 75,
-      "po_value_excl": 9880.0,
-      "grv_qty": 81,
-      "grv_value_excl": 10690.0,
-      "fill_pct": 108.2,
-      "skus": 30,
-      "last_order": "2026-03-03"
-    },
-    {
-      "code": "CT",
-      "name": "CLOCKWORK TRADING 1077 CC T/A WINNING PERFORMANCE",
-      "orders": 4,
-      "po_qty": 74,
-      "po_value_excl": 9798.0,
-      "grv_qty": 61,
-      "grv_value_excl": 8004.0,
-      "fill_pct": 81.7,
-      "skus": 3,
-      "last_order": "2026-03-20"
-    },
-    {
-      "code": "BIOS",
-      "name": "BIO-SIL SA CC",
-      "orders": 4,
-      "po_qty": 71,
-      "po_value_excl": 9539.05,
-      "grv_qty": 75,
-      "grv_value_excl": 10126.15,
-      "fill_pct": 106.2,
-      "skus": 16,
-      "last_order": "2026-03-18"
-    },
-    {
-      "code": "CRED",
-      "name": "CREDENCE PHARMA",
-      "orders": 7,
-      "po_qty": 129,
-      "po_value_excl": 9461.82,
-      "grv_qty": 95,
-      "grv_value_excl": 7160.3,
-      "fill_pct": 75.7,
-      "skus": 18,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "GAIA",
-      "name": "GAIA BUSINESS AND BRAND MANAGEMENT PTY LTD",
-      "orders": 3,
-      "po_qty": 69,
-      "po_value_excl": 9457.5,
-      "grv_qty": 69,
-      "grv_value_excl": 9932.03,
-      "fill_pct": 105.0,
-      "skus": 7,
-      "last_order": "2026-03-09"
+      "code": "PRIMES",
+      "name": "PRIME HEALTH HOLDINGS",
+      "purchases_12m_excl": 367811.88,
+      "outstanding_excl": 7537.32,
+      "outstanding_qty": 26,
+      "po_count": 1,
+      "oldest_age_days": 5
     },
     {
       "code": "TWI",
       "name": "THE WELLNESS INITIATIVE (NEO) - DGB INVESTMENTS PTY LTD",
-      "orders": 3,
-      "po_qty": 98,
-      "po_value_excl": 9430.46,
-      "grv_qty": 102,
-      "grv_value_excl": 10793.78,
-      "fill_pct": 114.5,
-      "skus": 37,
-      "last_order": "2026-03-03"
+      "purchases_12m_excl": 45129.45,
+      "outstanding_excl": 6722.84,
+      "outstanding_qty": 111,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
-      "code": "RAFAA",
-      "name": "RAFAA PRODUCTS CC (4.DE11)",
-      "orders": 3,
-      "po_qty": 56,
-      "po_value_excl": 9297.33,
-      "grv_qty": 56,
-      "grv_value_excl": 9490.69,
-      "fill_pct": 102.1,
-      "skus": 8,
-      "last_order": "2026-03-03"
+      "code": "GP",
+      "name": "GREEN PHARM SOUTH AFRICA (PTY) LTD",
+      "purchases_12m_excl": 289820.0,
+      "outstanding_excl": 6630.0,
+      "outstanding_qty": 91,
+      "po_count": 2,
+      "oldest_age_days": 1
     },
     {
-      "code": "OILG",
-      "name": "OILGROW (PTY) LTD",
-      "orders": 4,
-      "po_qty": 76,
-      "po_value_excl": 8646.99,
-      "grv_qty": 70,
-      "grv_value_excl": 7826.08,
-      "fill_pct": 90.5,
-      "skus": 21,
-      "last_order": "2026-03-16"
+      "code": "GHP",
+      "name": "Good Health Products (Pty) Ltd",
+      "purchases_12m_excl": 72910.91,
+      "outstanding_excl": 6219.7,
+      "outstanding_qty": 27,
+      "po_count": 1,
+      "oldest_age_days": 8
     },
     {
-      "code": "KURA",
-      "name": "KURA & HERBAR",
-      "orders": 4,
-      "po_qty": 115,
-      "po_value_excl": 7704.1,
-      "grv_qty": 44,
-      "grv_value_excl": 2783.0,
-      "fill_pct": 36.1,
-      "skus": 66,
-      "last_order": "2026-02-06"
+      "code": "VM",
+      "name": "VitaminMe (Pty) Ltd",
+      "purchases_12m_excl": 0.0,
+      "outstanding_excl": 5821.0,
+      "outstanding_qty": 99,
+      "po_count": 3,
+      "oldest_age_days": 1
     },
     {
-      "code": "UNDER",
-      "name": "UNDERWORKS (PTY) LTD",
-      "orders": 4,
-      "po_qty": 227,
-      "po_value_excl": 7612.52,
-      "grv_qty": 249,
-      "grv_value_excl": 7839.24,
-      "fill_pct": 103.0,
-      "skus": 17,
-      "last_order": "2026-03-20"
+      "code": "DOP",
+      "name": "DORATHIA'S PANTRY",
+      "purchases_12m_excl": 57345.0,
+      "outstanding_excl": 5360.0,
+      "outstanding_qty": 59,
+      "po_count": 1,
+      "oldest_age_days": 1
     },
     {
-      "code": "EJ",
-      "name": "EJ'S LIFESTYLE PRODUCTS (PTY) Ltd",
-      "orders": 4,
-      "po_qty": 298,
-      "po_value_excl": 7560.3,
-      "grv_qty": 248,
-      "grv_value_excl": 6235.8,
-      "fill_pct": 82.5,
-      "skus": 6,
-      "last_order": "2026-03-09"
+      "code": "SAT",
+      "name": "DSV HEALTHCARE (Solal) - 552052",
+      "purchases_12m_excl": 34690.01,
+      "outstanding_excl": 5113.74,
+      "outstanding_qty": 21,
+      "po_count": 1,
+      "oldest_age_days": 14
     },
     {
-      "code": "ZT",
-      "name": "ZIGANE TRADERS T/A HIGH ON LIFE",
-      "orders": 3,
-      "po_qty": 204,
-      "po_value_excl": 7495.31,
-      "grv_qty": 204,
-      "grv_value_excl": 7617.72,
-      "fill_pct": 101.6,
-      "skus": 7,
-      "last_order": "2026-03-09"
+      "code": "FERO",
+      "name": "FEROXII NATURALS",
+      "purchases_12m_excl": 168815.0,
+      "outstanding_excl": 4246.0,
+      "outstanding_qty": 31,
+      "po_count": 2,
+      "oldest_age_days": 1
     },
     {
-      "code": "AC",
-      "name": "AFRICAN CRANBERRY - NATURAL BY NATURE - JW HANSEL T/A",
-      "orders": 3,
-      "po_qty": 96,
-      "po_value_excl": 7452.0,
-      "grv_qty": 96,
-      "grv_value_excl": 7452.0,
-      "fill_pct": 100.0,
-      "skus": 4,
-      "last_order": "2026-03-03"
-    },
-    {
-      "code": "SL",
-      "name": "SILVER LEAF HEALTH",
-      "orders": 5,
-      "po_qty": 82,
-      "po_value_excl": 7442.0,
-      "grv_qty": 81,
-      "grv_value_excl": 8454.66,
-      "fill_pct": 113.6,
-      "skus": 12,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "GG",
-      "name": "GREEN GOLD MORINGA (PTY) LTD",
-      "orders": 2,
-      "po_qty": 58,
-      "po_value_excl": 7381.65,
-      "grv_qty": 58,
-      "grv_value_excl": 7547.73,
-      "fill_pct": 102.2,
-      "skus": 8,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "OTC",
-      "name": "OCEAN THERAPY SALTS CC",
-      "orders": 4,
-      "po_qty": 92,
-      "po_value_excl": 7208.04,
-      "grv_qty": 69,
-      "grv_value_excl": 5808.08,
-      "fill_pct": 80.6,
-      "skus": 29,
-      "last_order": "2026-03-04"
-    },
-    {
-      "code": "WINGS",
-      "name": "WINGS HERBAL SYNERGY",
-      "orders": 6,
-      "po_qty": 38,
-      "po_value_excl": 7199.64,
-      "grv_qty": 42,
-      "grv_value_excl": 8062.16,
-      "fill_pct": 112.0,
-      "skus": 12,
-      "last_order": "2026-03-10"
+      "code": "HSW",
+      "name": "Nuvite Nutraceuticals (Pty) Ltd",
+      "purchases_12m_excl": 26389.93,
+      "outstanding_excl": 4132.91,
+      "outstanding_qty": 20,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
       "code": "ADORE",
       "name": "ADORE NATURE INTERNATIONAL (PTY) LTD",
-      "orders": 2,
-      "po_qty": 335,
-      "po_value_excl": 7191.4,
-      "grv_qty": 400,
-      "grv_value_excl": 8747.9,
-      "fill_pct": 121.6,
-      "skus": 3,
-      "last_order": "2026-03-26"
+      "purchases_12m_excl": 37591.51,
+      "outstanding_excl": 3973.92,
+      "outstanding_qty": 177,
+      "po_count": 1,
+      "oldest_age_days": 12
     },
     {
-      "code": "PHR",
-      "name": "Pure Herbal Remedies cc",
-      "orders": 3,
-      "po_qty": 73,
-      "po_value_excl": 7020.0,
-      "grv_qty": 77,
-      "grv_value_excl": 7260.0,
-      "fill_pct": 103.4,
-      "skus": 12,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "SQ",
-      "name": "SHA QAD (PTY) LTD",
-      "orders": 3,
-      "po_qty": 216,
-      "po_value_excl": 6906.8,
-      "grv_qty": 236,
-      "grv_value_excl": 7712.8,
-      "fill_pct": 111.7,
-      "skus": 21,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "GNP",
-      "name": "PHARMAFORCE (SA Natural Products (Pty) Ltd)",
-      "orders": 2,
-      "po_qty": 57,
-      "po_value_excl": 6767.84,
-      "grv_qty": 95,
-      "grv_value_excl": 12157.0,
-      "fill_pct": 179.6,
-      "skus": 31,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "BULU",
-      "name": "BULUCCHI INNOVATE (PTY) LTD (PANDA BEAR NUTRITION)",
-      "orders": 3,
-      "po_qty": 31,
-      "po_value_excl": 6584.76,
-      "grv_qty": 31,
-      "grv_value_excl": 6584.76,
-      "fill_pct": 100.0,
-      "skus": 3,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "TCWP",
-      "name": "DANIE THERON'S WONDER COMFREY",
-      "orders": 3,
-      "po_qty": 57,
-      "po_value_excl": 6285.6,
-      "grv_qty": 57,
-      "grv_value_excl": 6579.08,
-      "fill_pct": 104.7,
-      "skus": 4,
-      "last_order": "2026-03-23"
-    },
-    {
-      "code": "DH",
-      "name": "DANA HEALTH",
-      "orders": 2,
-      "po_qty": 65,
-      "po_value_excl": 6175.0,
-      "grv_qty": 35,
-      "grv_value_excl": 3325.0,
-      "fill_pct": 53.8,
-      "skus": 1,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "TOO",
-      "name": "THE OTHER OPTION",
-      "orders": 2,
-      "po_qty": 24,
-      "po_value_excl": 6144.0,
-      "grv_qty": 24,
-      "grv_value_excl": 6144.0,
-      "fill_pct": 100.0,
-      "skus": 1,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "DHF",
-      "name": "DING HO FOODS (PTY) LTD (azen foods) (OLC)",
-      "orders": 4,
-      "po_qty": 171,
-      "po_value_excl": 6090.0,
-      "grv_qty": 72,
-      "grv_value_excl": 2375.6,
-      "fill_pct": 39.0,
-      "skus": 15,
-      "last_order": "2026-03-04"
-    },
-    {
-      "code": "MINE",
-      "name": "MINERALIFE SA (PTY) LTD",
-      "orders": 2,
-      "po_qty": 19,
-      "po_value_excl": 6065.3,
-      "grv_qty": 19,
-      "grv_value_excl": 6065.3,
-      "fill_pct": 100.0,
-      "skus": 8,
-      "last_order": "2026-03-04"
-    },
-    {
-      "code": "EVA",
-      "name": "EVA HOLDINGS (PTY) LTD",
-      "orders": 2,
-      "po_qty": 20,
-      "po_value_excl": 6000.0,
-      "grv_qty": 14,
-      "grv_value_excl": 4200.0,
-      "fill_pct": 70.0,
-      "skus": 1,
-      "last_order": "2026-03-26"
-    },
-    {
-      "code": "FRUT",
-      "name": "FRUT SA (PTY) LTD",
-      "orders": 2,
-      "po_qty": 90,
-      "po_value_excl": 5940.0,
-      "grv_qty": 100,
-      "grv_value_excl": 7990.0,
-      "fill_pct": 134.5,
-      "skus": 5,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "GL",
-      "name": "Good Life Organic",
-      "orders": 3,
-      "po_qty": 121,
-      "po_value_excl": 5815.9,
-      "grv_qty": 121,
-      "grv_value_excl": 5851.5,
-      "fill_pct": 100.6,
-      "skus": 56,
-      "last_order": "2026-03-03"
-    },
-    {
-      "code": "KOMATI",
-      "name": "Komati Foods CAMPERS CORNER RENTALS CC T/A",
-      "orders": 3,
-      "po_qty": 191,
-      "po_value_excl": 5679.51,
-      "grv_qty": 142,
-      "grv_value_excl": 4100.24,
-      "fill_pct": 72.2,
-      "skus": 8,
-      "last_order": "2026-03-04"
-    },
-    {
-      "code": "BBSA",
-      "name": "BIOLOGICAL BRANDS SA - PROBAC (OLD SCL)",
-      "orders": 4,
-      "po_qty": 53,
-      "po_value_excl": 5574.0,
-      "grv_qty": 36,
-      "grv_value_excl": 3870.0,
-      "fill_pct": 69.4,
-      "skus": 11,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "JF",
-      "name": "JACIANA FOODS (Pty) Ltd",
-      "orders": 5,
-      "po_qty": 115,
-      "po_value_excl": 5555.99,
-      "grv_qty": 84,
-      "grv_value_excl": 4004.11,
-      "fill_pct": 72.1,
-      "skus": 24,
-      "last_order": "2026-03-27"
-    },
-    {
-      "code": "BIODOSA",
-      "name": "BIODOSA (PTY) LTD",
-      "orders": 3,
-      "po_qty": 15,
-      "po_value_excl": 5534.8,
-      "grv_qty": 16,
-      "grv_value_excl": 5779.5,
-      "fill_pct": 104.4,
-      "skus": 2,
-      "last_order": "2026-03-03"
-    },
-    {
-      "code": "MARGA",
-      "name": "MARGA ODENDAAL (DNext)",
-      "orders": 5,
-      "po_qty": 90,
-      "po_value_excl": 5290.0,
-      "grv_qty": 78,
-      "grv_value_excl": 4535.0,
-      "fill_pct": 85.7,
-      "skus": 4,
-      "last_order": "2026-03-19"
-    },
-    {
-      "code": "AFRA",
-      "name": "AFRACEUTICALS (PTY) LTD (African Tree Foods)",
-      "orders": 2,
-      "po_qty": 36,
-      "po_value_excl": 5170.5,
-      "grv_qty": 62,
-      "grv_value_excl": 8700.0,
-      "fill_pct": 168.3,
-      "skus": 2,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "PECAN",
-      "name": "PECANHEALTH NATURAL PRODUCTS (STRICKE-LY GLUTEN FREE)",
-      "orders": 4,
-      "po_qty": 70,
-      "po_value_excl": 5161.96,
-      "grv_qty": 374,
-      "grv_value_excl": 10858.32,
-      "fill_pct": 210.4,
-      "skus": 32,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "ALOEF",
-      "name": "ALOE FEROX - CBD - ONE001B",
-      "orders": 2,
-      "po_qty": 77,
-      "po_value_excl": 5041.87,
-      "grv_qty": 77,
-      "grv_value_excl": 5088.76,
-      "fill_pct": 100.9,
-      "skus": 8,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "TULSI",
-      "name": "KALYAN HERBAL PRODUCTS CC",
-      "orders": 3,
-      "po_qty": 61,
-      "po_value_excl": 4657.2,
-      "grv_qty": 61,
-      "grv_value_excl": 4657.2,
-      "fill_pct": 100.0,
-      "skus": 11,
-      "last_order": "2026-03-10"
-    },
-    {
-      "code": "TRANS",
-      "name": "TRANSPHARM (PTY) LTD",
-      "orders": 3,
-      "po_qty": 27,
-      "po_value_excl": 4329.16,
-      "grv_qty": 108,
-      "grv_value_excl": 18962.1,
-      "fill_pct": 438.0,
-      "skus": 22,
-      "last_order": "2026-03-17"
-    },
-    {
-      "code": "EBB",
-      "name": "EBB PROPMAN (PTY) LTD",
-      "orders": 3,
-      "po_qty": 128,
-      "po_value_excl": 4306.75,
-      "grv_qty": 141,
-      "grv_value_excl": 4620.45,
-      "fill_pct": 107.3,
-      "skus": 17,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "RN",
-      "name": "ROBINS NEST",
-      "orders": 2,
-      "po_qty": 19,
-      "po_value_excl": 4279.8,
-      "grv_qty": 19,
-      "grv_value_excl": 4279.8,
-      "fill_pct": 100.0,
-      "skus": 7,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "PRON",
-      "name": "PRO NUTRITION",
-      "orders": 2,
-      "po_qty": 21,
-      "po_value_excl": 4212.91,
-      "grv_qty": 53,
-      "grv_value_excl": 6322.01,
-      "fill_pct": 150.1,
-      "skus": 15,
-      "last_order": "2026-03-04"
-    },
-    {
-      "code": "HIW",
-      "name": "HEALTH IS WEALTH ( NATURAL ORANGE)",
-      "orders": 2,
-      "po_qty": 34,
-      "po_value_excl": 4152.0,
-      "grv_qty": 24,
-      "grv_value_excl": 3216.0,
-      "fill_pct": 77.5,
-      "skus": 9,
-      "last_order": "2026-02-18"
-    },
-    {
-      "code": "NUV",
-      "name": "Nuvite Nutraceuticals (Pty) Ltd",
-      "orders": 1,
-      "po_qty": 28,
-      "po_value_excl": 4124.05,
-      "grv_qty": 30,
-      "grv_value_excl": 4460.51,
-      "fill_pct": 108.2,
-      "skus": 13,
-      "last_order": "2026-03-10"
-    },
-    {
-      "code": "LA",
-      "name": "LIFE AROMATICS",
-      "orders": 2,
-      "po_qty": 49,
-      "po_value_excl": 4114.66,
-      "grv_qty": 49,
-      "grv_value_excl": 4117.66,
-      "fill_pct": 100.1,
-      "skus": 30,
-      "last_order": "2026-03-02"
+      "code": "NATRO",
+      "name": "NATROCEUTICS SA (PTY) LTD (ONELI01)",
+      "purchases_12m_excl": 976374.77,
+      "outstanding_excl": 3882.0,
+      "outstanding_qty": 19,
+      "po_count": 1,
+      "oldest_age_days": 1
     },
     {
       "code": "NF",
       "name": "Nature Fresh cc",
-      "orders": 2,
-      "po_qty": 80,
-      "po_value_excl": 4107.26,
-      "grv_qty": 80,
-      "grv_value_excl": 4122.28,
-      "fill_pct": 100.4,
-      "skus": 15,
-      "last_order": "2026-03-09"
+      "purchases_12m_excl": 26938.33,
+      "outstanding_excl": 3449.06,
+      "outstanding_qty": 53,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
-      "code": "GABY",
-      "name": "GABY'S EARTH FOODS  (DiVISION OF ALMAN'S DRIED FRUIT & NUTS)",
-      "orders": 3,
-      "po_qty": 52,
-      "po_value_excl": 4088.6,
-      "grv_qty": 52,
-      "grv_value_excl": 4088.6,
-      "fill_pct": 100.0,
-      "skus": 2,
-      "last_order": "2026-03-02"
+      "code": "PECAN",
+      "name": "PECANHEALTH NATURAL PRODUCTS (STRICKE-LY GLUTEN FREE)",
+      "purchases_12m_excl": 23068.56,
+      "outstanding_excl": 3210.26,
+      "outstanding_qty": 130,
+      "po_count": 1,
+      "oldest_age_days": 6
+    },
+    {
+      "code": "GL",
+      "name": "Good Life Organic",
+      "purchases_12m_excl": 29359.21,
+      "outstanding_excl": 3107.64,
+      "outstanding_qty": 69,
+      "po_count": 1,
+      "oldest_age_days": 11
     },
     {
       "code": "SMI",
       "name": "SMI INTERNATIONAL",
-      "orders": 2,
-      "po_qty": 116,
-      "po_value_excl": 4006.08,
-      "grv_qty": 0,
-      "grv_value_excl": 0,
-      "fill_pct": 0.0,
-      "skus": 19,
-      "last_order": "2026-02-03"
+      "purchases_12m_excl": 13258.12,
+      "outstanding_excl": 3074.13,
+      "outstanding_qty": 94,
+      "po_count": 1,
+      "oldest_age_days": 64
     },
     {
-      "code": "OASIS",
-      "name": "Oasis Water( MULCORP)",
-      "orders": 3,
-      "po_qty": 368,
-      "po_value_excl": 4001.0,
-      "grv_qty": 368,
-      "grv_value_excl": 4040.0,
-      "fill_pct": 101.0,
-      "skus": 14,
-      "last_order": "2026-03-03"
+      "code": "VAL",
+      "name": "VALOTORQUE 222 ccc",
+      "purchases_12m_excl": 11892.26,
+      "outstanding_excl": 3060.72,
+      "outstanding_qty": 89,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
-      "code": "DIA",
-      "name": "DIA COMPANY (PTY) LTD CACOA",
-      "orders": 2,
-      "po_qty": 40,
-      "po_value_excl": 4000.0,
-      "grv_qty": 78,
-      "grv_value_excl": 7800.0,
-      "fill_pct": 195.0,
-      "skus": 1,
-      "last_order": "2026-03-02"
+      "code": "MINE",
+      "name": "MINERALIFE SA (PTY) LTD",
+      "purchases_12m_excl": 33884.24,
+      "outstanding_excl": 3036.5,
+      "outstanding_qty": 10,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
-      "code": "AXP",
-      "name": "Axcel Pharmapak PTY (LTD)",
-      "orders": 2,
-      "po_qty": 14,
-      "po_value_excl": 3902.61,
-      "grv_qty": 14,
-      "grv_value_excl": 3902.61,
-      "fill_pct": 100.0,
-      "skus": 5,
-      "last_order": "2026-03-03"
+      "code": "TBS",
+      "name": "TRUE BLUE SUPPLEMENTS",
+      "purchases_12m_excl": 35340.0,
+      "outstanding_excl": 2985.0,
+      "outstanding_qty": 12,
+      "po_count": 2,
+      "oldest_age_days": 8
     },
     {
-      "code": "MBN",
-      "name": "MBN NUTRITION PTY LTD (AZURA HEALTH SCIENCE (PTY) LTD)",
-      "orders": 1,
-      "po_qty": 43,
-      "po_value_excl": 3892.16,
-      "grv_qty": 0,
-      "grv_value_excl": 0,
-      "fill_pct": 0.0,
-      "skus": 5,
-      "last_order": "2026-02-03"
+      "code": "DH",
+      "name": "DANA HEALTH",
+      "purchases_12m_excl": 29263.0,
+      "outstanding_excl": 2850.0,
+      "outstanding_qty": 30,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
-      "code": "H20",
-      "name": "(CWP) H20 INTERNATIONAL SOUTH AFRICA",
-      "orders": 2,
-      "po_qty": 16,
-      "po_value_excl": 3748.61,
-      "grv_qty": 9,
-      "grv_value_excl": 1984.58,
-      "fill_pct": 52.9,
-      "skus": 3,
-      "last_order": "2026-02-23"
-    },
-    {
-      "code": "SIDON",
-      "name": "SIDON ENTERPRISES (PTY) LTD",
-      "orders": 2,
-      "po_qty": 52,
-      "po_value_excl": 3676.0,
-      "grv_qty": 56,
-      "grv_value_excl": 4216.03,
-      "fill_pct": 114.7,
-      "skus": 2,
-      "last_order": "2026-03-04"
-    },
-    {
-      "code": "ALBF",
-      "name": "Albiofa Distributors cc",
-      "orders": 2,
-      "po_qty": 15,
-      "po_value_excl": 3508.0,
-      "grv_qty": 15,
-      "grv_value_excl": 3508.0,
-      "fill_pct": 100.0,
-      "skus": 5,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "FSO",
-      "name": "FirstSeed Organics / Greater Seed",
-      "orders": 2,
-      "po_qty": 24,
-      "po_value_excl": 3495.0,
-      "grv_qty": 27,
-      "grv_value_excl": 3832.0,
-      "fill_pct": 109.6,
-      "skus": 7,
-      "last_order": "2026-03-02"
-    },
-    {
-      "code": "BIOL",
-      "name": "BIOLIFE cc",
-      "orders": 1,
-      "po_qty": 24,
-      "po_value_excl": 3478.21,
-      "grv_qty": 7,
-      "grv_value_excl": 820.03,
-      "fill_pct": 23.6,
-      "skus": 11,
-      "last_order": "2026-02-04"
-    },
-    {
-      "code": "ATB",
-      "name": "ACTIVATE THE BODY (PTY) LTD (NEW GLH-ALCARI)",
-      "orders": 2,
-      "po_qty": 18,
-      "po_value_excl": 3472.1,
-      "grv_qty": 18,
-      "grv_value_excl": 3598.44,
-      "fill_pct": 103.6,
-      "skus": 2,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "RB",
-      "name": "Red Button Consulting (Pty) Ltd (Health Reform)",
-      "orders": 1,
-      "po_qty": 36,
-      "po_value_excl": 3370.32,
-      "grv_qty": 36,
-      "grv_value_excl": 3625.08,
-      "fill_pct": 107.6,
-      "skus": 3,
-      "last_order": "2026-01-13"
-    },
-    {
-      "code": "GDAY",
-      "name": "GSJ Enterprise Pty LTd/TA Gentle Day South Africa",
-      "orders": 3,
-      "po_qty": 63,
-      "po_value_excl": 3270.0,
-      "grv_qty": 48,
-      "grv_value_excl": 2450.0,
-      "fill_pct": 74.9,
-      "skus": 8,
-      "last_order": "2026-03-29"
-    },
-    {
-      "code": "BEA",
-      "name": "BEA'S HEALTH RUSKS CC",
-      "orders": 2,
-      "po_qty": 53,
-      "po_value_excl": 3202.5,
-      "grv_qty": 53,
-      "grv_value_excl": 3202.5,
-      "fill_pct": 100.0,
-      "skus": 3,
-      "last_order": "2026-03-09"
+      "code": "ASH",
+      "name": "ASHKAN PHARMA (PTY) LTD",
+      "purchases_12m_excl": 6415.44,
+      "outstanding_excl": 2824.28,
+      "outstanding_qty": 10,
+      "po_count": 1,
+      "oldest_age_days": 1
     },
     {
       "code": "ZPL",
-      "name": "House of Zinplex (Pty) Ltd",
-      "orders": 1,
-      "po_qty": 36,
-      "po_value_excl": 3136.8,
-      "grv_qty": 36,
-      "grv_value_excl": 3516.0,
-      "fill_pct": 112.1,
-      "skus": 6,
-      "last_order": "2026-02-03"
+      "name": "House of Zinplex (Pty) Ltd (EDC001)",
+      "purchases_12m_excl": 18631.2,
+      "outstanding_excl": 2703.6,
+      "outstanding_qty": 30,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
-      "code": "ZAN",
-      "name": "ZA NATURAL CARE (PTY) LTD",
-      "orders": 3,
-      "po_qty": 42,
-      "po_value_excl": 3132.45,
-      "grv_qty": 30,
-      "grv_value_excl": 2429.05,
-      "fill_pct": 77.5,
-      "skus": 13,
-      "last_order": "2026-03-09"
+      "code": "TORUS",
+      "name": "TORUS HEALTH CARE",
+      "purchases_12m_excl": 25225.7,
+      "outstanding_excl": 2533.52,
+      "outstanding_qty": 4,
+      "po_count": 1,
+      "oldest_age_days": 8
     },
     {
-      "code": "AWAKE",
-      "name": "AWAKERY FOOD AS MEDICINE (NUTTY BARS)",
-      "orders": 2,
-      "po_qty": 70,
-      "po_value_excl": 3001.6,
-      "grv_qty": 130,
-      "grv_value_excl": 4043.6,
-      "fill_pct": 134.7,
-      "skus": 3,
-      "last_order": "2026-03-25"
-    },
-    {
-      "code": "TIA",
-      "name": "SAINTS MUESLI",
-      "orders": 2,
-      "po_qty": 60,
-      "po_value_excl": 2869.08,
-      "grv_qty": 96,
-      "grv_value_excl": 5263.92,
-      "fill_pct": 183.5,
-      "skus": 5,
-      "last_order": "2026-03-10"
-    },
-    {
-      "code": "CRAF",
-      "name": "CRAFTY CULTURES",
-      "orders": 2,
-      "po_qty": 13,
-      "po_value_excl": 2806.12,
-      "grv_qty": 7,
-      "grv_value_excl": 1467.2,
-      "fill_pct": 52.3,
-      "skus": 6,
-      "last_order": "2026-02-03"
-    },
-    {
-      "code": "DUNEF",
-      "name": "DUNE FOODS",
-      "orders": 2,
-      "po_qty": 117,
-      "po_value_excl": 2741.0,
-      "grv_qty": 71,
-      "grv_value_excl": 2024.8,
-      "fill_pct": 73.9,
-      "skus": 5,
-      "last_order": "2026-03-10"
-    },
-    {
-      "code": "MAKULU",
-      "name": "MAKULU MUTIS",
-      "orders": 2,
-      "po_qty": 16,
-      "po_value_excl": 2684.66,
-      "grv_qty": 23,
-      "grv_value_excl": 3106.89,
-      "fill_pct": 115.7,
-      "skus": 5,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "RAWE",
-      "name": "RAW EARTH",
-      "orders": 2,
-      "po_qty": 52,
-      "po_value_excl": 2650.0,
-      "grv_qty": 0,
-      "grv_value_excl": 0,
-      "fill_pct": 0.0,
-      "skus": 11,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "ED",
-      "name": "ENGINEERS AND DOCTORS (PTY) LTD",
-      "orders": 1,
-      "po_qty": 10,
-      "po_value_excl": 2600.0,
-      "grv_qty": 10,
-      "grv_value_excl": 2689.7,
-      "fill_pct": 103.5,
-      "skus": 1,
-      "last_order": "2026-01-13"
-    },
-    {
-      "code": "KWA",
-      "name": "KWA-NALA FARMS",
-      "orders": 2,
-      "po_qty": 46,
-      "po_value_excl": 2586.0,
-      "grv_qty": 26,
-      "grv_value_excl": 1480.0,
-      "fill_pct": 57.2,
-      "skus": 5,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "TL",
-      "name": "TREASURE LIFE",
-      "orders": 1,
-      "po_qty": 10,
-      "po_value_excl": 2560.0,
-      "grv_qty": 10,
-      "grv_value_excl": 2560.0,
-      "fill_pct": 100.0,
-      "skus": 5,
-      "last_order": "2026-01-19"
-    },
-    {
-      "code": "ZU",
-      "name": "ZUZANNA'S WILD AFRICAN WAREHOUSE PTY (LTD)",
-      "orders": 2,
-      "po_qty": 36,
-      "po_value_excl": 2434.86,
-      "grv_qty": 48,
-      "grv_value_excl": 2601.6,
-      "fill_pct": 106.8,
-      "skus": 7,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "AETHER",
-      "name": "AETHER HERBALIST & APOTHECARY",
-      "orders": 2,
-      "po_qty": 15,
-      "po_value_excl": 2398.9,
-      "grv_qty": 15,
-      "grv_value_excl": 2380.5,
-      "fill_pct": 99.2,
-      "skus": 6,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "PV",
-      "name": "PHARMA VIRTUS",
-      "orders": 1,
-      "po_qty": 10,
-      "po_value_excl": 2295.7,
-      "grv_qty": 14,
-      "grv_value_excl": 3696.0,
-      "fill_pct": 161.0,
-      "skus": 1,
-      "last_order": "2026-02-04"
-    },
-    {
-      "code": "NPL",
-      "name": "NUTRITIONAL PERFORMANCE LABS (PTY) LTD",
-      "orders": 1,
-      "po_qty": 36,
-      "po_value_excl": 2260.77,
-      "grv_qty": 40,
-      "grv_value_excl": 3036.71,
-      "fill_pct": 134.3,
-      "skus": 14,
-      "last_order": "2026-02-03"
-    },
-    {
-      "code": "ENDUREN",
-      "name": "Kellys t/a Enduren",
-      "orders": 1,
-      "po_qty": 18,
-      "po_value_excl": 2220.3,
-      "grv_qty": 18,
-      "grv_value_excl": 2220.3,
-      "fill_pct": 100.0,
-      "skus": 2,
-      "last_order": "2026-02-03"
-    },
-    {
-      "code": "CP",
-      "name": "CANDLE POWER (PTY) LTD",
-      "orders": 1,
-      "po_qty": 100,
-      "po_value_excl": 2200.0,
-      "grv_qty": 100,
-      "grv_value_excl": 2300.0,
-      "fill_pct": 104.5,
-      "skus": 1,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "MMM",
-      "name": "MM MEDICAL",
-      "orders": 2,
-      "po_qty": 42,
-      "po_value_excl": 2189.08,
-      "grv_qty": 42,
-      "grv_value_excl": 2193.43,
-      "fill_pct": 100.2,
-      "skus": 9,
-      "last_order": "2026-02-19"
-    },
-    {
-      "code": "EDUAN",
-      "name": "EDUAN JOUBERT t/a GREENFARM",
-      "orders": 3,
-      "po_qty": 49,
-      "po_value_excl": 2185.5,
-      "grv_qty": 83,
-      "grv_value_excl": 4197.5,
-      "fill_pct": 192.1,
-      "skus": 5,
-      "last_order": "2026-02-23"
-    },
-    {
-      "code": "BUTTA",
-      "name": "ButtaNut (PTY) LTD",
-      "orders": 1,
-      "po_qty": 84,
-      "po_value_excl": 2011.8,
-      "grv_qty": 84,
-      "grv_value_excl": 2011.8,
-      "fill_pct": 100.0,
-      "skus": 4,
-      "last_order": "2026-02-02"
-    },
-    {
-      "code": "NEURO",
-      "name": "RAIN SCIENTIFIC (PTY) LTD",
-      "orders": 1,
-      "po_qty": 7,
-      "po_value_excl": 1893.97,
-      "grv_qty": 0,
-      "grv_value_excl": 0,
-      "fill_pct": 0.0,
-      "skus": 4,
-      "last_order": "2026-03-09"
-    },
-    {
-      "code": "BOODY",
-      "name": "NATURAL PRODUCT HOLDINGS",
-      "orders": 1,
-      "po_qty": 20,
-      "po_value_excl": 1890.3,
-      "grv_qty": 55,
-      "grv_value_excl": 5001.8,
-      "fill_pct": 264.6,
-      "skus": 17,
-      "last_order": "2026-02-12"
-    },
-    {
-      "code": "HN",
-      "name": "HEALTH NUT",
-      "orders": 1,
-      "po_qty": 4,
-      "po_value_excl": 1856.0,
-      "grv_qty": 4,
-      "grv_value_excl": 1856.0,
-      "fill_pct": 100.0,
-      "skus": 2,
-      "last_order": "2026-02-03"
-    },
-    {
-      "code": "HERBZ",
-      "name": "Herba Zone - CBD",
-      "orders": 2,
-      "po_qty": 9,
-      "po_value_excl": 1810.86,
-      "grv_qty": 7,
-      "grv_value_excl": 1345.21,
-      "fill_pct": 74.3,
-      "skus": 5,
-      "last_order": "2026-03-10"
-    },
-    {
-      "code": "AR",
-      "name": "AROMATIC RELIEF (PTY) LTD",
-      "orders": 1,
-      "po_qty": 21,
-      "po_value_excl": 1780.68,
-      "grv_qty": 21,
-      "grv_value_excl": 1798.26,
-      "fill_pct": 101.0,
-      "skus": 6,
-      "last_order": "2026-02-04"
-    },
-    {
-      "code": "PB",
-      "name": "Pure Beginnings (Pty) Ltd",
-      "orders": 1,
-      "po_qty": 30,
-      "po_value_excl": 1756.03,
-      "grv_qty": 30,
-      "grv_value_excl": 1808.54,
-      "fill_pct": 103.0,
-      "skus": 16,
-      "last_order": "2026-03-04"
+      "code": "RN",
+      "name": "ROBINS NEST",
+      "purchases_12m_excl": 8199.0,
+      "outstanding_excl": 2444.4,
+      "outstanding_qty": 16,
+      "po_count": 2,
+      "oldest_age_days": 22
     },
     {
       "code": "VGN",
       "name": "VITAMIN G NATRACEUTICALS (GROKLUB PTY LTD)",
-      "orders": 1,
-      "po_qty": 2,
-      "po_value_excl": 1256.96,
-      "grv_qty": 2,
-      "grv_value_excl": 1256.96,
-      "fill_pct": 100.0,
-      "skus": 1,
-      "last_order": "2026-03-28"
+      "purchases_12m_excl": 22923.67,
+      "outstanding_excl": 2418.15,
+      "outstanding_qty": 4,
+      "po_count": 1,
+      "oldest_age_days": 1
+    },
+    {
+      "code": "SIDON",
+      "name": "SIDON ENTERPRISES (PTY) LTD",
+      "purchases_12m_excl": 9152.89,
+      "outstanding_excl": 2333.74,
+      "outstanding_qty": 28,
+      "po_count": 1,
+      "oldest_age_days": 15
+    },
+    {
+      "code": "AC",
+      "name": "AFRICAN CRANBERRY - NATURAL BY NATURE - JW HANSEL T/A",
+      "purchases_12m_excl": 27864.0,
+      "outstanding_excl": 2304.0,
+      "outstanding_qty": 30,
+      "po_count": 1,
+      "oldest_age_days": 6
+    },
+    {
+      "code": "ENDUREN",
+      "name": "Kellys t/a Enduren",
+      "purchases_12m_excl": 7207.12,
+      "outstanding_excl": 2208.65,
+      "outstanding_qty": 38,
+      "po_count": 1,
+      "oldest_age_days": 5
+    },
+    {
+      "code": "ODETTE",
+      "name": "DR ODETTE RAUTENBACH",
+      "purchases_12m_excl": 6000.0,
+      "outstanding_excl": 2000.0,
+      "outstanding_qty": 8,
+      "po_count": 1,
+      "oldest_age_days": 6
+    },
+    {
+      "code": "RB",
+      "name": "Red Button Consulting (Pty) Ltd (Health Reform)",
+      "purchases_12m_excl": 19906.5,
+      "outstanding_excl": 1916.9,
+      "outstanding_qty": 22,
+      "po_count": 1,
+      "oldest_age_days": 6
+    },
+    {
+      "code": "CRED",
+      "name": "CREDENCE PHARMA",
+      "purchases_12m_excl": 24511.16,
+      "outstanding_excl": 1879.17,
+      "outstanding_qty": 28,
+      "po_count": 1,
+      "oldest_age_days": 1
+    },
+    {
+      "code": "GDAY",
+      "name": "GSJ Enterprise Pty LTd/TA Gentle Day South Africa",
+      "purchases_12m_excl": 9878.31,
+      "outstanding_excl": 1600.0,
+      "outstanding_qty": 31,
+      "po_count": 1,
+      "oldest_age_days": 14
+    },
+    {
+      "code": "LA",
+      "name": "LIFE AROMATICS",
+      "purchases_12m_excl": 5721.35,
+      "outstanding_excl": 1346.95,
+      "outstanding_qty": 19,
+      "po_count": 1,
+      "oldest_age_days": 22
+    },
+    {
+      "code": "AWAKE",
+      "name": "AWAKERY FOOD AS MEDICINE (NUTTY BARS)",
+      "purchases_12m_excl": 29008.6,
+      "outstanding_excl": 1240.0,
+      "outstanding_qty": 40,
+      "po_count": 1,
+      "oldest_age_days": 1
     },
     {
       "code": "CURE",
       "name": "CURELAND PTY LTD - CAN CURE",
-      "orders": 1,
-      "po_qty": 5,
-      "po_value_excl": 1168.7,
-      "grv_qty": 0,
-      "grv_value_excl": 0,
-      "fill_pct": 0.0,
-      "skus": 1,
-      "last_order": "2026-02-09"
+      "purchases_12m_excl": 2189.22,
+      "outstanding_excl": 1168.7,
+      "outstanding_qty": 5,
+      "po_count": 1,
+      "oldest_age_days": 127
     },
     {
-      "code": "SAJ",
-      "name": "SNACK A JUICE CC",
-      "orders": 2,
-      "po_qty": 72,
-      "po_value_excl": 1102.08,
-      "grv_qty": 72,
-      "grv_value_excl": 1216.44,
-      "fill_pct": 110.4,
-      "skus": 5,
-      "last_order": "2026-02-04"
+      "code": "WAZOO",
+      "name": "THE WELLNESS INITIATIVE (NEO) - DGB INVESTMENTS PTY LTD",
+      "purchases_12m_excl": 4193.33,
+      "outstanding_excl": 1167.99,
+      "outstanding_qty": 6,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
-      "code": "BMW",
-      "name": "BUY MINERAL WATER",
-      "orders": 1,
-      "po_qty": 70,
-      "po_value_excl": 863.22,
-      "grv_qty": 0,
-      "grv_value_excl": 0,
-      "fill_pct": 0.0,
-      "skus": 5,
-      "last_order": "2026-02-09"
-    },
-    {
-      "code": "TIC",
-      "name": "THE ICE CREAMERY",
-      "orders": 2,
-      "po_qty": 28,
-      "po_value_excl": 816.0,
-      "grv_qty": 82,
-      "grv_value_excl": 2164.0,
-      "fill_pct": 265.2,
-      "skus": 3,
-      "last_order": "2026-01-19"
-    },
-    {
-      "code": "SMB",
-      "name": "SM BOOYSEN",
-      "orders": 1,
-      "po_qty": 10,
-      "po_value_excl": 800.0,
-      "grv_qty": 10,
-      "grv_value_excl": 800.0,
-      "fill_pct": 100.0,
-      "skus": 1,
-      "last_order": "2026-03-16"
-    },
-    {
-      "code": "SSL",
-      "name": "SEVEN STAR DISTRIBUTORS (PTY) LTD",
-      "orders": 1,
-      "po_qty": 60,
-      "po_value_excl": 670.2,
-      "grv_qty": 120,
-      "grv_value_excl": 1407.6,
-      "fill_pct": 210.0,
-      "skus": 1,
-      "last_order": "2026-01-19"
+      "code": "KWA",
+      "name": "KWA-NALA FARMS",
+      "purchases_12m_excl": 8992.0,
+      "outstanding_excl": 950.0,
+      "outstanding_qty": 17,
+      "po_count": 1,
+      "oldest_age_days": 6
     },
     {
       "code": "UTU",
       "name": "UTU Wondersalf BK",
-      "orders": 1,
-      "po_qty": 12,
-      "po_value_excl": 561.6,
-      "grv_qty": 12,
-      "grv_value_excl": 561.6,
-      "fill_pct": 100.0,
-      "skus": 1,
-      "last_order": "2026-01-19"
+      "purchases_12m_excl": 2667.6,
+      "outstanding_excl": 842.4,
+      "outstanding_qty": 18,
+      "po_count": 1,
+      "oldest_age_days": 64
+    },
+    {
+      "code": "AETHER",
+      "name": "AETHER HERBALIST & APOTHECARY",
+      "purchases_12m_excl": 8136.5,
+      "outstanding_excl": 772.8,
+      "outstanding_qty": 6,
+      "po_count": 1,
+      "oldest_age_days": 6
+    },
+    {
+      "code": "EP",
+      "name": "Eclipse Product",
+      "purchases_12m_excl": 4202.0,
+      "outstanding_excl": 625.0,
+      "outstanding_qty": 15,
+      "po_count": 1,
+      "oldest_age_days": 6
+    },
+    {
+      "code": "MFRESH",
+      "name": "MAPHOSA FRESH",
+      "purchases_12m_excl": 0.0,
+      "outstanding_excl": 585.0,
+      "outstanding_qty": 17,
+      "po_count": 2,
+      "oldest_age_days": 36
+    },
+    {
+      "code": "NEURO",
+      "name": "TORUS HEALTH CARE",
+      "purchases_12m_excl": 12543.56,
+      "outstanding_excl": 186.27,
+      "outstanding_qty": 1,
+      "po_count": 1,
+      "oldest_age_days": 8
+    },
+    {
+      "code": "ALTW",
+      "name": "ALTWELL (PTY) LTD",
+      "purchases_12m_excl": 143245.92,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "AMIPRO",
+      "name": "AMIPRO",
+      "purchases_12m_excl": 518792.38,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BIOS",
+      "name": "BIO-SIL SA CC",
+      "purchases_12m_excl": 47915.37,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BBSA",
+      "name": "BIOLOGICAL BRANDS SA - PROBAC (OLD SCL)",
+      "purchases_12m_excl": 19422.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BUFFALO",
+      "name": "BUFFALO",
+      "purchases_12m_excl": 8695.67,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BULL",
+      "name": "Bull Patrols (Pty) Ltd",
+      "purchases_12m_excl": 14464.93,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CIMO",
+      "name": "CIMO DISTRIBUTION CC",
+      "purchases_12m_excl": 188750.34,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "DELF",
+      "name": "DELFRAN (PTY) LTD",
+      "purchases_12m_excl": 123679.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "DWM",
+      "name": "DIGIWAZ MEDIA",
+      "purchases_12m_excl": 262200.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "DSI",
+      "name": "DS INTERNATIONAL (NOW)",
+      "purchases_12m_excl": 1131434.58,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "UTI",
+      "name": "DSV HEALTHCARE (Solal) - 552052",
+      "purchases_12m_excl": 6245.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "DUNEF",
+      "name": "DUNE FOODS",
+      "purchases_12m_excl": 16816.6,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EDN RENT",
+      "name": "EDN RENT SUB LEASE ROCCO@ICJ / MARCO",
+      "purchases_12m_excl": 178398.83,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EDNR",
+      "name": "EDN RENT Spring Mountain Investments (Pty) Ltd",
+      "purchases_12m_excl": 477074.86,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ESCP",
+      "name": "ESCENTIA PRODUCTS",
+      "purchases_12m_excl": 228027.05,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EMALINI",
+      "name": "Emalini Enterprises",
+      "purchases_12m_excl": 591854.07,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "FASTWAY",
+      "name": "FASTWAY Couriers",
+      "purchases_12m_excl": 117391.37,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "GENO",
+      "name": "GENOLOGIX DISTRIBUTORS PTY LTD",
+      "purchases_12m_excl": 189712.26,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HCW",
+      "name": "HEALTHSMART SOLUTIONS (HEALTH CONNECTION WHOLEFOODS)",
+      "purchases_12m_excl": 131500.59,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HAR",
+      "name": "Harrewyn Organics (HEALTHWELL) 21681",
+      "purchases_12m_excl": 101523.68,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HE",
+      "name": "Hassan Electrical",
+      "purchases_12m_excl": 8966.58,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ILG",
+      "name": "INVINCIBLE LIVING (PTY)LTD HEALTH SYNERGY",
+      "purchases_12m_excl": 70909.86,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "INF",
+      "name": "Infinity Therapeutics Africa (Pty) Ltd",
+      "purchases_12m_excl": 140113.53,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "K4H",
+      "name": "KEY 4 HEALTH cc",
+      "purchases_12m_excl": 66493.58,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "KOMATI",
+      "name": "Komati Foods CAMPERS CORNER RENTALS CC T/A (D11760)",
+      "purchases_12m_excl": 28263.89,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "WILLOW",
+      "name": "LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS",
+      "purchases_12m_excl": 866706.28,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "MES",
+      "name": "METROPROP ENERGY SOLUTIONS (PTY) LTD",
+      "purchases_12m_excl": 58244.78,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "METRO",
+      "name": "METROPROP PTY LTD GVS",
+      "purchases_12m_excl": 241658.21,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "MST",
+      "name": "Milestone Integrated Systems (Pty) Ltd",
+      "purchases_12m_excl": 30251.92,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BOODY",
+      "name": "NATURAL PRODUCT HOLDINGS",
+      "purchases_12m_excl": 99570.53,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NC",
+      "name": "NATURES COLOURS SA",
+      "purchases_12m_excl": 51130.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NG",
+      "name": "NEOGENESIS HEALTH PRODUCTS (PTY) LDT",
+      "purchases_12m_excl": 317229.85,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NEWL",
+      "name": "NEW LEAF KR Alternative Sales Solutions (PTY) LTD (KR GROUP)",
+      "purchases_12m_excl": 32759.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NUG",
+      "name": "NUTRIGREEN(Pty) Ltd",
+      "purchases_12m_excl": 352791.13,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "OTC",
+      "name": "OCEAN THERAPY SALTS CC",
+      "purchases_12m_excl": 33216.16,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "OPTIM",
+      "name": "Optimum Images J2115",
+      "purchases_12m_excl": 4171.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "GNP",
+      "name": "PHARMAFORCE (SA Natural Products (Pty) Ltd)",
+      "purchases_12m_excl": 90456.93,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "COYNE",
+      "name": "PHYTOCEUTICS  (coyne) (ED01)",
+      "purchases_12m_excl": 449926.68,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PRON",
+      "name": "PRO NUTRITION",
+      "purchases_12m_excl": 36891.81,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PGER",
+      "name": "Pharma Germania",
+      "purchases_12m_excl": 149674.81,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "POTG",
+      "name": "Plants of the Gods (Pty) LTD",
+      "purchases_12m_excl": 129093.63,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SHELV",
+      "name": "SHELVCRAFT OLH002",
+      "purchases_12m_excl": 88576.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TGWC",
+      "name": "THE GREEN WALL CO",
+      "purchases_12m_excl": 8714.37,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NN",
+      "name": "WELL I AM",
+      "purchases_12m_excl": 499969.72,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "H20",
+      "name": "(CWP) H20 INTERNATIONAL SOUTH AFRICA (ONE001)",
+      "purchases_12m_excl": 11410.93,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "AAP",
+      "name": "AAPOSPA-SA (PTY) LTD",
+      "purchases_12m_excl": 370.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ATB",
+      "name": "ACTIVATE THE BODY (PTY) LTD (NEW GLH-ALCARI)",
+      "purchases_12m_excl": 6597.33,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "AFRA",
+      "name": "AFRACEUTICALS (PTY) LTD (African Tree Foods)",
+      "purchases_12m_excl": 33378.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "AIM",
+      "name": "AIM PRODUCTS (9846825)",
+      "purchases_12m_excl": 55246.18,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ALIV",
+      "name": "ALIVE LIFESTYLES /SHOP PTY LTD",
+      "purchases_12m_excl": 4530.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BARE",
+      "name": "AUTHENTIC YOU BY BARE",
+      "purchases_12m_excl": 74992.67,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ALBF",
+      "name": "Albiofa Distributors cc",
+      "purchases_12m_excl": 12483.64,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BLEND",
+      "name": "BLENDID PTY LTD",
+      "purchases_12m_excl": 4400.5,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BULU",
+      "name": "BULUCCHI INNOVATE (PTY) LTD (PANDA BEAR NUTRITION)",
+      "purchases_12m_excl": 17331.46,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CP",
+      "name": "CANDLE POWER (PTY) LTD",
+      "purchases_12m_excl": 4590.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CANN",
+      "name": "CANNACO (PTY) LTD",
+      "purchases_12m_excl": 66631.21,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CT",
+      "name": "CLOCKWORK TRADING 1077 CC T/A WINNING PERFORMANCE",
+      "purchases_12m_excl": 42181.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CHSA",
+      "name": "Cili Health S.A. (Pty) Ltd (ONELIF)",
+      "purchases_12m_excl": 64202.87,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TCWP",
+      "name": "DANIE THERON'S WONDER COMFREY",
+      "purchases_12m_excl": 17418.23,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EARTHL",
+      "name": "EARTH LINKS",
+      "purchases_12m_excl": 92632.05,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ESY",
+      "name": "ESSENTIALLY YOUNG (PTY) LTD",
+      "purchases_12m_excl": 61795.56,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "FHS",
+      "name": "FORTIFOOD HEALTH SERVICES",
+      "purchases_12m_excl": 65994.31,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "GAIA",
+      "name": "GAIA BUSINESS AND BRAND MANAGEMENT PTY LTD",
+      "purchases_12m_excl": 28877.63,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "GG",
+      "name": "GREEN GOLD MORINGA (PTY) LTD",
+      "purchases_12m_excl": 33734.46,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HIW",
+      "name": "HEALTH IS WEALTH ( NATURAL ORANGE)",
+      "purchases_12m_excl": 24807.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HERBZ",
+      "name": "Herba Zone - CBD",
+      "purchases_12m_excl": 6615.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NH",
+      "name": "INOVO - REGENESIS HEALTH",
+      "purchases_12m_excl": 119231.79,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PROBIO",
+      "name": "INTERGREAT FACILITIES MANAGEMENT",
+      "purchases_12m_excl": 688.78,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TULSI",
+      "name": "KALYAN HERBAL PRODUCTS CC (OLH001)",
+      "purchases_12m_excl": 18544.22,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "KIKO",
+      "name": "KIKO VITAMINS (CBD)",
+      "purchases_12m_excl": 6651.6,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "LV",
+      "name": "LV NUTRITIONAL PRODUCTS PTY LTD",
+      "purchases_12m_excl": 107652.39,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "MAKULU",
+      "name": "MAKULU MUTIS",
+      "purchases_12m_excl": 13644.71,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NUV",
+      "name": "Nuvite Nutraceuticals (Pty) Ltd",
+      "purchases_12m_excl": 280.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "OP",
+      "name": "OXYGEN PRODUCTS (THE 8TH ELEMENT)",
+      "purchases_12m_excl": 96258.13,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PROD",
+      "name": "PRO DISTRIBUTORS (TVL1444)",
+      "purchases_12m_excl": 169588.25,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BIOTIX",
+      "name": "PROBIOTECH (PTY) LTD",
+      "purchases_12m_excl": 4601.84,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PB",
+      "name": "Pure Beginnings (Pty) Ltd",
+      "purchases_12m_excl": 10141.98,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "RAFAA",
+      "name": "RAFAA PRODUCTS CC (4.DE11)",
+      "purchases_12m_excl": 40843.8,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SQ",
+      "name": "SHA QAD (PTY) LTD",
+      "purchases_12m_excl": 27557.8,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SHNOOKIE",
+      "name": "SHNOOKIE (PTY) LTD",
+      "purchases_12m_excl": 14938.2,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SG",
+      "name": "SILVERGENESIS TECHNOLOGIES CC",
+      "purchases_12m_excl": 75315.19,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SON",
+      "name": "Something Natural CC",
+      "purchases_12m_excl": 69137.44,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TOO",
+      "name": "THE OTHER OPTION",
+      "purchases_12m_excl": 9516.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "UNDER",
+      "name": "UNDERWORKS (PTY) LTD",
+      "purchases_12m_excl": 28538.81,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "WINGS",
+      "name": "WINGS HERBAL SYNERGY",
+      "purchases_12m_excl": 35399.4,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "WIN",
+      "name": "WINNERS CIRCLE 163 (Pty) Ltd",
+      "purchases_12m_excl": 5704.7,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ZT",
+      "name": "ZIGANE TRADERS T/A HIGH ON LIFE",
+      "purchases_12m_excl": 25113.07,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ZU",
+      "name": "ZUZANNA'S WILD AFRICAN WAREHOUSE PTY (LTD)",
+      "purchases_12m_excl": 26580.78,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "32GI",
+      "name": "THE 32GI DISTRIBUTION CO.(PTY) LTD",
+      "purchases_12m_excl": 16821.37,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "AFRO",
+      "name": "African Organics South Africa (Pty) Ltd",
+      "purchases_12m_excl": 5094.6,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ALMANS",
+      "name": "ALMAN'S DRIED FRUIT & NUTS",
+      "purchases_12m_excl": 145408.94,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ALOEF",
+      "name": "ALOE FEROX - CBD - ONE001B",
+      "purchases_12m_excl": 30872.85,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "AR",
+      "name": "AROMATIC RELIEF (PTY) LTD",
+      "purchases_12m_excl": 9750.51,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ASTE",
+      "name": "ASTERIA PHARM (PTY) LTD BIODERMAL",
+      "purchases_12m_excl": 1837.4,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "AVO",
+      "name": "AVO'S MARGRET",
+      "purchases_12m_excl": 1000.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "AXP",
+      "name": "Axcel Pharmapak PTY (LTD) (EDC001)",
+      "purchases_12m_excl": 18982.6,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BBT",
+      "name": "MDI DISTRIBUTIONS",
+      "purchases_12m_excl": 2250.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BE",
+      "name": "BEAUTY ENCAPSULATED",
+      "purchases_12m_excl": 182928.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BEA",
+      "name": "BEA'S HEALTH RUSKS CC",
+      "purchases_12m_excl": 13980.6,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BIC",
+      "name": "BAUMA INVESTMENTS CC",
+      "purchases_12m_excl": 90260.09,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BIODOSA",
+      "name": "BIODOSA (PTY) LTD",
+      "purchases_12m_excl": 41884.07,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BIOL",
+      "name": "BIOLIFE cc",
+      "purchases_12m_excl": 12747.25,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BMW",
+      "name": "BUY MINERAL WATER",
+      "purchases_12m_excl": 1138.1,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BO",
+      "name": "BOUND OXYGEN",
+      "purchases_12m_excl": 8695.6,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BS",
+      "name": "VERHAKI (PTY) LTD",
+      "purchases_12m_excl": 76.52,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BURST",
+      "name": "Moringa for South Africa (Pty) Ltd",
+      "purchases_12m_excl": 9450.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "BUTTA",
+      "name": "ButtaNut (PTY) LTD",
+      "purchases_12m_excl": 16333.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CBASIC",
+      "name": "CANNABASICS",
+      "purchases_12m_excl": 700.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CC",
+      "name": "CARING CANDIES cc - CBD",
+      "purchases_12m_excl": 5941.43,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CHINA",
+      "name": "CHINAHERB (PTY) LTD",
+      "purchases_12m_excl": 175537.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CITY",
+      "name": "CITY MEDICAL WHOLESALERS (PTY) LTD (109412)",
+      "purchases_12m_excl": 99223.62,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "COMED",
+      "name": "COMED HEALTH (ONE002) (-2.5%)",
+      "purchases_12m_excl": 35829.42,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "CRAF",
+      "name": "CRAFTY CULTURES",
+      "purchases_12m_excl": 9348.7,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "DHF",
+      "name": "DING HO FOODS (PTY) LTD (azen foods) (OLC)",
+      "purchases_12m_excl": 9327.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "DIA",
+      "name": "DIA COMPANY (PTY) LTD CACOA",
+      "purchases_12m_excl": 12800.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "DUCIT",
+      "name": "DUCIT (PTY) LTD",
+      "purchases_12m_excl": 16750.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EBB",
+      "name": "EBB PROPMAN (PTY) LTD",
+      "purchases_12m_excl": 21648.2,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ED",
+      "name": "ENGINEERS AND DOCTORS (PTY) LTD",
+      "purchases_12m_excl": 13269.1,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EDUAN",
+      "name": "EDUAN JOUBERT t/a GREENFARM",
+      "purchases_12m_excl": 13983.5,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EEF",
+      "name": "ENCHANTED EARTH FARMS",
+      "purchases_12m_excl": 7290.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EJ",
+      "name": "EJ'S LIFESTYLE PRODUCTS (PTY) Ltd",
+      "purchases_12m_excl": 31167.9,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EPR",
+      "name": "Earth Products",
+      "purchases_12m_excl": 1418.3,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EURO",
+      "name": "EURO AFRICA AGENCIES",
+      "purchases_12m_excl": 11094.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EVA",
+      "name": "(ZENTIUM) EVA HOLDINGS (PTY) LTD",
+      "purchases_12m_excl": 61500.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EVN",
+      "name": "ECO VALLEY NUTRITION",
+      "purchases_12m_excl": 375856.32,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "EVOLV",
+      "name": "EVOLVED MIND AND BODY WORX PTY LTD",
+      "purchases_12m_excl": 8124.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "FED",
+      "name": "Farmer Eddie",
+      "purchases_12m_excl": 2718.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "FRUT",
+      "name": "FRUT SA (PTY) LTD",
+      "purchases_12m_excl": 28430.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "FSO",
+      "name": "FirstSeed Organics / Greater Seed",
+      "purchases_12m_excl": 13452.69,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "GABY",
+      "name": "GABY'S EARTH FOODS  (DiVISION OF ALMAN'S DRIED FRUIT & NUTS)",
+      "purchases_12m_excl": 16058.12,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "GULL",
+      "name": "GULL LAB CC",
+      "purchases_12m_excl": 99470.64,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HEALTH",
+      "name": "DNA HEALTH APPLIANCES BURNBERRY T",
+      "purchases_12m_excl": 34250.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HEART",
+      "name": "OUR HEART CENTRE (NON-PROF)",
+      "purchases_12m_excl": 3360.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HEEL",
+      "name": "CITY MEDICAL WHOLESALERS (PTY) LTD (109412)",
+      "purchases_12m_excl": 28051.52,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HN",
+      "name": "HEALTH NUT",
+      "purchases_12m_excl": 14866.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HONEY",
+      "name": "HONEY SO FINE GREENSTONE",
+      "purchases_12m_excl": 486.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "HSH",
+      "name": "HANS STEENPOORTE",
+      "purchases_12m_excl": 12280.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "IL",
+      "name": "Interlife Distributors (INTERLIFE WHOLESALERS (PTY) LTD)",
+      "purchases_12m_excl": 560115.66,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "IMPO",
+      "name": "IMPO DISTRIBUTORS GROUP (PTY) LTD",
+      "purchases_12m_excl": 17586.8,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ITB",
+      "name": "ACTIVATE THE BODY (PTY) LTD (NEW GLH-ALCARI)",
+      "purchases_12m_excl": 63554.62,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "JF",
+      "name": "JACIANA FOODS (Pty) Ltd",
+      "purchases_12m_excl": 15955.5,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "JIVA",
+      "name": "JIVA  NUTRACEUTICALS PTY LTD",
+      "purchases_12m_excl": 315.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "KF",
+      "name": "KEFIR LIFE Pty Ltd",
+      "purchases_12m_excl": 11430.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "KURA",
+      "name": "KURA & HERBAR",
+      "purchases_12m_excl": 54622.3,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "MARGA",
+      "name": "MARGA ODENDAAL (DNext)",
+      "purchases_12m_excl": 25605.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "MBN",
+      "name": "MBN NUTRITION PTY LTD",
+      "purchases_12m_excl": 16814.32,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "MEDFORD",
+      "name": "MEDFORD pharmaceuticals pty ltd",
+      "purchases_12m_excl": 108470.5,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "MH",
+      "name": "Medico Herbs",
+      "purchases_12m_excl": 35169.08,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "MMM",
+      "name": "MM MEDICAL",
+      "purchases_12m_excl": 10928.38,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NCH",
+      "name": "NATURES CHOICE",
+      "purchases_12m_excl": 52498.02,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NEO",
+      "name": "TRANSPHARM (PTY) LTD - 29086",
+      "purchases_12m_excl": 619.68,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NPL",
+      "name": "NUTRITIONAL PERFORMANCE LABS (PTY) LTD",
+      "purchases_12m_excl": 16866.19,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "NUM",
+      "name": "NUMESA",
+      "purchases_12m_excl": 96327.69,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "OASIS",
+      "name": "Oasis Water( MULCORP)",
+      "purchases_12m_excl": 17302.6,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "OILG",
+      "name": "OILGROW (PTY) LTD",
+      "purchases_12m_excl": 34803.86,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "OVO",
+      "name": "OVO Protein (Pty) Ltd",
+      "purchases_12m_excl": 7914.01,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PANDA",
+      "name": "PANDA DRIED FRUIT & NUTS",
+      "purchases_12m_excl": 6464.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PHAR",
+      "name": "CITY MEDICAL WHOLESALERS (PTY) LTD (109412)",
+      "purchases_12m_excl": 91778.78,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PHR",
+      "name": "Pure Herbal Remedies cc",
+      "purchases_12m_excl": 31760.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PLUSH",
+      "name": "PLUSH ORGANICS",
+      "purchases_12m_excl": 4890.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PN",
+      "name": "PMR NUTRITION",
+      "purchases_12m_excl": 338496.69,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "PV",
+      "name": "PHARMA VIRTUS",
+      "purchases_12m_excl": 18969.3,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "RAWE",
+      "name": "RAW EARTH",
+      "purchases_12m_excl": 7462.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "REFOR",
+      "name": "REFORMHAUS HEALTH STORE",
+      "purchases_12m_excl": 14886.96,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "RW",
+      "name": "RAW WIZARD (PTY) LTD",
+      "purchases_12m_excl": 3950.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SAJ",
+      "name": "SNACK A JUICE CC (OLH001)",
+      "purchases_12m_excl": 5870.4,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SFS",
+      "name": "Harrewyn Organics (HEALTHWELL) 21681",
+      "purchases_12m_excl": 128328.46,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SL",
+      "name": "SILVER LEAF HEALTH",
+      "purchases_12m_excl": 46531.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SMB",
+      "name": "SM BOOYSEN",
+      "purchases_12m_excl": 3200.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SOLACEH",
+      "name": "SOLACE HEALTH - SOLACE SUPPLEMENTS PTY",
+      "purchases_12m_excl": 12512.51,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "SSL",
+      "name": "SEVEN STAR DISTRIBUTORS (PTY) LTD",
+      "purchases_12m_excl": 5496.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TC",
+      "name": "THE CATALYST T/A WINTA PRODUCTS",
+      "purchases_12m_excl": 64283.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TEAL",
+      "name": "Tea of Life (Pty) Ltd",
+      "purchases_12m_excl": 2376.24,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TGW",
+      "name": "THE GOURMET WAREHOUSE (PTY) LTD",
+      "purchases_12m_excl": 6240.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TIA",
+      "name": "SAINTS MUESLI",
+      "purchases_12m_excl": 17462.82,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TIBB",
+      "name": "CITY MEDICAL WHOLESALERS (PTY) LTD (109412)",
+      "purchases_12m_excl": 70413.57,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TIC",
+      "name": "THE ICE CREAMERY",
+      "purchases_12m_excl": 21992.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TL",
+      "name": "TREASURE LIFE",
+      "purchases_12m_excl": 13860.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TOPMED",
+      "name": "BOUND OXYGEN",
+      "purchases_12m_excl": 5017.23,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TRANS",
+      "name": "AAPOSPA-SA (PTY) LTD",
+      "purchases_12m_excl": 67431.59,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
     },
     {
       "code": "TREE",
       "name": "TREEBEARD & CO",
-      "orders": 1,
-      "po_qty": 8,
-      "po_value_excl": 253.32,
-      "grv_qty": 8,
-      "grv_value_excl": 253.32,
-      "fill_pct": 100.0,
-      "skus": 10,
-      "last_order": "2026-01-19"
+      "purchases_12m_excl": 1426.59,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TRTFC",
+      "name": "The Real Thing Food Supplements cc",
+      "purchases_12m_excl": 208363.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "TT",
+      "name": "TALLO THERE",
+      "purchases_12m_excl": 2749.0,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "VK",
+      "name": "Vita Kids (Pty) Ltd (INCREDIBLE LIVING)",
+      "purchases_12m_excl": 4076.72,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "VN",
+      "name": "Viridian (SA)",
+      "purchases_12m_excl": 82734.34,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
+    },
+    {
+      "code": "ZAN",
+      "name": "ZA NATURAL CARE (PTY) LTD",
+      "purchases_12m_excl": 13798.28,
+      "outstanding_excl": 0.0,
+      "outstanding_qty": 0,
+      "po_count": 0,
+      "oldest_age_days": 0
     }
   ],
   "supplier_map": {
@@ -107029,7 +107164,7 @@ const NARRATIVES = {
   "generated_at": "2026-03-31",
   "overview": "**Live Omni data — month-to-date (2026-06-01 to 2026-06-15).** The three stores generated **R1,114,473 excl VAT** at a real gross profit of **R374,960 (33.6% GP margin)**.\n\n**Centurion** leads with **R753,123** (68% of store revenue) at 33.7% GP. **Edenvale** R189,046 (17%, 34.0% GP) and **Glen Village** R172,304 (15%, 33.2% GP).\n\n**Online (trailing 30 days):** R101,631 — store figures here are month-to-date, so the two windows aren't directly comparable.\n\n**Live MTD transactions: 2,100** at a combined avg basket of **R531** (Centurion R619, Glen Village R451, Edenvale R395). The R224 basket gap between the strongest and weakest store is a ranging / upsell opportunity, not a footfall one.",
   "stock": "You have **R3,318,456 locked in stock at cost** — that money is either working for you or sitting idle.\n\n**The dead weight:** R142,746 is tied up in 50 products that keep getting reordered despite not moving. The worst offenders — MAG 7/87 60'S (10x orders, 86 units), 1L GUT RAWBIOTICS (4x, 55 units), FLORISH SPORE PROBIOTIC 60C (5x, 23 units) — are a PAR level problem. Someone is reordering on autopilot. Stop these until stock clears.\n\n**The opportunity:** 40 products have margin ≥40% and are well-stocked. These are your profit drivers sitting on the shelf. The top 5 average 49.5% margin. Put them front-of-shelf, run a staff push, and feature them online.\n\n**The risk:** 50 products are at ≤5 units. 50 of those are high-value (>R500 excl VAT each). If you sell one more unit and can't reorder fast, you lose the sale and the customer. Some of these have no PO ever placed — they're being forgotten.",
-  "suppliers": "You placed **748 orders worth R4,016,315 excl VAT** since January. Overall fill rate is **92.0%** — meaning R319,332 in ordered stock has not arrived.\n\n**20 suppliers are below 80% fill rate** and together represent significant outstanding value. Your top 3 suppliers by spend are DS INTERNATIONAL (NOW) (R451,204, 69.2% fill), NATROCEUTICS SA (PTY) LTD (R333,568, 73.7% fill), and LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS (R242,098, 92.5% fill).\n\n**DSI at 69% fill on R451,204 ordered** is the biggest concern — that's your largest supplier and they're leaving R139,873 undelivered. Either they're backordering, shipping partial, or there's an admin issue on invoice matching.\n\n**40 suppliers are over-delivering** vs PO value — you're receiving more than you ordered. This is where surprise overstock comes from. Review GRV sign-off process.",
+  "suppliers": "**Live Omni supplier data.** Outstanding (undelivered) orders total **R179,060 excl VAT** across 47 suppliers, biggest being **VERHAKI (PTY) LTD** (R12,539, 6d old). Over the last 12 months you purchased **R18,566,552** from 233 suppliers. **4 suppliers have orders older than 30 days** (R5,670) — chase these first.",
   "online": "**Live Shopify data — last 30 days (via Klaviyo integration).** 182 orders generating **R101,631 excl VAT** (R116,875 incl VAT) from **182 unique customers**. AOV **R558.41 excl VAT**.\n\n**Checkout conversion:** 324 started → 182 completed = **56.2% conversion**. Strong bottom-of-funnel — bottleneck is traffic, not checkout.\n\n**Units sold:** 501 (2.8 per order avg).\n\n**Channel mix:** Online is **4.7% of combined revenue**. Health supplement benchmark is 15-20%. Strong email engagement (59.6% open) with modest online share = audience exists, gap is acquisition.",
   "signals": "Three things need your attention today.\n\n**1. Reorder FIRE BOWL 200MM** — 50 high-value products are at ≤5 units with no or stale POs. Each one is a missed sale at full margin.\n\n**2. Stop reordering MAG 7/87 60'S** — you've ordered it 10 times this year and have 86 units on the shelf. Whoever controls the PAR levels needs to see this data.\n\n**3. DSI** — your largest supplier at R451,204 ordered is only delivering at 69.2%. Get on a call with them this week. Either the relationship needs managing or the ordering process needs fixing.",
   "klaviyo": "**Live Klaviyo data — last 30 days.** You have **3050 active email subscribers** with **15 new signups**. You sent **9,863 emails**, got **5,878 opens (59.6% open rate)** and **444 clicks (4.5% click rate)**. Open rate is genuinely strong — industry avg for health supplements is 25-30%.\n\n**Email-attributed revenue: R18,781** — R10,566 from flows, R8,216 from campaigns. Flows are doing 56% of the work.\n\n**Top flow: 'Abandoned Checkout Reminder - Standard (Email & SMS)'** — R5,077 from 173 recipients at 32.95% open rate.\n\n**Top campaign:** 'Best Menopause Supplements in South Africa | Segment: Engaged 90d' — R4,345 from 772 recipients.\n\n**Warning:** Bounce rate 1.43% (141 bounces) — clean the list if above 2%.\n\n**Biggest opportunity:** Win-Back segment has 0 profiles. 2-3% conversion × ~R500 AOV = potentially R0 in recoverable revenue."
@@ -107224,10 +107359,11 @@ function initOverview() {
   `).join('');
   
   // Sub-cards
+  const sh = DASHBOARD_DATA.supplier_health || {};
   const subCards = [
-    { label: 'Stock Fill Rate', value: fmtPct(oh.overall_fill_pct), cls: oh.overall_fill_pct >= 90 ? 'color-pos' : 'color-warn' },
-    { label: 'Active Suppliers', value: fmtNum(oh.active_suppliers), cls: 'color-accent' },
-    { label: 'Total POs excl VAT', value: fmtR(oh.total_po_value_excl), cls: 'color-accent' },
+    { label: 'Outstanding Orders', value: fmtR(sh.total_outstanding_excl), cls: 'color-warn' },
+    { label: 'Active Suppliers', value: fmtNum(sh.supplier_count), cls: 'color-accent' },
+    { label: 'Supplier 12-mo Spend', value: fmtR(sh.total_purchases_12m_excl), cls: 'color-accent' },
     { label: 'Stockout Risk Items', value: fmtNum(kpis.stockout_risk_count), cls: 'color-danger' },
   ];
   document.getElementById('sub-kpi-grid').innerHTML = subCards.map(c => `
@@ -107526,79 +107662,59 @@ function initStock() {
 // ============================================================
 function initSuppliers() {
   const suppliers = DASHBOARD_DATA.suppliers;
-  const oh = DASHBOARD_DATA.ordering_health;
-  
+  const h = DASHBOARD_DATA.supplier_health || {};
+
   document.getElementById('sup-count').textContent = fmtNum(suppliers.length);
   document.getElementById('sup-table-count').textContent = suppliers.length + ' suppliers';
-  
-  const under80 = suppliers.filter(s => s.fill_pct < 80 && s.fill_pct >= 0).length;
-  
+
   document.getElementById('sup-kpi-grid').innerHTML = `
-    <div class="kpi-card kpi-accent">
-      <div class="kpi-label">Total PO Value excl VAT</div>
-      <div class="kpi-value">${fmtR(oh.total_po_value_excl)}</div>
-      <div class="kpi-sub">All orders this period</div>
+    <div class="kpi-card kpi-danger">
+      <div class="kpi-label">Outstanding Orders</div>
+      <div class="kpi-value color-danger">${fmtR(h.total_outstanding_excl)}</div>
+      <div class="kpi-sub">excl VAT · undelivered</div>
     </div>
-    <div class="kpi-card kpi-pos">
-      <div class="kpi-label">Overall Fill Rate</div>
-      <div class="kpi-value color-pos">${fmtPct(oh.overall_fill_pct)}</div>
-      <div class="kpi-sub">GRV vs PO</div>
+    <div class="kpi-card kpi-accent">
+      <div class="kpi-label">12-Month Purchases</div>
+      <div class="kpi-value">${fmtR(h.total_purchases_12m_excl)}</div>
+      <div class="kpi-sub">excl VAT · all suppliers</div>
     </div>
     <div class="kpi-card kpi-accent">
       <div class="kpi-label">Active Suppliers</div>
-      <div class="kpi-value">${fmtNum(oh.active_suppliers)}</div>
-      <div class="kpi-sub">With orders this period</div>
+      <div class="kpi-value">${fmtNum(h.supplier_count)}</div>
+      <div class="kpi-sub">${fmtNum(h.outstanding_supplier_count)} with open orders</div>
     </div>
-    <div class="kpi-card kpi-danger">
-      <div class="kpi-label">Suppliers &lt;80% Fill</div>
-      <div class="kpi-value color-danger">${fmtNum(under80)}</div>
-      <div class="kpi-sub">Underperforming</div>
+    <div class="kpi-card kpi-warn">
+      <div class="kpi-label">Aged Outstanding &gt;30d</div>
+      <div class="kpi-value color-warn">${fmtR(h.aged_outstanding_excl)}</div>
+      <div class="kpi-sub">${fmtNum(h.aged_count)} suppliers</div>
     </div>
   `;
-  
-  // Top 15 bar chart
-  const top15 = [...suppliers].sort((a,b)=>b.po_value_excl-a.po_value_excl).slice(0,15);
-  const chartColors = top15.map(s => {
-    if (s.fill_pct < 70) return 'rgba(239,68,68,0.7)';
-    if (s.fill_pct < 90) return 'rgba(245,158,11,0.7)';
-    return 'rgba(108,99,255,0.7)';
-  });
-  
+
+  // Top 15 by outstanding value (colour by age)
+  const top15 = [...suppliers].filter(s=>s.outstanding_excl>0).sort((a,b)=>b.outstanding_excl-a.outstanding_excl).slice(0,15);
+  const ageColor = d => d>30 ? 'rgba(239,68,68,0.75)' : d>14 ? 'rgba(245,158,11,0.75)' : 'rgba(108,99,255,0.65)';
   new Chart(document.getElementById('supChart'), {
     type: 'bar',
     data: {
       labels: top15.map(s => s.name.split(' ').slice(0,3).join(' ')),
-      datasets: [{
-        label: 'PO Value excl VAT',
-        data: top15.map(s => s.po_value_excl),
-        backgroundColor: chartColors,
-        borderRadius: 4,
-      }]
+      datasets: [{ data: top15.map(s => s.outstanding_excl), backgroundColor: top15.map(s=>ageColor(s.oldest_age_days)), borderRadius: 4 }]
     },
     options: {
-      indexAxis: 'y',
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: '#1a1d2e', titleColor: '#e2e8f0', bodyColor: '#94a3b8', borderColor: '#2a2d45', borderWidth: 1,
-          callbacks: {
-            label: ctx => ` PO: ${fmtR(ctx.raw)} | Fill: ${fmtPct(top15[ctx.dataIndex].fill_pct)}`
-          }
-        }
-      },
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: {
+        backgroundColor: '#1a1d2e', titleColor: '#e2e8f0', bodyColor: '#94a3b8', borderColor: '#2a2d45', borderWidth: 1,
+        callbacks: { label: ctx => ` Outstanding: ${fmtR(ctx.raw)} | ${top15[ctx.dataIndex].oldest_age_days}d old` } } },
       scales: {
         x: { ticks: { color: '#4a5568', callback: v => fmtR(v) }, grid: { color: '#1e2235' } },
         y: { ticks: { color: '#94a3b8', font: {size:11} }, grid: { display: false } }
       }
     }
   });
-  
+
   // Supplier table
   const tbody = document.getElementById('sup-tbody');
   const ths = document.querySelectorAll('#sup-table thead th');
-  let sortCol = 'po_value_excl', sortDir = 'desc';
-  
+  let sortCol = 'outstanding_excl', sortDir = 'desc';
   function renderSup() {
     let sorted = [...suppliers];
     sorted.sort((a,b) => {
@@ -107613,13 +107729,11 @@ function initSuppliers() {
     tbody.innerHTML = sorted.map(s => `<tr>
       <td style="font-weight:600;">${s.code}</td>
       <td class="name-cell" style="max-width:220px;"><span title="${s.name}">${s.name}</span></td>
-      <td>${fmtNum(s.orders)}</td>
-      <td>${fmtNum(s.po_qty)}</td>
-      <td>${fmtR(s.po_value_excl)}</td>
-      <td>${fmtR(s.grv_value_excl)}</td>
-      <td><span class="${fillClass(s.fill_pct)}">${fmtPct(s.fill_pct)}</span></td>
-      <td>${fmtNum(s.skus)}</td>
-      <td style="font-size:12px;">${s.last_order||'—'}</td>
+      <td>${fmtR(s.purchases_12m_excl)}</td>
+      <td class="${s.outstanding_excl>0?'color-danger':''}">${fmtR(s.outstanding_excl)}</td>
+      <td>${fmtNum(s.outstanding_qty)}</td>
+      <td>${fmtNum(s.po_count)}</td>
+      <td class="${s.oldest_age_days>30?'color-danger':s.oldest_age_days>14?'color-warn':''}">${s.oldest_age_days?fmtNum(s.oldest_age_days):'—'}</td>
     </tr>`).join('');
   }
   ths.forEach(th => {
@@ -107627,37 +107741,33 @@ function initSuppliers() {
       const col = th.dataset.col;
       if(sortCol===col){sortDir=sortDir==='asc'?'desc':'asc';}
       else{sortCol=col;sortDir='desc';}
-      ths.forEach(h=>h.classList.remove('sorted-asc','sorted-desc'));
+      ths.forEach(x=>x.classList.remove('sorted-asc','sorted-desc'));
       th.classList.add(sortDir==='asc'?'sorted-asc':'sorted-desc');
       renderSup();
     });
   });
-  const initTh = document.querySelector('#sup-table th[data-col="po_value_excl"]');
+  const initTh = document.querySelector('#sup-table th[data-col="outstanding_excl"]');
   if(initTh) initTh.classList.add('sorted-desc');
   renderSup();
-  
-  // Problem suppliers
-  const problems = suppliers.filter(s => s.fill_pct < 80 && s.po_value_excl > 5000);
-  problems.sort((a,b) => b.po_value_excl - a.po_value_excl);
-  
-  document.getElementById('prob-suppliers').innerHTML = problems.map(s => {
-    const outstanding = s.po_value_excl - s.grv_value_excl;
-    const action = s.fill_pct < 60 ? '🚨 Review supply agreement — chronically underdelivering' :
-                   s.fill_pct < 70 ? '⚠️ Escalate — chase outstanding POs immediately' :
-                   '📋 Chase outstanding POs';
+
+  // Outstanding watch-list: biggest + oldest undelivered
+  const watch = suppliers.filter(s => s.outstanding_excl > 2000 || s.oldest_age_days > 30)
+    .sort((a,b) => b.outstanding_excl - a.outstanding_excl).slice(0,12);
+  document.getElementById('prob-suppliers').innerHTML = watch.map(s => {
+    const action = s.oldest_age_days > 30 ? '🚨 Chase now — overdue delivery' :
+                   s.oldest_age_days > 14 ? '⚠️ Follow up on delivery' :
+                   '📋 On order — monitor';
     return `
       <div class="prob-card">
         <div class="prob-card-header">
           <span class="prob-card-name">${s.name} (${s.code})</span>
-          <span class="prob-fill-badge">${fmtPct(s.fill_pct)} fill</span>
+          <span class="prob-fill-badge">${s.oldest_age_days}d old</span>
         </div>
         <div class="prob-stats">
-          <div class="prob-stat"><span class="prob-stat-label">PO Value excl VAT</span><span class="prob-stat-value">${fmtR(s.po_value_excl)}</span></div>
-          <div class="prob-stat"><span class="prob-stat-label">GRV Value excl VAT</span><span class="prob-stat-value">${fmtR(s.grv_value_excl)}</span></div>
-          <div class="prob-stat"><span class="prob-stat-label">Outstanding</span><span class="prob-stat-value color-danger">${fmtR(Math.max(0, outstanding))}</span></div>
-          <div class="prob-stat"><span class="prob-stat-label">Orders</span><span class="prob-stat-value">${s.orders}</span></div>
-          <div class="prob-stat"><span class="prob-stat-label">SKUs</span><span class="prob-stat-value">${s.skus}</span></div>
-          <div class="prob-stat"><span class="prob-stat-label">Last Order</span><span class="prob-stat-value">${s.last_order}</span></div>
+          <div class="prob-stat"><span class="prob-stat-label">Outstanding excl VAT</span><span class="prob-stat-value color-danger">${fmtR(s.outstanding_excl)}</span></div>
+          <div class="prob-stat"><span class="prob-stat-label">Outstanding Qty</span><span class="prob-stat-value">${fmtNum(s.outstanding_qty)}</span></div>
+          <div class="prob-stat"><span class="prob-stat-label">Open POs</span><span class="prob-stat-value">${fmtNum(s.po_count)}</span></div>
+          <div class="prob-stat"><span class="prob-stat-label">12-mo Purchases</span><span class="prob-stat-value">${fmtR(s.purchases_12m_excl)}</span></div>
         </div>
         <div class="prob-action">${action}</div>
       </div>

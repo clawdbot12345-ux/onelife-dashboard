@@ -42,6 +42,9 @@ jobs:
       - name: Wire Products / Categories / Stock-Intelligence live (real cost)
         run: python scripts/build_stock_live.py
 
+      - name: Wire Suppliers live (purchases + outstanding exposure)
+        run: python scripts/build_suppliers_live.py
+
       - name: Rebuild "What to Market" engine
         run: python scripts/build_what_to_market.py
 
