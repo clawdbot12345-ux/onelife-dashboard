@@ -28,6 +28,7 @@ P0_REPORTS = [
     "Stock Valuation - Slow movers 6 Months",
     "OL_PO_Generator_V6",
     "Purchase Orders",
+    "ANA_Outstanding Purchase Orders",
     "ANA_Purchase analysis",
     "Stock Price List with Supplier Price Comparison",
     "Stock Reorder Report - Daily Material Requirements",
@@ -143,6 +144,15 @@ def normalized_name(value):
 
 def normalized_code(value):
     return str(value or "").strip().upper()
+
+
+def parse_date(value):
+    if not value:
+        return None
+    try:
+        return datetime.date.fromisoformat(str(value)[:10])
+    except (TypeError, ValueError):
+        return None
 
 
 def build_transaction_rows(transaction_sources, document_date, source_map):
@@ -382,6 +392,8 @@ def build_supplier_master(report_rows):
         add_supplier(master, row.get("supplier_#"), None, "Stock Valuation - Slow movers 6 Months")
     for row in report_rows.get("Purchase Orders") or []:
         add_supplier(master, row.get("supplier_account_no"), None, "Purchase Orders")
+    for row in report_rows.get("ANA_Outstanding Purchase Orders") or []:
+        add_supplier(master, row.get("supplier_#"), row.get("supplier_name"), "ANA_Outstanding Purchase Orders")
     purchase_supplier_numbers = {}
     for row in report_rows.get("ANA_Purchase analysis") or []:
         account_no = normalized_code(row.get("supplier_account_no"))
@@ -421,6 +433,62 @@ def supplier_master_indexes(supplier_master):
         if row.get("supplier_name")
     }
     return by_account, by_name
+
+
+def build_supplier_outstanding(outstanding_rows, supplier_master, as_of_date):
+    by_account, by_name = supplier_master_indexes(supplier_master)
+    buckets = {}
+    for row in outstanding_rows:
+        supplier_code = normalized_code(row.get("supplier_#"))
+        supplier_name = row.get("supplier_name")
+        master_row = by_account.get(supplier_code) if supplier_code else by_name.get(normalized_name(supplier_name))
+        if not supplier_name and master_row:
+            supplier_name = master_row.get("supplier_name")
+        key = supplier_code or f"name::{normalized_name(supplier_name)}" or "unknown_supplier"
+        bucket = buckets.setdefault(
+            key,
+            {
+                "supplier_#": supplier_code or None,
+                "supplier_name": supplier_name,
+                "outstanding_value_excl": 0.0,
+                "outstanding_qty": 0.0,
+                "ordered_qty": 0.0,
+                "line_count": 0,
+                "po_refs": set(),
+                "oldest_doc_date": None,
+            },
+        )
+        if supplier_code and not bucket.get("supplier_#"):
+            bucket["supplier_#"] = supplier_code
+        if supplier_name and not bucket.get("supplier_name"):
+            bucket["supplier_name"] = supplier_name
+        bucket["outstanding_value_excl"] += num(row.get("outstanding_delivery_value_excl"))
+        bucket["outstanding_qty"] += num(row.get("outstanding_qty_to_deliver"))
+        bucket["ordered_qty"] += num(row.get("ordered_qty"))
+        bucket["line_count"] += 1
+        if row.get("reference"):
+            bucket["po_refs"].add(str(row.get("reference")))
+        document_date = parse_date(row.get("document_date"))
+        if document_date and (bucket["oldest_doc_date"] is None or document_date < bucket["oldest_doc_date"]):
+            bucket["oldest_doc_date"] = document_date
+
+    rows = []
+    for bucket in buckets.values():
+        oldest_doc_date = bucket["oldest_doc_date"]
+        rows.append(
+            {
+                "supplier_#": bucket["supplier_#"],
+                "supplier_name": bucket["supplier_name"],
+                "outstanding_value_excl": round(bucket["outstanding_value_excl"], 2),
+                "outstanding_qty": round(bucket["outstanding_qty"], 4),
+                "ordered_qty": round(bucket["ordered_qty"], 4),
+                "line_count": bucket["line_count"],
+                "po_count": len(bucket["po_refs"]),
+                "oldest_doc_date": oldest_doc_date.isoformat() if oldest_doc_date else None,
+                "age_days": (as_of_date - oldest_doc_date).days if oldest_doc_date else None,
+            }
+        )
+    return sorted(rows, key=lambda row: (-(row.get("outstanding_value_excl") or 0), row.get("supplier_name") or ""))
 
 
 def build_supplier_po_grv(po_rows, purchase_rows, payment_rows, supplier_master):
@@ -671,6 +739,16 @@ def main():
     )
     write_daily(today, "Engine Supplier Purchase Coverage", {"engine_supplier_purchase_coverage": supplier_purchase_coverage})
     print(f"[fetch_omni] Engine Supplier Purchase Coverage: {len(supplier_purchase_coverage)} rows")
+
+    outstanding_rows = report_rows.get("ANA_Outstanding Purchase Orders") or []
+    supplier_outstanding_rows = build_supplier_outstanding(outstanding_rows, supplier_master_rows, today_date)
+    write_daily(today, "Engine Supplier Outstanding", {"engine_supplier_outstanding": supplier_outstanding_rows})
+    outstanding_raw_total = round(sum(num(row.get("outstanding_delivery_value_excl")) for row in outstanding_rows), 2)
+    outstanding_engine_total = round(sum(num(row.get("outstanding_value_excl")) for row in supplier_outstanding_rows), 2)
+    print(
+        "[fetch_omni] Engine Supplier Outstanding: "
+        f"{len(supplier_outstanding_rows)} rows; raw_total={outstanding_raw_total}; engine_total={outstanding_engine_total}"
+    )
 
     transaction_sources = {}
     for name in BRANCH_BUSY_YESTERDAY:
