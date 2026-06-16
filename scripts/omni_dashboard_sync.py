@@ -145,6 +145,20 @@ def main():
     store_margin = round(store_gp / store_sales * 100, 1) if store_sales else 0.0
     last_sync = max(sync_dates)
 
+    # run rate + linear month-end forecast (project MTD to full month by calendar pace)
+    import calendar
+    y, mo, dom = int(period_end[:4]), int(period_end[5:7]), int(period_end[8:10])
+    days_in_month = calendar.monthrange(y, mo)[1]
+    factor = days_in_month / dom if dom else 1.0
+    for sk, s in stores.items():
+        traded = len(s["daily_sales_excl"]) or 1
+        s["days_traded"] = traded
+        s["run_rate_daily_excl"] = round(s["total_sales_excl"] / traded, 2)
+        s["forecast_sales_excl"] = round(s["total_sales_excl"] * factor, 2)
+        s["forecast_gp_excl"] = round(s["gross_profit_excl"] * factor, 2)
+    forecast_store_sales = round(store_sales * factor, 2)
+    forecast_store_gp = round(store_gp * factor, 2)
+
     html = open(HTML).read()
 
     # online revenue (from the Shopify/Klaviyo refresh) to recompute combined
@@ -163,6 +177,8 @@ def main():
         "combined_revenue_30d_excl": combined,
         "store_gross_profit_excl": store_gp,
         "store_gross_margin_pct": store_margin,
+        "store_forecast_sales_excl": forecast_store_sales,
+        "store_forecast_gp_excl": forecast_store_gp,
     }
     for k, v in kpi_updates.items():
         if re.search(rf'"{k}":\s*[0-9.]+', html):
@@ -266,7 +282,9 @@ def main():
     narrative = (
         f"**Live Omni data — month-to-date ({period_start} to {period_end}).** "
         f"The three stores generated **R{store_sales:,.0f} excl VAT** at a real gross "
-        f"profit of **R{store_gp:,.0f} ({store_margin}% GP margin)**.\n\n"
+        f"profit of **R{store_gp:,.0f} ({store_margin}% GP margin)**. At the current run rate "
+        f"that projects to **~R{forecast_store_sales:,.0f}** for the full month "
+        f"(~R{forecast_store_gp:,.0f} GP).\n\n"
         f"**Centurion** leads with **R{cen['total_sales_excl']:,.0f}** ({share(cen['total_sales_excl'])}% of "
         f"store revenue) at {cen['gross_margin_pct']}% GP. **Edenvale** R{edn['total_sales_excl']:,.0f} "
         f"({share(edn['total_sales_excl'])}%, {edn['gross_margin_pct']}% GP) and **Glen Village** "
