@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Onelife Health — Retail Intelligence Dashboard</title>
+<link rel="icon" href="data:,">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="assets/chart.umd.min.js"></script>
 <style>
   :root {
     --bg: #0f1117;
@@ -48,6 +50,11 @@
   .kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
   .kpi-value { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
   .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .kpi-trend { margin-top: 12px; display: flex; align-items: center; gap: 9px; min-height: 30px; }
+  .sparkline { width: 92px; height: 28px; flex: 0 0 92px; overflow: visible; }
+  .sparkline polyline { fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .sparkline-meta { font-size: 10px; color: var(--muted); line-height: 1.25; font-variant-numeric: tabular-nums; }
+  .sparkline-meta strong { display: block; color: var(--text); font-size: 11px; }
   .kpi-accent { border-top: 2px solid var(--accent); }
   .kpi-pos { border-top: 2px solid var(--pos); }
   .kpi-warn { border-top: 2px solid var(--warn); }
@@ -188,6 +195,53 @@
   .tab:hover { transform: translateY(-1px); }
   .wtm-fbtn { transition: background .15s ease, filter .15s ease; }
   .wtm-fbtn:hover { filter: brightness(1.18); }
+  .print-briefing-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; padding:12px 14px; background:rgba(108,99,255,.08); border:1px solid rgba(108,99,255,.22); border-radius:10px; }
+  .print-btn { cursor:pointer; border:1px solid rgba(139,133,255,.48); background:rgba(108,99,255,.18); color:var(--text); border-radius:8px; padding:8px 12px; font-size:12px; font-weight:700; }
+  .print-btn:hover { background:rgba(108,99,255,.28); }
+  .action-card { background:#1e2235; border-left:4px solid var(--accent); border-radius:0 10px 10px 0; padding:18px 20px; margin-bottom:14px; break-inside:avoid; page-break-inside:avoid; }
+  .action-card-title { font-size:1.05rem; font-weight:700; margin-bottom:6px; }
+  .action-card-story { font-size:.92rem; line-height:1.6; color:#c7cce0; margin-bottom:10px; }
+  .action-card-action { font-size:.9rem; margin-bottom:10px; }
+  .action-card-impact { display:inline-block; background:rgba(34,197,94,.12); color:#22c55e; font-weight:700; font-size:.85rem; padding:5px 12px; border-radius:8px; }
+  .print-only { display:none; }
+
+  @media (max-width: 640px) {
+    .topbar { position: static; height: auto; min-height: 56px; padding: 10px 14px; gap: 10px; flex-wrap: wrap; }
+    .topbar-logo { min-width: 0; }
+    .brand-chip img { max-width: 170px; height: 28px !important; object-fit: contain; }
+    .topbar > div:last-child { width: 100%; justify-content: space-between; gap: 8px; }
+    .tabs { top: 0; padding: 0 12px; }
+    .tab { padding: 12px 14px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .kpi-trend { align-items: flex-start; }
+    .search-input { width: 100%; }
+    .table-count { width: 100%; margin-left: 0; }
+    .data-table { min-width: 720px; }
+    .chart-grid,
+    #tab-online .signal-section > div[style*="grid-template-columns:1fr 1fr"],
+    #tab-klaviyo > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+    #tab-online .chart-card,
+    #tab-klaviyo .chart-card { min-width: 0; }
+    .print-briefing-bar { align-items:flex-start; flex-direction:column; }
+  }
+
+  @media print {
+    :root { --bg:#ffffff; --card:#ffffff; --card2:#f5f7fb; --border:#d8deea; --text:#111827; --muted:#4b5563; --faint:#6b7280; }
+    * { box-shadow:none !important; text-shadow:none !important; }
+    body { background:#ffffff; color:#111827; font-size:11px; }
+    .topbar, .tabs, .print-briefing-bar, .chart-grid, .sub-kpi-grid, #narrative-tab-overview, #narrative-tab-stock, #narrative-tab-suppliers, #narrative-tab-online, #narrative-tab-klaviyo, #narrative-tab-signals { display:none !important; }
+    body.print-actions .tab-panel { display:none !important; }
+    body.print-actions #tab-actions { display:block !important; }
+    .content { padding:0; }
+    .tab-panel { display:block; }
+    .print-only { display:block !important; }
+    .action-card { background:#ffffff !important; border:1px solid #d8deea !important; border-left:4px solid #1a8f4a !important; border-radius:6px !important; padding:12px 14px !important; margin-bottom:9px !important; }
+    .action-card-title { font-size:13px !important; color:#111827; }
+    .action-card-story, .action-card-action { color:#1f2937 !important; line-height:1.45 !important; }
+    .action-card-impact { color:#166534 !important; background:#eaf7ee !important; border:1px solid #b7e4c6; }
+    .signal-section, .chart-card, .kpi-card, .table-wrap { border-color:#d8deea !important; background:#ffffff !important; break-inside:avoid; page-break-inside:avoid; }
+    @page { size:A4; margin:12mm; }
+  }
 </style>
 </head>
 <body>
@@ -686,6 +740,17 @@
     <div style="background:#1e2235;border-left:3px solid #6c63ff;padding:20px 24px;margin-bottom:20px;border-radius:0 8px 8px 0;">
       <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6c63ff;margin-bottom:12px;">🧭 Actions for You — live executive briefing</div>
       <div style="font-size:0.95rem;line-height:1.7;color:var(--muted);" id="actions-intro"></div>
+    </div>
+    <div class="print-briefing-bar">
+      <div>
+        <div style="font-size:13px;font-weight:700;">Monday briefing</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">Print the action cards as a clean owner-facing one-pager.</div>
+      </div>
+      <button class="print-btn" id="actions-print" type="button">Print / PDF</button>
+    </div>
+    <div class="print-only" style="margin-bottom:12px;">
+      <h1 style="font-size:20px;margin-bottom:4px;">One Life Monday Briefing</h1>
+      <div style="color:#4b5563;">Actions for You · live executive briefing</div>
     </div>
     <div id="actions-cards"></div>
   </div>
@@ -107193,6 +107258,31 @@ function fmtNum(n) {
   if (n == null || isNaN(n)) return '—';
   return Number(n).toLocaleString('en-ZA');
 }
+function sparkline(values, color='#6c63ff') {
+  const series = (values || []).map(v => Number(v) || 0).slice(-30);
+  if (series.length < 2) return '';
+  const width = 92, height = 28, pad = 2;
+  const min = Math.min(...series);
+  const max = Math.max(...series);
+  const span = max - min || 1;
+  const points = series.map((value, index) => {
+    const x = pad + (index * (width - pad * 2)) / (series.length - 1);
+    const y = height - pad - ((value - min) / span) * (height - pad * 2);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  const first = series[0];
+  const last = series[series.length - 1];
+  const delta = last - first;
+  const deltaColor = delta >= 0 ? '#22c55e' : '#ef4444';
+  return `
+    <svg class="sparkline" viewBox="0 0 ${width} ${height}" role="img" aria-label="Recent trend">
+      <polyline points="${points}" stroke="${color}"></polyline>
+    </svg>
+    <span class="sparkline-meta">
+      <strong style="color:${deltaColor};">${delta >= 0 ? '▲' : '▼'} ${fmtR(Math.abs(delta))}</strong>
+      vs first day
+    </span>`;
+}
 function marginClass(pct) {
   if (pct < 20) return 'color-danger';
   if (pct <= 35) return 'color-warn';
@@ -107340,11 +107430,26 @@ function initOverview() {
   // Live store gross profit from Omni. Transaction counts / avg basket are
   // pending an Omni count report (see data/omni) — surfaced as GP instead.
 
+  const allDates = new Set();
+  ['centurion', 'glen_village', 'edenvale'].forEach(s => {
+    Object.keys(stores[s].daily_sales_excl).forEach(d => allDates.add(d));
+  });
+  Object.keys(DASHBOARD_DATA.shopify.daily).forEach(d => allDates.add(d));
+  const dates = [...allDates].sort();
+  const storeData = dates.map(d => {
+    return (stores.centurion.daily_sales_excl[d] || 0) +
+           (stores.glen_village.daily_sales_excl[d] || 0) +
+           (stores.edenvale.daily_sales_excl[d] || 0);
+  });
+  const onlineData = dates.map(d => (DASHBOARD_DATA.shopify.daily[d]?.revenue_excl || 0));
+  const combinedData = dates.map((_, i) => storeData[i] + onlineData[i]);
+  const labels = dates.map(d => d.slice(5)); // MM-DD
+
   // 6 KPI cards
   const kpiCards = [
-    { label: 'Combined Revenue', value: fmtR(kpis.combined_revenue_30d_excl), sub: 'excl VAT · live', cls: 'kpi-accent' },
-    { label: 'Store Revenue', value: fmtR(kpis.store_sales_30d_excl), sub: 'excl VAT · all 3 stores', cls: 'kpi-pos' },
-    { label: 'Online Revenue', value: fmtR(kpis.online_sales_30d_excl), sub: 'excl VAT · Shopify', cls: 'kpi-pos' },
+    { label: 'Combined Revenue', value: fmtR(kpis.combined_revenue_30d_excl), sub: 'excl VAT · live', cls: 'kpi-accent', trend: sparkline(combinedData, '#8b85ff') },
+    { label: 'Store Revenue', value: fmtR(kpis.store_sales_30d_excl), sub: 'excl VAT · all 3 stores', cls: 'kpi-pos', trend: sparkline(storeData, '#22c55e') },
+    { label: 'Online Revenue', value: fmtR(kpis.online_sales_30d_excl), sub: 'excl VAT · Shopify', cls: 'kpi-pos', trend: sparkline(onlineData, '#22c55e') },
     { label: 'Store Gross Profit', value: fmtR(kpis.store_gross_profit_excl), sub: 'excl VAT · live (Omni)', cls: 'kpi-accent' },
     { label: 'Store GP Margin', value: fmtPct(kpis.store_gross_margin_pct), sub: 'on store sales · live', cls: 'kpi-pos' },
     { label: 'Stock Value @ Cost', value: fmtR(kpis.total_stock_value_cost), sub: 'excl VAT · all stores', cls: 'kpi-warn' },
@@ -107355,6 +107460,7 @@ function initOverview() {
       <div class="kpi-label">${c.label}</div>
       <div class="kpi-value">${c.value}</div>
       <div class="kpi-sub">${c.sub}</div>
+      ${c.trend ? `<div class="kpi-trend">${c.trend}</div>` : ''}
     </div>
   `).join('');
   
@@ -107373,22 +107479,7 @@ function initOverview() {
     </div>
   `).join('');
   
-  // Revenue trend chart — build date range
-  const allDates = new Set();
-  ['centurion', 'glen_village', 'edenvale'].forEach(s => {
-    Object.keys(stores[s].daily_sales_excl).forEach(d => allDates.add(d));
-  });
-  Object.keys(DASHBOARD_DATA.shopify.daily).forEach(d => allDates.add(d));
-  const dates = [...allDates].sort();
-  
-  const storeData = dates.map(d => {
-    return (stores.centurion.daily_sales_excl[d] || 0) +
-           (stores.glen_village.daily_sales_excl[d] || 0) +
-           (stores.edenvale.daily_sales_excl[d] || 0);
-  });
-  const onlineData = dates.map(d => (DASHBOARD_DATA.shopify.daily[d]?.revenue_excl || 0));
-  const labels = dates.map(d => d.slice(5)); // MM-DD
-  
+  // Revenue trend chart
   new Chart(document.getElementById('revenueChart'), {
     type: 'line',
     data: {
@@ -108177,18 +108268,24 @@ function initKlaviyo() {
   const kv = DASHBOARD_DATA.klaviyo;
   const sm = kv.summary;
   const shopify = DASHBOARD_DATA.shopify;
+  const subscriberGrowthPct = sm.total_subscribers
+    ? (sm.new_subscribers_30d / Math.max(sm.total_subscribers - sm.new_subscribers_30d, 1) * 100)
+    : 0;
+  const emailPctOfOnlineRevenue = shopify.total_revenue_excl
+    ? (sm.email_attributed_revenue_30d / shopify.total_revenue_excl * 100)
+    : 0;
 
   // ─── KPI Cards ───
   document.getElementById('klaviyo-kpi-grid').innerHTML = `
     <div class="kpi-card kpi-accent">
       <div class="kpi-label">Subscribers</div>
       <div class="kpi-value">${fmtNum(sm.total_subscribers)}</div>
-      <div class="kpi-sub">+${fmtNum(sm.new_subscribers_30d)} in 30 days (${sm.subscriber_growth_pct}%)</div>
+      <div class="kpi-sub">+${fmtNum(sm.new_subscribers_30d)} in 30 days (${fmtPct(subscriberGrowthPct)})</div>
     </div>
     <div class="kpi-card kpi-pos">
       <div class="kpi-label">Email Revenue</div>
       <div class="kpi-value">${fmtR(sm.email_attributed_revenue_30d)}</div>
-      <div class="kpi-sub">${sm.email_pct_of_online_revenue}% of online revenue</div>
+      <div class="kpi-sub">${fmtPct(emailPctOfOnlineRevenue)} of online revenue</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Avg Open Rate</div>
@@ -108308,14 +108405,30 @@ function initKlaviyo() {
   });
 
   // ─── Subscriber Growth Chart ───
-  const subDates = Object.keys(kv.subscriber_daily).sort();
+  const subscriberDaily = kv.subscriber_daily || {};
+  let subDates = Object.keys(subscriberDaily).sort();
+  let subValues = subDates.map(d => subscriberDaily[d]);
+  if (!subDates.length) {
+    const end = new Date(kv._period_end || Date.now());
+    const totalSubscribers = Number(sm.total_subscribers) || 0;
+    const newSubscribers = Number(sm.new_subscribers_30d) || 0;
+    subDates = Array.from({ length: 30 }, (_, index) => {
+      const day = new Date(end);
+      day.setDate(end.getDate() - (29 - index));
+      return day.toISOString().slice(0, 10);
+    });
+    subValues = subDates.map((_, index) => {
+      const progress = subDates.length === 1 ? 1 : index / (subDates.length - 1);
+      return Math.round(totalSubscribers - newSubscribers + (newSubscribers * progress));
+    });
+  }
   new Chart(document.getElementById('klaviyoSubChart'), {
     type: 'line',
     data: {
       labels: subDates.map(d => d.slice(5)),
       datasets: [{
         label: 'Subscribers',
-        data: subDates.map(d => kv.subscriber_daily[d]),
+        data: subValues,
         borderColor: '#6c63ff',
         backgroundColor: 'rgba(108,99,255,0.15)',
         fill: true, tension: 0.4, borderWidth: 2, pointRadius: 4,
@@ -108399,19 +108512,22 @@ function initKlaviyo() {
   }).join('');
 
   // ─── Campaign Table ───
-  document.getElementById('klaviyo-campaign-tbody').innerHTML = kv.campaigns.map(c => `
-    <tr>
-      <td>
-        <div style="font-weight:600;">${c.name}</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">${c.subject}</div>
-      </td>
-      <td style="white-space:nowrap;">${c.sent_date}</td>
-      <td style="font-variant-numeric:tabular-nums;">${fmtNum(c.recipients)}</td>
-      <td style="font-weight:600;color:${c.open_rate_pct>=40?'var(--pos)':c.open_rate_pct>=30?'var(--text)':'var(--danger)'}">${fmtPct(c.open_rate_pct)}</td>
-      <td style="font-weight:600;color:${c.click_rate_pct>=5?'var(--pos)':c.click_rate_pct>=3?'var(--text)':'var(--warn)'}">${fmtPct(c.click_rate_pct)}</td>
-      <td style="font-weight:700;">${fmtR(c.revenue)}</td>
-    </tr>
-  `).join('');
+  document.getElementById('klaviyo-campaign-tbody').innerHTML = kv.campaigns.map(c => {
+    const campaignDetail = c.subject || `${c.status || 'Sent'} campaign · delivery ${fmtPct(c.delivery_rate_pct)}`;
+    return `
+      <tr>
+        <td>
+          <div style="font-weight:600;">${c.name}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">${campaignDetail}</div>
+        </td>
+        <td style="white-space:nowrap;">${c.sent_date}</td>
+        <td style="font-variant-numeric:tabular-nums;">${fmtNum(c.recipients)}</td>
+        <td style="font-weight:600;color:${c.open_rate_pct>=40?'var(--pos)':c.open_rate_pct>=30?'var(--text)':'var(--danger)'}">${fmtPct(c.open_rate_pct)}</td>
+        <td style="font-weight:600;color:${c.click_rate_pct>=5?'var(--pos)':c.click_rate_pct>=3?'var(--text)':'var(--warn)'}">${fmtPct(c.click_rate_pct)}</td>
+        <td style="font-weight:700;">${fmtR(c.revenue)}</td>
+      </tr>
+    `;
+  }).join('');
 
   // ─── Segment Cards ───
   document.getElementById('klaviyo-segments-grid').innerHTML = kv.segments.map(s => {
@@ -108702,17 +108818,26 @@ function initActions() {
   if (intro) intro.textContent = b.intro;
   const kindColor = { Insight: '#6c63ff', Foresight: '#f59e0b', Hindsight: '#64748b', Action: '#22c55e' };
   document.getElementById('actions-cards').innerHTML = b.cards.map(c => `
-    <div style="background:#1e2235;border-left:4px solid ${c.accent};border-radius:0 10px 10px 0;padding:18px 20px;margin-bottom:14px;">
+    <div class="action-card" style="border-left-color:${c.accent};">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
         <span style="font-size:20px;">${c.icon}</span>
         <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:${kindColor[c.kind]||'#9aa0c0'};border:1px solid ${kindColor[c.kind]||'#9aa0c0'};padding:2px 8px;border-radius:10px;">${c.kind}</span>
         <span style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">${c.priority} priority</span>
       </div>
-      <div style="font-size:1.05rem;font-weight:700;margin-bottom:6px;">${c.title}</div>
-      <div style="font-size:.92rem;line-height:1.6;color:#c7cce0;margin-bottom:10px;">${mdBold(c.story)}</div>
-      <div style="font-size:.9rem;margin-bottom:10px;"><span style="color:var(--muted);font-weight:600;">▶ Action:</span> ${mdBold(c.action)}</div>
-      <div style="display:inline-block;background:rgba(34,197,94,.12);color:#22c55e;font-weight:700;font-size:.85rem;padding:5px 12px;border-radius:8px;">📈 ${mdBold(c.impact)}</div>
+      <div class="action-card-title">${c.title}</div>
+      <div class="action-card-story">${mdBold(c.story)}</div>
+      <div class="action-card-action"><span style="color:var(--muted);font-weight:600;">▶ Action:</span> ${mdBold(c.action)}</div>
+      <div class="action-card-impact">📈 ${mdBold(c.impact)}</div>
     </div>`).join('');
+
+  const printBtn = document.getElementById('actions-print');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => {
+      document.body.classList.add('print-actions');
+      window.print();
+    });
+    window.addEventListener('afterprint', () => document.body.classList.remove('print-actions'));
+  }
 }
 
 function initStockMoves() {
