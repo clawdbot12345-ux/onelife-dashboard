@@ -39,6 +39,9 @@ jobs:
       - name: Sync Omni store data into dashboard
         run: python scripts/omni_dashboard_sync.py
 
+      - name: Wire Products / Categories / Stock-Intelligence live (real cost)
+        run: python scripts/build_stock_live.py
+
       - name: Rebuild "What to Market" engine
         run: python scripts/build_what_to_market.py
 

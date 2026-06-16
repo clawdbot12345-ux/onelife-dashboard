@@ -238,8 +238,8 @@ def main():
     html = re.sub(
         r'<strong>⚠️ Branch-level stock split not yet available via Omni API</strong>[^<]*',
         f'<strong>✅ Branch-level data live via Omni</strong> — per-branch sales & GP '
-        f'syncing daily (last sync {last_sync}). Per-branch stock listings available; '
-        f'wiring into the product table next.',
+        f'syncing daily (last sync {last_sync}). Products, Categories & Stock Intelligence '
+        f'now live at real cost.',
         html, count=1,
     )
 
