@@ -11,6 +11,27 @@ See the one FYI in §4 so you don't lose time on the root cause.
 
 ---
 
+## 🔴 0. DO FIRST — Browse Abandonment complaint (customer unsubscribed)
+
+A customer got a "Still thinking about {{ product }}? 👀" email minutes after
+searching the site, felt surveilled, and unsubscribed publicly. Owner wants it
+fixed. **This is a 2-minute Klaviyo UI edit** — flow timing/filters are UI-only
+(no API/MCP write exists, so neither Claude nor a script can push it).
+
+Flow: **"Browse Abandonment v2" → ID `UMMzhC`** → https://www.klaviyo.com/flow/UMMzhC/edit
+Full spec + research + sources: `reports/browse-abandonment-fix-2026-06-13.md`. TL;DR:
+1. Time delay **2h → 72h (3 days)** (owner request).
+2. **Add frequency cap — the real fix:** flow filter **"Has not been in this flow
+   in the last 30 days."** This is what stops the "email every time I search".
+3. Soften the subject (drop `Still thinking about {{ event.Name }}? 👀`) to a light,
+   non-watching line; keep Smart Sending on.
+4. Consent audit: the complainer felt they never opted in — review how profiles get
+   email-marketing consent (single-opt-in Email List Xrk5jD, checkout) for POPIA.
+
+Owner has the apology reply drafted (in chat) to send the customer.
+
+---
+
 ## 1. What I already shipped (do NOT redo)
 
 **Live on the store now (Admin API, owner client-credentials app — 0 errors):**
