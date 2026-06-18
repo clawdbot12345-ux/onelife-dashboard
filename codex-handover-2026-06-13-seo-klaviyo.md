@@ -20,7 +20,7 @@ fixed. **This is a 2-minute Klaviyo UI edit** — flow timing/filters are UI-onl
 
 Flow: **"Browse Abandonment v2" → ID `UMMzhC`** → https://www.klaviyo.com/flow/UMMzhC/edit
 Full spec + research + sources: `reports/browse-abandonment-fix-2026-06-13.md`. TL;DR:
-1. Time delay **2h → 72h (3 days)** (owner request).
+1. Time delay **2h → 24h (1 day)** (recommended — research conversion sweet spot).
 2. **Add frequency cap — the real fix:** flow filter **"Has not been in this flow
    in the last 30 days."** This is what stops the "email every time I search".
 3. Soften the subject (drop `Still thinking about {{ event.Name }}? 👀`) to a light,

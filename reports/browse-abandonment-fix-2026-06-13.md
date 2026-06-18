@@ -14,8 +14,9 @@ https://www.klaviyo.com/flow/UMMzhC/edit
 - **No frequency cap** → a repeat browser gets an email on basically every visit.
 
 ## Apply these changes
-1. **Time delay 2h → 72h (3 days).** (Owner's call. Note: research sweet spot for
-   *conversion* is ~24h; 3 days is the gentler, lower-pressure option.)
+1. **Time delay 2h → 24h (1 day).** Recommended — the research conversion sweet
+   spot for browse abandonment, and far enough from the visit that it no longer
+   feels like surveillance. (A gentler 2–3 days is possible but converts worse.)
 2. **Add frequency cap (root-cause fix for "every time I search"):** flow filter
    **"Has not been in this flow in the last 30 days"** (14 acceptable).
 3. **Soften the email** — browse = low intent, make it a *light* touch, not cart-style.
