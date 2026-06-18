@@ -50,9 +50,14 @@ Grep all live templates + scheduled subjects and make them consistent with:
    pure annoyance. Pause now; rebuild later with real dynamic "pairs-with-what-you-bought" product blocks.
 
 6. **Fix the Sunset flow** (`YrtdaV`): delays currently run on **US/Eastern** → switch to
-   **Africa/Johannesburg**; the final step only sets `Unengaged=true` and **never suppresses** → add a real
-   action that removes unengaged profiles from marketing (unsubscribe/suppress or pull them out of all
-   campaign segments). **Done when:** unengaged profiles actually stop receiving campaigns.
+   **Africa/Johannesburg**. The final step only sets `Unengaged=true` and **never suppresses**.
+   Klaviyo has **no native flow action** to globally suppress/unsubscribe, so:
+   - **Interim hard guardrail (do now):** every campaign audience must **exclude `Unengaged = True`**.
+   - **Durable suppression (API-safe, reversible):** run a scheduled (monthly) sweep that suppresses the
+     Unengaged segment — `POST /api/profile-suppression-bulk-create-jobs/` (suppress, reversible via the
+     un-suppress job), or `POST /api/profile-subscription-bulk-delete-jobs/` for full POPIA opt-out. No-dev
+     alternative: Audience → Profiles → Suppressed → upload a CSV exported from the Unengaged segment.
+   **Done when:** unengaged profiles are both excluded from campaigns AND swept to suppression on a schedule.
 
 7. **Reporting hygiene:** archive the ~20 `[CODEX TEST]`/`[LINK QA]` campaigns, and fix the scheduler that
    created/cancelled dozens of duplicate "Apothecary Guide Drip / Monthly Digest / JJA" campaigns on
@@ -101,6 +106,9 @@ These structural controls are mostly ABSENT today and are what stop a complaint 
 6. **SMS guardrails (keep what's good):** consent-gated + quiet hours ON (already set); one text per cart; add a
    weekly SMS cap.
 7. **Enforced Sunset (SAST) with real suppression** — keeps long-term campaign unsub/spam down.
+   Since there's no native flow-suppress action: **(a)** all campaign audiences exclude `Unengaged = True`
+   (permanent guardrail), **(b)** a scheduled API bulk-suppression job (`profile-suppression-bulk-create-jobs`)
+   or CSV upload sweeps the Unengaged segment. Treat (a) as mandatory even once (b) is running.
 8. **One template system + one set of brand facts** so no send can contradict the website again.
 
 ---
