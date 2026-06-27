@@ -631,10 +631,10 @@ const DASHBOARD_DATA = {
   },
   "kpis": {
     "store_sales_30d_excl": 2056778.94,
-    "online_sales_30d_excl": 99507.83,
-    "combined_revenue_30d_excl": 2156286.77,
-    "online_orders_30d": 186,
-    "online_aov_excl": 534.99,
+    "online_sales_30d_excl": 103039.16,
+    "combined_revenue_30d_excl": 2159818.1,
+    "online_orders_30d": 191,
+    "online_aov_excl": 539.47,
     "online_discount_rate_pct": 16.3,
     "total_skus_in_stock": 5686,
     "total_stock_value_cost": 3318456.4,
@@ -763,21 +763,17 @@ const DASHBOARD_DATA = {
   },
   "shopify": {
     "_source": "LIVE Klaviyo Shopify integration",
-    "_fetched_at": "2026-06-26T09:37:05.886025+00:00",
-    "total_orders": 186,
-    "total_revenue_excl": 99507.83,
-    "total_revenue_incl": 114434.0,
-    "aov_excl": 534.99,
-    "unique_customers_30d": 186,
-    "units_sold_30d": 498,
-    "checkouts_started_30d": 329,
-    "checkout_conversion_pct": 56.5,
+    "_fetched_at": "2026-06-27T08:42:59.890797+00:00",
+    "total_orders": 191,
+    "total_revenue_excl": 103039.16,
+    "total_revenue_incl": 118495.03,
+    "aov_excl": 539.47,
+    "unique_customers_30d": 191,
+    "units_sold_30d": 529,
+    "checkouts_started_30d": 337,
+    "checkout_conversion_pct": 56.7,
     "discount_rate_pct": 0,
     "daily": {
-      "2026-05-27": {
-        "orders": 6,
-        "revenue_excl": 3203.53
-      },
       "2026-05-28": {
         "orders": 3,
         "revenue_excl": 1033.97
@@ -891,10 +887,14 @@ const DASHBOARD_DATA = {
         "revenue_excl": 6983.9
       },
       "2026-06-25": {
-        "orders": 2,
-        "revenue_excl": 792.95
+        "orders": 9,
+        "revenue_excl": 5922.36
       },
       "2026-06-26": {
+        "orders": 4,
+        "revenue_excl": 1605.45
+      },
+      "2026-06-27": {
         "orders": 0,
         "revenue_excl": 0.0
       }
@@ -904,43 +904,57 @@ const DASHBOARD_DATA = {
   },
   "klaviyo": {
     "_source": "LIVE Klaviyo API",
-    "_fetched_at": "2026-06-26T09:37:05.885925+00:00",
-    "_period_start": "2026-05-27T23:59:59",
-    "_period_end": "2026-06-26T23:59:59",
+    "_fetched_at": "2026-06-27T08:42:59.890696+00:00",
+    "_period_start": "2026-05-28T23:59:59",
+    "_period_end": "2026-06-27T23:59:59",
     "summary": {
-      "total_subscribers": 3145,
-      "email_list_profile_count": 3145,
-      "marketable_consented_estimate": 3145,
-      "engaged_90d": 1464,
+      "total_subscribers": 3153,
+      "email_list_profile_count": 3153,
+      "marketable_consented_estimate": 3153,
+      "engaged_90d": 1474,
       "at_risk_60d": 1459,
-      "new_subscribers_30d": 122,
-      "unsubscribes_30d": 171,
-      "bounced_30d": 133,
-      "avg_open_rate_pct": 69.59,
-      "avg_click_rate_pct": 4.17,
-      "avg_unsubscribe_rate_pct": 1.201,
-      "bounce_rate_pct": 0.93,
-      "email_attributed_revenue_30d": 14412.91,
-      "flow_revenue_30d": 7357.96,
-      "campaign_revenue_30d": 7054.95,
-      "total_campaigns_sent_30d": 14,
-      "total_emails_sent_30d": 14236,
-      "total_opens_30d": 9907,
-      "total_clicks_30d": 593
+      "new_subscribers_30d": 131,
+      "unsubscribes_30d": 172,
+      "bounced_30d": 136,
+      "avg_open_rate_pct": 69.46,
+      "avg_click_rate_pct": 4.15,
+      "avg_unsubscribe_rate_pct": 1.208,
+      "bounce_rate_pct": 0.96,
+      "email_attributed_revenue_30d": 18440.88,
+      "flow_revenue_30d": 10517.02,
+      "campaign_revenue_30d": 7923.86,
+      "total_campaigns_sent_30d": 13,
+      "total_emails_sent_30d": 14240,
+      "total_opens_30d": 9891,
+      "total_clicks_30d": 591
     },
     "flows": [
+      {
+        "id": "RtJHQe",
+        "name": "GLP-1 Education Drip",
+        "status": "live",
+        "trigger_type": "Added to List",
+        "recipients_30d": 63,
+        "emails_sent_30d": 63,
+        "opens_30d": 24,
+        "clicks_30d": 0,
+        "open_rate_pct": 26.98,
+        "click_rate_pct": 0.0,
+        "conversion_rate_pct": 1.59,
+        "revenue_30d": 3159.06
+      },
       {
         "id": "XZNrmz",
         "name": "Welcome — One Life Health (Full Sequence)",
         "status": "live",
         "trigger_type": "Added to List",
-        "recipients_30d": 192,
-        "emails_sent_30d": 190,
-        "opens_30d": 143,
-        "clicks_30d": 24,
-        "open_rate_pct": 46.35,
-        "click_rate_pct": 7.29,
-        "conversion_rate_pct": 2.6,
+        "recipients_30d": 204,
+        "emails_sent_30d": 202,
+        "opens_30d": 151,
+        "clicks_30d": 23,
+        "open_rate_pct": 47.06,
+        "click_rate_pct": 6.37,
+        "conversion_rate_pct": 2.45,
         "revenue_30d": 2808.53
       },
       {
@@ -948,13 +962,13 @@ const DASHBOARD_DATA = {
         "name": "Browse Abandonment v2",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 166,
-        "emails_sent_30d": 165,
-        "opens_30d": 113,
-        "clicks_30d": 17,
-        "open_rate_pct": 36.14,
-        "click_rate_pct": 9.04,
-        "conversion_rate_pct": 1.81,
+        "recipients_30d": 164,
+        "emails_sent_30d": 163,
+        "opens_30d": 112,
+        "clicks_30d": 16,
+        "open_rate_pct": 36.59,
+        "click_rate_pct": 8.54,
+        "conversion_rate_pct": 1.83,
         "revenue_30d": 2179.45
       },
       {
@@ -962,13 +976,13 @@ const DASHBOARD_DATA = {
         "name": "Replenishment Reminder (API-created)",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 234,
-        "emails_sent_30d": 232,
-        "opens_30d": 112,
-        "clicks_30d": 10,
-        "open_rate_pct": 38.46,
-        "click_rate_pct": 3.42,
-        "conversion_rate_pct": 0.43,
+        "recipients_30d": 240,
+        "emails_sent_30d": 237,
+        "opens_30d": 117,
+        "clicks_30d": 13,
+        "open_rate_pct": 39.17,
+        "click_rate_pct": 4.17,
+        "conversion_rate_pct": 0.42,
         "revenue_30d": 1329.32
       },
       {
@@ -976,13 +990,13 @@ const DASHBOARD_DATA = {
         "name": "GLP-1 Non-Opener Follow-Up",
         "status": "live",
         "trigger_type": "Added to List",
-        "recipients_30d": 81,
-        "emails_sent_30d": 81,
-        "opens_30d": 30,
+        "recipients_30d": 83,
+        "emails_sent_30d": 83,
+        "opens_30d": 33,
         "clicks_30d": 3,
-        "open_rate_pct": 30.86,
-        "click_rate_pct": 2.47,
-        "conversion_rate_pct": 1.23,
+        "open_rate_pct": 31.33,
+        "click_rate_pct": 2.41,
+        "conversion_rate_pct": 1.2,
         "revenue_30d": 584.98
       },
       {
@@ -1004,12 +1018,12 @@ const DASHBOARD_DATA = {
         "name": "PCOS Post-Purchase Flow",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 287,
-        "emails_sent_30d": 282,
-        "opens_30d": 141,
+        "recipients_30d": 291,
+        "emails_sent_30d": 286,
+        "opens_30d": 145,
         "clicks_30d": 1,
-        "open_rate_pct": 37.98,
-        "click_rate_pct": 0.35,
+        "open_rate_pct": 37.46,
+        "click_rate_pct": 0.34,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
       },
@@ -1037,20 +1051,6 @@ const DASHBOARD_DATA = {
         "opens_30d": 3,
         "clicks_30d": 0,
         "open_rate_pct": 66.67,
-        "click_rate_pct": 0.0,
-        "conversion_rate_pct": 0.0,
-        "revenue_30d": 0.0
-      },
-      {
-        "id": "RtJHQe",
-        "name": "GLP-1 Education Drip",
-        "status": "live",
-        "trigger_type": "Added to List",
-        "recipients_30d": 59,
-        "emails_sent_30d": 59,
-        "opens_30d": 17,
-        "clicks_30d": 0,
-        "open_rate_pct": 23.73,
         "click_rate_pct": 0.0,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
@@ -1144,12 +1144,12 @@ const DASHBOARD_DATA = {
         "name": "Points Balance Nudge v3",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 118,
-        "emails_sent_30d": 118,
-        "opens_30d": 68,
-        "clicks_30d": 8,
-        "open_rate_pct": 43.22,
-        "click_rate_pct": 6.78,
+        "recipients_30d": 120,
+        "emails_sent_30d": 120,
+        "opens_30d": 67,
+        "clicks_30d": 9,
+        "open_rate_pct": 41.67,
+        "click_rate_pct": 7.5,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
       },
@@ -1158,11 +1158,11 @@ const DASHBOARD_DATA = {
         "name": "Smile Loyalty - Birthday Reward",
         "status": "live",
         "trigger_type": "Metric",
-        "recipients_30d": 5,
-        "emails_sent_30d": 5,
-        "opens_30d": 4,
+        "recipients_30d": 6,
+        "emails_sent_30d": 6,
+        "opens_30d": 5,
         "clicks_30d": 0,
-        "open_rate_pct": 60.0,
+        "open_rate_pct": 66.67,
         "click_rate_pct": 0.0,
         "conversion_rate_pct": 0.0,
         "revenue_30d": 0.0
@@ -1244,15 +1244,15 @@ const DASHBOARD_DATA = {
         "name": "Monthly Digest | 2026-06-25 | 2026 Supplement Trends | Segment: Engaged 90d",
         "status": "Sent",
         "sent_date": "2026-06-25",
-        "recipients": 1393,
-        "opens": 752,
-        "open_rate_pct": 44.9,
-        "clicks": 54,
-        "click_rate_pct": 2.44,
-        "conversions": 2,
-        "revenue": 1310.06,
+        "recipients": 1396,
+        "opens": 815,
+        "open_rate_pct": 47.99,
+        "clicks": 58,
+        "click_rate_pct": 2.73,
+        "conversions": 4,
+        "revenue": 2178.97,
         "unsubscribes": 4,
-        "delivery_rate_pct": 99.9
+        "delivery_rate_pct": 99.7
       },
       {
         "id": "01KVJEQ7DZ9W1MZC1WZ4AY3DQ6",
@@ -1275,10 +1275,10 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-06-23",
         "recipients": 1420,
-        "opens": 907,
-        "open_rate_pct": 51.16,
-        "clicks": 16,
-        "click_rate_pct": 0.99,
+        "opens": 923,
+        "open_rate_pct": 51.87,
+        "clicks": 18,
+        "click_rate_pct": 1.06,
         "conversions": 1,
         "revenue": 467.14,
         "unsubscribes": 12,
@@ -1290,8 +1290,8 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-06-17",
         "recipients": 1396,
-        "opens": 1272,
-        "open_rate_pct": 62.9,
+        "opens": 1278,
+        "open_rate_pct": 63.19,
         "clicks": 37,
         "click_rate_pct": 2.08,
         "conversions": 0,
@@ -1305,8 +1305,8 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-06-16",
         "recipients": 1429,
-        "opens": 1074,
-        "open_rate_pct": 54.53,
+        "opens": 1078,
+        "open_rate_pct": 54.6,
         "clicks": 37,
         "click_rate_pct": 2.04,
         "conversions": 1,
@@ -1320,8 +1320,8 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-06-13",
         "recipients": 1436,
-        "opens": 1353,
-        "open_rate_pct": 67.02,
+        "opens": 1356,
+        "open_rate_pct": 67.09,
         "clicks": 51,
         "click_rate_pct": 3.02,
         "conversions": 0,
@@ -1350,7 +1350,7 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-06-05",
         "recipients": 1378,
-        "opens": 1001,
+        "opens": 1003,
         "open_rate_pct": 55.27,
         "clicks": 25,
         "click_rate_pct": 1.68,
@@ -1365,7 +1365,7 @@ const DASHBOARD_DATA = {
         "status": "Sent",
         "sent_date": "2026-06-03",
         "recipients": 3065,
-        "opens": 1370,
+        "opens": 1372,
         "open_rate_pct": 34.03,
         "clicks": 40,
         "click_rate_pct": 1.23,
@@ -1433,21 +1433,6 @@ const DASHBOARD_DATA = {
         "revenue": 0.0,
         "unsubscribes": 0,
         "delivery_rate_pct": 100.0
-      },
-      {
-        "id": "01KPXAP79AQAKSJEXWQH1P6XWX",
-        "name": "PCOS Supplements South Africa: What Actually Works | Segment: Engaged 90d",
-        "status": "Sent",
-        "sent_date": "2026-05-27",
-        "recipients": 762,
-        "opens": 414,
-        "open_rate_pct": 40.79,
-        "clicks": 23,
-        "click_rate_pct": 2.91,
-        "conversions": 0,
-        "revenue": 0.0,
-        "unsubscribes": 2,
-        "delivery_rate_pct": 99.1
       }
     ],
     "segments": [
@@ -1459,7 +1444,7 @@ const DASHBOARD_DATA = {
       {
         "id": "S3MAsK",
         "name": "Engaged 90d",
-        "size": 1464
+        "size": 1474
       },
       {
         "id": "UQmNai",
@@ -1469,12 +1454,12 @@ const DASHBOARD_DATA = {
       {
         "id": "S83cUp",
         "name": "Parkview proximity",
-        "size": 272
+        "size": 273
       },
       {
         "id": "TKAdBQ",
         "name": "VIP (3+ Orders or R3000+ LTV)",
-        "size": 201
+        "size": 202
       },
       {
         "id": "RCDiHM",
@@ -1489,22 +1474,16 @@ const DASHBOARD_DATA = {
       {
         "id": "TZ66NM",
         "name": "Engaged Browsers (No Purchase)",
-        "size": 72
+        "size": 75
       },
       {
         "id": "T7CaTr",
         "name": "Buyer - Joint Mobility",
         "size": 33
-      },
-      {
-        "id": "V4ez3X",
-        "name": "Buyer - Vitamin D (New Order Last 1 Day)",
-        "size": 1
       }
     ],
     "received_daily": {
-      "2026-05-27": 45.0,
-      "2026-05-28": 39.0,
+      "2026-05-28": 36.0,
       "2026-05-29": 28.0,
       "2026-05-30": 38.0,
       "2026-05-31": 38.0,
@@ -1532,11 +1511,11 @@ const DASHBOARD_DATA = {
       "2026-06-22": 1461.0,
       "2026-06-23": 57.0,
       "2026-06-24": 1427.0,
-      "2026-06-25": 20.0,
-      "2026-06-26": 0.0
+      "2026-06-25": 51.0,
+      "2026-06-26": 21.0,
+      "2026-06-27": 0.0
     },
     "subscribed_daily": {
-      "2026-05-27": 0.0,
       "2026-05-28": 0.0,
       "2026-05-29": 0.0,
       "2026-05-30": 0.0,
@@ -1565,8 +1544,9 @@ const DASHBOARD_DATA = {
       "2026-06-22": 6.0,
       "2026-06-23": 3.0,
       "2026-06-24": 5.0,
-      "2026-06-25": 5.0,
-      "2026-06-26": 0.0
+      "2026-06-25": 11.0,
+      "2026-06-26": 3.0,
+      "2026-06-27": 0.0
     }
   },
   "categories": [
@@ -87192,9 +87172,9 @@ const NARRATIVES = {
   "overview": "The business generated **R2,118,822 excl VAT** over the last 30 days across 3 stores and Shopify.\n\n**Centurion dominates at 65% of store revenue** (R1,337,591), with 2,236 transactions at an average basket of R598. This is your engine — it's running well.\n\n**Edenvale (19%, R382,354)** is your second store but has the lowest average basket at R410 vs Centurion's R598. There's a R188 basket gap between your strongest and weakest store — that's a ranging and upsell problem, not a footfall problem.\n\n**Glen Village (16%, R336,834)** is the smallest but has a R461 avg basket — stronger than Edenvale per transaction. Fewer customers, but they're spending more per visit.\n\n**Online is 2.9% of combined revenue** — R62,043 from 92 orders at R674 AOV. The channel is small but the AOV is strong. Discount rate at 16.3% is elevated and needs watching.",
   "stock": "You have **R3,318,456 locked in stock at cost** — that money is either working for you or sitting idle.\n\n**The dead weight:** R142,746 is tied up in 50 products that keep getting reordered despite not moving. The worst offenders — MAG 7/87 60'S (10x orders, 86 units), 1L GUT RAWBIOTICS (4x, 55 units), FLORISH SPORE PROBIOTIC 60C (5x, 23 units) — are a PAR level problem. Someone is reordering on autopilot. Stop these until stock clears.\n\n**The opportunity:** 40 products have margin ≥40% and are well-stocked. These are your profit drivers sitting on the shelf. The top 5 average 49.5% margin. Put them front-of-shelf, run a staff push, and feature them online.\n\n**The risk:** 50 products are at ≤5 units. 50 of those are high-value (>R500 excl VAT each). If you sell one more unit and can't reorder fast, you lose the sale and the customer. Some of these have no PO ever placed — they're being forgotten.",
   "suppliers": "You placed **748 orders worth R4,016,315 excl VAT** since January. Overall fill rate is **92.0%** — meaning R319,332 in ordered stock has not arrived.\n\n**20 suppliers are below 80% fill rate** and together represent significant outstanding value. Your top 3 suppliers by spend are DS INTERNATIONAL (NOW) (R451,204, 69.2% fill), NATROCEUTICS SA (PTY) LTD (R333,568, 73.7% fill), and LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS (R242,098, 92.5% fill).\n\n**DSI at 69% fill on R451,204 ordered** is the biggest concern — that's your largest supplier and they're leaving R139,873 undelivered. Either they're backordering, shipping partial, or there's an admin issue on invoice matching.\n\n**40 suppliers are over-delivering** vs PO value — you're receiving more than you ordered. This is where surprise overstock comes from. Review GRV sign-off process.",
-  "online": "**Live Shopify data — last 30 days (via Klaviyo integration).** 186 orders generating **R99,508 excl VAT** (R114,434 incl VAT) from **186 unique customers**. AOV **R534.99 excl VAT**.\n\n**Checkout conversion:** 329 started → 186 completed = **56.5% conversion**. Strong bottom-of-funnel — bottleneck is traffic, not checkout.\n\n**Units sold:** 498 (2.7 per order avg).\n\n**Channel mix:** Online is **4.6% of combined revenue**. Health supplement benchmark is 15-20%. Strong email engagement (69.59% open) with modest online share = audience exists, gap is acquisition.",
+  "online": "**Live Shopify data — last 30 days (via Klaviyo integration).** 191 orders generating **R103,039 excl VAT** (R118,495 incl VAT) from **191 unique customers**. AOV **R539.47 excl VAT**.\n\n**Checkout conversion:** 337 started → 191 completed = **56.7% conversion**. Strong bottom-of-funnel — bottleneck is traffic, not checkout.\n\n**Units sold:** 529 (2.8 per order avg).\n\n**Channel mix:** Online is **4.8% of combined revenue**. Health supplement benchmark is 15-20%. Strong email engagement (69.46% open) with modest online share = audience exists, gap is acquisition.",
   "signals": "Three things need your attention today.\n\n**1. Reorder FIRE BOWL 200MM** — 50 high-value products are at ≤5 units with no or stale POs. Each one is a missed sale at full margin.\n\n**2. Stop reordering MAG 7/87 60'S** — you've ordered it 10 times this year and have 86 units on the shelf. Whoever controls the PAR levels needs to see this data.\n\n**3. DSI** — your largest supplier at R451,204 ordered is only delivering at 69.2%. Get on a call with them this week. Either the relationship needs managing or the ordering process needs fixing.",
-  "klaviyo": "**Live Klaviyo data — last 30 days.** You have **3145 active email subscribers** with **122 new signups**. You sent **14,236 emails**, got **9,907 opens (69.59% open rate)** and **593 clicks (4.17% click rate)**. Open rate is genuinely strong — industry avg for health supplements is 25-30%.\n\n**Email-attributed revenue: R14,413** — R7,358 from flows, R7,055 from campaigns. Flows are doing 51% of the work.\n\n**Top flow: 'Welcome — One Life Health (Full Sequence)'** — R2,809 from 192 recipients at 46.35% open rate.\n\n**Top campaign:** 'June 2026 Health Guides Round-Up | Engaged 90d | 2026-06-10 09:00 SAST' — R2,244 from 1411 recipients.\n\n**Warning:** Bounce rate 0.93% (133 bounces) — clean the list if above 2%.\n\n**Biggest opportunity:** Win-Back segment has 0 profiles. 2-3% conversion × ~R500 AOV = potentially R0 in recoverable revenue."
+  "klaviyo": "**Live Klaviyo data — last 30 days.** You have **3153 active email subscribers** with **131 new signups**. You sent **14,240 emails**, got **9,891 opens (69.46% open rate)** and **591 clicks (4.15% click rate)**. Open rate is genuinely strong — industry avg for health supplements is 25-30%.\n\n**Email-attributed revenue: R18,441** — R10,517 from flows, R7,924 from campaigns. Flows are doing 57% of the work.\n\n**Top flow: 'GLP-1 Education Drip'** — R3,159 from 63 recipients at 26.98% open rate.\n\n**Top campaign:** 'June 2026 Health Guides Round-Up | Engaged 90d | 2026-06-10 09:00 SAST' — R2,244 from 1411 recipients.\n\n**Warning:** Bounce rate 0.96% (136 bounces) — clean the list if above 2%.\n\n**Biggest opportunity:** Win-Back segment has 0 profiles. 2-3% conversion × ~R500 AOV = potentially R0 in recoverable revenue."
 };
 
 // ============================================================
