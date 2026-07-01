@@ -32,7 +32,9 @@ from datetime import datetime, timedelta, timezone
 KLAVIYO_KEY = os.environ.get("KLAVIYO_API_KEY")
 SHOPIFY_CLIENT_ID = os.environ.get("SHOPIFY_CLIENT_ID")
 SHOPIFY_CLIENT_SECRET = os.environ.get("SHOPIFY_CLIENT_SECRET")
+SHOPIFY_TOKEN_OVERRIDE = os.environ.get("SHOPIFY_ADMIN_TOKEN")  # legacy shpat_ token, same as publish_blog.py
 SHOPIFY_STORE = os.environ.get("SHOPIFY_STORE", "onelifehealth").replace(".myshopify.com", "")
+STOREFRONT_BASE = os.environ.get("STOREFRONT_BASE", "https://onelife.co.za")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-pro-image-preview")
 SEND_OFFSET_DAYS = int(os.environ.get("SEND_OFFSET_DAYS", "2"))
@@ -41,9 +43,11 @@ AUTO_SCHEDULE = os.environ.get("AUTO_SCHEDULE", "true").lower() == "true"
 EMAIL_LIST_ID = "S3MAsK"  # Engaged 90d segment (audit 2026-06-10: full-list sends drove 1-2% unsubs; Engaged 90d gets +16pts open and real revenue)
 BLOG_ID = "120011424054"
 
-if not (KLAVIYO_KEY and SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET):
-    print("ERROR: KLAVIYO_API_KEY, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET required", file=sys.stderr)
+if not KLAVIYO_KEY:
+    print("ERROR: KLAVIYO_API_KEY required", file=sys.stderr)
     sys.exit(1)
+if not (SHOPIFY_TOKEN_OVERRIDE or (SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET)):
+    print("WARN: no Shopify credentials — will use public storefront catalogue only", file=sys.stderr)
 
 # ─── HTTP helpers ───
 def req_json(url, method="GET", headers=None, body=None, timeout=60):
@@ -58,6 +62,10 @@ def req_json(url, method="GET", headers=None, body=None, timeout=60):
 
 # ─── Shopify OAuth client credentials ───
 def get_shopify_token():
+    if SHOPIFY_TOKEN_OVERRIDE:
+        return SHOPIFY_TOKEN_OVERRIDE
+    if not (SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET):
+        return None
     body = urllib.parse.urlencode({
         "grant_type": "client_credentials",
         "client_id": SHOPIFY_CLIENT_ID,
@@ -81,6 +89,19 @@ def fetch_shopify_products(token, since_days=None, limit=50):
         params["published_at_min"] = since
     url = f"https://{SHOPIFY_STORE}.myshopify.com/admin/api/2025-01/products.json?{urllib.parse.urlencode(params)}"
     result = req_json(url, headers={"X-Shopify-Access-Token": token, "Accept": "application/json"})
+    return (result or {}).get("products", [])
+
+
+def fetch_storefront_products(limit=50):
+    """Fetch published products from the public storefront JSON (no auth).
+
+    Fallback when Admin API auth is unavailable (e.g. the custom app was
+    uninstalled — the 400 app_not_installed failures of Jun 2026). Storefront
+    variants carry an `available` flag instead of inventory_quantity.
+    """
+    url = f"{STOREFRONT_BASE}/products.json?limit={limit}"
+    result = req_json(url, headers={"Accept": "application/json",
+                                    "User-Agent": "onelife-friday-campaign/1.0"})
     return (result or {}).get("products", [])
 
 
@@ -133,9 +154,16 @@ MIN_STOCK_THRESHOLD = int(os.environ.get("MIN_STOCK_THRESHOLD", "3"))
 
 
 def product_has_stock(product):
-    """Return True if total stock across variants is >= MIN_STOCK_THRESHOLD."""
-    total = sum((v.get("inventory_quantity", 0) or 0) for v in product.get("variants", []))
-    return total >= MIN_STOCK_THRESHOLD
+    """Return True if total stock across variants is >= MIN_STOCK_THRESHOLD.
+
+    Admin API variants expose inventory_quantity; storefront JSON variants
+    only expose an `available` boolean — treat any available variant as stocked.
+    """
+    variants = product.get("variants", [])
+    if any("inventory_quantity" in v for v in variants):
+        total = sum((v.get("inventory_quantity", 0) or 0) for v in variants)
+        return total >= MIN_STOCK_THRESHOLD
+    return any(v.get("available") for v in variants)
 
 
 def get_variant_price(product):
@@ -152,27 +180,39 @@ def get_variant_price(product):
 
 
 def pick_product(token):
-    """Priority 1: new launch in stock. Priority 2: fallback from featured list."""
-    # Priority 1: new launches in last 14 days
-    print("  → Checking for new launches (last 14 days)...", file=sys.stderr)
-    new_products = fetch_shopify_products(token, since_days=14, limit=50)
-    new_in_stock = [p for p in new_products if product_has_stock(p)]
-    if new_in_stock:
-        # Sort by newest
-        new_in_stock.sort(key=lambda p: p.get("published_at", ""), reverse=True)
-        picked = new_in_stock[0]
-        print(f"  ✓ Found new launch: {picked.get('title')}", file=sys.stderr)
-        return picked, "new_launch"
+    """Priority 1: new launch in stock. Priority 2: recently updated in stock.
+    Priority 3: public storefront catalogue (no Admin API needed)."""
+    if token:
+        # Priority 1: new launches in last 14 days
+        print("  → Checking for new launches (last 14 days)...", file=sys.stderr)
+        new_products = fetch_shopify_products(token, since_days=14, limit=50)
+        new_in_stock = [p for p in new_products if product_has_stock(p)]
+        if new_in_stock:
+            # Sort by newest
+            new_in_stock.sort(key=lambda p: p.get("published_at", ""), reverse=True)
+            picked = new_in_stock[0]
+            print(f"  ✓ Found new launch: {picked.get('title')}", file=sys.stderr)
+            return picked, "new_launch"
 
-    # Priority 2: fallback — pick a recently updated, in-stock product
-    print("  → No new launches — falling back to recently updated products...", file=sys.stderr)
-    recent = fetch_shopify_products(token, limit=50)
-    recent_in_stock = [p for p in recent if product_has_stock(p)]
-    if recent_in_stock:
-        # Sort by updated_at desc
-        recent_in_stock.sort(key=lambda p: p.get("updated_at", ""), reverse=True)
-        picked = recent_in_stock[0]
-        print(f"  ✓ Fallback pick: {picked.get('title')}", file=sys.stderr)
+        # Priority 2: fallback — pick a recently updated, in-stock product
+        print("  → No new launches — falling back to recently updated products...", file=sys.stderr)
+        recent = fetch_shopify_products(token, limit=50)
+        recent_in_stock = [p for p in recent if product_has_stock(p)]
+        if recent_in_stock:
+            # Sort by updated_at desc
+            recent_in_stock.sort(key=lambda p: p.get("updated_at", ""), reverse=True)
+            picked = recent_in_stock[0]
+            print(f"  ✓ Fallback pick: {picked.get('title')}", file=sys.stderr)
+            return picked, "featured"
+
+    # Priority 3: public storefront catalogue
+    print("  → Falling back to public storefront catalogue...", file=sys.stderr)
+    storefront = fetch_storefront_products(limit=50)
+    available = [p for p in storefront if product_has_stock(p)]
+    if available:
+        available.sort(key=lambda p: p.get("published_at") or "", reverse=True)
+        picked = available[0]
+        print(f"  ✓ Storefront pick: {picked.get('title')}", file=sys.stderr)
         return picked, "featured"
 
     return None, None
@@ -398,10 +438,10 @@ def main():
 
     print("[1] Getting Shopify token...", file=sys.stderr)
     token = get_shopify_token()
-    if not token:
-        print("✗ Shopify auth failed", file=sys.stderr)
-        sys.exit(1)
-    print(f"  ✓ Token acquired", file=sys.stderr)
+    if token:
+        print(f"  ✓ Token acquired", file=sys.stderr)
+    else:
+        print("  ⚠ Shopify auth unavailable — continuing with storefront fallback", file=sys.stderr)
 
     print("[2] Picking product (new launches first, then fallback)...", file=sys.stderr)
     product, campaign_type = pick_product(token)

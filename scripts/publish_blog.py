@@ -42,6 +42,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 import urllib.parse
 from datetime import datetime, timedelta
@@ -786,10 +787,22 @@ def publish_to_klaviyo(fm, blog_url):
         schedule_result = klaviyo_post("/campaign-send-jobs/", {
             "data": {"type": "campaign-send-job", "id": campaign_id}
         })
+        if not schedule_result:
+            time.sleep(10)
+            print(f"  ⚠ Auto-schedule failed — retrying once...", file=sys.stderr)
+            schedule_result = klaviyo_post("/campaign-send-jobs/", {
+                "data": {"type": "campaign-send-job", "id": campaign_id}
+            })
         if schedule_result:
             print(f"  ✓ Campaign scheduled (status: Scheduled)", file=sys.stderr)
         else:
+            # A drafted campaign silently skips the send day (the 2026-06-30
+            # Tuesday gap). Leave a marker so the workflow can raise an alert
+            # without failing the job (the article itself IS published).
             print(f"  ⚠ Auto-schedule failed — campaign will stay as Draft", file=sys.stderr)
+            print(f"::error::Klaviyo campaign {campaign_id} left in Draft — it will NOT send without manual scheduling", file=sys.stderr)
+            with open(".campaign_draft_alert", "w") as f:
+                f.write(campaign_id)
     else:
         print(f"  → Campaign left as Draft (AUTO_SCHEDULE_CAMPAIGNS=false)", file=sys.stderr)
 

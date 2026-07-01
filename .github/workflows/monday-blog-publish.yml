@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   publish:
@@ -58,3 +59,24 @@ jobs:
           git add scripts/.digest_state.json
           git commit -m "chore: publish queued article $(basename ${{ steps.pick.outputs.file }})"
           git push
+      - name: Alert if campaign stuck in Draft
+        if: steps.pick.outputs.file != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -f .campaign_draft_alert ]; then
+            CAMPAIGN_ID=$(cat .campaign_draft_alert)
+            gh issue create \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "🟠 Tuesday blog campaign stuck in Draft — $(date -u +%F)" \
+              --body "The article was published, but Klaviyo campaign \`$CAMPAIGN_ID\` could not be scheduled and is sitting in Draft. It will NOT send tomorrow unless someone opens Klaviyo and schedules it manually. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          fi
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "🔴 Monday blog publish failed — $(date -u +%F)" \
+            --body "The queued article was NOT published (and no Tuesday campaign was created). Failed run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
