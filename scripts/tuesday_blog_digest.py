@@ -22,6 +22,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 
+import email_template
+
 KLAVIYO_KEY = os.environ.get("KLAVIYO_API_KEY")
 SEND_OFFSET_DAYS = int(os.environ.get("SEND_OFFSET_DAYS", "1"))
 AUTO_SCHEDULE = os.environ.get("AUTO_SCHEDULE", "true").lower() == "true"
@@ -149,31 +151,19 @@ def build_html(art, topic, slug):
     read_url = utm(art["url"], slug, "read-article")
     proto_url = utm("https://onelife.co.za" + proto_path, slug, "protocol-cta")
     teaser = art["summary"][:280].rsplit(" ", 1)[0] + "…"
-    return f"""<!DOCTYPE html>
-<html><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>{art['title']}</title></head>
-<body style="margin:0;padding:0;background:#f4f1ea;font-family:Arial,Helvetica,sans-serif;color:#374151;">
-<table cellpadding="0" cellspacing="0" role="presentation" style="background:#f4f1ea;padding:28px 0;" width="100%"><tr><td align="center">
-<table cellpadding="0" cellspacing="0" role="presentation" style="max-width:620px;background:#ffffff;border-radius:12px;overflow:hidden;" width="620">
-<tr><td style="background:#1b4332;padding:22px 40px;text-align:center;">
-<img alt="One Life Health" src="https://onelife.co.za/cdn/shop/files/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png?v=1671450106" style="display:block;margin:0 auto;max-width:130px;height:auto;" width="130"/></td></tr>
-<tr><td style="height:4px;background:#2d6a4f;font-size:0;line-height:0;">&nbsp;</td></tr>
-<tr><td><a href="{read_url}"><img alt="From The Apothecary journal" src="{hero}" style="display:block;width:100%;height:auto;" width="620"/></a></td></tr>
-<tr><td style="padding:36px 40px 8px;">
-<p style="margin:0 0 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;font-weight:bold;">From the Apothecary journal</p>
-<h1 style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.2;color:#1b4332;font-weight:normal;">{art['title']}</h1>
-<p style="margin:0 0 22px;font-size:15px;line-height:1.65;">Hi {{{{ first_name|default:'there' }}}} — Precious here. This week's read from the counter: {teaser}</p>
-<table cellpadding="0" cellspacing="0" role="presentation" width="100%"><tr><td align="center" style="padding:0 0 22px;">
-<a href="{read_url}" style="display:inline-block;background:#1b4332;color:#ffffff;padding:14px 30px;border-radius:10px;font-size:15px;font-weight:bold;text-decoration:none;">Read the full article →</a></td></tr></table>
-<table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 0 24px;" width="100%"><tr><td style="padding:16px 20px;background:#f1f5f1;border-radius:12px;">
-<p style="margin:0;font-size:13.5px;line-height:1.7;color:#374151;">Acting on it? The consultant-signed stack for this topic is <a href="{proto_url}" style="color:#1b4332;font-weight:bold;">{proto_name} →</a> — 10% off bundled with <strong>DISPENSARY10</strong> (orders over R600).</p></td></tr></table>
-<p style="margin:0 0 6px;font-size:13.5px;line-height:1.6;color:#555;">Questions about anything in the article? <a href="https://wa.me/27713744910?text=Hi%20Precious%2C%20I%20read%20the%20article%20%E2%80%94%20quick%20question" style="color:#1b4332;font-weight:bold;">WhatsApp me</a> — free, no pressure.</p>
-<p style="margin:20px 0 4px;font-size:14px;">— Precious</p>
-<p style="margin:0 0 28px;font-size:12px;color:#888;">One Life Health Consultant · Centurion</p></td></tr>
-<tr><td style="background:#14291e;padding:20px 40px;text-align:center;">
-<p style="margin:0 0 4px;font-family:Georgia,serif;font-size:16px;color:#ffffff;">A real apothecary. Family-owned since 1996.</p>
-<p style="margin:0;font-size:11px;color:#9db8a8;">Centurion · Glen Village · Edenvale · Free delivery over R400 nationwide</p>
-<p style="margin:12px 0 0;font-size:11px;color:#9db8a8;">{{% unsubscribe 'Unsubscribe' %}} · <a href="https://onelife.co.za" style="color:#9db8a8;">onelife.co.za</a></p></td></tr>
-</table></td></tr></table></body></html>"""
+    return email_template.render_email(
+        title=art["title"],
+        eyebrow="From the Apothecary journal",
+        campaign_slug=slug,
+        intro_html=f"This week's read from the counter: {teaser}",
+        hero={"src": hero, "href": read_url, "alt": "From The Apothecary journal"},
+        cta={"label": "Read the full article →", "href": read_url},
+        note_html=(f'Acting on it? The consultant-signed stack for this topic is '
+                   f'<a href="{proto_url}" style="color:#1b4332;font-weight:bold;">{proto_name} →</a> '
+                   f'— 10% off bundled with <strong>DISPENSARY10</strong> (orders over R600).'),
+        whatsapp_lead="Questions about anything in the article?",
+        whatsapp_prefill="Hi Precious, I read the article — quick question",
+    )
 
 
 def build_text(art, topic, slug):

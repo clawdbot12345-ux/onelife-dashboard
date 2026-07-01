@@ -1,0 +1,29 @@
+name: Update Shipping Policy
+
+# One-shot fix for site-audit finding C1 (2026-07-01): the legal shipping
+# policy page contradicted the sitewide "free delivery over R400" promise.
+# Manual dispatch only. Set dry_run=true to preview without changing anything.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Preview only — do not update the live policy"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update shipping policy via Admin GraphQL
+        env:
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+        run: python3 scripts/update_shipping_policy.py

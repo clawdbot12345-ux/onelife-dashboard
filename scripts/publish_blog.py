@@ -49,6 +49,8 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from pathlib import Path
 
+import email_template
+
 # ─── Config ───
 KLAVIYO_KEY = os.environ.get("KLAVIYO_API_KEY")
 
@@ -530,62 +532,21 @@ def klaviyo_post(path, body):
         return None
 
 def render_email_html(fm, blog_url, campaign_slug):
-    """2026 design system shell — matches the Klaviyo flow templates:
-    620px card on #f4f1ea, #1b4332 logo header + accent bar, topic banner
-    hero, Georgia serif h1, Precious voice, espresso footer + unsubscribe."""
-    products = fm.get("products", []) or []
-    tints = [("#d8f3ea", "#0f766e"), ("#fdeac1", "#92400e"), ("#e7eaff", "#4338ca")]
-    products_html = ""
-    for i, p in enumerate(products):
-        prod_url = utm_url(p.get("url", "#"), campaign_slug, f"product-{i+1}")
-        bg, accent = tints[i % len(tints)]
-        badge = p.get("badge", "")
-        badge_html = f'<p style="margin:0 0 4px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:{accent};font-weight:bold;">{badge}</p>' if badge else ""
-        price = p.get("price", "")
-        price_html = f' <span style="color:{accent};font-weight:800;">· {price}</span>' if price else ""
-        products_html += f'''
-<tr><td style="padding:16px 16px 14px;background:{bg};border-radius:12px;">
-{badge_html}<p style="margin:0 0 6px;font-size:16px;font-weight:bold;color:#1a1a1a;"><a href="{prod_url}" style="color:#1a1a1a;text-decoration:none;">{p.get("name", "")}</a>{price_html}</p>
-<p style="margin:0;font-size:13px;line-height:1.5;color:#374151;">{p.get("blurb", "")} <a href="{prod_url}" style="color:{accent};font-weight:bold;">Shop →</a></p>
-</td></tr>
-<tr><td style="height:10px;font-size:0;">&nbsp;</td></tr>'''
-
+    """Campaign HTML via the master template (scripts/email_template.py)."""
     blog_cta = utm_url(blog_url, campaign_slug, "blog-cta")
     intro = fm.get("intro_p1", fm.get("excerpt", ""))
     banner = topic_banner_url(fm) or "https://d3k81ch9hvuctc.cloudfront.net/company/S86r7e/images/d45bbf5c-fb99-44cf-aa2b-d0a22e40dafd.jpeg"
-    hero_html = f'<tr><td><a href="{blog_cta}"><img alt="From The Apothecary journal" src="{banner}" style="display:block;width:100%;height:auto;" width="620"/></a></td></tr>'
-
-    return f'''<!DOCTYPE html>
-<html><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>{fm.get("title", "")}</title></head>
-<body style="margin:0;padding:0;background:#f4f1ea;font-family:Arial,Helvetica,sans-serif;color:#374151;">
-<table cellpadding="0" cellspacing="0" role="presentation" style="background:#f4f1ea;padding:28px 0;" width="100%"><tr><td align="center">
-<table cellpadding="0" cellspacing="0" role="presentation" style="max-width:620px;background:#ffffff;border-radius:12px;overflow:hidden;" width="620">
-<tr><td style="background:#1b4332;padding:22px 40px;text-align:center;">
-<img alt="One Life Health" src="https://onelife.co.za/cdn/shop/files/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png?v=1671450106" style="display:block;margin:0 auto;max-width:130px;height:auto;" width="130"/></td></tr>
-<tr><td style="height:4px;background:#2d6a4f;font-size:0;line-height:0;">&nbsp;</td></tr>
-{hero_html}
-<tr><td style="padding:36px 40px 8px;">
-<p style="margin:0 0 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#2d6a4f;font-weight:bold;">From the Apothecary journal</p>
-<h1 style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.2;color:#1b4332;font-weight:normal;">{fm.get("title", "")}</h1>
-<p style="margin:0 0 22px;font-size:15px;line-height:1.65;">Hi {{{{ first_name|default:'there' }}}} — Precious here. {intro}</p>
-<table cellpadding="0" cellspacing="0" role="presentation" width="100%"><tr><td align="center" style="padding:0 0 24px;">
-<a href="{blog_cta}" style="display:inline-block;background:#1b4332;color:#ffffff;padding:14px 30px;border-radius:10px;font-size:15px;font-weight:bold;text-decoration:none;">Read the full article →</a>
-</td></tr></table>
-<table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 0 14px;" width="100%">
-{products_html}
-</table>
-<table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 0 24px;" width="100%">
-<tr><td style="padding:16px 20px;background:#f1f5f1;border-radius:12px;text-align:center;">
-<p style="margin:0;font-size:13.5px;line-height:1.7;color:#374151;">🚚 Free delivery over R400 nationwide · 🏪 Collect free at Centurion, Glen Village or Edenvale</p>
-</td></tr></table>
-<p style="margin:0 0 6px;font-size:13.5px;line-height:1.6;color:#555;">Questions about anything in the article? <a href="https://wa.me/27713744910?text=Hi%20Precious%2C%20I%20read%20the%20article%20%E2%80%94%20quick%20question" style="color:#1b4332;font-weight:bold;">WhatsApp me</a> — free, no pressure.</p>
-<p style="margin:20px 0 4px;font-size:14px;">— Precious</p>
-<p style="margin:0 0 28px;font-size:12px;color:#888;">One Life Health Consultant · Centurion</p></td></tr>
-<tr><td style="background:#14291e;padding:20px 40px;text-align:center;">
-<p style="margin:0 0 4px;font-family:Georgia,serif;font-size:16px;color:#ffffff;">A real apothecary. Family-owned since 1996.</p>
-<p style="margin:0;font-size:11px;color:#9db8a8;">Centurion · Glen Village · Edenvale · Free delivery over R400 nationwide</p>
-<p style="margin:12px 0 0;font-size:11px;color:#9db8a8;">{{% unsubscribe 'Unsubscribe' %}} · <a href="https://onelife.co.za" style="color:#9db8a8;">onelife.co.za</a></p></td></tr>
-</table></td></tr></table></body></html>'''
+    return email_template.render_email(
+        title=fm.get("title", ""),
+        eyebrow="From the Apothecary journal",
+        campaign_slug=campaign_slug,
+        intro_html=intro,
+        hero={"src": banner, "href": blog_cta, "alt": "From The Apothecary journal"},
+        cta={"label": "Read the full article →", "href": blog_cta},
+        products=fm.get("products", []) or [],
+        whatsapp_lead="Questions about anything in the article?",
+        whatsapp_prefill="Hi Precious, I read the article — quick question",
+    )
 
 
 def render_email_text(fm, blog_url, campaign_slug):
