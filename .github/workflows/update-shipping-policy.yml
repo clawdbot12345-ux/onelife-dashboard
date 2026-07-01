@@ -11,6 +11,9 @@ on:
         description: "Preview only — do not update the live policy"
         type: boolean
         default: false
+  push:
+    paths:
+      - ".github/triggers/update-shipping-policy"
 
 permissions:
   contents: read

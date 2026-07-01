@@ -6,6 +6,9 @@ name: Audit Klaviyo Flows
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/triggers/audit-klaviyo-flows"
 
 permissions:
   contents: write
