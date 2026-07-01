@@ -1,0 +1,1640 @@
+{
+  "R96wJV": {
+    "name": "PCOS Post-Purchase Flow",
+    "definition": {
+      "triggers": [
+        {
+          "type": "metric",
+          "id": "WZAxyj",
+          "trigger_filter": null
+        }
+      ],
+      "profile_filter": {
+        "condition_groups": [
+          {
+            "conditions": [
+              {
+                "type": "profile-metric",
+                "metric_id": "WZAxyj",
+                "measurement": "count",
+                "measurement_filter": {
+                  "type": "numeric",
+                  "operator": "equals",
+                  "value": 0
+                },
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "flow-start"
+                },
+                "metric_filters": null
+              }
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "100644211",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 3,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "100644212"
+          }
+        },
+        {
+          "id": "100644212",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Getting the most from your Pcositol",
+              "preview_text": "When to take it, what to expect, and the one mistake to avoid.",
+              "template_id": "SRq7JU",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "pcos_post_purchase"
+                }
+              ],
+              "additional_filters": null,
+              "name": "PCOS Post-Purchase 1",
+              "id": "UHWhKT"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": "100644213"
+          }
+        },
+        {
+          "id": "100644213",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 18,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "100644214"
+          }
+        },
+        {
+          "id": "100644214",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "How to support your Pcositol routine",
+              "preview_text": "A simple guide to pairing it with food, minerals and daily habits.",
+              "template_id": "S58yrv",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "pcos_post_purchase"
+                }
+              ],
+              "additional_filters": null,
+              "name": "PCOS Post-Purchase 2",
+              "id": "U6Vf9g"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": "100644215"
+          }
+        },
+        {
+          "id": "100644215",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 24,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "100644216"
+          }
+        },
+        {
+          "id": "100644216",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Time for your next box of Pcositol",
+              "preview_text": "30 sachets go faster than you think.",
+              "template_id": "T9U8XX",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "pcos_post_purchase"
+                }
+              ],
+              "additional_filters": null,
+              "name": "PCOS Post-Purchase 3",
+              "id": "Vgk638"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": "100644218"
+          }
+        },
+        {
+          "id": "100644218",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 40,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "100644219"
+          }
+        },
+        {
+          "id": "100644219",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Month 3 check-in (+ have you tried the other flavour?)",
+              "preview_text": "You've been at this for a while. Here's what to look for.",
+              "template_id": "XcwrUL",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "pcos_post_purchase"
+                }
+              ],
+              "additional_filters": null,
+              "name": "PCOS Post-Purchase 4",
+              "id": "R4tgpx"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": null
+          }
+        }
+      ],
+      "entry_action_id": "100644211"
+    }
+  },
+  "RTHzQF": {
+    "name": "Post-Purchase Education - Magnesium v1",
+    "definition": {
+      "triggers": [
+        {
+          "type": "segment",
+          "id": "VFfBEA"
+        }
+      ],
+      "profile_filter": {
+        "condition_groups": [
+          {
+            "conditions": [
+              {
+                "type": "profile-metric",
+                "metric_id": "WZAxyj",
+                "measurement": "count",
+                "measurement_filter": {
+                  "type": "numeric",
+                  "operator": "equals",
+                  "value": 0
+                },
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "flow-start"
+                },
+                "metric_filters": null
+              }
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "106623409",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Your magnesium order is in - here is how to start",
+              "preview_text": "Set expectations before the first dose.",
+              "template_id": "Usyuq6",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "post_purchase_education_magnesium_v1"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email-1"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Email 1",
+              "id": "VuzkRD"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": "106623411"
+          }
+        },
+        {
+          "id": "106623411",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 3,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "106623412"
+          }
+        },
+        {
+          "id": "106623412",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Week 1 with magnesium: what to watch",
+              "preview_text": "Sleep, cramps and digestion do not all move at the same speed.",
+              "template_id": "YvaMkT",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "post_purchase_education_magnesium_v1"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email-2"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Email 2",
+              "id": "Ss7n7U"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": "106623413"
+          }
+        },
+        {
+          "id": "106623413",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 11,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "106623414"
+          }
+        },
+        {
+          "id": "106623414",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Magnesium works better with the basics",
+              "preview_text": "The stack around it matters.",
+              "template_id": "SWCC8E",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "post_purchase_education_magnesium_v1"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email-3"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Email 3",
+              "id": "W2X98S"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": "106623415"
+          }
+        },
+        {
+          "id": "106623415",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 14,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "106623416"
+          }
+        },
+        {
+          "id": "106623416",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Need a top-up soon?",
+              "preview_text": "A practical refill check.",
+              "template_id": "UErfhK",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "post_purchase_education_magnesium_v1"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email-4"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Email 4",
+              "id": "XcmY2J"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": "106623417"
+          }
+        },
+        {
+          "id": "106623417",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 14,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "106623418"
+          }
+        },
+        {
+          "id": "106623418",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Your magnesium routine: keep or adjust?",
+              "preview_text": "Final check-in for this cycle.",
+              "template_id": "XxCHkG",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "post_purchase_education_magnesium_v1"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email-5"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Email 5",
+              "id": "WzkVq7"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": null
+          }
+        }
+      ],
+      "entry_action_id": "106623409"
+    }
+  },
+  "RpJP55": {
+    "name": "Post-Purchase Thank You + Cross-sell v3",
+    "definition": {
+      "triggers": [
+        {
+          "type": "metric",
+          "id": "WZAxyj",
+          "trigger_filter": null
+        }
+      ],
+      "profile_filter": {
+        "condition_groups": [
+          {
+            "conditions": [
+              {
+                "type": "profile-metric",
+                "metric_id": "WZAxyj",
+                "measurement": "count",
+                "measurement_filter": {
+                  "type": "numeric",
+                  "operator": "equals",
+                  "value": 0
+                },
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "flow-start"
+                },
+                "metric_filters": null
+              }
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "100378819",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 3,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "100378820"
+          }
+        },
+        {
+          "id": "100378820",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Your One Life Health order is on the way",
+              "preview_text": "Simple routine guidance for your new order.",
+              "template_id": "TaZJPy",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "post_purchase_thank_you"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Post-Purchase Thank You",
+              "id": "TcaGzy"
+            },
+            "status": "draft"
+          },
+          "links": {
+            "next": "106618860"
+          }
+        },
+        {
+          "id": "106618860",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 7,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "106619052"
+          }
+        },
+        {
+          "id": "106619052",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "What pairs well with your order.",
+              "preview_text": "A health consultant can suggest the right partner product.",
+              "template_id": "VrcafS",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "post_purchase_check_in"
+                }
+              ],
+              "additional_filters": {
+                "condition_groups": [
+                  {
+                    "conditions": [
+                      {
+                        "type": "profile-metric",
+                        "metric_id": "WZAxyj",
+                        "measurement": "count",
+                        "measurement_filter": {
+                          "type": "numeric",
+                          "operator": "equals",
+                          "value": 0
+                        },
+                        "timeframe_filter": {
+                          "type": "date",
+                          "operator": "flow-start"
+                        },
+                        "metric_filters": null
+                      }
+                    ]
+                  }
+                ]
+              },
+              "name": "Post-Purchase #2 \u2014 Pairs well with your order",
+              "id": "YtUPFe"
+            },
+            "status": "draft"
+          },
+          "links": {
+            "next": null
+          }
+        }
+      ],
+      "entry_action_id": "100378819"
+    }
+  },
+  "SFMncG": {
+    "name": "Win-Back 90/120 Days \u2014 2026 design system",
+    "definition": {
+      "triggers": [
+        {
+          "type": "metric",
+          "id": "WZAxyj",
+          "trigger_filter": null
+        }
+      ],
+      "profile_filter": {
+        "condition_groups": [
+          {
+            "conditions": [
+              {
+                "type": "profile-metric",
+                "metric_id": "WZAxyj",
+                "measurement": "count",
+                "measurement_filter": {
+                  "type": "numeric",
+                  "operator": "equals",
+                  "value": 0
+                },
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "flow-start"
+                },
+                "metric_filters": null
+              }
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "108886820",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 90,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "108886821"
+          }
+        },
+        {
+          "id": "108886821",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Three months. The benefit fades quietly.",
+              "preview_text": "Restocking the cabinet? Any 5+ items = 10% off with STACK10.",
+              "template_id": "VDC6B3",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "winback_90_120_2026"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email-90d"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Winback 90d \u2014 Your shelf misses you",
+              "id": "TRcd6y"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": "108886823"
+          }
+        },
+        {
+          "id": "108886823",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 30,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "108886824"
+          }
+        },
+        {
+          "id": "108886824",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Should we stop emailing you?",
+              "preview_text": "Keep hearing from Precious, or unsubscribe with no guilt.",
+              "template_id": "YwPyDY",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "winback_90_120_2026"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email-120d"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Winback 120d \u2014 Should we stop emailing?",
+              "id": "WJpF9v"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": null
+          }
+        }
+      ],
+      "entry_action_id": "108886820"
+    }
+  },
+  "TGZYKa": {
+    "name": "Win-Back 60 Days v2",
+    "definition": {
+      "triggers": [
+        {
+          "type": "metric",
+          "id": "WZAxyj",
+          "trigger_filter": null
+        }
+      ],
+      "profile_filter": {
+        "condition_groups": [
+          {
+            "conditions": [
+              {
+                "type": "profile-metric",
+                "metric_id": "WZAxyj",
+                "measurement": "count",
+                "measurement_filter": {
+                  "type": "numeric",
+                  "operator": "equals",
+                  "value": 0
+                },
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "flow-start"
+                },
+                "metric_filters": null
+              }
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "100378536",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 60,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "100378538"
+          }
+        },
+        {
+          "id": "100378538",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "hello@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "It's been a while! We miss you \ud83d\udc9a",
+              "preview_text": "",
+              "template_id": "RvUg6t",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "flow_win_back_60_days_v2"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email_action_100378538"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Win-Back 60 Days v2",
+              "id": "XhRKL8"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": null
+          }
+        }
+      ],
+      "entry_action_id": "100378536"
+    }
+  },
+  "TNBkZK": {
+    "name": "Replenishment Reminder (API-created)",
+    "definition": null
+  },
+  "UMMzhC": {
+    "name": "Browse Abandonment v2",
+    "definition": null
+  },
+  "Unn2d2": {
+    "name": "Post-Purchase Education - Vitamin D v1",
+    "definition": null
+  },
+  "VAjbpG": {
+    "name": "Abandoned Checkout Reminder - Standard (Email & SMS)",
+    "definition": {
+      "triggers": [
+        {
+          "type": "metric",
+          "id": "WnzuVG",
+          "trigger_filter": null
+        }
+      ],
+      "profile_filter": {
+        "condition_groups": [
+          {
+            "conditions": [
+              {
+                "type": "profile-metric",
+                "metric_id": "WZAxyj",
+                "measurement": "count",
+                "measurement_filter": {
+                  "type": "numeric",
+                  "operator": "equals",
+                  "value": 0
+                },
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "flow-start"
+                },
+                "metric_filters": null
+              }
+            ]
+          },
+          {
+            "conditions": [
+              {
+                "type": "profile-not-in-flow",
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "in-the-last",
+                  "unit": "day",
+                  "quantity": 7
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "100119668",
+          "type": "time-delay",
+          "data": {
+            "unit": "hours",
+            "value": 4,
+            "secondary_value": 0,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "100119669"
+          }
+        },
+        {
+          "id": "100119669",
+          "type": "conditional-split",
+          "data": {
+            "profile_filter": {
+              "condition_groups": [
+                {
+                  "conditions": [
+                    {
+                      "type": "profile-marketing-consent",
+                      "consent": {
+                        "channel": "sms",
+                        "can_receive_marketing": true,
+                        "consent_status": {
+                          "subscription": "subscribed",
+                          "filters": null
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "links": {
+            "next_if_true": "100119670",
+            "next_if_false": "100119671"
+          }
+        },
+        {
+          "id": "100119670",
+          "type": "send-sms",
+          "data": {
+            "message": {
+              "body": "Love it? Need it? Gotta have it? Your cart is waiting! Click to checkout now. {{ event.extra.responsive_checkout_url }}",
+              "image_id": null,
+              "dynamic_image": null,
+              "shorten_links": true,
+              "include_contact_card": false,
+              "add_org_prefix": true,
+              "add_info_link": true,
+              "add_opt_out_language": true,
+              "smart_sending_enabled": false,
+              "sms_quiet_hours_enabled": true,
+              "transactional": false,
+              "add_tracking_params": false,
+              "custom_tracking_params": null,
+              "template_id": null,
+              "additional_filters": null,
+              "name": "SMS #1",
+              "id": "TaSfgA"
+            },
+            "status": "draft"
+          },
+          "links": {
+            "next": "100119678"
+          }
+        },
+        {
+          "id": "100119671",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "It looks like you left something behind...",
+              "preview_text": "",
+              "template_id": "V4YgYm",
+              "smart_sending_enabled": false,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "flow_abandoned_checkout_reminder_standard_email_sms"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email_action_100119671"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Abandoned Cart: Email 1",
+              "id": "UXi8M5"
+            },
+            "status": "draft"
+          },
+          "links": {
+            "next": "100119678"
+          }
+        },
+        {
+          "id": "100119678",
+          "type": "time-delay",
+          "data": {
+            "unit": "hours",
+            "value": 20,
+            "secondary_value": 0,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "100119679"
+          }
+        },
+        {
+          "id": "100119679",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Your cart is about to expire.",
+              "preview_text": "",
+              "template_id": "UYm2CX",
+              "smart_sending_enabled": false,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "flow_abandoned_checkout_reminder_standard_email_sms"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email_action_100119679"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Abandoned Cart: Email 2",
+              "id": "RQcTFW"
+            },
+            "status": "draft"
+          },
+          "links": {
+            "next": null
+          }
+        }
+      ],
+      "entry_action_id": "100119668",
+      "reentry_criteria": {
+        "duration": 7,
+        "unit": "day"
+      }
+    }
+  },
+  "VSECqx": {
+    "name": "Abandoned Checkout Consultant Check - SMS Companion (2026 design system)",
+    "definition": {
+      "triggers": [
+        {
+          "type": "metric",
+          "id": "WnzuVG",
+          "trigger_filter": null
+        }
+      ],
+      "profile_filter": {
+        "condition_groups": [
+          {
+            "conditions": [
+              {
+                "type": "profile-metric",
+                "metric_id": "WZAxyj",
+                "measurement": "count",
+                "measurement_filter": {
+                  "type": "numeric",
+                  "operator": "equals",
+                  "value": 0
+                },
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "flow-start"
+                },
+                "metric_filters": null
+              }
+            ]
+          },
+          {
+            "conditions": [
+              {
+                "type": "profile-not-in-flow",
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "in-the-last",
+                  "unit": "day",
+                  "quantity": 7
+                }
+              }
+            ]
+          },
+          {
+            "conditions": [
+              {
+                "type": "profile-marketing-consent",
+                "consent": {
+                  "channel": "sms",
+                  "can_receive_marketing": true,
+                  "consent_status": {
+                    "subscription": "subscribed",
+                    "filters": null
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "109099491",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 2,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "109099492"
+          }
+        },
+        {
+          "id": "109099492",
+          "type": "send-sms",
+          "data": {
+            "message": {
+              "body": "Still deciding on your One Life basket? A consultant can check dose overlaps before you pay. Finish here: {{ event.checkout_url }}",
+              "image_id": null,
+              "dynamic_image": null,
+              "shorten_links": true,
+              "include_contact_card": false,
+              "add_org_prefix": true,
+              "add_info_link": true,
+              "add_opt_out_language": true,
+              "smart_sending_enabled": true,
+              "sms_quiet_hours_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "sms"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "abandoned_checkout_consultant_check_sms_2026"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "sms_consultant_check"
+                }
+              ],
+              "template_id": null,
+              "additional_filters": {
+                "condition_groups": [
+                  {
+                    "conditions": [
+                      {
+                        "type": "profile-metric",
+                        "metric_id": "TQuiiF",
+                        "measurement": "count",
+                        "measurement_filter": {
+                          "type": "numeric",
+                          "operator": "equals",
+                          "value": 0
+                        },
+                        "timeframe_filter": {
+                          "type": "date",
+                          "operator": "in-the-last",
+                          "unit": "day",
+                          "quantity": 7
+                        },
+                        "metric_filters": [
+                          {
+                            "property": "$flow",
+                            "filter": {
+                              "type": "string",
+                              "operator": "equals",
+                              "value": "VSECqx"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "name": "SMS - Consultant basket check",
+              "id": "XF6vV2"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": null
+          }
+        }
+      ],
+      "entry_action_id": "109099491",
+      "reentry_criteria": {
+        "duration": 7,
+        "unit": "day"
+      }
+    }
+  },
+  "WY4cae": {
+    "name": "Abandoned Checkout Consultant Check \u2014 2026 design system",
+    "definition": {
+      "triggers": [
+        {
+          "type": "metric",
+          "id": "WnzuVG",
+          "trigger_filter": null
+        }
+      ],
+      "profile_filter": {
+        "condition_groups": [
+          {
+            "conditions": [
+              {
+                "type": "profile-metric",
+                "metric_id": "WZAxyj",
+                "measurement": "count",
+                "measurement_filter": {
+                  "type": "numeric",
+                  "operator": "equals",
+                  "value": 0
+                },
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "flow-start"
+                },
+                "metric_filters": null
+              }
+            ]
+          },
+          {
+            "conditions": [
+              {
+                "type": "profile-not-in-flow",
+                "timeframe_filter": {
+                  "type": "date",
+                  "operator": "in-the-last",
+                  "unit": "day",
+                  "quantity": 7
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "108886998",
+          "type": "time-delay",
+          "data": {
+            "unit": "days",
+            "value": 2,
+            "secondary_value": null,
+            "timezone": "profile",
+            "delay_until_weekdays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          },
+          "links": {
+            "next": "108886999"
+          }
+        },
+        {
+          "id": "108886999",
+          "type": "send-email",
+          "data": {
+            "message": {
+              "from_email": "info@onelife.co.za",
+              "from_label": "One Life Health",
+              "reply_to_email": "info@onelife.co.za",
+              "cc_email": null,
+              "bcc_email": null,
+              "subject_line": "Want a second opinion on that basket?",
+              "preview_text": "A consultant can check doses, overlaps and interactions before you pay.",
+              "template_id": "UyBg38",
+              "smart_sending_enabled": true,
+              "transactional": false,
+              "add_tracking_params": true,
+              "custom_tracking_params": [
+                {
+                  "param": "utm_source",
+                  "value": "Klaviyo"
+                },
+                {
+                  "param": "utm_medium",
+                  "value": "flow"
+                },
+                {
+                  "param": "utm_campaign",
+                  "value": "abandoned_checkout_consultant_check_2026"
+                },
+                {
+                  "param": "utm_content",
+                  "value": "email-consultant-check"
+                }
+              ],
+              "additional_filters": null,
+              "name": "Abandoned Cart #3 \u2014 Consultant basket check",
+              "id": "SLbnwD"
+            },
+            "status": "live"
+          },
+          "links": {
+            "next": null
+          }
+        }
+      ],
+      "entry_action_id": "108886998"
+    }
+  },
+  "YrtdaV": {
+    "name": "Sunset Unengaged Subscribers - Standard",
+    "definition": null
+  }
+}
