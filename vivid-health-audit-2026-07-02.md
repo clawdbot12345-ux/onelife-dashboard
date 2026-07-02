@@ -1,4 +1,6 @@
 # Vivid Health — Complete Brand & Web Audit
+> **⚠️ STATUS (2026-07-02, later the same day):** This document audits Vivid Health's presence **on onelife.co.za** (One Life's store), written before the dedicated Vivid store was identified. Fixes for C4–C6 were applied to the One Life store that morning and then **fully rolled back at the owner's instruction** — the One Life store must not be modified as part of Vivid work, so the bugs listed in §1 and §6 are live again on onelife.co.za and fixing them there is a **separate owner decision**. All Vivid build work now targets **hgywg0-w7.myshopify.com** — see `reports/vivid-store-visual-audit-2026-07-02.md`, `codex-vivid-handoff-2026-07-02.md` and `codex-vivid-design-direction.md`.
+
 **Date:** 2026-07-02 · **Method:** live catalog pull (55 SKUs via `/collections/vivid-health/products.json`), Playwright visual audit of every Vivid surface on onelife.co.za (desktop 1440×900 + mobile 390×844), asset review of the repo's Vivid imagery, domain/platform probing · **Companion:** `vivid-health-redesign-blueprint-2026-07-02.md` (the fix for everything below) and `vivid/redesign-mockup.html` (what it should look like)
 
 ---
