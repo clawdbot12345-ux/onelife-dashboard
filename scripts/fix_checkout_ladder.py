@@ -24,6 +24,7 @@ import copy
 import json
 import os
 import sys
+import time
 import urllib.request
 from datetime import datetime, timezone
 
@@ -93,9 +94,28 @@ def to_create_definition(definition):
                 links[k] = str(v)
         msg = ((a.get("data") or {}).get("message") or {})
         msg.pop("id", None)
+        # API rule: delay_until_* only valid when unit is 'days'
+        if a.get("type") == "time-delay" and a["data"].get("unit") != "days":
+            a["data"].pop("delay_until_weekdays", None)
+            a["data"].pop("delay_until_time", None)
     if d.get("entry_action_id") is not None:
         d["entry_action_id"] = str(d["entry_action_id"])
     return d
+
+
+def find_flows_by_name(name):
+    out, url = [], "/flows/?page[size]=50"
+    while url:
+        st, data = req(url)
+        if st != 200:
+            break
+        for f in (data or {}).get("data", []):
+            if f["attributes"]["name"] == name:
+                out.append((f["id"], f["attributes"]["status"],
+                            f["attributes"].get("created", "")))
+        nxt = ((data or {}).get("links") or {}).get("next")
+        url = nxt.replace("https://a.klaviyo.com/api", "") if nxt else None
+    return out
 
 
 def set_status(flow_id, status):
@@ -123,6 +143,7 @@ def replace_flow(old_id, old_name, new_definition):
             print(f"  ✓ created replacement flow {created} (revision {rev})", file=sys.stderr)
             break
         print(f"  create attempt ({rev}): {st} {json.dumps(data)[:300]}", file=sys.stderr)
+        time.sleep(3)  # create endpoint throttles aggressively
     if not created:
         return False
     if not set_status(old_id, "draft"):
@@ -150,51 +171,103 @@ def backup(flow_id, definition):
 def main():
     ok = True
 
-    # ── SN89LS: re-entry guard + day-3 spacing ──
-    attrs = get_flow(TOUCH_FLOW)
-    d = attrs["definition"]
-    backup(TOUCH_FLOW, d)
-    new = copy.deepcopy(d)
-    groups = (new.get("profile_filter") or {}).get("condition_groups") or []
-    has_guard = any(c.get("type") == "profile-not-in-flow"
-                    for g in groups for c in g.get("conditions", []))
-    if not has_guard:
-        groups.append(copy.deepcopy(NOT_IN_FLOW_7D))
-        new["profile_filter"] = {"condition_groups": groups}
-        print("  + re-entry guard (not in flow, 7 days)", file=sys.stderr)
-    delays = [a for a in new.get("actions", []) if a.get("type") == "time-delay"]
-    if len(delays) >= 2 and delays[1]["data"].get("unit") == "days" \
-            and delays[1]["data"].get("value") == 1:
-        delays[1]["data"]["value"] = 2
-        print("  + second delay 1d -> 2d (Touch 3 lands day 3)", file=sys.stderr)
-    if new != d:
-        applied = patch_definition(TOUCH_FLOW, new, attrs["name"], attrs["status"])
-        if not applied:
-            print("  PATCH unsupported — falling back to create-and-swap", file=sys.stderr)
-            applied = replace_flow(TOUCH_FLOW, attrs["name"], new)
+    # ── Touch 2/3 flow: ensure exactly ONE live copy, with guard + day-3 spacing ──
+    touch_name = get_flow(TOUCH_FLOW)["name"]
+    copies = find_flows_by_name(touch_name)
+    live = sorted([c for c in copies if c[1] == "live"], key=lambda c: c[2])
+    print(f"  '{touch_name}': {len(copies)} copies, {len(live)} live", file=sys.stderr)
+
+    def has_guard(defn):
+        groups = (defn.get("profile_filter") or {}).get("condition_groups") or []
+        return any(c.get("type") == "profile-not-in-flow"
+                   for g in groups for c in g.get("conditions", []))
+
+    def fixed_spacing(defn):
+        delays = [a for a in defn.get("actions", []) if a.get("type") == "time-delay"]
+        return len(delays) >= 2 and delays[1]["data"].get("value", 0) >= 2
+
+    # keep the oldest live copy that is fully correct; draft all other live copies
+    keeper = None
+    for fid, _, _ in live:
+        defn = get_flow(fid)["definition"]
+        if has_guard(defn) and fixed_spacing(defn):
+            keeper = fid
+            break
+    if keeper:
+        for fid, _, _ in live:
+            if fid != keeper:
+                print(f"  deduping extra live copy {fid}", file=sys.stderr)
+                ok = set_status(fid, "draft") and ok
+        print(f"  ✓ touch flow correct + unique: {keeper}", file=sys.stderr)
+    elif live:
+        # no correct live copy: fix the oldest live one via create-and-swap
+        fid = live[0][0]
+        attrs = get_flow(fid)
+        d = attrs["definition"]
+        backup(fid, d)
+        new = copy.deepcopy(d)
+        if not has_guard(new):
+            groups = (new.get("profile_filter") or {}).get("condition_groups") or []
+            groups.append(copy.deepcopy(NOT_IN_FLOW_7D))
+            new["profile_filter"] = {"condition_groups": groups}
+        delays = [a for a in new.get("actions", []) if a.get("type") == "time-delay"]
+        if len(delays) >= 2 and delays[1]["data"].get("value") == 1:
+            delays[1]["data"]["value"] = 2
+        applied = patch_definition(fid, new, attrs["name"], attrs["status"]) \
+            or replace_flow(fid, attrs["name"], new)
+        for other, _, _ in live[1:]:
+            applied = set_status(other, "draft") and applied
         ok = applied and ok
     else:
-        print(f"  {TOUCH_FLOW}: nothing to change", file=sys.stderr)
+        print("  ✗ no live touch flow found — investigate", file=sys.stderr)
+        ok = False
 
-    # ── WY4cae: optional early touch ──
+    # ── Consultant Check: optional 4h early touch (idempotent by name) ──
     if EARLY_TOUCH:
-        attrs2 = get_flow(CONSULT_FLOW)
-        d2 = attrs2["definition"]
-        backup(CONSULT_FLOW, d2)
-        new2 = copy.deepcopy(d2)
-        entry = next((a for a in new2.get("actions", [])
-                      if a.get("type") == "time-delay"), None)
-        if entry and (entry["data"].get("unit"), entry["data"].get("value")) == ("days", 2):
-            entry["data"]["unit"] = "hours"
-            entry["data"]["value"] = 4
-            print("  + consultant-check delay 2d -> 4h", file=sys.stderr)
-            applied2 = patch_definition(CONSULT_FLOW, new2, attrs2["name"], attrs2["status"])
-            if not applied2:
-                print("  PATCH unsupported — create-and-swap", file=sys.stderr)
-                applied2 = replace_flow(CONSULT_FLOW, attrs2["name"], new2)
-            ok = applied2 and ok
+        consult_name = get_flow(CONSULT_FLOW)["name"]
+        copies2 = sorted([c for c in find_flows_by_name(consult_name) if c[1] == "live"],
+                         key=lambda c: c[2])
+        print(f"  '{consult_name}': {len(copies2)} live", file=sys.stderr)
+
+        def is_early(defn):
+            entry = next((a for a in defn.get("actions", [])
+                          if a.get("type") == "time-delay"), None)
+            return bool(entry) and entry["data"].get("unit") == "hours"
+
+        keeper2 = None
+        for fid, _, _ in copies2:
+            if is_early(get_flow(fid)["definition"]):
+                keeper2 = fid
+                break
+        if keeper2:
+            for fid, _, _ in copies2:
+                if fid != keeper2:
+                    ok = set_status(fid, "draft") and ok
+            print(f"  ✓ consultant early-touch correct + unique: {keeper2}", file=sys.stderr)
+        elif copies2:
+            fid = copies2[0][0]
+            attrs2 = get_flow(fid)
+            d2 = attrs2["definition"]
+            backup(fid, d2)
+            new2 = copy.deepcopy(d2)
+            entry = next((a for a in new2.get("actions", [])
+                          if a.get("type") == "time-delay"), None)
+            if entry and entry["data"].get("unit") == "days":
+                entry["data"]["unit"] = "hours"
+                entry["data"]["value"] = 4
+                entry["data"].pop("delay_until_weekdays", None)
+                entry["data"].pop("delay_until_time", None)
+                print("  + consultant-check delay -> 4h", file=sys.stderr)
+                applied2 = patch_definition(fid, new2, attrs2["name"], attrs2["status"]) \
+                    or replace_flow(fid, attrs2["name"], new2)
+                for other, _, _ in copies2[1:]:
+                    applied2 = set_status(other, "draft") and applied2
+                ok = applied2 and ok
+            else:
+                print(f"  {fid}: delay not in expected state, skipping", file=sys.stderr)
         else:
-            print(f"  {CONSULT_FLOW}: delay not in expected state, skipping", file=sys.stderr)
+            print("  ✗ no live consultant flow found — investigate", file=sys.stderr)
+            ok = False
 
     if not ok:
         print("\nMANUAL FALLBACK (Klaviyo UI):", file=sys.stderr)
