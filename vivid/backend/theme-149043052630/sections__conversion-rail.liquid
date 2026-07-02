@@ -1,0 +1,53 @@
+<section class="conversion-rail reveal" aria-labelledby="conversion-rail-heading">
+  <div class="container">
+    <div class="section-head section-head--compact">
+      <div>
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <h2 id="conversion-rail-heading" style="margin-top:12px">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="lead">{{ section.settings.lead }}</p>
+    </div>
+
+    <div class="conversion-grid">
+      <a class="conversion-card conversion-card--dark" href="{{ routes.collections_url }}/bundles">
+        <span class="conversion-bg" style="background-image:url('{{ 'banner-group-bestsellers.jpg' | asset_url }}')"></span>
+        <span class="conversion-kicker">Build your stack</span>
+        <strong>Three-product routines, not random bottles.</strong>
+        <span>Shop curated Vivid stacks with a 10% stack offer.</span>
+      </a>
+
+      <a class="conversion-card" href="/pages/quiz">
+        <span class="conversion-bg" style="background-image:url('{{ 'wellness-kitchen.jpg' | asset_url }}')"></span>
+        <span class="conversion-kicker">Premium quiz</span>
+        <strong>Find the formulation that fits your day.</strong>
+        <span>Start with your goal, routine style, and preferred daily format.</span>
+      </a>
+
+      <a class="conversion-card" href="https://wa.me/27713744910?text=Hi%2C%20I%27d%20like%20a%20free%20Vivid%20Health%20consultation" target="_blank" rel="noopener">
+        <span class="conversion-bg" style="background-image:url('{{ 'bone-supreme-influencer.jpg' | asset_url }}')"></span>
+        <span class="conversion-kicker">Free consultation</span>
+        <strong>Ask before you stack.</strong>
+        <span>WhatsApp a Vivid consultant for product fit, dosage, and routine help.</span>
+      </a>
+
+      <a class="conversion-card conversion-card--forest" href="https://onelife.co.za/collections/vivid-health" target="_blank" rel="noopener">
+        <span class="conversion-bg" style="background-image:url('{{ 'house-brand-hero-2.jpg' | asset_url }}')"></span>
+        <span class="conversion-kicker">Onelife house brand</span>
+        <strong>Retail-tested before it reaches your shelf.</strong>
+        <span>Born from the same health-store floor where real shoppers ask real questions.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Conversion rail",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Start here" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A cleaner way to choose wellness." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "The store should guide the customer before the product grid does: quiz, consultation, stacks, and the Onelife proof point." }
+  ],
+  "presets": [{ "name": "Conversion rail" }]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+<section class="page-shell err404">
+  <div class="container" style="text-align:center;max-width:640px">
+    <div class="eyebrow" style="justify-content:center">Page not found</div>
+    <h1 style="margin:14px 0 16px">That bottle isn't on this shelf.</h1>
+    <p style="font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0 auto 28px;max-width:48ch">The page you're after has moved or never existed — but with 52 dose-stated formulations, the one you need probably has.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="{{ routes.collections_url }}/all-formulations" class="btn btn--forest btn-arrow">Shop the range</a>
+      <a href="/pages/quiz" class="btn btn--ghost">Find your formulation</a>
+    </div>
+    <div class="err404-goals" style="margin-top:40px">
+      {%- assign goals = 'gut,immunity,stress,joints,daily' | split: ',' -%}
+      {%- for g in goals -%}
+        <a href="{{ routes.collections_url }}/{{ g }}" class="err404-goal">{{ g | capitalize }}</a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}
