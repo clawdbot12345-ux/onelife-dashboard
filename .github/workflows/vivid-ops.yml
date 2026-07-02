@@ -35,4 +35,5 @@ jobs:
           git config user.email "actions@github.com"
           git add -A vivid/backend
           git commit -m "chore: vivid-ops results" || echo "nothing to commit"
+          git pull --rebase origin ${{ github.ref_name }}
           git push origin HEAD:${{ github.ref_name }}
