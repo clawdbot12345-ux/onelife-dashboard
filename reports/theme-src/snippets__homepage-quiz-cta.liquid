@@ -1,0 +1,107 @@
+
+{%- if template == "index" -%}
+<style>
+.ol-quiz-cta-banner {
+  max-width: 1200px;
+  margin: 48px auto;
+  padding: 0 20px;
+}
+.ol-quiz-cta-inner {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #d1fae5 100%);
+  border: 1px solid #bbf7d0;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  overflow: hidden;
+  position: relative;
+}
+.ol-quiz-cta-inner::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,106,79,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.ol-quiz-cta-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2d6a4f, #1b4332);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(27,67,50,0.25);
+}
+.ol-quiz-cta-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: #d8f3dc;
+  fill: none;
+  stroke-width: 1.5;
+}
+.ol-quiz-cta-text { flex: 1; z-index: 1; }
+.ol-quiz-cta-text h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1b4332 !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.ol-quiz-cta-text p {
+  font-size: 14px;
+  color: #2d6a4f;
+  line-height: 1.5;
+  margin: 0;
+}
+.ol-quiz-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1b4332, #2d6a4f);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(27,67,50,0.25);
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+.ol-quiz-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(27,67,50,0.35);
+  color: #fff;
+}
+.ol-quiz-cta-btn svg { transition: transform 0.2s; }
+.ol-quiz-cta-btn:hover svg { transform: translateX(3px); }
+@media (max-width: 768px) {
+  .ol-quiz-cta-inner { flex-direction: column; text-align: center; padding: 28px 24px; gap: 20px; }
+}
+</style>
+<div class="ol-quiz-cta-banner">
+  <div class="ol-quiz-cta-inner">
+    <div class="ol-quiz-cta-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+    </div>
+    <div class="ol-quiz-cta-text">
+      <h3>Not Sure What to Take?</h3>
+      <p>Take our 60-second quiz, get a personalised supplement stack, and <strong style="color:#1b4332">save 5%</strong> when you add the full stack to cart.</p>
+    </div>
+    <a href="/pages/supplement-quiz?view=quiz-clarity" class="ol-quiz-cta-btn">
+      Start the quiz
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+{%- endif -%}

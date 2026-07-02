@@ -1,0 +1,82 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "a-dispensary": {
+          "type": "announcement",
+          "settings": {
+            "text": "The Dispensary — 17 consultant-signed stacks, 10% off any bundle",
+            "link": "\/pages\/dispensary-protocols"
+          }
+        },
+        "a-whatsapp": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free WhatsApp consult — talk to a real health consultant before you buy",
+            "link": "https:\/\/wa.me\/27713744910"
+          }
+        },
+        "a-quiz": {
+          "type": "announcement",
+          "settings": {
+            "text": "Not sure where to start? Take the 60-second supplement quiz",
+            "link": "\/pages\/supplement-quiz?view=quiz-clarity"
+          }
+        },
+        "a-rewards": {
+          "type": "announcement",
+          "settings": {
+            "text": "Get 10% off your first order — join the apothecary list",
+            "link": "\/#ol-community"
+          }
+        }
+      },
+      "block_order": [
+        "a-dispensary",
+        "a-whatsapp",
+        "a-quiz",
+        "a-rewards"
+      ],
+      "settings": {
+        "color_scheme": "scheme-5",
+        "auto_rotate": true,
+        "change_slides_speed": 5
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-nav-2026",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "scheme-4",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}
