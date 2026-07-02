@@ -1,0 +1,41 @@
+name: Fix Welcome email free-delivery copy
+
+# Manual one-off: corrects the live Welcome flow (XZNrmz) Email 1 footer from the
+# old "free delivery over R900/R1,400" to the real "Free delivery over R400
+# nationwide". Defaults to a dry-run that just dumps the live template(s) so the
+# diff can be reviewed in the logs before applying.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'dump (review only) or apply (write to live templates)'
+        type: choice
+        options:
+          - dump
+          - apply
+        default: dump
+
+permissions:
+  contents: read
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run Welcome email fix
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+        run: |
+          if [ "${{ github.event.inputs.mode }}" = "apply" ]; then
+            python scripts/fix_welcome_email.py --apply
+          else
+            python scripts/fix_welcome_email.py
+          fi
