@@ -216,6 +216,22 @@ def do_pull(cfg):
             print(f"  saved theme-{tid}/{fname}")
         print(f"theme {tid} ({t['name']}): {len(want)} vivid-ish assets of {len(keys)}")
 
+    code, pdata, _ = req("GET", f"/admin/api/{API}/pages.json?limit=250")
+    if code == 200:
+        pages = [{"id": p["id"], "title": p["title"], "handle": p["handle"],
+                  "template_suffix": p.get("template_suffix"),
+                  "body_len": len(p.get("body_html") or ""),
+                  "body_html": p.get("body_html")}
+                 for p in pdata.get("pages", [])]
+        with open(f"{OUT}/pages.json", "w") as f:
+            json.dump(pages, f, indent=1)
+        print(f"pulled {len(pages)} pages")
+    for kind in ("smart_collections", "custom_collections"):
+        code, cdata, _ = req("GET", f"/admin/api/{API}/{kind}.json?limit=250")
+        if code == 200:
+            with open(f"{OUT}/{kind}.json", "w") as f:
+                json.dump(cdata.get(kind, []), f, indent=1)
+
 
 def do_apply(cfg):
     results = []
