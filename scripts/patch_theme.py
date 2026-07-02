@@ -35,11 +35,11 @@ OVERRIDES_DIR = "theme-overrides"
 DUMP_PREFIXES = ("sections/", "snippets/")
 DUMP_EXACT = {"layout/theme.liquid", "config/settings_data.json",
               "config/settings_schema.json", "templates/index.json",
-              "assets/onelife-mobile-fixes.css"}
+              "templates/product.json", "assets/onelife-mobile-fixes.css"}
 DUMP_MATCH = ("ol-", "card", "announcement", "header", "price",
               "buy-buttons", "main-product", "footer", "quiz",
               "cart-drawer", "cart-notification", "cart-items",
-              "free-shipping")
+              "free-shipping", "shipping-threshold", "threshold")
 
 if not TOKEN:
     print("ERROR: SHOPIFY_ADMIN_TOKEN required", file=sys.stderr)
