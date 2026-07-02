@@ -16,48 +16,48 @@
   assign use_generated_first = false
   case product.handle
     when 'vivid-health-vivid-body-bone-supreme-120-capsules'
-      assign pdp_gallery_assets = 'bone-supreme-120-hero.jpg|bone-supreme.jpg|bone-supreme-influencer.jpg|bone-supreme-infographic.jpg|bone-supreme-them-vs-us.jpg'
+      assign pdp_gallery_assets = 'bone-supreme-120-hero.jpg|bone-supreme.jpg|bone-supreme-influencer.jpg'
     when 'vivid-health-vivid-body-bone-supreme-500-capsules'
-      assign pdp_gallery_assets = 'bone-supreme-500-hero.jpg|bone-supreme.jpg|bone-supreme-influencer.jpg|bone-supreme-infographic.jpg|bone-supreme-them-vs-us.jpg'
+      assign pdp_gallery_assets = 'bone-supreme-500-hero.jpg|bone-supreme.jpg|bone-supreme-influencer.jpg'
     when 'vivid-health-immune-allergy-control-60-capsules'
-      assign pdp_gallery_assets = 'allergy-control-60-hero.jpg|allergy-control-lavender.jpg|allergy-control-stone.jpg|allergy-control-infographic.jpg|banner-group-allergy.jpg'
+      assign pdp_gallery_assets = 'allergy-control-60-hero.jpg|allergy-control-lavender.jpg|allergy-control-stone.jpg|banner-group-allergy.jpg'
     when 'vivid-health-stay-vivid-griffonia-5-htp-60-capsules'
-      assign pdp_gallery_assets = 'griffonia-5htp-60-hero.jpg|griffonia-bedside.jpg|griffonia-moss.jpg|griffonia-before-after.jpg|banner-group-sleep.jpg'
+      assign pdp_gallery_assets = 'griffonia-5htp-60-hero.jpg|griffonia-bedside.jpg|griffonia-moss.jpg|banner-group-sleep.jpg'
     when 'vivid-health-immune-liver-kidney-formula-90-capsules'
       assign pdp_gallery_assets = 'liver-kidney-90-hero.jpg|liver-kidney.jpg|liver-kidney-influencer.jpg|banner-gut.jpg|banner-daily.jpg'
     when 'vivid-health-woman-maca-60-capsules'
       assign pdp_gallery_assets = 'maca-60-hero.jpg|maca.jpg|maca-lifestyle-model.jpg|banner-women.jpg|banner-hero-evening.jpg'
     when 'vivid-health-vivid-body-flexijoint-advanced-120-capsules'
-      assign pdp_gallery_assets = 'flexijoint-advanced-120-hero.jpg|physical-trio.jpg|physical-trio-wide.jpg|bone-supreme-them-vs-us.jpg|banner-joints.jpg'
+      assign pdp_gallery_assets = 'flexijoint-advanced-120-hero.jpg|physical-trio.jpg|physical-trio-wide.jpg|banner-joints.jpg'
     when 'vivid-rest-focus-stack-sleep-calm-and-mental-clarity-bundle'
-      assign pdp_gallery_assets = 'banner-group-sleep.jpg|griffonia-before-after.jpg|griffonia-bedside.jpg|clutter-to-calm.jpg|hero-group.jpg'
+      assign pdp_gallery_assets = 'banner-group-sleep.jpg|griffonia-bedside.jpg|hero-group.jpg'
     when 'vivid-bone-joint-pack-complete-skeletal-support-bundle'
-      assign pdp_gallery_assets = 'physical-trio-wide.jpg|bone-supreme-influencer.jpg|bone-supreme-them-vs-us.jpg|physical-trio.jpg|clutter-to-calm.jpg'
+      assign pdp_gallery_assets = 'physical-trio-wide.jpg|bone-supreme-influencer.jpg|physical-trio.jpg'
     when 'vivid-allergy-stack-complete-allergy-support-bundle'
-      assign pdp_gallery_assets = 'banner-group-allergy.jpg|allergy-control-lavender.jpg|allergy-control-infographic.jpg|clutter-to-calm.jpg|hero-group.jpg'
+      assign pdp_gallery_assets = 'banner-group-allergy.jpg|allergy-control-lavender.jpg|hero-group.jpg'
   endcase
 
   if pdp_gallery_assets == blank
     assign use_generated_first = true
     case product_goal_id
       when 'gut'
-        assign pdp_gallery_assets = 'banner-gut.jpg|wellness-kitchen.jpg|clutter-to-calm.jpg|scattered-to-sorted.jpg'
+        assign pdp_gallery_assets = 'banner-gut.jpg'
       when 'immunity'
-        assign pdp_gallery_assets = 'banner-immunity.jpg|allergy-control-stone.jpg|allergy-control-infographic.jpg|banner-group-allergy.jpg'
+        assign pdp_gallery_assets = 'banner-immunity.jpg|allergy-control-stone.jpg|banner-group-allergy.jpg'
       when 'stress'
-        assign pdp_gallery_assets = 'banner-stress.jpg|griffonia-bedside.jpg|griffonia-before-after.jpg|banner-group-sleep.jpg'
+        assign pdp_gallery_assets = 'banner-stress.jpg|griffonia-bedside.jpg|banner-group-sleep.jpg'
       when 'joints'
-        assign pdp_gallery_assets = 'banner-joints.jpg|physical-trio-wide.jpg|bone-supreme-them-vs-us.jpg|bone-supreme-influencer.jpg'
+        assign pdp_gallery_assets = 'banner-joints.jpg|physical-trio-wide.jpg|bone-supreme-influencer.jpg'
       when 'women'
         assign pdp_gallery_assets = 'banner-women.jpg|maca-lifestyle-model.jpg|maca.jpg|banner-hero-evening.jpg'
       when 'men'
-        assign pdp_gallery_assets = 'banner-men.jpg|wellness-kitchen.jpg|banner-journal.jpg|clutter-to-calm.jpg'
+        assign pdp_gallery_assets = 'banner-men.jpg|banner-journal.jpg'
       when 'daily'
-        assign pdp_gallery_assets = 'banner-daily.jpg|wellness-kitchen.jpg|hero-group.jpg|clutter-to-calm.jpg'
+        assign pdp_gallery_assets = 'banner-daily.jpg|hero-group.jpg'
       when 'energy'
-        assign pdp_gallery_assets = 'banner-energy.jpg|wellness-kitchen.jpg|banner-hero-evening.jpg|clutter-to-calm.jpg'
+        assign pdp_gallery_assets = 'banner-energy.jpg|banner-hero-evening.jpg'
       else
-        assign pdp_gallery_assets = 'banner-journal.jpg|wellness-kitchen.jpg|hero-group.jpg|clutter-to-calm.jpg'
+        assign pdp_gallery_assets = 'banner-journal.jpg|hero-group.jpg'
     endcase
   endif
 
@@ -97,7 +97,7 @@
             width="1200"
             height="1500"
             alt="{{ product.title | escape }}"
-            class="pdp-main-img__image vivid-art vivid-art--generated vivid-art--editorial"
+            class="pdp-main-img__image vivid-art vivid-art--generated vivid-art--editorial"{% if product.images.size == 0 %} style="object-fit:cover"{% endif %}
           >
         {%- else -%}
           {% render 'vivid-product-art',

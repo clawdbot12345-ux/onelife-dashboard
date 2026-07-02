@@ -233,6 +233,27 @@ def do_pull(cfg):
                 json.dump(cdata.get(kind, []), f, indent=1)
 
 
+def reorder_hero_images():
+    """Move each product's *-hero image to position 1 (fixes og:image and
+    demotes the old cold studio masters)."""
+    products = fetch_vivid_products()
+    moved = 0
+    for p in products:
+        imgs = p.get("images") or []
+        if len(imgs) < 2:
+            continue
+        hero = next((i for i in imgs if "-hero" in (i.get("src") or "").rsplit("/", 1)[-1].lower()), None)
+        if hero and imgs[0]["id"] != hero["id"]:
+            code, d, _ = req("PUT", f"/admin/api/{API}/products/{p['id']}/images/{hero['id']}.json",
+                             {"image": {"id": hero["id"], "position": 1}})
+            if 200 <= code < 300:
+                moved += 1
+            else:
+                print(f"  reorder {p['handle']}: HTTP {code}")
+            time.sleep(0.55)
+    print(f"hero images moved to position 1: {moved}")
+
+
 def do_apply(cfg):
     results = []
     pu_path = f"{OUT}/apply/product-updates.json"
@@ -284,6 +305,8 @@ def do_apply(cfg):
         json.dump(results, f, indent=1)
     bad = [r for r in results if not (200 <= (r["status"] or 0) < 300)]
     print(f"applied {len(results)} ops, {len(bad)} failed")
+    if cfg.get("reorder_hero_images"):
+        reorder_hero_images()
 
 
 def do_apply_prices(cfg):

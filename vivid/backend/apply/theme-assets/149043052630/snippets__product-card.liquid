@@ -60,7 +60,7 @@
     {%- if bench != blank -%}<div class="card-bench">{{ bench }}</div>{%- endif -%}
     <div class="card-meta">
       <div class="card-price">{{ product.price | money_without_trailing_zeros }}</div>
-      {%- if size_lbl != blank and size_lbl != '0' and size_lbl != 'Default Title' -%}<div class="card-form">{{ size_lbl }}</div>{%- endif -%}
+      {%- assign size_str = size_lbl | append: '' | strip -%}{%- if size_str != blank and size_str != '0' and size_str != 'Default Title' -%}<div class="card-form">{{ size_str }}</div>{%- endif -%}
     </div>
   </div>
 </a>

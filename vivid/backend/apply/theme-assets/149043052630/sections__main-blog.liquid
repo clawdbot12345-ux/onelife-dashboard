@@ -1,0 +1,65 @@
+<style>@media(max-width:749px){.chip-row{padding-left:20px;padding-right:20px;margin-left:0;margin-right:0;scroll-padding-left:20px}}</style>
+{%- comment -%}
+  Blog index — featured article + grid. Filter chips for category tags.
+  Wired by templates/blog.json.
+{%- endcomment -%}
+
+<section class="page-shell">
+  <div class="container">
+    <div class="page-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h1>{{ blog.title }}</h1>
+      {%- if section.settings.intro != blank -%}
+        <p>{{ section.settings.intro }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_filters and blog.all_tags.size > 0 -%}
+      <div class="shop-toolbar">
+        <div class="chip-row" aria-label="Filter by category">
+          <a href="{{ blog.url }}" class="chip {% unless current_tags %}is-active{% endunless %}">All</a>
+          {%- for tag in blog.all_tags -%}
+            {%- assign tag_str = tag | downcase -%}
+            {%- unless tag_str contains 'category:' or tag_str == 'vivid-journal' -%}
+              <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="chip {% if current_tags contains tag %}is-active{% endif %}">{{ tag }}</a>
+            {%- endunless -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- paginate blog.articles by section.settings.per_page -%}
+      {%- if blog.articles.size == 0 -%}
+        <div class="cart-page-empty">
+          <p>No articles yet.</p>
+        </div>
+      {%- else -%}
+        <div class="journal" style="margin-top:var(--s-6)">
+          {%- for article in blog.articles -%}
+            {% render 'article-card', article: article %}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <div style="margin-top:48px;display:flex;justify-content:center;gap:8px">
+            {{ paginate | default_pagination }}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main blog",
+  "settings": [
+    { "type": "text",     "id": "eyebrow",      "label": "Eyebrow",      "default": "The Journal" },
+    { "type": "textarea", "id": "intro",        "label": "Intro",        "default": "Long-form on single ingredients, formulation choices, and what we're testing next. Reading, not marketing." },
+    { "type": "checkbox", "id": "show_filters", "label": "Show category filter chips", "default": true },
+    { "type": "range",    "id": "per_page",     "label": "Articles per page", "min": 6, "max": 24, "step": 6, "default": 12 }
+  ],
+  "presets": [{ "name": "Main blog" }]
+}
+{% endschema %}
