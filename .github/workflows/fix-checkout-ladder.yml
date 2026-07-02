@@ -18,6 +18,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: klaviyo-flow-writes
+  cancel-in-progress: false
+
 jobs:
   fix:
     runs-on: ubuntu-latest
