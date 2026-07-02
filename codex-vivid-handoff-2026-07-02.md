@@ -1,92 +1,55 @@
-# Codex Handoff — Vivid Health Store (hgywg0-w7.myshopify.com) · v2, 2026-07-02
+# Codex Handoff — Vivid Health Store (hgywg0-w7.myshopify.com) · v3, 2026-07-02 (evening)
 
-**⚠️ Supersedes the earlier version of this file.** History: Claude briefly applied
-Vivid fixes to the One Life store by mistake; **everything on
-onelifehealth.myshopify.com was fully rolled back the same hour** (60/60 restore
-ops verified live). Since then ALL work targets the dedicated Vivid store
-**hgywg0-w7.myshopify.com** via `VIVID_CLIENT_ID`/`VIVID_CLIENT_SECRET`.
-**Do not touch the One Life store for anything Vivid-related.**
+**Supersedes v2.** Read this file + the ROUND-2 section of `codex-vivid-design-direction.md`.
+Working branch: `claude/vivid-health-audit-redesign-9fmzon` (PR #26 already merged; new work lands via this branch again).
 
-**State as of this handoff (all on PR #26, branch `claude/vivid-health-audit-redesign-9fmzon`):**
-- Full audit + world-class blueprint + brand research + hi-fi mockup (docs in repo root and `reports/`)
-- Vivid store: "Best in Class" theme **published** (fixed Journal 404s, empty
-  sourcing page, missing 404 template; Subscribe & Save buy box + 5-image
-  galleries + new quiz now live) · catalog fixed (Agnus Castus typo, 12
-  size-qualified duplicate titles)
-- Autonomous **Vivid Journal blog engine** built: weekly publisher + monthly
-  Claude article writer + 3 validated launch articles in `content/vivid-queue/`
-- Remote-hands pipeline: `scripts/vivid_ops.py` + `.github/workflows/vivid-ops.yml`
-  (pull / apply / publish modes, per-store credential isolation)
+## Standing rules (unchanged, non-negotiable)
 
-Claude continues to own all THEME/CODE work through that pipeline (robots.txt fix,
-back-in-stock form on OOS PDPs, search template restyle, announcement bar, cart
-drawer thumbnails, quiz polish). This document is ONLY what Codex should do.
+1. **Never touch onelifehealth.myshopify.com.** All Vivid work targets **hgywg0-w7** via `VIVID_CLIENT_ID`/`VIVID_CLIENT_SECRET`. (The one exception — the owner-approved One Life price round-down — is DONE: 2,203/2,203 applied, log in `reports/price-rounding/apply-result.json`. Nothing further there.)
+2. **No text baked into imagery, ever.** No headlines, bullets, prices, buttons, wordmarks or slogans rendered inside artwork. Physical bottle labels in photos are fine. This is the owner's hard gate and the reason the last QA returned NO-GO.
+3. Claude owns all theme/code; you own imagery + admin UI. Don't edit Liquid/JS — request via PR comment instead.
 
----
+## State as of this handover (all verified live)
 
-## 1. Merge PR #26 🔴 (unblocks the schedules)
+- Final design QA scored the store **8.5–9/10 on most pages**; overall NO-GO **only** because of the imagery items below.
+- Claude's entire code punch list is done and verified: branded search, compare table mobile scroll, sourcing supplier grid, sold-out dimming, announcement bar, sentence-safe copy, cart thumbnails, FAB behaviour (labelled automated, scroll-aware), About h1 + heritage, hero images moved to og:image position, baked-text assets stripped from all 20 PDP gallery templates.
+- **Subscribe & Save now works end-to-end** (verified: cart line carries "Every month — save 10%" at the subscription price) — but see admin item 4 (billing app).
+- Blog engine live: first article published, weekly publisher + monthly writer armed.
+- Performance: collection ~6MB (was 15), TTFB 0.56–0.67s everywhere.
 
-Review + merge https://github.com/clawdbot12345-ux/onelife-dashboard/pull/26.
-Scheduled workflows (weekly Journal publish, monthly article writer) only run
-from the default branch, so nothing automates until this merges. The PR also
-contains the One Life rollback record — merging changes nothing on either store.
+## 🔴 CRITICAL PATH — Round-2 imagery (blocks the owner's walkthrough)
 
-## 2. Flip the blog engine on (2 min)
+Full detail in `codex-vivid-design-direction.md` → "ROUND-2 IMAGERY FIXES". Summary:
 
-1. Repo **Settings → Secrets and variables → Actions → Variables**: add
-   `VIVID_BLOG_ENABLED = true`.
-2. Optional immediate test: **Actions → "Vivid Journal Publish" → Run
-   workflow** — it pops the oldest of the 3 queued articles, publishes it to
-   the store's Journal, and archives it. Verify the article renders at
-   `https://hgywg0-w7.myshopify.com/blogs/journal`.
-3. Editorial: skim the 3 queued articles in `content/vivid-queue/` — merging
-   the PR is sign-off for these; future months arrive as PRs from the
-   "Monthly Vivid Article Writer" workflow for review.
+| # | Task |
+|---|---|
+| A | **Delete every `*-infographic.jpg`** (~52) plus `wellness-kitchen.jpg`, `clutter-to-calm.jpg`, `bone-supreme-them-vs-us.jpg`, `scattered-to-sorted.jpg`, `griffonia-before-after.jpg` — marketing cards with baked text (incl. hallucinated "SHOPIFY-MATCHED FORMAT" and fake SHOP NOW buttons). Claude already unlinked them from templates; the files must go and never be regenerated. Also remove the "VIVID HEALTH" wordmark rendered into the stack lineup art |
+| B | **Attach real product media to the 3 stacks** — `comrades-recovery-stack`, `highveld-hayfever-stack`, perimenopause stack currently have `images: []` (carts/OG/feeds render nothing). Compositions must match each stack's ACTUAL contents (current theme art shows Bone Supreme bottles on Comrades and four unbranded canisters for a 3-bottle stack) |
+| C | **Label art**: the new Agnus Castus hero still reads "ANGUS CASTUS"; "DIETARY SUPPLEMENT" survives on new artwork (About hero, MSM cards). Fix per §3.4 of the direction doc. Also "60 capules" typo on the old master |
+| D | **Label-panel macro shot per SKU** (§3.1 shot 2) — still missing everywhere; the single highest-priority shot in the direction doc |
+| E | Hygiene: replace the Cayenne 250g variant photo (filename `WhatsAppImage2026-02-23…jpg`); the old cold IMG-5xxx masters are demoted from position 1 — delete or re-shoot at your discretion |
 
-## 3. Vivid store admin (needs the Shopify admin UI)
+**Delivery:** upload as product media / replace Files in the Shopify admin (never append text-bearing cards), or commit to `vivid/assets/store/` on the branch for Claude to push. Comment progress on the branch/PR.
 
-| # | Task | Why |
+**Gate:** when A–E are done, Claude re-runs the full two-viewport design QA. GO requires zero text-bearing artwork and all three stacks carrying real media. Then the owner walks the site.
+
+## Admin items still open (do alongside imagery)
+
+| # | Task | Status |
 |---|---|---|
-| 3.1 🔴 | **Inventory decision: 16 of 58 products are sold out (28%)**, incl. hero SKU Buffered C · 300. Restock or temporarily hide — a launch catalog can't be a third unavailable | Biggest conversion blocker found in the visual audit |
-| 3.2 🔴 | **Payments**: confirm the gateway lineup (site shows text pills VISA/MASTERCARD/PAYFAST/EFT). Install **Payflex** and/or **PayJustNow** + **Ozow**. Claude will then add PDP installment messaging ("4 × R107") via theme code | SA BNPL = up to +30% AOV at these price points |
-| 3.3 🔴 | **Reviews app**: install **Judge.me** ($15/mo) on the Vivid store; enable post-purchase request emails from day one | Zero reviews anywhere; homepage already claims customer favourites |
-| 3.4 | **Klaviyo for Vivid**: the site promises a WELCOME 10% signup — connect a Klaviyo account (or confirm which ESP) so the popup/email capture actually feeds something. Add its private key as repo secret `VIVID_KLAVIYO_API_KEY` and Claude wires the publisher's campaign step like One Life's | Email capture currently goes nowhere useful |
-| 3.5 | **Pixels before launch**: GA4 + Meta + TikTok channel apps on the Vivid store | Don't repeat One Life's un-measured-ads history |
-| 3.6 | **Price ownership — VIVID STORE (hgywg0-w7) ONLY, 58 products**: odd-cent prices (R189.76, R301.88, R1,251.20) look like sync artifacts. Confirm whether a POS/ERP owns Vivid store prices; if not, get OWNER approval then Claude applies rounding via API. **⛔ Never generate or apply price changes against onelifehealth.myshopify.com** — see reports/price-rounding/README-STOP.md | Blueprint §3 pricing hygiene |
-| 3.7 | **Domain decision**: vividhealth.co.za is owned by an unrelated practitioner (brand-risk adjacency — see audit §5). Buy it, or register an alternative (vivid.co.za / getvivid.co.za / vividhealth.shop), connect it to the store | Blocks launch + SEO |
-| 3.8 | **Label artwork fixes for the next render/print run**: (a) the Agnus Castus bottle art still reads "ANGUS CASTUS" (title is fixed; art isn't); (b) labels say "DIETARY SUPPLEMENT" — US wording; SA regulatory tone is complementary medicine/health supplement | Print-level credibility |
-| 3.9 | **Shipping check**: cart shows estimated R100 shipping and a R400 free-shipping bar — confirm rates in Settings → Shipping match the promise | Trust: the No.1 One Life audit finding was a shipping contradiction; don't import it |
+| 1 🔴 | **Subscriptions billing app** — selling plans now sell correctly but nothing bills recurring orders (plans were created via API, `app_id: null`). Install Shopify Subscriptions (free) or equivalent, then place ONE test subscription checkout end-to-end | Blocks launch |
+| 2 🔴 | **Reviews app** — PDP reviews are hardcoded "SAMPLE (4.5 · 2 reviews)". Install Judge.me, enable post-purchase requests, remove/replace the sample block (ask Claude for the theme edit once installed) | Blocks launch |
+| 3 🔴 | **Inventory**: 16/58 products sold out incl. Buffered C · 300 (homepage hero product). Restock or hide | Blocks launch |
+| 4 | **Payments**: confirm PayFast/EFT live; add Payflex/PayJustNow + Ozow. Claude then adds PDP installment messaging | High |
+| 5 | **Klaviyo**: connect + add `VIVID_KLAVIYO_API_KEY` repo secret (WELCOME 10% popup currently feeds nothing) | High |
+| 6 | **Pixels**: GA4 + Meta + TikTok channels before launch | High |
+| 7 | **Vivid price rounding** (58 products, odd cents like R189.76): confirm no POS/ERP owns these prices, get owner sign-off, then Claude applies. Vivid store ONLY | Medium |
+| 8 | **Domain**: vividhealth.co.za is an unrelated practitioner's (brand-risk). Choose/buy + connect | Blocks launch |
+| 9 | **Shipping**: confirm rates match the R400 free-shipping promise + R100 estimate shown in cart | Medium |
+| 10 | **COAs from the manufacturer** — one PDF unlocks Claude's batch-lookup build (PDPs already promise batch testing) | Medium |
 
-## 3b. Design to 10/10 — imagery regeneration 🔴
+## Done — do not redo
 
-Owner directive: everything design-side must reach 10/10. Full art direction,
-shot lists, prompt templates, label-art corrections and the per-page QA gate
-are in **`codex-vivid-design-direction.md`** — regenerate imagery to that spec
-(start with the label-panel macros and the 3 image-less bundle products).
-
-## 4. Batch-certificate programme (flagship feature — owner + manufacturer)
-
-Request per-batch COAs (identity, potency, heavy metals, micro) from the
-contract manufacturer. The moment one PDF exists, hand it over — Claude builds
-the batch-lookup page (the store's PDP FAQ already promises independent batch
-testing, so the paper trail needs to exist).
-
-## 5. Explicitly NOT for Codex (Claude owns, in flight)
-
-robots.txt serving empty · back-in-stock form not rendering on OOS PDPs ·
-default search template restyle · empty announcement bar · cart drawer blank
-thumbnails · quiz logic polish · PDP installment line (after 3.2) ·
-Klaviyo wiring in the publisher (after 3.4).
-
-## Definition of done for this round
-
-- [ ] PR #26 merged
-- [ ] `VIVID_BLOG_ENABLED=true` set; first Journal article published and rendering
-- [ ] OOS decision executed (restock list or hide)
-- [ ] Payflex/PayJustNow + Ozow live at checkout
-- [ ] Judge.me installed, post-purchase requests on
-- [ ] Klaviyo connected + `VIVID_KLAVIYO_API_KEY` secret added
-- [ ] GA4/Meta/TikTok pixels installed
-- [ ] Price-ownership answer + rounding approval (or veto) recorded on the PR
-- [ ] Domain chosen/connected
-- [ ] COA request sent to manufacturer
+PR #26 merge · blog engine enablement + first article · One Life price round-down (2,203/2,203) ·
+One Life rollback (store restored, off-limits) · all theme/code QA fixes · hero/og:image reordering ·
+catalog typo + duplicate-title fixes · Subscribe & Save frontend.
