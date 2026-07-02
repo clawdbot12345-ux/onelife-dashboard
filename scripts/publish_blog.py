@@ -373,10 +373,82 @@ def build_jsonld(fm, body_text, blog_handle="health-wellness-hub"):
                 "acceptedAnswer": {"@type": "Answer", "text": qa.get("a", "")},
             } for qa in faq],
         })
+    # E-E-A-T: a Person node for the byline (the theme's Article schema names
+    # the store; this gives Google an actual health-content author to weigh)
+    graph.append({
+        "@type": "Person",
+        "@id": "https://onelife.co.za/#precious",
+        "name": "Precious",
+        "jobTitle": "Health Consultant",
+        "description": ("One Life Health consultant with 30 years behind the "
+                        "Centurion counter, advising on supplements, protocols "
+                        "and honest use of natural health products."),
+        "worksFor": {"@type": "Organization", "name": "One Life Health",
+                     "url": "https://onelife.co.za"},
+        "knowsAbout": ["dietary supplements", "vitamins and minerals",
+                       "natural health", "supplement protocols"],
+    })
     payload = {"@context": "https://schema.org", "@graph": graph}
     return ('<script type="application/ld+json">'
             + json.dumps(payload, ensure_ascii=False)
             + '</script>')
+
+
+def render_author_box():
+    """Byline box with a WhatsApp click-to-chat CTA — E-E-A-T for readers,
+    and the consult funnel the emails already use, now on every article."""
+    wa = ("https://wa.me/27713744910?text="
+          "Hi%20Precious%2C%20I%20read%20your%20article%20%E2%80%94%20quick%20question")
+    return (
+        '<div class="apothecary-author" style="margin:32px 0;padding:20px;'
+        'background:#f1f5f1;border-radius:12px;">'
+        '<p style="margin:0 0 6px;font-weight:bold;color:#1b4332;">Written by Precious '
+        '&middot; One Life Health Consultant</p>'
+        '<p style="margin:0 0 12px;font-size:14px;">Thirty years behind the Centurion '
+        'counter. I tell people <em>not</em> to buy things more often than you\'d think.</p>'
+        f'<a href="{wa}" style="display:inline-block;background:#1b4332;color:#ffffff;'
+        'padding:10px 22px;border-radius:8px;font-weight:bold;text-decoration:none;">'
+        'WhatsApp me a question &rarr;</a></div>')
+
+
+def fetch_related_articles(exclude_slug, limit=3):
+    """Pull sibling articles from the public Atom feed for a related-reads
+    block (topical-cluster internal linking). Fails soft — an empty list just
+    omits the block."""
+    try:
+        import xml.etree.ElementTree as ET
+        with urllib.request.urlopen(
+                "https://onelife.co.za/blogs/health-wellness-hub.atom", timeout=20) as r:
+            tree = ET.fromstring(r.read())
+        ns = {"a": "http://www.w3.org/2005/Atom"}
+        out = []
+        for entry in tree.findall("a:entry", ns):
+            title = (entry.findtext("a:title", "", ns) or "").strip()
+            link = ""
+            for l in entry.findall("a:link", ns):
+                if l.get("rel") in (None, "alternate"):
+                    link = (l.get("href") or "").split("?")[0]
+                    break
+            if not link or exclude_slug in link:
+                continue
+            out.append((title, link))
+            if len(out) >= limit:
+                break
+        return out
+    except Exception as e:
+        print(f"  related-articles fetch failed (skipping block): {e}", file=sys.stderr)
+        return []
+
+
+def render_related(articles):
+    if not articles:
+        return ""
+    items = "".join(
+        f'<li style="margin:0 0 8px;"><a href="{u}" style="color:#1b4332;">{t}</a></li>'
+        for t, u in articles)
+    return ('<div class="apothecary-related" style="margin:24px 0;">'
+            '<h3 style="color:#1b4332;">More from the counter</h3>'
+            f'<ul>{items}</ul></div>')
 
 def build_article_html(fm, body_md, blog_handle="health-wellness-hub"):
     """Assemble the full article body Shopify stores: JSON-LD schema, the prose,
@@ -388,8 +460,10 @@ def build_article_html(fm, body_md, blog_handle="health-wellness-hub"):
         build_jsonld(fm, body_text, blog_handle),
         md_to_html(body_md),
         render_product_table(fm.get("products")),
+        render_author_box(),
         render_faq_section(fm.get("faq")),
         render_references(fm.get("references")),
+        render_related(fetch_related_articles(fm.get("slug", ""))),
     ]
     return "\n".join(p for p in parts if p)
 
