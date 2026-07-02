@@ -1,0 +1,335 @@
+{
+  "sections": {
+    "hero": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_0318.png",
+            "desktop_asset": "onelife-hero-01-unboxing-desktop.webp",
+            "mobile_asset": "onelife-hero-01-unboxing-mobile.webp",
+            "logo_asset": "",
+            "heading": "Free Delivery Over R400",
+            "heading_size": "h1",
+            "subheading": "Free to your door, anywhere in SA.",
+            "button_label": "Browse the apothecary",
+            "link": "\/pages\/shop",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "left"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3424547C-4D02-4F7B-A95C-68A1B3ECD4B1.png",
+            "desktop_asset": "onelife-hero-02-consultation-desktop.webp",
+            "mobile_asset": "onelife-hero-02-consultation-mobile.webp",
+            "logo_asset": "",
+            "heading": "Free Health Consultation",
+            "heading_size": "h1",
+            "subheading": "Honest guidance from consultants who actually know the range.",
+            "button_label": "Book a consult",
+            "link": "\/pages\/book-consultation",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-5",
+            "text_alignment_mobile": "left"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_4b5399ec-7d27-41fc-9a71-f72467146140.png",
+            "desktop_asset": "onelife-hero-03-vivid-products-desktop.webp",
+            "mobile_asset": "onelife-hero-03-vivid-products-mobile.webp",
+            "logo_asset": "vivid-logo-wordmark.svg",
+            "heading": "Vivid Health — Save 10% on Vivid Stacks",
+            "heading_size": "h1",
+            "subheading": "Our house range. South African botanicals, clinical doses, 10% off any stack.",
+            "button_label": "Explore Vivid",
+            "link": "\/collections\/vivid-health",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-5",
+            "text_alignment_mobile": "left"
+          }
+        },
+        "slide-4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3424547C-4D02-4F7B-A95C-68A1B3ECD4B1.png",
+            "desktop_asset": "onelife-hero-04-quiz-desktop.webp",
+            "mobile_asset": "onelife-hero-04-quiz-mobile.webp",
+            "logo_asset": "",
+            "heading": "Find Your Perfect Stack",
+            "heading_size": "h1",
+            "subheading": "60 seconds. 4 questions. Real recommendations.",
+            "button_label": "Start the quiz",
+            "link": "\/pages\/supplement-quiz?view=quiz-clarity",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "left"
+          }
+        },
+        "slide-5": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_fb3a4568-49ae-41bd-8598-13f55d44e946.png",
+            "desktop_asset": "onelife-hero-05-brands-desktop.webp",
+            "mobile_asset": "onelife-hero-05-brands-mobile.webp",
+            "logo_asset": "",
+            "heading": "250+ Trusted Brands",
+            "heading_size": "h1",
+            "subheading": "The brands our consultants actually stand behind.",
+            "button_label": "Browse brands",
+            "link": "\/pages\/brands",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-5",
+            "text_alignment_mobile": "left"
+          }
+        }
+      },
+      "block_order": [
+        "slide-4",
+        "slide-1",
+        "slide-3",
+        "slide-2",
+        "slide-5"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 7,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "One Life Health premium homepage hero banners"
+      }
+    },
+    "trust": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% comment %} ol-trust-strip-mobile-fix 2026-06-10T22:31:48.355Z {% endcomment %}\n{% render 'homepage-trust-strip' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "brands": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'homepage-brands-marquee' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "why": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'homepage-why-onelife' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "reviews-carousel": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "{% render 'judgeme-homepage-carousel' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "dispensary": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'homepage-dispensary-promo' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "vs": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'homepage-why-vs' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "goals": {
+      "type": "health-goals-grid",
+      "settings": {}
+    },
+    "diet": {
+      "type": "dietary-grid",
+      "settings": {}
+    },
+    "consult": {
+      "type": "consultation-banner",
+      "settings": {}
+    },
+    "follow": {
+      "type": "social-follow",
+      "settings": {}
+    },
+    "news": {
+      "type": "onelife-community-signup",
+      "settings": {}
+    },
+    "cats": {
+      "type": "collection-list",
+      "blocks": {
+        "c0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "health"
+          }
+        },
+        "c1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "conditions"
+          }
+        },
+        "c2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "beauty"
+          }
+        },
+        "c3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "food"
+          }
+        },
+        "c4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sport"
+          }
+        },
+        "c5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kids"
+          }
+        },
+        "c6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pets"
+          }
+        },
+        "c7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "home"
+          }
+        },
+        "c8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "food-superfoods"
+          }
+        },
+        "c9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vivid-health"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9"
+      ],
+      "settings": {
+        "title": "Featured Categories",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 8
+      }
+    },
+    "blog": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "The Apothecary",
+        "blog": "health-wellness-hub"
+      }
+    },
+    "tabs": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'homepage-tabs-lite' %}"
+      }
+    },
+    "quiz-cta": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'homepage-quiz-cta' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "brands",
+    "why",
+    "reviews-carousel",
+    "dispensary",
+    "vs",
+    "goals",
+    "diet",
+    "quiz-cta",
+    "cats",
+    "tabs",
+    "consult",
+    "news",
+    "blog",
+    "follow"
+  ]
+}

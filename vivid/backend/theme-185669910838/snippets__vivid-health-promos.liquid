@@ -1,0 +1,43 @@
+{%- comment -%}
+  Vivid Health page — Current Promotions banner
+  Lists the active BOGO/auto-discount products from the Vivid Health range.
+  Each card pulls live price + availability + the apothecary.promo_label metafield.
+{%- endcomment -%}
+
+{%- assign promo_handles = "vivid-health-vivid-body-joint-relief-60-capsules,vivid-health-stay-vivid-griffonia-5-htp-60-capsules,vivid-health-vivid-body-msm-150g,vivid-health-vivid-body-msm-90-capsules,vivid-health-nutrient-health-turmeric-plus-60-capsules" | split: "," -%}
+
+<section class="ol-vivid-promos" style="background:#f7f5f0;padding:48px 20px;">
+  <div style="max-width:1240px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#1b4332;margin:0 0 8px;">Current promotions</p>
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,40px);font-weight:600;color:#1a1a1a;letter-spacing:-.01em;margin:0 0 8px;">Buy 1, Get 1 Free across Vivid</h2>
+      <p style="font-size:15px;line-height:1.5;color:#555;margin:0 auto;max-width:560px;">Every product on this strip auto-applies a free second unit at checkout — no code needed.</p>
+    </div>
+    <div class="ol-vivid-promos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;">
+      {%- for handle in promo_handles -%}
+        {%- assign p = all_products[handle] -%}
+        {%- if p.title != blank and p.url != blank and p.available -%}
+          {%- assign promo_image = p.featured_media.preview_image | default: p.featured_image -%}
+          {%- assign promo_image_url = blank -%}
+          {%- if promo_image -%}
+            {%- assign promo_image_url = promo_image | image_url: width: 320 -%}
+          {%- endif -%}
+          <a href="{{ p.url }}" style="background:#fff;border:1px solid #e8e2d6;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:transform .15s;">
+            <div style="aspect-ratio:1/1;background:#f7f5f0;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+              {%- if promo_image_url != blank -%}
+                <img src="{{ promo_image_url }}" alt="{{ p.title | escape }}" style="width:100%;height:100%;object-fit:contain;" loading="lazy" width="160" height="160">
+              {%- endif -%}
+            </div>
+            <span style="display:inline-block;background:#1b4332;color:#fff;padding:3px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;line-height:1.6;align-self:flex-start;">Buy 1, Get 1 Free</span>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-weight:600;color:#1a1a1a;line-height:1.25;flex:1;">{{ p.title | escape }}</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
+              <span style="font-size:14px;font-weight:600;color:#1a1a1a;">{{ p.price | money }}</span>
+              <span style="font-size:11px;font-weight:600;color:#1b4332;letter-spacing:.5px;text-transform:uppercase;">View &rarr;</span>
+            </div>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <p style="text-align:center;margin:32px auto 0;font-size:13px;color:#888;max-width:560px;">Discounts apply automatically at checkout when two of the same product are added. No promo code needed.</p>
+  </div>
+</section>
