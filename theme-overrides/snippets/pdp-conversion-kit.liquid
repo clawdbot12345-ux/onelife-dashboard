@@ -1,0 +1,12 @@
+{%- comment -%}
+  One Life Health — PDP Conversion Kit (Growth Build 2026-06,
+  slimmed in premium pass 2).
+  This snippet now only injects the review summary above the product
+  title (moves with JS). Its three former cards — free-delivery
+  progress, collect-in-store, WhatsApp consult — moved into the single
+  .ol-assurance panel rendered by snippets/product-trust-strip.liquid
+  (the "trust" block in templates/product.json), Liquid logic intact.
+{%- endcomment -%}
+
+<template id="ol-pdp-rev-tmpl">{% render 'pdp-review-summary', product: product %}</template>
+<script>(function(){var t=document.getElementById('ol-pdp-rev-tmpl');if(!t)return;var c=t.content.cloneNode(true);if(!c.querySelector||!c.querySelector('.ol-pdp-rev'))return;var title=document.querySelector('.product__title');if(!title||title.parentNode.querySelector('#ol-pdp-rev'))return;title.parentNode.insertBefore(c,title);t.remove();})();</script>

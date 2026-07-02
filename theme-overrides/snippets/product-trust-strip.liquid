@@ -1,0 +1,104 @@
+{% doc %}
+  ONE LIFE premium pass 2 — .ol-assurance panel.
+  One bordered panel below the buy buttons that absorbs what used to be
+  four separate cards: the free-delivery progress bar and the collect-in-store
+  and WhatsApp cards (moved here from snippets/pdp-conversion-kit.liquid,
+  Liquid logic intact), the live Dawn pickup-availability component (moved
+  here from snippets/buy-buttons.liquid, which now renders with
+  show_pickup_availability: false), and the service promises.
+  Thin dividers, line icons. Styled by .ol-assurance in assets/onelife-premium.css.
+  The pickup drawer color scheme is pinned to scheme-1, matching the template.
+
+  @example
+  {% render 'product-trust-strip' %}
+{% enddoc %}
+
+{%- assign free_ship_threshold = 40000 -%}
+{%- assign price = product.selected_or_first_available_variant.price -%}
+{%- assign gap = free_ship_threshold | minus: price -%}
+
+<div class="ol-assurance" aria-label="Delivery, collection and service information">
+
+  {%- if price < free_ship_threshold -%}
+    <div class="ol-assurance__row ol-assurance__row--ship">
+      <div class="ol-assurance__ship-line">
+        <span>Add <strong>{{ gap | money }}</strong> more for <strong>free delivery</strong></span>
+        <span class="ol-assurance__ship-goal">Free at R400</span>
+      </div>
+      <div class="ol-assurance__meter">
+        {%- assign pct = price | times: 100 | divided_by: free_ship_threshold -%}
+        <span class="ol-assurance__meter-fill" style="width:{{ pct }}%;"></span>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="ol-assurance__row">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span>This order qualifies for free nationwide delivery</span>
+    </div>
+  {%- endif -%}
+
+  <div class="ol-assurance__row">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <div class="ol-assurance__copy">
+      <span class="ol-assurance__lead">Collect free in store &mdash; often same day</span>
+      <span class="ol-assurance__sub">Centurion &middot; Glen Village &middot; Edenvale. Order online, skip the courier fee.</span>
+    </div>
+  </div>
+
+  {%- if product != blank -%}
+    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+    {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
+      | where: 'pick_up_enabled', true
+    -%}
+    <div class="ol-assurance__row ol-assurance__row--pickup">
+      <pickup-availability
+        class="product__pickup-availabilities quick-add-hidden"
+        {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
+          available
+        {% endif %}
+        data-root-url="{{ routes.root_url }}"
+        data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+        data-has-only-default-variant="{{ product.has_only_default_variant }}"
+        data-product-page-color-scheme="gradient color-scheme-1"
+      >
+        <template>
+          <pickup-availability-preview class="pickup-availability-preview">
+            {% render 'icon-unavailable' %}
+            <div class="pickup-availability-info">
+              <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+              <button class="pickup-availability-button link link--text underlined-link">
+                {{ 'products.product.pickup_availability.refresh' | t }}
+              </button>
+            </div>
+          </pickup-availability-preview>
+        </template>
+      </pickup-availability>
+    </div>
+    <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  <a class="ol-assurance__row ol-assurance__row--link" href="https://wa.me/27713744910?text=Hi%2C%20I%27m%20looking%20at%20{{ product.title | url_encode }}%20on%20your%20site%20%E2%80%94%20is%20it%20right%20for%20me%3F" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+    <div class="ol-assurance__copy">
+      <span class="ol-assurance__lead">Not sure it&rsquo;s right for you? Ask before you buy.</span>
+      <span class="ol-assurance__sub">Free WhatsApp consult &mdash; 30 years behind the counter.</span>
+    </div>
+    <span class="ol-assurance__cta" aria-hidden="true">Chat</span>
+  </a>
+
+  <div class="ol-assurance__row ol-assurance__row--promises">
+    <span class="ol-assurance__promise">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-3-3.87"/><path d="M4 21v-2a4 4 0 0 1 3-3.87"/><circle cx="12" cy="7" r="4"/></svg>
+      Family-owned since 1996
+    </span>
+    <span class="ol-assurance__promise">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Consultant-vetted range
+    </span>
+    <span class="ol-assurance__promise">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      SA stock &ndash; no import wait
+    </span>
+  </div>
+
+</div>

@@ -143,3 +143,228 @@ predictive-search .price {
   .card-wrapper, .button { transition: none; }
   .card-wrapper:hover { transform: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PREMIUM PASS 2 — PDP buy column, disclaimer, assurance panel
+   (2026-07-02). New structure comes from templates/product.json +
+   snippets/ol-pdp-meta.liquid + snippets/product-trust-strip.liquid.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 7. PDP BUY-COLUMN RHYTHM ────────────────────────────────────── */
+
+/* One consistent 12px beat between buy-column elements; no card-in-card. */
+.product__info-container > * { margin-top: 0; margin-bottom: 0; }
+.product__info-container > * + * { margin-top: 12px; }
+.product__info-container > .product__text.caption-with-letter-spacing {
+  color: var(--ol-brass);
+  letter-spacing: 0.14em;
+  margin-bottom: 0;
+}
+.product__info-container > .product__title { margin-top: 4px; }
+.product__info-container .product__title h1,
+.product__info-container .product__title .h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+/* ── 8. PDP META ROW (stock + delivery, one quiet line) ──────────── */
+
+.ol-pdp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--ol-ink);
+}
+.ol-pdp-meta__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ol-pdp-meta__dot--in { background: var(--ol-green); }
+.ol-pdp-meta__dot--low { background: #B45309; }
+.ol-pdp-meta__dot--out { background: #B3261E; }
+.ol-pdp-meta__stock { font-weight: 600; color: var(--ol-green-deep); }
+.ol-pdp-meta__stock--low { color: #92400E; }
+.ol-pdp-meta__stock--out { color: #991B1B; }
+.ol-pdp-meta__sep { color: var(--ol-hairline); }
+.ol-pdp-meta__delivery { color: var(--ol-ink); }
+.ol-pdp-meta__note { color: #8A8577; font-size: 1.2rem; }
+
+/* ── 9. DISCLAIMER — collapsed details, quiet summary row ────────── */
+
+.ol-disclaimer {
+  border: 1px solid var(--ol-hairline);
+  border-radius: 8px;
+  background: transparent;
+}
+.ol-disclaimer summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 1rem 1.4rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ol-green);
+  letter-spacing: 0.02em;
+}
+.ol-disclaimer summary::-webkit-details-marker { display: none; }
+.ol-disclaimer summary::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--ol-green);
+  border-bottom: 1.5px solid var(--ol-green);
+  transform: rotate(-45deg);
+  transition: transform 0.18s ease;
+  flex-shrink: 0;
+}
+.ol-disclaimer[open] summary::before { transform: rotate(45deg); }
+.ol-disclaimer summary:hover { color: var(--ol-green-deep); }
+.ol-disclaimer__body {
+  padding: 0 1.4rem 1.2rem;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--ol-ink);
+}
+/* tag pills + legal copy sit flush inside — no nested box */
+.ol-disclaimer__body .ol-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+.ol-disclaimer__body .ol-tag-disclaimer {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--ol-ink);
+}
+.ol-disclaimer__body .ol-tag-disclaimer a { color: var(--ol-green); }
+
+/* ── 10. ASSURANCE PANEL (pickup + promises + WhatsApp) ──────────── */
+
+.ol-assurance {
+  border: 1px solid var(--ol-hairline);
+  border-radius: 8px;
+  background: var(--ol-cream);
+  overflow: hidden;
+}
+.ol-assurance__row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.1rem 1.4rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ol-ink);
+}
+.ol-assurance__row + .ol-assurance__row {
+  border-top: 1px solid rgba(45, 106, 79, 0.12);
+}
+.ol-assurance__row > svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex: 0 0 1.8rem;
+  stroke: var(--ol-green);
+}
+.ol-assurance__row--link {
+  text-decoration: none;
+  transition: background-color 0.18s ease;
+}
+.ol-assurance__row--link:hover { background: rgba(45, 106, 79, 0.05); }
+.ol-assurance__cta {
+  margin-left: auto;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ol-green);
+}
+/* two-line rows: lead + sub copy */
+.ol-assurance__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+.ol-assurance__lead { font-weight: 600; color: var(--ol-green-deep); }
+.ol-assurance__sub { font-size: 1.2rem; color: #8A8577; font-weight: 400; }
+
+/* free-delivery progress row */
+.ol-assurance__row--ship {
+  display: block;
+}
+.ol-assurance__ship-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+.ol-assurance__ship-line strong { color: var(--ol-green-deep); }
+.ol-assurance__ship-goal {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ol-green);
+  white-space: nowrap;
+}
+.ol-assurance__meter {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(45, 106, 79, 0.14);
+  overflow: hidden;
+}
+.ol-assurance__meter-fill {
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  border-radius: inherit;
+  background: var(--ol-green);
+  transition: width 0.3s ease;
+}
+
+/* pickup availability inherits the row; strip Dawn's own spacing */
+.ol-assurance__row--pickup { padding: 0.4rem 1.4rem; }
+.ol-assurance__row--pickup .product__pickup-availabilities { margin: 0.6rem 0; }
+.ol-assurance__row--pickup:has(pickup-availability:not([available])) { display: none; }
+
+/* service promises: quiet single row inside the panel */
+.ol-assurance__row--promises {
+  flex-wrap: wrap;
+  gap: 0.8rem 1.6rem;
+  background: rgba(237, 231, 218, 0.5);
+}
+.ol-assurance__promise {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ol-ink);
+  white-space: nowrap;
+}
+.ol-assurance__promise svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: 0 0 1.4rem;
+  stroke: var(--ol-green);
+  fill: none;
+}

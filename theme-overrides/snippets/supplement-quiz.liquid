@@ -1,71 +1,80 @@
 <style>
-.olq{min-height:85vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;background:linear-gradient(135deg,rgba(248,250,248,.68),rgba(238,244,238,.64)),url('https://onelife.co.za/cdn/shop/files/onelife-quiz-hero-banner-1440.webp?v=1781252161') center/cover;position:relative;overflow:hidden}
-.olq::before{content:'';position:absolute;top:-20%;right:-15%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,106,79,.06) 0%,transparent 70%);pointer-events:none}
-.olq-prog{width:100%;max-width:600px;margin-bottom:36px;z-index:1;display:none}
-.olq-bar{height:4px;background:rgba(45,106,79,.1);border-radius:4px;overflow:hidden}
-.olq-fill{height:100%;background:linear-gradient(90deg,#2d6a4f,#40916c);border-radius:4px;transition:width .5s cubic-bezier(.25,.46,.45,.94)}
-.olq-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:#999;font-weight:500}
-.olq-meta b{color:#2d6a4f}
-.olq-step{display:none;width:100%;max-width:700px;z-index:1;animation:olqIn .35s ease-out}
+/* ONE LIFE quiz — premium pass 2. Cream canvas card, serif questions,
+   deep-green selection, 200ms step motion. Logic untouched. */
+.olq{--olq-deep:#10261F;--olq-green:#2D6A4F;--olq-cream:#FAF7F0;--olq-stone:#EDE7DA;--olq-brass:#A9853B;--olq-ink:#23302B;--olq-hair:rgba(45,106,79,.22);min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 20px;background:linear-gradient(180deg,rgba(250,247,240,.94),rgba(237,231,218,.92)),url('https://onelife.co.za/cdn/shop/files/onelife-quiz-hero-banner-1440.webp?v=1781252161') center/cover}
+.olq-card{width:100%;max-width:680px;margin:0 auto;background:var(--olq-cream);border:1px solid var(--olq-hair);border-radius:14px;box-shadow:0 18px 48px rgba(16,38,31,.10);padding:48px 44px 44px;display:flex;flex-direction:column;align-items:center}
+.olq-prog{width:100%;max-width:560px;margin-bottom:32px;display:none}
+.olq-bar{height:3px;background:var(--olq-hair);border-radius:3px;overflow:hidden}
+.olq-fill{height:100%;background:var(--olq-green);border-radius:3px;transition:width .3s ease}
+.olq-meta{display:flex;justify-content:space-between;margin-top:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a8577;font-weight:600}
+.olq-meta b{color:var(--olq-green);font-weight:600}
+.olq-step{display:none;width:100%;animation:olqIn .2s ease-out}
 .olq-step.on{display:block}
-@keyframes olqIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.olq-q{text-align:center;margin-bottom:24px}
-.olq-q h2{font-size:clamp(24px,4vw,32px);font-weight:800;color:#1a1a1a!important;letter-spacing:-.03em;line-height:1.2;margin-bottom:6px}
-.olq-q p{font-size:15px;color:#666}
+@keyframes olqIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.olq-q{text-align:center;margin-bottom:26px}
+.olq-q h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(26px,4vw,34px);font-weight:500;color:var(--olq-deep)!important;letter-spacing:0;line-height:1.15;margin-bottom:8px}
+.olq-q p{font-size:14px;color:#6f6a5d}
 .olq-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .olq-opts.c3{grid-template-columns:repeat(3,1fr)}
-.olq-o{background:#fff;border:2px solid #e8ede8;border-radius:16px;padding:22px 16px;text-align:center;cursor:pointer;transition:all .25s cubic-bezier(.25,.46,.45,.94);position:relative}
-.olq-o:hover{border-color:#95d5b2;transform:translateY(-3px);box-shadow:0 12px 32px rgba(45,106,79,.1)}
-.olq-o:focus-visible{outline:3px solid rgba(45,106,79,.35);outline-offset:3px;border-color:#2d6a4f}
-.olq-o.sel{border-color:#2d6a4f;background:linear-gradient(135deg,#f0fdf4,#dcfce7);box-shadow:0 0 0 3px rgba(45,106,79,.12)}
-.olq-o.sel::after{content:'\2713';position:absolute;top:8px;right:10px;width:22px;height:22px;background:#2d6a4f;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
-.olq-oi{font-size:30px;display:block;margin-bottom:8px}
-.olq-ol{font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.3}
-.olq-od{font-size:11px;color:#888;margin-top:3px}
-.olq-nav{display:flex;justify-content:center;gap:12px;margin-top:28px;max-width:700px;width:100%;z-index:1;display:none}
-.olq-btn{padding:14px 36px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .25s;border:none;letter-spacing:.02em;font-family:inherit}
-.olq-back{background:transparent;color:#666;border:2px solid #ddd}
-.olq-back:hover{border-color:#999;color:#333}
-.olq-next{background:linear-gradient(135deg,#1b4332,#2d6a4f);color:#fff;box-shadow:0 4px 16px rgba(27,67,50,.25);flex:1;max-width:280px}
-.olq-next:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,67,50,.3)}
-.olq-next:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none}
-.olq-res{display:none;width:100%;max-width:800px;z-index:1;animation:olqIn .5s ease-out}
+.olq-o{background:#fff;border:1px solid var(--olq-hair);border-radius:10px;padding:20px 14px;text-align:center;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background-color .18s ease,color .18s ease;position:relative}
+.olq-o:hover{border-color:var(--olq-green);transform:translateY(-2px);box-shadow:0 10px 24px rgba(16,38,31,.08)}
+.olq-o:focus-visible{outline:2px solid var(--olq-green);outline-offset:3px}
+.olq-o.sel{background:var(--olq-green);border-color:var(--olq-green);box-shadow:0 10px 24px rgba(16,38,31,.14)}
+.olq-o.sel .olq-ol{color:var(--olq-cream)}
+.olq-o.sel .olq-od{color:rgba(250,247,240,.72)}
+.olq-ol{font-size:14px;font-weight:600;color:var(--olq-ink);line-height:1.3}
+.olq-od{font-size:11px;color:#8a8577;margin-top:3px}
+.olq-nav{display:flex;justify-content:center;gap:12px;margin-top:28px;max-width:560px;width:100%;display:none}
+.olq-btn{padding:14px 32px;border-radius:8px;font-size:13px;font-weight:600;letter-spacing:.04em;cursor:pointer;transition:background-color .18s ease,border-color .18s ease,color .18s ease,transform .12s ease;border:none;font-family:inherit}
+.olq-btn:active{transform:scale(.985)}
+.olq-back{background:transparent;color:var(--olq-green);border:1px solid var(--olq-hair)}
+.olq-back:hover{border-color:var(--olq-green)}
+.olq-next{background:var(--olq-deep);color:var(--olq-cream);flex:1;max-width:280px}
+.olq-next:hover{background:var(--olq-green)}
+.olq-next:disabled{opacity:.35;cursor:not-allowed}
+.olq-res{display:none;width:100%;animation:olqIn .2s ease-out}
 .olq-res.on{display:block}
-.olq-intro{text-align:center;max-width:560px;z-index:1}
-.olq-badge{display:inline-block;background:rgba(45,106,79,.1);color:#2d6a4f;padding:6px 18px;border-radius:24px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
-.olq-intro h1{font-size:clamp(28px,5vw,40px);font-weight:800;color:#1a1a1a!important;letter-spacing:-.03em;line-height:1.15;margin-bottom:14px;text-shadow:0 1px 10px rgba(255,255,255,.82)}
-.olq-intro p{font-size:16px;color:#4f4f4f;line-height:1.7;margin-bottom:28px;text-shadow:0 1px 8px rgba(255,255,255,.74)}
-.olq-go{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1b4332,#2d6a4f);color:#fff;padding:16px 40px;border-radius:14px;font-size:16px;font-weight:700;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(27,67,50,.25);transition:all .25s;letter-spacing:.02em;font-family:inherit}
-.olq-go:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(27,67,50,.35)}
-.olq-trust{display:flex;gap:24px;margin-top:24px;justify-content:center;flex-wrap:wrap}
-.olq-trust span{font-size:12px;color:#999;display:flex;align-items:center;gap:6px}
-.olq-trust svg{width:14px;height:14px;stroke:#2d6a4f;fill:none;stroke-width:2}
-.olq-pc{background:#fff;border:1px solid #e8ede8;border-radius:14px;padding:14px;display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:all .2s}
-.olq-pc:hover{border-color:#95d5b2;box-shadow:0 6px 20px rgba(0,0,0,.05)}
-.olq-pc img{width:72px;height:72px;object-fit:contain;border-radius:10px;background:#f8f8f8;flex-shrink:0}
+.olq-res h2{font-family:"Cormorant Garamond",Georgia,serif!important;font-weight:500!important;letter-spacing:0!important;color:var(--olq-deep)!important}
+.olq-intro{text-align:center;max-width:520px}
+.olq-badge{display:inline-block;background:transparent;color:var(--olq-brass);border:1px solid rgba(169,133,59,.4);padding:5px 16px;border-radius:999px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;margin-bottom:18px}
+.olq-intro h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(30px,5vw,42px);font-weight:500;color:var(--olq-deep)!important;letter-spacing:0;line-height:1.1;margin-bottom:14px}
+.olq-intro p{font-size:15px;color:#5d5a4f;line-height:1.7;margin-bottom:28px}
+.olq-intro p strong{color:var(--olq-green)}
+.olq-go{display:inline-flex;align-items:center;gap:8px;background:var(--olq-deep);color:var(--olq-cream);padding:16px 36px;border-radius:8px;font-size:15px;font-weight:600;border:none;cursor:pointer;transition:background-color .18s ease,transform .12s ease;letter-spacing:.03em;font-family:inherit}
+.olq-go:hover{background:var(--olq-green)}
+.olq-go:active{transform:scale(.985)}
+.olq-trust{display:flex;gap:22px;margin-top:22px;justify-content:center;flex-wrap:wrap}
+.olq-trust span{font-size:12px;color:#8a8577;display:flex;align-items:center;gap:6px}
+.olq-trust svg{width:14px;height:14px;stroke:var(--olq-green);fill:none;stroke-width:2}
+.olq-pc{background:#fff;border:1px solid var(--olq-hair);border-radius:10px;padding:14px;display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:border-color .18s ease,box-shadow .18s ease}
+.olq-pc:hover{border-color:var(--olq-green);box-shadow:0 8px 20px rgba(16,38,31,.06)}
+.olq-pc img{width:72px;height:72px;object-fit:contain;border-radius:8px;background:var(--olq-cream);flex-shrink:0}
 .olq-pc-info{flex:1;min-width:0}
-.olq-pc-v{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#2d6a4f}
-.olq-pc-t{font-size:13px;font-weight:700;color:#1a1a1a;margin:2px 0;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.olq-pc-p{font-size:15px;font-weight:800;color:#1b4332}
-.olq-pc-btn{background:linear-gradient(135deg,#1b4332,#2d6a4f);color:#fff;padding:10px 16px;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all .2s;display:inline-block;border:none;cursor:pointer;font-family:inherit}
-.olq-pc-btn:hover{transform:translateY(-1px);color:#fff}
-.olq-pc-view{font-size:11px;color:#2d6a4f;text-decoration:none;text-align:center;font-weight:600;display:block;margin-top:4px}
-.olq-add-all{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px;border-radius:14px;background:linear-gradient(135deg,#1b4332,#2d6a4f);color:#fff;font-size:16px;font-weight:800;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(27,67,50,.3);transition:all .25s;letter-spacing:.03em;margin-top:8px;margin-bottom:16px;text-transform:uppercase;font-family:inherit}
-.olq-add-all:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(27,67,50,.4)}
-.olq-add-all:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.olq-add-all svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
-.olq-disc{text-align:center;font-size:11px;color:#999;margin-top:16px;line-height:1.5;max-width:500px;margin-left:auto;margin-right:auto}
-.olq-grp{margin-bottom:28px}
-.olq-grp h3{font-size:15px;font-weight:800;color:#1b4332!important;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.olq-grp h3::before{content:'';width:6px;height:6px;border-radius:50%;background:#2d6a4f;flex-shrink:0}
-.olq-wa{text-align:center;margin-top:20px;padding:28px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:16px;border:1px solid #bbf7d0}
-.olq-wa p{font-size:15px;color:#333;margin-bottom:14px;line-height:1.5}
-.olq-wa strong{color:#1b4332}
-.olq-wa a{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
-.olq-wa a:hover{background:#1fb855;color:#fff}
-@media(max-width:640px){.olq{padding:24px 16px;min-height:70vh}.olq-opts{grid-template-columns:1fr 1fr;gap:10px}.olq-opts.c3{grid-template-columns:1fr 1fr}.olq-o{padding:16px 12px;border-radius:12px}.olq-oi{font-size:24px}.olq-pc{flex-direction:column;text-align:center;gap:10px}.olq-pc-btn{width:100%;text-align:center;padding:10px}.olq-nav{flex-direction:column}.olq-next{max-width:100%}}
+.olq-pc-v{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--olq-brass)}
+.olq-pc-t{font-size:13px;font-weight:600;color:var(--olq-ink);margin:2px 0;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.olq-pc-p{font-size:15px;font-weight:700;color:var(--olq-deep)}
+.olq-pc-btn{background:var(--olq-deep);color:var(--olq-cream);padding:10px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background-color .18s ease;display:inline-block;border:none;cursor:pointer;font-family:inherit}
+.olq-pc-btn:hover{background:var(--olq-green);color:var(--olq-cream)}
+.olq-pc-view{font-size:11px;color:var(--olq-green);text-decoration:none;text-align:center;font-weight:600;display:block;margin-top:4px}
+.olq-add-all{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px;border-radius:8px;background:var(--olq-deep);color:var(--olq-cream);font-size:14px;font-weight:600;border:none;cursor:pointer;transition:background-color .18s ease,transform .12s ease;letter-spacing:.06em;margin-top:8px;margin-bottom:16px;text-transform:uppercase;font-family:inherit}
+.olq-add-all:hover{background:var(--olq-green)}
+.olq-add-all:active{transform:scale(.985)}
+.olq-add-all:disabled{opacity:.5;cursor:not-allowed}
+.olq-add-all svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+.olq-disc{text-align:center;font-size:11px;color:#8a8577;margin-top:16px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
+.olq-grp{margin-bottom:26px}
+.olq-grp h3{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--olq-green)!important;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.olq-grp h3::after{content:'';flex:1;height:1px;background:var(--olq-hair)}
+.olq-wa{text-align:center;margin-top:20px;padding:24px;background:var(--olq-stone);border-radius:10px;border:1px solid var(--olq-hair)}
+.olq-wa p{font-size:14px;color:var(--olq-ink);margin-bottom:14px;line-height:1.5}
+.olq-wa strong{color:var(--olq-deep)}
+.olq-wa a{display:inline-flex;align-items:center;gap:8px;background:var(--olq-deep);color:var(--olq-cream);padding:12px 24px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background-color .18s ease}
+.olq-wa a:hover{background:var(--olq-green);color:var(--olq-cream)}
+@media (prefers-reduced-motion: reduce){.olq-step,.olq-res{animation:none}.olq-o,.olq-o:hover{transform:none}}
+@media(max-width:640px){.olq{padding:28px 12px;min-height:70vh}.olq-card{padding:32px 20px 28px;border-radius:12px}.olq-opts{grid-template-columns:1fr 1fr;gap:10px}.olq-opts.c3{grid-template-columns:1fr 1fr}.olq-o{padding:16px 10px}.olq-pc{flex-direction:column;text-align:center;gap:10px}.olq-pc-btn{width:100%;text-align:center;padding:10px}.olq-nav{flex-direction:column}.olq-next{max-width:100%}}
 </style>
 <div class="olq" id="olq">
+<div class="olq-card">
 <div class="olq-intro" id="olq-intro">
 <div class="olq-badge">Personalised For You</div>
 <h1>Find Your Perfect<br> Supplement Stack</h1>
@@ -78,12 +87,13 @@
 </div>
 </div>
 <div class="olq-prog" id="olq-prog"><div class="olq-bar"><div class="olq-fill" id="olq-fill" style="width:25%"></div></div><div class="olq-meta"><b id="olq-st">Step 1 of 4</b><span id="olq-pct">25%</span></div></div>
-<div class="olq-step" id="olq-s1" data-step="1"><div class="olq-q"><h2>What's your #1 health goal?</h2><p>Pick the one that matters most right now.</p></div><div class="olq-opts"><div class="olq-o" data-v="immunity"><span class="olq-oi"></span><div class="olq-ol">Immunity</div><div class="olq-od">Fight colds & stay resilient</div></div><div class="olq-o" data-v="energy"><span class="olq-oi"></span><div class="olq-ol">Energy & Vitality</div><div class="olq-od">Beat fatigue, feel alive</div></div><div class="olq-o" data-v="gut"><span class="olq-oi"></span><div class="olq-ol">Gut Health</div><div class="olq-od">Digestion & microbiome</div></div><div class="olq-o" data-v="stress"><span class="olq-oi"></span><div class="olq-ol">Stress & Mood</div><div class="olq-od">Calm, focus & clarity</div></div><div class="olq-o" data-v="sleep"><span class="olq-oi"></span><div class="olq-ol">Sleep</div><div class="olq-od">Fall asleep & stay asleep</div></div><div class="olq-o" data-v="joints"><span class="olq-oi"></span><div class="olq-ol">Joints & Mobility</div><div class="olq-od">Reduce stiffness & pain</div></div><div class="olq-o" data-v="beauty"><span class="olq-oi"></span><div class="olq-ol">Skin, Hair & Nails</div><div class="olq-od">Glow from the inside out</div></div><div class="olq-o" data-v="weight"><span class="olq-oi"></span><div class="olq-ol">Weight Management</div><div class="olq-od">Metabolism & healthy weight</div></div></div></div>
-<div class="olq-step" id="olq-s2" data-step="2"><div class="olq-q"><h2>Any secondary concerns?</h2><p>Select one more area you'd like to support.</p></div><div class="olq-opts"><div class="olq-o" data-v="heart"><span class="olq-oi"></span><div class="olq-ol">Heart Health</div></div><div class="olq-o" data-v="detox"><span class="olq-oi"></span><div class="olq-ol">Detox & Liver</div></div><div class="olq-o" data-v="sport"><span class="olq-oi"></span><div class="olq-ol">Sports & Fitness</div></div><div class="olq-o" data-v="brain"><span class="olq-oi"></span><div class="olq-ol">Brain & Focus</div></div><div class="olq-o" data-v="hormones"><span class="olq-oi"></span><div class="olq-ol">Hormonal Balance</div></div><div class="olq-o" data-v="none"><span class="olq-oi"></span><div class="olq-ol">Just the main goal</div></div></div></div>
-<div class="olq-step" id="olq-s3" data-step="3"><div class="olq-q"><h2>Tell us about yourself</h2><p>This helps us fine-tune your recommendations.</p></div><div class="olq-opts c3"><div class="olq-o" data-v="woman-u40"><span class="olq-oi"></span><div class="olq-ol">Woman</div><div class="olq-od">Under 40</div></div><div class="olq-o" data-v="woman-o40"><span class="olq-oi">‍</span><div class="olq-ol">Woman</div><div class="olq-od">40+</div></div><div class="olq-o" data-v="man-u40"><span class="olq-oi"></span><div class="olq-ol">Man</div><div class="olq-od">Under 40</div></div><div class="olq-o" data-v="man-o40"><span class="olq-oi">‍</span><div class="olq-ol">Man</div><div class="olq-od">40+</div></div><div class="olq-o" data-v="teen"><span class="olq-oi"></span><div class="olq-ol">Teen</div><div class="olq-od">13–19</div></div><div class="olq-o" data-v="senior"><span class="olq-oi"></span><div class="olq-ol">Senior</div><div class="olq-od">60+</div></div></div></div>
-<div class="olq-step" id="olq-s4" data-step="4"><div class="olq-q"><h2>Any dietary preferences?</h2><p>We'll prioritise products that match your lifestyle.</p></div><div class="olq-opts"><div class="olq-o" data-v="any"><span class="olq-oi"></span><div class="olq-ol">No preference</div></div><div class="olq-o" data-v="vegan"><span class="olq-oi"></span><div class="olq-ol">Vegan</div></div><div class="olq-o" data-v="gf"><span class="olq-oi"></span><div class="olq-ol">Gluten Free</div></div><div class="olq-o" data-v="df"><span class="olq-oi"></span><div class="olq-ol">Dairy Free</div></div><div class="olq-o" data-v="sf"><span class="olq-oi"></span><div class="olq-ol">Sugar Free</div></div><div class="olq-o" data-v="sa"><span class="olq-oi">🇿🇦</span><div class="olq-ol">SA Made</div></div></div></div>
+<div class="olq-step" id="olq-s1" data-step="1"><div class="olq-q"><h2>What's your #1 health goal?</h2><p>Pick the one that matters most right now.</p></div><div class="olq-opts"><div class="olq-o" data-v="immunity"><div class="olq-ol">Immunity</div><div class="olq-od">Fight colds & stay resilient</div></div><div class="olq-o" data-v="energy"><div class="olq-ol">Energy & Vitality</div><div class="olq-od">Beat fatigue, feel alive</div></div><div class="olq-o" data-v="gut"><div class="olq-ol">Gut Health</div><div class="olq-od">Digestion & microbiome</div></div><div class="olq-o" data-v="stress"><div class="olq-ol">Stress & Mood</div><div class="olq-od">Calm, focus & clarity</div></div><div class="olq-o" data-v="sleep"><div class="olq-ol">Sleep</div><div class="olq-od">Fall asleep & stay asleep</div></div><div class="olq-o" data-v="joints"><div class="olq-ol">Joints & Mobility</div><div class="olq-od">Reduce stiffness & pain</div></div><div class="olq-o" data-v="beauty"><div class="olq-ol">Skin, Hair & Nails</div><div class="olq-od">Glow from the inside out</div></div><div class="olq-o" data-v="weight"><div class="olq-ol">Weight Management</div><div class="olq-od">Metabolism & healthy weight</div></div></div></div>
+<div class="olq-step" id="olq-s2" data-step="2"><div class="olq-q"><h2>Any secondary concerns?</h2><p>Select one more area you'd like to support.</p></div><div class="olq-opts"><div class="olq-o" data-v="heart"><div class="olq-ol">Heart Health</div></div><div class="olq-o" data-v="detox"><div class="olq-ol">Detox & Liver</div></div><div class="olq-o" data-v="sport"><div class="olq-ol">Sports & Fitness</div></div><div class="olq-o" data-v="brain"><div class="olq-ol">Brain & Focus</div></div><div class="olq-o" data-v="hormones"><div class="olq-ol">Hormonal Balance</div></div><div class="olq-o" data-v="none"><div class="olq-ol">Just the main goal</div></div></div></div>
+<div class="olq-step" id="olq-s3" data-step="3"><div class="olq-q"><h2>Tell us about yourself</h2><p>This helps us fine-tune your recommendations.</p></div><div class="olq-opts c3"><div class="olq-o" data-v="woman-u40"><div class="olq-ol">Woman</div><div class="olq-od">Under 40</div></div><div class="olq-o" data-v="woman-o40"><div class="olq-ol">Woman</div><div class="olq-od">40+</div></div><div class="olq-o" data-v="man-u40"><div class="olq-ol">Man</div><div class="olq-od">Under 40</div></div><div class="olq-o" data-v="man-o40"><div class="olq-ol">Man</div><div class="olq-od">40+</div></div><div class="olq-o" data-v="teen"><div class="olq-ol">Teen</div><div class="olq-od">13–19</div></div><div class="olq-o" data-v="senior"><div class="olq-ol">Senior</div><div class="olq-od">60+</div></div></div></div>
+<div class="olq-step" id="olq-s4" data-step="4"><div class="olq-q"><h2>Any dietary preferences?</h2><p>We'll prioritise products that match your lifestyle.</p></div><div class="olq-opts"><div class="olq-o" data-v="any"><div class="olq-ol">No preference</div></div><div class="olq-o" data-v="vegan"><div class="olq-ol">Vegan</div></div><div class="olq-o" data-v="gf"><div class="olq-ol">Gluten Free</div></div><div class="olq-o" data-v="df"><div class="olq-ol">Dairy Free</div></div><div class="olq-o" data-v="sf"><div class="olq-ol">Sugar Free</div></div><div class="olq-o" data-v="sa"><div class="olq-ol">SA Made</div></div></div></div>
 <div class="olq-nav" id="olq-nav"><button class="olq-btn olq-back" id="olq-back">Back</button><button class="olq-btn olq-next" id="olq-next" disabled>Continue</button></div>
 <div class="olq-res" id="olq-res"></div>
+</div>
 </div>
 <script>
 (function(){
