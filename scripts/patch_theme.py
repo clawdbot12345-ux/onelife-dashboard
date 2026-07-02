@@ -133,14 +133,15 @@ def list_files(theme_id):
 
 
 def copy_batch(filenames):
-    files = [{"srcFilename": f, "dstFilename": f} for f in filenames]
+    files = [{"srcFileName": f, "dstFileName": f, "srcThemeId": LIVE}
+             for f in filenames]
     data = gql("""
-      mutation($theme: ID!, $src: ID!, $files: [ThemeFilesCopyFileInput!]!) {
-        themeFilesCopy(themeId: $theme, sourceThemeId: $src, files: $files) {
+      mutation($theme: ID!, $files: [ThemeFilesCopyFileInput!]!) {
+        themeFilesCopy(themeId: $theme, files: $files) {
           copiedThemeFiles { filename }
           userErrors { field message }
         }
-      }""", {"theme": SCRATCH, "src": LIVE, "files": files})
+      }""", {"theme": SCRATCH, "files": files})
     if not data:
         return 0, ["request failed"]
     payload = data["themeFilesCopy"]
