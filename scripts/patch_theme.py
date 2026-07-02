@@ -23,10 +23,12 @@ import urllib.request
 TOKEN = os.environ.get("SHOPIFY_ADMIN_TOKEN")
 STORE = os.environ.get("SHOPIFY_STORE", "onelifehealth").replace(".myshopify.com", "")
 API = "2025-01"
-MAIN = "gid://shopify/OnlineStoreTheme/186060964150"
-SCRATCH = "gid://shopify/OnlineStoreTheme/185669910838"
+THEME_POOL = {"gid://shopify/OnlineStoreTheme/186060964150",
+              "gid://shopify/OnlineStoreTheme/185669910838"}
+MAIN = None      # resolved at runtime — publishes keep flipping the roles
+SCRATCH = None
 MODE = os.environ.get("MODE", "patch")
-NEW_NAME = "PREMIUM PASS 1 — 2026-07-02 (publish me)"
+NEW_NAME = os.environ.get("NEW_NAME", "PREMIUM PASS 2 — (publish me)")
 DUMP_DIR = "reports/theme-src"
 OVERRIDES_DIR = "theme-overrides"
 
@@ -210,5 +212,25 @@ def mode_patch():
     print(f"✓ THEME READY: '{NEW_NAME}'")
 
 
+def resolve_roles():
+    global MAIN, SCRATCH
+    data = gql("query { themes(first: 5, roles: [MAIN]) { nodes { id name } } }")
+    nodes = (((data or {}).get("themes") or {}).get("nodes")) or []
+    if not nodes:
+        print("✗ cannot resolve MAIN theme", file=sys.stderr)
+        sys.exit(1)
+    MAIN = nodes[0]["id"]
+    others = THEME_POOL - {MAIN}
+    if MAIN in THEME_POOL and others:
+        SCRATCH = next(iter(others))
+    else:
+        print(f"✗ MAIN {MAIN} not in known pool — refusing to guess a scratch",
+              file=sys.stderr)
+        sys.exit(1)
+    print(f"roles: MAIN={MAIN} ('{nodes[0]['name']}') SCRATCH={SCRATCH}",
+          file=sys.stderr)
+
+
 if __name__ == "__main__":
+    resolve_roles()
     (mode_dump if MODE == "dump" else mode_patch)()
