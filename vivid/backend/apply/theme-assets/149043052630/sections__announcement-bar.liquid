@@ -1,0 +1,54 @@
+{%- comment -%}
+  Announcement bar — dot-separated messages, forest-deep background.
+{%- endcomment -%}
+
+{%- liquid
+  assign has_announcement = false
+  for block in section.blocks
+    if block.settings.text != blank
+      assign has_announcement = true
+    endif
+  endfor
+-%}
+
+{%- if has_announcement -%}
+  <div class="announce">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.text != blank -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- else -%}
+  <div class="announce">
+    <span>Free delivery over R400</span>
+    <span>30-day money-back guarantee</span>
+    <span>SA-made &middot; exact doses on every label</span>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Message", "default": "Free delivery on orders over R400" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "blocks": [
+        { "type": "message", "settings": { "text": "Free delivery on orders over R400" } },
+        { "type": "message", "settings": { "text": "Made in South Africa" } },
+        { "type": "message", "settings": { "text": "Third-party lab tested" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

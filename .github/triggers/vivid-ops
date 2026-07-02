@@ -1,1 +1,1 @@
-{"mode": "pull", "store": "hgywg0-w7", "target_theme_id": 149043052630, "extra_assets": ["assets/theme.js", "assets/theme.css", "templates/robots.txt.liquid", "snippets/floating-contact.liquid", "snippets/mobile-nav.liquid", "sections/main-page.liquid", "sections/editorial.liquid", "sections/main-404.liquid", "templates/404.json", "sections/category-grid.liquid", "sections/conversion-rail.liquid", "sections/featured-products.liquid", "templates/page.about.json", "sections/main-credentials.liquid"]}
+{"mode": "apply", "store": "hgywg0-w7", "nonce": "polish-143729"}
