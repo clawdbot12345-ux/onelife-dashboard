@@ -32,13 +32,59 @@ import urllib.parse
 import urllib.request
 
 API = "2025-01"
-STORE = os.environ.get("SHOPIFY_STORE", "onelifehealth").replace(".myshopify.com", "")
-TOKEN = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or "").strip()
-BASE = f"https://{STORE}.myshopify.com"
 OUT = "vivid/backend"
 
+def _cfg():
+    trig = ".github/triggers/vivid-ops"
+    if os.path.exists(trig):
+        try:
+            return json.loads(open(trig).read())
+        except Exception:
+            return {}
+    return {}
+
+CFG = _cfg()
+STORE = (CFG.get("store") or os.environ.get("VIVID_STORE") or
+         os.environ.get("SHOPIFY_STORE", "onelifehealth")).replace(".myshopify.com", "").strip()
+BASE = f"https://{STORE}.myshopify.com"
+
+
+def _client_credentials(cid, csec):
+    body = urllib.parse.urlencode({
+        "grant_type": "client_credentials", "client_id": cid, "client_secret": csec,
+    }).encode()
+    req = urllib.request.Request(
+        f"{BASE}/admin/oauth/access_token", data=body,
+        headers={"Content-Type": "application/x-www-form-urlencoded"}, method="POST")
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.loads(r.read())["access_token"]
+
+
+def _resolve_token():
+    """Per-store credentials. For the dedicated Vivid store, VIVID_* wins;
+    never fall back to the One Life token for a non-onelife store."""
+    is_onelife = STORE == "onelifehealth"
+    direct = [os.environ.get("VIVID_ADMIN_TOKEN")]
+    if is_onelife:
+        direct.append(os.environ.get("SHOPIFY_ADMIN_TOKEN"))
+    for t in direct:
+        if t and t.strip():
+            return t.strip()
+    pairs = [(os.environ.get("VIVID_CLIENT_ID"), os.environ.get("VIVID_CLIENT_SECRET"))]
+    if is_onelife:
+        pairs.append((os.environ.get("SHOPIFY_CLIENT_ID"), os.environ.get("SHOPIFY_CLIENT_SECRET")))
+    for cid, csec in pairs:
+        if cid and csec:
+            try:
+                return _client_credentials(cid.strip(), csec.strip())
+            except Exception as e:  # noqa: BLE001
+                print(f"client_credentials failed for {cid[:8]}…: {e}", file=sys.stderr)
+    return None
+
+
+TOKEN = _resolve_token()
 if not TOKEN:
-    print("ERROR: SHOPIFY_ADMIN_TOKEN required", file=sys.stderr)
+    print(f"ERROR: no working credentials for store {STORE}", file=sys.stderr)
     sys.exit(1)
 
 HDRS = {"X-Shopify-Access-Token": TOKEN, "Accept": "application/json",
@@ -225,14 +271,9 @@ def do_apply(cfg):
 
 
 def main():
-    cfg = {}
-    trig = ".github/triggers/vivid-ops"
-    if os.path.exists(trig):
-        try:
-            cfg = json.loads(open(trig).read())
-        except Exception:
-            cfg = {}
+    cfg = CFG
     mode = cfg.get("mode", "pull")
+    print(f"store={STORE}")
     print(f"mode={mode} cfg={ {k: v for k, v in cfg.items() if k != 'mode'} }")
     if mode == "pull":
         do_pull(cfg)
