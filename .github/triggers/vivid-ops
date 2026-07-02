@@ -1,1 +1,1 @@
-{"mode": "pull", "target_theme_id": 185669910838, "extra_assets": ["templates/collection.json", "templates/product.json", "templates/index.json", "config/settings_data.json", "sections/header.liquid", "layout/theme.liquid"]}
+{"mode": "apply"}
