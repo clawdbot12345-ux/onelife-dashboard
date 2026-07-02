@@ -1,5 +1,1 @@
-{"mode": "media_remediate", "store": "hgywg0-w7", "stack_media": {
-  "comrades-recovery-stack": ["https://hgywg0-w7.myshopify.com/cdn/shop/t/6/assets/stack-comrades-recovery-hero.jpg"],
-  "highveld-hayfever-stack": ["https://hgywg0-w7.myshopify.com/cdn/shop/t/6/assets/stack-highveld-hayfever-hero.jpg"],
-  "perimenopause-essentials": ["https://hgywg0-w7.myshopify.com/cdn/shop/t/6/assets/stack-perimenopause-essentials-hero.jpg"]
-}}
+{"mode": "apply", "store": "hgywg0-w7", "nonce": "stack-copy-190213"}
