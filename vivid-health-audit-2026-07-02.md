@@ -25,7 +25,16 @@ Live titles follow `VIVID HEALTH - <RANGE> - <Product> <size>`, where `<RANGE>` 
 For a health brand asking for trust, label-grade typos are the single fastest premium-killer.
 
 ### C3. No reviews, no subscriptions, no bundle logic beyond 3 static stacks
-Consistent with the sitewide audit (`site-audit-2026-07-01.md` H2/H3): Judge.me idle, zero selling plans. The three Vivid stacks that exist (Rest & Focus R663, Bone & Joint R929, Allergy R654) prove the concept but have no tiered discount, no subscribe option, no consultant signature visible at card level.
+Consistent with the sitewide audit (`site-audit-2026-07-01.md` H2/H3): Judge.me is installed and fully themed (#1B4332 stars) yet shows **0 reviews on all 55 SKUs**; zero selling plans. The three Vivid bundle products (Rest & Focus R663, Bone & Joint R929, Allergy R654) prove the concept but have no tiered discount, no subscribe option, no consultant signature at card level.
+
+### C4. Ghost SKU inside the flagship "Immunity Shield" stack
+The curated Immunity Shield stack on `/collections/vivid-health` line-items "Advanced Buffered C 90 Capsules" (R205, variant 45763225059638) — **that product's URL returns 404 and it's absent from the live catalog**. The stack's add-to-cart references an orphaned variant. Fix or pull the stack today.
+
+### C5. Wrong copy on live PDPs
+The **CoQ10 product page carries an entire probiotic description** ("multi-strain probiotic formula delivering… CFUs", "Your Gut Runs the Show") with the CoQ10 title mail-merged in; MSM 90 carries generic filler. Bespoke copy elsewhere (Sage, Maca, Turmeric, 5-HTP, Buffered C) is genuinely good — but every one of the 55 PDPs needs a correctness pass.
+
+### C6. Prices contradict themselves in three places
+(1) Bundle artwork has old prices baked into the images — Rest & Focus artwork says "R587.67 — SAVE R65" while the live price is R663.00 (Allergy: image R594.72 vs live R654; Bone & Joint: R742.66 vs R929). (2) The landing page renders its 52-product grid from a **hard-coded inline JS payload whose prices drift from live variant prices** (Buffered C R428.49 vs R428.00, CoQ10 R340.40 vs R340.00, Flexijoint R625.60 vs R625.00…). (3) Odd-cent prices (R136.85, R170.77, R179.86, R263.92, R301.88) read as percentage-repricing artifacts.
 
 ## 2. HIGH
 
@@ -60,10 +69,48 @@ The repo carries a professional dark-slate botanical hero series (`vivid/assets/
 5. **The economics** — house brand, SA-made (MJ Labs/SA-Labs per the growth playbook, 25–30pts higher margin), nobody can price-compare it, wholesale expansion path documented.
 6. **Distribution head start** — 65k-profile Klaviyo list, 3 stores, WhatsApp consultant culture, existing R400 free-delivery promise.
 
-## 5. Visual audit of live surfaces (Playwright, 2026-07-02)
+## 5. Visual audit of live surfaces (Playwright, 2026-07-02, desktop 1440×900 + mobile 390×844)
 
-*(Detailed findings from the live browse of `/collections/vivid-health`, the `?view=vivid-guide` variant, `/collections/brand-vivid-health`, `/pages/vivid-health-story`, three PDPs and site search are appended below when the audit run completes; screenshots archived in the session scratchpad.)*
+**Overall premium feel: 6/10 on the custom Vivid pages, 4/10 on stock Dawn pages** — copy 8/10, product imagery 3/10.
 
-## 6. Verdict
+### Brand tokens in production
+- **Colours:** deep forest `#1B4332` (Vivid primary, stack CTAs, Judge.me theme) · theme green `#2D6A4F` · mints `#B7E4C7`/`#D8F3DC` (tile icons) · WhatsApp CTA `#35D477` · cream `#FAF7F0` bg with warm variants (#F8F4EA, #EEE5D7) · gold contrast `rgb(218,196,144)`.
+- **Type:** Cabin (body AND headings via Dawn), Cormorant Garamond (story hero, BOGO strip serif), **Inter loaded on every page but barely used** — three font families is a sloppy font budget. Buttons are 0px-radius.
 
-The brand assets (label system, renders, hero art, consultant story, margins) are **stronger than the data and commerce layer that carries them**. Nothing about the current presentation would survive contact with a Ritual/Wild-Nutrition-calibre shopper: broken taxonomy, typos, one photo per product, no reviews, no subscription, no transparency story. But every one of those gaps is fixable with content, metafields and ~$130/mo of apps — the redesign blueprint sequences it. **Do not launch the draft store until §1 (C1–C2) is fixed in the catalog** — renaming after launch burns SEO and label reprints.
+### Per-page findings
+- **`/collections/vivid-health`** (custom landing; desktop 8,083px / **mobile 18,091px ≈ 21 screens** — improved from the ~30,000px of June but still a scroll marathon; **6.5/10**). Hero with "PROUDLY SOUTH AFRICAN · EST. 2011" + 4 glass stat tiles (15 Years / 55+ Products / SA Made / Expert Stack Advice); 4 why-tiles using **emoji as brand iconography** (🇿🇦🧪🌱💰); **6 curated stacks** with 10%-off math (Gut Reset R359, Immunity Shield R561 ⚠ ghost SKU, Calm & Sleep R597, Joint R734, Women's R518, Energy R893); 52-product grid **rendered client-side from an inline JS payload** (the price-drift source; last ~12 cards lazy-load blank under slow conditions); WhatsApp consult band; BOGO strip (5 SKUs, "auto-applies at checkout"). `?view=vivid-guide` renders **byte-identical** — dead URL.
+- **`/collections/brand-vivid-health`** (stock Dawn; 4/10): plain "Brand - VIVID HEALTH" H1, 55 products paginated ×3, sorted A–Z so bundles + GUT HEALTH lead instead of best sellers. **Two competing Vivid landing experiences coexist** (52 vs 55 products) — collapse to one.
+- **`/pages/vivid-health-story`** (7/10 — the strongest asset): serif hero "the supplements our consultants use themselves"; 4 what-sets-Vivid-apart tiles (clinical doses declared in mg / SA-made GMP / honestly priced / consultant-formulated); **3 marketed ranges (Vivid Immune / Vivid Body / Stay Vivid) that the 8-prefix catalog doesn't match**; "How we make Vivid" evidence-led band; CTA band with a **discount-code mismatch** (headline "save another 10%" but the 3+-item code STACK5 gives 5%; 10% needs STACK10 at 5+ items).
+- **PDPs** (5/10; desktop 5,223–7,786px, mobile 8,139–9,741px, no accordions): only **2 near-identical 16:9 label renders** per product served at 1200×675 with the bottle ~25% of frame; empty Judge.me stars + "No reviews" under every title; no VAT wording; good trust rail (per-store stock, same-day cutoff, R400 progress bar, WhatsApp consult, 4 trust chips); **no cross-sells, no related products, no subscription markup at all**; tag-driven breadcrumbs misfile products (Buffered C under Home › Beauty › Skin). Old kraft-pouch packshots still live on Cayenne/Spirulina/Epsom next to the new white tubs — two packaging generations side by side.
+- **Search "vivid"**: 113 results across 5 pages bury the 55-product range; unstyled grey "Page" cards mixed in; every card shouts `VIVID HEALTH - …`; no stars anywhere.
+
+### Bundle mechanics — four overlapping systems, no hierarchy
+(1) six landing-page curated stacks at 10% off; (2) three real bundle products; (3) codes STACK5/STACK10/DISPENSARY10; (4) an automatic BOGO on ~5 SKUs — plus the newsletter's 10% first-order code. Powerful ingredients, uncoordinated offer architecture.
+
+### Measured page heights (CSS px)
+| Page | Desktop | Mobile |
+|---|---|---|
+| /collections/vivid-health (+identical ?view=vivid-guide) | 8,083 | **18,091** |
+| /collections/brand-vivid-health | 4,809 | 7,644 |
+| /pages/vivid-health-story | 3,208 | 5,369 |
+| /search?q=vivid | 4,450 | 6,731 |
+| PDPs (Buffered C / Immune+ / CoQ10 / 5-HTP / bundle) | 5,223–7,786 | 8,139–9,741 |
+
+*20 full-page screenshots + crops + extracted JSON archived in the session scratchpad (`vivid-audit/`).*
+
+### vividhealth.co.za detail
+The exact-match domain is the practice of **Vivienne Pietersen (DipNutMed)** — Live Blood Analysis, Magnetic Resonance Analysis, ultrasound therapy, distance Rife frequency therapy, "Intervene Herbal" medicines, positioned around healing chronic conditions and cancers. Beyond the domain being unavailable, there is **brand-adjacency risk**: searches for "Vivid Health South Africa" surface a practice making claims a SAHPRA-conscious supplement brand must never be associated with. Factor this into the domain/name decision.
+
+## 6. Same-day fixes on the LIVE site (independent of the new store)
+
+1. Pull or repair the **Immunity Shield stack** (ghost SKU, C4).
+2. Replace the **CoQ10 probiotic description** (C5) and audit MSM 90.
+3. Re-export the three **bundle images without baked-in prices** (C6).
+4. Fix **`NUTRITENT HEALTH`**, **`Colest Control`**, **`Angus Castus`** titles (C2).
+5. Correct the story-page **STACK5 "10%" mismatch** (it's 5%).
+6. Retire the dead `?view=vivid-guide` URL and pick ONE Vivid collection page.
+7. Turn on Judge.me post-purchase requests (also Round-1 item 6 in `codex-round1-handoff-2026-07-01.md`).
+
+## 7. Verdict
+
+The brand assets (label system, renders, hero art, consultant story, margins) are **stronger than the data and commerce layer that carries them**. Nothing about the current presentation would survive contact with a Ritual/Wild-Nutrition-calibre shopper: broken taxonomy, label typos, ghost SKUs, wrong copy, contradicting prices, two images per product, zero reviews, no subscription, no transparency story. Every gap is fixable with content, metafields and ~$130/mo of apps — the redesign blueprint sequences it. **Do not launch the draft store until C1–C6 are fixed in the catalog** — renaming after launch burns SEO and label reprints, and the new store must not import this data as-is.
