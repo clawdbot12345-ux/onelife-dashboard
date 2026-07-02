@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="{{ settings.color_forest | default: '#1F3D2E' }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+  {%- endif -%}
+
+  <title>
+    {%- if template.name == 'product' -%}
+      {{ product.title }} — {{ shop.name }}
+    {%- elsif template.name == 'collection' -%}
+      {{ collection.title }} — {{ shop.name }}
+    {%- else -%}
+      {{ page_title }}
+    {%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <meta property="og:site_name" content="{{ shop.name }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  {%- if page_description -%}<meta property="og:description" content="{{ page_description | escape }}">{%- endif -%}
+  <meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
+
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+  {% style %}
+    {{ settings.font_display | font_face: font_display: 'swap' }}
+    {{ settings.font_body | font_face: font_display: 'swap' }}
+
+    :root {
+      --font-display: {{ settings.font_display.family }}, {{ settings.font_display.fallback_families }};
+      --font-sans: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+      {%- if settings.color_paper != blank %}--paper: {{ settings.color_paper }};{% endif -%}
+      {%- if settings.color_bone != blank %}--bone: {{ settings.color_bone }};{% endif -%}
+      {%- if settings.color_cream != blank %}--cream: {{ settings.color_cream }};{% endif -%}
+      {%- if settings.color_ink != blank %}--ink: {{ settings.color_ink }};{% endif -%}
+      {%- if settings.color_forest != blank %}--forest: {{ settings.color_forest }};{% endif -%}
+      {%- if settings.color_forest_deep != blank %}--forest-deep: {{ settings.color_forest_deep }};{% endif -%}
+      {%- if settings.color_moss != blank %}--moss: {{ settings.color_moss }};{% endif -%}
+      {%- if settings.color_sage != blank %}--sage: {{ settings.color_sage }};{% endif -%}
+      {%- if settings.color_clay != blank %}--clay: {{ settings.color_clay }};{% endif -%}
+      {%- if settings.container_max %}--container: {{ settings.container_max }}px;{% endif -%}
+    }
+  {% endstyle %}
+
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+
+  {%- if template.name == 'index' -%}
+    <style id="vivid-live-overrides">
+      body.template-index .bundle .bundle-media.bundle-media--portrait > img{
+        position:absolute !important;
+        inset:0 !important;
+        width:100% !important;
+        height:100% !important;
+        max-height:100% !important;
+        box-sizing:border-box !important;
+        object-fit:contain !important;
+        object-position:center !important;
+      }
+      body.template-index .section-reviews-band > .reviews-band,
+      body.template-index .section-reviews-band > .proof-band,
+      body.template-index .section-reviews-band > .vivid-proof-band{
+        padding:var(--s-8) 0 !important;
+        background:var(--paper) !important;
+      }
+      body.template-index .section-reviews-band > .reviews-band > .container,
+      body.template-index .section-reviews-band > .proof-band > .container,
+      body.template-index .section-reviews-band > .vivid-proof-band > .container{
+        display:block !important;
+      }
+      body.template-index .section-reviews-band .proof-home-grid,
+      body.template-index .section-reviews-band .reviews-home-grid{
+        display:grid !important;
+        grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+        gap:var(--s-4) !important;
+        width:100% !important;
+      }
+      body.template-index .section-reviews-band .proof-card,
+      body.template-index .section-reviews-band .review-card{
+        width:auto !important;
+        height:auto !important;
+        min-height:220px !important;
+      }
+      @media (max-width:900px){
+        body.template-index .section-reviews-band .proof-home-grid,
+        body.template-index .section-reviews-band .reviews-home-grid{
+          grid-template-columns:1fr !important;
+        }
+      }
+    </style>
+  {%- endif -%}
+
+  {{ content_for_header }}
+</head>
+<body class="template-{{ template.name }}"
+  {%- if template.name == 'index' %} data-sticky-cta="home"{% endif -%}
+>
+  <a class="skip" href="#main">Skip to content</a>
+
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+
+  <main id="main" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  {% render 'cart-drawer' %}
+  {% render 'floating-contact' %}
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  {%- if template.name == 'index' -%}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var stale = document.querySelector('.section-reviews-band > .reviews-band');
+        if (!stale || document.querySelector('#shopify-section-template--20459650678870__proof')) return;
+        stale.className = 'vivid-proof-band reveal';
+        stale.setAttribute('aria-labelledby', 'proof-band-heading');
+        stale.innerHTML = '<div class="container"><div class="section-head"><div><div class="eyebrow">The Vivid standard</div><h2 id="proof-band-heading" style="margin-top:14px"><p>Premium is visible before checkout.</p></h2></div><a href="/collections/all-formulations" class="btn btn--ghost btn-arrow">Explore formulations</a></div><p class="proof-summary">No mystery blends, no generic wellness promises, no cluttered shelf logic. Vivid is built around exact-dose labels, goal-led routines, and stacks that make the next step obvious.</p><div class="proof-home-grid"><div class="proof-card"><div class="proof-card-kicker">Exact dose</div><h3>Every active dose is visible.</h3><p>The meaningful milligrams sit on the label, so shoppers can compare, stack, and choose with confidence.</p></div><div class="proof-card"><div class="proof-card-kicker">Routine-led</div><h3>One bottle, one daily job.</h3><p>Each formulation has a clear role in the routine: gut, immune, mobility, stress, energy, men, women, or daily nutrients.</p></div><div class="proof-card"><div class="proof-card-kicker">Shelf clarity</div><h3>From scattered to sorted.</h3><p>Color-coded ranges and curated stacks make the entire wellness shelf easier to understand before anything reaches the cart.</p></div></div></div>';
+      });
+    </script>
+  {%- endif -%}
+</body>
+</html>

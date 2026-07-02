@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "vivid-hero": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'vivid-health-hero-2045' %}\n{% comment %}Codex cache refresh 2026-06-01T2058 fresh vivid tag-guide template{% endcomment %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "vivid-bogos": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.ol-vivid-promos{--ol-vivid-cache-refresh:202606121149;}<\/style>\n{% render 'vivid-health-promos' %}\n{% comment %}Codex cache refresh 2026-06-12T1149 vivid promo invalid handle purge{% endcomment %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "vivid-hero",
+    "vivid-bogos"
+  ]
+}

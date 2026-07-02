@@ -1,0 +1,196 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "stat1": {
+          "type": "stat",
+          "settings": {
+            "value": "52",
+            "label": "Formulations"
+          }
+        },
+        "stat2": {
+          "type": "stat",
+          "settings": {
+            "value": "0",
+            "label": "Proprietary blends"
+          }
+        },
+        "stat3": {
+          "type": "stat",
+          "settings": {
+            "value": "Free",
+            "label": "Consultation"
+          }
+        },
+        "stat4": {
+          "type": "stat",
+          "settings": {
+            "value": "10%",
+            "label": "stack offer"
+          }
+        },
+        "trust1": {
+          "type": "trust",
+          "settings": {
+            "icon": "check",
+            "text": "Exact active doses listed"
+          }
+        },
+        "trust2": {
+          "type": "trust",
+          "settings": {
+            "icon": "check",
+            "text": "Free shipping over R400"
+          }
+        },
+        "trust3": {
+          "type": "trust",
+          "settings": {
+            "icon": "shield",
+            "text": "30-day money-back"
+          }
+        }
+      },
+      "block_order": [
+        "stat1",
+        "stat2",
+        "stat3",
+        "stat4",
+        "trust1",
+        "trust2",
+        "trust3"
+      ],
+      "settings": {
+        "eyebrow": "Botanical precision · Exact-dose labels · South African",
+        "heading": "<p>Vivid by <em>nature.<\/em> Verified by science.<\/p>",
+        "lede": "Premium plant-first formulations with the active milligrams on the bottle, built for daily routines that make sense.",
+        "cta_primary_label": "Shop the range",
+        "cta_primary_link": "\/collections\/all-formulations",
+        "cta_secondary_label": "Take the quiz",
+        "cta_secondary_link": "\/pages\/quiz"
+      }
+    },
+    "trust-band": {
+      "type": "trust-strip",
+      "blocks": {
+        "trust1": {
+          "type": "trust",
+          "settings": {
+            "text": "Exact active doses"
+          }
+        },
+        "trust2": {
+          "type": "trust",
+          "settings": {
+            "text": "Premium quiz"
+          }
+        },
+        "trust3": {
+          "type": "trust",
+          "settings": {
+            "text": "Free consultation"
+          }
+        },
+        "trust4": {
+          "type": "trust",
+          "settings": {
+            "text": "10% stack offer"
+          }
+        },
+        "trust5": {
+          "type": "trust",
+          "settings": {
+            "text": "Free delivery R400+"
+          }
+        }
+      },
+      "block_order": [
+        "trust1",
+        "trust2",
+        "trust3",
+        "trust4",
+        "trust5"
+      ],
+      "settings": {}
+    },
+    "promos": {
+      "type": "home-promo-banners",
+      "settings": {}
+    },
+    "commerce": {
+      "type": "home-commerce-system",
+      "settings": {
+        "eyebrow": "Start smart",
+        "heading": "Pick the system you're working on.",
+        "lead": "Eight focused ranges. Tap one and the cleanest starting points update here without sending you to another page.",
+        "collection": "bestsellers",
+        "curated_handles": "vivid-health-vivid-body-bone-supreme-120-capsules, vivid-health-immune-allergy-control-60-capsules, vivid-health-stay-vivid-griffonia-5-htp-60-capsules, vivid-health-immune-liver-kidney-formula-90-capsules",
+        "products_heading": "The cleanest starting points.",
+        "products_cta": "Shop all",
+        "products_link": "\/collections\/all-formulations",
+        "product_count": 4
+      }
+    },
+    "bundles": {
+      "type": "bundle-row",
+      "settings": {
+        "eyebrow": "Curated stacks · 10% off",
+        "heading": "Three routines, no random bottles.",
+        "lead": "Pre-paired formulas for allergy, mobility, and evening support. Stack savings apply at checkout.",
+        "collection": "bundles"
+      }
+    },
+    "standard": {
+      "type": "home-standard",
+      "settings": {
+        "eyebrow": "The Vivid standard",
+        "heading": "The label does the explaining.",
+        "lead": "Vivid is built for people who want the dose, the purpose, and the daily fit to be obvious. No proprietary blends. No vague wellness language. No cluttered shelf logic."
+      }
+    },
+    "journal": {
+      "type": "home-journal-band",
+      "settings": {}
+    },
+    "capture": {
+      "type": "email-capture",
+      "settings": {
+        "eyebrow": "Welcome 10%",
+        "heading": "<p>Start cleaner.<\/p>",
+        "body": "Get formulation notes, routine guides, and 10% off your first order. No noisy wellness trends.",
+        "cta_label": "Subscribe",
+        "tiny": "No spam. Unsubscribe in one click. POPIA-compliant."
+      }
+    },
+    "reviews": {
+      "type": "reviews-live",
+      "settings": {
+        "eyebrow": "Customer reviews",
+        "heading": "<p>Real shelves. Real routines.<\/p>",
+        "collection": "all-formulations",
+        "max": 6,
+        "cta_label": "Shop the range",
+        "cta_link": "\/collections\/all-formulations",
+        "footnote": "Sample reviews shown while we collect verified customer reviews."
+      }
+    },
+    "story": {
+      "type": "founder-cameo",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "trust-band",
+    "promos",
+    "commerce",
+    "reviews",
+    "bundles",
+    "standard",
+    "story",
+    "journal",
+    "capture"
+  ]
+}

@@ -1,0 +1,111 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Vivid Health",
+    "theme_version": "0.1.0",
+    "theme_author": "Vivid Health",
+    "theme_documentation_url": "https:\/\/github.com\/clawdbot12345-ux\/onelife-dashboard\/tree\/main\/vivid\/theme",
+    "theme_support_url": "https:\/\/github.com\/clawdbot12345-ux\/onelife-dashboard\/issues"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_paper",
+        "label": "Paper (page background)",
+        "default": "#F4ECDB"
+      },
+      {
+        "type": "color",
+        "id": "color_bone",
+        "label": "Bone (subtle surface)",
+        "default": "#E8DCC1"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream (cards)",
+        "default": "#E0D2B3"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Ink (primary text)",
+        "default": "#0B1610"
+      },
+      {
+        "type": "color",
+        "id": "color_forest",
+        "label": "Forest (brand)",
+        "default": "#163A2C"
+      },
+      {
+        "type": "color",
+        "id": "color_forest_deep",
+        "label": "Forest deep",
+        "default": "#0C2117"
+      },
+      {
+        "type": "color",
+        "id": "color_moss",
+        "label": "Moss",
+        "default": "#3F6048"
+      },
+      {
+        "type": "color",
+        "id": "color_sage",
+        "label": "Sage",
+        "default": "#A8BCA5"
+      },
+      {
+        "type": "color",
+        "id": "color_clay",
+        "label": "Clay (CTA accent)",
+        "default": "#A04829"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_display",
+        "label": "Display font",
+        "default": "fraunces_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "inter_n4"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "container_max",
+        "min": 1100,
+        "max": 1440,
+        "step": 20,
+        "unit": "px",
+        "label": "Container max width",
+        "default": 1280
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  }
+]

@@ -1,0 +1,144 @@
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <h2 style="margin-top:12px">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="lead">{{ section.settings.lead }}</p>
+    </div>
+    <div class="bundles">
+      {%- assign coll = section.settings.collection -%}
+      {%- if coll == blank or coll.products_count == 0 -%}
+        {%- assign coll = collections['bundles'] -%}
+      {%- endif -%}
+      {%- assign rendered_bundle_count = 0 -%}
+      {%- for product in coll.products limit: 3 -%}
+        {%- liquid
+          assign bundle_asset = 'hero-group.jpg'
+          assign bundle_asset_width = 1248
+          assign bundle_asset_height = 832
+          assign bundle_media_class = 'bundle-media--wide'
+          assign bundle_save = 'R110'
+          assign bundle_desc = product.description | strip_html | truncate: 140
+          assign bundle_label = 'Daily stack'
+          assign bundle_stack = 'daily'
+
+          if product.handle contains 'allergy'
+            assign bundle_asset = 'banner-group-allergy.jpg'
+            assign bundle_asset_width = 1920
+            assign bundle_asset_height = 1080
+            assign bundle_label = 'Allergy stack'
+            assign bundle_stack = 'allergy'
+            assign bundle_desc = 'Seasonal calm, immune support and histamine-aware daily structure in one clean three-formula stack.'
+            assign bundle_save = 'R110'
+          elsif product.handle contains 'bone' or product.handle contains 'joint'
+            assign bundle_asset = 'physical-trio-wide.jpg'
+            assign bundle_asset_width = 1024
+            assign bundle_asset_height = 683
+            assign bundle_label = 'Mobility stack'
+            assign bundle_stack = 'mobility'
+            assign bundle_desc = 'Bone, joint and connective-tissue support for stronger structure, smoother movement and daily resilience.'
+            assign bundle_save = 'R150'
+          elsif product.handle contains 'rest' or product.handle contains 'focus'
+            assign bundle_asset = 'banner-group-sleep.jpg'
+            assign bundle_asset_width = 1920
+            assign bundle_asset_height = 1080
+            assign bundle_label = 'Evening stack'
+            assign bundle_stack = 'evening'
+            assign bundle_desc = 'A measured night routine for calmer evenings, deeper wind-down and sharper next-day focus.'
+            assign bundle_save = 'R110'
+          endif
+          assign rendered_bundle_count = rendered_bundle_count | plus: 1
+        -%}
+        <a href="{{ product.url }}" class="bundle" data-stack="{{ bundle_stack }}">
+          <div class="bundle-media {{ bundle_media_class }}">
+            <span class="bundle-tag">10% off</span>
+            <img src="{{ bundle_asset | asset_url }}" loading="lazy" width="{{ bundle_asset_width }}" height="{{ bundle_asset_height }}" alt="{{ product.title | escape }}">
+          </div>
+          <div class="bundle-body">
+            <div class="bundle-kicker">{{ bundle_label }}</div>
+            <div class="bundle-name">{{ product.title }}</div>
+            <p class="bundle-desc">{{ bundle_desc }}</p>
+            <div class="bundle-foot">
+              <span>
+                <span class="bundle-price">{{ product.price | money_without_trailing_zeros }}</span>
+                <span class="bundle-save">Save {{ bundle_save }}</span>
+              </span>
+              <span class="btn btn--ghost bundle-cta">Shop this stack</span>
+            </div>
+          </div>
+        </a>
+      {%- endfor -%}
+      {%- if rendered_bundle_count == 0 -%}
+        <a href="/products/vivid-allergy-stack-complete-allergy-support-bundle" class="bundle" data-stack="allergy">
+          <div class="bundle-media bundle-media--wide">
+            <span class="bundle-tag">10% off</span>
+            <img src="{{ 'banner-group-allergy.jpg' | asset_url }}" loading="lazy" width="1920" height="1080" alt="Vivid Allergy Stack">
+          </div>
+          <div class="bundle-body">
+            <div class="bundle-kicker">Allergy stack</div>
+            <div class="bundle-name">Vivid Allergy Stack</div>
+            <p class="bundle-desc">Seasonal calm, immune support and histamine-aware daily structure in one clean three-formula stack.</p>
+            <div class="bundle-foot">
+              <span>
+                <span class="bundle-price">{{ 59472 | money_without_trailing_zeros }}</span>
+                <span class="bundle-save">Save R110</span>
+              </span>
+              <span class="btn btn--ghost bundle-cta">Shop this stack</span>
+            </div>
+          </div>
+        </a>
+        <a href="/products/vivid-bone-joint-pack-complete-skeletal-support-bundle" class="bundle" data-stack="mobility">
+          <div class="bundle-media bundle-media--wide">
+            <span class="bundle-tag">10% off</span>
+            <img src="{{ 'physical-trio-wide.jpg' | asset_url }}" loading="lazy" width="1024" height="683" alt="Vivid Bone & Joint Pack">
+          </div>
+          <div class="bundle-body">
+            <div class="bundle-kicker">Mobility stack</div>
+            <div class="bundle-name">Vivid Bone & Joint Pack</div>
+            <p class="bundle-desc">Bone, joint and connective-tissue support for stronger structure, smoother movement and daily resilience.</p>
+            <div class="bundle-foot">
+              <span>
+                <span class="bundle-price">{{ 74266 | money_without_trailing_zeros }}</span>
+                <span class="bundle-save">Save R150</span>
+              </span>
+              <span class="btn btn--ghost bundle-cta">Shop this stack</span>
+            </div>
+          </div>
+        </a>
+        <a href="/products/vivid-rest-focus-stack-sleep-calm-and-mental-clarity-bundle" class="bundle" data-stack="evening">
+          <div class="bundle-media bundle-media--wide">
+            <span class="bundle-tag">10% off</span>
+            <img src="{{ 'banner-group-sleep.jpg' | asset_url }}" loading="lazy" width="1920" height="1080" alt="Vivid Rest & Focus Stack">
+          </div>
+          <div class="bundle-body">
+            <div class="bundle-kicker">Evening stack</div>
+            <div class="bundle-name">Vivid Rest & Focus Stack</div>
+            <p class="bundle-desc">A measured night routine for calmer evenings, deeper wind-down and sharper next-day focus.</p>
+            <div class="bundle-foot">
+              <span>
+                <span class="bundle-price">{{ 58767 | money_without_trailing_zeros }}</span>
+                <span class="bundle-save">Save R110</span>
+              </span>
+              <span class="btn btn--ghost bundle-cta">Shop this stack</span>
+            </div>
+          </div>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle row",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Curated stacks" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Three bundles, built for outcomes." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "Pre-paired formulations that work together. Saves you R110–R150 vs buying separately." },
+    { "type": "collection", "id": "collection", "label": "Bundles collection" }
+  ],
+  "presets": [{ "name": "Bundle row" }]
+}
+{% endschema %}

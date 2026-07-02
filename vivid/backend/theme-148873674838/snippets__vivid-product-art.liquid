@@ -1,0 +1,160 @@
+{%- comment -%}
+  Renders Vivid editorial product art with a generated theme asset first.
+  Falls back to Shopify product media only when no generated asset is mapped.
+{%- endcomment -%}
+{%- liquid
+  assign vivid_art_asset = ''
+  assign vivid_art_layout = 'portrait'
+
+  case product.handle
+    when 'vivid-health-immune-mullein-60-capsules'
+      assign vivid_art_asset = 'mullein-60-hero.jpg'
+    when 'vivid-health-gut-health-clove-60-capsules'
+      assign vivid_art_asset = 'clove-60-hero.jpg'
+    when 'vivid-health-gut-health-colon-flush-120-capsules'
+      assign vivid_art_asset = 'colon-flush-120-hero.jpg'
+    when 'vivid-health-vivid-nourishment-turmeric-300-capsules'
+      assign vivid_art_asset = 'turmeric-300-hero.jpg'
+    when 'vivid-health-vivid-nourishment-cayenne-300-capsules'
+      assign vivid_art_asset = 'cayenne-300-hero.jpg'
+    when 'vivid-health-immune-liver-kidney-formula-90-capsules'
+      assign vivid_art_asset = 'liver-kidney-90-hero.jpg'
+    when 'vivid-health-gut-health-black-walnut-60-capsules'
+      assign vivid_art_asset = 'black-walnut-60-hero.jpg'
+    when 'vivid-health-gut-health-immune-wormwood-60-capsules'
+      assign vivid_art_asset = 'wormwood-60-hero.jpg'
+    when 'vivid-health-woman-maca-60-capsules'
+      assign vivid_art_asset = 'maca-60-hero.jpg'
+    when 'vivid-health-vivid-body-flexijoint-advanced-120-capsules'
+      assign vivid_art_asset = 'flexijoint-advanced-120-hero.jpg'
+    when 'vivid-health-stay-vivid-d-ribose-150g'
+      assign vivid_art_asset = 'd-ribose-150-hero.jpg'
+    when 'vivid-health-vivid-body-bone-supreme-120-capsules'
+      assign vivid_art_asset = 'bone-supreme-120-hero.jpg'
+    when 'vivid-health-physical-health-omega-oil-90-capsules'
+      assign vivid_art_asset = 'omega-oil-90-hero.jpg'
+    when 'vivid-health-men-prosta-care-60-capsules'
+      assign vivid_art_asset = 'prosta-care-60-hero.jpg'
+    when 'vivid-health-immune-allergy-control-60-capsules'
+      assign vivid_art_asset = 'allergy-control-60-hero.jpg'
+    when 'vivid-health-gut-health-colon-flush-powder-135g'
+      assign vivid_art_asset = 'colon-flush-powder-135-hero.jpg'
+    when 'vivid-health-vivid-body-colest-control-60-capsules'
+      assign vivid_art_asset = 'colest-control-60-hero.jpg'
+    when 'vivid-health-immune-astragalus-60-capsules'
+      assign vivid_art_asset = 'astragalus-60-hero.jpg'
+    when 'vivid-health-physical-health-l-glutamine-500g'
+      assign vivid_art_asset = 'l-glutamine-500-hero.jpg'
+    when 'vivid-health-immune-l-lysine-60-capsules'
+      assign vivid_art_asset = 'l-lysine-60-hero.jpg'
+    when 'vivid-health-immune-buffered-c-300-capsules'
+      assign vivid_art_asset = 'buffered-c-300-hero.jpg'
+    when 'vivid-health-stay-vivid-tranquil-60-capsules'
+      assign vivid_art_asset = 'tranquil-60-hero.jpg'
+    when 'vivid-health-woman-sage-60-capsules'
+      assign vivid_art_asset = 'sage-60-hero.jpg'
+    when 'vivid-health-vivid-body-msm-90-capsules'
+      assign vivid_art_asset = 'msm-90-hero.jpg'
+    when 'vivid-health-vivid-body-msm-500g'
+      assign vivid_art_asset = 'msm-500-hero.jpg'
+    when 'vivid-health-vivid-body-msm-300-capsules'
+      assign vivid_art_asset = 'msm-300-hero.jpg'
+    when 'vivid-health-stay-vivid-liquorice-root-60-capsules'
+      assign vivid_art_asset = 'liquorice-root-60-hero.jpg'
+    when 'vivid-health-vivid-body-joint-relief-60-capsules'
+      assign vivid_art_asset = 'joint-relief-60-hero.jpg'
+    when 'vivid-health-vivid-body-garcinia-cambogia-60-capsules'
+      assign vivid_art_asset = 'garcinia-cambogia-60-hero.jpg'
+    when 'vivid-health-vivid-nourishment-cayenne-90-capsules'
+      assign vivid_art_asset = 'cayenne-90-hero.jpg'
+    when 'vivid-health-vivid-nourishment-cayenne-250g'
+      assign vivid_art_asset = 'cayenne-250g-hero.jpg'
+    when 'vivid-health-immune-buffered-c-90-capsules'
+      assign vivid_art_asset = 'buffered-c-90-hero.jpg'
+    when 'vivid-health-immune-buffered-c-150g'
+      assign vivid_art_asset = 'buffered-c-150g-hero.jpg'
+    when 'vivid-health-vivid-nourishment-apple-cider-90-capsules'
+      assign vivid_art_asset = 'apple-cider-90-hero.jpg'
+    when 'vivid-health-nutrient-health-turmeric-plus-60-capsules'
+      assign vivid_art_asset = 'turmeric-plus-60-hero.jpg'
+    when 'vivid-health-immune-advanced-buffered-c-300-capsules'
+      assign vivid_art_asset = 'advanced-buffered-c-300-hero.jpg'
+    when 'vivid-health-vivid-nourishment-spirulina-250g'
+      assign vivid_art_asset = 'spirulina-250g-hero.jpg'
+    when 'vivid-health-immune-quercetin-complex-60-capsules'
+      assign vivid_art_asset = 'quercetin-complex-60-hero.jpg'
+    when 'vivid-health-stay-vivid-omega-oil-300-capsules'
+      assign vivid_art_asset = 'omega-oil-300-hero.jpg'
+    when 'vivid-health-vivid-body-msm-150g'
+      assign vivid_art_asset = 'msm-150g-hero.jpg'
+    when 'vivid-health-vivid-nourishment-moringa-powder-300-capsules'
+      assign vivid_art_asset = 'moringa-300-hero.jpg'
+    when 'vivid-health-immune-immune-plus-60-capsules'
+      assign vivid_art_asset = 'immune-plus-60-hero.jpg'
+    when 'vivid-health-stay-vivid-griffonia-5-htp-60-capsules'
+      assign vivid_art_asset = 'griffonia-5htp-60-hero.jpg'
+    when 'vivid-health-stay-vivid-gaba-150g'
+      assign vivid_art_asset = 'gaba-150g-hero.jpg'
+    when 'vivid-health-vivid-body-flexijoint-300-capsules'
+      assign vivid_art_asset = 'flexijoint-300-hero.jpg'
+    when 'vivid-health-vivid-nourishment-epsom-salt-1kg'
+      assign vivid_art_asset = 'epsom-salt-1kg-hero.jpg'
+    when 'vivid-health-stay-vivid-dmae-150g'
+      assign vivid_art_asset = 'dmae-150g-hero.jpg'
+    when 'vivid-health-vivid-body-coenzyme-q10-60-capsules'
+      assign vivid_art_asset = 'coq10-60-hero.jpg'
+    when 'vivid-health-vivid-body-bone-supreme-500-capsules'
+      assign vivid_art_asset = 'bone-supreme-500-hero.jpg'
+    when 'vivid-health-nutritent-health-barley-grass-300-capsules'
+      assign vivid_art_asset = 'barley-grass-300-hero.jpg'
+    when 'vivid-health-nutritent-health-barley-grass-200g'
+      assign vivid_art_asset = 'barley-grass-200g-hero.jpg'
+    when 'vivid-health-woman-angus-castus-60-capsules'
+      assign vivid_art_asset = 'angus-castus-60-hero.jpg'
+    when 'vivid-rest-focus-stack-sleep-calm-and-mental-clarity-bundle'
+      assign vivid_art_asset = 'banner-group-sleep.jpg'
+      assign vivid_art_layout = 'wide'
+    when 'vivid-bone-joint-pack-complete-skeletal-support-bundle'
+      assign vivid_art_asset = 'physical-trio-wide.jpg'
+      assign vivid_art_layout = 'wide'
+    when 'vivid-allergy-stack-complete-allergy-support-bundle'
+      assign vivid_art_asset = 'banner-group-allergy.jpg'
+      assign vivid_art_layout = 'wide'
+  endcase
+
+  assign vivid_art_alt = alt | default: product.title
+  assign vivid_art_class = class | default: ''
+  assign vivid_art_loading = loading | default: 'lazy'
+  assign vivid_art_width = width | default: 1200
+  assign vivid_art_height = height | default: 1500
+  assign vivid_art_image_width = image_width | default: 1200
+  assign vivid_art_sizes = sizes | default: '(min-width: 1100px) 25vw, (min-width: 780px) 33vw, 50vw'
+  assign vivid_art_id = id | default: ''
+  assign vivid_art_mode = mode | default: 'image'
+  assign vivid_art_fetchpriority = fetchpriority | default: ''
+-%}
+
+{%- if vivid_art_mode == 'src' -%}
+  {%- if vivid_art_asset != blank -%}{{ vivid_art_asset | asset_url }}{%- endif -%}
+{%- elsif vivid_art_asset != blank -%}
+  <img
+    src="{{ vivid_art_asset | asset_url }}"
+    {% if vivid_art_id != blank %}id="{{ vivid_art_id | escape }}"{% endif %}
+    loading="{{ vivid_art_loading }}"
+    {% if vivid_art_fetchpriority != blank %}fetchpriority="{{ vivid_art_fetchpriority }}"{% endif %}
+    decoding="async"
+    width="{{ vivid_art_width }}"
+    height="{{ vivid_art_height }}"
+    alt="{{ vivid_art_alt | escape }}"
+    class="{{ vivid_art_class }} vivid-art vivid-art--generated vivid-art--{{ vivid_art_layout }}"
+  >
+{%- elsif product.featured_image != blank -%}
+  {%- assign vivid_fallback_class = vivid_art_class | append: ' vivid-art vivid-art--fallback' -%}
+  {{ product.featured_image | image_url: width: vivid_art_image_width | image_tag:
+      id: vivid_art_id,
+      loading: vivid_art_loading,
+      widths: '300,600,900,1200,1600',
+      sizes: vivid_art_sizes,
+      alt: vivid_art_alt,
+      class: vivid_fallback_class }}
+{%- endif -%}

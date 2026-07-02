@@ -1,0 +1,140 @@
+<script>
+(function(){
+function E(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function U(src){if(!src)return'';try{var u=new URL(src,window.location.origin);u.searchParams.set('width','360');return u.toString();}catch(e){return src;}}
+function fmtR(v){v=parseFloat(v);if(isNaN(v))return'';return 'R'+(v%1?v.toFixed(2):v.toFixed(0));}
+function badgeHtml(badges){
+  if(!badges||!badges.length)return'';
+  return '<div class="vpc-badges" title="Product tags are a shopping guide. Always check the product label and ingredients before purchase." aria-label="Product tags are a shopping guide. Always check the product label and ingredients before purchase.">'+badges.map(function(b){return '<span class="vpc-badge vpc-badge--'+E(b.c||'sa')+'">'+E(b.l||b)+'</span>';}).join('')+'</div>';
+}
+function imageHtml(p){
+  if(!p.i)return'<div style="width:100%;aspect-ratio:1;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:28px">&#x1f48a;</div>';
+  return '<span class="vpc-m"><img class="vpc-img--primary'+(p.i2?' has-secondary':'')+'" src="'+E(U(p.i))+'" alt="'+E(p.t)+'" loading="lazy" width="360" height="360">'+(p.i2?'<img class="vpc-img--secondary" src="'+E(U(p.i2))+'" alt="" loading="lazy" width="360" height="360" aria-hidden="true">':'')+'</span>';
+}
+
+/* Stack icons — inline SVG (no emoji), stroke inherits #1b4332 */
+var SICON={
+ gut:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 0 7 3 7 7 0 5-3 8-7 11-4-3-7-6-7-11 0-4 3-7 7-7z"/><path d="M9 10c1 1.5 5 1.5 6 0"/></svg>',
+ immunity:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-4"/></svg>',
+ sleep:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13.5A8 8 0 0 1 10.5 4 8 8 0 1 0 20 13.5z"/></svg>',
+ joints:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="2.6"/><circle cx="17" cy="17" r="2.6"/><path d="M8.9 8.9l6.2 6.2"/></svg>',
+ women:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4.5"/><path d="M12 12.5V21M8.5 17.5h7"/></svg>',
+ energy:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 13h6l-1 9 8-11h-6l1-9z"/></svg>'
+};
+
+var CL={all:'All',immune:'Immunity',gut:'Gut & Detox',calm:'Sleep, Stress & Focus',body:'Joints, Sports & Skin',vitals:'Heart, Energy & Vitamins',women:"Women's",herbal:'Herbal & Superfoods'};
+var CO=['all','immune','gut','calm','body','vitals','women','herbal'];
+var CATMAP={immune:['cat:immunity','cat:respiratory'],gut:['cat:gut-health','cat:liver-detox'],calm:['cat:sleep-relaxation','cat:stress-mood','cat:brain-cognitive'],body:['cat:joints-mobility','cat:sports-nutrition','cat:skin-hair-nails'],vitals:['cat:heart-cardiovascular','cat:energy-vitality','cat:vitamins-minerals','cat:blood-sugar'],women:['cat:womens-health','cat:hormonal-balance'],herbal:['cat:herbal-supplements','cat:superfoods']};
+var BMAP=[['vegan','vegan','Vegan'],['vegetarian','veg','Vegetarian'],['gluten-free','gf','Gluten Free'],['sugar-free','sf','Sugar Free'],['dairy-free','df','Dairy Free'],['sa made','sa','SA Made']];
+
+/* Stacks are defined by handle only — price, variant id and availability
+   resolve from live store data at render time (no hard-coded prices). */
+var STACKS=[
+ {k:'gut',name:'Gut Reset Stack',desc:'Cleanse and rebuild — wormwood, clove and colon flush working as one routine.',handles:['vivid-health-gut-health-immune-wormwood-60-capsules','vivid-health-gut-health-clove-60-capsules','vivid-health-gut-health-colon-flush-powder-135g']},
+ {k:'immunity',name:'Immunity Shield',desc:'Year-round immune defence — gentle Vitamin C, Mullein for respiratory, Quercetin for histamine.',handles:['vivid-health-immune-buffered-c-90-capsules','vivid-health-immune-mullein-60-capsules','vivid-health-immune-quercetin-complex-60-capsules']},
+ {k:'sleep',name:'Calm & Sleep',desc:'Wind down naturally — GABA for calm, 5-HTP for serotonin, Tranquil for deep relaxation.',handles:['vivid-health-stay-vivid-gaba-150g','vivid-health-stay-vivid-griffonia-5-htp-60-capsules','vivid-health-stay-vivid-tranquil-60-capsules']},
+ {k:'joints',name:'Joint & Mobility',desc:'Move freely — Flexijoint for cartilage support, Turmeric for comfort, Omega for lubrication.',handles:['vivid-health-vivid-body-flexijoint-advanced-120-capsules','vivid-health-nutrient-health-turmeric-plus-60-capsules','vivid-health-physical-health-omega-oil-90-capsules']},
+ {k:'women',name:"Women's Balance",desc:'Hormonal harmony — Agnus Castus for cycle, Sage for menopause comfort, 5-HTP for mood.',handles:['vivid-health-woman-angus-castus-60-capsules','vivid-health-woman-sage-60-capsules','vivid-health-stay-vivid-griffonia-5-htp-60-capsules']},
+ {k:'energy',name:'Energy & Performance',desc:'Sustained power — CoQ10 for cellular energy, D-Ribose for ATP, Glutamine for recovery.',handles:['vivid-health-vivid-body-coenzyme-q10-60-capsules','vivid-health-stay-vivid-d-ribose-150g','vivid-health-physical-health-l-glutamine-500g']}
+];
+
+var P=[],BYH={},cur='all';
+
+function shortTitle(t){return String(t||'').replace(/^VIVID HEALTH\s*-\s*/i,'');}
+
+function build(list){
+  list.forEach(function(pr){
+    if((pr.product_type||'')==='Bundle')return;
+    var v=(pr.variants&&pr.variants[0])||null;if(!v)return;
+    var tags=(pr.tags||[]).map(function(t){return String(t).toLowerCase();});
+    var cats=[];
+    Object.keys(CATMAP).forEach(function(k){
+      if(CATMAP[k].some(function(t){return tags.indexOf(t)>=0}))cats.push(k);
+    });
+    var badges=[];
+    BMAP.forEach(function(m){if(tags.indexOf(m[0])>=0)badges.push({c:m[1],l:m[2]});});
+    var imgs=pr.images||[];
+    var item={t:shortTitle(pr.title),h:pr.handle,p:v.price,v:v.id,c:cats,
+      i:imgs[0]?imgs[0].src:'',i2:imgs[1]?imgs[1].src:'',b:badges,
+      av:v.available!==false};
+    BYH[pr.handle]=item;
+    if(item.av)P.push(item);
+  });
+}
+
+function renderFilters(){
+  var fh='';
+  CO.forEach(function(c){
+    var n=c==='all'?P.length:P.filter(function(p){return p.c.indexOf(c)>=0}).length;
+    if(n||c==='all')fh+='<button class="vf-b'+(c===cur?' on':'')+'" data-c="'+E(c)+'">'+E(CL[c]||c)+'</button>';
+  });
+  var vf=document.getElementById('vf');
+  vf.innerHTML=fh;
+  vf.addEventListener('click',function(e){
+    var b=e.target.closest('.vf-b');if(!b)return;
+    cur=b.dataset.c;
+    document.querySelectorAll('.vf-b').forEach(function(x){x.classList.toggle('on',x.dataset.c===cur)});
+    render();
+  });
+}
+
+function render(){
+  var f=cur==='all'?P:P.filter(function(p){return p.c.indexOf(cur)>=0});
+  document.getElementById('vgt').textContent=cur==='all'?'Browse All Products':(CL[cur]||cur);
+  document.getElementById('vgc').textContent=f.length+(cur==='all'?' core products':' products');
+  document.getElementById('vg').innerHTML=f.map(function(p){
+    return '<a href="/products/'+E(p.h)+'" class="vpc">'+imageHtml(p)+'<div class="vpc-i"><div class="vpc-t">'+E(p.t)+'</div><div class="vpc-p">'+E(fmtR(p.p))+'</div>'+badgeHtml(p.b)+'</div></a>';
+  }).join('');
+}
+
+function renderStacks(){
+  var sh='';
+  STACKS.forEach(function(s){
+    var items=s.handles.map(function(h){return BYH[h]||null;});
+    var live=items.filter(function(x){return x&&x.av;});
+    var complete=live.length===s.handles.length;
+    var total=live.reduce(function(a,x){return a+parseFloat(x.p||0);},0);
+    var discounted=Math.round(total*0.90);
+    var saving=Math.round(total)-discounted;
+    var ph='';
+    items.forEach(function(x,idx){
+      if(x&&x.av){ph+='<div class="vxc-row"><span class="vxc-rn">'+E(x.t)+'</span><span class="vxc-rp">'+E(fmtR(x.p))+'</span></div>';}
+      else{ph+='<div class="vxc-row"><span class="vxc-rn" style="color:#aaa">'+E(shortTitle(s.handles[idx].replace(/-/g,' ')))+'</span><span class="vxc-rp" style="color:#aaa">temporarily unavailable</span></div>';}
+    });
+    var btn=complete
+      ?'<button class="vxc-btn" data-v="'+live.map(function(x){return x.v}).join(',')+'">Add Stack to Cart</button>'
+      :'<button class="vxc-btn" disabled>Stack temporarily unavailable</button>';
+    sh+='<div class="vxc">'+(complete?'<div class="vxc-save">SAVE '+E(fmtR(saving))+'</div>':'')+'<div class="vxc-top"><div class="vxc-icon">'+(SICON[s.k]||'')+'</div><div class="vxc-name">'+E(s.name)+'</div></div><div class="vxc-desc">'+E(s.desc)+'</div>'+ph+(complete?'<div class="vxc-tot"><span><s style="color:#bbb;font-weight:600">'+E(fmtR(total))+'</s></span><span>'+E(fmtR(discounted))+'</span></div>':'')+btn+'</div>';
+  });
+  var vxg=document.getElementById('vxg');
+  vxg.innerHTML=sh;
+  vxg.addEventListener('click',function(e){
+    var b=e.target.closest('.vxc-btn');if(!b||b.disabled)return;
+    var v=(b.dataset.v||'').split(',').filter(Boolean);if(!v.length)return;
+    b.textContent='Adding '+v.length+' items...';b.disabled=true;
+    fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:v.map(function(id){return{id:parseInt(id),quantity:1}})})})
+    .then(function(r){return r.json()})
+    .then(function(){return fetch('/discount/VIVID10',{redirect:'manual'});})
+    .then(function(){
+      b.innerHTML='✓ Added + 10% off applied! <a href="/cart" style="color:#fff;text-decoration:underline;margin-left:6px">View Cart →</a>';
+      b.style.background='#166534';
+      return fetch('/cart.js');
+    })
+    .then(function(r){return r.json()})
+    .then(function(c){document.querySelectorAll('.cart-count-bubble span').forEach(function(el){el.textContent=c.item_count});})
+    .catch(function(err){b.textContent='Could not add stack — try again';b.disabled=false;console.error('vivid add-stack',err);});
+  });
+}
+
+fetch('/collections/vivid-health/products.json?limit=250')
+.then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+.then(function(d){
+  build(d.products||[]);
+  renderFilters();render();renderStacks();
+})
+.catch(function(err){
+  console.error('vivid grid',err);
+  document.getElementById('vg').innerHTML='<p style="grid-column:1/-1;text-align:center;color:#888;padding:24px">Couldn’t load the range right now — <a href="/collections/brand-vivid-health" style="color:#1b4332;font-weight:700">browse all Vivid products here</a>.</p>';
+});
+})();
+</script>

@@ -1,0 +1,55 @@
+{%- comment -%}
+  Anonymous origin story. Uses lifestyle imagery by default so the section
+  reads as brand provenance rather than a dated founder portrait.
+{%- endcomment -%}
+
+<section class="founder-band founder-band--story reveal" aria-label="Vivid Health story">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-portrait" aria-hidden="true">
+        {%- if section.settings.portrait != blank -%}
+          {{ section.settings.portrait | image_url: width: 480 | image_tag:
+              loading: 'lazy',
+              widths: '180,360,480',
+              sizes: '180px',
+              alt: section.settings.attribution | strip_html }}
+        {%- else -%}
+          <img src="{{ 'bone-supreme-influencer.jpg' | asset_url }}" loading="lazy" width="900" height="1200" alt="">
+        {%- endif -%}
+        {%- if section.settings.since != blank -%}
+          <span class="founder-since">{{ section.settings.since }}</span>
+        {%- endif -%}
+      </div>
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="founder-eyebrow">{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        <blockquote class="founder-quote">{{ section.settings.quote }}</blockquote>
+        {%- if section.settings.attribution != blank -%}
+          <div class="founder-attr">{{ section.settings.attribution }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Founder cameo",
+  "tag": "section",
+  "class": "section-founder-cameo",
+  "settings": [
+    { "type": "image_picker", "id": "portrait",    "label": "Portrait (180x220, vertical)" },
+    { "type": "text",         "id": "monogram",    "label": "Fallback monogram (if no portrait)" },
+    { "type": "text",         "id": "since",       "label": "Since-tag on portrait" },
+    { "type": "text",         "id": "eyebrow",     "label": "Eyebrow", "default": "The Vivid story" },
+    { "type": "richtext",     "id": "quote",       "label": "Quote",
+      "default": "<p>\"Vivid was built for the person standing in front of a supplement shelf asking the right question: what is actually in this bottle, and how does it fit my day?\"</p>" },
+    { "type": "richtext",     "id": "attribution", "label": "Attribution",
+      "default": "<p><strong>The Vivid Health team</strong> · South African wellness, made practical</p>" }
+  ],
+  "presets": [
+    { "name": "Founder cameo" }
+  ]
+}
+{% endschema %}

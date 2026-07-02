@@ -1,0 +1,82 @@
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <h2 style="margin-top:12px">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="lead">{{ section.settings.lead }}</p>
+    </div>
+    <div class="bundles">
+      {%- assign coll = section.settings.collection -%}
+      {%- if coll == blank or coll.products_count == 0 -%}
+        {%- assign coll = collections['bundles'] -%}
+      {%- endif -%}
+      {%- for product in coll.products limit: 3 -%}
+        {%- liquid
+          assign bundle_asset = 'hero-group.jpg'
+          assign bundle_asset_width = 1248
+          assign bundle_asset_height = 832
+          assign bundle_media_class = 'bundle-media--wide'
+          assign bundle_save = 'R110'
+          assign bundle_desc = product.description | strip_html | truncate: 140
+          assign bundle_label = 'Daily stack'
+
+          if product.handle contains 'allergy'
+            assign bundle_asset = 'banner-group-allergy.jpg'
+            assign bundle_asset_width = 1920
+            assign bundle_asset_height = 1080
+            assign bundle_label = 'Allergy stack'
+            assign bundle_desc = 'Seasonal calm, immune support and histamine-aware daily structure in one clean three-formula stack.'
+            assign bundle_save = 'R110'
+          elsif product.handle contains 'bone' or product.handle contains 'joint'
+            assign bundle_asset = 'physical-trio-wide.jpg'
+            assign bundle_asset_width = 1024
+            assign bundle_asset_height = 683
+            assign bundle_label = 'Mobility stack'
+            assign bundle_desc = 'Bone, joint and connective-tissue support for stronger structure, smoother movement and daily resilience.'
+            assign bundle_save = 'R150'
+          elsif product.handle contains 'rest' or product.handle contains 'focus'
+            assign bundle_asset = 'banner-group-sleep.jpg'
+            assign bundle_asset_width = 1920
+            assign bundle_asset_height = 1080
+            assign bundle_label = 'Evening stack'
+            assign bundle_desc = 'A measured night routine for calmer evenings, deeper wind-down and sharper next-day focus.'
+            assign bundle_save = 'R110'
+          endif
+        -%}
+        <a href="{{ product.url }}" class="bundle">
+          <div class="bundle-media {{ bundle_media_class }}">
+            <span class="bundle-tag">Auto 10% off</span>
+            <img src="{{ bundle_asset | asset_url }}" loading="lazy" width="{{ bundle_asset_width }}" height="{{ bundle_asset_height }}" alt="{{ product.title | escape }}">
+          </div>
+          <div class="bundle-body">
+            <div class="bundle-kicker">{{ bundle_label }}</div>
+            <div class="bundle-name">{{ product.title }}</div>
+            <p class="bundle-desc">{{ bundle_desc }}</p>
+            <div class="bundle-foot">
+              <span>
+                <span class="bundle-price">{{ product.price | money }}</span>
+                <span class="bundle-save">Save {{ bundle_save }}</span>
+              </span>
+              <span class="btn btn--ghost bundle-cta">Shop this stack</span>
+            </div>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle row",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Curated stacks" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Three bundles, built for outcomes." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "Pre-paired formulations that work together. Saves you R110–R150 vs buying separately." },
+    { "type": "collection", "id": "collection", "label": "Bundles collection" }
+  ],
+  "presets": [{ "name": "Bundle row" }]
+}
+{% endschema %}

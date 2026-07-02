@@ -1,0 +1,111 @@
+<section class="home-commerce reveal" id="systems" aria-labelledby="home-commerce-heading">
+  <div class="container">
+    <div class="home-commerce-head">
+      <div>
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <h2 id="home-commerce-heading">{{ section.settings.heading }}</h2>
+      </div>
+      <p>{{ section.settings.lead }}</p>
+    </div>
+
+    <div class="home-shop-system" data-home-product-filter>
+      <div class="system-picker-grid" aria-label="Shop by system">
+        <button type="button" class="system-picker-card system-picker-card--gut is-active" data-home-filter="gut" data-heading="Gut starting points">
+          <span>5 formulations</span>
+          <strong>Gut Health</strong>
+          <em>Cleanse, balance, restore</em>
+        </button>
+        <button type="button" class="system-picker-card system-picker-card--immunity" data-home-filter="immunity" data-heading="Immune starting points">
+          <span>10 formulations</span>
+          <strong>Immunity</strong>
+          <em>Daily defence, year-round</em>
+        </button>
+        <button type="button" class="system-picker-card system-picker-card--stress" data-home-filter="stress" data-heading="Sleep & stress starting points">
+          <span>4 formulations</span>
+          <strong>Stress, Sleep & Mood</strong>
+          <em>Calm without sedation</em>
+        </button>
+        <button type="button" class="system-picker-card system-picker-card--joints" data-home-filter="joints" data-heading="Joint & mobility starting points">
+          <span>7 formulations</span>
+          <strong>Joints & Mobility</strong>
+          <em>Move freely, age strongly</em>
+        </button>
+        <button type="button" class="system-picker-card system-picker-card--energy" data-home-filter="energy" data-heading="Energy starting points">
+          <span>2 formulations</span>
+          <strong>Energy & Vitality</strong>
+          <em>Cellular fuel, not stimulants</em>
+        </button>
+        <button type="button" class="system-picker-card system-picker-card--women" data-home-filter="women" data-heading="Women's health starting points">
+          <span>3 formulations</span>
+          <strong>Women's Health</strong>
+          <em>Hormones, cycles, balance</em>
+        </button>
+        <button type="button" class="system-picker-card system-picker-card--men" data-home-filter="men" data-heading="Men's health starting points">
+          <span>1 formulation</span>
+          <strong>Men's Health</strong>
+          <em>Prostate, vitality, support</em>
+        </button>
+        <button type="button" class="system-picker-card system-picker-card--daily" data-home-filter="daily" data-heading="Daily nutrient starting points">
+          <span>20 formulations</span>
+          <strong>Daily Nutrients</strong>
+          <em>The everyday shelf</em>
+        </button>
+      </div>
+
+      <div class="home-bestsellers">
+        <div class="home-bestsellers-head">
+          <div>
+            <div class="eyebrow">Shop by system</div>
+            <h3 data-home-products-heading>{{ section.settings.products_heading }}</h3>
+          </div>
+          <a href="{{ section.settings.products_link | default: routes.collections_url }}" class="btn btn--ghost btn-arrow">{{ section.settings.products_cta }}</a>
+        </div>
+
+        {%- assign goal_handles = 'gut,immunity,stress,joints,energy,women,men,daily' | split: ',' -%}
+        {%- for goal_handle in goal_handles -%}
+          {%- assign goal_collection = collections[goal_handle] -%}
+          {%- if goal_collection != blank and goal_collection.products_count > 0 -%}
+            <div class="home-product-group{% if goal_handle == 'gut' %} is-active{% endif %}" data-home-group="{{ goal_handle }}"{% unless goal_handle == 'gut' %} hidden{% endunless %}>
+              <div class="products-row products-row--featured products-row--home-compact">
+                {%- for product in goal_collection.products limit: section.settings.product_count -%}
+                  {% render 'product-card',
+                    product: product,
+                    image_loading: 'eager',
+                    sizes: '(min-width: 1100px) 16vw, (min-width: 720px) 30vw, 76vw',
+                    width: 1000,
+                    height: 1000,
+                    image_width: 800 %}
+                {%- endfor -%}
+              </div>
+              <a class="home-group-link" href="{{ goal_collection.url }}">Shop all {{ goal_collection.title }}</a>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="home-system-proof">
+          <span>0 proprietary blends</span>
+          <span>Clear active doses</span>
+          <span>10% off stacks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home commerce system",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Start smart" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pick the system you're working on." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "Eight focused routes. Tap one and the cleanest starting points update here without sending you to another page." },
+    { "type": "collection", "id": "collection", "label": "Featured product collection" },
+    { "type": "textarea", "id": "curated_handles", "label": "Curated product handles", "default": "vivid-health-vivid-body-bone-supreme-120-capsules, vivid-health-immune-allergy-control-60-capsules, vivid-health-stay-vivid-griffonia-5-htp-60-capsules, vivid-health-immune-liver-kidney-formula-90-capsules" },
+    { "type": "text", "id": "products_heading", "label": "Products heading", "default": "The cleanest starting points." },
+    { "type": "text", "id": "products_cta", "label": "Products CTA label", "default": "Shop all" },
+    { "type": "url", "id": "products_link", "label": "Products CTA link" },
+    { "type": "range", "id": "product_count", "label": "Products to show", "min": 4, "max": 8, "step": 1, "default": 4 }
+  ],
+  "presets": [{ "name": "Home commerce system" }]
+}
+{% endschema %}

@@ -1,0 +1,62 @@
+name: Vivid Journal Publish
+
+# Weekly: pops the oldest article from content/vivid-queue/ and publishes
+# it to the Journal blog on the dedicated Vivid Health store
+# (hgywg0-w7.myshopify.com), then moves it to content/vivid-published/.
+# Staggered to Wednesday so it never clashes with One Life's Monday post.
+# Kill switch: repo variable VIVID_BLOG_ENABLED must equal 'true'.
+
+on:
+  schedule:
+    - cron: "0 5 * * 3"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: vars.VIVID_BLOG_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick oldest queued article
+        id: pick
+        run: |
+          FILE=$(ls content/vivid-queue/*.md 2>/dev/null | sort | head -1 || true)
+          if [ -z "$FILE" ]; then
+            echo "Vivid queue is empty — nothing to publish."
+            echo "file=" >> "$GITHUB_OUTPUT"
+          else
+            echo "Publishing: $FILE"
+            echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish to the Vivid Journal
+        if: steps.pick.outputs.file != ''
+        env:
+          VIVID_CLIENT_ID: ${{ secrets.VIVID_CLIENT_ID }}
+          VIVID_CLIENT_SECRET: ${{ secrets.VIVID_CLIENT_SECRET }}
+          VIVID_ADMIN_TOKEN: ${{ secrets.VIVID_ADMIN_TOKEN }}
+          VIVID_STORE: ${{ vars.VIVID_SHOPIFY_STORE }}
+        run: python3 scripts/vivid_publish_blog.py "${{ steps.pick.outputs.file }}"
+      - name: Move to published + commit
+        if: steps.pick.outputs.file != ''
+        run: |
+          mkdir -p content/vivid-published
+          git mv "${{ steps.pick.outputs.file }}" content/vivid-published/
+          git config user.name "vivid-journal-bot"
+          git config user.email "actions@github.com"
+          git add -A content vivid-blog-last-published.txt || true
+          git commit -m "chore: vivid journal published $(basename ${{ steps.pick.outputs.file }})"
+          git pull --rebase origin ${GITHUB_REF_NAME}
+          git push origin HEAD:${GITHUB_REF_NAME}
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "🔴 Vivid Journal publish failed — $(date -u +%F)" \
+            --body "The weekly Vivid Journal article was NOT published. Failed run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

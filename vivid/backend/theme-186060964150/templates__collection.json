@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 20,
+        "padding_bottom": 36
+      }
+    },
+    "quick-nav": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'collection-quick-nav' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "lifestyle-hero": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'collection-banner-hero' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "guide-callout": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'collection-guide-callout' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "quick-nav",
+    "lifestyle-hero",
+    "guide-callout",
+    "banner",
+    "product-grid"
+  ]
+}

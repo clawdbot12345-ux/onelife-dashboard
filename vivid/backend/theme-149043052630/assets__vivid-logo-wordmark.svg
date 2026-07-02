@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-labelledby="vivid-logo-title">
+  <title id="vivid-logo-title">Vivid Health</title>
+  <rect width="640" height="200" fill="none"/>
+  <g fill="currentColor">
+    <text x="8" y="96" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="88" font-weight="900" letter-spacing="7">VIVID</text>
+    <text x="104" y="146" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="300" letter-spacing="7">HEALTH</text>
+  </g>
+</svg>

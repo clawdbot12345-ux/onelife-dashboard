@@ -1,0 +1,139 @@
+{%- comment -%}
+  One Life Health — Vivid Health house brand showcase page (Growth Build 2026-06)
+  Story + product hero for the SA-made house brand.
+{%- endcomment -%}
+
+<style>
+  .ol-vivid { background: #fcfaf6; }
+  .ol-vivid__shell { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  .ol-vivid__crumb { padding: 18px 20px 0; max-width: 1100px; margin: 0 auto; font-size: 12px; color: #6b7280; }
+  .ol-vivid__crumb a { color: #1b4332; text-decoration: none; font-weight: 600; }
+  .ol-vivid__hero { padding: 92px 16px 68px; background: linear-gradient(rgba(16,34,25,.5), rgba(27,67,50,.62)), url({{ 'onelife-vivid-health-page-hero-1440.webp' | asset_url }}) center/cover no-repeat; }
+  .ol-vivid__hero .ol-vivid__shell { max-width: 760px; }
+  .ol-vivid__tag { display: inline-block; padding: 5px 14px; border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3); color: #fff; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; font-weight: 700; margin-bottom: 18px; backdrop-filter: blur(6px); }
+  .ol-vivid__hero h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.05; color: #fff !important; margin: 0 0 14px; font-weight: 800; letter-spacing: -0.025em; text-shadow: 0 2px 18px rgba(0,0,0,.38); }
+  .ol-vivid__hero h1 em { color: #b7e4c7; font-style: normal; }
+  .ol-vivid__hero p { font-size: clamp(15px, 2vw, 17px); line-height: 1.6; color: rgba(255,255,255,.93); margin: 0; max-width: 640px; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+  .ol-vivid__hero-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; background: #fff; color: #1b4332; padding: 14px 24px; border-radius: 12px; font-weight: 700; font-size: 14px; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+  .ol-vivid__hero-cta:hover { color: #1b4332; }
+  .ol-vivid__why { background: #fff; padding: 56px 16px; border-top: 1px solid #eee5d4; border-bottom: 1px solid #eee5d4; }
+  .ol-vivid__why h2 { font-size: clamp(24px, 4vw, 32px); color: #1a1a1a; margin: 0 0 28px; font-weight: 800; letter-spacing: -0.02em; text-align: center; }
+  .ol-vivid__why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .ol-vivid__why-item { background: #fcfaf6; border: 1px solid #eee5d4; border-radius: 14px; padding: 20px; text-align: center; border-top: 3px solid #1b4332; }
+  .ol-vivid__why-item:nth-child(2) { border-top-color: #b45309; }
+  .ol-vivid__why-item:nth-child(2) strong { color: #b45309; }
+  .ol-vivid__why-item:nth-child(3) { border-top-color: #0284c7; }
+  .ol-vivid__why-item:nth-child(3) strong { color: #0284c7; }
+  .ol-vivid__why-item:nth-child(4) { border-top-color: #a21caf; }
+  .ol-vivid__why-item:nth-child(4) strong { color: #a21caf; }
+  .ol-vivid__why-item strong { display: block; font-size: 14px; color: #1b4332; font-weight: 800; margin-bottom: 6px; }
+  .ol-vivid__why-item span { font-size: 12.5px; color: #555; line-height: 1.5; }
+  .ol-vivid__ranges { padding: 56px 16px; }
+  .ol-vivid__ranges h2 { font-size: clamp(24px, 4vw, 32px); color: #1a1a1a; margin: 0 0 8px; font-weight: 800; letter-spacing: -0.02em; }
+  .ol-vivid__ranges > .ol-vivid__shell > p { font-size: 15px; color: #4b5563; margin: 0 0 28px; line-height: 1.55; max-width: 700px; }
+  .ol-vivid__ranges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .ol-vivid__range { background: #fff; border: 1px solid #eee5d4; border-radius: 16px; padding: 22px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform .2s ease, box-shadow .2s ease; border-left: 4px solid #1b4332; }
+  .ol-vivid__range:nth-child(2) { border-left-color: #ea580c; }
+  .ol-vivid__range:nth-child(2) .ol-vivid__range-tag { color: #ea580c; }
+  .ol-vivid__range:nth-child(3) { border-left-color: #6366f1; }
+  .ol-vivid__range:nth-child(3) .ol-vivid__range-tag { color: #4f46e5; }
+  .ol-vivid__range:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(27, 67, 50, 0.08); color: inherit; }
+  .ol-vivid__range-tag { font-size: 10.5px; letter-spacing: 1.6px; text-transform: uppercase; color: #2d6a4f; font-weight: 700; }
+  .ol-vivid__range h3 { font-size: 19px; color: #1a1a1a; margin: 0; font-weight: 800; letter-spacing: -0.01em; }
+  .ol-vivid__range p { font-size: 13.5px; color: #555; line-height: 1.5; margin: 4px 0 0; flex: 1; }
+  .ol-vivid__range-cta { font-size: 11.5px; font-weight: 700; color: #1b4332; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 6px; padding-top: 8px; border-top: 1px solid #f3eedf; }
+  .ol-vivid__principles { background: #1b4332; color: #fff; padding: 56px 16px; }
+  .ol-vivid__principles h2 { font-size: clamp(24px, 4vw, 32px); color: #fff !important; margin: 0 0 28px; font-weight: 800; letter-spacing: -0.02em; text-align: center; }
+  .ol-vivid__principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 900px; margin: 0 auto; }
+  .ol-vivid__principle { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 22px; }
+  .ol-vivid__principle h3 { font-size: 16px; color: #fff; margin: 0 0 8px; font-weight: 800; letter-spacing: -0.01em; }
+  .ol-vivid__principle p { font-size: 13px; color: #d8f3dc; line-height: 1.55; margin: 0; }
+  .ol-vivid__cta { background: linear-gradient(135deg, #fff8eb 0%, #fdeed3 100%); padding: 56px 16px; text-align: center; border-top: 1px solid #f3ddb0; }
+  .ol-vivid__cta h2 { font-size: clamp(24px, 4vw, 32px); color: #1a1a1a; margin: 0 0 12px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+  .ol-vivid__cta p { font-size: 14.5px; color: #92400e; max-width: 580px; margin: 0 auto 24px; line-height: 1.55; }
+  .ol-vivid__cta-ctas { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .ol-vivid__cta a { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 12px; font-weight: 700; font-size: 14px; text-decoration: none; }
+  .ol-vivid__cta-primary { background: linear-gradient(135deg, #1b4332, #2d6a4f); color: #fff; box-shadow: 0 4px 16px rgba(27,67,50,0.25); }
+  .ol-vivid__cta-primary:hover { color: #fff; }
+  .ol-vivid__cta-secondary { background: #fff; color: #1b4332; border: 1px solid #1b4332; }
+  @media (max-width: 800px) {
+    .ol-vivid__why-grid { grid-template-columns: repeat(2, 1fr); }
+    .ol-vivid__ranges-grid, .ol-vivid__principles-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<p class="ol-vivid__crumb"><a href="/">Home</a> · Vivid Health</p>
+
+<section class="ol-vivid">
+
+  <div class="ol-vivid__hero">
+    <div class="ol-vivid__shell">
+      <span class="ol-vivid__tag">Our SA-made house range</span>
+      <h1>Vivid Health — the supplements <em>our consultants use themselves.</em></h1>
+      <p>After 30 years of dispensing all the global brands, our consultants designed their own. <strong>Vivid Health</strong> is a focused range of South African-made supplements at honest, clinical doses — the ones we'd reach for first when building a client stack at the counter.</p>
+      <a class="ol-vivid__hero-cta" href="/collections/vivid-health">Shop the Vivid range <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+
+  <div class="ol-vivid__why">
+    <div class="ol-vivid__shell">
+      <h2>What sets Vivid apart</h2>
+      <div class="ol-vivid__why-grid">
+        <div class="ol-vivid__why-item"><strong>Clinical doses</strong><span>What the published research actually uses, declared in mg on every label.</span></div>
+        <div class="ol-vivid__why-item"><strong>SA-made</strong><span>Manufactured locally to GMP standards. Consistent stock, full traceability.</span></div>
+        <div class="ol-vivid__why-item"><strong>Honestly priced</strong><span>Priced to be a daily stack staple, not a once-off splurge.</span></div>
+        <div class="ol-vivid__why-item"><strong>Consultant-formulated</strong><span>Built by the same team that hands out protocols at the counter.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ol-vivid__ranges">
+    <div class="ol-vivid__shell">
+      <h2>The Vivid ranges</h2>
+      <p>Three product families that cover the most-used categories in our protocols.</p>
+      <div class="ol-vivid__ranges-grid">
+        <a class="ol-vivid__range" href="/collections/vivid-health?type=IMMUNE">
+          <span class="ol-vivid__range-tag">Vivid Immune</span>
+          <h3>Immune support</h3>
+          <p>Astragalus, Immune Plus, Buffered Vitamin C — the daily foundation and the winter response stack. The bones of our Winter Immunity protocol.</p>
+          <span class="ol-vivid__range-cta">Browse Vivid Immune →</span>
+        </a>
+        <a class="ol-vivid__range" href="/collections/vivid-health?type=BODY">
+          <span class="ol-vivid__range-tag">Vivid Body</span>
+          <h3>Performance &amp; recovery</h3>
+          <p>MSM, Coenzyme Q10, Garcinia Cambogia, Cayenne — anti-inflammatory and metabolic support for the gym crowd and the chronic-stress crowd alike.</p>
+          <span class="ol-vivid__range-cta">Browse Vivid Body →</span>
+        </a>
+        <a class="ol-vivid__range" href="/collections/vivid-health?type=STAY">
+          <span class="ol-vivid__range-tag">Stay Vivid</span>
+          <h3>Mood &amp; sleep</h3>
+          <p>5-HTP (Griffonia), Omega Oil, calm-promoting blends — the daily levers for mood, sleep onset and the brain-fat foundation.</p>
+          <span class="ol-vivid__range-cta">Browse Stay Vivid →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ol-vivid__principles">
+    <div class="ol-vivid__shell">
+      <h2>How we make Vivid</h2>
+      <div class="ol-vivid__principles-grid">
+        <div class="ol-vivid__principle"><h3>Doses declared</h3><p>Every Vivid bottle declares the exact mg per ingredient. No proprietary blends.</p></div>
+        <div class="ol-vivid__principle"><h3>Evidence-led claims</h3><p>If the research doesn't support it, the label doesn't say it. We'd rather under-promise.</p></div>
+        <div class="ol-vivid__principle"><h3>Built for daily use</h3><p>Priced for a daily stack, not a once-off splurge. The reason most of our staff keep Vivid in their own cupboards.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ol-vivid__cta">
+    <div class="ol-vivid__shell">
+      <h2>Stack the Vivid range and save another 10%.</h2>
+      <p>Pair 3 or more Vivid products with code <strong>STACK5</strong> (5+ items: <strong>STACK10</strong>) or use any consultant-signed protocol that's built on Vivid — <strong>DISPENSARY10</strong> for 10% off the full stack.</p>
+      <div class="ol-vivid__cta-ctas">
+        <a class="ol-vivid__cta-primary" href="/collections/vivid-health">Shop the Vivid range</a>
+        <a class="ol-vivid__cta-secondary" href="/pages/dispensary-protocols">See protocols built on Vivid</a>
+      </div>
+    </div>
+  </div>
+
+</section>

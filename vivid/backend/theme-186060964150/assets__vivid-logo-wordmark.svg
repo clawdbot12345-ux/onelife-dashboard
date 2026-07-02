@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 260" role="img" aria-labelledby="vivid-logo-title">
+  <title id="vivid-logo-title">Vivid Health</title>
+  <rect width="960" height="260" fill="none"/>
+  <g fill="currentColor">
+    <text x="18" y="148" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="128" font-weight="900" letter-spacing="7">VIVID</text>
+    <text x="484" y="150" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="300" letter-spacing="3">HEALTH</text>
+    <path d="M61 192h700v8H61z"/>
+    <text x="61" y="232" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="8">TARGETED NOURISHMENT</text>
+  </g>
+</svg>

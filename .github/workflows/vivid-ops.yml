@@ -1,0 +1,43 @@
+name: Vivid Ops
+
+# Remote hands for the Vivid redesign session: pull Vivid products/theme
+# assets into the branch, or apply staged product/theme/page changes to
+# the store. Mode comes from JSON in .github/triggers/vivid-ops.
+
+on:
+  push:
+    branches:
+      - "claude/vivid-health-audit-redesign-9fmzon"
+    paths:
+      - ".github/triggers/vivid-ops"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vivid-ops
+  cancel-in-progress: false
+
+jobs:
+  ops:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Run vivid ops
+        env:
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          VIVID_CLIENT_ID: ${{ secrets.VIVID_CLIENT_ID }}
+          VIVID_CLIENT_SECRET: ${{ secrets.VIVID_CLIENT_SECRET }}
+          VIVID_ADMIN_TOKEN: ${{ secrets.VIVID_ADMIN_TOKEN }}
+          VIVID_STORE: ${{ vars.VIVID_SHOPIFY_STORE }}
+        run: python3 scripts/vivid_ops.py
+      - name: Commit results
+        run: |
+          git config user.name "vivid-ops-bot"
+          git config user.email "actions@github.com"
+          git add -A vivid/backend
+          git commit -m "chore: vivid-ops results" || echo "nothing to commit"
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin HEAD:${{ github.ref_name }}
