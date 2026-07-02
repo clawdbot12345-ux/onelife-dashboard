@@ -1,0 +1,145 @@
+/* ONE LIFE — premium discipline pass 1 (2026-07-02, design-audit follow-up)
+   One palette, one type voice, quieter chrome, gentle motion.
+   Selectors verified against live DOM + dumped theme sources. */
+
+:root {
+  --ol-green-deep: #10261F;
+  --ol-green: #2D6A4F;
+  --ol-cream: #FAF7F0;
+  --ol-stone: #EDE7DA;
+  --ol-brass: #A9853B;
+  --ol-ink: #23302B;
+  --ol-hairline: rgba(45, 106, 79, 0.22);
+}
+
+/* ── 1. COLOR DISCIPLINE ─────────────────────────────────────────── */
+
+/* Kill default link-blue in all prose/content contexts */
+.rte a, p a:not(.button), li a:not(.button),
+.ol-vs a, .ol-why-ol a, .article-template a:not(.button) {
+  color: var(--ol-green);
+  text-decoration-color: var(--ol-hairline);
+  text-underline-offset: 2px;
+}
+.rte a:hover, p a:not(.button):hover { color: var(--ol-green-deep); }
+
+/* Dietary tag pills: one quiet outline style, all variants */
+[class*="ol-badge"] {
+  background: transparent !important;
+  border: 1px solid var(--ol-hairline) !important;
+  color: var(--ol-green) !important;
+  border-radius: 999px;
+}
+
+/* Protocol hub tiles: retire the 11-color rainbow — cream card, green
+   hairline, brass hover accent */
+.ol-hub__card {
+  background: var(--ol-cream) !important;
+  border: 1px solid var(--ol-hairline) !important;
+  box-shadow: none !important;
+}
+.ol-hub__card:hover { border-color: var(--ol-brass) !important; }
+.ol-hub__card-pill, .ol-hub__card-tag {
+  background: transparent !important;
+  border: 1px solid var(--ol-hairline) !important;
+  color: var(--ol-green) !important;
+}
+.ol-hub__card-cta { color: var(--ol-green-deep) !important; }
+.ol-hub__chip {
+  background: transparent !important;
+  border: 1px solid var(--ol-hairline) !important;
+  color: var(--ol-green) !important;
+}
+
+/* Goal cards: hide emoji glyphs; the label carries the meaning */
+.ol-goal-emoji { display: none !important; }
+.ol-goal-card {
+  background: var(--ol-cream) !important;
+  border: 1px solid var(--ol-hairline) !important;
+}
+
+/* Diet cards on home: same quieting */
+.ol-diet-card {
+  background: var(--ol-cream) !important;
+  border: 1px solid var(--ol-hairline) !important;
+}
+
+/* ── 2. TYPOGRAPHY VOICE ─────────────────────────────────────────── */
+
+/* Serif reserved for the brand voice moments: section h2s and product
+   titles read as the apothecary; UI stays Cabin/Inter. */
+.ol-vs h2, .ol-why-ol h2, .ol-hub__card-title,
+.title.h1, .collection-hero__title, .article-template__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Blog card titles: clamp at word boundaries, never mid-word */
+.article-card .card__heading {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* ── 3. MOBILE CHROME DIET ───────────────────────────────────────── */
+
+/* The 4-stat proof bar earns its place once — on the homepage.
+   Everywhere else it costs a third of screen one. */
+body:not(.template-index) .ol-proof-bar { display: none !important; }
+@media screen and (max-width: 749px) {
+  .ol-proof-bar .ol-proof-icon { display: none; }
+  .ol-proof-bar { padding-top: 0.4rem; padding-bottom: 0.4rem; }
+}
+
+/* ── 4. CONTRAST FIXES ───────────────────────────────────────────── */
+
+.predictive-search .price,
+predictive-search .price {
+  opacity: 1 !important;
+  color: var(--ol-green-deep) !important;
+}
+.menu-drawer predictive-search .price,
+.header__search .predictive-search--dark .price {
+  color: var(--ol-cream) !important;
+}
+
+/* ── 5. COMPONENT CALM ───────────────────────────────────────────── */
+
+/* Secondary buttons: quiet ghost, one system */
+.button--secondary,
+.ol-card-action__button.button--secondary {
+  background: transparent;
+  border: 1px solid var(--ol-green-deep);
+  color: var(--ol-green-deep);
+  box-shadow: none;
+}
+.button--secondary:hover { background: rgba(45, 106, 79, 0.06); }
+
+/* Card grid: aligned, breathing */
+.card__heading { line-height: 1.25; }
+.card-wrapper .card__content { row-gap: 0.35rem; }
+
+/* ── 6. MOTION (restraint, 150–220ms) ────────────────────────────── */
+
+.card-wrapper {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+@media (hover: hover) {
+  .card-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(16, 38, 31, 0.08);
+  }
+}
+.button, .ol-card-action__button {
+  transition: transform 0.12s ease, background-color 0.18s ease,
+              border-color 0.18s ease;
+}
+.button:active { transform: scale(0.985); }
+@media (prefers-reduced-motion: reduce) {
+  .card-wrapper, .button { transition: none; }
+  .card-wrapper:hover { transform: none; }
+}
