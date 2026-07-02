@@ -1,0 +1,64 @@
+{%- comment -%}
+  Vivid origin story — the real Onelife founding narrative (1996), kept
+  anonymous and tailored to Vivid. Provenance, not a dated founder portrait.
+{%- endcomment -%}
+
+<section class="founder-band founder-band--story reveal" id="story" aria-label="The Vivid story">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-portrait">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 900 | image_tag:
+              loading: 'lazy', widths: '400,700,900', sizes: '(min-width:900px) 40vw, 90vw', alt: 'Vivid Health origin' }}
+        {%- else -%}
+          <img src="{{ section.settings.fallback_asset | default: 'griffonia-moss.jpg' | asset_url }}" loading="lazy" width="900" height="1200" alt="A Vivid Health bottle photographed on wet forest moss">
+        {%- endif -%}
+        {%- if section.settings.since != blank -%}
+          <span class="founder-since">{{ section.settings.since }}</span>
+        {%- endif -%}
+      </div>
+      <div class="founder-story">
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="founder-eyebrow">{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        <h2 class="founder-headline">{{ section.settings.headline }}</h2>
+        <div class="founder-body">{{ section.settings.body }}</div>
+        {%- if section.settings.attribution != blank -%}
+          <div class="founder-attr">{{ section.settings.attribution }}</div>
+        {%- endif -%}
+        <div class="founder-cta">
+          {%- if section.settings.cta1_label != blank -%}
+            <a href="{{ section.settings.cta1_link | default: '/pages/our-approach' }}" class="btn btn--forest btn-arrow">{{ section.settings.cta1_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.cta2_label != blank -%}
+            <a href="{{ section.settings.cta2_link | default: '/pages/about' }}" class="btn btn--ghost">{{ section.settings.cta2_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Origin story",
+  "tag": "section",
+  "class": "section-founder-cameo",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Story image" },
+    { "type": "text", "id": "fallback_asset", "label": "Fallback asset filename", "default": "griffonia-moss.jpg" },
+    { "type": "text", "id": "since", "label": "Since-tag on image", "default": "Est. 1996" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our story · Since 1996" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "It started with a sick child." },
+    { "type": "richtext", "id": "body", "label": "Body",
+      "default": "<p>In 1996, a Gauteng family couldn't break their young son's cycle of constant illness and monthly courses of antibiotics. They went looking for another way — and found it in carefully chosen herbal and nutritional supplementation. The change was real enough that they opened a health store to pay the blessing forward.</p><p>That store became Onelife Health: three Gauteng branches and three decades of standing across the counter from real people asking real questions about what actually works.</p><p>Vivid is what that family built when they began formulating their own. Thirty years on the shop floor taught them exactly what under-dosing costs someone who is genuinely unwell — so every Vivid formula puts the active milligrams on the label, leads with plants, and does one clear job. No proprietary blends. No imported mystery powder. Just the honest version of what helped, all those years ago.</p>" },
+    { "type": "richtext", "id": "attribution", "label": "Attribution",
+      "default": "<p><strong>The family behind Onelife Health &amp; Vivid</strong> · Centurion, since 1996</p>" },
+    { "type": "text", "id": "cta1_label", "label": "CTA 1 label", "default": "How we formulate" },
+    { "type": "url",  "id": "cta1_link",  "label": "CTA 1 link" },
+    { "type": "text", "id": "cta2_label", "label": "CTA 2 label", "default": "More about Vivid" },
+    { "type": "url",  "id": "cta2_link",  "label": "CTA 2 link" }
+  ],
+  "presets": [ { "name": "Origin story" } ]
+}
+{% endschema %}

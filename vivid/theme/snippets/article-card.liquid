@@ -1,0 +1,50 @@
+{%- comment -%}
+  Article card — used by main-blog and journal-teaser.
+  Fallback image varies by article so the journal index doesn't repeat
+  the same hero when articles have no individually-uploaded image.
+
+  Shopify's article.handle returns "<blog-handle>/<article-handle>", so
+  use article-handle (the slug-only portion) for the switch.
+{%- endcomment -%}
+
+{%- assign h = article.handle | split: '/' | last -%}
+{%- assign fallback_asset = 'banner-journal.jpg' -%}
+{%- if article.image == blank -%}
+  {%- if h == 'buffered-vitamin-c-explained' -%}{%- assign fallback_asset = 'allergy-control-lavender.jpg' -%}{%- endif -%}
+  {%- if h == 'parasite-cleanse-evidence' -%}{%- assign fallback_asset = 'banner-gut.jpg' -%}{%- endif -%}
+  {%- if h == 'three-magnesiums' -%}{%- assign fallback_asset = 'banner-stress.jpg' -%}{%- endif -%}
+  {%- if h == 'hay-fever-gauteng' -%}{%- assign fallback_asset = 'banner-group-allergy.jpg' -%}{%- endif -%}
+  {%- if h == 'mullein-chest-tightness' -%}{%- assign fallback_asset = 'banner-immunity.jpg' -%}{%- endif -%}
+  {%- if h == 'curcumin-bioavailability' -%}{%- assign fallback_asset = 'banner-daily.jpg' -%}{%- endif -%}
+  {%- if h == 'msm-sulphur-explained' -%}{%- assign fallback_asset = 'banner-joints.jpg' -%}{%- endif -%}
+  {%- if h == '5htp-serotonin-sleep' -%}{%- assign fallback_asset = 'banner-group-sleep.jpg' -%}{%- endif -%}
+  {%- if h == 'vitex-cycle-regularity' -%}{%- assign fallback_asset = 'banner-women.jpg' -%}{%- endif -%}
+  {%- if h == 'saw-palmetto-prostate' -%}{%- assign fallback_asset = 'banner-men.jpg' -%}{%- endif -%}
+  {%- if h == 'coq10-mitochondria-statins' -%}{%- assign fallback_asset = 'banner-daily.jpg' -%}{%- endif -%}
+  {%- if h == 'glutamine-gut-lining' -%}{%- assign fallback_asset = 'banner-gut.jpg' -%}{%- endif -%}
+{%- endif -%}
+
+<a href="{{ article.url }}" class="article">
+  <div class="article-img">
+    {%- if article.image -%}
+      {{ article.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,600,900,1200', sizes: '(min-width: 900px) 33vw, 100vw', alt: article.title }}
+    {%- else -%}
+      <img src="{{ fallback_asset | asset_url }}" loading="lazy" alt="">
+    {%- endif -%}
+  </div>
+  <div class="article-cat">
+    {%- if article.tags.size > 0 -%}
+      {%- for tag in article.tags -%}
+        {%- unless tag contains 'category:' or tag == 'vivid-journal' -%}
+          {{ tag }} · {% break %}
+        {%- endunless -%}
+      {%- endfor -%}
+    {%- endif -%}
+    {{- article.content | strip_html | truncatewords_html: 100 | size | divided_by: 200 | plus: 1 -}} min read
+  </div>
+  <h3>{{ article.title }}</h3>
+  {%- if article.excerpt != blank -%}
+    <p>{{ article.excerpt | strip_html | truncate: 160 }}</p>
+  {%- endif -%}
+  <span class="more">Read article →</span>
+</a>

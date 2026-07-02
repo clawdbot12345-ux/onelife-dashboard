@@ -1,0 +1,62 @@
+{%- comment -%}
+  Live reviews band — pulls real review data from product
+  metafield vivid.reviews_json across a chosen collection. Renders the
+  highest-rated review per product. Sample reviews are flagged.
+{%- endcomment -%}
+{%- assign coll = collections[section.settings.collection] -%}
+{%- assign shown = 0 -%}
+<section class="reviews-live reveal" aria-labelledby="reviews-live-heading">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<div class="eyebrow">{{ section.settings.eyebrow }}</div>{%- endif -%}
+        <h2 id="reviews-live-heading" style="margin-top:12px">{{ section.settings.heading }}</h2>
+      </div>
+      {%- if section.settings.cta_label != blank -%}
+        <a href="{{ section.settings.cta_link | default: '/collections/all-formulations' }}" class="btn btn--ghost btn-arrow">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+    </div>
+    <div class="reviews-live-grid">
+      {%- for product in coll.products -%}
+        {%- assign rlist = product.metafields.vivid.reviews_json.value -%}
+        {%- if rlist != blank and rlist.size > 0 and shown < section.settings.max -%}
+          {%- assign r = rlist.first -%}
+          <a class="review-item review-item--link" href="{{ product.url }}">
+            <div class="review-item-top">
+              <span class="stars" aria-hidden="true">{% for i in (1..5) %}{% if i <= r.rating %}★{% else %}☆{% endif %}{% endfor %}</span>
+              {%- if r.sample -%}<span class="review-sample">Sample</span>{%- endif -%}
+            </div>
+            {%- if r.title and r.title != blank -%}<h4 class="review-title">{{ r.title }}</h4>{%- endif -%}
+            <p class="review-body">{{ r.body | truncate: 160 }}</p>
+            <div class="review-meta">
+              <strong>{{ r.author }}</strong>{% if r.location %} · {{ r.location }}{% endif %}
+              <span class="review-product">{{ product.title | split: ' - ' | last }}</span>
+            </div>
+          </a>
+          {%- assign shown = shown | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.footnote != blank -%}
+      <p class="reviews-live-foot">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Live reviews",
+  "tag": "section",
+  "class": "section-reviews-live",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Customer reviews" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Real shelves. Real routines.</p>" },
+    { "type": "collection", "id": "collection", "label": "Source collection", "info": "Reviews are pulled from products in this collection." },
+    { "type": "range", "id": "max", "label": "Max reviews", "min": 3, "max": 9, "step": 3, "default": 6 },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Shop the range" },
+    { "type": "url",  "id": "cta_link",  "label": "CTA link" },
+    { "type": "text", "id": "footnote", "label": "Footnote", "default": "Sample reviews shown while we collect verified customer reviews. Replace before launch." }
+  ],
+  "presets": [ { "name": "Live reviews" } ]
+}
+{% endschema %}

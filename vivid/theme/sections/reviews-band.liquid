@@ -1,0 +1,67 @@
+<section class="vivid-proof-band reveal" aria-labelledby="proof-band-heading">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        <h2 id="proof-band-heading" style="margin-top:14px">{{ section.settings.heading }}</h2>
+      </div>
+      {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+        <a href="{{ section.settings.cta_link }}" class="btn btn--ghost btn-arrow">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.summary != blank -%}
+      <p class="proof-summary">{{ section.settings.summary }}</p>
+    {%- endif -%}
+
+    <div class="proof-home-grid">
+      {%- for block in section.blocks -%}
+        <div class="proof-card" {{ block.shopify_attributes }}>
+          <div class="proof-card-kicker">{{ block.settings.eyebrow }}</div>
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.body }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Proof band",
+  "tag": "section",
+  "class": "section-reviews-band",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Vivid standard" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Built for people who read the label.</p>" },
+    { "type": "textarea", "id": "summary", "label": "Summary text", "default": "Premium wellness does not need mystery blends or louder promises. It needs clear actives, clean routines, and products that make sense on a real shelf." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "See the range" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "proof",
+      "name": "Proof card",
+      "limit": 6,
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "No proprietary blends" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Every active dose is visible." },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "The active milligrams belong on the label, not buried inside vague wellness language." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Proof band",
+      "blocks": [
+        { "type": "proof", "settings": { "eyebrow": "Exact dose", "heading": "Every active dose is visible.", "body": "Vivid labels show the meaningful milligrams upfront, so shoppers can compare, stack, and choose with confidence." } },
+        { "type": "proof", "settings": { "eyebrow": "Routine-led", "heading": "One bottle, one daily job.", "body": "Each formula has a clear role in the routine: gut, immune, mobility, stress, energy, men's, women's, or daily nutrients." } },
+        { "type": "proof", "settings": { "eyebrow": "Shelf clarity", "heading": "A cleaner system for the whole range.", "body": "Color-coded ranges and curated stacks make the shelf easier to understand before anything reaches the cart." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

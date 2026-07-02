@@ -1,0 +1,443 @@
+{
+  "_meta": {
+    "purpose": "Vivid Health ingredient library — SEO/GEO landing pages, one per ingredient. Each entry powers a /ingredients/[handle] page on the storefront and feeds the FAQ schema markup. Copy is written for South African search intent.",
+    "claims_policy": "Avoid disease-treatment claims. Use traditional-use and structure-function language compatible with SAHPRA Category D complementary medicines guidance.",
+    "count": 30
+  },
+  "ingredients": [
+    {
+      "handle": "mullein",
+      "name": "Mullein leaf",
+      "aka": ["Verbascum thapsus", "Common mullein", "Velvet plant"],
+      "summary": "A demulcent respiratory herb. Soothes airways and supports productive coughs.",
+      "intro": "Mullein (Verbascum thapsus) is a tall, woolly-leaved European herb that's been used for respiratory complaints since at least the time of Dioscorides. The leaves contain saponins and mucilage — the combination that gives mullein its dual reputation as both an expectorant (helping the lungs clear mucus) and a demulcent (coating irritated mucous membranes).",
+      "evidence": "Modern human trial data on mullein is thin — most of what we know comes from traditional pharmacology and in-vitro studies showing anti-inflammatory and antibacterial activity against common respiratory pathogens. It has a long monograph history in European herbal pharmacopoeias for productive coughs, bronchial irritation, and as a soothing tea or capsule for tickly throats.",
+      "typical_dose": "300–500 mg of standardised leaf extract, 1–3 times daily. Vivid's Mullein 60 contains 360 mg per vegetable capsule.",
+      "in_products": ["mullein-60", "allergy-control-60"],
+      "safety": "Generally well-tolerated. Use the seedless preparation — mullein seeds contain rotenone and saponins not appropriate for ingestion. Consult a healthcare provider before use during pregnancy or breastfeeding.",
+      "faq": [
+        {"q": "Is mullein safe for daily use?", "a": "For most adults, yes — short-term daily use (4–8 weeks) is well-tolerated. For long-term daily use, rotate with breaks of 1–2 weeks every 2 months, as you would with any tonic herb."},
+        {"q": "Can I take mullein for a chronic cough?", "a": "Mullein is traditionally used to help productive coughs become more effective. If a cough has lasted more than three weeks, see your doctor — supplements don't replace investigation."},
+        {"q": "Does mullein interact with diuretics or blood pressure medication?", "a": "There's no well-documented interaction, but mullein has mild diuretic activity. If you take prescription diuretics or blood pressure medication, check with your pharmacist."}
+      ]
+    },
+    {
+      "handle": "black-walnut",
+      "name": "Black walnut hull",
+      "aka": ["Juglans nigra", "Walnut hull"],
+      "summary": "Juglone-rich antiparasitic and antifungal botanical.",
+      "intro": "Black walnut hull (the green outer covering of the nut, not the nut itself) is one of the cornerstone herbs of traditional Western antiparasitic protocols. It contains juglone, a naphthoquinone compound, alongside tannins and a small amount of iodine. The combination is the reason black walnut shows up in nearly every traditional parasite cleanse formula alongside wormwood and clove.",
+      "evidence": "Juglone has documented antimicrobial, antifungal, and antiparasitic activity in laboratory studies. Clinical human data is limited — most use is supported by long-standing traditional Western and Indigenous practice rather than randomised trials. Black walnut is also high in antioxidants and tannins, contributing to its astringent action on the gut lining.",
+      "typical_dose": "300–500 mg of a 4:1 hull extract, 1–3 times daily for 2–6 weeks at a time. Vivid's Black Walnut contains 460 mg of 4:1 extract per capsule.",
+      "in_products": ["black-walnut-60"],
+      "safety": "Don't use for more than 6 consecutive weeks without a break — the high tannin content can be hard on the gut lining. Avoid in pregnancy. People with walnut allergy should avoid even the hull preparation.",
+      "faq": [
+        {"q": "How is black walnut hull different from black walnut nuts?", "a": "Completely different parts of the plant. The nuts are food. The hulls — the soft green outer covering — are the medicinal part and contain juglone, which the nuts don't."},
+        {"q": "Can I take black walnut, wormwood and clove together?", "a": "Yes — that's the classic 'parasite triad' from traditional Western herbalism. Vivid sells all three as single ingredients so you can build the protocol."},
+        {"q": "How long should a black walnut course last?", "a": "Most traditional protocols are 4–6 weeks, sometimes repeated after a 2-week break. Don't take continuously for months."}
+      ]
+    },
+    {
+      "handle": "wormwood",
+      "name": "Wormwood",
+      "aka": ["Artemisia annua", "Sweet Annie", "Sweet wormwood"],
+      "summary": "Artemisinin-bearing bitter herb. Gut, parasites, and immune resilience.",
+      "intro": "Wormwood is the common name for several Artemisia species. Vivid uses Artemisia annua — the species that gives us artemisinin, the antimalarial compound that won Tu Youyou the 2015 Nobel Prize in Medicine. It's bitter, aromatic, and packs a lot of pharmacological punch into a small dose.",
+      "evidence": "Artemisinin and its derivatives are first-line malaria therapy globally, and in-vitro work shows activity against a range of intestinal parasites and some gut pathogens. The bitter principles also stimulate digestive secretions — historically why wormwood appeared in aperitifs and bitters before it was used medicinally.",
+      "typical_dose": "200–400 mg of Artemisia annua extract, 1–3 times daily, in 2–6 week cycles. Vivid's Wormwood 60 fits into the same 4–6 week protocol windows as the rest of the parasite triad.",
+      "in_products": ["wormwood-60"],
+      "safety": "Don't use continuously for more than 6 weeks. Avoid in pregnancy and breastfeeding. People with seizure disorders should avoid wormwood-derived essential oils — capsule-form leaf extract is safer but still warrants a doctor's review if you have a seizure history.",
+      "faq": [
+        {"q": "Is this the same wormwood that's in absinthe?", "a": "Absinthe traditionally used Artemisia absinthium, a related species containing thujone. Vivid uses Artemisia annua, which is lower in thujone and the source of artemisinin."},
+        {"q": "Will it taste bitter?", "a": "Vivid wormwood comes in a vegetable capsule, so the bitterness is bypassed. Some users actually like the bitter — it primes digestive secretions."},
+        {"q": "Can I take wormwood long-term?", "a": "No — wormwood is for short cycles (4–6 weeks), not daily continuous use."}
+      ]
+    },
+    {
+      "handle": "clove",
+      "name": "Clove bud",
+      "aka": ["Syzygium aromaticum", "Cengkeh"],
+      "summary": "Eugenol-rich aromatic spice. Antimicrobial gut support.",
+      "intro": "Clove buds are one of the highest concentrations of eugenol — an aromatic compound with documented antimicrobial, antiviral, and analgesic activity. The same property that makes clove oil a folk remedy for toothache makes whole-clove extract a useful gut antimicrobial.",
+      "evidence": "Eugenol has well-documented activity against a range of bacteria, fungi, and protozoa in laboratory studies. Clove appears alongside black walnut and wormwood in traditional Western parasite protocols specifically because eugenol targets the egg stage of intestinal parasites that the other two herbs don't.",
+      "typical_dose": "300–500 mg of clove bud extract, 1–3 times daily, in 2–6 week cycles.",
+      "in_products": ["clove-60"],
+      "safety": "Avoid pure clove oil internally — it's far too concentrated. Capsule-form clove powder is the safer preparation. People on blood thinners should check with a pharmacist; eugenol has mild antiplatelet activity.",
+      "faq": [
+        {"q": "Why clove for parasites?", "a": "Black walnut and wormwood target adult parasites and larvae. Clove is added because eugenol affects the egg stage that the other two herbs don't penetrate."},
+        {"q": "Can I cook with clove instead of supplementing?", "a": "Culinary clove gives you flavour and a tiny amount of eugenol. A 500 mg extract capsule delivers a therapeutic dose you'd struggle to reach from food alone."}
+      ]
+    },
+    {
+      "handle": "msm",
+      "name": "MSM (Methylsulfonylmethane)",
+      "aka": ["Organic sulphur", "DMSO2"],
+      "summary": "Bioavailable organic sulphur. Cartilage and collagen cofactor.",
+      "intro": "MSM is a small, naturally-occurring sulphur-containing compound that the body uses as a building block for connective tissue. Sulphur is the third-most-abundant mineral in the body and a key component of collagen, keratin, and the glutathione antioxidant system — but most modern diets are low in bioavailable sulphur.",
+      "evidence": "Randomised controlled trials in osteoarthritis show modest but consistent reduction in joint pain and stiffness with 1.5–6 g daily of MSM, often paired with glucosamine. MSM also shows promise as an anti-inflammatory for exercise-induced muscle damage, and topically for skin conditions, though the evidence base is smaller for those uses.",
+      "typical_dose": "1,000–3,000 mg daily for joint support; up to 6,000 mg for inflammatory conditions. Vivid's MSM capsules contain 810 mg per capsule — most users take 3–6 capsules per day. The 150g/500g powders allow flexible higher dosing.",
+      "in_products": ["msm-90", "msm-300", "msm-500", "msm-150g", "flexijoint-advanced-120", "flexijoint-300"],
+      "safety": "Very well-tolerated. Some users report mild GI upset at high doses (>4 g) — split into 2–3 doses with food. No documented serious interactions, but check with your doctor if you take blood thinners.",
+      "faq": [
+        {"q": "What's the difference between MSM capsules and powder?", "a": "Same molecule, different format. The capsule is convenient and pre-dosed at 810 mg. The powder lets you take more flexibly — useful if you want 3 g+ per day."},
+        {"q": "Should I take MSM with glucosamine?", "a": "They work synergistically for joint support, which is why Vivid's Flexijoint Advanced bundles them. MSM alone is also useful — particularly for skin and connective tissue beyond joints."},
+        {"q": "How quickly does MSM work?", "a": "For joint comfort, most people notice a change at 4–8 weeks of consistent dosing. Don't expect overnight effect — sulphur is a structural building block, not an analgesic."}
+      ]
+    },
+    {
+      "handle": "turmeric",
+      "name": "Turmeric (Curcumin)",
+      "aka": ["Curcuma longa", "Indian saffron", "Haldi"],
+      "summary": "Curcumin — the world's most-studied anti-inflammatory plant compound.",
+      "intro": "Turmeric is the rhizome that gives curry its colour. Its active polyphenol — curcumin — is one of the most-studied natural anti-inflammatory compounds in the literature, with over 10,000 PubMed entries spanning joint pain, cardiovascular health, gut inflammation, and mood.",
+      "evidence": "Multiple randomised trials show curcumin reduces markers of inflammation (CRP, IL-6) and improves joint pain scores in osteoarthritis comparable to NSAIDs but with a better safety profile. Curcumin's natural absorption is poor — which is why Vivid pairs it with piperine in Turmeric Plus, a combination shown to increase bioavailability roughly 20-fold.",
+      "typical_dose": "500–1,500 mg of standardised curcuminoid extract daily. Without piperine or a phospholipid carrier, much higher doses (3 g+) are needed. Vivid's Turmeric Plus delivers a piperine-paired dose; the plain Turmeric 300 is a daily food-form dose.",
+      "in_products": ["turmeric-300", "turmeric-plus-60", "joint-relief-60"],
+      "safety": "Generally very safe. Can mildly thin the blood — discontinue 2 weeks before surgery and check with your doctor if you take warfarin or other anticoagulants. Some people get reflux on high doses — take with food.",
+      "faq": [
+        {"q": "Should I take Turmeric or Turmeric Plus?", "a": "If you want piperine-enhanced absorption at a lower curcumin dose, Turmeric Plus. If you prefer a higher daily food-form dose without piperine, Turmeric 300. Both work — the difference is bioavailability strategy."},
+        {"q": "Can I just eat more curry?", "a": "Curry contains roughly 2–5% curcumin in the turmeric powder. To get 500 mg of curcumin from food, you'd eat a heroic amount of curry. A capsule is just more practical."},
+        {"q": "Does turmeric stain?", "a": "The powder does. The capsule doesn't — that's part of the point."}
+      ]
+    },
+    {
+      "handle": "cayenne",
+      "name": "Cayenne (Capsaicin)",
+      "aka": ["Capsicum annuum", "Capsicum frutescens", "Chilli pepper"],
+      "summary": "Capsaicin — the chilli compound that supports metabolism and circulation.",
+      "intro": "Cayenne pepper's heat comes from capsaicin, a vanilloid compound that triggers TRPV1 receptors on the tongue (and across the digestive tract). Beyond the heat, capsaicin has documented effects on metabolic rate, gut motility, and circulation.",
+      "evidence": "Human studies show capsaicin produces a modest increase in resting metabolic rate (a few percent), increased thermogenesis after meals, and improved satiety. Long-term use is associated with reduced cardiovascular mortality in large observational cohorts. Topical capsaicin creams are used for nerve pain.",
+      "typical_dose": "300–600 mg of cayenne powder per day for metabolic support. Vivid's Cayenne 90/300 capsules and the 250g powder let you dose flexibly — start at the low end and let your tolerance build.",
+      "in_products": ["cayenne-90", "cayenne-300", "cayenne-250g"],
+      "safety": "May aggravate reflux or gastritis in sensitive individuals. Start at the lowest dose. Avoid if you have active peptic ulcer disease. Wash hands carefully after handling powder — capsaicin is an eye irritant.",
+      "faq": [
+        {"q": "Will cayenne supplements make me sweat?", "a": "Often yes — that's the thermogenic effect at work. It usually settles as tolerance builds."},
+        {"q": "Cayenne powder vs capsules — which?", "a": "Capsules bypass the heat on your tongue. Powder is more flexible-dose. Choose what you'll actually take consistently."}
+      ]
+    },
+    {
+      "handle": "calcium-ascorbate",
+      "name": "Calcium ascorbate (Buffered C)",
+      "aka": ["Buffered vitamin C", "Non-acidic vitamin C"],
+      "summary": "Buffered vitamin C — the stomach-friendly form for daily use.",
+      "intro": "Ordinary vitamin C is ascorbic acid — and at high doses, the acidity can cause reflux, gastritis, or simply 'sour stomach' that puts people off taking it consistently. Calcium ascorbate is the same vitamin C molecule with a calcium counter-ion, raising the pH and making the powder or capsule easy on the gut even at high doses.",
+      "evidence": "Vitamin C is essential — humans can't make it. It's a cofactor for collagen synthesis, an antioxidant, supports immune function, and improves iron absorption. The case for high-dose vitamin C in immune support is mixed — modest reduction in cold duration in some trials, no preventive effect. The case for daily 500–1000 mg as nutritional insurance is strong.",
+      "typical_dose": "500–1,000 mg daily for general use; up to 3,000 mg during acute illness, split across the day. Vivid's Buffered C capsules deliver 500 mg per capsule; the 150g powder lets you titrate higher.",
+      "in_products": ["buffered-c-90", "buffered-c-300", "buffered-c-150g", "advanced-buffered-c-300", "immune-plus-60", "quercetin-complex-60"],
+      "safety": "Generally very safe. Doses above 2 g may cause loose stools — back off if this happens. The calcium content is modest but worth noting if you take other calcium supplements: 500 mg of calcium ascorbate contains ~50 mg elemental calcium.",
+      "faq": [
+        {"q": "Is calcium ascorbate as bioavailable as ascorbic acid?", "a": "Yes — same absorption profile, same plasma levels. The only difference is gut tolerability."},
+        {"q": "Can I take Buffered C if I have a calcium problem?", "a": "Each 500 mg capsule has roughly 50 mg of calcium — quite small. If you're on calcium-restricted regimens (kidney stones, certain conditions), check with your doctor."},
+        {"q": "Buffered C or Advanced Buffered C — what's the difference?", "a": "Advanced adds zinc and bioflavonoids for synergistic immune support. Plain Buffered C is the pure vitamin C version."}
+      ]
+    },
+    {
+      "handle": "quercetin",
+      "name": "Quercetin",
+      "aka": ["Quercetin dihydrate", "Bioflavonoid"],
+      "summary": "Flavonoid mast cell stabiliser. The allergy season ally.",
+      "intro": "Quercetin is a flavonoid found in onions, apples, capers, and many other plants. Its standout property — and the reason it shows up in nearly every modern allergy and respiratory formula — is mast cell stabilisation. Mast cells release histamine; quercetin makes them release less of it.",
+      "evidence": "Multiple human trials show quercetin reduces allergic rhinitis symptoms and asthma markers, particularly when paired with vitamin C and bromelain (which improve absorption). Quercetin also has documented antiviral activity in vitro against several respiratory viruses, and was widely studied during the pandemic for that reason.",
+      "typical_dose": "250–500 mg, 2–3 times daily during allergy season. Vivid's Quercetin Complex pairs quercetin with vitamin C and bromelain for absorption.",
+      "in_products": ["quercetin-complex-60", "allergy-control-60"],
+      "safety": "Very well-tolerated. Mild kidney concerns at very high doses (>1 g/day for prolonged periods) in animal studies. Drink plenty of water on higher doses. May interact with some chemotherapy drugs — check with your oncologist.",
+      "faq": [
+        {"q": "Should I take quercetin year-round or just hay fever season?", "a": "For active allergic rhinitis, take during your trigger season and 2–4 weeks before it starts. For general antioxidant support, lower-dose daily is fine."},
+        {"q": "Will quercetin replace my antihistamine?", "a": "Not necessarily — but for some users it reduces how often they need rescue antihistamines. It's gentler and doesn't cause drowsiness."}
+      ]
+    },
+    {
+      "handle": "astragalus",
+      "name": "Astragalus root",
+      "aka": ["Astragalus membranaceus", "Huang Qi", "Milkvetch"],
+      "summary": "Adaptogenic Chinese tonic herb. Immune modulator.",
+      "intro": "Astragalus is one of the foundational immune tonics of Traditional Chinese Medicine, where it's used to strengthen the body's defensive energy (Wei Qi). Modern phytochemistry has isolated its main active compounds — astragalosides and polysaccharides — both of which have documented immune-modulating activity.",
+      "evidence": "Laboratory and animal studies consistently show astragalus enhances macrophage and NK cell activity. Human trials in chronic viral infections, post-chemotherapy recovery, and recurrent respiratory infections show modest but consistent benefit. It's an adaptogen — meaning it normalises function rather than pushing one direction.",
+      "typical_dose": "300–500 mg of standardised root extract, 1–2 times daily for ongoing tonic use.",
+      "in_products": ["astragalus-60"],
+      "safety": "Generally very safe for long-term use — TCM uses it as a daily tonic. Caution if you take immunosuppressant drugs (after transplant, for autoimmune disease) — astragalus can theoretically counteract them. Discuss with your doctor.",
+      "faq": [
+        {"q": "Can I take astragalus daily, long-term?", "a": "Yes — astragalus is one of the few immune herbs designed for ongoing tonic use, often years at a time in TCM practice."},
+        {"q": "Will it help if I'm already sick?", "a": "Astragalus is preventive, not curative. Start before flu season or after recovery, not in the middle of an acute illness — for acute use, look at echinacea or elderberry."}
+      ]
+    },
+    {
+      "handle": "l-lysine",
+      "name": "L-Lysine",
+      "aka": ["Lysine HCl", "Essential amino acid"],
+      "summary": "Essential amino acid for cold sores, collagen, and cardiovascular health.",
+      "intro": "Lysine is one of the nine essential amino acids — the body can't make it, so it has to come from food. It's a building block for collagen, a precursor to carnitine, and notably interferes with the metabolic pathway that the herpes simplex virus uses to replicate.",
+      "evidence": "Multiple controlled trials show 1–3 g of L-lysine daily reduces the frequency and severity of cold sore (HSV-1) outbreaks. Lower-dose lysine is also a useful collagen-synthesis cofactor when paired with vitamin C. Cardiovascular work suggests it competes with arginine in a way that may benefit some heart conditions, though that case is less established.",
+      "typical_dose": "1,000 mg daily for general collagen and immune support; 2,000–3,000 mg in divided doses for active cold sore prevention. Vivid's L-Lysine 60 delivers 500 mg per capsule.",
+      "in_products": ["l-lysine-60"],
+      "safety": "Very well-tolerated long-term. Doesn't interact significantly with medications. People with kidney disease should check with their doctor on chronic high-dose use.",
+      "faq": [
+        {"q": "Should I take L-lysine continuously or only when I feel a cold sore coming?", "a": "Continuous low-dose (1 g daily) is what reduces outbreak frequency. Higher acute doses (2–3 g) when you feel a tingle can shorten or abort an outbreak."},
+        {"q": "Can lysine replace antiviral medication?", "a": "For mild recurrent outbreaks, often yes. For severe or frequent outbreaks, it's a useful adjunct to prescription antivirals — discuss with your doctor."}
+      ]
+    },
+    {
+      "handle": "l-glutamine",
+      "name": "L-Glutamine",
+      "aka": ["Glutamine"],
+      "summary": "The gut lining's preferred fuel. Recovery and digestive repair.",
+      "intro": "Glutamine is the most abundant amino acid in the body. Crucially, it's the primary fuel for enterocytes — the cells lining the small intestine. When gut lining cells are under stress (from intense training, antibiotics, IBS, inflammatory states), their glutamine demand goes up sharply.",
+      "evidence": "Clinical research supports glutamine for intestinal permeability ('leaky gut'), post-surgical recovery, critical illness, and athletic recovery from intense training. Higher doses (5–15 g) are used in clinical settings; daily supplementation at 5 g is typical for athletes and gut-repair protocols.",
+      "typical_dose": "5–10 g daily as a powder, mixed in water or a smoothie. Vivid's L-Glutamine 500g lets you scoop flexibly — 5 g is roughly one rounded teaspoon.",
+      "in_products": ["l-glutamine-500"],
+      "safety": "Very well-tolerated. Don't use during severe liver disease without medical supervision (glutamine is metabolised in the liver). No documented serious interactions.",
+      "faq": [
+        {"q": "Will glutamine help my IBS?", "a": "Glutamine helps with intestinal permeability — a contributor to some IBS cases. It's worth a 6–8 week trial; not everyone responds."},
+        {"q": "Should I take it on training days only?", "a": "For gut repair, daily. For pure athletic recovery, daily during heavy training blocks."}
+      ]
+    },
+    {
+      "handle": "maca",
+      "name": "Maca root",
+      "aka": ["Lepidium meyenii", "Peruvian ginseng"],
+      "summary": "Andean endocrine adaptogen. Energy, libido, hormonal balance.",
+      "intro": "Maca is a cruciferous root grown high in the Peruvian Andes, where it's been cultivated for over two thousand years as both a food and a tonic. It contains no isoflavones or phytoestrogens — instead it works as a true adaptogen, supporting the hypothalamic-pituitary axis rather than directly mimicking hormones.",
+      "evidence": "Randomised trials show maca improves sexual desire and mild erectile function, reduces psychological menopause symptoms, and modestly improves perceived energy and mood — without changing measurable hormone levels. The mechanism is still being characterised, but evidence is consistent across multiple small trials.",
+      "typical_dose": "1,500–3,000 mg of dried root powder or extract daily, often split into 2 doses.",
+      "in_products": ["maca-60"],
+      "safety": "Very well-tolerated. Cruciferous family — theoretical thyroid caution if iodine status is poor, but trial data has not shown clinical thyroid effects. Avoid in pregnancy.",
+      "faq": [
+        {"q": "Is maca a phytoestrogen?", "a": "No — that's a common misconception. Maca doesn't contain isoflavones. It works on the HPA axis instead."},
+        {"q": "Black, red or yellow maca — does it matter?", "a": "Black maca has the most evidence for libido and athletic effect. Red for women's symptoms. Yellow is the everyday tonic form. Vivid's Maca 60 uses standardised root extract."}
+      ]
+    },
+    {
+      "handle": "vitex",
+      "name": "Vitex (Angus Castus / Chasteberry)",
+      "aka": ["Vitex agnus-castus", "Chasteberry", "Chaste tree"],
+      "summary": "Pituitary modulator. The cycle and PMS herb with the strongest evidence.",
+      "intro": "Vitex (chasteberry) is one of the most-evidenced herbs in women's health. It doesn't contain phytoestrogens or phytoprogesterones — instead it acts on dopamine D2 receptors in the pituitary, modulating prolactin and indirectly supporting a more regular menstrual cycle.",
+      "evidence": "Multiple randomised, placebo-controlled trials show 4mg of standardised Vitex extract daily significantly reduces premenstrual symptoms (breast tenderness, irritability, bloating) over 3 cycles of use. Smaller trials support its use for cycle irregularity and mild fertility issues.",
+      "typical_dose": "4 mg of standardised extract daily, taken in the morning. Effect typically becomes apparent at 2–3 cycles.",
+      "in_products": ["angus-castus-60"],
+      "safety": "Generally very well-tolerated. Avoid in pregnancy. Don't combine with hormonal contraceptives or dopamine-active medications without medical supervision.",
+      "faq": [
+        {"q": "How long until Vitex works?", "a": "Two to three full menstrual cycles of daily use is the typical window. Don't conclude it 'doesn't work' before three months."},
+        {"q": "Can I take Vitex with the pill?", "a": "Not recommended — Vitex affects hormone signalling and can theoretically interfere with oral contraceptive effectiveness. Discuss with your doctor."}
+      ]
+    },
+    {
+      "handle": "saw-palmetto",
+      "name": "Saw palmetto",
+      "aka": ["Serenoa repens", "Sabal serrulata"],
+      "summary": "5-alpha-reductase modulator. Prostate health and DHT-related hair loss.",
+      "intro": "Saw palmetto is a small palm native to the southeastern United States. Its berries contain free fatty acids and sterols that inhibit the enzyme 5-alpha-reductase — the enzyme that converts testosterone to DHT, the more potent androgen implicated in benign prostatic enlargement and androgenetic hair loss.",
+      "evidence": "Meta-analyses for benign prostatic hyperplasia (BPH) symptoms show saw palmetto produces modest but clinically meaningful improvement in urinary flow and frequency, particularly with standardised lipidosterolic extracts (320 mg daily). Evidence for androgenetic hair loss is suggestive but less robust.",
+      "typical_dose": "320 mg of standardised lipidosterolic extract daily, often combined with zinc and selenium for synergistic prostate support.",
+      "in_products": ["prosta-care-60"],
+      "safety": "Very well-tolerated. May mildly affect PSA test results — tell your doctor if you're being screened for prostate cancer. Mild GI upset in some users.",
+      "faq": [
+        {"q": "Should I take saw palmetto for hair loss?", "a": "It may help for androgenetic (male-pattern) hair loss — the mechanism is the same as finasteride at a much milder level. Don't expect finasteride-level results."},
+        {"q": "How long until I notice a difference for BPH symptoms?", "a": "6–12 weeks for prostate symptom improvement. Saw palmetto is a slow-acting modulator, not a fast-relief herb."}
+      ]
+    },
+    {
+      "handle": "5-htp",
+      "name": "5-HTP (Griffonia simplicifolia)",
+      "aka": ["5-Hydroxytryptophan", "Griffonia seed"],
+      "summary": "Serotonin precursor. Mood, sleep onset, appetite.",
+      "intro": "5-HTP is the metabolic intermediate between tryptophan (the amino acid in food) and serotonin (the neurotransmitter). Vivid sources it from Griffonia simplicifolia seed — a West African legume whose seeds are unusually rich in 5-HTP.",
+      "evidence": "5-HTP crosses the blood-brain barrier readily and is converted to serotonin in the brain. Randomised trials show benefit for mild-to-moderate depression, fibromyalgia symptoms, and sleep onset. It works particularly well when sleep onset is delayed by mind-racing rather than physical sleep architecture problems.",
+      "typical_dose": "50–200 mg daily, ideally taken in the evening for sleep applications or in divided doses for mood. Start low.",
+      "in_products": ["griffonia-5htp-60"],
+      "safety": "Do not combine with SSRIs, SNRIs, MAOIs, tramadol, or other serotonergic medications — risk of serotonin syndrome. Discuss with your doctor if you take any antidepressant. Pregnancy and breastfeeding: avoid.",
+      "faq": [
+        {"q": "Can I take 5-HTP with melatonin?", "a": "Yes — they work on different pathways. 5-HTP can become serotonin (which can become melatonin), but exogenous melatonin doesn't compete with that pathway."},
+        {"q": "How quickly does 5-HTP work?", "a": "For sleep onset, often same-night. For mood, 2–4 weeks of consistent use."}
+      ]
+    },
+    {
+      "handle": "gaba",
+      "name": "GABA",
+      "aka": ["Gamma-aminobutyric acid"],
+      "summary": "Calming neurotransmitter. Stress recovery and sleep.",
+      "intro": "GABA is the brain's primary inhibitory neurotransmitter — the molecule that quiets neural activity. Benzodiazepines, alcohol, and many sedative medications all work via the GABA system. Supplemental GABA is the direct precursor / substrate form, taken as a powder.",
+      "evidence": "Whether oral GABA crosses the blood-brain barrier is debated — but multiple human trials show it reduces self-reported stress, lowers heart rate variability markers of sympathetic dominance, and improves sleep quality. Whether the effect is direct or via gut-brain signalling is still being characterised.",
+      "typical_dose": "500–2,000 mg, taken in the evening or before stressful events. Vivid's GABA powder lets you titrate.",
+      "in_products": ["gaba-150g"],
+      "safety": "Very well-tolerated. Mild paradoxical anxiety in a small fraction of users — discontinue if this happens. Don't combine with benzodiazepines or alcohol.",
+      "faq": [
+        {"q": "Does oral GABA actually work?", "a": "The bioavailability debate is real but the clinical effect signal is consistent across trials. The route may be gut-brain rather than direct CNS — either way, users report calm."},
+        {"q": "GABA or 5-HTP for sleep?", "a": "GABA for body-relaxation type insomnia. 5-HTP for racing-mind type insomnia. They can be combined."}
+      ]
+    },
+    {
+      "handle": "d-ribose",
+      "name": "D-Ribose",
+      "aka": ["Ribose", "Pentose sugar"],
+      "summary": "ATP-precursor pentose sugar. Cardiac and athletic energy.",
+      "intro": "D-Ribose is the five-carbon sugar that forms the backbone of ATP — the body's energy currency. Under heavy metabolic demand (intense exercise, cardiac stress, certain illness states), ribose synthesis becomes the rate-limiting step in ATP regeneration.",
+      "evidence": "Trials in chronic fatigue, fibromyalgia, and heart failure show D-ribose supplementation improves perceived energy, reduces post-exertional fatigue, and modestly improves cardiac function in some patient subgroups. Among healthy athletes, the evidence is more mixed.",
+      "typical_dose": "5 g, 1–3 times daily. Vivid's D-Ribose powder dissolves in water and is mildly sweet but doesn't spike insulin.",
+      "in_products": ["d-ribose-150"],
+      "safety": "Very well-tolerated. Can transiently lower blood sugar — people with diabetes should monitor. Avoid on an empty stomach if you're prone to hypoglycaemia.",
+      "faq": [
+        {"q": "Will D-ribose spike my blood sugar?", "a": "No — D-ribose is metabolised differently to glucose. It can mildly lower blood sugar in some users."},
+        {"q": "How long until I notice an effect?", "a": "For fibromyalgia and fatigue states, often 1–2 weeks. For athletic recovery, faster."}
+      ]
+    },
+    {
+      "handle": "spirulina",
+      "name": "Spirulina",
+      "aka": ["Arthrospira platensis", "Blue-green algae"],
+      "summary": "Nutrient-dense cyanobacterium. Plant protein, iron, phycocyanin.",
+      "intro": "Spirulina is one of the most nutrient-dense foods we know of — 60–70% protein by weight, with a full amino acid profile, plus iron, B-vitamins, and the blue pigment phycocyanin, a documented antioxidant in its own right.",
+      "evidence": "Trials show spirulina improves lipid profiles, lowers blood pressure modestly, and may improve athletic performance markers. The iron in spirulina is well-absorbed — useful for plant-based diets and mild iron deficiency.",
+      "typical_dose": "3–10 g daily as a powder or in tablet form. Start at 1–2 g — high doses on first use can cause mild detox symptoms in some users.",
+      "in_products": ["spirulina-250g"],
+      "safety": "Generally very safe. Source matters — Vivid's spirulina is from a controlled producer, not pond-cultivated where contamination risk is higher. Avoid in phenylketonuria.",
+      "faq": [
+        {"q": "Does spirulina taste bad?", "a": "Earthy and strong. Most people mix it into a smoothie rather than water."},
+        {"q": "Is spirulina vegan?", "a": "Yes — it's a cyanobacterium, grown without animal inputs."}
+      ]
+    },
+    {
+      "handle": "moringa",
+      "name": "Moringa",
+      "aka": ["Moringa oleifera", "Drumstick tree", "Horseradish tree"],
+      "summary": "African superfood leaf. Plant iron, protein, and polyphenols.",
+      "intro": "Moringa is a fast-growing tree native to the Indian subcontinent and naturalised across sub-Saharan Africa, where its leaves have been a staple food and traditional medicine for centuries. The dried leaf is remarkable on a per-gram basis: more iron than spinach, more vitamin C than oranges, complete amino acid profile.",
+      "evidence": "Human trials show moringa improves lipid profiles, lowers fasting blood glucose modestly, and supports antioxidant status. As a whole-food supplement it's particularly useful for plant-based diets needing iron and protein density.",
+      "typical_dose": "2–5 g of leaf powder daily, mixed in food or taken as capsules. Vivid's Moringa 300 capsules deliver leaf powder in a more palatable form than the bitter loose powder.",
+      "in_products": ["moringa-300"],
+      "safety": "Very well-tolerated as a leaf supplement. The roots and bark contain alkaloids and should be avoided — leaf only. Avoid in pregnancy at high doses.",
+      "faq": [
+        {"q": "Can I take moringa daily for life?", "a": "It's a food — yes. Many southern African families eat moringa leaves daily."},
+        {"q": "Moringa or spirulina?", "a": "Both excellent. Moringa is a green leaf with iron and polyphenols. Spirulina is a cyanobacterium with higher protein density. Many people rotate or combine."}
+      ]
+    },
+    {
+      "handle": "barley-grass",
+      "name": "Barley grass",
+      "aka": ["Young barley leaves", "Hordeum vulgare leaf"],
+      "summary": "Chlorophyll-rich young cereal grass. Daily greens base.",
+      "intro": "Barley grass is the young leaves of the barley plant, harvested before the grain heads form. At this stage the leaves are nutritionally dense — chlorophyll, antioxidants, B-vitamins, and a small amount of plant protein.",
+      "evidence": "Less studied than spirulina or moringa, but the polyphenol and chlorophyll content is well-characterised. Most use is as a daily greens insurance — a nutritional baseline supplement rather than a targeted therapeutic.",
+      "typical_dose": "3–5 g daily as a powder, or equivalent in capsules. Vivid offers both formats.",
+      "in_products": ["barley-grass-300", "barley-grass-200g"],
+      "safety": "Very well-tolerated. Gluten-free at the young-leaf stage (gluten is in the grain, not the grass) — but cross-contamination is possible, so coeliacs should use only certified gluten-free preparations.",
+      "faq": [
+        {"q": "Is barley grass gluten-free?", "a": "The grass itself contains no gluten. Vivid's product is processed in a facility that handles cereal grains — strict coeliacs should choose certified gluten-free brands."}
+      ]
+    },
+    {
+      "handle": "coq10",
+      "name": "Coenzyme Q10",
+      "aka": ["CoQ10", "Ubiquinone", "Ubiquinol"],
+      "summary": "Mitochondrial cofactor. Heart, energy, and statin recovery.",
+      "intro": "CoQ10 is a fat-soluble compound found in every cell, where it sits in the mitochondrial electron transport chain — the engine room of cellular energy production. Heart muscle and other high-energy tissues have particularly high CoQ10 demands.",
+      "evidence": "Statin medications deplete CoQ10. Trials show CoQ10 supplementation reduces statin-associated muscle symptoms in some users, supports cardiac function in heart failure, and modestly improves migraine frequency in regular users. Levels naturally decline with age.",
+      "typical_dose": "100–300 mg daily, taken with a fatty meal for absorption. Vivid's CoQ10 60 delivers 100 mg per capsule.",
+      "in_products": ["coq10-60"],
+      "safety": "Very well-tolerated. May mildly enhance blood-thinning effect of warfarin — check INR with your doctor if you take warfarin. Take in the morning if you find it energising at bedtime.",
+      "faq": [
+        {"q": "Ubiquinone or ubiquinol — does it matter?", "a": "Ubiquinone is the standard, oxidised form; the body converts it to ubiquinol (the active form). For most adults under 60, ubiquinone is fine and cheaper. Older adults may benefit from pre-converted ubiquinol."},
+        {"q": "Should I take CoQ10 with my statin?", "a": "Many cardiologists now recommend it routinely. Discuss with yours, especially if you have statin-related muscle symptoms."}
+      ]
+    },
+    {
+      "handle": "epsom-salt",
+      "name": "Epsom salt (Magnesium sulfate)",
+      "aka": ["Magnesium sulfate", "Bathing salts"],
+      "summary": "Magnesium sulfate. Bath-route magnesium and muscle recovery.",
+      "intro": "Epsom salt is magnesium sulfate — the most familiar form of bathing magnesium. Whether magnesium absorbs through the skin in meaningful amounts is debated, but the warm bath itself, the sulfate component, and the muscle-relaxation ritual produce real benefit regardless.",
+      "evidence": "Transdermal magnesium absorption is modest at best, but warm-water immersion plus magnesium sulfate consistently improves perceived muscle recovery, sleep, and stress markers in athletes and active users. As a high-value daily ritual at the price-per-kg, it's hard to beat.",
+      "typical_dose": "1–2 cups (250–500 g) per bath, 2–3 times per week.",
+      "in_products": ["epsom-salt-1kg"],
+      "safety": "Don't ingest epsom salt orally without medical guidance — it's a strong osmotic laxative at oral dose. For oral magnesium, use magnesium glycinate or citrate.",
+      "faq": [
+        {"q": "Will an epsom bath actually raise my magnesium levels?", "a": "Marginally at best. The bigger benefit is muscle relaxation, parasympathetic activation, and the ritual itself. Both matter."},
+        {"q": "Can I add essential oils?", "a": "Yes — lavender for sleep, eucalyptus for muscle. Add to the bath after dissolving the epsom salt."}
+      ]
+    },
+    {
+      "handle": "liquorice-root",
+      "name": "Liquorice root",
+      "aka": ["Glycyrrhiza glabra", "Licorice root"],
+      "summary": "Adrenal and gut-lining soothing botanical.",
+      "intro": "Liquorice root is one of the most-prescribed herbs in Traditional Chinese Medicine and a stalwart of Western herbalism for adrenal and digestive support. Its active glycyrrhizin has both adaptogenic and gut-protective effects.",
+      "evidence": "Liquorice modulates cortisol metabolism by inhibiting the enzyme that breaks cortisol down — extending cortisol's half-life, which is useful in adrenal-depletion states but problematic in long-term high-dose use. Its DGL (deglycyrrhizinated) form retains the gut-soothing action without the cortisol effect.",
+      "typical_dose": "400–800 mg of whole root extract for short-term adrenal support; DGL forms for ongoing gut use.",
+      "in_products": ["liquorice-root-60"],
+      "safety": "Don't use whole-root liquorice daily for more than 4–6 weeks — it raises blood pressure and can deplete potassium. Avoid in hypertension, pregnancy, and on diuretics. The DGL form is safer for chronic use but Vivid's product is whole-root — short cycles only.",
+      "faq": [
+        {"q": "Is liquorice the same as the candy?", "a": "Real liquorice candy is sweetened liquorice root extract. Most modern 'liquorice' candy is just anise-flavoured sugar with no real liquorice."},
+        {"q": "Why a 4–6 week cap?", "a": "Glycyrrhizin extends cortisol action. Useful short-term in adrenal depletion, but long-term it raises blood pressure and depletes potassium."}
+      ]
+    },
+    {
+      "handle": "milk-thistle",
+      "name": "Milk thistle",
+      "aka": ["Silybum marianum", "Silymarin", "Mary's thistle"],
+      "summary": "Hepatoprotective herb. Liver detox, regeneration, and shielding.",
+      "intro": "Milk thistle's active complex — silymarin — is one of the most-studied hepatoprotective compounds in herbal medicine. It works through multiple mechanisms: antioxidant activity in liver cells, protection of cell membranes against toxin binding, and stimulation of hepatic regeneration.",
+      "evidence": "Strong evidence base for silymarin in supporting recovery from hepatotoxic exposures (mushroom poisoning, paracetamol overdose adjunct, alcoholic liver disease). For everyday 'liver detox' use the evidence is softer but the safety profile makes it a reasonable inclusion in liver-support stacks.",
+      "typical_dose": "200–400 mg of silymarin-standardised extract daily.",
+      "in_products": ["liver-kidney-90"],
+      "safety": "Very well-tolerated. May mildly affect cytochrome P450 enzymes — check with your pharmacist if you take medications with narrow therapeutic windows (warfarin, certain anti-rejection drugs).",
+      "faq": [
+        {"q": "Will milk thistle 'detox' my liver after a heavy weekend?", "a": "It supports the liver's own repair pathways — it doesn't 'detox' anything actively. Hydration, sleep, and not drinking again do most of the work."}
+      ]
+    },
+    {
+      "handle": "dandelion",
+      "name": "Dandelion root",
+      "aka": ["Taraxacum officinale"],
+      "summary": "Diuretic, bitter digestive, liver tonic — the whole-system cleanse herb.",
+      "intro": "Dandelion is one of the most underused medicinal plants of European herbalism — partly because it grows in everyone's lawn, partly because it doesn't need exotic branding. The root acts as a gentle hepatobiliary stimulant; the leaf is a useful diuretic.",
+      "evidence": "Animal studies and limited human work support dandelion's traditional uses as a mild diuretic, gentle laxative via cholagogue (bile-promoting) action, and supportive in liver and gallbladder function. The bitterness primes digestive secretions.",
+      "typical_dose": "300–500 mg of root extract daily, often as part of a liver-and-kidney support formula.",
+      "in_products": ["liver-kidney-90"],
+      "safety": "Very well-tolerated. As a mild potassium-sparing diuretic, it's gentler than pharmaceutical diuretics. People with gallstones should check with a doctor first — anything that stimulates bile flow can dislodge a stone."
+    },
+    {
+      "handle": "boswellia",
+      "name": "Boswellia",
+      "aka": ["Boswellia serrata", "Indian frankincense"],
+      "summary": "Resin-derived anti-inflammatory. The 'natural NSAID' alternative.",
+      "intro": "Boswellia is the aromatic resin of the Boswellia serrata tree — yes, the source of biblical frankincense. Its boswellic acids inhibit 5-lipoxygenase, an inflammatory enzyme that NSAIDs don't touch.",
+      "evidence": "Multiple human trials support boswellia for osteoarthritis pain reduction, with effect sizes comparable to NSAIDs at the higher doses (>300 mg of standardised AKBA-rich extract daily) — and a much better gut safety profile.",
+      "typical_dose": "300–500 mg of standardised AKBA extract, 1–2 times daily.",
+      "in_products": ["joint-relief-60"],
+      "safety": "Well-tolerated. Rare GI upset at high doses. May enhance the effect of some anticoagulants — discuss if you take warfarin."
+    },
+    {
+      "handle": "ginger",
+      "name": "Ginger root",
+      "aka": ["Zingiber officinale"],
+      "summary": "Anti-inflammatory, anti-nausea, circulation-supporting root.",
+      "intro": "Ginger is one of the few traditional remedies that has graduated to recommended-medical status across multiple indications — pregnancy nausea, chemotherapy nausea, motion sickness, and osteoarthritis. Its gingerols and shogaols are anti-inflammatory and prokinetic.",
+      "evidence": "Strong evidence for nausea across multiple contexts. Moderate evidence for osteoarthritis pain reduction. Useful adjunct for menstrual cramps. Its blood-thinning effect is mild but real.",
+      "typical_dose": "500–1,500 mg of dried root extract daily, or fresh ginger to taste.",
+      "in_products": ["joint-relief-60"],
+      "safety": "Very well-tolerated. Discontinue 2 weeks before surgery (mild antiplatelet effect). Generally considered safe in pregnancy at culinary-to-low-therapeutic doses."
+    },
+    {
+      "handle": "apple-cider-vinegar",
+      "name": "Apple cider vinegar (ACV)",
+      "aka": ["ACV", "Cider vinegar with mother"],
+      "summary": "Acetic-acid digestive aid. Blood sugar and digestion support.",
+      "intro": "ACV's main active component is acetic acid, with smaller amounts of polyphenols and (in unfiltered 'with mother' versions) acetic-acid bacteria. The capsule form bypasses the taste and protects tooth enamel.",
+      "evidence": "Modest but consistent trial evidence that ACV taken with carbohydrate-containing meals reduces post-meal blood sugar spikes by 10–20%. Useful adjunct in pre-diabetic or metabolic syndrome contexts. Digestive uses are more traditional than trial-evidenced but consistent with the acidity argument.",
+      "typical_dose": "500–1,500 mg of dried ACV powder per dose, typically with meals.",
+      "in_products": ["apple-cider-90"],
+      "safety": "Liquid ACV erodes tooth enamel — capsule form sidesteps this. Don't take alongside potassium-lowering medications (long-term high-dose acetic acid can lower potassium)."
+    },
+    {
+      "handle": "glucosamine-chondroitin",
+      "name": "Glucosamine + Chondroitin",
+      "aka": ["GS-CS", "Cartilage builders"],
+      "summary": "Cartilage-matrix building blocks. The classic joint pair.",
+      "intro": "Glucosamine and chondroitin are structural components of cartilage. Whether oral supplementation reaches cartilage in clinically meaningful amounts has been debated for decades — but the trial evidence base is large and the safety profile excellent.",
+      "evidence": "Meta-analyses are mixed: some show meaningful pain reduction in moderate osteoarthritis, others show no effect over placebo. Combined glucosamine-chondroitin appears to outperform either alone. Sulfate forms outperform HCl forms in some studies.",
+      "typical_dose": "1,500 mg glucosamine + 1,200 mg chondroitin daily, often split. Vivid's Flexijoint Advanced combines this stack with MSM.",
+      "in_products": ["flexijoint-advanced-120", "flexijoint-300"],
+      "safety": "Well-tolerated. Glucosamine is derived from shellfish — Vivid's product uses the shellfish-source form. Shellfish-allergic users should check with the manufacturer. May mildly raise blood sugar in some users with diabetes."
+    }
+  ]
+}

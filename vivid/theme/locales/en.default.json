@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "accessibility": { "skip_to_text": "Skip to content" },
+    "search": { "title": "Search", "placeholder": "Search for ingredients or products" },
+    "social": { "links": { "instagram": "Instagram", "facebook": "Facebook", "tiktok": "TikTok", "youtube": "YouTube" } }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to basket",
+      "sold_out": "Sold out",
+      "notify_me": "Notify me when back",
+      "incl_vat": "incl. VAT",
+      "quantity": "Quantity"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your basket",
+      "empty": "Your basket is empty.",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "total": "Total",
+      "checkout": "Checkout",
+      "free_shipping": "Free over R400"
+    }
+  }
+}

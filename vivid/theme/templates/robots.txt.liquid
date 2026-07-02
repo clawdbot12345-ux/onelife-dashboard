@@ -1,0 +1,21 @@
+{% comment %}
+  Vivid Health robots.txt — Shopify defaults plus crawl-budget hygiene:
+  block internal search and cart/checkout surfaces, declare both sitemap
+  and llms.txt for AI crawlers.
+{% endcomment %}
+{% for group in robots.default_groups %}
+  {{- group.user_agent }}
+  {%- for rule in group.rules %}
+  {{ rule }}
+  {%- endfor %}
+  {%- if group.user_agent.value == '*' %}
+  Disallow: /search
+  Disallow: /cart
+  Disallow: /checkout
+  Disallow: /account
+  Disallow: /*?variant=
+  {%- endif %}
+  {%- if group.sitemap != blank %}
+  {{ group.sitemap }}
+  {%- endif %}
+{% endfor %}

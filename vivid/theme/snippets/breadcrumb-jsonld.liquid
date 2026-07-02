@@ -1,0 +1,47 @@
+{%- comment -%}
+  BreadcrumbList JSON-LD. Render once per page where the breadcrumb is
+  meaningful: collection, product, article. Reads context from the
+  current template and emits a structured-data block Google understands.
+
+  Usage:  {% render 'breadcrumb-jsonld' %}
+{%- endcomment -%}
+
+{%- assign items = '' -%}
+{%- assign sep = '|||' -%}
+
+{%- comment -%} Home as item 1 {%- endcomment -%}
+{%- assign items = 'Home' | append: '@@' | append: shop.url -%}
+
+{%- if template.name == 'collection' and collection -%}
+  {%- assign items = items | append: sep | append: collection.title | append: '@@' | append: shop.url | append: collection.url -%}
+{%- elsif template.name == 'product' and product -%}
+  {%- if collection -%}
+    {%- assign items = items | append: sep | append: collection.title | append: '@@' | append: shop.url | append: collection.url -%}
+  {%- else -%}
+    {%- assign items = items | append: sep | append: 'Shop@@' | append: shop.url | append: '/collections/all-formulations' -%}
+  {%- endif -%}
+  {%- assign items = items | append: sep | append: product.title | append: '@@' | append: shop.url | append: product.url -%}
+{%- elsif template.name == 'article' and article -%}
+  {%- assign items = items | append: sep | append: blog.title | append: '@@' | append: shop.url | append: blog.url -%}
+  {%- assign items = items | append: sep | append: article.title | append: '@@' | append: shop.url | append: article.url -%}
+{%- elsif template.name == 'blog' and blog -%}
+  {%- assign items = items | append: sep | append: blog.title | append: '@@' | append: shop.url | append: blog.url -%}
+{%- elsif template.name == 'page' and page -%}
+  {%- assign items = items | append: sep | append: page.title | append: '@@' | append: shop.url | append: page.url -%}
+{%- endif -%}
+
+{%- assign list = items | split: sep -%}
+{%- if list.size > 1 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+  {%- for entry in list -%}
+    {%- assign parts = entry | split: '@@' -%}
+    { "@type": "ListItem", "position": {{ forloop.index }}, "name": {{ parts[0] | json }}, "item": {{ parts[1] | json }} }{%- unless forloop.last %},{% endunless -%}
+  {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}

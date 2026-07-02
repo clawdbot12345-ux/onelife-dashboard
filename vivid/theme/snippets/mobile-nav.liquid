@@ -1,0 +1,45 @@
+{%- comment -%} Body-level mobile nav drawer (rendered from layout, like cart-drawer) {%- endcomment -%}
+<div class="mobnav-scrim" id="mobnavScrim" aria-hidden="true"></div>
+<aside class="mobnav" id="mobnav" aria-label="Mobile menu">
+  <div class="mobnav-head">
+    <div class="eyebrow">Menu</div>
+    <button class="icon-btn" id="mobnavClose" type="button" aria-label="Close menu">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="mobnav-body">
+    <a href="{{ routes.collections_url }}/all-formulations">Shop all formulations</a>
+    <a href="{{ routes.collections_url }}/bestsellers">Bestsellers</a>
+    <a href="{{ routes.collections_url }}/bundles">Stacks &amp; bundles</a>
+    <div class="mobnav-sec">Shop by goal</div>
+    {%- assign goals = 'gut,immunity,energy,stress,joints,women,men,daily' | split: ',' -%}
+    {%- for g in goals -%}
+      {%- assign coll = collections[g] -%}
+      {%- assign glabel = g -%}
+      {%- case g -%}
+        {%- when 'gut' -%}{%- assign glabel = 'Gut Health' -%}
+        {%- when 'immunity' -%}{%- assign glabel = 'Immunity' -%}
+        {%- when 'energy' -%}{%- assign glabel = 'Energy & Vitality' -%}
+        {%- when 'stress' -%}{%- assign glabel = 'Stress, Sleep & Mood' -%}
+        {%- when 'joints' -%}{%- assign glabel = 'Joints & Mobility' -%}
+        {%- when 'women' -%}{%- assign glabel = "Women's Health" -%}
+        {%- when 'men' -%}{%- assign glabel = "Men's Health" -%}
+        {%- when 'daily' -%}{%- assign glabel = 'Daily Nutrients' -%}
+      {%- endcase -%}
+      <a class="mobnav-goal" href="{{ routes.collections_url }}/{{ g }}">
+        <span>{{ glabel }}</span>
+        {%- if coll and coll.products_count > 0 -%}<span class="mobnav-ct">{{ coll.products_count }}</span>{%- endif -%}
+      </a>
+    {%- endfor -%}
+    <div class="mobnav-sec">Discover</div>
+    <a href="/pages/quiz">Find your formulation</a>
+    <a href="/pages/our-approach">Our approach</a>
+    <a href="{{ routes.root_url }}#journal">Journal</a>
+    <a href="/pages/about">About Vivid</a>
+    <a href="/pages/consultation">Free consultation</a>
+    <div class="mobnav-cta">
+      <a href="/pages/quiz" class="btn btn--forest btn-arrow">Take the 2-minute quiz</a>
+      <a href="https://wa.me/27713744910?text=Hi%2C%20I%27d%20like%20a%20free%20Vivid%20Health%20consultation" target="_blank" rel="noopener" class="btn btn--ghost">WhatsApp a consultant</a>
+    </div>
+  </div>
+</aside>

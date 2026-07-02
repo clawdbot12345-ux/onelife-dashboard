@@ -1,0 +1,103 @@
+{%- comment -%}
+  WHY VIVID — three explicit promises rendered as full-bleed editorial
+  photo cards. Replaces the old text-only pillars strip.
+  Source of truth: vivid/index.html .why-vivid block.
+{%- endcomment -%}
+
+<section class="why-vivid reveal" aria-labelledby="why-vivid-heading">
+  <div class="container">
+    <div class="why-vivid-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2 id="why-vivid-heading">{{ section.settings.heading }}</h2>
+      {%- if section.settings.lede != blank -%}
+        <p class="why-lede">{{ section.settings.lede }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="why-vivid-cards">
+      {%- for block in section.blocks -%}
+        <article class="why-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="why-card-bg" style="background-image:url('{{ block.settings.image | image_url: width: 1200 }}')"></div>
+          {%- else -%}
+            {%- case forloop.index -%}
+              {%- when 1 -%}{%- assign fallback_image = 'banner-group-bestsellers.jpg' -%}
+              {%- when 2 -%}{%- assign fallback_image = 'banner-immunity.jpg' -%}
+              {%- else -%}{%- assign fallback_image = 'banner-hero-evening.jpg' -%}
+            {%- endcase -%}
+            <div class="why-card-bg" style="background-image:url('{{ fallback_image | asset_url }}')"></div>
+          {%- endif -%}
+          <div class="why-card-scrim"></div>
+          <div class="why-card-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+          {%- if block.settings.eyebrow != blank -%}
+            <div class="why-card-eyebrow">{{ block.settings.eyebrow }}</div>
+          {%- endif -%}
+          <h3 class="why-card-head">{{ block.settings.heading }}</h3>
+          {%- if block.settings.body != blank -%}
+            <p class="why-card-body">{{ block.settings.body }}</p>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Vivid",
+  "tag": "section",
+  "class": "section-why-vivid",
+  "settings": [
+    { "type": "text",    "id": "eyebrow", "label": "Section eyebrow", "default": "Why Vivid?" },
+    { "type": "richtext","id": "heading", "label": "Section heading", "default": "<p>Because the milligrams should be <em>on the label.</em></p>" },
+    { "type": "textarea","id": "lede",    "label": "Section lede",    "default": "The supplement aisle runs on proprietary blends, vague claims, and powders relabelled three times before they reach you. Vivid is built for shoppers who want the dose, the purpose, and the daily fit to be obvious before anything goes into the basket." }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar card",
+      "limit": 3,
+      "settings": [
+        { "type": "image_picker", "id": "image",   "label": "Background image (3:4 portrait)" },
+        { "type": "text",         "id": "eyebrow", "label": "Eyebrow",  "default": "The receipt" },
+        { "type": "richtext",     "id": "heading", "label": "Heading",  "default": "<p>We put the dose <em>on the bottle.</em></p>" },
+        { "type": "textarea",     "id": "body",    "label": "Body copy","default": "A \"proprietary blend\" is just a confession. Every Vivid label tells you the exact milligrams of every active." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Vivid",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "eyebrow": "The receipt",
+            "heading": "<p>We put the dose <em>on the bottle.</em></p>",
+            "body": "A \"proprietary blend\" is just a confession. Every Vivid label tells you the exact milligrams of every active. If a study used 810mg, ours has 810mg. The numbers are right there, where they belong."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "eyebrow": "The source",
+            "heading": "<p>Plants <em>first.</em> Always.</p>",
+            "body": "Whole-plant extracts where they work. Standardised actives where they're needed. Vegetable capsules, every time. Nothing imported in bulk and relabelled with a South African flag."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "eyebrow": "The work",
+            "heading": "<p>One bottle, <em>one job.</em></p>",
+            "body": "Fifty-two formulations, fifty-two specific outcomes. No hero ingredients chasing a trend. No \"everything wellness.\" Built for the work, picked for the result you can actually feel."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

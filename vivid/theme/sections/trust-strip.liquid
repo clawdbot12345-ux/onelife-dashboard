@@ -1,0 +1,36 @@
+<div class="trust">
+  <div class="container trust-row">
+    {%- for block in section.blocks -%}
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>
+        {{ block.settings.text }}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust strip",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust point",
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Vegetarian capsules" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust strip",
+      "blocks": [
+        { "type": "trust", "settings": { "text": "Vegetarian capsules" } },
+        { "type": "trust", "settings": { "text": "Sugar-free" } },
+        { "type": "trust", "settings": { "text": "Gluten-free" } },
+        { "type": "trust", "settings": { "text": "Third-party tested" } },
+        { "type": "trust", "settings": { "text": "SAHPRA-compliant facility" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
