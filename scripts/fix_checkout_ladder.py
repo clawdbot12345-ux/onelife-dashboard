@@ -43,18 +43,22 @@ NOT_IN_FLOW_7D = {"conditions": [{"type": "profile-not-in-flow",
 
 
 def req(path, method="GET", body=None, revision=REVISIONS[0]):
-    r = urllib.request.Request(
-        "https://a.klaviyo.com/api" + path,
-        data=json.dumps(body).encode() if body else None,
-        headers={"Authorization": f"Klaviyo-API-Key {KLAVIYO_KEY}",
-                 "accept": "application/vnd.api+json", "revision": revision,
-                 **({"content-type": "application/vnd.api+json"} if body else {})},
-        method=method)
-    try:
-        with urllib.request.urlopen(r, timeout=60) as resp:
-            return resp.status, (json.loads(resp.read()) if resp.status != 204 else {})
-    except urllib.error.HTTPError as e:
-        return e.code, {"error": e.read().decode()[:500]}
+    for attempt in range(4):
+        r = urllib.request.Request(
+            "https://a.klaviyo.com/api" + path,
+            data=json.dumps(body).encode() if body else None,
+            headers={"Authorization": f"Klaviyo-API-Key {KLAVIYO_KEY}",
+                     "accept": "application/vnd.api+json", "revision": revision,
+                     **({"content-type": "application/vnd.api+json"} if body else {})},
+            method=method)
+        try:
+            with urllib.request.urlopen(r, timeout=60) as resp:
+                return resp.status, (json.loads(resp.read()) if resp.status != 204 else {})
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 3:
+                time.sleep(2 * (attempt + 1))
+                continue
+            return e.code, {"error": e.read().decode()[:500]}
 
 
 def get_flow(flow_id):
