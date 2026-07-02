@@ -3,13 +3,17 @@ name: Friday Product Email
 # Creates + schedules the weekly product-feature campaign in Klaviyo.
 # Runs Wednesday 06:00 UTC; the script's SEND_OFFSET_DAYS=2 default makes
 # the campaign send Friday 09:00 SAST to the Engaged 90d segment (S3MAsK).
-# Product priority: new launch → 30d top seller → curated fallback.
+# Product priority: new launch → 30d top seller → storefront fallback.
 # Kill switch: repo variable EMAIL_AUTOMATION_ENABLED must equal 'true'.
 
 on:
   schedule:
     - cron: "0 6 * * 3"
   workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   send:
@@ -20,7 +24,21 @@ jobs:
       - name: Create and schedule product campaign
         env:
           KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python3 scripts/friday_product_campaign.py
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "🔴 Friday product email failed — $(date -u +%F)" \
+            --body "The Friday Product Spotlight campaign was NOT created. No email will go out this Friday unless this is fixed and the workflow re-run.
+
+          Failed run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+          Common cause: Shopify auth (400 app_not_installed = the custom app was uninstalled; reinstall it or refresh the SHOPIFY_ADMIN_TOKEN secret). The script can also run without Shopify via the storefront fallback, so check the logs for the actual error."

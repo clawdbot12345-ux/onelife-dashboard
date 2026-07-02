@@ -1,0 +1,35 @@
+name: Monthly Digest Email
+
+# Creates + schedules the Monthly Digest campaign in Klaviyo — the locked
+# week-4 slot of the email cadence (best-earning format: R2.93/recipient in
+# June 2026). Runs the 25th 05:00 UTC; sends 09:00 SAST to Engaged 90d.
+# Kill switch: repo variable EMAIL_AUTOMATION_ENABLED must equal 'true'.
+
+on:
+  schedule:
+    - cron: "0 5 25 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    if: vars.EMAIL_AUTOMATION_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create and schedule monthly digest
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+        run: python3 scripts/monthly_digest_campaign.py
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "🔴 Monthly digest email failed — $(date -u +%F)" \
+            --body "The Monthly Digest campaign was NOT created. Failed run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

@@ -29,10 +29,14 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
+import email_template
+
 KLAVIYO_KEY = os.environ.get("KLAVIYO_API_KEY")
 SHOPIFY_CLIENT_ID = os.environ.get("SHOPIFY_CLIENT_ID")
 SHOPIFY_CLIENT_SECRET = os.environ.get("SHOPIFY_CLIENT_SECRET")
+SHOPIFY_TOKEN_OVERRIDE = os.environ.get("SHOPIFY_ADMIN_TOKEN")  # legacy shpat_ token, same as publish_blog.py
 SHOPIFY_STORE = os.environ.get("SHOPIFY_STORE", "onelifehealth").replace(".myshopify.com", "")
+STOREFRONT_BASE = os.environ.get("STOREFRONT_BASE", "https://onelife.co.za")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-pro-image-preview")
 SEND_OFFSET_DAYS = int(os.environ.get("SEND_OFFSET_DAYS", "2"))
@@ -41,9 +45,11 @@ AUTO_SCHEDULE = os.environ.get("AUTO_SCHEDULE", "true").lower() == "true"
 EMAIL_LIST_ID = "S3MAsK"  # Engaged 90d segment (audit 2026-06-10: full-list sends drove 1-2% unsubs; Engaged 90d gets +16pts open and real revenue)
 BLOG_ID = "120011424054"
 
-if not (KLAVIYO_KEY and SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET):
-    print("ERROR: KLAVIYO_API_KEY, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET required", file=sys.stderr)
+if not KLAVIYO_KEY:
+    print("ERROR: KLAVIYO_API_KEY required", file=sys.stderr)
     sys.exit(1)
+if not (SHOPIFY_TOKEN_OVERRIDE or (SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET)):
+    print("WARN: no Shopify credentials — will use public storefront catalogue only", file=sys.stderr)
 
 # ─── HTTP helpers ───
 def req_json(url, method="GET", headers=None, body=None, timeout=60):
@@ -58,6 +64,10 @@ def req_json(url, method="GET", headers=None, body=None, timeout=60):
 
 # ─── Shopify OAuth client credentials ───
 def get_shopify_token():
+    if SHOPIFY_TOKEN_OVERRIDE:
+        return SHOPIFY_TOKEN_OVERRIDE
+    if not (SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET):
+        return None
     body = urllib.parse.urlencode({
         "grant_type": "client_credentials",
         "client_id": SHOPIFY_CLIENT_ID,
@@ -81,6 +91,19 @@ def fetch_shopify_products(token, since_days=None, limit=50):
         params["published_at_min"] = since
     url = f"https://{SHOPIFY_STORE}.myshopify.com/admin/api/2025-01/products.json?{urllib.parse.urlencode(params)}"
     result = req_json(url, headers={"X-Shopify-Access-Token": token, "Accept": "application/json"})
+    return (result or {}).get("products", [])
+
+
+def fetch_storefront_products(limit=50):
+    """Fetch published products from the public storefront JSON (no auth).
+
+    Fallback when Admin API auth is unavailable (e.g. the custom app was
+    uninstalled — the 400 app_not_installed failures of Jun 2026). Storefront
+    variants carry an `available` flag instead of inventory_quantity.
+    """
+    url = f"{STOREFRONT_BASE}/products.json?limit={limit}"
+    result = req_json(url, headers={"Accept": "application/json",
+                                    "User-Agent": "onelife-friday-campaign/1.0"})
     return (result or {}).get("products", [])
 
 
@@ -133,9 +156,16 @@ MIN_STOCK_THRESHOLD = int(os.environ.get("MIN_STOCK_THRESHOLD", "3"))
 
 
 def product_has_stock(product):
-    """Return True if total stock across variants is >= MIN_STOCK_THRESHOLD."""
-    total = sum((v.get("inventory_quantity", 0) or 0) for v in product.get("variants", []))
-    return total >= MIN_STOCK_THRESHOLD
+    """Return True if total stock across variants is >= MIN_STOCK_THRESHOLD.
+
+    Admin API variants expose inventory_quantity; storefront JSON variants
+    only expose an `available` boolean — treat any available variant as stocked.
+    """
+    variants = product.get("variants", [])
+    if any("inventory_quantity" in v for v in variants):
+        total = sum((v.get("inventory_quantity", 0) or 0) for v in variants)
+        return total >= MIN_STOCK_THRESHOLD
+    return any(v.get("available") for v in variants)
 
 
 def get_variant_price(product):
@@ -152,33 +182,45 @@ def get_variant_price(product):
 
 
 def pick_product(token):
-    """Priority 1: new launch in stock. Priority 2: fallback from featured list."""
-    # Priority 1: new launches in last 14 days
-    print("  → Checking for new launches (last 14 days)...", file=sys.stderr)
-    new_products = fetch_shopify_products(token, since_days=14, limit=50)
-    new_in_stock = [p for p in new_products if product_has_stock(p)]
-    if new_in_stock:
-        # Sort by newest
-        new_in_stock.sort(key=lambda p: p.get("published_at", ""), reverse=True)
-        picked = new_in_stock[0]
-        print(f"  ✓ Found new launch: {picked.get('title')}", file=sys.stderr)
-        return picked, "new_launch"
+    """Priority 1: new launch in stock. Priority 2: recently updated in stock.
+    Priority 3: public storefront catalogue (no Admin API needed)."""
+    if token:
+        # Priority 1: new launches in last 14 days
+        print("  → Checking for new launches (last 14 days)...", file=sys.stderr)
+        new_products = fetch_shopify_products(token, since_days=14, limit=50)
+        new_in_stock = [p for p in new_products if product_has_stock(p)]
+        if new_in_stock:
+            # Sort by newest
+            new_in_stock.sort(key=lambda p: p.get("published_at", ""), reverse=True)
+            picked = new_in_stock[0]
+            print(f"  ✓ Found new launch: {picked.get('title')}", file=sys.stderr)
+            return picked, "new_launch"
 
-    # Priority 2: fallback — pick a recently updated, in-stock product
-    print("  → No new launches — falling back to recently updated products...", file=sys.stderr)
-    recent = fetch_shopify_products(token, limit=50)
-    recent_in_stock = [p for p in recent if product_has_stock(p)]
-    if recent_in_stock:
-        # Sort by updated_at desc
-        recent_in_stock.sort(key=lambda p: p.get("updated_at", ""), reverse=True)
-        picked = recent_in_stock[0]
-        print(f"  ✓ Fallback pick: {picked.get('title')}", file=sys.stderr)
+        # Priority 2: fallback — pick a recently updated, in-stock product
+        print("  → No new launches — falling back to recently updated products...", file=sys.stderr)
+        recent = fetch_shopify_products(token, limit=50)
+        recent_in_stock = [p for p in recent if product_has_stock(p)]
+        if recent_in_stock:
+            # Sort by updated_at desc
+            recent_in_stock.sort(key=lambda p: p.get("updated_at", ""), reverse=True)
+            picked = recent_in_stock[0]
+            print(f"  ✓ Fallback pick: {picked.get('title')}", file=sys.stderr)
+            return picked, "featured"
+
+    # Priority 3: public storefront catalogue
+    print("  → Falling back to public storefront catalogue...", file=sys.stderr)
+    storefront = fetch_storefront_products(limit=50)
+    available = [p for p in storefront if product_has_stock(p)]
+    if available:
+        available.sort(key=lambda p: p.get("published_at") or "", reverse=True)
+        picked = available[0]
+        print(f"  ✓ Storefront pick: {picked.get('title')}", file=sys.stderr)
         return picked, "featured"
 
     return None, None
 
 
-# ─── Email template (NAD+ brand voice) ───
+# ─── Email build (master template, scripts/email_template.py) ───
 def build_email_html(product, campaign_type, product_url, campaign_slug):
     title = product.get("title", "Featured Product")
     vendor = product.get("vendor", "")
@@ -189,65 +231,27 @@ def build_email_html(product, campaign_type, product_url, campaign_slug):
     if len(description_text) > 200:
         description_text = description_text[:197] + "..."
     if not description_text or "please contact us" in description_text.lower():
-        description_text = f"Our team stocks it because it delivers. Here's why it's worth your attention this week."
+        description_text = "Our team stocks it because it delivers. Here's why it's worth your attention this week."
 
-    price = get_variant_price(product)
-
-    # Eyebrow varies by campaign type
     eyebrow_map = {
         "new_launch": "JUST IN",
         "featured": "THIS WEEK'S PICK",
         "top_seller": "YOUR TOP PICK",
     }
-    eyebrow = eyebrow_map.get(campaign_type, "FEATURED")
-
-    # UTM-tagged URL
-    def utm(url, content):
-        sep = "&" if "?" in url else "?"
-        return f"{url}{sep}utm_source=klaviyo&utm_medium=email&utm_campaign={campaign_slug}&utm_content={content}"
-
-    cta_url = utm(product_url, "hero-cta")
-    shop_url = utm(f"https://onelife.co.za/collections/brand-{vendor.lower().replace(' ','-')}", "shop-brand")
-
-    return f'''<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>{title}</title></head>
-<body style="margin:0;padding:0;background:#f4f1ea;font-family:Arial,Helvetica,sans-serif;color:#374151;">
-<table cellpadding="0" cellspacing="0" role="presentation" style="background:#f4f1ea;padding:28px 0;" width="100%">
-<tr><td align="center">
-<table cellpadding="0" cellspacing="0" role="presentation" style="max-width:620px;background:#ffffff;border-radius:12px;overflow:hidden;" width="620">
-<tr><td style="background:#1b4332;padding:22px 40px;text-align:center;">
-<img alt="One Life Health" src="https://onelife.co.za/cdn/shop/files/OneLife_LOGO_51277c55-2099-4f3a-a659-ef42cdcac5d9.png?v=1671450106" style="display:block;margin:0 auto;max-width:130px;height:auto;" width="130"/>
-</td></tr>
-<tr><td style="height:4px;background:#b45309;font-size:0;line-height:0;">&nbsp;</td></tr>
-<tr><td style="padding:36px 40px 8px;">
-<p style="margin:0 0 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b45309;font-weight:bold;">{eyebrow}</p>
-<h1 style="margin:0 0 16px;font-family:Georgia,\'Times New Roman\',serif;font-size:28px;line-height:1.2;color:#1b4332;font-weight:normal;">{title}</h1>
-<p style="margin:0 0 12px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#9ca3af;font-weight:600;">by {vendor}</p>
-<p style="margin:0 0 18px;font-size:15px;line-height:1.65;">Hi {{{{ first_name|default:\'there\' }}}} — Precious here. {description_text}</p>
-<p style="margin:0 0 18px;font-size:24px;font-weight:800;color:#1b4332;">{price}</p>
-<table cellpadding="0" cellspacing="0" role="presentation" width="100%"><tr><td align="center" style="padding:0 0 22px;">
-<a href="{cta_url}" style="display:inline-block;background:#1b4332;color:#ffffff;padding:14px 30px;border-radius:10px;font-size:15px;font-weight:bold;text-decoration:none;">Shop it now →</a>
-</td></tr></table>
-<table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 0 24px;" width="100%">
-<tr><td style="padding:16px 20px;background:#f1f5f1;border-radius:12px;text-align:center;">
-<p style="margin:0;font-size:13.5px;line-height:1.7;color:#374151;">🚚 Free delivery over R400 nationwide · 🏪 Collect free at Centurion, Glen Village or Edenvale</p>
-</td></tr>
-</table>
-<p style="margin:0 0 6px;font-size:13.5px;line-height:1.6;color:#555;">Not sure if it\'s right for you? <a href="https://wa.me/27713744910?text=Hi%20Precious%2C%20is%20this%20week%27s%20pick%20right%20for%20me%3F" style="color:#1b4332;font-weight:bold;">WhatsApp me</a> or pop in for a free 15-minute chat with a health consultant.</p>
-<p style="margin:20px 0 4px;font-size:14px;">— Precious</p>
-<p style="margin:0 0 28px;font-size:12px;color:#888;">One Life Health Consultant · Centurion</p>
-</td></tr>
-<tr><td style="background:#14291e;padding:20px 40px;text-align:center;">
-<p style="margin:0 0 4px;font-family:Georgia,serif;font-size:16px;color:#ffffff;">A real apothecary. Family-owned since 1996.</p>
-<p style="margin:0;font-size:11px;color:#9db8a8;">Centurion · Glen Village · Edenvale · Free delivery over R400 nationwide</p>
-<p style="margin:12px 0 0;font-size:11px;color:#9db8a8;">{{% unsubscribe \'Unsubscribe\' %}} · <a href="https://onelife.co.za" style="color:#9db8a8;">onelife.co.za</a></p>
-</td></tr>
-</table>
-</td></tr>
-</table>
-</body>
-</html>'''
+    vendor_line = (f'<span style="font-size:12px;letter-spacing:1px;text-transform:uppercase;'
+                   f'color:#9ca3af;font-weight:600;">by {vendor}</span><br/>' if vendor else "")
+    return email_template.render_email(
+        title=title,
+        eyebrow=eyebrow_map.get(campaign_type, "FEATURED"),
+        campaign_slug=campaign_slug,
+        intro_html=f"{vendor_line}{description_text}",
+        accent=email_template.AMBER,
+        cta={"label": "Shop it now →",
+             "href": email_template.utm(product_url, campaign_slug, "hero-cta")},
+        price=get_variant_price(product),
+        whatsapp_lead="Not sure if it's right for you?",
+        whatsapp_prefill="Hi Precious, is this week's pick right for me?",
+    )
 
 
 def build_email_text(product, campaign_type, product_url):
@@ -398,10 +402,10 @@ def main():
 
     print("[1] Getting Shopify token...", file=sys.stderr)
     token = get_shopify_token()
-    if not token:
-        print("✗ Shopify auth failed", file=sys.stderr)
-        sys.exit(1)
-    print(f"  ✓ Token acquired", file=sys.stderr)
+    if token:
+        print(f"  ✓ Token acquired", file=sys.stderr)
+    else:
+        print("  ⚠ Shopify auth unavailable — continuing with storefront fallback", file=sys.stderr)
 
     print("[2] Picking product (new launches first, then fallback)...", file=sys.stderr)
     product, campaign_type = pick_product(token)

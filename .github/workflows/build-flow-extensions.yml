@@ -1,0 +1,33 @@
+name: Build Flow Extensions
+
+# Creates the abandoned-checkout touch 2/3 + post-purchase cross-sell
+# templates and the winback catch-up segments in Klaviyo (inert assets;
+# wiring stays manual per Klaviyo guidance). Commits the build report with
+# IDs + UI wiring steps to reports/.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/triggers/build-flow-extensions"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build templates + segments
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+        run: python3 scripts/build_flow_extensions.py
+      - name: Commit build report
+        if: always()
+        run: |
+          git config user.name "onelife-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/flow-extension-build-*.md || true
+          git diff --cached --quiet || git commit -m "chore: klaviyo flow extension build report"
+          git push || true

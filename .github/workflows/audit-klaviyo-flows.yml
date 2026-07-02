@@ -1,0 +1,31 @@
+name: Audit Klaviyo Flows
+
+# Dumps every flow's status + trigger configuration into reports/ so broken
+# automations (winback with zero recipients, narrow abandoned-checkout
+# trigger, R0 post-purchase) can be diagnosed precisely. Manual dispatch.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/triggers/audit-klaviyo-flows"
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run flow audit
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+        run: python3 scripts/audit_klaviyo_flows.py
+      - name: Commit report
+        run: |
+          git config user.name "onelife-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/flow-audit-*.md reports/flow-audit-*.json
+          git diff --cached --quiet || git commit -m "chore: klaviyo flow trigger audit"
+          git push

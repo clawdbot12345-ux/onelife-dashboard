@@ -1,0 +1,38 @@
+name: Fix Checkout Ladder
+
+# Applies the abandoned-checkout cadence fixes (re-entry guard + day-3
+# spacing on the Touch 2/3 flow; optional 4h early touch on the Consultant
+# Check flow). Backs up original definitions to reports/flow-backups/.
+
+on:
+  workflow_dispatch:
+    inputs:
+      early_touch:
+        description: "Also move Consultant Check first delay 2d -> 4h"
+        type: boolean
+        default: false
+  push:
+    paths:
+      - ".github/triggers/fix-checkout-ladder"
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply ladder fixes
+        env:
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          EARLY_TOUCH: ${{ (github.event_name == 'push' || inputs.early_touch) && 'true' || 'false' }}
+        run: python3 scripts/fix_checkout_ladder.py
+      - name: Commit backups
+        if: always()
+        run: |
+          git config user.name "onelife-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/flow-backups/ || true
+          git diff --cached --quiet || git commit -m "chore: flow definition backups (checkout ladder fix)"
+          git push || true

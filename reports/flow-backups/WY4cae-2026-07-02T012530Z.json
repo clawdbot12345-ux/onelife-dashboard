@@ -1,0 +1,114 @@
+{
+  "triggers": [
+    {
+      "type": "metric",
+      "id": "WnzuVG",
+      "trigger_filter": null
+    }
+  ],
+  "profile_filter": {
+    "condition_groups": [
+      {
+        "conditions": [
+          {
+            "type": "profile-metric",
+            "metric_id": "WZAxyj",
+            "measurement": "count",
+            "measurement_filter": {
+              "type": "numeric",
+              "operator": "equals",
+              "value": 0
+            },
+            "timeframe_filter": {
+              "type": "date",
+              "operator": "flow-start"
+            },
+            "metric_filters": null
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "type": "profile-not-in-flow",
+            "timeframe_filter": {
+              "type": "date",
+              "operator": "in-the-last",
+              "unit": "day",
+              "quantity": 7
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "actions": [
+    {
+      "id": "108886998",
+      "type": "time-delay",
+      "data": {
+        "unit": "days",
+        "value": 2,
+        "secondary_value": null,
+        "timezone": "profile",
+        "delay_until_weekdays": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ]
+      },
+      "links": {
+        "next": "108886999"
+      }
+    },
+    {
+      "id": "108886999",
+      "type": "send-email",
+      "data": {
+        "message": {
+          "from_email": "info@onelife.co.za",
+          "from_label": "One Life Health",
+          "reply_to_email": "info@onelife.co.za",
+          "cc_email": null,
+          "bcc_email": null,
+          "subject_line": "Want a second opinion on that basket?",
+          "preview_text": "A consultant can check doses, overlaps and interactions before you pay.",
+          "template_id": "UyBg38",
+          "smart_sending_enabled": true,
+          "transactional": false,
+          "add_tracking_params": true,
+          "custom_tracking_params": [
+            {
+              "param": "utm_source",
+              "value": "Klaviyo"
+            },
+            {
+              "param": "utm_medium",
+              "value": "flow"
+            },
+            {
+              "param": "utm_campaign",
+              "value": "abandoned_checkout_consultant_check_2026"
+            },
+            {
+              "param": "utm_content",
+              "value": "email-consultant-check"
+            }
+          ],
+          "additional_filters": null,
+          "name": "Abandoned Cart #3 \u2014 Consultant basket check",
+          "id": "SLbnwD"
+        },
+        "status": "live"
+      },
+      "links": {
+        "next": null
+      }
+    }
+  ],
+  "entry_action_id": "108886998"
+}
