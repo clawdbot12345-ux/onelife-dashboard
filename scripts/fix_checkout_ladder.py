@@ -56,17 +56,19 @@ def req(path, method="GET", body=None, revision=REVISIONS[0]):
         return e.code, {"error": e.read().decode()[:500]}
 
 
-def get_definition(flow_id):
+def get_flow(flow_id):
     status, data = req(f"/flows/{flow_id}/?additional-fields[flow]=definition")
     if status != 200:
         print(f"✗ GET {flow_id}: {status} {json.dumps(data)[:300]}", file=sys.stderr)
         sys.exit(1)
-    return data["data"]["attributes"]["definition"]
+    return data["data"]["attributes"]
 
 
-def patch_definition(flow_id, definition):
+def patch_definition(flow_id, definition, name, flow_status):
+    # The API requires name + status alongside definition on PATCH
     body = {"data": {"type": "flow", "id": flow_id,
-                     "attributes": {"definition": definition}}}
+                     "attributes": {"name": name, "status": flow_status,
+                                    "definition": definition}}}
     last = None
     for rev in REVISIONS:
         status, data = req(f"/flows/{flow_id}/", method="PATCH", body=body, revision=rev)
@@ -92,7 +94,8 @@ def main():
     ok = True
 
     # ── SN89LS: re-entry guard + day-3 spacing ──
-    d = get_definition(TOUCH_FLOW)
+    attrs = get_flow(TOUCH_FLOW)
+    d = attrs["definition"]
     backup(TOUCH_FLOW, d)
     new = copy.deepcopy(d)
     groups = (new.get("profile_filter") or {}).get("condition_groups") or []
@@ -108,13 +111,14 @@ def main():
         delays[1]["data"]["value"] = 2
         print("  + second delay 1d -> 2d (Touch 3 lands day 3)", file=sys.stderr)
     if new != d:
-        ok = patch_definition(TOUCH_FLOW, new) and ok
+        ok = patch_definition(TOUCH_FLOW, new, attrs["name"], attrs["status"]) and ok
     else:
         print(f"  {TOUCH_FLOW}: nothing to change", file=sys.stderr)
 
     # ── WY4cae: optional early touch ──
     if EARLY_TOUCH:
-        d2 = get_definition(CONSULT_FLOW)
+        attrs2 = get_flow(CONSULT_FLOW)
+        d2 = attrs2["definition"]
         backup(CONSULT_FLOW, d2)
         new2 = copy.deepcopy(d2)
         entry = next((a for a in new2.get("actions", [])
@@ -123,7 +127,7 @@ def main():
             entry["data"]["unit"] = "hours"
             entry["data"]["value"] = 4
             print("  + consultant-check delay 2d -> 4h", file=sys.stderr)
-            ok = patch_definition(CONSULT_FLOW, new2) and ok
+            ok = patch_definition(CONSULT_FLOW, new2, attrs2["name"], attrs2["status"]) and ok
         else:
             print(f"  {CONSULT_FLOW}: delay not in expected state, skipping", file=sys.stderr)
 
