@@ -1,580 +1,110 @@
 [
  {
   "type": "product",
-  "id": 8155084226870,
+  "id": 7886979924054,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155078263094,
+  "id": 7886978220118,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8447014961462,
+  "id": 7886979760214,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155085668662,
+  "id": 7886978613334,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155078000950,
+  "id": 7886979006550,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8294184288566,
+  "id": 7886977957974,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155077181750,
+  "id": 7886978941014,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155085930806,
+  "id": 7886978744406,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155082981686,
+  "id": 7886978777174,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155080687926,
+  "id": 7886978809942,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155079901494,
+  "id": 7886978252886,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 8155077214518,
+  "id": 7886979334230,
   "status": 200,
   "fields": [
-   "title",
-   "tags"
+   "title"
   ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8747828183350,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155084423478,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155076722998,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155079246134,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155078623542,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155076952374,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8747905220918,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155082785078,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8447026856246,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155085340982,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155084685622,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155084095798,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags",
-   "body_html"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155083931958,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155083768118,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155082621238,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155082424630,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155081015606,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155078132022,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155077837110,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155077673270,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155077312822,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155076854070,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8704664731958,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8492621922614,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155085046070,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155084521782,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155084259638,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155083571510,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155083309366,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155082293558,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155081310518,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155080851766,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155080524086,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155080163638,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155079737654,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155078394166,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags",
-   "body_html"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155077247286,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155077116214,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155077083446,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 8155076755766,
-  "status": 200,
-  "fields": [
-   "title",
-   "tags"
-  ],
-  "error": null
- },
- {
-  "type": "asset",
-  "theme": "185669910838",
-  "key": "snippets/vivid-health-hero-2032.liquid",
-  "status": 200,
-  "error": null
- },
- {
-  "type": "asset",
-  "theme": "185669910838",
-  "key": "snippets/vivid-health-hero-2045.liquid",
-  "status": 200,
-  "error": null
- },
- {
-  "type": "asset",
-  "theme": "185669910838",
-  "key": "snippets/vivid-health-hero.liquid",
-  "status": 200,
-  "error": null
- },
- {
-  "type": "asset",
-  "theme": "185669910838",
-  "key": "snippets/vivid-health-page.liquid",
-  "status": 200,
-  "error": null
- },
- {
-  "type": "asset",
-  "theme": "186060964150",
-  "key": "snippets/vivid-health-hero-2032.liquid",
-  "status": 200,
-  "error": null
- },
- {
-  "type": "asset",
-  "theme": "186060964150",
-  "key": "snippets/vivid-health-hero-2045.liquid",
-  "status": 200,
-  "error": null
- },
- {
-  "type": "asset",
-  "theme": "186060964150",
-  "key": "snippets/vivid-health-hero.liquid",
-  "status": 200,
-  "error": null
- },
- {
-  "type": "asset",
-  "theme": "186060964150",
-  "key": "snippets/vivid-health-page.liquid",
-  "status": 200,
   "error": null
  }
 ]
