@@ -357,6 +357,48 @@ def do_apply_prices(cfg):
     print(f"DONE {counts}")
 
 
+def do_media_remediate(cfg):
+    """Delete banned product media (old IMG-* masters, WhatsApp files,
+    baked-text infographics) and attach real media to imageless products
+    from theme-asset CDN URLs. Never leaves a product with zero images."""
+    import re
+    bad_re = re.compile(r"(^|/)(IMG-\d+[^/]*|WhatsApp[^/]*)\.(png|jpe?g)$|-infographic\.", re.I)
+    products = fetch_vivid_products()
+    report = {"deleted": [], "skipped": [], "uploaded": [], "errors": []}
+    for p in products:
+        imgs = p.get("images") or []
+        bads, goods = [], []
+        for i in imgs:
+            fname = (i.get("src") or "").split("?")[0]
+            (bads if bad_re.search(fname) else goods).append(i)
+        if bads and not goods:
+            report["skipped"].append({"handle": p["handle"], "reason": "would empty media"})
+            continue
+        for i in bads:
+            code, d, _ = req("DELETE", f"/admin/api/{API}/products/{p['id']}/images/{i['id']}.json")
+            entry = {"handle": p["handle"], "src": i.get("src", "")[:140], "status": code}
+            (report["deleted"] if 200 <= code < 300 else report["errors"]).append(entry)
+            time.sleep(0.55)
+    by_handle = {p["handle"]: p for p in products}
+    for handle, urls in (cfg.get("stack_media") or {}).items():
+        p = by_handle.get(handle)
+        if not p:
+            report["errors"].append({"handle": handle, "reason": "product not found"})
+            continue
+        for pos, u in enumerate(urls, start=1):
+            code, d, _ = req("POST", f"/admin/api/{API}/products/{p['id']}/images.json",
+                             {"image": {"src": u, "position": pos}})
+            entry = {"handle": handle, "src": u[:140], "status": code,
+                     "error": (d.get("errors") if code >= 300 else None)}
+            (report["uploaded"] if 200 <= code < 300 else report["errors"]).append(entry)
+            time.sleep(0.55)
+    os.makedirs(OUT, exist_ok=True)
+    with open(f"{OUT}/media-remediate-result.json", "w") as f:
+        json.dump(report, f, indent=1)
+    print(f"media remediate: deleted={len(report['deleted'])} uploaded={len(report['uploaded'])} "
+          f"skipped={len(report['skipped'])} errors={len(report['errors'])}")
+
+
 def do_publish(cfg):
     tid = cfg.get("theme_id")
     if not tid:
@@ -387,6 +429,8 @@ def main():
         do_publish(cfg)
     elif mode == "apply_prices":
         do_apply_prices(cfg)
+    elif mode == "media_remediate":
+        do_media_remediate(cfg)
     else:
         print(f"unknown mode {mode}", file=sys.stderr)
         sys.exit(1)
