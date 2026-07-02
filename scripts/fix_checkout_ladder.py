@@ -33,7 +33,7 @@ if not KLAVIYO_KEY:
     print("ERROR: KLAVIYO_API_KEY required", file=sys.stderr)
     sys.exit(1)
 
-REVISIONS = ["2025-07-15", "2025-04-15", "2025-01-15"]
+REVISIONS = ["2025-07-15.pre", "2025-04-15.pre", "2024-10-15.pre"]
 TOUCH_FLOW = "SN89LS"
 CONSULT_FLOW = "WY4cae"
 NOT_IN_FLOW_7D = {"conditions": [{"type": "profile-not-in-flow",
@@ -81,6 +81,63 @@ def patch_definition(flow_id, definition, name, flow_status):
     return False
 
 
+def to_create_definition(definition):
+    """Convert a fetched definition (real ids) into create-shape (temporary ids)."""
+    d = copy.deepcopy(definition)
+    for a in d.get("actions", []):
+        if "id" in a:
+            a["temporary_id"] = str(a.pop("id"))
+        links = a.get("links") or {}
+        for k, v in list(links.items()):
+            if v is not None:
+                links[k] = str(v)
+        msg = ((a.get("data") or {}).get("message") or {})
+        msg.pop("id", None)
+    if d.get("entry_action_id") is not None:
+        d["entry_action_id"] = str(d["entry_action_id"])
+    return d
+
+
+def set_status(flow_id, status):
+    st, data = req(f"/flows/{flow_id}/", method="PATCH",
+                   body={"data": {"type": "flow", "id": flow_id,
+                                  "attributes": {"status": status}}},
+                   revision="2025-07-15")
+    ok = st in (200, 202, 204)
+    print(f"  {'✓' if ok else '✗'} status {flow_id} -> {status} ({st})", file=sys.stderr)
+    if not ok:
+        print(f"    {json.dumps(data)[:300]}", file=sys.stderr)
+    return ok
+
+
+def replace_flow(old_id, old_name, new_definition):
+    """Create corrected clone (draft) -> draft old -> live new. Ordered so a
+    partial failure can only cause a send gap, never duplicate sends."""
+    create_body = {"data": {"type": "flow", "attributes": {
+        "name": old_name, "definition": to_create_definition(new_definition)}}}
+    created = None
+    for rev in REVISIONS:
+        st, data = req("/flows/", method="POST", body=create_body, revision=rev)
+        if st in (200, 201):
+            created = data["data"]["id"]
+            print(f"  ✓ created replacement flow {created} (revision {rev})", file=sys.stderr)
+            break
+        print(f"  create attempt ({rev}): {st} {json.dumps(data)[:300]}", file=sys.stderr)
+    if not created:
+        return False
+    if not set_status(old_id, "draft"):
+        print(f"  ⚠ old flow {old_id} still live — leaving new flow {created} in draft "
+              f"to avoid duplicates; draft {old_id} manually then set {created} live",
+              file=sys.stderr)
+        return False
+    if not set_status(created, "live"):
+        print(f"  ⚠ SEND GAP: {old_id} drafted but {created} not live — set "
+              f"https://www.klaviyo.com/flow/{created}/edit live manually", file=sys.stderr)
+        return False
+    print(f"  ✓ replaced {old_id} with {created} (old drafted, new live)", file=sys.stderr)
+    return True
+
+
 def backup(flow_id, definition):
     os.makedirs("reports/flow-backups", exist_ok=True)
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H%M%SZ")
@@ -111,7 +168,11 @@ def main():
         delays[1]["data"]["value"] = 2
         print("  + second delay 1d -> 2d (Touch 3 lands day 3)", file=sys.stderr)
     if new != d:
-        ok = patch_definition(TOUCH_FLOW, new, attrs["name"], attrs["status"]) and ok
+        applied = patch_definition(TOUCH_FLOW, new, attrs["name"], attrs["status"])
+        if not applied:
+            print("  PATCH unsupported — falling back to create-and-swap", file=sys.stderr)
+            applied = replace_flow(TOUCH_FLOW, attrs["name"], new)
+        ok = applied and ok
     else:
         print(f"  {TOUCH_FLOW}: nothing to change", file=sys.stderr)
 
