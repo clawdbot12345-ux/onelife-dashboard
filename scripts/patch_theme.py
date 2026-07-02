@@ -40,7 +40,8 @@ DUMP_MATCH = ("ol-", "card", "announcement", "header", "price",
               "buy-buttons", "main-product", "footer", "quiz",
               "cart-drawer", "cart-notification", "cart-items",
               "free-shipping", "shipping-threshold", "threshold",
-              "tag-guide", "delivery-estimate", "trust", "store-stock")
+              "tag-guide", "delivery-estimate", "trust", "store-stock",
+              "pdp-", "product-badges")
 
 if not TOKEN:
     print("ERROR: SHOPIFY_ADMIN_TOKEN required", file=sys.stderr)
