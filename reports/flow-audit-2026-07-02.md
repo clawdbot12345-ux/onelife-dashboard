@@ -70,7 +70,9 @@ trigger: {"type": "metric", "id": "WZAxyj", "trigger_filter": null}
 ### Abandoned Checkout Touch 2/3 Companion — 2026 design system (`SN89LS`, live)
 
 ```
-definition unavailable
+trigger: {"type": "metric", "id": "WnzuVG", "trigger_filter": null}
+  entry_action_id: 110840315
+  profile_filter: {"condition_groups": [{"conditions": [{"type": "profile-metric", "metric_id": "WZAxyj", "measurement": "count", "measurement_filter": {"type": "numeric", "operator": "equals", "value": 0}, "timeframe_filter": {"type": "date", "operator": "flow-start"}, "metric_filters": null}]}]}
 ```
 
 ### Win-Back Catch-Up — Lapsed 120d+ (2026 design system) (`ScdmZL`, live)
@@ -92,7 +94,9 @@ trigger: {"type": "metric", "id": "WZAxyj", "trigger_filter": null}
 ### Replenishment Reminder (API-created) (`TNBkZK`, live)
 
 ```
-definition unavailable
+trigger: {"type": "metric", "id": "WZAxyj", "trigger_filter": null}
+  entry_action_id: 103841693
+  profile_filter: {"condition_groups": [{"conditions": [{"type": "profile-metric", "metric_id": "WZAxyj", "measurement": "count", "measurement_filter": {"type": "numeric", "operator": "equals", "value": 0}, "timeframe_filter": {"type": "date", "operator": "flow-start"}, "metric_filters": null}]}]}
 ```
 
 ### Win-Back Catch-Up — Lapsed 60–120d (2026 design system) (`UGhyug`, live)
