@@ -1,10 +1,37 @@
 [
  {
   "type": "product",
-  "id": 7886979924054,
+  "id": 7886978383958,
   "status": 200,
   "fields": [
-   "title"
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886979792982,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886979825750,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886978023510,
+  "status": 200,
+  "fields": [
+   "body_html"
   ],
   "error": null
  },
@@ -13,34 +40,7 @@
   "id": 7886978220118,
   "status": 200,
   "fields": [
-   "title"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 7886979760214,
-  "status": 200,
-  "fields": [
-   "title"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 7886978613334,
-  "status": 200,
-  "fields": [
-   "title"
-  ],
-  "error": null
- },
- {
-  "type": "product",
-  "id": 7886979006550,
-  "status": 200,
-  "fields": [
-   "title"
+   "body_html"
   ],
   "error": null
  },
@@ -49,43 +49,97 @@
   "id": 7886977957974,
   "status": 200,
   "fields": [
-   "title"
+   "body_html"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 7886978941014,
+  "id": 7886977859670,
   "status": 200,
   "fields": [
-   "title"
+   "body_html"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 7886978744406,
+  "id": 7886977892438,
   "status": 200,
   "fields": [
-   "title"
+   "body_html"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 7886978777174,
+  "id": 7886978416726,
   "status": 200,
   "fields": [
-   "title"
+   "body_html"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 7886978809942,
+  "id": 7886978187350,
   "status": 200,
   "fields": [
-   "title"
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886978121814,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886978547798,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886977990742,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886978089046,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886979432534,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886977826902,
+  "status": 200,
+  "fields": [
+   "body_html"
   ],
   "error": null
  },
@@ -94,17 +148,120 @@
   "id": 7886978252886,
   "status": 200,
   "fields": [
-   "title"
+   "body_html"
   ],
   "error": null
  },
  {
   "type": "product",
-  "id": 7886979334230,
+  "id": 7886978285654,
   "status": 200,
   "fields": [
-   "title"
+   "body_html"
   ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886979203158,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886977925206,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "product",
+  "id": 7886978056278,
+  "status": 200,
+  "fields": [
+   "body_html"
+  ],
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "assets/theme.js",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "sections/announcement-bar.liquid",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "sections/editorial.liquid",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "sections/main-search.liquid",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "sections/product-main.liquid",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "snippets/floating-contact.liquid",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "snippets/product-card.liquid",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "snippets/vivid-stack-card.liquid",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "templates/page.about.json",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "templates/search.json",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "page-update",
+  "handle": "compare-vivid",
+  "status": 200,
   "error": null
  }
 ]
