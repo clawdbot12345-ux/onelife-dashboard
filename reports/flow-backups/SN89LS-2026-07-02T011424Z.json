@@ -1,0 +1,211 @@
+{
+  "triggers": [
+    {
+      "type": "metric",
+      "id": "WnzuVG",
+      "trigger_filter": null
+    }
+  ],
+  "profile_filter": {
+    "condition_groups": [
+      {
+        "conditions": [
+          {
+            "type": "profile-metric",
+            "metric_id": "WZAxyj",
+            "measurement": "count",
+            "measurement_filter": {
+              "type": "numeric",
+              "operator": "equals",
+              "value": 0
+            },
+            "timeframe_filter": {
+              "type": "date",
+              "operator": "flow-start"
+            },
+            "metric_filters": null
+          }
+        ]
+      }
+    ]
+  },
+  "actions": [
+    {
+      "id": "110840315",
+      "type": "time-delay",
+      "data": {
+        "unit": "days",
+        "value": 1,
+        "secondary_value": null,
+        "timezone": "profile",
+        "delay_until_weekdays": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ]
+      },
+      "links": {
+        "next": "110840316"
+      }
+    },
+    {
+      "id": "110840316",
+      "type": "send-email",
+      "data": {
+        "message": {
+          "from_email": "info@onelife.co.za",
+          "from_label": "One Life Health",
+          "reply_to_email": "info@onelife.co.za",
+          "cc_email": null,
+          "bcc_email": null,
+          "subject_line": "Still deciding? Want a second opinion?",
+          "preview_text": "Precious can sanity-check your supplement basket before you buy.",
+          "template_id": "YbpNij",
+          "smart_sending_enabled": true,
+          "transactional": false,
+          "add_tracking_params": true,
+          "custom_tracking_params": [
+            {
+              "param": "utm_source",
+              "value": "Klaviyo"
+            },
+            {
+              "param": "utm_medium",
+              "value": "flow"
+            },
+            {
+              "param": "utm_campaign",
+              "value": "abandoned_checkout_touch_2_3_companion_2026"
+            },
+            {
+              "param": "utm_content",
+              "value": "email-touch-2"
+            }
+          ],
+          "additional_filters": {
+            "condition_groups": [
+              {
+                "conditions": [
+                  {
+                    "type": "profile-metric",
+                    "metric_id": "WZAxyj",
+                    "measurement": "count",
+                    "measurement_filter": {
+                      "type": "numeric",
+                      "operator": "equals",
+                      "value": 0
+                    },
+                    "timeframe_filter": {
+                      "type": "date",
+                      "operator": "flow-start"
+                    },
+                    "metric_filters": null
+                  }
+                ]
+              }
+            ]
+          },
+          "name": "Abandoned Checkout Touch 2 \u2014 honest check-in",
+          "id": "UAy3hm"
+        },
+        "status": "live"
+      },
+      "links": {
+        "next": "110840319"
+      }
+    },
+    {
+      "id": "110840319",
+      "type": "time-delay",
+      "data": {
+        "unit": "days",
+        "value": 1,
+        "secondary_value": null,
+        "timezone": "profile",
+        "delay_until_weekdays": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ]
+      },
+      "links": {
+        "next": "110840320"
+      }
+    },
+    {
+      "id": "110840320",
+      "type": "send-email",
+      "data": {
+        "message": {
+          "from_email": "info@onelife.co.za",
+          "from_label": "One Life Health",
+          "reply_to_email": "info@onelife.co.za",
+          "cc_email": null,
+          "bcc_email": null,
+          "subject_line": "Your STACK5 code is inside.",
+          "preview_text": "If the basket still makes sense, save 5% on a 3+ item stack.",
+          "template_id": "TkvW47",
+          "smart_sending_enabled": true,
+          "transactional": false,
+          "add_tracking_params": true,
+          "custom_tracking_params": [
+            {
+              "param": "utm_source",
+              "value": "Klaviyo"
+            },
+            {
+              "param": "utm_medium",
+              "value": "flow"
+            },
+            {
+              "param": "utm_campaign",
+              "value": "abandoned_checkout_touch_2_3_companion_2026"
+            },
+            {
+              "param": "utm_content",
+              "value": "email-touch-3"
+            }
+          ],
+          "additional_filters": {
+            "condition_groups": [
+              {
+                "conditions": [
+                  {
+                    "type": "profile-metric",
+                    "metric_id": "WZAxyj",
+                    "measurement": "count",
+                    "measurement_filter": {
+                      "type": "numeric",
+                      "operator": "equals",
+                      "value": 0
+                    },
+                    "timeframe_filter": {
+                      "type": "date",
+                      "operator": "flow-start"
+                    },
+                    "metric_filters": null
+                  }
+                ]
+              }
+            ]
+          },
+          "name": "Abandoned Checkout Touch 3 \u2014 STACK5 nudge",
+          "id": "Ry64xC"
+        },
+        "status": "live"
+      },
+      "links": {
+        "next": null
+      }
+    }
+  ],
+  "entry_action_id": "110840315"
+}
