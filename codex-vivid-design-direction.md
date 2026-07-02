@@ -82,3 +82,40 @@ Negative/avoid: clinical white sweep, blue tint, red, gloss, lens flare, fake bo
 6. The wordmark, label band colour and site accent for a range all match.
 
 **Delivery:** upload via Shopify admin (Files + product media, replacing — not appending — old renders), or commit to `vivid/assets/store/` on the PR branch and Claude pushes them through the pipeline. Post progress on PR #26.
+
+
+---
+
+## ⚠️ ROUND-2 IMAGERY FIXES (QA of 2026-07-02 late — read before anything else)
+
+The regenerated series is genuinely cohesive (well done) — but the QA run FAILED
+the owner's hard gates. Fix exactly these, nothing else:
+
+1. **DELETE every `*-infographic.jpg`** (~52 files) and `wellness-kitchen.jpg`,
+   `clutter-to-calm.jpg`, `bone-supreme-them-vs-us.jpg`, `scattered-to-sorted.jpg`,
+   `griffonia-before-after.jpg`. They are marketing cards with headlines, bullets,
+   fake SHOP NOW buttons and hallucinated copy ("SHOPIFY-MATCHED FORMAT") baked in —
+   the owner's explicit no-text-overlay rule (§5.3). Claude has already removed them
+   from the PDP gallery templates; do NOT re-add text-bearing artwork anywhere.
+   (Photography of the physical bottle with its label is fine; rendered slogans,
+   prices, buttons or wordmarks in the artwork are not — that includes the large
+   "VIVID HEALTH" wordmark rendered into the stack lineup image.)
+2. **The 3 stack products still have ZERO images in Shopify**
+   (`comrades-recovery-stack`, `highveld-hayfever-stack`, the perimenopause stack —
+   `/products/<handle>.js` → `images: []`). Upload real product media per stack,
+   composition matching that stack's ACTUAL contents (current theme art shows four
+   unbranded canisters and Bone Supreme bottles on Comrades). Until then carts,
+   OG shares and feeds render nothing for them.
+3. **Label art corrections STILL not applied** (§3.4): the new Agnus Castus hero
+   reads "ANGUS CASTUS", and "DIETARY SUPPLEMENT" appears across the new artwork
+   (About hero, MSM cards). Fix both on every affected render. Also "60 capules"
+   typo on the old master.
+4. **Label-panel macro shot** — still missing on every sampled product (§3.1 shot 2,
+   the highest-priority shot in this document). The "ingredient" slot is a botanical
+   still, not the label.
+5. **Hygiene**: replace `WhatsAppImage2026-02-23at16.32.58.jpg` (Cayenne 250g variant
+   image); the cold white-sweep IMG-5xxx masters have been demoted from position 1 by
+   Claude — delete or re-shoot them at your discretion.
+
+Verification gate: Claude re-runs the full design QA after these land; GO requires
+zero text-bearing artwork and all three stacks carrying real product media.
