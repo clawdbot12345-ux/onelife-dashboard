@@ -1,122 +1,32 @@
 [
  {
-  "id": 185669910838,
-  "name": "ONE LIFE HEALTH STORE \u2014 LIVE 2026-07-02",
+  "id": 148707704918,
+  "name": "Horizon",
   "role": "unpublished",
-  "updated_at": "2026-07-02T10:41:48+02:00"
+  "updated_at": "2026-06-01T14:15:44+02:00"
  },
  {
-  "id": 185762119990,
-  "name": "Onelife Lifestyle Clarity 2026-06-01",
+  "id": 148718944342,
+  "name": "Vivid Health Draft 2026-05-29",
   "role": "unpublished",
-  "updated_at": "2026-06-01T22:03:47+02:00"
+  "updated_at": "2026-06-04T01:16:03+02:00"
  },
  {
-  "id": 185765396790,
-  "name": "Live Visual Fix 2026-06-07 r1780832431",
-  "role": "unpublished",
-  "updated_at": "2026-06-11T00:43:18+02:00"
- },
- {
-  "id": 185971867958,
-  "name": "GROWTH BUILD 2026-06 \u2014 LAUNCH READY",
-  "role": "unpublished",
-  "updated_at": "2026-06-11T07:52:05+02:00"
- },
- {
-  "id": 186000638262,
-  "name": "GROWTH BUILD 2026-06 \u2014 KLAVIYO REFRESH 2026-06-11",
-  "role": "unpublished",
-  "updated_at": "2026-06-11T12:26:14+02:00"
- },
- {
-  "id": 186009518390,
-  "name": "GROWTH BUILD 2026-06 \u2014 MOBILE V10 (ready to pub...",
-  "role": "unpublished",
-  "updated_at": "2026-06-11T16:54:18+02:00"
- },
- {
-  "id": 186011484470,
-  "name": "GROWTH BUILD 2026-06 \u2014 MOBILE V10 LIVE 2026-06-11",
-  "role": "unpublished",
-  "updated_at": "2026-06-11T15:53:46+02:00"
- },
- {
-  "id": 186015220022,
-  "name": "GROWTH BUILD V11 \u2014 tagline restored (publish me)",
-  "role": "unpublished",
-  "updated_at": "2026-06-11T16:13:00+02:00"
- },
- {
-  "id": 186015514934,
-  "name": "GROWTH BUILD 2026-06 - IMAGERY 2026-06-11 (read...",
-  "role": "unpublished",
-  "updated_at": "2026-06-11T20:58:15+02:00"
- },
- {
-  "id": 186020036918,
-  "name": "GROWTH BUILD 2026-06 - VISUAL FIX 2026-06-11 (r...",
-  "role": "unpublished",
-  "updated_at": "2026-06-12T07:41:24+02:00"
- },
- {
-  "id": 186026918198,
-  "name": "GROWTH BUILD - REVIEWS 2026-06-12 (ready to pub...",
-  "role": "unpublished",
-  "updated_at": "2026-06-12T03:55:21+02:00"
- },
- {
-  "id": 186031931702,
-  "name": "VISUAL FIX FINAL 2026-06-12 r2",
-  "role": "unpublished",
-  "updated_at": "2026-06-12T11:23:34+02:00"
- },
- {
-  "id": 186034487606,
-  "name": "REVIEWS 2026-06-12 ready to publish",
-  "role": "unpublished",
-  "updated_at": "2026-06-12T11:51:05+02:00"
- },
- {
-  "id": 186035470646,
-  "name": "REVIEWS 2026-06-12 fresh cache publish",
-  "role": "unpublished",
-  "updated_at": "2026-06-12T12:01:22+02:00"
- },
- {
-  "id": 186035765558,
-  "name": "REVIEWS 2026-06-12 final Vivid clean publish",
-  "role": "unpublished",
-  "updated_at": "2026-06-12T15:17:03+02:00"
- },
- {
-  "id": 186039402806,
-  "name": "Previous live - article spacing backup",
-  "role": "unpublished",
-  "updated_at": "2026-06-12T15:41:12+02:00"
- },
- {
-  "id": 186039697718,
-  "name": "Previous live - author title backup",
-  "role": "unpublished",
-  "updated_at": "2026-06-12T15:55:29+02:00"
- },
- {
-  "id": 186040058166,
-  "name": "ONE LIFE HEALTH STORE \u2014 LIVE",
-  "role": "unpublished",
-  "updated_at": "2026-06-13T12:39:12+02:00"
- },
- {
-  "id": 186060112182,
-  "name": "ONE LIFE HEALTH STORE \u2014 AUDIT FIXES 2026-06-13",
-  "role": "unpublished",
-  "updated_at": "2026-07-02T00:27:59+02:00"
- },
- {
-  "id": 186060964150,
-  "name": "LIVE + MOBILE FIXES 2026-07-02 (publish me)",
+  "id": 148873674838,
+  "name": "Vivid Health D2C Visual Fix 2026-06-04",
   "role": "main",
-  "updated_at": "2026-07-02T10:48:13+02:00"
+  "updated_at": "2026-06-04T07:46:05+02:00"
+ },
+ {
+  "id": 148889796694,
+  "name": "Vivid Health World Class Rework 2026-06-04",
+  "role": "unpublished",
+  "updated_at": "2026-06-06T14:36:30+02:00"
+ },
+ {
+  "id": 149043052630,
+  "name": "Vivid \u2014 Best in Class (working draft 2026-06-06)",
+  "role": "unpublished",
+  "updated_at": "2026-06-10T12:16:37+02:00"
  }
 ]
