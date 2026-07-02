@@ -1,6 +1,5 @@
 assets/advanced-buffered-c-300-hero.jpg
 assets/allergy-control-60-hero.jpg
-assets/allergy-control-infographic.jpg
 assets/allergy-control-lavender.jpg
 assets/allergy-control-stone.jpg
 assets/angus-castus-60-hero.jpg
@@ -28,8 +27,6 @@ assets/black-walnut-60-hero.jpg
 assets/bone-supreme-120-hero.jpg
 assets/bone-supreme-500-hero.jpg
 assets/bone-supreme-influencer.jpg
-assets/bone-supreme-infographic.jpg
-assets/bone-supreme-them-vs-us.jpg
 assets/bone-supreme.jpg
 assets/buffered-c-150g-hero.jpg
 assets/buffered-c-300-hero.jpg
@@ -38,7 +35,6 @@ assets/cayenne-250g-hero.jpg
 assets/cayenne-300-hero.jpg
 assets/cayenne-90-hero.jpg
 assets/clove-60-hero.jpg
-assets/clutter-to-calm.jpg
 assets/colest-control-60-hero.jpg
 assets/colon-flush-120-hero.jpg
 assets/colon-flush-powder-135-hero.jpg
@@ -53,9 +49,7 @@ assets/gaba-150g-hero.jpg
 assets/garcinia-cambogia-60-hero.jpg
 assets/griffonia-5htp-60-hero.jpg
 assets/griffonia-bedside.jpg
-assets/griffonia-before-after.jpg
 assets/griffonia-moss.jpg
-assets/hero-group.jpg
 assets/house-brand-hero-2.jpg
 assets/house-brand-hero.jpg
 assets/immune-plus-60-hero.jpg
@@ -86,7 +80,6 @@ assets/physical-trio.jpg
 assets/prosta-care-60-hero.jpg
 assets/quercetin-complex-60-hero.jpg
 assets/sage-60-hero.jpg
-assets/scattered-to-sorted.jpg
 assets/spirulina-250g-hero.jpg
 assets/stack-comrades-recovery-hero.jpg
 assets/stack-highveld-hayfever-hero.jpg
@@ -96,7 +89,6 @@ assets/tranquil-60-hero.jpg
 assets/turmeric-300-hero.jpg
 assets/turmeric-plus-60-hero.jpg
 assets/vivid-logo-wordmark.svg
-assets/wellness-kitchen.jpg
 assets/wormwood-60-hero.jpg
 config/settings_data.json
 config/settings_schema.json
