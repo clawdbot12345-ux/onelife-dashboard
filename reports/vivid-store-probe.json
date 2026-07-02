@@ -1,5 +1,153 @@
 [
   {
+    "store": "hgywg0-w7.myshopify.com",
+    "auth": "OK",
+    "auth_source": "client_credentials",
+    "token_attempts": [
+      {
+        "client_credentials": "client_credentials ok"
+      }
+    ],
+    "shop": {
+      "name": "Vivid Health",
+      "myshopify_domain": "hgywg0-w7.myshopify.com",
+      "domain": "hgywg0-w7.myshopify.com",
+      "plan_display_name": "Basic",
+      "shop_owner": "Naadir Ally",
+      "email": "orders@vividhealthsa.co.za",
+      "currency": "ZAR",
+      "country_name": "South Africa",
+      "created_at": "2026-05-29T15:29:39+02:00"
+    },
+    "client_credentials": {
+      "stored_client_id_prefix": "a084b7b4",
+      "works": true,
+      "note": "client_credentials ok"
+    },
+    "scopes": [
+      "read_channels",
+      "read_checkouts",
+      "read_content",
+      "read_custom_pixels",
+      "read_delivery_option_generators",
+      "read_discounts",
+      "read_files",
+      "read_fulfillments",
+      "read_inventory",
+      "read_inventory_shipments",
+      "read_inventory_shipments_received_items",
+      "read_inventory_transfers",
+      "read_legal_policies",
+      "read_locales",
+      "read_locations",
+      "read_marketing_events",
+      "read_marketing_integrated_campaigns",
+      "read_markets",
+      "read_markets_home",
+      "read_merchant_managed_fulfillment_orders",
+      "read_online_store_navigation",
+      "read_online_store_pages",
+      "read_orders",
+      "read_payment_customizations",
+      "read_payment_terms",
+      "read_price_rules",
+      "read_privacy_settings",
+      "read_product_feeds",
+      "read_product_listings",
+      "read_products",
+      "read_publications",
+      "read_purchase_options",
+      "read_reports",
+      "read_themes",
+      "write_channels",
+      "write_checkouts",
+      "write_content",
+      "write_custom_pixels",
+      "write_delivery_option_generators",
+      "write_discounts",
+      "write_files",
+      "write_fulfillments",
+      "write_inventory",
+      "write_inventory_shipments",
+      "write_inventory_shipments_received_items",
+      "write_inventory_transfers",
+      "write_legal_policies",
+      "write_locales",
+      "write_locations",
+      "write_marketing_integrated_campaigns",
+      "write_markets",
+      "write_markets_home",
+      "write_merchant_managed_fulfillment_orders",
+      "write_online_store_navigation",
+      "write_online_store_pages",
+      "write_orders",
+      "write_payment_customizations",
+      "write_payment_terms",
+      "write_price_rules",
+      "write_privacy_settings",
+      "write_product_feeds",
+      "write_product_listings",
+      "write_products",
+      "write_publications",
+      "write_purchase_options",
+      "write_reports",
+      "write_theme_code",
+      "write_themes"
+    ],
+    "themes": [
+      {
+        "id": 148707704918,
+        "name": "Horizon",
+        "role": "unpublished",
+        "updated_at": "2026-06-01T14:15:44+02:00",
+        "created_at": "2026-05-29T15:29:47+02:00",
+        "processing": false
+      },
+      {
+        "id": 148718944342,
+        "name": "Vivid Health Draft 2026-05-29",
+        "role": "unpublished",
+        "updated_at": "2026-06-04T01:16:03+02:00",
+        "created_at": "2026-05-29T23:52:28+02:00",
+        "processing": false
+      },
+      {
+        "id": 148873674838,
+        "name": "Vivid Health D2C Visual Fix 2026-06-04",
+        "role": "main",
+        "updated_at": "2026-06-04T07:46:05+02:00",
+        "created_at": "2026-06-04T01:14:13+02:00",
+        "processing": false
+      },
+      {
+        "id": 148889796694,
+        "name": "Vivid Health World Class Rework 2026-06-04",
+        "role": "unpublished",
+        "updated_at": "2026-06-06T14:36:30+02:00",
+        "created_at": "2026-06-04T13:27:11+02:00",
+        "processing": false
+      },
+      {
+        "id": 149043052630,
+        "name": "Vivid \u2014 Best in Class (working draft 2026-06-06)",
+        "role": "unpublished",
+        "updated_at": "2026-06-10T12:16:37+02:00",
+        "created_at": "2026-06-09T21:45:49+02:00",
+        "processing": false
+      }
+    ],
+    "products_count": 58,
+    "pages_count": 31,
+    "collections_smart_count": 8,
+    "collections_custom_count": 4,
+    "locations": [
+      {
+        "name": "Vivid Health \u00b7 Centurion",
+        "active": true
+      }
+    ]
+  },
+  {
     "store": "onelifehealth.myshopify.com",
     "auth": "OK",
     "auth_source": "secret SHOPIFY_ADMIN_TOKEN",
@@ -58,7 +206,7 @@
         "id": 185669910838,
         "name": "ONE LIFE HEALTH STORE \u2014 LIVE 2026-07-02",
         "role": "unpublished",
-        "updated_at": "2026-07-02T11:00:34+02:00",
+        "updated_at": "2026-07-02T11:33:56+02:00",
         "created_at": "2026-05-28T19:53:17+02:00",
         "processing": false
       },
@@ -210,7 +358,7 @@
         "id": 186060964150,
         "name": "LIVE + MOBILE FIXES 2026-07-02 (publish me)",
         "role": "main",
-        "updated_at": "2026-07-02T11:00:38+02:00",
+        "updated_at": "2026-07-02T11:34:00+02:00",
         "created_at": "2026-06-13T13:56:13+02:00",
         "processing": false
       }
