@@ -1,0 +1,152 @@
+<style>
+.ol-tag-guide{background:#f6f8f4;color:#17211b;overflow-x:hidden}
+.ol-tag-guide *{box-sizing:border-box}
+.ol-tag-hero{position:relative;min-height:430px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(13,28,20,.78),rgba(13,28,20,.38) 48%,rgba(13,28,20,.06)),url({{ 'onelife-product-page-lifestyle-strip.jpg' | asset_url }}) center/cover no-repeat;color:#fff}
+.ol-tag-hero__inner{width:min(1180px,100vw);margin:0 auto;padding:58px 24px}
+.ol-tag-kicker{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.36);border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);color:#eaf7ed;font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;margin:0 0 18px}
+.ol-tag-hero h1,.ol-tag-hero .ol-tag-hero__inner h1{max-width:min(680px,calc(100vw - 32px));font-size:clamp(36px,5vw,64px);line-height:1.02;margin:0 0 16px;color:#fff!important;-webkit-text-fill-color:#fff!important;letter-spacing:0;text-wrap:balance}
+.ol-tag-hero__lead{max-width:min(650px,calc(100vw - 32px));font-size:18px;line-height:1.62;margin:0;color:rgba(255,255,255,.9);white-space:normal!important;overflow-wrap:break-word}
+.ol-tag-hero__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.ol-tag-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:8px;padding:0 18px;font-size:14px;font-weight:850;text-decoration:none}
+.ol-tag-btn--light{background:#fff;color:#163625}
+.ol-tag-btn--ghost{border:1px solid rgba(255,255,255,.42);color:#fff;background:rgba(255,255,255,.1)}
+.ol-tag-shell{max-width:1180px;margin:0 auto;padding:34px 24px 58px}
+.ol-tag-trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:-58px;position:relative;z-index:2}
+.ol-tag-trust__item{background:#fff;border:1px solid #dde8dd;border-radius:8px;padding:18px;box-shadow:0 12px 34px rgba(26,39,31,.08)}
+.ol-tag-trust__item strong{display:block;color:#163625;font-size:14px;margin-bottom:5px}
+.ol-tag-trust__item span{display:block;color:#536157;font-size:13px;line-height:1.45}
+.ol-tag-note{border:1px solid #d1dfd1;border-radius:8px;background:#fff;color:#35443b;font-size:15px;line-height:1.62;margin:28px 0 0;padding:18px 20px}
+.ol-tag-note strong{color:#163625}
+.ol-tag-section{margin-top:34px}
+.ol-tag-section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:16px}
+.ol-tag-section__head h2{font-size:clamp(25px,3vw,34px);line-height:1.15;margin:0;color:#111b15;letter-spacing:0}
+.ol-tag-section__head p{max-width:520px;margin:0;color:#5a665f;font-size:14px;line-height:1.55}
+.ol-tag-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ol-tag-card{background:#fff;border:1px solid #e0e8df;border-radius:8px;padding:18px;min-height:158px;box-shadow:0 1px 2px rgba(18,28,22,.04)}
+.ol-tag-chip{display:inline-flex;align-items:center;border-radius:999px;background:#edf5ee;color:#1b4332;font-size:11px;font-weight:850;line-height:1;padding:7px 10px;margin-bottom:12px}
+.ol-tag-card h3{font-size:18px;line-height:1.22;margin:0 0 8px;color:#111b15;letter-spacing:0}
+.ol-tag-card p{font-size:13px;line-height:1.56;margin:0;color:#536157}
+.ol-tag-checks{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:18px;align-items:stretch}
+.ol-tag-panel{background:#fff;border:1px solid #dfe8df;border-radius:8px;padding:24px}
+.ol-tag-panel h2{font-size:24px;line-height:1.2;margin:0 0 14px;color:#111b15;letter-spacing:0}
+.ol-tag-list{display:grid;gap:11px;margin:0;padding:0;list-style:none}
+.ol-tag-list li{position:relative;padding-left:20px;color:#47564d;font-size:14px;line-height:1.55}
+.ol-tag-list li:before{content:"";position:absolute;left:0;top:.66em;width:7px;height:7px;border-radius:999px;background:#2d6a4f}
+.ol-tag-consult{background:#173c2a;color:#fff;border-radius:8px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:100%}
+.ol-tag-consult h2{font-size:24px;line-height:1.2;margin:0 0 10px;color:#fff;letter-spacing:0}
+.ol-tag-consult p{color:rgba(255,255,255,.82);font-size:14px;line-height:1.58;margin:0 0 18px}
+.ol-tag-consult .ol-tag-btn{width:max-content}
+@media(max-width:899px){.ol-tag-hero{min-height:380px;background-position:center}.ol-tag-trust,.ol-tag-grid,.ol-tag-checks{grid-template-columns:1fr 1fr}.ol-tag-checks{align-items:start}.ol-tag-consult{grid-column:1/-1}.ol-tag-section__head{display:block}.ol-tag-section__head p{margin-top:8px}}
+@media(max-width:599px){.ol-tag-hero{min-height:0;background:linear-gradient(180deg,rgba(13,28,20,.86),rgba(13,28,20,.58)),url({{ 'onelife-product-page-lifestyle-strip.jpg' | asset_url }}) center/cover no-repeat}.ol-tag-hero__inner{padding:30px 16px 34px;max-width:100%}.ol-tag-kicker{font-size:10.5px;margin-bottom:14px}.ol-tag-hero h1,.ol-tag-hero .ol-tag-hero__inner h1{font-size:clamp(31px,8.8vw,38px);line-height:1.05}.ol-tag-hero__lead{font-size:15.2px;line-height:1.45;max-width:100%}.ol-tag-hero__actions{display:grid;margin-top:20px}.ol-tag-btn{width:100%}.ol-tag-shell{padding:24px 16px 42px}.ol-tag-trust{grid-template-columns:1fr;margin-top:16px}.ol-tag-grid{grid-template-columns:1fr}.ol-tag-card{min-height:0}.ol-tag-checks{grid-template-columns:1fr}.ol-tag-panel,.ol-tag-consult{padding:18px}.ol-tag-consult .ol-tag-btn{width:100%}}
+</style>
+
+<main class="ol-tag-guide">
+  <section class="ol-tag-hero">
+    <div class="ol-tag-hero__inner">
+      <p class="ol-tag-kicker">Product Tags</p>
+      <h1>Shop tags help you shortlist faster.</h1>
+      <p class="ol-tag-hero__lead">
+        Use tags to shortlist faster.<br>
+        Check the product label before purchase.
+      </p>
+      <div class="ol-tag-hero__actions">
+        <a class="ol-tag-btn ol-tag-btn--light" href="/pages/shop">Shop Products</a>
+        <a class="ol-tag-btn ol-tag-btn--ghost" href="https://wa.me/27713744910?text=Hi%2C%20I%20need%20help%20checking%20a%20product%20tag%20or%20ingredient" target="_blank" rel="noopener">Ask a Consultant</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ol-tag-shell">
+    <div class="ol-tag-trust" aria-label="How product tags should be used">
+      <div class="ol-tag-trust__item">
+        <strong>Supplier-based guidance</strong>
+        <span>Tags are based on supplier, manufacturer and product information available to One Life Health.</span>
+      </div>
+      <div class="ol-tag-trust__item">
+        <strong>Label first</strong>
+        <span>Ingredients, allergen warnings and directions on the product pack remain the final reference.</span>
+      </div>
+      <div class="ol-tag-trust__item">
+        <strong>Expert help available</strong>
+        <span>Our consultants can help you check a product if you are unsure about suitability.</span>
+      </div>
+    </div>
+
+    <div class="ol-tag-note">
+      <strong>Important:</strong> product tags are a shopping guide only. Always check the product label, ingredients list and allergen information before purchase or use. If you have allergies, are pregnant or breastfeeding, take medication, have a medical condition, or are unsure whether a product is suitable, ask a One Life Health consultant or a qualified healthcare professional first.
+    </div>
+
+    <section class="ol-tag-section">
+      <div class="ol-tag-section__head">
+        <h2>What each tag means</h2>
+        <p>These definitions explain how to read the tags on One Life product cards. They are not medical, allergen or formulation guarantees.</p>
+      </div>
+      <div class="ol-tag-grid" aria-label="Product tag meanings">
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Dietary</span>
+          <h3>Gluten Free</h3>
+          <p>Used where supplier or product information indicates a gluten-free claim or no gluten-containing ingredients. Always check the allergen statement.</p>
+        </article>
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Dietary</span>
+          <h3>Sugar Free</h3>
+          <p>Used where supplier or product information indicates no added sugar or a sugar-free claim. Check the nutrition panel for sweeteners and total carbohydrates.</p>
+        </article>
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Allergen</span>
+          <h3>Dairy Free</h3>
+          <p>Used where product information indicates no dairy ingredients. If you have a dairy allergy, check the label for allergen and cross-contact warnings.</p>
+        </article>
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Lifestyle</span>
+          <h3>Vegan</h3>
+          <p>Used where supplier or product information indicates a vegan formulation. Check capsules, flavourings and additives if strict vegan suitability matters.</p>
+        </article>
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Lifestyle</span>
+          <h3>Vegetarian</h3>
+          <p>Used where supplier or product information indicates vegetarian suitability. Check capsule type and any animal-derived ingredients on the label.</p>
+        </article>
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Origin</span>
+          <h3>SA Made</h3>
+          <p>Used where product or supplier information indicates South African manufacturing, production or packing. It does not automatically mean every ingredient is locally sourced.</p>
+        </article>
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Ingredient claim</span>
+          <h3>Organic</h3>
+          <p>Used where product information includes an organic claim. Check the product label for the exact organic certification or ingredient-level claim.</p>
+        </article>
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Ingredient claim</span>
+          <h3>Non-GMO</h3>
+          <p>Used where supplier or product information indicates a non-GMO claim. Check the packaging for the exact scope of the claim.</p>
+        </article>
+        <article class="ol-tag-card">
+          <span class="ol-tag-chip">Dietary</span>
+          <h3>Keto</h3>
+          <p>Used as a low-carb shopping aid where available product information supports keto-friendly use. Check macros and serving size against your own plan.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ol-tag-section ol-tag-checks">
+      <div class="ol-tag-panel">
+        <h2>How to use tags safely</h2>
+        <ul class="ol-tag-list">
+          <li>Use tags to narrow your search, not as the only basis for purchase.</li>
+          <li>Read the actual product label and ingredients before checkout and before use.</li>
+          <li>Check allergen warnings, cross-contact warnings and serving directions.</li>
+          <li>Confirm suitability with a consultant or healthcare professional if you are unsure.</li>
+        </ul>
+      </div>
+      <div class="ol-tag-consult">
+        <div>
+          <h2>Need help checking a product?</h2>
+          <p>Send us the product name or a label photo and we will help you confirm the ingredient and tag details before you buy.</p>
+        </div>
+        <a class="ol-tag-btn ol-tag-btn--light" href="https://wa.me/27713744910?text=Hi%2C%20I%20need%20help%20checking%20a%20product%20tag%20or%20ingredient" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </section>
+  </div>
+</main>
