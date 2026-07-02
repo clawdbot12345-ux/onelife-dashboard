@@ -60,6 +60,10 @@ assets/house-brand-hero-2.jpg
 assets/house-brand-hero.jpg
 assets/immune-plus-60-hero.jpg
 assets/joint-relief-60-hero.jpg
+assets/journal-clutter-to-calm-hero.jpg
+assets/journal-label-formulator-hero.jpg
+assets/journal-restful-nights-hero.jpg
+assets/journal-winter-immune-hero.jpg
 assets/l-glutamine-500-hero.jpg
 assets/l-lysine-60-hero.jpg
 assets/liquorice-root-60-hero.jpg
@@ -84,6 +88,9 @@ assets/quercetin-complex-60-hero.jpg
 assets/sage-60-hero.jpg
 assets/scattered-to-sorted.jpg
 assets/spirulina-250g-hero.jpg
+assets/stack-comrades-recovery-hero.jpg
+assets/stack-highveld-hayfever-hero.jpg
+assets/stack-perimenopause-essentials-hero.jpg
 assets/theme.js
 assets/tranquil-60-hero.jpg
 assets/turmeric-300-hero.jpg
@@ -121,6 +128,7 @@ sections/main-collection-product-grid.liquid
 sections/main-credentials.liquid
 sections/main-our-sourcing.liquid
 sections/main-page.liquid
+sections/main-search.liquid
 sections/press-strip.liquid
 sections/product-main.liquid
 sections/quiz-page.liquid
@@ -150,3 +158,4 @@ templates/page.quiz.json
 templates/page.the-team.json
 templates/product.json
 templates/robots.txt.liquid
+templates/search.json

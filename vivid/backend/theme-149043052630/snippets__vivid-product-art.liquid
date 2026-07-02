@@ -120,6 +120,15 @@
     when 'vivid-allergy-stack-complete-allergy-support-bundle'
       assign vivid_art_asset = 'banner-group-allergy.jpg'
       assign vivid_art_layout = 'wide'
+    when 'comrades-recovery-stack'
+      assign vivid_art_asset = 'stack-comrades-recovery-hero.jpg'
+      assign vivid_art_layout = 'wide'
+    when 'perimenopause-essentials'
+      assign vivid_art_asset = 'stack-perimenopause-essentials-hero.jpg'
+      assign vivid_art_layout = 'wide'
+    when 'highveld-hayfever-stack'
+      assign vivid_art_asset = 'stack-highveld-hayfever-hero.jpg'
+      assign vivid_art_layout = 'wide'
   endcase
 
   assign vivid_art_alt = alt | default: product.title

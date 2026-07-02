@@ -4,6 +4,10 @@
   assign stack_kicker = kicker | default: 'Curated stack'
   assign stack_copy = copy | default: 'Pre-paired Vivid routine with the 10% stack offer.'
   assign stack_price = price_cents | default: 0
+  assign stack_product = all_products[stack_handle]
+  if stack_product.price > 0
+    assign stack_price = stack_product.price
+  endif
   assign stack_size = size | default: '3-product stack'
   assign stack_image = image | default: 'hero-group.jpg'
   assign stack_position = position | default: 'center'
