@@ -1,0 +1,24 @@
+name: Patch Theme
+
+# Mirrors the LIVE theme onto the scratch copy, applies the mobile
+# conversion fixes (theme-patch-spec-2026-07-02.md), renames it
+# "(publish me)". Publishing stays a human click. Never touches LIVE.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/triggers/patch-theme"
+
+permissions:
+  contents: read
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror + patch scratch theme
+        env:
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+        run: python3 scripts/patch_theme.py
