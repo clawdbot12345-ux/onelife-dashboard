@@ -286,6 +286,54 @@ def do_apply(cfg):
     print(f"applied {len(results)} ops, {len(bad)} failed")
 
 
+def do_apply_prices(cfg):
+    """Apply a price-rounding plan CSV (variant-level) with a drift check."""
+    import csv as _csv
+    plan = cfg.get("plan", "reports/price-rounding/plan-2026-07-02T125406Z.csv")
+    rows = list(_csv.DictReader(open(plan)))
+    print(f"plan rows: {len(rows)} against {STORE}")
+    results, counts = [], {"applied": 0, "already": 0, "drifted": 0, "failed": 0}
+    for i, r in enumerate(rows):
+        vid = r["variant_id"].split("/")[-1]
+        code, data, _ = req("GET", f"/admin/api/{API}/variants/{vid}.json")
+        if code != 200:
+            counts["failed"] += 1
+            results.append({"vid": vid, "status": f"get {code}"})
+            continue
+        cur = data["variant"]["price"]
+        try:
+            if abs(float(cur) - float(r["new_price"])) < 0.005:
+                counts["already"] += 1
+                continue
+            if abs(float(cur) - float(r["old_price"])) > 0.005:
+                counts["drifted"] += 1
+                results.append({"vid": vid, "status": "drifted", "live": cur,
+                                "plan_old": r["old_price"]})
+                continue
+        except ValueError:
+            counts["failed"] += 1
+            results.append({"vid": vid, "status": "bad number", "live": cur})
+            continue
+        payload = {"variant": {"id": int(vid), "price": r["new_price"]}}
+        if (r.get("new_compare_at") or "").strip():
+            payload["variant"]["compare_at_price"] = r["new_compare_at"]
+        code2, d2, _ = req("PUT", f"/admin/api/{API}/variants/{vid}.json", payload)
+        if 200 <= code2 < 300:
+            counts["applied"] += 1
+        else:
+            counts["failed"] += 1
+            results.append({"vid": vid, "status": f"put {code2}",
+                            "error": d2.get("error") or d2.get("errors")})
+        if i % 100 == 0:
+            print(f"  {i}/{len(rows)} {counts}")
+        time.sleep(0.30)
+    out = {"counts": counts, "issues": results[:500]}
+    os.makedirs("reports/price-rounding", exist_ok=True)
+    with open("reports/price-rounding/apply-result.json", "w") as f:
+        json.dump(out, f, indent=1)
+    print(f"DONE {counts}")
+
+
 def do_publish(cfg):
     tid = cfg.get("theme_id")
     if not tid:
@@ -314,6 +362,8 @@ def main():
         do_apply(cfg)
     elif mode == "publish":
         do_publish(cfg)
+    elif mode == "apply_prices":
+        do_apply_prices(cfg)
     else:
         print(f"unknown mode {mode}", file=sys.stderr)
         sys.exit(1)

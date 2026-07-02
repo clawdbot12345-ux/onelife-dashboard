@@ -1,0 +1,48 @@
+name: Price Rounding Apply
+
+# Applies the owner-approved One Life price round-down plan
+# (reports/price-rounding/plan-*.csv) with a per-variant drift check.
+# Own concurrency group so it never blocks the vivid-ops pipeline.
+# Trigger: change .github/triggers/price-rounding on the working branch.
+
+on:
+  push:
+    branches:
+      - "claude/vivid-health-audit-redesign-9fmzon"
+    paths:
+      - ".github/triggers/price-rounding"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: price-rounding
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Apply price plan
+        env:
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          cp .github/triggers/price-rounding .github/triggers/vivid-ops
+          python3 scripts/vivid_ops.py
+          git checkout .github/triggers/vivid-ops || true
+      - name: Commit result log
+        if: always()
+        run: |
+          git config user.name "price-rounding-bot"
+          git config user.email "actions@github.com"
+          git add reports/price-rounding
+          git commit -m "chore: price rounding apply result" || echo "nothing to commit"
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin HEAD:${{ github.ref_name }}
