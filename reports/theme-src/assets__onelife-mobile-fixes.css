@@ -150,6 +150,13 @@
     outline-offset: 0.3rem !important;
   }
 
+  body.template-cart .shopify-section[id*="__upsell"] .slider-buttons,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-buttons,
+  body.template-cart .shopify-section[id*="__upsell"] .slider-button--next,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-button--next {
+    display: none !important;
+  }
+
   body.template-cart .shopify-section[id*="__upsell"] .product-grid,
   body.template-cart .shopify-section[id$="featured-collection"] .product-grid {
     display: flex !important;
