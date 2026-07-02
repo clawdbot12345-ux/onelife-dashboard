@@ -57,6 +57,13 @@ contains the One Life rollback record — merging changes nothing on either stor
 | 3.8 | **Label artwork fixes for the next render/print run**: (a) the Agnus Castus bottle art still reads "ANGUS CASTUS" (title is fixed; art isn't); (b) labels say "DIETARY SUPPLEMENT" — US wording; SA regulatory tone is complementary medicine/health supplement | Print-level credibility |
 | 3.9 | **Shipping check**: cart shows estimated R100 shipping and a R400 free-shipping bar — confirm rates in Settings → Shipping match the promise | Trust: the No.1 One Life audit finding was a shipping contradiction; don't import it |
 
+## 3b. Design to 10/10 — imagery regeneration 🔴
+
+Owner directive: everything design-side must reach 10/10. Full art direction,
+shot lists, prompt templates, label-art corrections and the per-page QA gate
+are in **`codex-vivid-design-direction.md`** — regenerate imagery to that spec
+(start with the label-panel macros and the 3 image-less bundle products).
+
 ## 4. Batch-certificate programme (flagship feature — owner + manufacturer)
 
 Request per-batch COAs (identity, potency, heavy metals, micro) from the
