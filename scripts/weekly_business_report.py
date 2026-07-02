@@ -134,6 +134,14 @@ def classify(visit):
         return "tiktok-organic"
     if src == "direct":
         return "direct"
+    if "com.google.android.gm" in src or "mail.google" in src:
+        return "email-untracked"  # Gmail app clicks with no utm — email, not ads
+    if "accounts.google" in src or "account.onelife" in src:
+        return "direct"  # account sign-in redirects, returning customers
+    if "payfast" in src:
+        return "direct"  # payment-gateway return hop, not an acquisition source
+    if "whatsapp" in src or src.startswith("https://l.wl.co"):
+        return "whatsapp"
     if "google" in src:
         return "google-unclassified"
     if src.startswith("http"):
