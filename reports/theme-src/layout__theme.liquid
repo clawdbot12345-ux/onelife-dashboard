@@ -536,6 +536,7 @@
   {%- render 'seo-jsonld-local-business' -%}
 {%- endif -%}
     {{ 'onelife-mobile-fixes.css' | asset_url | stylesheet_tag }}
+      {{ 'onelife-premium.css' | asset_url | stylesheet_tag }}
   </head>
 
   <body class="gradient template-{{ request.page_type | handle }}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
