@@ -1,0 +1,2 @@
+# Raw Omni report dumps may contain sensitive sales data — never commit them.
+omni_report_raw.*
