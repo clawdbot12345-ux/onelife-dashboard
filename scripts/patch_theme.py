@@ -110,42 +110,64 @@ def gql(query, variables=None):
     return None
 
 
-def list_files(theme_id):
-    files, cursor = [], None
+def read_all_files(theme_id):
+    """Read every file with its body. themeFilesCopy cannot copy across
+    themes, so the mirror is read-from-live -> upsert-to-scratch: text
+    inline, binaries by CDN URL."""
+    out, cursor = [], None
     while True:
         data = gql("""
           query($id: ID!, $cursor: String) {
             theme(id: $id) {
-              files(first: 250, after: $cursor) {
+              files(first: 50, after: $cursor) {
                 pageInfo { hasNextPage endCursor }
-                nodes { filename }
+                nodes {
+                  filename
+                  body {
+                    __typename
+                    ... on OnlineStoreThemeFileBodyText { content }
+                    ... on OnlineStoreThemeFileBodyUrl { url }
+                    ... on OnlineStoreThemeFileBodyBase64 { contentBase64 }
+                  }
+                }
               }
             }
           }""", {"id": theme_id, "cursor": cursor})
         if not data or not data.get("theme"):
-            print("✗ cannot list theme files — check read_themes scope", file=sys.stderr)
+            print("✗ cannot read theme files — check read_themes scope", file=sys.stderr)
             sys.exit(1)
         page = data["theme"]["files"]
-        files += [n["filename"] for n in page["nodes"]]
+        for n in page["nodes"]:
+            body = n.get("body") or {}
+            t = body.get("__typename")
+            if t == "OnlineStoreThemeFileBodyText":
+                out.append({"filename": n["filename"],
+                            "body": {"type": "TEXT", "value": body["content"]}})
+            elif t == "OnlineStoreThemeFileBodyUrl":
+                out.append({"filename": n["filename"],
+                            "body": {"type": "URL", "value": body["url"]}})
+            elif t == "OnlineStoreThemeFileBodyBase64":
+                out.append({"filename": n["filename"],
+                            "body": {"type": "BASE64", "value": body["contentBase64"]}})
+            else:
+                print(f"  ⚠ skipping {n['filename']} (body {t})", file=sys.stderr)
         if not page["pageInfo"]["hasNextPage"]:
-            return files
+            return out
         cursor = page["pageInfo"]["endCursor"]
 
 
-def copy_batch(filenames):
-    files = [{"srcFileName": f, "dstFileName": f, "srcThemeId": LIVE}
-             for f in filenames]
+def upsert_batch(files):
     data = gql("""
-      mutation($theme: ID!, $files: [ThemeFilesCopyFileInput!]!) {
-        themeFilesCopy(themeId: $theme, files: $files) {
-          copiedThemeFiles { filename }
+      mutation($theme: ID!, $files: [OnlineStoreThemeFilesUpsertFileInput!]!) {
+        themeFilesUpsert(themeId: $theme, files: $files) {
+          upsertedThemeFiles { filename }
           userErrors { field message }
         }
       }""", {"theme": SCRATCH, "files": files})
     if not data:
         return 0, ["request failed"]
-    payload = data["themeFilesCopy"]
-    return len(payload.get("copiedThemeFiles") or []), payload.get("userErrors") or []
+    payload = data["themeFilesUpsert"]
+    return len(payload.get("upsertedThemeFiles") or []), payload.get("userErrors") or []
 
 
 def read_file(theme_id, filename):
@@ -178,21 +200,21 @@ def upsert(filename, content):
 
 
 def main():
-    print("[1] Listing live theme files...", file=sys.stderr)
-    files = list_files(LIVE)
+    print("[1] Reading live theme files (with bodies)...", file=sys.stderr)
+    files = read_all_files(LIVE)
     print(f"  {len(files)} files on live", file=sys.stderr)
 
-    print("[2] Mirroring live -> scratch...", file=sys.stderr)
+    print("[2] Mirroring live -> scratch via upsert...", file=sys.stderr)
     copied = 0
-    for i in range(0, len(files), 20):
-        batch = files[i:i + 20]
-        n, errs = copy_batch(batch)
+    for i in range(0, len(files), 10):
+        batch = files[i:i + 10]
+        n, errs = upsert_batch(batch)
         copied += n
         if errs:
-            print(f"  batch {i//20}: {json.dumps(errs)[:200]}", file=sys.stderr)
-        time.sleep(0.4)
-    print(f"  copied {copied}/{len(files)}", file=sys.stderr)
-    if copied < len(files) * 0.95:
+            print(f"  batch {i//10}: {json.dumps(errs)[:300]}", file=sys.stderr)
+        time.sleep(0.3)
+    print(f"  mirrored {copied}/{len(files)}", file=sys.stderr)
+    if copied < len(files) * 0.98:
         print("✗ mirror incomplete — aborting before patch", file=sys.stderr)
         sys.exit(1)
 
