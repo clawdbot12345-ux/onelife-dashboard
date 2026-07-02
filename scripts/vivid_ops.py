@@ -1,0 +1,247 @@
+#!/usr/bin/env python3
+"""Remote hands for the Vivid Health redesign session.
+
+Modes (read from .github/triggers/vivid-ops JSON: {"mode": "...", ...}):
+
+  pull   — fetch every Vivid product (full body_html/images/variants) into
+           vivid/backend/products.json, list all themes' names/roles, list
+           assets for the LIVE theme and the TARGET theme, and download any
+           asset whose key mentions vivid (sections, templates, snippets)
+           into vivid/backend/theme-<id>/. Sanitized; no tokens stored.
+
+  apply  — apply staged changes:
+           * vivid/backend/apply/product-updates.json:
+               [{"id": 123, "title": "...", "body_html": "...", "tags": "..."}]
+             Only provided fields are sent (REST PUT products/{id}.json).
+           * vivid/backend/apply/theme-assets/<theme_id>/<asset key with __ for />
+             Each file is PUT to that theme as the asset key.
+           * vivid/backend/apply/pages.json:
+               [{"title": "...", "handle": "...", "body_html": "...", "template_suffix": null}]
+             Creates pages that don't exist yet (by handle); updates if exist.
+           Writes vivid/backend/apply-result.json with per-item status.
+
+The workflow commits changed files back to the branch afterwards.
+"""
+import glob
+import json
+import os
+import sys
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+
+API = "2025-01"
+STORE = os.environ.get("SHOPIFY_STORE", "onelifehealth").replace(".myshopify.com", "")
+TOKEN = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or "").strip()
+BASE = f"https://{STORE}.myshopify.com"
+OUT = "vivid/backend"
+
+if not TOKEN:
+    print("ERROR: SHOPIFY_ADMIN_TOKEN required", file=sys.stderr)
+    sys.exit(1)
+
+HDRS = {"X-Shopify-Access-Token": TOKEN, "Accept": "application/json",
+        "Content-Type": "application/json"}
+
+
+def req(method, path, payload=None, retries=5):
+    url = BASE + path
+    data = json.dumps(payload).encode() if payload is not None else None
+    for attempt in range(retries):
+        r = urllib.request.Request(url, data=data, headers=HDRS, method=method)
+        try:
+            with urllib.request.urlopen(r, timeout=60) as resp:
+                body = resp.read()
+                return resp.status, json.loads(body) if body else {}, resp.headers.get("Link", "")
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                time.sleep(float(e.headers.get("Retry-After", "2")))
+                continue
+            try:
+                detail = e.read().decode()[:500]
+            except Exception:
+                detail = ""
+            return e.code, {"error": detail}, ""
+        except Exception as e:  # noqa: BLE001
+            if attempt == retries - 1:
+                return 0, {"error": str(e)}, ""
+            time.sleep(2)
+    return 0, {"error": "retries exhausted"}, ""
+
+
+def next_page(link):
+    for part in (link or "").split(","):
+        if 'rel="next"' in part:
+            import re
+            m = re.search(r"page_info=([^&>]+)", part)
+            if m:
+                return m.group(1)
+    return None
+
+
+def fetch_vivid_products():
+    products, seen = [], set()
+    for vendor in ("VIVID HEALTH", "Vivid Health"):
+        page_info = None
+        while True:
+            qs = {"limit": 250, "vendor": vendor}
+            if page_info:
+                qs = {"limit": 250, "page_info": page_info}
+            code, data, link = req("GET", f"/admin/api/{API}/products.json?{urllib.parse.urlencode(qs)}")
+            if code != 200:
+                print(f"  vendor {vendor}: HTTP {code} {data}")
+                break
+            for p in data.get("products", []):
+                if p["id"] not in seen:
+                    seen.add(p["id"])
+                    products.append(p)
+            page_info = next_page(link)
+            if not page_info:
+                break
+    # bundles may carry another vendor — catch by title
+    page_info = None
+    while True:
+        qs = {"limit": 250, "title": "Vivid"}
+        if page_info:
+            qs = {"limit": 250, "page_info": page_info}
+        code, data, link = req("GET", f"/admin/api/{API}/products.json?{urllib.parse.urlencode(qs)}")
+        if code != 200:
+            break
+        for p in data.get("products", []):
+            if p["id"] not in seen:
+                seen.add(p["id"])
+                products.append(p)
+        page_info = next_page(link)
+        if not page_info:
+            break
+    return products
+
+
+def do_pull(cfg):
+    os.makedirs(OUT, exist_ok=True)
+    products = fetch_vivid_products()
+    with open(f"{OUT}/products.json", "w") as f:
+        json.dump(products, f, indent=1)
+    print(f"pulled {len(products)} vivid products")
+
+    code, tdata, _ = req("GET", f"/admin/api/{API}/themes.json")
+    themes = tdata.get("themes", []) if code == 200 else []
+    with open(f"{OUT}/themes.json", "w") as f:
+        json.dump([{k: t.get(k) for k in ("id", "name", "role", "updated_at")} for t in themes], f, indent=1)
+
+    live = next((t for t in themes if t.get("role") == "main"), None)
+    target_id = cfg.get("target_theme_id")
+    targets = [t for t in ([live] if live else [])]
+    if target_id:
+        t = next((x for x in themes if x["id"] == target_id), None)
+        if t and t not in targets:
+            targets.append(t)
+
+    for t in targets:
+        tid = t["id"]
+        code, adata, _ = req("GET", f"/admin/api/{API}/themes/{tid}/assets.json")
+        if code != 200:
+            print(f"theme {tid}: assets list HTTP {code}")
+            continue
+        keys = [a["key"] for a in adata.get("assets", [])]
+        with open(f"{OUT}/theme-{tid}-assets.txt", "w") as f:
+            f.write("\n".join(sorted(keys)))
+        want = [k for k in keys if ("vivid" in k.lower())]
+        for extra in cfg.get("extra_assets", []):
+            if extra in keys and extra not in want:
+                want.append(extra)
+        os.makedirs(f"{OUT}/theme-{tid}", exist_ok=True)
+        for key in want:
+            code, ad, _ = req("GET", f"/admin/api/{API}/themes/{tid}/assets.json?asset%5Bkey%5D={urllib.parse.quote(key)}")
+            if code != 200:
+                print(f"  {key}: HTTP {code}")
+                continue
+            asset = ad.get("asset", {})
+            val = asset.get("value")
+            fname = key.replace("/", "__")
+            if val is not None:
+                with open(f"{OUT}/theme-{tid}/{fname}", "w") as f:
+                    f.write(val)
+            else:
+                with open(f"{OUT}/theme-{tid}/{fname}.b64info", "w") as f:
+                    f.write(json.dumps({"key": key, "binary": True,
+                                        "public_url": asset.get("public_url")}))
+            print(f"  saved theme-{tid}/{fname}")
+        print(f"theme {tid} ({t['name']}): {len(want)} vivid-ish assets of {len(keys)}")
+
+
+def do_apply(cfg):
+    results = []
+    pu_path = f"{OUT}/apply/product-updates.json"
+    if os.path.exists(pu_path):
+        updates = json.load(open(pu_path))
+        for u in updates:
+            pid = u.pop("id")
+            payload = {"product": {"id": pid, **u}}
+            code, data, _ = req("PUT", f"/admin/api/{API}/products/{pid}.json", payload)
+            results.append({"type": "product", "id": pid, "status": code,
+                            "fields": list(u.keys()),
+                            "error": data.get("error") or data.get("errors")})
+            print(f"product {pid}: {code} {list(u.keys())}")
+            time.sleep(0.55)
+
+    for path in sorted(glob.glob(f"{OUT}/apply/theme-assets/*/*")):
+        parts = path.split("/")
+        tid = parts[-2]
+        key = parts[-1].replace("__", "/")
+        value = open(path).read()
+        code, data, _ = req("PUT", f"/admin/api/{API}/themes/{tid}/assets.json",
+                            {"asset": {"key": key, "value": value}})
+        results.append({"type": "asset", "theme": tid, "key": key, "status": code,
+                        "error": data.get("error") or data.get("errors")})
+        print(f"asset {tid}/{key}: {code}")
+        time.sleep(0.55)
+
+    pg_path = f"{OUT}/apply/pages.json"
+    if os.path.exists(pg_path):
+        code, existing, _ = req("GET", f"/admin/api/{API}/pages.json?limit=250")
+        by_handle = {p["handle"]: p for p in existing.get("pages", [])} if code == 200 else {}
+        for page in json.load(open(pg_path)):
+            h = page.get("handle")
+            if h in by_handle:
+                pid = by_handle[h]["id"]
+                code, data, _ = req("PUT", f"/admin/api/{API}/pages/{pid}.json",
+                                    {"page": {"id": pid, **page}})
+                results.append({"type": "page-update", "handle": h, "status": code,
+                                "error": data.get("error") or data.get("errors")})
+            else:
+                code, data, _ = req("POST", f"/admin/api/{API}/pages.json", {"page": page})
+                results.append({"type": "page-create", "handle": h, "status": code,
+                                "error": data.get("error") or data.get("errors")})
+            print(f"page {h}: {code}")
+            time.sleep(0.55)
+
+    os.makedirs(OUT, exist_ok=True)
+    with open(f"{OUT}/apply-result.json", "w") as f:
+        json.dump(results, f, indent=1)
+    bad = [r for r in results if not (200 <= (r["status"] or 0) < 300)]
+    print(f"applied {len(results)} ops, {len(bad)} failed")
+
+
+def main():
+    cfg = {}
+    trig = ".github/triggers/vivid-ops"
+    if os.path.exists(trig):
+        try:
+            cfg = json.loads(open(trig).read())
+        except Exception:
+            cfg = {}
+    mode = cfg.get("mode", "pull")
+    print(f"mode={mode} cfg={ {k: v for k, v in cfg.items() if k != 'mode'} }")
+    if mode == "pull":
+        do_pull(cfg)
+    elif mode == "apply":
+        do_apply(cfg)
+    else:
+        print(f"unknown mode {mode}", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
