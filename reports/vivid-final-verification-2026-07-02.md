@@ -44,3 +44,17 @@ Log: `reports/price-rounding/apply-result.json`.
 
 Vivid Journal: first article live; publisher runs Wednesdays; monthly Claude writer drafts
 4 articles as a review PR. Kill switch: `VIVID_BLOG_ENABLED`.
+
+## Post-imagery GO (2026-07-02, end of day)
+
+Codex round-2 theme work verified + Claude media remediation complete:
+**97/97 banned product-media files deleted, 0 errors** (IMG-* masters,
+WhatsApp files, baked-text infographics), hero renders first on every
+product, and **all 3 stacks now carry real product media** (Codex's honest
+per-stack art). Both hard gates pass: zero text-bearing artwork anywhere,
+no imageless products. Log: `vivid/backend/media-remediate-result.json`.
+
+Open (non-blocking for the owner walkthrough): 51 label-panel shots await
+Codex committing files to `vivid/assets/store/`; stack copy references SKUs
+not in the catalogue (owner decision: rewrite copy or add SKUs); admin/app
+launch items per handoff v3.
