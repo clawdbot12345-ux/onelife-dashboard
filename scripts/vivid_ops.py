@@ -286,6 +286,23 @@ def do_apply(cfg):
     print(f"applied {len(results)} ops, {len(bad)} failed")
 
 
+def do_publish(cfg):
+    tid = cfg.get("theme_id")
+    if not tid:
+        print("publish: theme_id required", file=sys.stderr)
+        sys.exit(1)
+    code, before, _ = req("GET", f"/admin/api/{API}/themes.json")
+    prev_main = next((t["id"] for t in before.get("themes", []) if t.get("role") == "main"), None)
+    code, data, _ = req("PUT", f"/admin/api/{API}/themes/{tid}.json",
+                        {"theme": {"id": tid, "role": "main"}})
+    result = {"published": tid, "status": code, "previous_main": prev_main,
+              "error": data.get("error") or data.get("errors")}
+    os.makedirs(OUT, exist_ok=True)
+    with open(f"{OUT}/publish-result.json", "w") as f:
+        json.dump(result, f, indent=1)
+    print(json.dumps(result))
+
+
 def main():
     cfg = CFG
     mode = cfg.get("mode", "pull")
@@ -295,6 +312,8 @@ def main():
         do_pull(cfg)
     elif mode == "apply":
         do_apply(cfg)
+    elif mode == "publish":
+        do_publish(cfg)
     else:
         print(f"unknown mode {mode}", file=sys.stderr)
         sys.exit(1)
