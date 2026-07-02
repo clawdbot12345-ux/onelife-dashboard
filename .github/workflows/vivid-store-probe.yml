@@ -1,0 +1,47 @@
+name: Vivid Store Probe
+
+# Session tool for the Vivid redesign: inventories the store the
+# "vivid claude review" custom app can reach (shop, scopes, themes,
+# counts) and commits a sanitized report back to the working branch.
+# Trigger: push a change to .github/triggers/vivid-store-probe on the
+# vivid redesign branch.
+
+on:
+  push:
+    branches:
+      - "claude/vivid-health-audit-redesign-9fmzon"
+    paths:
+      - ".github/triggers/vivid-store-probe"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vivid-store-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Probe store
+        env:
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          VIVID_ADMIN_TOKEN: ${{ secrets.VIVID_ADMIN_TOKEN }}
+          VIVID_SHOPIFY_TOKEN: ${{ secrets.VIVID_SHOPIFY_TOKEN }}
+          SHOPIFY_VIVID_TOKEN: ${{ secrets.SHOPIFY_VIVID_TOKEN }}
+          VIVID_CLAUDE_REVIEW_TOKEN: ${{ secrets.VIVID_CLAUDE_REVIEW_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          VIVID_STORE: ${{ vars.VIVID_STORE }}
+        run: python3 scripts/vivid_store_probe.py
+      - name: Commit report
+        run: |
+          git config user.name "vivid-probe-bot"
+          git config user.email "actions@github.com"
+          git add reports/vivid-store-probe.md reports/vivid-store-probe.json
+          git commit -m "chore: vivid store probe results" || echo "nothing to commit"
+          git push origin HEAD:${{ github.ref_name }}
