@@ -26,7 +26,7 @@ jobs:
       - name: Apply ladder fixes
         env:
           KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
-          EARLY_TOUCH: ${{ inputs.early_touch && 'true' || 'false' }}
+          EARLY_TOUCH: ${{ (github.event_name == 'push' || inputs.early_touch) && 'true' || 'false' }}
         run: python3 scripts/fix_checkout_ladder.py
       - name: Commit backups
         if: always()

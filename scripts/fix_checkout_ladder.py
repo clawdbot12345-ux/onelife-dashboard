@@ -188,7 +188,11 @@ def main():
             entry["data"]["unit"] = "hours"
             entry["data"]["value"] = 4
             print("  + consultant-check delay 2d -> 4h", file=sys.stderr)
-            ok = patch_definition(CONSULT_FLOW, new2, attrs2["name"], attrs2["status"]) and ok
+            applied2 = patch_definition(CONSULT_FLOW, new2, attrs2["name"], attrs2["status"])
+            if not applied2:
+                print("  PATCH unsupported — create-and-swap", file=sys.stderr)
+                applied2 = replace_flow(CONSULT_FLOW, attrs2["name"], new2)
+            ok = applied2 and ok
         else:
             print(f"  {CONSULT_FLOW}: delay not in expected state, skipping", file=sys.stderr)
 
