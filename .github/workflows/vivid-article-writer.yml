@@ -1,0 +1,50 @@
+name: Monthly Vivid Article Writer (Claude)
+
+# On the 3rd of each month, Claude writes 4 new Vivid Journal articles into
+# content/vivid-queue/ following content/VIVID-STYLE.md, verifying every
+# product against the live Vivid store, and opens a PR for human review.
+# Merging the PR is the editorial sign-off — the Wednesday publisher then
+# drains the queue one article per week.
+# Requires secret: ANTHROPIC_API_KEY. Kill switch: VIVID_BLOG_ENABLED.
+
+on:
+  schedule:
+    - cron: "0 4 3 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    if: vars.VIVID_BLOG_ENABLED == 'true' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are writing for the Vivid Health Journal — the blog of
+            hgywg0-w7.myshopify.com (Vivid Health South Africa, premium
+            SA-made supplements, "exact doses on the label").
+
+            1. Read content/VIVID-STYLE.md and follow it exactly — voice,
+               SAHPRA claim rules, structure, frontmatter format.
+            2. Read 2-3 files in content/vivid-published/ (if any) to avoid
+               repeating topics, and check the live store's existing Journal
+               articles at https://hgywg0-w7.myshopify.com/blogs/journal.
+            3. Verify candidate products are live and in stock via
+               https://hgywg0-w7.myshopify.com/products/<handle>.js before
+               referencing them — never invent handles or prices.
+            4. Write 4 new articles (700-1,000 words each) into
+               content/vivid-queue/ named YYYY-MM-slug.md. Seasonal SA
+               context matters (winter = June-August). Each article links
+               relevant /pages/ingredients-* or /pages/conditions-* pages
+               and 2-4 live products in frontmatter.
+            5. Create a branch vivid-articles-YYYY-MM, commit the 4 files,
+               push, and open a PR titled "Vivid Journal: 4 articles for
+               <Month>" summarising each article in one line.
+          claude_args: "--allowedTools Bash(git:*),Bash(gh:*),Bash(curl:*),Read,Write,Glob,Grep,WebFetch"
