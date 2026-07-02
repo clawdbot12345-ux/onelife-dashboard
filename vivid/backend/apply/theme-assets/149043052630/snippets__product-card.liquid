@@ -1,0 +1,66 @@
+{%- comment -%}
+  Product card — used by featured-products and main-collection-product-grid.
+
+  Per-goal palette is driven by a Shopify tag prefixed `goal:` (e.g.
+  `goal:stress`, `goal:gut`). The data-goal attribute lights up the
+  matching --g-*-bg color from the prototype.
+
+  Card category line tries to use product.metafields.vivid.category first
+  (a string set in admin like "Mental Health · capsule"), then falls back
+  to product.type.
+{%- endcomment -%}
+
+{%- assign goal_id = '' -%}
+{%- for tag in product.tags -%}
+  {%- if tag contains 'goal:' -%}
+    {%- assign goal_id = tag | remove: 'goal:' | strip -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if goal_id == '' and product.handle contains 'bundle' -%}
+  {%- assign goal_id = 'bundles' -%}
+{%- elsif goal_id == '' and product.handle contains 'pack' -%}
+  {%- assign goal_id = 'bundles' -%}
+{%- endif -%}
+
+{%- assign card_cat = product.metafields.vivid.category | default: product.type -%}
+{%- assign bench = product.metafields.vivid.bench -%}
+{%- if bench == blank -%}{%- assign bench_s = product.description | strip_html | split: '.' -%}{%- assign bench = bench_s[0] | strip | append: '.' -%}{%- endif -%}
+{%- assign size_lbl = product.metafields.vivid.size | default: product.first_available_variant.title -%}
+{%- assign image_loading = image_loading | default: 'lazy' -%}
+{%- assign image_fetchpriority = image_fetchpriority | default: '' -%}
+
+<a href="{{ product.url }}" class="card" data-goal="{{ goal_id }}" data-title="{{ product.title | escape }}" data-price="{{ product.price }}" aria-label="{{ product.title }}">
+  <div class="card-media"{% unless product.available %} style="opacity:.55;filter:saturate(.75)"{% endunless %}>
+    <div class="card-badge">
+      {%- if product.tags contains 'vegan' -%}<span class="pill pill--green">Vegan</span>{%- endif -%}
+      {%- unless product.available -%}<span class="pill pill--alert">Sold out</span>{%- endunless -%}
+      {%- if product.tags contains 'bestseller' -%}<span class="pill pill--dark">Best seller</span>{%- endif -%}
+    </div>
+    {% render 'vivid-product-art',
+      product: product,
+      class: 'card-media__image',
+      loading: image_loading,
+      fetchpriority: image_fetchpriority,
+      sizes: '(min-width: 1100px) 25vw, (min-width: 780px) 33vw, 50vw',
+      width: 1200,
+      height: 1500,
+      image_width: 900 %}
+    {%- if product.available -%}
+      <button class="card-quickadd js-add-to-cart" type="button"
+        data-variant-id="{{ product.first_available_variant.id }}"
+        aria-label="Quick add {{ product.title }}"
+        onclick="event.preventDefault();event.stopPropagation();">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    {%- endif -%}
+  </div>
+  <div class="card-body">
+    {%- if card_cat != blank -%}<div class="card-cat">{{ card_cat }}</div>{%- endif -%}
+    <div class="card-name">{{ product.title | split: ' - ' | last }}</div>
+    {%- if bench != blank -%}<div class="card-bench">{{ bench }}</div>{%- endif -%}
+    <div class="card-meta">
+      <div class="card-price">{{ product.price | money_without_trailing_zeros }}</div>
+      {%- if size_lbl != blank and size_lbl != '0' and size_lbl != 'Default Title' -%}<div class="card-form">{{ size_lbl }}</div>{%- endif -%}
+    </div>
+  </div>
+</a>
