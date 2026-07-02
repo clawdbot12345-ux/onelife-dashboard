@@ -106,6 +106,15 @@ def probe_store(store):
         return out, None
     out["auth"] = "OK"
 
+    # Always test the client-credentials path too (independent of token auth)
+    cid = os.environ.get("SHOPIFY_CLIENT_ID", "")
+    cc, note = client_credentials_token(store)
+    out["client_credentials"] = {
+        "stored_client_id_prefix": cid[:8] if cid else None,
+        "works": bool(cc),
+        "note": note,
+    }
+
     code, scopes = api(store, token, "/admin/oauth/access_scopes.json")
     out["scopes"] = sorted(s["handle"] for s in scopes.get("access_scopes", [])) if code == 200 else f"HTTP {code}"
 
