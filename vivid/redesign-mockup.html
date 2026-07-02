@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vivid Health — Store Redesign Mockup (Homepage + PDP)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ VIVID HEALTH DESIGN TOKENS ============ */
+:root{
+  --ink:#12181B;          /* near-black slate — hero, footer */
+  --ink-2:#1B2529;        /* raised dark surface */
+  --bone:#FAF7F0;         /* warm paper — main light bg */
+  --bone-2:#F1EBDE;       /* deeper paper — alt bands */
+  --white:#FFFFFF;
+  --gold:#C9A227;         /* accent — used sparingly */
+  --line:rgba(18,24,27,.12);
+  --line-dark:rgba(250,247,240,.16);
+  /* category system — lifted from the label palette */
+  --c-immune:#DD5A3A;     /* coral */
+  --c-gut:#C09A5E;        /* turmeric tan */
+  --c-mind:#3C5A7D;       /* indigo */
+  --c-body:#6F7F4E;       /* olive */
+  --c-women:#8C4A63;      /* plum */
+  --c-men:#2E4057;        /* deep navy */
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --max:1240px;
+  --r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{overflow-x:clip}
+body{font-family:var(--sans);background:var(--bone);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.serif{font-family:var(--serif)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.01em}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;opacity:.62}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;padding:15px 30px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:.25s}
+.btn-solid{background:var(--ink);color:var(--bone)}
+.btn-solid:hover{background:#2a363c}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--bone)}
+.btn-light{background:var(--bone);color:var(--ink)}
+.btn-light:hover{background:var(--white)}
+.btn-ghost-light{border-color:rgba(250,247,240,.55);color:var(--bone)}
+.btn-ghost-light:hover{border-color:var(--bone);background:rgba(250,247,240,.08)}
+
+/* ============ MOCKUP CHROME (not part of the design) ============ */
+.mock-bar{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:999;background:var(--ink);color:var(--bone);border-radius:999px;padding:8px 10px;display:flex;gap:6px;align-items:center;box-shadow:0 12px 40px rgba(0,0,0,.35);font-size:13px}
+.mock-bar button{font:inherit;font-weight:600;background:transparent;color:inherit;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;opacity:.65}
+.mock-bar button.on{background:var(--bone);color:var(--ink);opacity:1}
+.mock-bar .sep{width:1px;height:18px;background:rgba(255,255,255,.25)}
+.note{position:absolute;z-index:60;display:none;align-items:flex-start;gap:8px;max-width:290px;background:#123;background:var(--gold);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:500;line-height:1.4;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.note b{display:inline-block;background:var(--ink);color:var(--gold);border-radius:99px;min-width:20px;height:20px;text-align:center;line-height:20px;font-size:11px;flex:none}
+body.notes .note{display:flex}
+#pagePdp{display:none}
+body.view-pdp #pageHome{display:none}
+body.view-pdp #pagePdp{display:block}
+
+/* ============ ANNOUNCEMENT + NAV ============ */
+.announce{background:var(--ink);color:var(--bone);font-size:12.5px;text-align:center;padding:9px 16px;letter-spacing:.04em}
+.announce b{color:var(--gold);font-weight:600}
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,247,240,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:34px;height:68px}
+.logo{font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:.14em}
+.logo span{color:var(--c-immune)}
+.nav-links{display:flex;gap:26px;font-size:14px;font-weight:500;flex:1}
+.nav-links a{opacity:.85;padding:6px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{border-color:var(--gold);opacity:1}
+.nav-cta{display:flex;gap:18px;align-items:center;font-size:14px;font-weight:600}
+.nav-cta .quiz-chip{background:var(--ink);color:var(--bone);border-radius:999px;padding:9px 18px;font-size:13px}
+.cart-dot{position:relative}
+.cart-dot::after{content:"2";position:absolute;top:-7px;right:-11px;background:var(--c-immune);color:#fff;font-size:10px;font-weight:700;border-radius:99px;width:16px;height:16px;line-height:16px;text-align:center}
+
+/* ============ HERO ============ */
+.hero{position:relative;background:var(--ink);color:var(--bone);overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url('assets/lifestyle/onelife-prompts/onelife-vivid-health-hero-banner.jpg') center right/cover no-repeat;opacity:.9}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(92deg,rgba(10,14,16,.94) 26%,rgba(10,14,16,.55) 58%,rgba(10,14,16,.18) 100%)}
+.hero-in{position:relative;padding:112px 0 118px;max-width:640px}
+.hero .kicker{color:var(--gold);opacity:1}
+.hero h1{font-size:clamp(42px,5.6vw,68px);margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{font-size:18px;opacity:.85;max-width:480px;margin-bottom:34px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-proof{display:flex;gap:26px;margin-top:46px;flex-wrap:wrap}
+.hero-proof div{font-size:13px;opacity:.85;display:flex;gap:9px;align-items:center}
+.hero-proof i{width:7px;height:7px;border-radius:99px;background:var(--gold);flex:none}
+
+/* ============ TRUST TICKER ============ */
+.ticker{background:var(--gold);color:var(--ink);overflow:hidden;padding:11px 0;font-weight:600;font-size:13.5px;letter-spacing:.06em}
+.ticker-track{display:flex;gap:56px;white-space:nowrap;animation:tick 30s linear infinite;width:max-content}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ============ GOALS GRID ============ */
+.section{padding:92px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(30px,3.4vw,44px);max-width:560px}
+.sec-head .more{font-weight:600;font-size:14.5px;border-bottom:1.5px solid var(--gold);padding-bottom:3px}
+.goals{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.goal{position:relative;border-radius:var(--r);padding:26px 18px 22px;color:#fff;min-height:190px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;transition:.3s;cursor:pointer}
+.goal:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(18,24,27,.22)}
+.goal .ic{font-size:26px;position:absolute;top:20px;left:18px;opacity:.95}
+.goal h3{font-size:19px;margin-bottom:4px;color:#fff}
+.goal p{font-size:12.5px;opacity:.85;line-height:1.4}
+.g-immune{background:linear-gradient(160deg,var(--c-immune),#B23F22)}
+.g-gut{background:linear-gradient(160deg,var(--c-gut),#96733B)}
+.g-mind{background:linear-gradient(160deg,var(--c-mind),#27405C)}
+.g-body{background:linear-gradient(160deg,var(--c-body),#4E5C33)}
+.g-women{background:linear-gradient(160deg,var(--c-women),#663146)}
+.g-men{background:linear-gradient(160deg,var(--c-men),#1D2C3E)}
+
+/* ============ PRODUCT CARDS ============ */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.28s;position:relative;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 46px rgba(18,24,27,.14)}
+.card-img{position:relative;background:linear-gradient(180deg,#F6F4EF,#ECE8DE);aspect-ratio:1/1.02;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card-img img{width:78%;height:78%;object-fit:contain;mix-blend-mode:multiply;transition:.4s}
+.card:hover .card-img img{transform:scale(1.06)}
+.badge{position:absolute;top:14px;left:14px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;border-radius:99px;padding:5px 11px}
+.badge.b2{left:auto;right:14px;background:var(--ink);color:var(--gold)}
+.card-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-cat{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.card h3{font-size:19px;font-family:var(--serif)}
+.card .dose{font-size:12.5px;opacity:.6}
+.stars{font-size:12px;color:var(--gold);letter-spacing:2px}
+.stars span{color:var(--ink);opacity:.55;font-weight:600;letter-spacing:0;margin-left:6px}
+.price-row{display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:8px}
+.price{font-size:19px;font-weight:700}
+.price small{font-size:11px;font-weight:500;opacity:.55}
+.sub-price{font-size:12.5px;font-weight:600;color:var(--c-body)}
+.card .atc{margin:6px 18px 18px;text-align:center;border:1.5px solid var(--ink);border-radius:999px;padding:11px;font-weight:600;font-size:13.5px;cursor:pointer;transition:.2s}
+.card .atc:hover{background:var(--ink);color:var(--bone)}
+
+/* ============ WHY VIVID ============ */
+.dark{background:var(--ink);color:var(--bone)}
+.dark .sec-head h2{color:var(--bone)}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.why-card{border:1px solid var(--line-dark);border-radius:var(--r);padding:30px 26px;background:var(--ink-2)}
+.why-card .ic{font-size:28px;margin-bottom:16px;display:block}
+.why-card h3{font-size:20px;margin-bottom:10px;color:var(--bone)}
+.why-card p{font-size:14px;opacity:.72}
+.why-card a{font-size:13px;font-weight:600;color:var(--gold);display:inline-block;margin-top:14px}
+
+/* ============ SUBSCRIBE BAND ============ */
+.sub-band{background:var(--bone-2)}
+.sub-in{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.sub-in h2{font-size:clamp(30px,3.2vw,42px);margin:14px 0 18px}
+.sub-in .lead{font-size:16.5px;opacity:.8;margin-bottom:26px}
+.perk{display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--line);font-size:15px;align-items:center}
+.perk b{font-weight:600}
+.perk .ic{width:34px;height:34px;border-radius:99px;background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+.sub-visual{background:var(--white);border-radius:20px;padding:34px;box-shadow:0 24px 60px rgba(18,24,27,.12);border:1px solid var(--line)}
+.sub-visual h4{font-family:var(--serif);font-size:21px;margin-bottom:18px}
+.sub-line{display:flex;justify-content:space-between;font-size:14.5px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.sub-line b{font-weight:700}
+.toggle{display:flex;background:var(--bone);border-radius:12px;padding:5px;margin:16px 0 6px;border:1px solid var(--line)}
+.toggle div{flex:1;text-align:center;padding:12px;border-radius:9px;font-size:13.5px;font-weight:600;cursor:pointer}
+.toggle .on{background:var(--ink);color:var(--bone);box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.toggle .save{display:block;font-size:11px;color:var(--gold);font-weight:700}
+
+/* ============ STACKS ============ */
+.stacks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.stack{border-radius:var(--r);overflow:hidden;background:var(--white);border:1px solid var(--line);transition:.28s}
+.stack:hover{transform:translateY(-5px);box-shadow:0 20px 46px rgba(18,24,27,.14)}
+.stack-top{padding:26px;color:#fff;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}
+.stack-top .kicker{color:rgba(255,255,255,.75);opacity:1}
+.stack-top h3{color:#fff;font-size:23px;margin-top:8px}
+.stack-body{padding:22px 26px 26px}
+.stack-body ul{list-style:none;margin-bottom:18px}
+.stack-body li{font-size:14px;padding:7px 0;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;gap:12px}
+.stack-body li span:last-child{opacity:.55;flex:none}
+.stack-meta{display:flex;justify-content:space-between;align-items:center}
+.stack-meta .price{font-size:20px}
+.stack-meta .was{font-size:13px;opacity:.5;text-decoration:line-through;font-weight:500}
+.signed{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;opacity:.75}
+.signed .ava{width:30px;height:30px;border-radius:99px;background:var(--c-women);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex:none}
+
+/* ============ BATCH / SCIENCE ============ */
+.batch{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.batch h2{font-size:clamp(30px,3.2vw,42px);margin:14px 0 18px;color:var(--bone)}
+.batch p{opacity:.75;font-size:16px;max-width:460px}
+.batch-box{background:var(--ink-2);border:1px solid var(--line-dark);border-radius:20px;padding:36px}
+.batch-box label{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.6;display:block;margin-bottom:10px}
+.batch-field{display:flex;gap:10px}
+.batch-field input{flex:1;background:var(--ink);border:1px solid var(--line-dark);border-radius:12px;color:var(--bone);padding:16px 18px;font:inherit;font-size:15px;letter-spacing:.1em}
+.batch-field .btn{padding:14px 26px}
+.batch-result{margin-top:22px;border-top:1px dashed var(--line-dark);padding-top:20px;font-size:14px;display:grid;gap:9px}
+.batch-result div{display:flex;justify-content:space-between}
+.batch-result b{color:var(--gold);font-weight:600}
+.pill-ok{color:#8FCB9B;font-weight:600}
+
+/* ============ STORY ============ */
+.story{background:var(--bone-2)}
+.story-in{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+.story-img{border-radius:20px;overflow:hidden;aspect-ratio:4/4.6;background:url('assets/lifestyle/onelife-prompts/onelife-vivid-health-page-hero.jpg') center/cover}
+.story h2{font-size:clamp(30px,3.2vw,42px);margin:14px 0 20px}
+.story p{font-size:16.5px;opacity:.8;margin-bottom:16px;max-width:520px}
+.story-stats{display:flex;gap:38px;margin-top:30px;flex-wrap:wrap}
+.story-stats div b{font-family:var(--serif);font-size:34px;font-weight:600;display:block}
+.story-stats div span{font-size:13px;opacity:.6}
+
+/* ============ REVIEWS ============ */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.rev p{font-size:15px;margin:14px 0 18px;font-family:var(--serif);font-size:17px;line-height:1.5}
+.rev .who{font-size:13px;font-weight:600}
+.rev .who span{display:block;font-weight:400;opacity:.55;font-size:12px;margin-top:2px}
+.verified{color:var(--c-body);font-size:11.5px;font-weight:700;letter-spacing:.06em}
+
+/* ============ QUIZ CTA ============ */
+.quiz-band{position:relative;background:linear-gradient(120deg,var(--c-mind),#22344b);color:var(--bone);border-radius:26px;padding:74px 70px;overflow:hidden}
+.quiz-band::after{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:99px;border:70px solid rgba(250,247,240,.07)}
+.quiz-band h2{font-size:clamp(28px,3vw,40px);max-width:520px;margin:14px 0 18px;color:var(--bone)}
+.quiz-band p{max-width:440px;opacity:.8;margin-bottom:30px}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:var(--bone);padding:80px 0 36px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;padding-bottom:54px;border-bottom:1px solid var(--line-dark)}
+.foot h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;opacity:.55;margin-bottom:18px;font-family:var(--sans);font-weight:700}
+.foot a{display:block;font-size:14.5px;opacity:.85;padding:5px 0}
+.foot a:hover{color:var(--gold);opacity:1}
+.foot .logo{margin-bottom:14px;display:block}
+.foot p{font-size:14px;opacity:.65;max-width:300px}
+.news{display:flex;gap:10px;margin-top:20px}
+.news input{flex:1;background:var(--ink-2);border:1px solid var(--line-dark);border-radius:99px;color:var(--bone);padding:13px 20px;font:inherit;font-size:14px}
+.consent{display:flex;gap:9px;font-size:12px;opacity:.6;margin-top:12px;align-items:flex-start}
+.consent input{margin-top:2px}
+.foot-base{display:flex;justify-content:space-between;gap:20px;padding-top:28px;font-size:12.5px;opacity:.55;flex-wrap:wrap}
+.paybadges{display:flex;gap:8px}
+.paybadges span{border:1px solid var(--line-dark);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600}
+
+/* ============ PDP ============ */
+.crumbs{font-size:13px;opacity:.6;padding:22px 0 0}
+.pdp{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;padding:34px 0 90px;align-items:start}
+.pdp-gallery{position:sticky;top:92px}
+.pdp-main{background:linear-gradient(180deg,#F6F4EF,#ECE8DE);border-radius:20px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--line)}
+.pdp-main img{width:74%;height:74%;object-fit:contain;mix-blend-mode:multiply}
+.thumbs{display:flex;gap:12px;margin-top:14px}
+.thumbs div{width:82px;height:82px;border-radius:12px;border:1.5px solid var(--line);background:#F3F0E8 center/cover;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;opacity:.7;cursor:pointer;text-align:center;padding:6px}
+.thumbs div.on{border-color:var(--ink)}
+.pdp-cat{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--c-immune);border-radius:99px;padding:6px 14px;margin-bottom:16px}
+.pdp h1{font-size:clamp(32px,3.6vw,46px);margin-bottom:10px}
+.pdp .sub{font-size:16.5px;opacity:.7;margin-bottom:14px}
+.pdp .stars{font-size:14px}
+.pdp-price{display:flex;align-items:baseline;gap:14px;margin:22px 0 4px}
+.pdp-price .price{font-size:30px}
+.installments{font-size:13.5px;opacity:.7;margin-bottom:24px}
+.installments b{color:var(--c-mind)}
+.buy-box{border:1.5px solid var(--ink);border-radius:16px;overflow:hidden;margin:20px 0}
+.buy-opt{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;border-bottom:1.5px solid var(--line)}
+.buy-opt:last-child{border-bottom:0}
+.buy-opt.on{background:var(--ink);color:var(--bone)}
+.buy-opt .t b{display:block;font-size:15px}
+.buy-opt .t span{font-size:12.5px;opacity:.65}
+.buy-opt .p{font-weight:700;font-size:17px}
+.buy-opt .radio{width:18px;height:18px;border-radius:99px;border:2px solid currentColor;flex:none;position:relative}
+.buy-opt.on .radio::after{content:"";position:absolute;inset:3px;background:var(--gold);border-radius:99px}
+.atc-big{width:100%;justify-content:center;font-size:16px;padding:18px}
+.pdp-trust{display:flex;gap:20px;margin:18px 0 8px;flex-wrap:wrap}
+.pdp-trust div{font-size:12.5px;opacity:.75;display:flex;gap:8px;align-items:center}
+.pdp-trust i{width:6px;height:6px;border-radius:99px;background:var(--gold)}
+.acc{border-top:1px solid var(--line);margin-top:26px}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{font-weight:600;font-size:15.5px;padding:19px 0;cursor:pointer;display:flex;justify-content:space-between;list-style:none}
+.acc summary::after{content:"+";font-size:20px;font-weight:400;opacity:.5}
+.acc details[open] summary::after{content:"–"}
+.acc .acc-body{padding:0 0 22px;font-size:14.5px;opacity:.8}
+.facts{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+.facts th,.facts td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+.facts th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.55}
+.facts td:last-child{text-align:right;font-weight:600}
+.dose-honest{background:var(--bone-2);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 20px;margin:24px 0;font-size:14.5px}
+.dose-honest b{font-family:var(--serif);font-size:16px;display:block;margin-bottom:6px}
+.pairs{padding:70px 0 90px;border-top:1px solid var(--line)}
+.sticky-atc{position:fixed;left:0;right:0;bottom:0;background:var(--white);border-top:1px solid var(--line);padding:12px 0;z-index:80;box-shadow:0 -10px 30px rgba(18,24,27,.08)}
+.sticky-in{display:flex;align-items:center;gap:18px}
+.sticky-in img{width:44px;height:44px;object-fit:contain}
+.sticky-in .t{flex:1;font-size:14px;font-weight:600}
+.sticky-in .t span{display:block;font-size:12px;opacity:.55;font-weight:400}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1020px){
+  .goals{grid-template-columns:repeat(3,1fr)}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .why{grid-template-columns:repeat(2,1fr)}
+  .stacks,.reviews{grid-template-columns:1fr}
+  .sub-in,.batch,.story-in,.pdp{grid-template-columns:1fr;gap:44px}
+  .foot{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .quiz-band{padding:54px 32px}
+  .pdp-gallery{position:static}
+}
+@media(max-width:640px){
+  .goals{grid-template-columns:repeat(2,1fr)}
+  .grid-4,.why{grid-template-columns:1fr}
+  .hero-in{padding:80px 0}
+  .nav-cta .quiz-chip{display:none}
+  .nav-in{gap:20px;height:60px}
+  .logo{font-size:19px}
+  .announce{font-size:11.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== MOCKUP SWITCHER (chrome, not part of design) ==================== -->
+<div class="mock-bar">
+  <button id="btnHome" class="on" onclick="showPage('home')">Homepage</button>
+  <button id="btnPdp" onclick="showPage('pdp')">Product page</button>
+  <div class="sep"></div>
+  <button id="btnNotes" onclick="document.body.classList.toggle('notes');this.classList.toggle('on')">💡 Design notes</button>
+</div>
+
+<!-- ==================== HOMEPAGE ==================== -->
+<div id="pageHome">
+
+<div class="announce">Free delivery over <b>R400</b> nationwide · Free same-day collection at our 3 stores · <b>WhatsApp a consultant</b> 7 days a week</div>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="logo">VIVID<span>·</span>HEALTH</a>
+    <div class="nav-links">
+      <a>Shop by goal</a><a>Bestsellers</a><a>Stacks</a><a>Subscribe &amp; Save</a><a>Our standards</a><a>Learn</a>
+    </div>
+    <div class="nav-cta">
+      <a>Search</a>
+      <a class="cart-dot">Cart</a>
+      <a class="quiz-chip">Take the quiz</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-grad"></div>
+  <div class="wrap">
+    <div class="hero-in">
+      <div class="kicker">South African · Small batch · Since 1996</div>
+      <h1>Supplements with <em>nothing to hide.</em></h1>
+      <p>Formulated by the health consultants of South Africa's apothecary. Honestly dosed, batch-tested, made here — and priced like it.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-light">Shop bestsellers</a>
+        <a class="btn btn-ghost-light">Find your routine → 2-min quiz</a>
+      </div>
+      <div class="hero-proof">
+        <div><i></i>Every batch lab-verified</div>
+        <div><i></i>30 years behind the counter</div>
+        <div><i></i>4.8★ from real customers</div>
+      </div>
+    </div>
+  </div>
+  <div class="note" style="top:90px;left:24px"><b>1</b>Dark editorial hero using the real pack lineup. One serif headline, one promise, two CTAs. No carousel — carousels kill conversion.</div>
+  <div class="note" style="bottom:60px;right:40px"><b>2</b>Trust proof lives in the hero, not a separate stat block pushing content down (fixes the 780px mobile pre-header problem on the current site).</div>
+</header>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>MADE IN SOUTH AFRICA</span><span>·</span><span>BATCH CERTIFICATES ONLINE</span><span>·</span><span>CONSULTANT FORMULATED</span><span>·</span><span>NO IMPORT WAIT</span><span>·</span><span>SUBSCRIBE &amp; SAVE 10%</span><span>·</span><span>MADE IN SOUTH AFRICA</span><span>·</span><span>BATCH CERTIFICATES ONLINE</span><span>·</span><span>CONSULTANT FORMULATED</span><span>·</span><span>NO IMPORT WAIT</span><span>·</span><span>SUBSCRIBE &amp; SAVE 10%</span><span>·</span>
+  </div>
+</div>
+
+<section class="section" style="position:relative">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Shop by goal</div>
+        <h2>Start with how you want to feel.</h2>
+      </div>
+      <a class="more">All 50+ products →</a>
+    </div>
+    <div class="goals">
+      <div class="goal g-immune"><span class="ic">🛡</span><h3>Immune</h3><p>Buffered C · Quercetin · Immune Plus</p></div>
+      <div class="goal g-gut"><span class="ic">🌿</span><h3>Gut</h3><p>Turmeric · Clove · Colon care</p></div>
+      <div class="goal g-mind"><span class="ic">🌙</span><h3>Mind &amp; Sleep</h3><p>5-HTP · GABA · Tranquil</p></div>
+      <div class="goal g-body"><span class="ic">💪</span><h3>Body &amp; Joints</h3><p>MSM · Flexijoint · CoQ10</p></div>
+      <div class="goal g-women"><span class="ic">🌸</span><h3>Women</h3><p>Maca · Sage · Agnus Castus</p></div>
+      <div class="goal g-men"><span class="ic">⚡</span><h3>Men</h3><p>Prosta Care · Performance</p></div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:-120px;left:24px;position:relative;max-width:320px"><b>3</b>The label colour system becomes site navigation. Six goals replace nine inconsistent range names (currently: "VIVID BODY" vs "PHYSICAL HEALTH" vs "NUTRITENT HEALTH" typo…).</div>
+</section>
+
+<section class="section" style="padding-top:20px;position:relative">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Bestsellers</div>
+        <h2>The ones our consultants restock at home.</h2>
+      </div>
+      <a class="more">Shop all bestsellers →</a>
+    </div>
+    <div class="grid-4">
+      <div class="card">
+        <div class="card-img"><span class="badge" style="background:var(--c-immune)">Immune</span><span class="badge b2">Bestseller</span><img src="assets/products/buffered-c-300.jpg" alt="Vivid Buffered C" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-cat" style="color:var(--c-immune)">Vivid Immune</div>
+          <h3>Buffered C</h3>
+          <div class="dose">Gentle-on-the-stomach vitamin C · 300 capsules</div>
+          <div class="stars">★★★★★<span>4.8 (214)</span></div>
+          <div class="price-row"><div class="price">R428 <small>incl VAT</small></div><div class="sub-price">R385 subscribed</div></div>
+        </div>
+        <div class="atc" onclick="showPage('pdp')">Add to cart</div>
+      </div>
+      <div class="card">
+        <div class="card-img"><span class="badge" style="background:var(--c-mind)">Mind &amp; Sleep</span><img src="assets/products/griffonia-5htp.jpg" alt="Vivid Griffonia 5-HTP" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-cat" style="color:var(--c-mind)">Stay Vivid</div>
+          <h3>Griffonia 5-HTP</h3>
+          <div class="dose">Plant-sourced serotonin support · 60 capsules</div>
+          <div class="stars">★★★★★<span>4.7 (96)</span></div>
+          <div class="price-row"><div class="price">R275 <small>incl VAT</small></div><div class="sub-price">R248 subscribed</div></div>
+        </div>
+        <div class="atc">Add to cart</div>
+      </div>
+      <div class="card">
+        <div class="card-img"><span class="badge" style="background:var(--c-body)">Body &amp; Joints</span><img src="assets/products/coq10.jpg" alt="Vivid Coenzyme Q10" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-cat" style="color:var(--c-body)">Vivid Body</div>
+          <h3>Coenzyme Q10</h3>
+          <div class="dose">Cellular energy &amp; heart support · 60 capsules</div>
+          <div class="stars">★★★★★<span>4.9 (58)</span></div>
+          <div class="price-row"><div class="price">R340 <small>incl VAT</small></div><div class="sub-price">R306 subscribed</div></div>
+        </div>
+        <div class="atc">Add to cart</div>
+      </div>
+      <div class="card">
+        <div class="card-img"><span class="badge" style="background:var(--c-women)">Women</span><img src="assets/products/maca.jpg" alt="Vivid Maca" loading="lazy"></div>
+        <div class="card-body">
+          <div class="card-cat" style="color:var(--c-women)">Vivid Woman</div>
+          <h3>Maca</h3>
+          <div class="dose">Energy &amp; hormonal balance · 60 capsules</div>
+          <div class="stars">★★★★★<span>4.6 (73)</span></div>
+          <div class="price-row"><div class="price">R179 <small>incl VAT</small></div><div class="sub-price">R161 subscribed</div></div>
+        </div>
+        <div class="atc">Add to cart</div>
+      </div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:-160px;right:40px;position:absolute;max-width:300px"><b>4</b>Cards fix today's gaps: human product names (not "VIVID HEALTH - IMMUNE - …"), plain-language benefit line, VAT-inclusive round pricing, review stars, and the subscription price teased on every card.</div>
+</section>
+
+<section class="section dark" style="position:relative">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker" style="color:var(--gold);opacity:1">Our standards</div>
+        <h2>Premium isn't a claim. It's a paper trail.</h2>
+      </div>
+    </div>
+    <div class="why">
+      <div class="why-card"><span class="ic">🇿🇦</span><h3>Made here, small batch</h3><p>Manufactured in South Africa in small runs. Fresh stock, no import wait, and your rand stays home.</p></div>
+      <div class="why-card"><span class="ic">🔬</span><h3>Every batch verified</h3><p>Each production run is lab-tested for identity, potency and contaminants. Look your batch up any time.</p><a>Check your batch →</a></div>
+      <div class="why-card"><span class="ic">⚖️</span><h3>Honestly dosed</h3><p>Clinical doses or we say so. If a nutrient is under the studied dose, the label tells you — and why.</p></div>
+      <div class="why-card"><span class="ic">🧑‍⚕️</span><h3>Consultant formulated</h3><p>Built by the people who've spent 30 years behind our counters — and who'll tell you when <em>not</em> to buy.</p><a>WhatsApp a consultant →</a></div>
+    </div>
+  </div>
+  <div class="note" style="bottom:40px;left:24px"><b>5</b>The transparency section is the premium engine — modelled on Ritual's "Made Traceable". "We tell you when NOT to buy" is the house voice and no competitor can copy it credibly.</div>
+</section>
+
+<section class="section sub-band" style="position:relative">
+  <div class="wrap sub-in">
+    <div>
+      <div class="kicker">Subscribe &amp; Save</div>
+      <h2>Your routine, on rhythm. Never run out again.</h2>
+      <p class="lead">The first supplement subscription in SA health retail. Pause, swap or cancel in one tap — no phone calls, no guilt trips.</p>
+      <div class="perk"><span class="ic">%</span><div><b>10% off every order</b> — and 15% off any stack of 3+</div></div>
+      <div class="perk"><span class="ic">🚚</span><div><b>Free delivery, always</b> — no minimum for subscribers</div></div>
+      <div class="perk"><span class="ic">💬</span><div><b>Priority WhatsApp line</b> to a consultant, 7 days</div></div>
+      <div class="perk"><span class="ic">🎁</span><div><b>Founding-member price lock</b> for the first 100 subscribers</div></div>
+    </div>
+    <div class="sub-visual">
+      <h4>Thabo's monthly ritual</h4>
+      <div class="toggle"><div>One-time</div><div class="on">Subscribe <span class="save">save 10% + free delivery</span></div></div>
+      <div class="sub-line"><span>Buffered C 300 · every 60 days</span><b>R385</b></div>
+      <div class="sub-line"><span>Griffonia 5-HTP · every 30 days</span><b>R248</b></div>
+      <div class="sub-line"><span>MSM 90 · every 30 days</span><b>R153</b></div>
+      <div class="sub-line" style="border-bottom:0"><span style="font-weight:700">Next delivery — 12 July</span><b style="color:var(--c-body)">Free 🚚</b></div>
+      <a class="btn btn-solid" style="width:100%;justify-content:center;margin-top:14px">Build your subscription</a>
+    </div>
+  </div>
+  <div class="note" style="top:60px;right:40px"><b>6</b>Verified market gap: no SA competitor runs supplement autoship. Subscription is the LTV engine of every world-class brand (Ritual, Seed, AG1 all default to it).</div>
+</section>
+
+<section class="section" style="position:relative">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Consultant-signed stacks</div>
+        <h2>Routines, not roulette.</h2>
+      </div>
+      <a class="more">All 17 protocols →</a>
+    </div>
+    <div class="stacks">
+      <div class="stack">
+        <div class="stack-top" style="background:linear-gradient(150deg,var(--c-mind),#243a54)">
+          <div class="kicker">Sleep · Calm · Clarity</div>
+          <h3>Rest &amp; Focus Stack</h3>
+        </div>
+        <div class="stack-body">
+          <ul>
+            <li><span>Griffonia 5-HTP</span><span>evening</span></li>
+            <li><span>GABA 150g</span><span>before bed</span></li>
+            <li><span>Tranquil</span><span>as needed</span></li>
+          </ul>
+          <div class="stack-meta"><div><span class="was">R663</span> <span class="price">R597</span></div><a class="btn btn-ghost" style="padding:11px 22px;font-size:13.5px">Add stack</a></div>
+          <div class="signed"><span class="ava">P</span>Signed off by Precious — 30 years at the Centurion counter</div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="stack-top" style="background:linear-gradient(150deg,var(--c-immune),#a83c20)">
+          <div class="kicker">Winter · Defence</div>
+          <h3>Winter Immunity Stack</h3>
+        </div>
+        <div class="stack-body">
+          <ul>
+            <li><span>Buffered C 90</span><span>daily</span></li>
+            <li><span>Immune Plus</span><span>daily</span></li>
+            <li><span>Astragalus</span><span>daily</span></li>
+          </ul>
+          <div class="stack-meta"><div><span class="was">R459</span> <span class="price">R413</span></div><a class="btn btn-ghost" style="padding:11px 22px;font-size:13.5px">Add stack</a></div>
+          <div class="signed"><span class="ava">P</span>Signed off by Precious — 30 years at the Centurion counter</div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="stack-top" style="background:linear-gradient(150deg,var(--c-body),#47542e)">
+          <div class="kicker">Joints · Bone · Mobility</div>
+          <h3>Bone &amp; Joint Pack</h3>
+        </div>
+        <div class="stack-body">
+          <ul>
+            <li><span>Flexijoint Advanced</span><span>morning</span></li>
+            <li><span>MSM 90</span><span>daily</span></li>
+            <li><span>Bone Supreme</span><span>with food</span></li>
+          </ul>
+          <div class="stack-meta"><div><span class="was">R929</span> <span class="price">R836</span></div><a class="btn btn-ghost" style="padding:11px 22px;font-size:13.5px">Add stack</a></div>
+          <div class="signed"><span class="ava">P</span>Signed off by Precious — 30 years at the Centurion counter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:-120px;left:24px;position:relative;max-width:300px"><b>7</b>Stacks = the moat. Every stack carries a consultant's name and a time-of-day plan — turning "bundle discount" into "professional routine".</div>
+</section>
+
+<section class="section dark" style="position:relative">
+  <div class="wrap batch">
+    <div>
+      <div class="kicker" style="color:var(--gold);opacity:1">Radical transparency</div>
+      <h2>Type your batch number. See your lab certificate.</h2>
+      <p>Every bottle carries a batch code. Enter it and get the certificate of analysis for your exact production run — potency, purity, heavy metals, microbiology. No other South African brand shows you this.</p>
+    </div>
+    <div class="batch-box">
+      <label>Batch lookup</label>
+      <div class="batch-field">
+        <input value="VH24-0387" readonly>
+        <a class="btn btn-light">Verify</a>
+      </div>
+      <div class="batch-result">
+        <div><span>Product</span><b>Buffered C 300</b></div>
+        <div><span>Manufactured</span><b>Midrand, Gauteng · 03/2026</b></div>
+        <div><span>Potency</span><span class="pill-ok">✓ 102% of label claim</span></div>
+        <div><span>Heavy metals · Microbiology</span><span class="pill-ok">✓ Pass · ✓ Pass</span></div>
+        <div><span>Certificate</span><b>Download PDF ↓</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="note" style="bottom:40px;right:40px"><b>8</b>The single most "incredible feature" per rand: batch-level COA lookup. Cheap to build (metafields + PDFs), impossible-sounding, and instantly the trust story for press, practitioners and TikTok.</div>
+</section>
+
+<section class="section story" style="position:relative">
+  <div class="wrap story-in">
+    <div class="story-img"></div>
+    <div>
+      <div class="kicker">The Vivid story</div>
+      <h2>Born behind the counter of South Africa's apothecary.</h2>
+      <p>For 30 years, people have walked into our Centurion, Glen Village and Edenvale stores and asked the same question: <em>"What would you actually take?"</em></p>
+      <p>Vivid Health is our answer. The formulas our consultants kept recommending, made in South Africa to our specification, without the importer's markup.</p>
+      <div class="story-stats">
+        <div><b>1996</b><span>the first counter</span></div>
+        <div><b>50+</b><span>formulas &amp; counting</span></div>
+        <div><b>3</b><span>stores you can walk into</span></div>
+        <div><b>17</b><span>consultant protocols</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;position:relative">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Real customers</div>
+        <h2>Trusted at the till and online.</h2>
+      </div>
+      <a class="more">Read all 1,200+ reviews →</a>
+    </div>
+    <div class="reviews">
+      <div class="rev"><div class="stars">★★★★★</div><p>"The consultant told me NOT to buy two of the things in my cart and swapped in one cheaper option. Who does that? Customer for life."</p><div class="who">Lerato M. <span>Verified buyer · Centurion</span></div></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>"5-HTP arrived next day with a handwritten routine card. The batch certificate thing is next level — I checked mine, it's real."</p><div class="who">Pieter v.d.M. <span>Verified buyer · Online</span></div></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>"Subscribed to Buffered C and MSM for winter. 10% off, free delivery, and WhatsApp reminders before each order. Effortless."</p><div class="who">Ayesha K. <span>Verified subscriber · Edenvale</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="quiz-band">
+      <div class="kicker" style="color:var(--gold);opacity:1">Not sure where to start?</div>
+      <h2>Two minutes. Six questions. A routine built for you.</h2>
+      <p>Answer honestly and we'll build your routine — including telling you what you <em>don't</em> need. Reviewed by a real consultant if you'd like a second opinion on WhatsApp.</p>
+      <a class="btn btn-light">Start the quiz →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo">VIVID<span>·</span>HEALTH</a>
+        <p>South African supplements with nothing to hide. A One Life Health brand — since 1996.</p>
+        <div class="news"><input placeholder="Email address"><a class="btn btn-light" style="padding:12px 22px;font-size:13.5px">Join</a></div>
+        <label class="consent"><input type="checkbox"><span>Yes, send me honest health notes and early access. Express opt-in (POPIA) — unsubscribe any time.</span></label>
+      </div>
+      <div>
+        <h4>Shop</h4><a>Bestsellers</a><a>Shop by goal</a><a>Stacks &amp; protocols</a><a>Subscribe &amp; Save</a><a>Gift cards</a>
+      </div>
+      <div>
+        <h4>Standards</h4><a>Batch certificates</a><a>Our dosing policy</a><a>Sourcing &amp; manufacturing</a><a>Quality FAQ</a>
+      </div>
+      <div>
+        <h4>Help</h4><a>WhatsApp a consultant</a><a>Delivery &amp; returns</a><a>Store locations</a><a>Practitioner &amp; wholesale</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Vivid Health · A One Life Health (Pty) Ltd brand · All prices include VAT</span>
+      <div class="paybadges"><span>Visa</span><span>Mastercard</span><span>Payflex</span><span>Ozow</span><span>SnapScan</span></div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<!-- ==================== PDP ==================== -->
+<div id="pagePdp">
+
+<div class="announce">Free delivery over <b>R400</b> nationwide · Free same-day collection at our 3 stores · <b>WhatsApp a consultant</b> 7 days a week</div>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" onclick="showPage('home')" style="cursor:pointer">VIVID<span>·</span>HEALTH</a>
+    <div class="nav-links"><a onclick="showPage('home')" style="cursor:pointer">Shop by goal</a><a>Bestsellers</a><a>Stacks</a><a>Subscribe &amp; Save</a><a>Our standards</a><a>Learn</a></div>
+    <div class="nav-cta"><a>Search</a><a class="cart-dot">Cart</a><a class="quiz-chip">Take the quiz</a></div>
+  </div>
+</nav>
+
+<div class="wrap crumbs">Home / Immune / Buffered C</div>
+
+<div class="wrap pdp">
+  <div class="pdp-gallery" style="position:relative">
+    <div class="pdp-main"><img src="assets/products/buffered-c-300.jpg" alt="Vivid Buffered C 300 capsules"></div>
+    <div class="thumbs">
+      <div class="on">Front</div><div>Label &amp; facts</div><div>Capsule detail</div><div>Lifestyle</div><div>▶ 30-sec routine</div>
+    </div>
+    <div class="note" style="top:20px;left:20px"><b>1</b>Gallery spec: front render, full label legible, capsule macro, lifestyle-in-hand, and a 30-second consultant video. Current PDPs have one image ("IMG-5210.png").</div>
+  </div>
+
+  <div style="position:relative">
+    <span class="pdp-cat">🛡 Vivid Immune</span>
+    <h1>Buffered C</h1>
+    <div class="sub">Gentle-on-the-stomach vitamin C for everyday immune support — 300 capsules, 3+ months' supply.</div>
+    <div class="stars">★★★★★<span>4.8 · 214 reviews</span></div>
+
+    <div class="pdp-price"><span class="price">R428</span><span style="font-size:13px;opacity:.6">incl VAT</span></div>
+    <div class="installments">or 4 interest-free payments of <b>R107</b> with Payflex · <b>Ozow</b> instant EFT accepted</div>
+
+    <div class="buy-box">
+      <div class="buy-opt on">
+        <span class="radio"></span>
+        <div class="t" style="flex:1"><b>Subscribe &amp; Save — R385</b><span>Delivered every 60 days · free delivery · pause or cancel any time</span></div>
+        <div class="p">R385</div>
+      </div>
+      <div class="buy-opt">
+        <span class="radio"></span>
+        <div class="t" style="flex:1"><b>One-time purchase</b><span>Free delivery over R400</span></div>
+        <div class="p">R428</div>
+      </div>
+    </div>
+    <a class="btn btn-solid atc-big">Add to cart — R385</a>
+    <div class="pdp-trust">
+      <div><i></i>In stock — ships today from Centurion</div>
+      <div><i></i>Collect free in 3 stores</div>
+      <div><i></i>Batch VH24-0387 · certificate ↓</div>
+    </div>
+
+    <div class="dose-honest">
+      <b>The honest bit</b>
+      Each capsule gives you 500mg buffered ascorbate. If you're fighting something, our consultants suggest 2–3 a day with food; 1 a day is plenty for maintenance. If you eat plenty of fruit and veg, you may not need this at all — WhatsApp us first.
+    </div>
+
+    <div class="acc">
+      <details open>
+        <summary>Supplement facts</summary>
+        <div class="acc-body">
+          <table class="facts">
+            <tr><th>Per capsule</th><th></th><th>%NRV</th></tr>
+            <tr><td>Vitamin C (calcium ascorbate)</td><td></td><td>500&nbsp;mg · 500%</td></tr>
+            <tr><td>Calcium (from ascorbate)</td><td></td><td>62&nbsp;mg · 5%</td></tr>
+            <tr><td>Citrus bioflavonoids</td><td></td><td>25&nbsp;mg · —</td></tr>
+          </table>
+        </div>
+      </details>
+      <details><summary>Why buffered? The science</summary><div class="acc-body">Calcium ascorbate is non-acidic, so it's gentle on sensitive stomachs even at higher doses. Key references: vitamin C and immune function (Carr &amp; Maggini, 2017); absorption of mineral ascorbates. Full reference list on our Standards page.</div></details>
+      <details><summary>How to take it</summary><div class="acc-body">1 capsule daily with food for maintenance; 2–3 capsules through winter or under stress. Pairs well with Quercetin Complex and Immune Plus (see the Winter Immunity Stack).</div></details>
+      <details><summary>Batch certificate &amp; testing</summary><div class="acc-body">Every run is tested for identity, potency, heavy metals and microbiology. Enter your batch number on our Standards page for your certificate of analysis.</div></details>
+      <details><summary>Delivery &amp; returns</summary><div class="acc-body">Free delivery over R400 (1–5 working days, Gauteng usually 1–2). Free same-day collection at Centurion, Glen Village and Edenvale. Unopened returns within 30 days.</div></details>
+    </div>
+    <div class="note" style="top:180px;right:0"><b>2</b>Buy box defaults to Subscribe &amp; Save (AG1/Ritual pattern), with honest one-tap-cancel copy. Payflex installments answer the R400+ hesitation.</div>
+    <div class="note" style="bottom:-20px;right:0"><b>3</b>"The honest bit" — a consultant paragraph on every PDP that includes when NOT to buy. This is the brand's unfair advantage, systematised.</div>
+  </div>
+</div>
+
+<div class="wrap pairs" style="position:relative">
+  <div class="sec-head">
+    <div>
+      <div class="kicker">Complete the routine</div>
+      <h2 style="font-size:30px">Pairs well with</h2>
+    </div>
+    <a class="more">View Winter Immunity Stack (save 10%) →</a>
+  </div>
+  <div class="grid-4">
+    <div class="card"><div class="card-img"><span class="badge" style="background:var(--c-immune)">Immune</span><img src="assets/products/quercetin.jpg" alt="Quercetin Complex" loading="lazy"></div><div class="card-body"><div class="card-cat" style="color:var(--c-immune)">Vivid Immune</div><h3>Quercetin Complex</h3><div class="stars">★★★★★<span>4.7 (41)</span></div><div class="price-row"><div class="price">R285</div><div class="sub-price">R257 subscribed</div></div></div></div>
+    <div class="card"><div class="card-img"><span class="badge" style="background:var(--c-immune)">Immune</span><img src="assets/products/immune-plus.jpg" alt="Immune Plus" loading="lazy"></div><div class="card-body"><div class="card-cat" style="color:var(--c-immune)">Vivid Immune</div><h3>Immune Plus</h3><div class="stars">★★★★★<span>4.8 (67)</span></div><div class="price-row"><div class="price">R125</div><div class="sub-price">R113 subscribed</div></div></div></div>
+    <div class="card"><div class="card-img"><span class="badge" style="background:var(--c-gut)">Gut</span><img src="assets/products/turmeric.jpg" alt="Turmeric" loading="lazy"></div><div class="card-body"><div class="card-cat" style="color:var(--c-gut)">Vivid Nourish</div><h3>Turmeric</h3><div class="stars">★★★★★<span>4.6 (52)</span></div><div class="price-row"><div class="price">R301</div><div class="sub-price">R271 subscribed</div></div></div></div>
+    <div class="card"><div class="card-img"><span class="badge" style="background:var(--c-body)">Body</span><img src="assets/products/msm-90.jpg" alt="MSM" loading="lazy"></div><div class="card-body"><div class="card-cat" style="color:var(--c-body)">Vivid Body</div><h3>MSM</h3><div class="stars">★★★★★<span>4.7 (38)</span></div><div class="price-row"><div class="price">R170</div><div class="sub-price">R153 subscribed</div></div></div></div>
+  </div>
+</div>
+
+<div class="sticky-atc">
+  <div class="wrap sticky-in">
+    <img src="assets/products/buffered-c-300.jpg" alt="">
+    <div class="t">Buffered C · 300 capsules <span>Subscribe &amp; Save — R385 incl VAT</span></div>
+    <a class="btn btn-solid" style="padding:13px 30px">Add to cart</a>
+  </div>
+</div>
+
+<footer style="margin-bottom:70px">
+  <div class="wrap">
+    <div class="foot-base" style="border:0;padding-top:0">
+      <span>© 2026 Vivid Health · A One Life Health (Pty) Ltd brand · All prices include VAT</span>
+      <div class="paybadges"><span>Visa</span><span>Mastercard</span><span>Payflex</span><span>Ozow</span><span>SnapScan</span></div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+function showPage(p){
+  document.body.classList.toggle('view-pdp', p==='pdp');
+  document.getElementById('btnHome').classList.toggle('on', p==='home');
+  document.getElementById('btnPdp').classList.toggle('on', p==='pdp');
+  window.scrollTo({top:0});
+}
+</script>
+</body>
+</html>
