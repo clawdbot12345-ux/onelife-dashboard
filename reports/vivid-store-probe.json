@@ -1,0 +1,219 @@
+[
+  {
+    "store": "onelifehealth.myshopify.com",
+    "auth": "OK",
+    "auth_source": "secret SHOPIFY_ADMIN_TOKEN",
+    "shop": {
+      "name": "onelifehealth",
+      "myshopify_domain": "onelifehealth.myshopify.com",
+      "domain": "onelife.co.za",
+      "plan_display_name": "Grow",
+      "shop_owner": "Naadir Ally",
+      "email": "info@onelife.co.za",
+      "currency": "ZAR",
+      "country_name": "South Africa",
+      "created_at": "2022-11-15T11:21:53+02:00"
+    },
+    "scopes": [
+      "read_all_orders",
+      "read_analytics",
+      "read_checkout_and_accounts_configurations",
+      "read_checkout_branding_settings",
+      "read_content",
+      "read_custom_pixels",
+      "read_customer_events",
+      "read_discounts",
+      "read_discovery",
+      "read_inventory",
+      "read_legal_policies",
+      "read_online_store_navigation",
+      "read_orders",
+      "read_pixels",
+      "read_products",
+      "read_shipping",
+      "read_themes",
+      "write_checkout_and_accounts_configurations",
+      "write_checkout_branding_settings",
+      "write_content",
+      "write_custom_pixels",
+      "write_discounts",
+      "write_discovery",
+      "write_inventory",
+      "write_legal_policies",
+      "write_online_store_navigation",
+      "write_orders",
+      "write_pixels",
+      "write_products",
+      "write_shipping",
+      "write_theme_code",
+      "write_themes"
+    ],
+    "themes": [
+      {
+        "id": 185669910838,
+        "name": "ONE LIFE HEALTH STORE \u2014 LIVE 2026-07-02",
+        "role": "unpublished",
+        "updated_at": "2026-07-02T10:41:48+02:00",
+        "created_at": "2026-05-28T19:53:17+02:00",
+        "processing": false
+      },
+      {
+        "id": 185762119990,
+        "name": "Onelife Lifestyle Clarity 2026-06-01",
+        "role": "unpublished",
+        "updated_at": "2026-06-01T22:03:47+02:00",
+        "created_at": "2026-06-01T16:48:53+02:00",
+        "processing": false
+      },
+      {
+        "id": 185765396790,
+        "name": "Live Visual Fix 2026-06-07 r1780832431",
+        "role": "unpublished",
+        "updated_at": "2026-06-11T00:43:18+02:00",
+        "created_at": "2026-06-01T19:13:11+02:00",
+        "processing": false
+      },
+      {
+        "id": 185971867958,
+        "name": "GROWTH BUILD 2026-06 \u2014 LAUNCH READY",
+        "role": "unpublished",
+        "updated_at": "2026-06-11T07:52:05+02:00",
+        "created_at": "2026-06-09T20:39:02+02:00",
+        "processing": false
+      },
+      {
+        "id": 186000638262,
+        "name": "GROWTH BUILD 2026-06 \u2014 KLAVIYO REFRESH 2026-06-11",
+        "role": "unpublished",
+        "updated_at": "2026-06-11T12:26:14+02:00",
+        "created_at": "2026-06-11T02:03:57+02:00",
+        "processing": false
+      },
+      {
+        "id": 186009518390,
+        "name": "GROWTH BUILD 2026-06 \u2014 MOBILE V10 (ready to pub...",
+        "role": "unpublished",
+        "updated_at": "2026-06-11T16:54:18+02:00",
+        "created_at": "2026-06-11T10:27:03+02:00",
+        "processing": false
+      },
+      {
+        "id": 186011484470,
+        "name": "GROWTH BUILD 2026-06 \u2014 MOBILE V10 LIVE 2026-06-11",
+        "role": "unpublished",
+        "updated_at": "2026-06-11T15:53:46+02:00",
+        "created_at": "2026-06-11T12:43:36+02:00",
+        "processing": false
+      },
+      {
+        "id": 186015220022,
+        "name": "GROWTH BUILD V11 \u2014 tagline restored (publish me)",
+        "role": "unpublished",
+        "updated_at": "2026-06-11T16:13:00+02:00",
+        "created_at": "2026-06-11T16:03:10+02:00",
+        "processing": false
+      },
+      {
+        "id": 186015514934,
+        "name": "GROWTH BUILD 2026-06 - IMAGERY 2026-06-11 (read...",
+        "role": "unpublished",
+        "updated_at": "2026-06-11T20:58:15+02:00",
+        "created_at": "2026-06-11T16:24:14+02:00",
+        "processing": false
+      },
+      {
+        "id": 186020036918,
+        "name": "GROWTH BUILD 2026-06 - VISUAL FIX 2026-06-11 (r...",
+        "role": "unpublished",
+        "updated_at": "2026-06-12T07:41:24+02:00",
+        "created_at": "2026-06-11T20:17:34+02:00",
+        "processing": false
+      },
+      {
+        "id": 186026918198,
+        "name": "GROWTH BUILD - REVIEWS 2026-06-12 (ready to pub...",
+        "role": "unpublished",
+        "updated_at": "2026-06-12T03:55:21+02:00",
+        "created_at": "2026-06-12T02:49:07+02:00",
+        "processing": false
+      },
+      {
+        "id": 186031931702,
+        "name": "VISUAL FIX FINAL 2026-06-12 r2",
+        "role": "unpublished",
+        "updated_at": "2026-06-12T11:23:34+02:00",
+        "created_at": "2026-06-12T07:28:33+02:00",
+        "processing": false
+      },
+      {
+        "id": 186034487606,
+        "name": "REVIEWS 2026-06-12 ready to publish",
+        "role": "unpublished",
+        "updated_at": "2026-06-12T11:51:05+02:00",
+        "created_at": "2026-06-12T10:18:44+02:00",
+        "processing": false
+      },
+      {
+        "id": 186035470646,
+        "name": "REVIEWS 2026-06-12 fresh cache publish",
+        "role": "unpublished",
+        "updated_at": "2026-06-12T12:01:22+02:00",
+        "created_at": "2026-06-12T11:38:38+02:00",
+        "processing": false
+      },
+      {
+        "id": 186035765558,
+        "name": "REVIEWS 2026-06-12 final Vivid clean publish",
+        "role": "unpublished",
+        "updated_at": "2026-06-12T15:17:03+02:00",
+        "created_at": "2026-06-12T11:53:43+02:00",
+        "processing": false
+      },
+      {
+        "id": 186039402806,
+        "name": "Previous live - article spacing backup",
+        "role": "unpublished",
+        "updated_at": "2026-06-12T15:41:12+02:00",
+        "created_at": "2026-06-12T15:12:11+02:00",
+        "processing": false
+      },
+      {
+        "id": 186039697718,
+        "name": "Previous live - author title backup",
+        "role": "unpublished",
+        "updated_at": "2026-06-12T15:55:29+02:00",
+        "created_at": "2026-06-12T15:26:36+02:00",
+        "processing": false
+      },
+      {
+        "id": 186040058166,
+        "name": "ONE LIFE HEALTH STORE \u2014 LIVE",
+        "role": "unpublished",
+        "updated_at": "2026-06-13T12:39:12+02:00",
+        "created_at": "2026-06-12T15:47:32+02:00",
+        "processing": false
+      },
+      {
+        "id": 186060112182,
+        "name": "ONE LIFE HEALTH STORE \u2014 AUDIT FIXES 2026-06-13",
+        "role": "unpublished",
+        "updated_at": "2026-07-02T00:27:59+02:00",
+        "created_at": "2026-06-13T12:34:17+02:00",
+        "processing": false
+      },
+      {
+        "id": 186060964150,
+        "name": "LIVE + MOBILE FIXES 2026-07-02 (publish me)",
+        "role": "main",
+        "updated_at": "2026-07-02T10:45:47+02:00",
+        "created_at": "2026-06-13T13:56:13+02:00",
+        "processing": false
+      }
+    ],
+    "products_count": 11911,
+    "pages_count": 63,
+    "collections_smart_count": 237,
+    "collections_custom_count": 11,
+    "locations": "HTTP 403"
+  }
+]
