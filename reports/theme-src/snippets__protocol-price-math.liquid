@@ -1,0 +1,14 @@
+{%- comment -%}
+  One Life Health — protocol stack price math (Growth Build 2026-06)
+  Inputs (set before render): stack_total (cents), saving_pct (integer percent)
+  Outputs: discounted_total, you_save (both cents)
+
+  Extracted into a snippet so the math is defined once and testable.
+  NOTE: Liquid filters chain strictly left-to-right — the previous inline
+  version multiplied the total by 9.9 instead of discounting it by 10%.
+{%- endcomment -%}
+{%- liquid
+  assign pct_remaining = 100 | minus: saving_pct
+  assign discounted_total = stack_total | times: pct_remaining | divided_by: 100
+  assign you_save = stack_total | minus: discounted_total
+-%}

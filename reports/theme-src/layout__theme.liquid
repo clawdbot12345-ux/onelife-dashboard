@@ -1,0 +1,861 @@
+<!doctype html>
+<html class="js" lang="{{ request.locale.iso_code }}">
+  <head>
+  <!-- cache-bust-1781130676748-trust-strip-mobile-fix -->
+    <script>
+      (function () {
+        var noisyParams = ["_su_rec", "_su_rec_id"];
+
+        function cleanUrl(value) {
+          try {
+            var url = new URL(value, window.location.origin);
+            var changed = false;
+            noisyParams.forEach(function (key) {
+              if (url.searchParams.has(key)) {
+                url.searchParams.delete(key);
+                changed = true;
+              }
+            });
+            return changed ? url : null;
+          } catch (error) {
+            return null;
+          }
+        }
+
+        function sameStore(url) {
+          return url.origin === window.location.origin && /\/cart\/?$/.test(url.pathname);
+        }
+
+        var current = cleanUrl(window.location.href);
+        if (current) {
+          window.history.replaceState({}, "", current.pathname + current.search + current.hash);
+        }
+
+        document.addEventListener("click", function (event) {
+          var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+          if (!link) return;
+          var cleaned = cleanUrl(link.href);
+          if (!cleaned || !sameStore(cleaned)) return;
+          event.preventDefault();
+          window.location.assign(cleaned.pathname + cleaned.search + cleaned.hash);
+        }, true);
+
+        document.addEventListener("submit", function (event) {
+          var form = event.target;
+          if (!form || !form.action) return;
+          var cleaned = cleanUrl(form.action);
+          if (!cleaned || !sameStore(cleaned)) return;
+          form.action = cleaned.pathname + cleaned.search + cleaned.hash;
+        }, true);
+      })();
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="ol-theme-build" content="growth-build-trust-strip-mobile-fix-1781130660014">
+    <meta name="theme-color" content="">
+    
+  <link rel="dns-prefetch" href="//onelife-chat.naadir.workers.dev">
+  <link rel="dns-prefetch" href="//static.klaviyo.com">
+  <link rel="dns-prefetch" href="//cdn.judge.me">
+  <link rel="dns-prefetch" href="//widget-svc.smile.io">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    {%- comment -%} Apothecary editorial display font (Cormorant Garamond) for H1/H2/lead — pairs with Cabin body {%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+
+    {%- if canonical_url contains '/policies/shipping-policy' -%}
+      <link rel="canonical" href="{{ request.origin }}/pages/delivery-terms">
+      <meta http-equiv="refresh" content="0;url={{ request.origin }}/pages/delivery-terms">
+      <script>
+        window.location.replace('{{ request.origin }}/pages/delivery-terms' + window.location.search + window.location.hash);
+      </script>
+    {%- endif -%}
+
+    {%- liquid
+      assign ol_brand_name = 'One Life Health'
+      assign ol_title = page_title
+
+      if request.page_type == 'index'
+        assign ol_title = 'One Life Health | 10 000+ Supplements from 250+ Trusted Brands SA'
+      elsif request.page_type == 'collection' and collection
+        assign ol_title = collection.title | append: ' | One Life Health South Africa'
+      elsif request.page_type == 'product' and product
+        assign ol_title = product.title | append: ' | One Life Health'
+      elsif request.page_type == 'article' and article
+        assign ol_article_title = article.title
+        if ol_article_title.size > 62
+          assign ol_article_title = ol_article_title | truncate: 62, ''
+        endif
+        assign ol_title = ol_article_title | append: ' | One Life Health'
+      elsif request.page_type == 'cart'
+        assign ol_title = 'Your Cart | One Life Health'
+      elsif request.page_type == 'search'
+        assign ol_title = 'Search Results | One Life Health'
+      elsif request.page_type == '404'
+        assign ol_title = 'Page Not Found | One Life Health'
+      elsif request.page_type == 'blog' and blog
+        assign ol_title = blog.title | append: ' | One Life Health'
+      endif
+
+      assign ol_meta_description = page_description
+      if request.page_type == 'index'
+        assign ol_meta_description = "South Africa's premium boutique apothecary. 10 000+ supplements, 250+ trusted brands, 30 years of family-owned wellness. Free delivery over R400 nationwide."
+      elsif request.page_type == 'collection' and collection and collection.description == blank
+        assign ol_meta_description = 'Shop ' | append: collection.title | append: ' at One Life Health. Trusted supplements, health products and nationwide delivery in South Africa.'
+      elsif request.page_type == 'cart'
+        assign ol_meta_description = 'Review your cart at One Life Health. Free delivery over R400 nationwide. Earn rewards points and shop premium supplements from 250+ trusted brands.'
+      elsif request.page_type == 'search'
+        assign ol_meta_description = 'Search 10 000+ supplements, vitamins and natural health products at One Life Health. Find products by brand, goal, dietary preference or ingredient.'
+      elsif request.page_type == '404'
+        assign ol_meta_description = "The page you're looking for can't be found at One Life Health. Try our search, browse popular categories or take the supplement quiz."
+      elsif request.page_type == 'blog' and blog
+        assign ol_meta_description = "Expert health, wellness and supplement articles from One Life Health — South Africa's trusted family-owned apothecary for 30 years."
+      endif
+
+      if ol_meta_description != blank
+        assign ol_meta_description = ol_meta_description | strip_html | strip | truncate: 160, ''
+      endif
+    -%}
+
+    <title>
+      {{ ol_title | escape }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    </title>
+
+    {%- if ol_meta_description != blank -%}
+      <meta name="description" content="{{ ol_meta_description | escape }}">
+    {%- endif -%}
+
+    {% render 'meta-tags' %}
+
+    {%- liquid
+      assign ol_skip_reveal_script = false
+      if request.page_type == 'product' or request.page_type == 'collection' or request.page_type == 'cart' or request.page_type == 'article' or request.page_type == 'page'
+        assign ol_skip_reveal_script = true
+      endif
+    -%}
+
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    {%- if settings.animations_reveal_on_scroll and ol_skip_reveal_script == false -%}
+      <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+      {% for scheme in settings.color_schemes -%}
+        {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+        {% if forloop.index == 1 -%}
+          :root,
+        {%- endif %}
+        .color-{{ scheme.id }} {
+          --color-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+        {% if scheme.settings.background_gradient != empty %}
+          --gradient-background: {{ scheme.settings.background_gradient }};
+        {% else %}
+          --gradient-background: {{ scheme.settings.background }};
+        {% endif %}
+
+        {% liquid
+          assign background_color = scheme.settings.background
+          assign background_color_brightness = background_color | color_brightness
+          if background_color_brightness <= 26
+            assign background_color_contrast = background_color | color_lighten: 50
+          elsif background_color_brightness <= 65
+            assign background_color_contrast = background_color | color_lighten: 5
+          else
+            assign background_color_contrast = background_color | color_darken: 25
+          endif
+        %}
+
+        --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+        --color-background-contrast: {{ background_color_contrast.red }},{{ background_color_contrast.green }},{{ background_color_contrast.blue }};
+        --color-shadow: {{ scheme.settings.shadow.red }},{{ scheme.settings.shadow.green }},{{ scheme.settings.shadow.blue }};
+        --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
+        --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
+        --color-secondary-button: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+        --color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+        --color-link: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+        --color-badge-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+        --color-badge-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+        --color-badge-border: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+        --payment-terms-background-color: rgb({{ scheme.settings.background.rgb }});
+      }
+      {% endfor %}
+
+      {{ scheme_classes | prepend: 'body' }} {
+        color: rgba(var(--color-foreground), 0.75);
+        background-color: rgb(var(--color-background));
+      }
+
+      :root {
+        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-body-style: {{ settings.type_body_font.style }};
+        --font-body-weight: {{ settings.type_body_font.weight }};
+        --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+
+        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-heading-style: {{ settings.type_header_font.style }};
+        --font-heading-weight: {{ settings.type_header_font.weight }};
+
+        --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+        --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+
+        --media-padding: {{ settings.media_padding }}px;
+        --media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
+        --media-border-width: {{ settings.media_border_thickness }}px;
+        --media-radius: {{ settings.media_radius }}px;
+        --media-shadow-opacity: {{ settings.media_shadow_opacity | divided_by: 100.0 }};
+        --media-shadow-horizontal-offset: {{ settings.media_shadow_horizontal_offset }}px;
+        --media-shadow-vertical-offset: {{ settings.media_shadow_vertical_offset }}px;
+        --media-shadow-blur-radius: {{ settings.media_shadow_blur }}px;
+        --media-shadow-visible: {% if settings.media_shadow_opacity > 0 %}1{% else %}0{% endif %};
+
+        --page-width: {{ settings.page_width | divided_by: 10 }}rem;
+        --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
+
+        --product-card-image-padding: {{ settings.card_image_padding | divided_by: 10.0 }}rem;
+        --product-card-corner-radius: {{ settings.card_corner_radius | divided_by: 10.0 }}rem;
+        --product-card-text-alignment: {{ settings.card_text_alignment }};
+        --product-card-border-width: {{ settings.card_border_thickness | divided_by: 10.0 }}rem;
+        --product-card-border-opacity: {{ settings.card_border_opacity | divided_by: 100.0 }};
+        --product-card-shadow-opacity: {{ settings.card_shadow_opacity | divided_by: 100.0 }};
+        --product-card-shadow-visible: {% if settings.card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --product-card-shadow-horizontal-offset: {{ settings.card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+        --product-card-shadow-vertical-offset: {{ settings.card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+        --product-card-shadow-blur-radius: {{ settings.card_shadow_blur | divided_by: 10.0 }}rem;
+
+        --collection-card-image-padding: {{ settings.collection_card_image_padding | divided_by: 10.0 }}rem;
+        --collection-card-corner-radius: {{ settings.collection_card_corner_radius | divided_by: 10.0 }}rem;
+        --collection-card-text-alignment: {{ settings.collection_card_text_alignment }};
+        --collection-card-border-width: {{ settings.collection_card_border_thickness | divided_by: 10.0 }}rem;
+        --collection-card-border-opacity: {{ settings.collection_card_border_opacity | divided_by: 100.0 }};
+        --collection-card-shadow-opacity: {{ settings.collection_card_shadow_opacity | divided_by: 100.0 }};
+        --collection-card-shadow-visible: {% if settings.collection_card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --collection-card-shadow-horizontal-offset: {{ settings.collection_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+        --collection-card-shadow-vertical-offset: {{ settings.collection_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+        --collection-card-shadow-blur-radius: {{ settings.collection_card_shadow_blur | divided_by: 10.0 }}rem;
+
+        --blog-card-image-padding: {{ settings.blog_card_image_padding | divided_by: 10.0 }}rem;
+        --blog-card-corner-radius: {{ settings.blog_card_corner_radius | divided_by: 10.0 }}rem;
+        --blog-card-text-alignment: {{ settings.blog_card_text_alignment }};
+        --blog-card-border-width: {{ settings.blog_card_border_thickness | divided_by: 10.0 }}rem;
+        --blog-card-border-opacity: {{ settings.blog_card_border_opacity | divided_by: 100.0 }};
+        --blog-card-shadow-opacity: {{ settings.blog_card_shadow_opacity | divided_by: 100.0 }};
+        --blog-card-shadow-visible: {% if settings.blog_card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --blog-card-shadow-horizontal-offset: {{ settings.blog_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+        --blog-card-shadow-vertical-offset: {{ settings.blog_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+        --blog-card-shadow-blur-radius: {{ settings.blog_card_shadow_blur | divided_by: 10.0 }}rem;
+
+        --badge-corner-radius: {{ settings.badge_corner_radius | divided_by: 10.0 }}rem;
+
+        --popup-border-width: {{ settings.popup_border_thickness }}px;
+        --popup-border-opacity: {{ settings.popup_border_opacity | divided_by: 100.0 }};
+        --popup-corner-radius: {{ settings.popup_corner_radius }}px;
+        --popup-shadow-opacity: {{ settings.popup_shadow_opacity | divided_by: 100.0 }};
+        --popup-shadow-horizontal-offset: {{ settings.popup_shadow_horizontal_offset }}px;
+        --popup-shadow-vertical-offset: {{ settings.popup_shadow_vertical_offset }}px;
+        --popup-shadow-blur-radius: {{ settings.popup_shadow_blur }}px;
+
+        --drawer-border-width: {{ settings.drawer_border_thickness }}px;
+        --drawer-border-opacity: {{ settings.drawer_border_opacity | divided_by: 100.0 }};
+        --drawer-shadow-opacity: {{ settings.drawer_shadow_opacity | divided_by: 100.0 }};
+        --drawer-shadow-horizontal-offset: {{ settings.drawer_shadow_horizontal_offset }}px;
+        --drawer-shadow-vertical-offset: {{ settings.drawer_shadow_vertical_offset }}px;
+        --drawer-shadow-blur-radius: {{ settings.drawer_shadow_blur }}px;
+
+        --spacing-sections-desktop: {{ settings.spacing_sections }}px;
+        --spacing-sections-mobile: {% if settings.spacing_sections < 24 %}{{ settings.spacing_sections }}{% else %}{{ settings.spacing_sections | times: 0.7 | round | at_least: 20 }}{% endif %}px;
+
+        --grid-desktop-vertical-spacing: {{ settings.spacing_grid_vertical }}px;
+        --grid-desktop-horizontal-spacing: {{ settings.spacing_grid_horizontal }}px;
+        --grid-mobile-vertical-spacing: {{ settings.spacing_grid_vertical | divided_by: 2 }}px;
+        --grid-mobile-horizontal-spacing: {{ settings.spacing_grid_horizontal | divided_by: 2 }}px;
+
+        --text-boxes-border-opacity: {{ settings.text_boxes_border_opacity | divided_by: 100.0 }};
+        --text-boxes-border-width: {{ settings.text_boxes_border_thickness }}px;
+        --text-boxes-radius: {{ settings.text_boxes_radius }}px;
+        --text-boxes-shadow-opacity: {{ settings.text_boxes_shadow_opacity | divided_by: 100.0 }};
+        --text-boxes-shadow-visible: {% if settings.text_boxes_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --text-boxes-shadow-horizontal-offset: {{ settings.text_boxes_shadow_horizontal_offset }}px;
+        --text-boxes-shadow-vertical-offset: {{ settings.text_boxes_shadow_vertical_offset }}px;
+        --text-boxes-shadow-blur-radius: {{ settings.text_boxes_shadow_blur }}px;
+
+        --buttons-radius: {{ settings.buttons_radius }}px;
+        --buttons-radius-outset: {% if settings.buttons_radius > 0 %}{{ settings.buttons_radius | plus: settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+        --buttons-border-width: {% if settings.buttons_border_opacity > 0 %}{{ settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+        --buttons-border-opacity: {{ settings.buttons_border_opacity | divided_by: 100.0 }};
+        --buttons-shadow-opacity: {{ settings.buttons_shadow_opacity | divided_by: 100.0 }};
+        --buttons-shadow-visible: {% if settings.buttons_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --buttons-shadow-horizontal-offset: {{ settings.buttons_shadow_horizontal_offset }}px;
+        --buttons-shadow-vertical-offset: {{ settings.buttons_shadow_vertical_offset }}px;
+        --buttons-shadow-blur-radius: {{ settings.buttons_shadow_blur }}px;
+        --buttons-border-offset: {% if settings.buttons_radius > 0 or settings.buttons_shadow_opacity > 0 %}0.3{% else %}0{% endif %}px;
+
+        --inputs-radius: {{ settings.inputs_radius }}px;
+        --inputs-border-width: {{ settings.inputs_border_thickness }}px;
+        --inputs-border-opacity: {{ settings.inputs_border_opacity | divided_by: 100.0 }};
+        --inputs-shadow-opacity: {{ settings.inputs_shadow_opacity | divided_by: 100.0 }};
+        --inputs-shadow-horizontal-offset: {{ settings.inputs_shadow_horizontal_offset }}px;
+        --inputs-margin-offset: {% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_opacity > 0 %}{{ settings.inputs_shadow_vertical_offset | abs }}{% else %}0{% endif %}px;
+        --inputs-shadow-vertical-offset: {{ settings.inputs_shadow_vertical_offset }}px;
+        --inputs-shadow-blur-radius: {{ settings.inputs_shadow_blur }}px;
+        --inputs-radius-outset: {% if settings.inputs_radius > 0 %}{{ settings.inputs_radius | plus: settings.inputs_border_thickness }}{% else %}0{% endif %}px;
+
+        --variant-pills-radius: {{ settings.variant_pills_radius }}px;
+        --variant-pills-border-width: {{ settings.variant_pills_border_thickness }}px;
+        --variant-pills-border-opacity: {{ settings.variant_pills_border_opacity | divided_by: 100.0 }};
+        --variant-pills-shadow-opacity: {{ settings.variant_pills_shadow_opacity | divided_by: 100.0 }};
+        --variant-pills-shadow-horizontal-offset: {{ settings.variant_pills_shadow_horizontal_offset }}px;
+        --variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
+        --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-size: calc(var(--font-body-scale) * 62.5%);
+        height: 100%;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 100%;
+        min-height: 100%;
+        margin: 0;
+        font-size: 1.5rem;
+        letter-spacing: 0.06rem;
+        line-height: calc(1 + 0.8 / var(--font-body-scale));
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+      }
+
+      @media screen and (min-width: 750px) {
+        body {
+          font-size: 1.6rem;
+        }
+      }
+    {% endstyle %}
+
+    <link rel="stylesheet" href="{{ 'base.css' | asset_url }}&ol_build=20260419mobilestable1">
+
+    {%- unless settings.type_body_font.system? -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
+    {%- endunless -%}
+
+    {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
+      {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
+      <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- if settings.predictive_search_enabled -%}
+      <link
+        rel="stylesheet"
+        href="{{ 'component-predictive-search.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+      >
+    {%- endif -%}
+
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+    <script>
+      window.OnelifeLazy = window.OnelifeLazy || (function () {
+        var promises = {};
+
+        function loadScript(src) {
+          if (!src) return Promise.resolve();
+          if (promises[src]) return promises[src];
+
+          promises[src] = new Promise(function (resolve, reject) {
+            var existing = document.querySelector('script[src="' + src + '"]');
+            if (existing) {
+              if (existing.dataset.loaded === 'true') {
+                resolve();
+                return;
+              }
+              existing.addEventListener('load', function () {
+                existing.dataset.loaded = 'true';
+                resolve();
+              }, { once: true });
+              existing.addEventListener('error', reject, { once: true });
+              return;
+            }
+
+            var script = document.createElement('script');
+            script.src = src;
+            script.defer = true;
+            script.addEventListener('load', function () {
+              script.dataset.loaded = 'true';
+              resolve();
+            }, { once: true });
+            script.addEventListener('error', reject, { once: true });
+            document.head.appendChild(script);
+          });
+
+          return promises[src];
+        }
+
+        function onIdle(callback) {
+          function schedule() {
+            if ('requestIdleCallback' in window) {
+              window.requestIdleCallback(callback, { timeout: 1500 });
+            } else {
+              window.setTimeout(callback, 1);
+            }
+          }
+
+          if (document.readyState === 'complete') {
+            schedule();
+          } else {
+            window.addEventListener('load', schedule, { once: true });
+          }
+        }
+
+        return {
+          loadScript: loadScript,
+          onIdle: onIdle
+        };
+      })();
+    </script>
+    {%- if request.page_type == 'product' and product and product.featured_media and product.featured_media.preview_image -%}
+      {%- assign ol_product_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+      {%- if ol_product_media and ol_product_media.media_type == 'image' -%}
+        <link
+          rel="preload"
+          as="image"
+          href="{{ ol_product_media.preview_image | image_url: width: 990 }}"
+          imagesrcset="
+            {% if ol_product_media.preview_image.width >= 493 %}{{ ol_product_media.preview_image | image_url: width: 493 }} 493w,{% endif %}
+            {% if ol_product_media.preview_image.width >= 713 %}{{ ol_product_media.preview_image | image_url: width: 713 }} 713w,{% endif %}
+            {% if ol_product_media.preview_image.width >= 823 %}{{ ol_product_media.preview_image | image_url: width: 823 }} 823w,{% endif %}
+            {% if ol_product_media.preview_image.width >= 990 %}{{ ol_product_media.preview_image | image_url: width: 990 }} 990w,{% endif %}
+            {% if ol_product_media.preview_image.width >= 1206 %}{{ ol_product_media.preview_image | image_url: width: 1206 }} 1206w,{% endif %}
+            {{ ol_product_media.preview_image | image_url }} {{ ol_product_media.preview_image.width }}w
+          "
+          imagesizes="(min-width: 990px) 65vw, (min-width: 750px) 50vw, 100vw"
+          fetchpriority="high"
+        >
+      {%- endif -%}
+    {%- elsif request.page_type == 'article' and article and article.image -%}
+      <link
+        rel="preload"
+        as="image"
+        href="{{ article.image | image_url: width: 1100 }}"
+        imagesrcset="
+          {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+          {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
+          {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
+          {% if article.image.width >= 1500 %}{{ article.image | image_url: width: 1500 }} 1500w,{% endif %}
+          {% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w,{% endif %}
+          {{ article.image | image_url }} {{ article.image.width }}w
+        "
+        imagesizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
+        fetchpriority="high"
+      >
+    {%- elsif request.page_type == 'index' -%}
+      {%- comment -%} Preload first slideshow image (Quiz hero) so the home LCP element is discovered ASAP {%- endcomment -%}
+      <link
+        rel="preload"
+        as="image"
+        href="{{ 'onelife-hero-04-quiz-desktop-1440.webp' | asset_url }}"
+        imagesrcset="{{ 'onelife-hero-04-quiz-mobile-820.webp' | asset_url }} 820w, {{ 'onelife-hero-04-quiz-desktop-1440.webp' | asset_url }} 1440w"
+        imagesizes="100vw"
+        fetchpriority="high"
+      >
+    {%- endif -%}
+  <link rel="stylesheet" href="{{ 'onelife-fixes.css' | asset_url }}&ol_visual_fix=20260611_mobile_menu_contrast_v1">
+  <link rel="stylesheet" href="{{ 'onelife-desktop-article.css' | asset_url }}&ol_article_css=20260609_cart_ux_v8" media="all">
+  <link rel="stylesheet" href="{{ 'onelife-catalogue-cards.css' | asset_url }}&ol_catalogue_cards=20260601v4">
+  <style id="ol-lifestyle-clarity-20260601">
+    .olq{background:linear-gradient(135deg,rgba(248,250,248,.68),rgba(238,244,238,.64)),url('https://onelife.co.za/cdn/shop/files/onelife-quiz-hero-banner-1440.webp?v=1781252161') center/cover !important}
+    .olq-intro h1{text-shadow:0 1px 10px rgba(255,255,255,.82) !important}
+    .olq-intro p{color:#4f4f4f !important;text-shadow:0 1px 8px rgba(255,255,255,.74) !important}
+    .vh{background:linear-gradient(rgba(10,22,40,.56),rgba(13,33,55,.66)),url({{ 'onelife-vivid-health-page-hero-1440.webp' | asset_url }}) center/cover !important}
+    .vh h1{text-shadow:0 2px 14px rgba(0,0,0,.48) !important}
+    .vh-sub{color:rgba(255,255,255,.84) !important;text-shadow:0 1px 10px rgba(0,0,0,.46) !important}
+    .cp{background:linear-gradient(rgba(15,43,30,.58),rgba(27,67,50,.68)),url({{ 'onelife-consultation-hero-banner-1440.webp' | asset_url }}) center/cover !important}
+    .cp h1{text-shadow:0 2px 14px rgba(0,0,0,.45) !important}
+    .cp-sub{color:rgba(255,255,255,.88) !important;text-shadow:0 1px 10px rgba(0,0,0,.44) !important}
+    .bp-hero{background:linear-gradient(rgba(10,22,40,.55),rgba(13,33,55,.66)),url({{ 'onelife-brands-page-hero.jpg' | asset_url }}) center/cover !important}
+    .bp-hero h1{text-shadow:0 2px 14px rgba(0,0,0,.46) !important}
+    .bp-hero p{color:rgba(255,255,255,.86) !important;text-shadow:0 1px 10px rgba(0,0,0,.44) !important}
+    .shop-hero{background:linear-gradient(rgba(27,67,50,.54),rgba(45,106,79,.64)),url({{ 'onelife-shop-page-hero.jpg' | asset_url }}) center/cover !important}
+    .shop-hero h1{text-shadow:0 2px 14px rgba(0,0,0,.42) !important}
+    .shop-hero p{color:rgba(255,255,255,.88) !important;text-shadow:0 1px 10px rgba(0,0,0,.4) !important}
+    @media(max-width:749px){.vh{background-image:linear-gradient(rgba(10,22,40,.56),rgba(13,33,55,.66)),url({{ 'onelife-vivid-health-page-hero-820.webp' | asset_url }}) !important}}
+  </style>
+{%- render 'seo-jsonld-organization' -%}
+{%- render 'seo-jsonld-article' -%}
+{%- if request.page_type == 'index' -%}
+  {%- render 'homepage-schema-jsonld' -%}
+  {%- render 'seo-jsonld-local-business' -%}
+{%- endif -%}
+    {{ 'onelife-mobile-fixes.css' | asset_url | stylesheet_tag }}
+      {{ 'onelife-premium.css' | asset_url | stylesheet_tag }}
+  </head>
+
+  <body class="gradient template-{{ request.page_type | handle }}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+{%- render 'delivery-promise-bar' -%}
+{%- render 'homepage-proof-bar' -%}
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- if settings.cart_type == 'drawer' -%}
+      {%- render 'cart-drawer' -%}
+    {%- endif -%}
+
+    {% sections 'header-group' %}
+    <style id="ol-mobile-menu-contrast-20260611">
+      .section-header .menu-drawer .list-menu__item.menu-drawer__menu-item,
+      .section-header .menu-drawer summary.list-menu__item.menu-drawer__menu-item,
+      .section-header .menu-drawer a.list-menu__item.menu-drawer__menu-item,
+      .section-header .menu-drawer .menu-drawer__close-button,
+      .section-header .menu-drawer .menu-drawer__account {
+        color: #1f2f27 !important;
+      }
+      .section-header .menu-drawer .menu-drawer__menu-item .icon-arrow,
+      .section-header .menu-drawer .menu-drawer__close-button .icon-arrow,
+      .section-header .menu-drawer .menu-drawer__account svg {
+        color: #1f2f27 !important;
+        fill: #1f2f27 !important;
+        stroke: #1f2f27 !important;
+      }
+      .section-header .menu-drawer .menu-drawer__menu-item:hover,
+      .section-header .menu-drawer .menu-drawer__menu-item:focus,
+      .section-header .menu-drawer .menu-drawer__close-button:hover,
+      .section-header .menu-drawer .menu-drawer__close-button:focus {
+        background-color: rgba(31, 47, 39, 0.07) !important;
+        color: #102018 !important;
+      }
+    </style>
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    <script>
+      window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}',
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`,
+      };
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+        unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+      };
+
+      window.quickOrderListStrings = {
+        itemsAdded: `{{ 'sections.quick_order_list.items_added.other' | t: quantity: '[quantity]' }}`,
+        itemAdded: `{{ 'sections.quick_order_list.items_added.one' | t: quantity: '[quantity]' }}`,
+        itemsRemoved: `{{ 'sections.quick_order_list.items_removed.other' | t: quantity: '[quantity]' }}`,
+        itemRemoved: `{{ 'sections.quick_order_list.items_removed.one' | t: quantity: '[quantity]' }}`,
+        viewCart: `{{- 'sections.quick_order_list.view_cart' | t -}}`,
+        each: `{{- 'sections.quick_order_list.each' | t: money: '[money]' }}`,
+        min_error: `{{- 'sections.quick_order_list.min_error' | t: min: '[min]' }}`,
+        max_error: `{{- 'sections.quick_order_list.max_error' | t: max: '[max]' }}`,
+        step_error: `{{- 'sections.quick_order_list.step_error' | t: step: '[step]' }}`,
+      };
+
+      window.accessibilityStrings = {
+        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+        pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+        recipientFormExpanded: `{{ 'recipient.form.expanded' | t }}`,
+        recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
+        countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
+      };
+    </script>
+
+  {%- render 'sticky-add-to-cart' -%}
+  {%- render 'whatsapp-float' -%}
+  {%- render 'sticky-mobile-nav' -%}
+  <!-- chatbot-cache-refresh-20260525i -->
+  {%- render 'onelife-chatbot' -%}
+  {%- render 'onelife-attribution-capture' -%}
+    <style>
+      #smile-ui-lite-container {
+        left: 0 !important; right: auto !important; bottom: 0 !important; transform: none !important;
+      }
+      #smile-ui, #smile-ui-container, #smile-ui-lite-launcher-frame-container, .smile-launcher {
+        left: 12px !important; right: auto !important; bottom: 24px !important; transform: none !important;
+      }
+      @media (max-width: 768px) {
+        #smile-ui, #smile-ui-container, #smile-ui-lite-launcher-frame-container, .smile-launcher {
+          left: 50% !important; right: auto !important; bottom: 65px !important; transform: translateX(-50%) !important;
+        }
+      }
+      #smile-ui-lite-launcher-frame-container iframe {
+        left: 0 !important; right: auto !important; bottom: 0 !important; transform: none !important;
+      }
+      html.ol-chat-is-open #smile-ui,
+      html.ol-chat-is-open #smile-ui-container,
+      html.ol-chat-is-open #smile-ui-lite-container,
+      html.ol-chat-is-open #smile-ui-lite-launcher-frame-container,
+      html.ol-chat-is-open .smile-launcher,
+      html.ol-chat-is-open .wa-float-btn,
+      body.ol-chat-is-open #smile-ui,
+      body.ol-chat-is-open #smile-ui-container,
+      body.ol-chat-is-open #smile-ui-lite-container,
+      body.ol-chat-is-open #smile-ui-lite-launcher-frame-container,
+      body.ol-chat-is-open .smile-launcher,
+      body.ol-chat-is-open .wa-float-btn {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
+    </style>
+    <script>
+    (function(){
+      var smileObserver;
+
+      function findSmileElements() {
+        var selectors = [
+          '#smile-ui',
+          '#smile-ui-container',
+          '#smile-ui-lite-launcher-frame-container',
+          '.smile-launcher'
+        ];
+        var seen = [];
+
+        selectors.forEach(function(selector) {
+          document.querySelectorAll(selector).forEach(function(el) {
+            if (seen.indexOf(el) === -1) seen.push(el);
+          });
+        });
+
+        document.querySelectorAll('[id^="smile-"]').forEach(function(el) {
+          if (el.id === 'smile-ui-lite-container' || el.tagName === 'IFRAME') return;
+          if (window.getComputedStyle(el).position === 'fixed' && seen.indexOf(el) === -1) {
+            seen.push(el);
+          }
+        });
+
+        return seen;
+      }
+
+      function applySmilePosition(el) {
+        var isMobile = window.innerWidth <= 768;
+
+        el.style.setProperty('left', isMobile ? '50%' : '12px', 'important');
+        el.style.setProperty('right', 'auto', 'important');
+        el.style.setProperty('bottom', isMobile ? '65px' : '24px', 'important');
+        el.style.setProperty('transform', isMobile ? 'translateX(-50%)' : 'none', 'important');
+        el.style.removeProperty('display');
+      }
+
+      function syncSmile() {
+        var elements = findSmileElements();
+        if (!elements.length) return false;
+        elements.forEach(applySmilePosition);
+        return true;
+      }
+
+      function stopObservingSmile() {
+        if (!smileObserver) return;
+        smileObserver.disconnect();
+        smileObserver = null;
+      }
+
+      function startSmileObserver() {
+        if (syncSmile()) return;
+
+        smileObserver = new MutationObserver(function() {
+          if (syncSmile()) stopObservingSmile();
+        });
+
+        smileObserver.observe(document.body, { childList: true, subtree: true });
+        window.setTimeout(stopObservingSmile, 10000);
+      }
+
+      if (window.OnelifeLazy) {
+        window.OnelifeLazy.onIdle(startSmileObserver);
+      } else if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startSmileObserver, { once: true });
+      } else {
+        startSmileObserver();
+      }
+
+      window.addEventListener('resize', syncSmile, { passive: true });
+    })();
+    </script>
+    <script>
+    (function() {
+      var warmKey = 'ol-account-domain-warmed-v1';
+
+      function markWarmed() {
+        try {
+          sessionStorage.setItem(warmKey, '1');
+        } catch (e) {}
+      }
+
+      function alreadyWarmed() {
+        try {
+          return sessionStorage.getItem(warmKey) === '1';
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function addPreconnect(href) {
+        if (document.head.querySelector('link[rel="preconnect"][href="' + href + '"]')) return;
+        var link = document.createElement('link');
+        link.rel = 'preconnect';
+        link.href = href;
+        link.crossOrigin = 'anonymous';
+        document.head.appendChild(link);
+      }
+
+      function warmAccountDomain() {
+        if (alreadyWarmed()) return;
+        markWarmed();
+        addPreconnect('https://account.onelife.co.za');
+      }
+
+      function isAccountEntryLink(target) {
+        if (!target.closest) return false;
+
+        return target.closest(
+          'a[href*="account.onelife.co.za"], a[href*="/customer_authentication/login"], a[href*="/account/login"]'
+        );
+      }
+
+      document.addEventListener('pointerenter', function(event) {
+        if (isAccountEntryLink(event.target)) {
+          warmAccountDomain();
+        }
+      }, { capture: true, passive: true });
+
+      document.addEventListener('touchstart', function(event) {
+        if (isAccountEntryLink(event.target)) {
+          warmAccountDomain();
+        }
+      }, { capture: true, passive: true });
+
+    })();
+    </script>
+    <script>
+    (function() {
+      var vividPath = '/collections/vivid-health';
+      var vividView = vividPath + '?view=vivid-guide';
+
+      function normalizeVividLinks() {
+        document.querySelectorAll('a[href]').forEach(function(link) {
+          var href = link.getAttribute('href');
+          if (href === vividPath || href === 'https://onelife.co.za' + vividPath || href === window.location.origin + vividPath) {
+            link.setAttribute('href', vividView);
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', normalizeVividLinks, { once: true });
+      } else {
+        normalizeVividLinks();
+      }
+
+      document.addEventListener('shopify:section:load', normalizeVividLinks);
+    })();
+    </script>
+    <script>
+    (function() {
+      var guidePath = '/pages/product-tag-guide?view=product-tag-guide-v7';
+
+      function isOldTagGuideLink(link) {
+        var href = link.getAttribute('href') || '';
+        if (href !== '/pages/faq' && href !== 'https://onelife.co.za/pages/faq' && href !== window.location.origin + '/pages/faq') return false;
+
+        var text = (link.textContent || '').toLowerCase();
+        if (text.indexOf('tag guide') !== -1 || text.indexOf('product tag') !== -1 || text.indexOf('shopping guide') !== -1) return true;
+
+        return !!link.closest('.ol-tag-disclaimer, .ol-cart-tag-disclaimer, .shop-tag-note, .vb-note, .ol-home-tabs__tag-note, .ol-footer-tag-guide, footer');
+      }
+
+      function normalizeProductTagGuideLinks() {
+        document.querySelectorAll('a[href]').forEach(function(link) {
+          if (isOldTagGuideLink(link)) {
+            link.setAttribute('href', guidePath);
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', normalizeProductTagGuideLinks, { once: true });
+      } else {
+        normalizeProductTagGuideLinks();
+      }
+
+      document.addEventListener('shopify:section:load', normalizeProductTagGuideLinks);
+    })();
+    </script>
+    {% comment %} One Life Klaviyo capture cache refresh: 2026-06-13 21:16 {% endcomment %}
+    {% comment %} Codex POPIA consent unchecked refresh 2026-07-02 00:25 SAST {% endcomment %}
+          <!-- Codex POPIA consent unchecked runtime refresh 2026-07-02T00:30SAST -->
+          {% render 'onelife-klaviyo-signup-runtime' %}
+  </body>
+<!-- Codex cache refresh 2026-06-01T2115 product tag guide page links -->
+</html>

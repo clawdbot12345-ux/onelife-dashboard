@@ -1,0 +1,170 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "product_tag_guide": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<details class=\"ol-disclaimer\">\n  <summary>Product notice &amp; tag guide</summary>\n  <div class=\"ol-disclaimer__body\">\n    {% render 'product-badges', product: product, show_disclaimer: false %}\n    <p class=\"ol-tag-disclaimer\">Product tags are a shopping guide only. Always check the product label, ingredients and allergen information before purchase. If you are unsure whether this product is suitable, ask a One Life Health consultant or a qualified healthcare professional. <a href=\"/pages/product-tag-guide?view=product-tag-guide-v7\">Read our tag guide</a>.</p>\n  </div>\n</details>"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "judge_me_badge": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "store_stock": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render \"ol-pdp-meta\" %}"
+          }
+        },
+        "trust": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render \"product-trust-strip\" %}"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "judge_me_badge",
+        "price",
+        "store_stock",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "product_tag_guide",
+        "trust",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 28,
+        "padding_bottom": 12
+      }
+    },
+    "back-in-stock": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'back-in-stock' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "judgeme": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'judgeme-product-widget' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You May Also Like",
+        "heading_size": "h2",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "recently-viewed": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'recently-viewed' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "breadcrumbs": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "lifestyle-strip": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'product-lifestyle-strip' %}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "back-in-stock",
+    "judgeme",
+    "lifestyle-strip",
+    "related-products",
+    "recently-viewed"
+  ]
+}

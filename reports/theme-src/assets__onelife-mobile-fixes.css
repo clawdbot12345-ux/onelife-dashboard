@@ -1,0 +1,355 @@
+/* Onelife mobile conversion fixes — 2026-07-02 (site-audit follow-up)
+   Selectors verified against live markup. Conservative: spacing, z-index,
+   visibility and colour only — no display-mode changes. */
+
+/* 1. CLS 0.34 on collections: the rotating announcement slider swaps
+   messages of different lengths; reserve its height so layout never shifts. */
+.announcement-bar,
+.announcement-bar__announcement { min-height: 4.2rem; }
+.announcement-bar__message { display: inline-block; min-height: 1.4em; }
+
+/* 2. Collection cards: dietary badge row was clipping under the
+   Add-to-cart button; give the card content clearance. */
+.card__content { padding-bottom: 1.2rem; }
+.card__information { padding-bottom: 0.6rem; }
+@media screen and (max-width: 749px) {
+  .ol-badge { font-size: 0.85em; }
+}
+
+/* 3. WhatsApp consult button: sit above the mobile bottom nav instead of
+   covering product titles/footer; stay under drawers and modals. */
+@media screen and (max-width: 749px) {
+  .ol-consult-cta { bottom: 5.4rem !important; z-index: 3; }
+}
+
+/* 4. PDP: 'Buy it now' becomes a secondary (outline) action so
+   Add to cart is the clear primary. */
+.shopify-payment-button__button--unbranded {
+  background: #ffffff;
+  color: #1b4332;
+  border: 0.1rem solid #1b4332;
+  box-shadow: none;
+}
+.shopify-payment-button__button--unbranded:hover {
+  background: #f1f5f1;
+  color: #1b4332;
+}
+
+/* 5. Judge.me zero-state: hide the orphaned 'No reviews' badge until a
+   product actually has reviews (write-review widget lower down remains). */
+.jdgm-preview-badge[data-number-of-reviews="0"],
+.jdgm-prev-badge[data-number-of-reviews="0"] { display: none !important; }
+
+/* 7. SA consumer pricing: label displayed prices VAT-inclusive. */
+.price .price-item--last::after {
+  content: " incl. VAT";
+  font-size: 0.72em;
+  font-weight: 400;
+  color: #6b7280;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 749px) {
+  body.template-cart .shopify-section[id*="__upsell"] .collection,
+  body.template-cart .shopify-section[id$="featured-collection"] .collection {
+    padding-top: 2.2rem !important;
+    padding-bottom: 3.2rem !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .collection__title,
+  body.template-cart .shopify-section[id$="featured-collection"] .collection__title {
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    gap: 1.2rem !important;
+    margin-bottom: 1.2rem !important;
+    padding-inline: 2.2rem !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .collection__title .title,
+  body.template-cart .shopify-section[id$="featured-collection"] .collection__title .title {
+    margin: 0 !important;
+    font-size: 2.4rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .collection__title::after,
+  body.template-cart .shopify-section[id$="featured-collection"] .collection__title::after {
+    content: "Swipe or tap for more ->" !important;
+    flex: 0 0 auto !important;
+    color: #1b4332 !important;
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .slider-mobile-gutter,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-mobile-gutter {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .slider-buttons,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-buttons {
+    position: absolute !important;
+    top: 50% !important;
+    right: 1.2rem !important;
+    z-index: 5 !important;
+    display: flex !important;
+    width: 4.4rem !important;
+    height: 4.4rem !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .slider-counter,
+  body.template-cart .shopify-section[id*="__upsell"] .slider-button--prev,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-counter,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-button--prev {
+    display: none !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .slider-button--next,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-button--next {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 4.4rem !important;
+    height: 4.4rem !important;
+    min-width: 4.4rem !important;
+    min-height: 4.4rem !important;
+    border: 0.1rem solid rgba(255, 255, 255, 0.72) !important;
+    border-radius: 999px !important;
+    background: #1b4332 !important;
+    color: #fff !important;
+    box-shadow: 0 1.2rem 2.8rem rgba(27, 67, 50, 0.28) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .slider-button--next[disabled],
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-button--next[disabled] {
+    display: none !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .slider-button--next .icon,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-button--next .icon {
+    width: 1.6rem !important;
+    height: 1.6rem !important;
+    color: #fff !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .slider-button--next:focus-visible,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-button--next:focus-visible {
+    outline: 0.2rem solid #1b4332 !important;
+    outline-offset: 0.3rem !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .slider-buttons,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-buttons,
+  body.template-cart .shopify-section[id*="__upsell"] .slider-button--next,
+  body.template-cart .shopify-section[id$="featured-collection"] .slider-button--next {
+    display: none !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-grid,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: 1.4rem !important;
+    overflow-x: auto !important;
+    padding: 0 2.2rem 0.8rem !important;
+    scroll-padding-left: 2.2rem !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-grid::-webkit-scrollbar,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .grid__item,
+  body.template-cart .shopify-section[id$="featured-collection"] .grid__item {
+    flex: 0 0 clamp(28.2rem, calc(100vw - 9.6rem), 31.8rem) !important;
+    width: clamp(28.2rem, calc(100vw - 9.6rem), 31.8rem) !important;
+    max-width: clamp(28.2rem, calc(100vw - 9.6rem), 31.8rem) !important;
+    scroll-snap-align: start !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card.card--media,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card.card--media {
+    display: grid !important;
+    grid-template-columns: 11.2rem minmax(0, 1fr) !important;
+    height: 23.2rem !important;
+    min-height: 23.2rem !important;
+    overflow: hidden !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__inner,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__inner {
+    width: 11.2rem !important;
+    height: 100% !important;
+    min-height: 23.2rem !important;
+    border-right: 0.1rem solid #f0e8da !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__media,
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__media .media,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__media,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__media .media {
+    height: 100% !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__media img,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__media img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    padding: 1rem !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__content,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__content {
+    display: flex !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__information,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__information {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    padding: 1.2rem 1.2rem 1rem !important;
+    text-align: left !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__heading,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__heading {
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    font-size: 1.2rem !important;
+    line-height: 1.25 !important;
+    text-align: left !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__heading .full-unstyled-link,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__heading .full-unstyled-link {
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__heading a::after,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__heading a::after {
+    display: none !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card-information,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card-information {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    text-align: left !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .caption-with-letter-spacing,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .caption-with-letter-spacing {
+    margin-top: 0.4rem !important;
+    min-height: 0 !important;
+    font-size: 0.82rem !important;
+    line-height: 1.25 !important;
+    text-align: left !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .price,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .price {
+    justify-content: flex-start !important;
+    margin-top: 0.7rem !important;
+    text-align: left !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .price-item,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .price-item {
+    font-size: 1.45rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .ol-badges,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .ol-badges {
+    justify-content: flex-start !important;
+    gap: 0.3rem !important;
+    min-height: 1.5rem !important;
+    max-height: 3.2rem !important;
+    margin: 0.5rem 0 0.6rem !important;
+    overflow: hidden !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .ol-badge,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .ol-badge {
+    padding: 0.2rem 0.4rem !important;
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .ol-card-action,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .ol-card-action {
+    width: 100% !important;
+    margin-top: auto !important;
+    padding-top: 0.6rem !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .ol-card-action__button,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .ol-card-action__button {
+    min-height: 3.8rem !important;
+    height: 3.8rem !important;
+    font-size: 1.1rem !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  body.template-cart .shopify-section[id*="__upsell"] .collection__title,
+  body.template-cart .shopify-section[id$="featured-collection"] .collection__title {
+    display: block !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .collection__title .title,
+  body.template-cart .shopify-section[id$="featured-collection"] .collection__title .title {
+    display: block !important;
+    white-space: nowrap !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .collection__title::after,
+  body.template-cart .shopify-section[id$="featured-collection"] .collection__title::after {
+    display: block !important;
+    margin-top: 0.6rem !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__heading .full-unstyled-link,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__heading .full-unstyled-link {
+    background: transparent !important;
+  }
+
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__heading,
+  body.template-cart .shopify-section[id*="__upsell"] .product-card-wrapper .card__heading .full-unstyled-link,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__heading,
+  body.template-cart .shopify-section[id$="featured-collection"] .product-card-wrapper .card__heading .full-unstyled-link {
+    border: 0 !important;
+  }
+}

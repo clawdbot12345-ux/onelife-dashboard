@@ -1,0 +1,34 @@
+{%- comment -%}
+  One Life Health — Cart Payment Trust strip v2 (Growth Build 2026-06)
+  Sits below the checkout button in the cart drawer.
+  v2: shows ONLY payment methods the store actually offers today —
+  card payments + Instant EFT via Payfast. Wallets/BNPL methods are not shown
+  until the corresponding payment method is visible in the live checkout.
+{%- endcomment -%}
+
+<style>
+  .ol-cart-trust { margin-top: 12px; text-align: center; }
+  .ol-cart-trust__row { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  .ol-cart-trust__method { display: inline-flex; align-items: center; justify-content: center; height: 24px; padding: 4px 9px; border: 1px solid #e8e2d6; border-radius: 5px; background: #fff; font-size: 10px; font-weight: 800; color: #555; letter-spacing: 0.5px; line-height: 1; white-space: nowrap; }
+  .ol-cart-trust__method--visa { color: #1a1f71; }
+  .ol-cart-trust__method--mc { color: #eb001b; }
+  .ol-cart-trust__method--eft { color: #1b4332; background: #f0fdf4; }
+  .ol-cart-trust__method--payfast { color: #022d2b; background: #e6f7f1; border-color: #b8e8d6; }
+  .ol-cart-trust__sub { font-size: 11px; color: #6b7280; line-height: 1.4; margin: 0; display: inline-flex; align-items: center; gap: 6px; justify-content: center; }
+  .ol-cart-trust__sub svg { width: 12px; height: 12px; flex-shrink: 0; }
+</style>
+
+{%- if cart != empty -%}
+<div class="ol-cart-trust">
+  <div class="ol-cart-trust__row" aria-label="Accepted payment methods">
+    <span class="ol-cart-trust__method ol-cart-trust__method--visa">VISA</span>
+    <span class="ol-cart-trust__method ol-cart-trust__method--mc">MASTERCARD</span>
+    <span class="ol-cart-trust__method ol-cart-trust__method--eft">INSTANT EFT</span>
+    <span class="ol-cart-trust__method ol-cart-trust__method--payfast">PAYFAST</span>
+  </div>
+  <p class="ol-cart-trust__sub">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1b4332" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    Secure checkout via Payfast · your card details never touch our server
+  </p>
+</div>
+{%- endif -%}

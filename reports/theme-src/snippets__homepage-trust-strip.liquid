@@ -1,0 +1,142 @@
+{%- comment -%}
+  One Life Health - Homepage Trust Strip v3 (Growth Build 2026-06)
+  Job: sit directly under the hero and resolve the 4 conversion blockers.
+  v2: coloured icon chips on a warm cream band - each promise gets its own hue.
+  v3 2026-06-11: mobile is a 2×2 grid — the horizontal scroller hid cards
+  3 and 4 off-screen and the owner found it hard to see.
+{%- endcomment -%}
+
+<style>
+  .ol-trust-strip {
+    background: linear-gradient(180deg, #fdf9f0 0%, #f7f1e3 100%);
+    border-top: 1px solid #efe6d2;
+    border-bottom: 1px solid #efe6d2;
+    padding: 16px;
+  }
+  .ol-trust-strip__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    align-items: stretch;
+  }
+  .ol-trust-strip__item {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 12px;
+    text-decoration: none;
+    color: #1a1a1a;
+    background: #fff;
+    border: 1px solid #efe6d2;
+    border-radius: 14px;
+    padding: 12px 14px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .ol-trust-strip__item:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -14px rgba(43,36,24,.35); }
+  .ol-trust-strip__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    flex: 0 0 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ts-bg, #f0fdf4);
+    color: var(--ts-c, #1b4332);
+  }
+  .ol-trust-strip__item:nth-child(1) .ol-trust-strip__icon { --ts-bg: #fff3df; --ts-c: #b45309; }
+  .ol-trust-strip__item:nth-child(2) .ol-trust-strip__icon { --ts-bg: #e9f8ef; --ts-c: #007749; }
+  .ol-trust-strip__item:nth-child(3) .ol-trust-strip__icon { --ts-bg: #e7f9ed; --ts-c: #16a34a; }
+  .ol-trust-strip__item:nth-child(4) .ol-trust-strip__icon { --ts-bg: #efedff; --ts-c: #4f46e5; }
+  .ol-trust-strip__icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .ol-trust-strip__copy {
+    min-width: 0;
+    line-height: 1.22;
+  }
+  .ol-trust-strip__title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1a1a1a;
+    display: block;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .ol-trust-strip__sub {
+    font-size: 11px;
+    color: #6b6353;
+    display: block;
+    margin-top: 2px;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  @media (max-width: 768px) {
+    .ol-trust-strip { padding: 12px; }
+    .ol-trust-strip__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .ol-trust-strip__item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+    }
+    .ol-trust-strip__icon { width: 32px; height: 32px; flex-basis: auto; border-radius: 10px; }
+    .ol-trust-strip__icon svg { width: 18px; height: 18px; }
+    .ol-trust-strip__title { font-size: 12px; line-height: 1.2; white-space: normal; }
+    .ol-trust-strip__sub { font-size: 10.5px; line-height: 1.25; white-space: normal; }
+  }
+</style>
+
+<section class="ol-trust-strip" aria-label="Why shop with One Life">
+  <div class="ol-trust-strip__inner">
+    <a href="/policies/shipping-policy" class="ol-trust-strip__item">
+      <span class="ol-trust-strip__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="1" y="6" width="15" height="12" rx="1"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6.5" cy="19" r="2"/><circle cx="18.5" cy="19" r="2"/></svg>
+      </span>
+      <span class="ol-trust-strip__copy">
+        <span class="ol-trust-strip__title">Free delivery over R400</span>
+        <span class="ol-trust-strip__sub">Nationwide, 1-5 working days</span>
+      </span>
+    </a>
+    <a href="/pages/store-locator" class="ol-trust-strip__item">
+      <span class="ol-trust-strip__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </span>
+      <span class="ol-trust-strip__copy">
+        <span class="ol-trust-strip__title">Collect free in store</span>
+        <span class="ol-trust-strip__sub">Centurion · Glen Village · Edenvale</span>
+      </span>
+    </a>
+    <a href="https://wa.me/27713744910?text=Hi%2C%20can%20you%20help%20me%20pick%20the%20right%20supplement%3F" class="ol-trust-strip__item">
+      <span class="ol-trust-strip__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+      </span>
+      <span class="ol-trust-strip__copy">
+        <span class="ol-trust-strip__title">Free WhatsApp consult</span>
+        <span class="ol-trust-strip__sub">Talk to a real health consultant</span>
+      </span>
+    </a>
+    <a href="/pages/brands" class="ol-trust-strip__item">
+      <span class="ol-trust-strip__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.39 4.84L19.78 8l-3.89 3.79.92 5.36L12 14.6 7.19 17.15l.92-5.36L4.22 8l5.39-1.16L12 2z"/></svg>
+      </span>
+      <span class="ol-trust-strip__copy">
+        <span class="ol-trust-strip__title">250+ trusted brands</span>
+        <span class="ol-trust-strip__sub">Stocked &amp; signed off by our consultants</span>
+      </span>
+    </a>
+  </div>
+</section>

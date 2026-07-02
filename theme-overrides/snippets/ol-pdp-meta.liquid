@@ -1,0 +1,51 @@
+{%- comment -%}
+  ONE LIFE premium pass 2 — single quiet PDP meta row.
+  Merges store-stock-indicator + delivery-estimate into one line:
+  stock state first, delivery promise second, thin dot separators.
+  Liquid logic and variables carried over intact from both snippets.
+  Styled by .ol-pdp-meta in assets/onelife-premium.css.
+{%- endcomment -%}
+{%- liquid
+  assign v = product.selected_or_first_available_variant
+  assign qty = v.inventory_quantity
+  assign tracked = false
+  if v.inventory_management == 'shopify'
+    assign tracked = true
+  endif
+  assign low_threshold = 3
+
+  assign today_dow = "now" | date: "%u" | plus: 0
+  if today_dow <= 5
+    assign cutoff = "Order before 12pm for same-day dispatch"
+  else
+    assign cutoff = "Weekend orders dispatch Monday"
+  endif
+-%}
+{%- if product.available -%}
+  {%- if tracked and qty > 0 and qty <= low_threshold -%}
+    <p class="ol-pdp-meta">
+      <span class="ol-pdp-meta__dot ol-pdp-meta__dot--low" aria-hidden="true"></span>
+      <span class="ol-pdp-meta__stock ol-pdp-meta__stock--low">Only {{ qty }} left at Centurion</span>
+      <span class="ol-pdp-meta__sep" aria-hidden="true">&middot;</span>
+      <span class="ol-pdp-meta__delivery">Delivery 3&ndash;7 business days</span>
+      <span class="ol-pdp-meta__sep" aria-hidden="true">&middot;</span>
+      <span class="ol-pdp-meta__note">{{ cutoff }}</span>
+    </p>
+  {%- else -%}
+    <p class="ol-pdp-meta">
+      <span class="ol-pdp-meta__dot ol-pdp-meta__dot--in" aria-hidden="true"></span>
+      <span class="ol-pdp-meta__stock">In stock at Centurion</span>
+      <span class="ol-pdp-meta__sep" aria-hidden="true">&middot;</span>
+      <span class="ol-pdp-meta__delivery">Delivery 3&ndash;7 business days</span>
+      <span class="ol-pdp-meta__sep" aria-hidden="true">&middot;</span>
+      <span class="ol-pdp-meta__note">{{ cutoff }}</span>
+    </p>
+  {%- endif -%}
+{%- else -%}
+  <p class="ol-pdp-meta">
+    <span class="ol-pdp-meta__dot ol-pdp-meta__dot--out" aria-hidden="true"></span>
+    <span class="ol-pdp-meta__stock ol-pdp-meta__stock--out">Out of stock</span>
+    <span class="ol-pdp-meta__sep" aria-hidden="true">&middot;</span>
+    <span class="ol-pdp-meta__note">Check our other stores</span>
+  </p>
+{%- endif -%}

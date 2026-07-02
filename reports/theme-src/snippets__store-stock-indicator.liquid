@@ -1,0 +1,35 @@
+{%- comment -%}
+  Single source of truth for stock state on PDP.
+  Replaces the Dawn low-stock warning to avoid contradictory copy
+  ("Only 1 left" + "In stock at Centurion").
+{%- endcomment -%}
+{%- liquid
+  assign v = product.selected_or_first_available_variant
+  assign qty = v.inventory_quantity
+  assign tracked = false
+  if v.inventory_management == 'shopify'
+    assign tracked = true
+  endif
+  assign low_threshold = 3
+-%}
+{%- if product.available -%}
+  {%- if tracked and qty > 0 and qty <= low_threshold -%}
+    <div style="display:flex;align-items:center;gap:8px;margin:8px 0;font-size:13px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;flex-shrink:0;box-shadow:0 0 6px rgba(245,158,11,.4);"></span>
+      <span style="color:#92400e;font-weight:600;">Only {{ qty }} left at Centurion</span>
+      <span style="color:#999;font-size:11px;">· Order today for same-day dispatch</span>
+    </div>
+  {%- else -%}
+    <div style="display:flex;align-items:center;gap:8px;margin:8px 0;font-size:13px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 6px rgba(34,197,94,.4);"></span>
+      <span style="color:#166534;font-weight:600;">In stock at Centurion</span>
+      <span style="color:#999;font-size:11px;">· Ready for pickup or dispatch</span>
+    </div>
+  {%- endif -%}
+{%- else -%}
+  <div style="display:flex;align-items:center;gap:8px;margin:8px 0;font-size:13px;">
+    <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;flex-shrink:0;"></span>
+    <span style="color:#991b1b;font-weight:600;">Out of stock</span>
+    <span style="color:#999;font-size:11px;">· Check our other stores</span>
+  </div>
+{%- endif -%}

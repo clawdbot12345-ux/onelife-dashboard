@@ -1,0 +1,37 @@
+{%- comment -%}
+  One Life Health — PDP Review Summary (Growth Build 2026-06)
+  Renders Judge.me rating + count + jump-to-reviews link.
+  Reads from product.metafields.reviews.* (Judge.me defaults).
+  Fails closed if no reviews — render nothing rather than show a 0-star block.
+  Injected above the title via the PDP conversion kit's mover script.
+{%- endcomment -%}
+
+{%- assign rating = product.metafields.reviews.rating.value -%}
+{%- assign count = product.metafields.reviews.rating_count.value -%}
+
+{%- if rating and count and count != "0" -%}
+  {%- assign rating_val = rating.rating | default: rating -%}
+  {%- assign rating_num = rating_val | times: 1.0 -%}
+  {%- assign filled = rating_num | floor -%}
+  <a href="#judgeme_product_reviews" class="ol-pdp-rev" id="ol-pdp-rev" aria-label="See {{ count }} reviews — {{ rating_val }} out of 5 stars">
+    <span class="ol-pdp-rev__stars" aria-hidden="true">
+      {%- for i in (1..5) -%}
+        {%- if i <= filled -%}
+          <svg viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l2.39 4.84L19.78 8l-3.89 3.79.92 5.36L12 14.6 7.19 17.15l.92-5.36L4.22 8l5.39-1.16L12 2z"/></svg>
+        {%- else -%}
+          <svg viewBox="0 0 24 24" fill="#e8e2d6"><path d="M12 2l2.39 4.84L19.78 8l-3.89 3.79.92 5.36L12 14.6 7.19 17.15l.92-5.36L4.22 8l5.39-1.16L12 2z"/></svg>
+        {%- endif -%}
+      {%- endfor -%}
+    </span>
+    <span class="ol-pdp-rev__meta">
+      <strong>{{ rating_val }}</strong> · {{ count }} review{% if count != "1" and count != 1 %}s{% endif %}
+    </span>
+  </a>
+  <style>
+    .ol-pdp-rev { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #4b5563; margin: 0 0 10px; font-size: 13px; }
+    .ol-pdp-rev:hover { color: #1b4332; }
+    .ol-pdp-rev__stars { display: inline-flex; gap: 1px; }
+    .ol-pdp-rev__stars svg { width: 16px; height: 16px; display: block; }
+    .ol-pdp-rev__meta strong { color: #1a1a1a; font-weight: 700; }
+  </style>
+{%- endif -%}
