@@ -11,7 +11,7 @@ on:
       - ".github/triggers/patch-theme"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   patch:
@@ -21,4 +21,13 @@ jobs:
       - name: Mirror + patch scratch theme
         env:
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          MODE: ${{ contains(github.event.head_commit.message, '[theme-dump]') && 'dump' || 'patch' }}
         run: python3 scripts/patch_theme.py
+      - name: Commit dump
+        if: always()
+        run: |
+          git config user.name "onelife-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/theme-src/ || true
+          git diff --cached --quiet || git commit -m "chore: theme source dump"
+          git push || true
