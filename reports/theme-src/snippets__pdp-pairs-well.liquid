@@ -1,0 +1,70 @@
+{%- comment -%}
+  One Life Health — "Pairs well with" basket builder (Growth Build 2026-06)
+  Job: lift sub-R400 landings over the free-shipping threshold and raise AOV.
+  Sources, in priority order:
+  1. product.metafields.apothecary.pairs_with (JSON list of handles — curated)
+  2. Fallback: Shopify native related products via recommendations (same collection)
+
+  Usage: {% render 'pdp-pairs-well', product: product %}
+{%- endcomment -%}
+
+{%- assign pair_handles = product.metafields.apothecary.pairs_with.value -%}
+{%- assign cards = '' -%}
+{%- assign count = 0 -%}
+
+{%- if pair_handles -%}
+  {%- for h in pair_handles -%}
+    {%- assign p = all_products[h] -%}
+    {%- if p and p.available and count < 3 -%}
+      {%- assign count = count | plus: 1 -%}
+      {%- capture card -%}
+        <div style="background:#fff;border:1px solid #e8e2d6;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;height:100%;">
+          <a href="{{ p.url }}" style="text-decoration:none;color:inherit;">
+            <div style="aspect-ratio:1/1;background:#f7f5f0;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+              {%- if p.featured_image -%}<img src="{{ p.featured_image | image_url: width: 280 }}" alt="{{ p.title | escape }}" style="width:100%;height:100%;object-fit:contain;" loading="lazy" width="140" height="140">{%- endif -%}
+            </div>
+            <div style="font-size:13px;font-weight:600;color:#1a1a1a;line-height:1.3;margin-top:8px;">{{ p.title | escape | truncate: 50 }}</div>
+          </a>
+          <div style="font-size:13px;font-weight:600;color:#1a1a1a;margin-top:auto;">{{ p.price | money }}</div>
+          <form action="/cart/add" method="post" enctype="multipart/form-data" data-ol-pair-add>
+            <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" style="width:100%;background:transparent;color:#1b4332;border:1px solid #1b4332;padding:8px 10px;border-radius:6px;font-weight:600;font-size:11px;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;">+ Add</button>
+          </form>
+        </div>
+      {%- endcapture -%}
+      {%- assign cards = cards | append: card -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if count > 0 -%}
+<div id="ol-pairs-well" class="ol-pairs-well" style="margin:24px 0;">
+  <p style="font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:#1b4332;margin:0 0 4px;">Pairs well with</p>
+  <p style="font-size:13px;color:#555;margin:0 0 12px;">What our consultants add alongside this — and it gets you to free delivery.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="ol-pairs-grid">
+    {{ cards }}
+  </div>
+  <style>@media(max-width:749px){.ol-pairs-grid{grid-template-columns:repeat(3,1fr) !important;gap:8px !important;}}</style>
+  <script>
+  (function(){
+    document.querySelectorAll('form[data-ol-pair-add]').forEach(function(f){
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        fetch('/cart/add.js', { method:'POST', body:new FormData(f), headers:{Accept:'application/json'} })
+          .then(function(r){ return r.json(); })
+          .then(function(){
+            var d = document.querySelector('cart-drawer');
+            if (d && d.renderContents) {
+              fetch('/?sections=cart-drawer').then(function(r){ return r.json(); }).then(function(s){
+                d.renderContents({sections:s});
+                if (typeof d.open === 'function') d.open(); else d.classList.add('animate','active');
+              });
+            } else { window.location.href = '/cart'; }
+          });
+      });
+    });
+  })();
+  </script>
+</div>
+{%- endif -%}

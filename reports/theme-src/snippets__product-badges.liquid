@@ -1,0 +1,89 @@
+{%- comment -%}
+  Product certification badges. Reads product tags and displays
+  matching dietary/certification labels. Include on product cards
+  and product pages. Pass show_disclaimer: true on product pages.
+{%- endcomment -%}
+{%- assign badge_tags = product.tags | join: ',' | downcase -%}
+{%- liquid
+  assign has_vegan = false
+  assign has_organic = false
+  assign has_gf = false
+  assign has_sf = false
+  assign has_keto = false
+  assign has_df = false
+  assign has_veg = false
+  assign has_cf = false
+  assign has_nongmo = false
+  assign has_sa = false
+
+  if badge_tags contains 'vegan' or badge_tags contains 'plant-based'
+    assign has_vegan = true
+  endif
+  if badge_tags contains 'organic'
+    assign has_organic = true
+  endif
+  if badge_tags contains 'gluten-free' or badge_tags contains 'gluten free'
+    assign has_gf = true
+  endif
+  if badge_tags contains 'sugar-free' or badge_tags contains 'sugar free'
+    assign has_sf = true
+  endif
+  if badge_tags contains 'keto'
+    assign has_keto = true
+  endif
+  if badge_tags contains 'dairy-free' or badge_tags contains 'dairy free'
+    assign has_df = true
+  endif
+  if badge_tags contains 'vegetarian'
+    assign has_veg = true
+  endif
+  if badge_tags contains 'cruelty-free' or badge_tags contains 'cruelty free'
+    assign has_cf = true
+  endif
+  if badge_tags contains 'non-gmo'
+    assign has_nongmo = true
+  endif
+  if badge_tags contains 'proudly-south-african' or badge_tags contains 'sa-made'
+    assign has_sa = true
+  endif
+-%}
+{%- if has_vegan or has_organic or has_gf or has_sf or has_keto or has_df or has_veg or has_cf or has_nongmo or has_sa -%}
+  <div class="ol-badges" title="Product tags are a shopping guide. Always check the product label and ingredients before purchase." aria-label="Product tags are a shopping guide. Always check the product label and ingredients before purchase.">
+    {%- if has_vegan -%}
+      <span class="ol-badge ol-badge-vegan">Vegan</span>
+    {%- endif -%}
+    {%- if has_organic -%}
+      <span class="ol-badge ol-badge-organic">Organic</span>
+    {%- endif -%}
+    {%- if has_gf -%}
+      <span class="ol-badge ol-badge-gf">Gluten Free</span>
+    {%- endif -%}
+    {%- if has_sf -%}
+      <span class="ol-badge ol-badge-sf">Sugar Free</span>
+    {%- endif -%}
+    {%- if has_keto -%}
+      <span class="ol-badge ol-badge-keto">Keto</span>
+    {%- endif -%}
+    {%- if has_df -%}
+      <span class="ol-badge ol-badge-df">Dairy Free</span>
+    {%- endif -%}
+    {%- if has_veg -%}
+      <span class="ol-badge ol-badge-veg">Vegetarian</span>
+    {%- endif -%}
+    {%- if has_cf -%}
+      <span class="ol-badge ol-badge-cf">Cruelty Free</span>
+    {%- endif -%}
+    {%- if has_nongmo -%}
+      <span class="ol-badge ol-badge-nongmo">Non-GMO</span>
+    {%- endif -%}
+    {%- if has_sa -%}
+      <span class="ol-badge ol-badge-sa">SA Made</span>
+    {%- endif -%}
+  </div>
+  {%- if show_disclaimer -%}
+    <p class="ol-tag-disclaimer">
+      Product tags are a shopping guide only. Always check the product label, ingredients and allergen information before purchase. If you are unsure whether this product is suitable, ask a One Life Health consultant or a qualified healthcare professional.
+      <a href="/pages/product-tag-guide?view=product-tag-guide-v7">Read our tag guide</a>.
+    </p>
+  {%- endif -%}
+{%- endif -%}
