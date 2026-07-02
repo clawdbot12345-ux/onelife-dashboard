@@ -55,6 +55,41 @@ Once activated, Claude can:
 2. Create a Private API key with scopes: Campaigns (Full), Templates (Full), Profiles (Full), Segments (Full), Lists (Read), Metrics (Read), Events (Full), Images (Full)
 3. Add the key to `.mcp.json` under `klaviyo.env.PRIVATE_API_KEY`
 
+## Codex Plugin (Claude Code)
+
+This project registers the **Codex plugin for Claude Code**
+([openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)) at the
+repository level via `.claude/settings.json`. It lets Claude delegate tasks to,
+and get second-opinion code reviews from, OpenAI's Codex without leaving the
+Claude Code workflow.
+
+The plugin is enabled through two settings in `.claude/settings.json`:
+
+- `extraKnownMarketplaces` registers the `openai-codex` marketplace from the
+  `openai/codex-plugin-cc` GitHub repo
+- `enabledPlugins` enables `codex@openai-codex`
+
+When a collaborator trusts this repository folder, Claude Code prompts them to
+install the marketplace and plugin. To finish setup afterwards, run
+`/reload-plugins` then `/codex:setup`.
+
+### Prerequisites (per developer)
+
+- Node.js 18.18 or later
+- The Codex CLI: `npm install -g @openai/codex`
+- A ChatGPT subscription or OpenAI API key, authenticated with `codex login`
+
+### Slash commands provided
+
+- `/codex:review` — standard code review
+- `/codex:adversarial-review` — steerable challenge review
+- `/codex:rescue` — delegate a task to Codex
+- `/codex:transfer` — create a persistent Codex thread
+- `/codex:status` / `/codex:result` / `/codex:cancel` — manage background jobs
+- `/codex:setup` — configuration and setup management
+
+A `codex:codex-rescue` subagent also appears in the `/agents` menu.
+
 ## Automation
 
 ### Daily Data Refresh
