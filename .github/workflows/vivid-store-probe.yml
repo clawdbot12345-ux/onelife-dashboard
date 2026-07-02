@@ -30,13 +30,15 @@ jobs:
       - name: Probe store
         env:
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          VIVID_CLIENT_ID: ${{ secrets.VIVID_CLIENT_ID }}
+          VIVID_CLIENT_SECRET: ${{ secrets.VIVID_CLIENT_SECRET }}
           VIVID_ADMIN_TOKEN: ${{ secrets.VIVID_ADMIN_TOKEN }}
           VIVID_SHOPIFY_TOKEN: ${{ secrets.VIVID_SHOPIFY_TOKEN }}
           SHOPIFY_VIVID_TOKEN: ${{ secrets.SHOPIFY_VIVID_TOKEN }}
           VIVID_CLAUDE_REVIEW_TOKEN: ${{ secrets.VIVID_CLAUDE_REVIEW_TOKEN }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          VIVID_STORE: ${{ vars.VIVID_STORE }}
+          VIVID_STORE: ${{ vars.VIVID_SHOPIFY_STORE }}
         run: python3 scripts/vivid_store_probe.py
       - name: Commit report
         run: |

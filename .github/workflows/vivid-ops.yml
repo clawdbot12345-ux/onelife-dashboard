@@ -28,6 +28,10 @@ jobs:
       - name: Run vivid ops
         env:
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          VIVID_CLIENT_ID: ${{ secrets.VIVID_CLIENT_ID }}
+          VIVID_CLIENT_SECRET: ${{ secrets.VIVID_CLIENT_SECRET }}
+          VIVID_ADMIN_TOKEN: ${{ secrets.VIVID_ADMIN_TOKEN }}
+          VIVID_STORE: ${{ vars.VIVID_SHOPIFY_STORE }}
         run: python3 scripts/vivid_ops.py
       - name: Commit results
         run: |

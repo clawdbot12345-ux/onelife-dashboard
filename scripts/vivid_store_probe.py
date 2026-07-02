@@ -54,7 +54,10 @@ def api(store, token, path, method="GET"):
 
 
 def client_credentials_token(store):
-    cid, csec = os.environ.get("SHOPIFY_CLIENT_ID"), os.environ.get("SHOPIFY_CLIENT_SECRET")
+    if store == "onelifehealth":
+        cid, csec = os.environ.get("SHOPIFY_CLIENT_ID"), os.environ.get("SHOPIFY_CLIENT_SECRET")
+    else:
+        cid, csec = os.environ.get("VIVID_CLIENT_ID"), os.environ.get("VIVID_CLIENT_SECRET")
     if not (cid and csec):
         return None, "no client id/secret set"
     body = urllib.parse.urlencode({
@@ -79,7 +82,10 @@ def client_credentials_token(store):
 def probe_store(store):
     out = {"store": f"{store}.myshopify.com", "auth": None, "auth_source": None}
     token = None
-    for name in TOKEN_CANDIDATES:
+    is_onelife = store == "onelifehealth"
+    candidates = TOKEN_CANDIDATES if is_onelife else [
+        "VIVID_ADMIN_TOKEN", "VIVID_SHOPIFY_TOKEN", "VIVID_CLAUDE_REVIEW_TOKEN"]
+    for name in candidates:
         val = os.environ.get(name, "").strip()
         if not val:
             continue
@@ -107,7 +113,7 @@ def probe_store(store):
     out["auth"] = "OK"
 
     # Always test the client-credentials path too (independent of token auth)
-    cid = os.environ.get("SHOPIFY_CLIENT_ID", "")
+    cid = os.environ.get("SHOPIFY_CLIENT_ID" if store == "onelifehealth" else "VIVID_CLIENT_ID", "")
     cc, note = client_credentials_token(store)
     out["client_credentials"] = {
         "stored_client_id_prefix": cid[:8] if cid else None,
