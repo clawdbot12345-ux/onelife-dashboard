@@ -2,14 +2,14 @@
  {
   "type": "asset",
   "theme": "149043052630",
-  "key": "assets/theme.js",
+  "key": "sections/main-blog.liquid",
   "status": 200,
   "error": null
  },
  {
   "type": "asset",
   "theme": "149043052630",
-  "key": "layout/theme.liquid",
+  "key": "sections/main-our-sourcing.liquid",
   "status": 200,
   "error": null
  },
@@ -17,6 +17,13 @@
   "type": "asset",
   "theme": "149043052630",
   "key": "sections/main-page.liquid",
+  "status": 200,
+  "error": null
+ },
+ {
+  "type": "asset",
+  "theme": "149043052630",
+  "key": "sections/main-search.liquid",
   "status": 200,
   "error": null
  },
