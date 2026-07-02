@@ -1,0 +1,111 @@
+{%- assign banner_asset = blank -%}
+{%- case collection.handle -%}
+  {%- when 'gut' -%}{%- assign banner_asset = 'banner-gut.jpg' -%}
+  {%- when 'immunity' -%}{%- assign banner_asset = 'banner-immunity.jpg' -%}
+  {%- when 'energy' -%}{%- assign banner_asset = 'banner-energy.jpg' -%}
+  {%- when 'stress' -%}{%- assign banner_asset = 'banner-stress.jpg' -%}
+  {%- when 'joints' -%}{%- assign banner_asset = 'banner-joints.jpg' -%}
+  {%- when 'women' -%}{%- assign banner_asset = 'banner-women.jpg' -%}
+  {%- when 'men' -%}{%- assign banner_asset = 'banner-men.jpg' -%}
+  {%- when 'daily' -%}{%- assign banner_asset = 'banner-daily.jpg' -%}
+  {%- when 'all-formulations' -%}{%- assign banner_asset = 'banner-journal.jpg' -%}
+  {%- when 'bestsellers' -%}{%- assign banner_asset = 'banner-journal.jpg' -%}
+  {%- when 'bundles' -%}{%- assign banner_asset = 'banner-group-sleep.jpg' -%}
+{%- endcase -%}
+
+<div class="collection-head{% if banner_asset != blank %} collection-head--banner{% endif %}"{% if banner_asset != blank %} style="--banner:url('{{ banner_asset | asset_url }}')"{% endif %}>
+  {%- if banner_asset != blank -%}
+    <div class="collection-bg"></div>
+  {%- endif -%}
+  <div class="container">
+    <div class="crumb" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px"><a href="{{ routes.root_url }}" style="font-weight:600">Home</a> · {{ collection.title }}</div>
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <p style="font-size:17px;color:var(--ink-soft);max-width:54ch;margin-top:12px">{{ collection.description }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+<div class="container">
+  {%- paginate collection.products by section.settings.products_per_page -%}
+    <div class="shop-toolbar">
+      <div class="chip-row chip-row--premium" aria-label="Shop by Vivid routine">
+        <a href="{{ routes.collections_url }}/all-formulations" class="chip{% if collection.handle == 'all-formulations' %} is-active{% endif %}">
+          All formulations <span class="chip-ct">{{ collections['all-formulations'].products_count | default: collection.products_count }}</span>
+        </a>
+        <a href="{{ routes.collections_url }}/bundles" class="chip chip--stack{% if collection.handle == 'bundles' %} is-active{% endif %}">
+          Curated stacks <span class="chip-ct">10% off</span>
+        </a>
+        <a href="{{ routes.collections_url }}/gut" class="chip{% if collection.handle == 'gut' %} is-active{% endif %}">
+          Gut <span class="chip-ct">{{ collections['gut'].products_count }}</span>
+        </a>
+        <a href="{{ routes.collections_url }}/immunity" class="chip{% if collection.handle == 'immunity' %} is-active{% endif %}">
+          Immunity <span class="chip-ct">{{ collections['immunity'].products_count }}</span>
+        </a>
+        <a href="{{ routes.collections_url }}/stress" class="chip{% if collection.handle == 'stress' %} is-active{% endif %}">
+          Sleep & stress <span class="chip-ct">{{ collections['stress'].products_count }}</span>
+        </a>
+        <a href="{{ routes.collections_url }}/joints" class="chip{% if collection.handle == 'joints' %} is-active{% endif %}">
+          Joints & mobility <span class="chip-ct">{{ collections['joints'].products_count }}</span>
+        </a>
+        <a href="{{ routes.collections_url }}/energy" class="chip{% if collection.handle == 'energy' %} is-active{% endif %}">
+          Energy <span class="chip-ct">{{ collections['energy'].products_count }}</span>
+        </a>
+        <a href="{{ routes.collections_url }}/women" class="chip{% if collection.handle == 'women' %} is-active{% endif %}">
+          Women's <span class="chip-ct">{{ collections['women'].products_count }}</span>
+        </a>
+        <a href="{{ routes.collections_url }}/men" class="chip{% if collection.handle == 'men' %} is-active{% endif %}">
+          Men's <span class="chip-ct">{{ collections['men'].products_count }}</span>
+        </a>
+        <a href="{{ routes.collections_url }}/daily" class="chip{% if collection.handle == 'daily' %} is-active{% endif %}">
+          Daily nutrients <span class="chip-ct">{{ collections['daily'].products_count }}</span>
+        </a>
+      </div>
+      <div class="shop-sort">
+        <span class="sort-lbl">Sort</span>
+        <select onchange="window.location.href=this.value">
+          {%- for option in collection.sort_options -%}
+            <option value="?sort_by={{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      </div>
+    </div>
+    <div class="shop-meta">
+      <span>{{ collection.products_count }} products</span>
+      <a class="shop-meta-clear" href="/pages/quiz">Not sure? Take the quiz</a>
+    </div>
+    <div class="shop-promo-strip" aria-label="Vivid shopping help">
+      <a href="/pages/quiz">
+        <strong>Find your formulation</strong>
+        <span>A premium quiz for goal, routine, and format.</span>
+      </a>
+      <a href="{{ routes.collections_url }}/bundles">
+        <strong>Build a stack</strong>
+        <span>Outcome-led routines with automatic 10% stack offer.</span>
+      </a>
+      <a href="https://wa.me/27713744910?text=Hi%2C%20I%27d%20like%20a%20free%20Vivid%20Health%20consultation" target="_blank" rel="noopener">
+        <strong>Free consultation</strong>
+        <span>Ask a consultant before you combine products.</span>
+      </a>
+    </div>
+    <div class="products-row products-row--shop products-row--3col">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+      <div style="margin-top:48px;display:flex;justify-content:center;gap:8px">
+        {{ paginate | default_pagination }}
+      </div>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "min": 12, "max": 48, "step": 4, "default": 24, "label": "Products per page" }
+  ]
+}
+{% endschema %}

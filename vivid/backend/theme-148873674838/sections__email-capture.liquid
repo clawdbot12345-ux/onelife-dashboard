@@ -1,0 +1,27 @@
+<section class="capture">
+  <div class="capture-inner">
+    <div class="eyebrow" style="color:var(--sage)">{{ section.settings.eyebrow }}</div>
+    <h2 style="margin-top:14px">{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.body }}</p>
+    {% form 'customer', class: 'capture-form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email" name="contact[email]" placeholder="your@email.co.za" required aria-label="Email">
+      <button class="btn btn--clay" type="submit">{{ section.settings.cta_label }}</button>
+    {% endform %}
+    <div style="font-size:11px;color:rgba(244,238,226,.5);margin-top:16px">{{ section.settings.tiny }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Email capture",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Welcome 10%" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Get the <em>field notes</em>.</p>" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Monthly long-form on single ingredients, formulation choices, and what we're testing next. Subscribers get 10% off their first order." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Subscribe" },
+    { "type": "text", "id": "tiny", "label": "Footer note", "default": "No spam. Unsubscribe in one click. POPIA-compliant." }
+  ],
+  "presets": [{ "name": "Email capture" }]
+}
+{% endschema %}

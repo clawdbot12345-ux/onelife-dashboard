@@ -1,0 +1,77 @@
+<section class="quiz-head quiz-head--premium" style="background-image:url({{ 'wellness-kitchen.jpg' | asset_url }})">
+  <div class="container">
+    <div class="crumb"><a href="{{ routes.root_url }}">Home</a> / Premium quiz</div>
+    <div class="quiz-hero-grid">
+      <div>
+        <div class="eyebrow" style="color:var(--sage-soft)">Find your formulation</div>
+        <h1>{{ section.settings.heading }}</h1>
+        <p>{{ section.settings.lede }}</p>
+      </div>
+      <div class="quiz-hero-proof" aria-label="Quiz benefits">
+        <span>3 questions</span>
+        <span>Goal-led ranges</span>
+        <span>Stack guidance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quiz-overlay quiz-overlay--premium">
+  <div class="container">
+    <div class="quiz-builder" data-vivid-quiz>
+      <div class="quiz-builder-main">
+        <div class="quiz-step">
+          <div class="quiz-step-kicker">Question 1</div>
+          <div class="quiz-q">What are you working on first?</div>
+          <div class="quiz-opts quiz-opts--premium">
+            <button type="button" class="quiz-opt selected" data-quiz-choice="goal" data-title="Gut Health" data-url="{{ routes.collections_url }}/gut" data-desc="Cleanse, digestive balance, lining support, and gut reset routines."><strong>Gut health</strong><span>Cleanse, balance, and digestive support.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="goal" data-title="Immunity" data-url="{{ routes.collections_url }}/immunity" data-desc="Daily defence, allergy-season structure, and year-round immune support."><strong>Immunity</strong><span>Allergies, defence, and immune rhythm.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="goal" data-title="Stress, Sleep & Mood" data-url="{{ routes.collections_url }}/stress" data-desc="Evening wind-down, calmer thoughts, mood support, and better daily focus."><strong>Sleep & stress</strong><span>Calm, rest, mood, and focus.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="goal" data-title="Joints & Mobility" data-url="{{ routes.collections_url }}/joints" data-desc="Bone, cartilage, connective-tissue, and movement support in a cleaner routine."><strong>Joints & mobility</strong><span>Structure, movement, and resilience.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="goal" data-title="Daily Nutrients" data-url="{{ routes.collections_url }}/daily" data-desc="Vitamins, minerals, omegas, greens, and daily foundations."><strong>Daily nutrients</strong><span>The everyday wellness shelf.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="goal" data-title="Energy & Vitality" data-url="{{ routes.collections_url }}/energy" data-desc="Cellular fuel, recovery, and vitality without stimulant theatre."><strong>Energy</strong><span>Recovery, vitality, and daily fuel.</span></button>
+          </div>
+        </div>
+
+        <div class="quiz-step">
+          <div class="quiz-step-kicker">Question 2</div>
+          <div class="quiz-q">How do you want the routine to feel?</div>
+          <div class="quiz-opts quiz-opts--premium quiz-opts--three">
+            <button type="button" class="quiz-opt selected" data-quiz-choice="style"><strong>One clear bottle</strong><span>Start conservative and build from there.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="style" data-title="Curated stacks" data-url="{{ routes.collections_url }}/bundles" data-desc="Pre-paired routines for Allergy, Bone & Joint, and Rest & Focus. Stack checkout routes through the 10% stack offer."><strong>Complete stack</strong><span>Let the routine do the pairing.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="style"><strong>Ask a consultant</strong><span>Best if you take medication or already stack products.</span></button>
+          </div>
+        </div>
+
+        <div class="quiz-step">
+          <div class="quiz-step-kicker">Question 3</div>
+          <div class="quiz-q">What format fits your day?</div>
+          <div class="quiz-opts quiz-opts--premium quiz-opts--three">
+            <button type="button" class="quiz-opt selected" data-quiz-choice="format"><strong>Capsules</strong><span>Clean, measured, easy to repeat.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="format"><strong>Powders</strong><span>Flexible dose, smoothie or water.</span></button>
+            <button type="button" class="quiz-opt" data-quiz-choice="format"><strong>No preference</strong><span>Show me the strongest fit.</span></button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="quiz-result-card">
+        <div class="quiz-result-label">Your starting point</div>
+        <h2 data-quiz-result-title>Gut Health</h2>
+        <p data-quiz-result-desc>Cleanse, digestive balance, lining support, and gut reset routines.</p>
+        <a class="btn btn--forest btn-arrow" href="{{ routes.collections_url }}/gut" data-quiz-result-link>Shop this range</a>
+        <a class="btn btn--ghost" href="{{ routes.collections_url }}/bundles">Build a stack</a>
+        <a class="quiz-whatsapp" href="https://wa.me/27713744910?text=Hi%2C%20I%27d%20like%20help%20choosing%20a%20Vivid%20Health%20formulation" target="_blank" rel="noopener">Ask a consultant before you combine products</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quiz page",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your daily wellness shelf, sorted." },
+    { "type": "textarea", "id": "lede", "label": "Lede", "default": "Answer three quick questions and start with the Vivid range or stack that makes the most sense for your goal." }
+  ]
+}
+{% endschema %}

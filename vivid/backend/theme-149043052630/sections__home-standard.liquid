@@ -1,0 +1,64 @@
+<section class="home-standard reveal" aria-labelledby="home-standard-heading">
+  <div class="container">
+    <div class="home-standard-panel">
+      <div class="home-standard-copy">
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <h2 id="home-standard-heading">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.lead }}</p>
+
+        <div class="standard-list">
+          <div>
+            <span>01</span>
+            <strong>Exact-dose labels</strong>
+            <em>The active milligrams are visible before checkout.</em>
+          </div>
+          <div>
+            <span>02</span>
+            <strong>Goal-led systems</strong>
+            <em>Every formula has one clear job in the routine.</em>
+          </div>
+          <div>
+            <span>03</span>
+            <strong>Stack logic</strong>
+            <em>Curated routines replace random bottle collecting.</em>
+          </div>
+        </div>
+
+        <div class="standard-cta">
+          <a href="{{ routes.collections_url }}/all-formulations" class="btn btn--forest btn-arrow">Explore formulas</a>
+          <a href="/pages/quiz" class="btn btn--ghost">Take the quiz</a>
+        </div>
+      </div>
+
+      <div class="home-standard-media">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag:
+            loading: 'eager',
+            widths: '500,800,1200',
+            sizes: '(min-width: 900px) 44vw, 100vw',
+            alt: section.settings.image_alt }}
+        {%- else -%}
+          <img src="{{ 'bone-supreme-influencer.jpg' | asset_url }}" loading="eager" width="1280" height="720" alt="Vivid Health daily routine">
+        {%- endif -%}
+        <div class="standard-media-card">
+          <span>Vivid Standard</span>
+          <strong>Clear routine. Clean label. No guesswork.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home standard",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Vivid standard" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The label does the explaining." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "Vivid is built for people who want the dose, the purpose, and the daily fit to be obvious. No proprietary blends. No vague wellness language. No cluttered shelf logic." },
+    { "type": "image_picker", "id": "image", "label": "Lifestyle image" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "Vivid Health lifestyle routine" }
+  ],
+  "presets": [{ "name": "Home standard" }]
+}
+{% endschema %}
