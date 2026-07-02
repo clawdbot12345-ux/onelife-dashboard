@@ -1,0 +1,43 @@
+name: Round Prices
+
+# Store-wide price rounding (audit M3): conversion-artifact cents rounded
+# DOWN to whole rand; .00/.50/.90/.95/.99 left alone. Dry-run by default —
+# writes the proposed-change CSV to reports/price-rounding/. Apply mode
+# snapshots first (rollback file), then mutates via productVariantsBulkUpdate.
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Apply the changes (false = dry-run plan only)"
+        type: boolean
+        default: false
+  push:
+    paths:
+      - ".github/triggers/round-prices"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shopify-price-writes
+  cancel-in-progress: false
+
+jobs:
+  round:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Round prices
+        env:
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          DRY_RUN: ${{ (github.event_name == 'push' && contains(github.event.head_commit.message, '[apply-prices]')) && 'false' || (inputs.apply && 'false' || 'true') }}
+        run: python3 scripts/round_prices.py
+      - name: Commit plan/snapshot
+        if: always()
+        run: |
+          git config user.name "onelife-bot"
+          git config user.email "bot@onelife.co.za"
+          git add reports/price-rounding/ || true
+          git diff --cached --quiet || git commit -m "chore: price rounding plan/snapshot"
+          git push || true
